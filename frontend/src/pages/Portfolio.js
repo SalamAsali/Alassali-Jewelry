@@ -112,6 +112,27 @@ const Portfolio = () => {
       category: 'jewelry',
       images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/r0vdc3yj_image7.png'],
       description: 'Bespoke diamond jewelry piece'
+    },
+    {
+      _id: 'custom-13',
+      name: 'G Pendant',
+      category: 'pendants',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/e69dp6n0_G-pendant.jpg'],
+      description: 'Custom letter G pendant with diamonds'
+    },
+    {
+      _id: 'custom-14',
+      name: 'Custom Diamond Ring',
+      category: 'rings',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/sqmmun3t_image2.png'],
+      description: 'Bespoke diamond ring design'
+    },
+    {
+      _id: 'custom-15',
+      name: 'Premium Gold Piece',
+      category: 'jewelry',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/h7z2aalc_image3-1.png'],
+      description: 'Custom gold jewelry creation'
     }
   ];
 
