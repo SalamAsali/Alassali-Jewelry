@@ -88,9 +88,17 @@ const Navigation = () => {
                   className="relative"
                   onMouseEnter={() => setOpenDropdown(item.dropdownType)}
                   onMouseLeave={() => setOpenDropdown(null)}
+                  onFocus={() => setOpenDropdown(item.dropdownType)}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.contains(e.relatedTarget)) {
+                      setOpenDropdown(null);
+                    }
+                  }}
                 >
                   <button
-                    className="text-sm font-semibold tracking-wide uppercase text-white/90 hover:text-champagne-gold transition-all duration-300 flex items-center gap-1"
+                    className="text-sm font-semibold tracking-wide uppercase text-white/90 hover:text-champagne-gold transition-all duration-300 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-champagne-gold focus:ring-offset-2 focus:ring-offset-soft-black rounded px-2 py-1"
+                    aria-expanded={openDropdown === item.dropdownType}
+                    aria-haspopup="true"
                   >
                     {item.name}
                     <motion.svg
