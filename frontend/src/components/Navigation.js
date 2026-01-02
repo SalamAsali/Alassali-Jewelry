@@ -382,7 +382,7 @@ const Navigation = () => {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden py-4 border-t border-stone"
+              className="lg:hidden py-4 border-t border-champagne-gold/30 bg-charcoal/50"
             >
               {menuItems.map((item, index) => (
                 <motion.div
@@ -394,12 +394,12 @@ const Navigation = () => {
                   {item.hasDropdown ? (
                     <div className="mb-2">
                       <button
-                        onClick={() => setIsProductsOpen(!isProductsOpen)}
-                        className="w-full text-left py-3 text-base font-medium text-charcoal hover:text-champagne-gold transition-colors flex items-center justify-between"
+                        onClick={() => setOpenDropdown(openDropdown === item.dropdownType ? null : item.dropdownType)}
+                        className="w-full text-left py-3 px-4 text-base font-medium text-white hover:text-champagne-gold transition-colors flex items-center justify-between"
                       >
                         {item.name}
                         <motion.svg
-                          animate={{ rotate: isProductsOpen ? 180 : 0 }}
+                          animate={{ rotate: openDropdown === item.dropdownType ? 180 : 0 }}
                           className="w-4 h-4"
                           fill="none"
                           stroke="currentColor"
@@ -409,7 +409,7 @@ const Navigation = () => {
                         </motion.svg>
                       </button>
                       <AnimatePresence>
-                        {isProductsOpen && (
+                        {openDropdown === 'products' && item.dropdownType === 'products' && (
                           <motion.div
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
@@ -420,24 +420,31 @@ const Navigation = () => {
                               <Link
                                 key={category.name}
                                 to={category.path}
-                                onClick={() => { setIsMenuOpen(false); setIsProductsOpen(false); }}
-                                className="block py-2 text-sm text-taupe hover:text-champagne-gold transition-colors"
+                                onClick={() => { setIsMenuOpen(false); setOpenDropdown(null); }}
+                                className="block py-2 text-sm text-stone hover:text-champagne-gold transition-colors"
                               >
-                                {category.icon} {category.name}
+                                {category.name}
                               </Link>
                             ))}
-                            <div className="border-t border-stone pt-2 mt-2">
-                              {productMegaMenu.extraCategories.map((category) => (
-                                <Link
-                                  key={category.name}
-                                  to={category.path}
-                                  onClick={() => { setIsMenuOpen(false); setIsProductsOpen(false); }}
-                                  className="block py-2 text-xs text-taupe hover:text-champagne-gold transition-colors"
-                                >
-                                  {category.icon} {category.name}
-                                </Link>
-                              ))}
-                            </div>
+                          </motion.div>
+                        )}
+                        {openDropdown === 'bespoke' && item.dropdownType === 'bespoke' && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="pl-4 space-y-2 overflow-hidden"
+                          >
+                            {bespokeMenu.map((bespoke) => (
+                              <Link
+                                key={bespoke.name}
+                                to={bespoke.path}
+                                onClick={() => { setIsMenuOpen(false); setOpenDropdown(null); }}
+                                className="block py-2 text-sm text-stone hover:text-champagne-gold transition-colors"
+                              >
+                                {bespoke.name}
+                              </Link>
+                            ))}
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -446,7 +453,7 @@ const Navigation = () => {
                     <Link
                       to={item.path}
                       onClick={() => setIsMenuOpen(false)}
-                      className="block py-3 text-base font-medium text-charcoal hover:text-champagne-gold transition-colors"
+                      className="block py-3 px-4 text-base font-medium text-white hover:text-champagne-gold transition-colors"
                       data-testid={`nav-mobile-${item.name.toLowerCase().replace(/\s+/g, '-')}`}
                     >
                       {item.name}
@@ -457,7 +464,7 @@ const Navigation = () => {
               <Link
                 to="/custom/engagement-rings"
                 onClick={() => setIsMenuOpen(false)}
-                className="block mt-4 btn-primary text-center"
+                className="block mt-4 mx-4 text-center bg-gradient-to-r from-champagne-gold to-warm-gold text-soft-black px-8 py-3 rounded-lg font-bold"
               >
                 Start Your Journey
               </Link>
