@@ -49,8 +49,9 @@ const Navigation = () => {
 
   const menuItems = [
     { name: 'Products', path: null, hasDropdown: true },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'FAQ', path: '/faq' },
     { name: 'Bespoke Stories', path: '/custom/engagement-rings' },
-    { name: 'Blog', path: '/blog' },
   ];
 
   return (

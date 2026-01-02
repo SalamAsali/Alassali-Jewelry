@@ -16,6 +16,8 @@ import BlogList from './pages/BlogList';
 import BlogPost from './pages/BlogPost';
 import AdminLogin from './pages/AdminLogin';
 import AdminDashboard from './pages/AdminDashboard';
+import FAQ from './pages/FAQ';
+import Portfolio from './pages/Portfolio';
 
 // Components
 import Navigation from './components/Navigation';
@@ -48,6 +50,8 @@ function App() {
                 <Route path="/checkout/cancel" element={<CheckoutCancel />} />
                 <Route path="/blog" element={<BlogList />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="/faq" element={<FAQ />} />
+                <Route path="/portfolio" element={<Portfolio />} />
                 <Route path="/admin/login" element={<AdminLogin />} />
                 <Route path="/admin/dashboard" element={<AdminDashboard />} />
               </Routes>
