@@ -69,12 +69,13 @@ const Navigation = () => {
     >
       <div className="section-container">
         <div className="flex items-center justify-between py-5">
-          {/* Logo */}
+          {/* Logo - White & Bigger */}
           <Link to="/" className="flex items-center">
             <img 
-              src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/prxxxgzj_Al%20Assali%20Jewelry%20Logo.png" 
+              src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/mos4tvrw_Final-W2-1.png" 
               alt="Alassali Jewelry" 
-              className="h-16 w-auto brightness-0 invert"
+              className="h-20 w-auto"
+              style={{ filter: 'brightness(0) invert(1)' }}
             />
           </Link>
 

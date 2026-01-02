@@ -11,9 +11,9 @@ const Footer = () => {
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img 
-                src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/prxxxgzj_Al%20Assali%20Jewelry%20Logo.png" 
+                src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/mos4tvrw_Final-W2-1.png" 
                 alt="Alassali Jewelry" 
-                className="h-20 w-auto"
+                className="h-24 w-auto"
                 style={{ filter: 'brightness(0) invert(1)' }}
               />
             </Link>
