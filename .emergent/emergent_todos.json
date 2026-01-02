@@ -1,11 +1,11 @@
 [
   {
     "content": "Phase 1: Get comprehensive design guidelines from design agent",
-    "status": "in_progress"
+    "status": "completed"
   },
   {
     "content": "Phase 1: Review and refine design direction with user",
-    "status": "pending"
+    "status": "in_progress"
   },
   {
     "content": "Phase 2: Get Stripe integration playbook",
