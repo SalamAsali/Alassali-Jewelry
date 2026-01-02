@@ -189,7 +189,7 @@ const Homepage = () => {
                 <span className="relative">
                   M
                   <img 
-                    src="https://images.unsplash.com/photo-1721103428207-597c5ceff1cd?w=400" 
+                    src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/12igjdxa_DSC_0203_Original-scaled.jpg" 
                     alt="" 
                     className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay rounded"
                     style={{ clipPath: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)' }}
@@ -203,7 +203,7 @@ const Homepage = () => {
                 <span className="relative">
                   T
                   <img 
-                    src="https://images.unsplash.com/photo-1758995115518-26f90aa61b97?w=400" 
+                    src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/2vm3an05_DSC_2764_Original-scaled.jpg" 
                     alt="" 
                     className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay rounded"
                     style={{ clipPath: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)' }}
@@ -279,8 +279,8 @@ const Homepage = () => {
               viewport={{ once: true }}
             >
               <img
-                src="https://images.unsplash.com/photo-1764179690227-af049306cd20?w=800"
-                alt="Custom Pendants"
+                src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/vw4agpvw_4-pendants-on-the-rolls-Royce-scaled.jpeg"
+                alt="Custom Pendants on Rolls Royce"
                 className="w-full rounded-xl shadow-2xl"
               />
             </motion.div>
@@ -326,8 +326,8 @@ const Homepage = () => {
               viewport={{ once: true }}
             >
               <img
-                src="https://images.unsplash.com/photo-1706955008775-c00874bb4d4b?w=800"
-                alt="Toronto Studio"
+                src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/w5nwegci_storeout.jpg"
+                alt="Alassali Jewelry Studio Toronto"
                 className="w-full rounded-xl shadow-2xl"
               />
             </motion.div>
