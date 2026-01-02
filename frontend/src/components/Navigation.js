@@ -204,7 +204,11 @@ const Navigation = () => {
                               <div className="absolute inset-0 bg-champagne-gold/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
                               <div className="relative z-10 text-center">
                                 <div className="w-12 h-12 mx-auto mb-3">
-                                  <img src={item.icon} alt={item.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform" />
+                                  <img 
+                                    src={item.icon} 
+                                    alt={`Custom ${item.name} icon`} 
+                                    className="w-full h-full object-contain group-hover:scale-110 transition-transform" 
+                                  />
                                 </div>
                                 <span className="text-sm font-bold text-soft-black group-hover:text-champagne-gold block">
                                   {item.name}
