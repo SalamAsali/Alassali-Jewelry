@@ -82,13 +82,13 @@ const Navigation = () => {
                   onMouseLeave={() => setIsProductsOpen(false)}
                 >
                   <button
-                    className="text-sm font-medium tracking-wide uppercase text-white hover:text-champagne-gold transition-colors duration-200 flex items-center gap-1"
+                    className="text-sm font-medium tracking-wide uppercase text-white hover:text-champagne-gold transition-all duration-300 flex items-center gap-1"
                     data-testid="nav-products-dropdown"
                   >
                     {item.name}
                     <motion.svg
                       animate={{ rotate: isProductsOpen ? 180 : 0 }}
-                      transition={{ duration: 0.2 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
                       className="w-4 h-4"
                       fill="none"
                       stroke="currentColor"
@@ -101,11 +101,15 @@ const Navigation = () => {
                   <AnimatePresence>
                     {isProductsOpen && (
                       <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        transition={{ duration: 0.2 }}
-                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[700px] bg-gradient-to-br from-deep-charcoal via-charcoal to-soft-black rounded-xl shadow-2xl border border-champagne-gold/20 p-6 z-50"
+                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[700px] rounded-xl shadow-2xl border border-champagne-gold/20 p-6 z-50 overflow-hidden"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(10, 10, 10, 0.98) 100%)',
+                          backdropFilter: 'blur(10px)'
+                        }}
                         data-testid="products-mega-menu"
                       >
                         <div className="grid grid-cols-7 gap-3">
@@ -114,26 +118,26 @@ const Navigation = () => {
                             <Link
                               key={category.name}
                               to={category.path}
-                              className={`${category.featured ? 'col-span-2' : 'col-span-2'} group relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:scale-105`}
+                              className={`${category.featured ? 'col-span-2' : 'col-span-2'} group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer`}
                               style={{
-                                background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.1) 0%, rgba(44, 44, 44, 0.3) 100%)',
-                                border: '1px solid rgba(201, 167, 94, 0.2)'
+                                background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.15) 0%, rgba(44, 44, 44, 0.4) 100%)',
+                                border: '1px solid rgba(201, 167, 94, 0.25)'
                               }}
                               onClick={() => setIsProductsOpen(false)}
                               data-testid={`mega-menu-${category.name.toLowerCase().replace(/\s+/g, '-')}`}
                             >
-                              {/* Futuristic glow effect on hover */}
-                              <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                              {/* Smooth glow effect on hover */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/25 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                               
                               <div className="relative z-10 flex flex-col items-center text-center">
-                                <span className="text-2xl mb-2 group-hover:scale-110 transition-transform">{category.icon}</span>
-                                <span className="text-xs font-medium text-white group-hover:text-champagne-gold transition-colors leading-tight">
+                                <span className="text-2xl mb-2 group-hover:scale-125 transition-transform duration-500 ease-out">{category.icon}</span>
+                                <span className="text-xs font-medium text-white group-hover:text-champagne-gold transition-all duration-300 leading-tight">
                                   {category.name}
                                 </span>
                               </div>
                               
-                              {/* Corner accent */}
-                              <div className="absolute top-0 right-0 w-8 h-8 bg-champagne-gold/10 transform rotate-45 translate-x-4 -translate-y-4 group-hover:bg-champagne-gold/30 transition-colors" />
+                              {/* Animated corner accent */}
+                              <div className="absolute top-0 right-0 w-8 h-8 bg-champagne-gold/10 transform rotate-45 translate-x-4 -translate-y-4 group-hover:bg-champagne-gold/40 group-hover:scale-150 transition-all duration-500" />
                             </Link>
                           ))}
 
@@ -142,16 +146,16 @@ const Navigation = () => {
                             <Link
                               key={category.name}
                               to={category.path}
-                              className="col-span-1 group relative overflow-hidden rounded-lg p-3 transition-all duration-300 hover:scale-105"
+                              className="col-span-1 group relative overflow-hidden rounded-lg p-3 transition-all duration-400 hover:scale-110 cursor-pointer"
                               style={{
-                                background: 'linear-gradient(135deg, rgba(139, 125, 107, 0.2) 0%, rgba(44, 44, 44, 0.4) 100%)',
+                                background: 'linear-gradient(135deg, rgba(139, 125, 107, 0.2) 0%, rgba(44, 44, 44, 0.5) 100%)',
                                 border: '1px solid rgba(139, 125, 107, 0.3)'
                               }}
                               onClick={() => setIsProductsOpen(false)}
                             >
-                              <div className="absolute inset-0 bg-gradient-to-br from-taupe/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                              <div className="absolute inset-0 bg-gradient-to-br from-taupe/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-400" />
                               <div className="relative z-10 flex flex-col items-center text-center">
-                                <span className="text-xs font-medium text-stone group-hover:text-champagne-gold transition-colors leading-tight">
+                                <span className="text-xs font-medium text-stone group-hover:text-champagne-gold transition-all duration-300 leading-tight">
                                   {category.name}
                                 </span>
                               </div>
@@ -164,26 +168,26 @@ const Navigation = () => {
                           {productMegaMenu.featuredCategories.map((featured) => (
                             <div
                               key={featured.name}
-                              className="group relative overflow-hidden rounded-lg p-4 transition-all duration-300 hover:scale-105 cursor-pointer"
+                              className="group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer"
                               style={{
-                                background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.15) 0%, rgba(10, 10, 10, 0.6) 100%)',
-                                border: '2px solid rgba(201, 167, 94, 0.3)'
+                                background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.2) 0%, rgba(10, 10, 10, 0.7) 100%)',
+                                border: '2px solid rgba(201, 167, 94, 0.35)'
                               }}
                               onClick={() => {
                                 navigate(featured.path);
                                 setIsProductsOpen(false);
                               }}
                             >
-                              {/* Animated gradient overlay */}
-                              <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/30 via-transparent to-warm-gold/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                              {/* Smooth animated gradient overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/35 via-transparent to-warm-gold/25 opacity-0 group-hover:opacity-100 transition-all duration-600 ease-out" />
                               
-                              {/* Geometric accent */}
-                              <div className="absolute -top-4 -right-4 w-16 h-16 bg-champagne-gold/10 rounded-full blur-xl group-hover:bg-champagne-gold/30 transition-all" />
+                              {/* Pulsing geometric accent */}
+                              <div className="absolute -top-4 -right-4 w-16 h-16 bg-champagne-gold/15 rounded-full blur-xl group-hover:bg-champagne-gold/40 group-hover:scale-150 transition-all duration-600" />
                               
                               <div className="relative z-10">
                                 <div className="flex items-center gap-3 mb-2">
-                                  <span className="text-3xl group-hover:scale-110 transition-transform">{featured.icon}</span>
-                                  <h3 className="text-lg font-heading font-bold text-white group-hover:text-champagne-gold transition-colors">
+                                  <span className="text-3xl group-hover:scale-125 transition-transform duration-500 ease-out">{featured.icon}</span>
+                                  <h3 className="text-lg font-heading font-bold text-white group-hover:text-champagne-gold transition-all duration-400">
                                     {featured.name}
                                   </h3>
                                 </div>
@@ -192,7 +196,7 @@ const Navigation = () => {
                                     <Link
                                       key={sub.name}
                                       to={sub.path}
-                                      className="block text-xs text-stone hover:text-champagne-gold transition-colors pl-2 border-l-2 border-transparent hover:border-champagne-gold"
+                                      className="block text-xs text-stone hover:text-champagne-gold transition-all duration-300 pl-2 border-l-2 border-transparent hover:border-champagne-gold hover:pl-3"
                                       onClick={(e) => {
                                         e.stopPropagation();
                                         setIsProductsOpen(false);
