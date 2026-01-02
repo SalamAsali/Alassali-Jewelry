@@ -29,12 +29,36 @@ const Homepage = () => {
   };
 
   const customProcess = [
-    { icon: '💬', label: 'Consultation', description: 'Discuss Your Vision' },
-    { icon: '📐', label: 'Sketch', description: 'Initial Design' },
-    { icon: '💎', label: 'Material Selection', description: 'Choose Metals & Stones' },
-    { icon: '✏️', label: 'Design', description: 'CAD Rendering' },
-    { icon: '🏭', label: 'In-House Manufacture', description: 'Crafting' },
-    { icon: '✨', label: 'Presentation', description: 'Final Reveal' },
+    { 
+      icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png', 
+      label: 'Consultation', 
+      description: 'Discuss Your Vision' 
+    },
+    { 
+      icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/ksl2vd8y_Sketch.png', 
+      label: 'Sketch', 
+      description: 'Initial Design' 
+    },
+    { 
+      icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png', 
+      label: 'Material Selection', 
+      description: 'Choose Metals & Stones' 
+    },
+    { 
+      icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/l3vhvhkh_Design.png', 
+      label: 'Design', 
+      description: 'CAD Rendering' 
+    },
+    { 
+      icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/9fg6i9rv_In-House-Manufacture.png', 
+      label: 'In-House Manufacture', 
+      description: 'Crafting' 
+    },
+    { 
+      icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/ye0fvbed_Presentation.png', 
+      label: 'Presentation', 
+      description: 'Final Reveal' 
+    },
   ];
 
   const testimonials = [
@@ -171,9 +195,11 @@ const Homepage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ y: -8, backgroundColor: 'rgba(201, 167, 94, 0.1)' }}
-                className="group flex flex-col items-center bg-white border-2 border-soft-black rounded-xl p-6 w-40 transition-all duration-300"
+                className="group flex flex-col items-center bg-white border-2 border-soft-black rounded-xl p-6 w-40 transition-all duration-300 hover:border-champagne-gold"
               >
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">{step.icon}</div>
+                <div className="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <img src={step.icon} alt={step.label} className="w-full h-full object-contain" />
+                </div>
                 <h3 className="text-sm font-bold text-deep-charcoal mb-1 text-center">{step.label}</h3>
                 <p className="text-xs text-taupe text-center">{step.description}</p>
               </motion.div>
