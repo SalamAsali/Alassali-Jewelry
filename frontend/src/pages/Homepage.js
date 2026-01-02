@@ -29,30 +29,49 @@ const Homepage = () => {
   };
 
   const customProcess = [
+    { icon: '💬', label: 'Consultation', description: 'Discuss Your Vision' },
     { icon: '📐', label: 'Sketch', description: 'Initial Design' },
     { icon: '💎', label: 'Material Selection', description: 'Choose Metals & Stones' },
     { icon: '✏️', label: 'Design', description: 'CAD Rendering' },
-    { icon: '🏭', label: 'Manufacture', description: 'In-House Crafting' },
-    { icon: '✨', label: 'Final Polish', description: 'Quality Check' },
+    { icon: '🏭', label: 'In-House Manufacture', description: 'Crafting' },
+    { icon: '✨', label: 'Presentation', description: 'Final Reveal' },
   ];
 
   const testimonials = [
     {
+      name: 'gray',
+      rating: 5,
+      text: 'Had a perfect experience! Unmatched creativity and execution, definitely the only place to go in toronto for jewelry',
+      source: 'Google'
+    },
+    {
       name: 'Umair Alahi',
       rating: 5,
-      text: 'Absolutely stunning work! The custom engagement ring exceeded all expectations. The team was professional and attentive to every detail.',
+      text: 'My experience shopping here was excellent. They answered all my questions, worked out a price that fits my budget, & helped me choose the perfect piece and also kept in touch after the sale to make sure I was satisfied.',
       source: 'Google'
     },
     {
-      name: 'Sarah Johnson',
+      name: 'Padrono',
       rating: 5,
-      text: 'Best jewelry experience in Toronto! The custom process was smooth and the final product is a masterpiece.',
+      text: "I've been to many shops looking for custom grillz and kept getting really high quotes. At this shop I was taken care of and the price was explained. The final product was worth way more than what I paid. By far the only place I will be going!",
       source: 'Google'
     },
     {
-      name: 'Marcus Chen',
+      name: 'Huss',
       rating: 5,
-      text: 'Incredible craftsmanship and service. My custom chain is exactly what I envisioned. Highly recommend!',
+      text: 'Have bought a couple of custom pieces with this store (rings, grills) and the dedication to making a product you like and want to wear is the best thing about working with them. From start to finish a great experience!',
+      source: 'Google'
+    },
+    {
+      name: 'Fahmi Tobaji',
+      rating: 5,
+      text: 'Excellent quality and professionally made parts',
+      source: 'Google'
+    },
+    {
+      name: 'MuhannadMB',
+      rating: 5,
+      text: "Extremely professional service. Moe was able to incorporate his own ideas into the design I had in mind. The work and quality were flawless and I am very satisfied. I was also able to build a long lasting relationship with Moe, he's very friendly and genuine.",
       source: 'Google'
     }
   ];
@@ -243,7 +262,7 @@ const Homepage = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
+            {testimonials.slice(0, 3).map((testimonial, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
@@ -261,7 +280,7 @@ const Homepage = () => {
                     <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <p className="text-taupe text-sm leading-relaxed mb-3">{testimonial.text}</p>
+                <p className="text-taupe text-sm leading-relaxed mb-3 line-clamp-4">{testimonial.text}</p>
                 <button className="text-champagne-gold text-sm font-medium hover:underline">Read more</button>
               </motion.div>
             ))}
