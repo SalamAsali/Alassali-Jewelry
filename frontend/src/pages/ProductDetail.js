@@ -119,6 +119,11 @@ const ProductDetail = () => {
                   Lab-Grown
                 </span>
               )}
+              {product.specifications?.clarity && (
+                <span className="bg-champagne-gold/20 text-deep-charcoal px-3 py-1 rounded-full text-sm font-medium">
+                  {product.specifications.clarity} Clarity
+                </span>
+              )}
             </div>
 
             <p className="text-lg text-taupe leading-relaxed mb-8">

@@ -129,11 +129,18 @@ const ProductCatalog = () => {
                       whileHover={{ scale: 1.08 }}
                       transition={{ duration: 0.5 }}
                     />
-                    {product.inventory_type === 'lab-grown' && (
-                      <div className="absolute top-4 left-4 bg-champagne-gold text-soft-black text-xs px-3 py-1 rounded-full font-medium">
-                        Lab-Grown
-                      </div>
-                    )}
+                    <div className="absolute top-4 left-4 flex flex-col gap-2">
+                      {product.inventory_type === 'lab-grown' && (
+                        <div className="bg-champagne-gold text-soft-black text-xs px-3 py-1 rounded-full font-medium">
+                          Lab-Grown
+                        </div>
+                      )}
+                      {product.specifications?.clarity && (
+                        <div className="bg-white/90 backdrop-blur-sm text-deep-charcoal text-xs px-3 py-1 rounded-full font-medium">
+                          {product.specifications.clarity}
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <div className="p-6">
                     <h3 className="font-heading text-lg font-medium text-deep-charcoal mb-2 group-hover:text-champagne-gold transition-colors">
