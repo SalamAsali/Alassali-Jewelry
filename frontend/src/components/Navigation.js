@@ -13,22 +13,23 @@ const Navigation = () => {
 
   const productMegaMenu = {
     mainCategories: [
+      { name: 'The Icons', path: '/catalog?featured=true', icon: '⭐', featured: true },
+      { name: 'New In', path: '/catalog', icon: '✨', featured: true },
       { name: 'Engagement Rings', path: '/catalog?category=engagement-rings', icon: '💍' },
       { name: 'Grillz', path: '/catalog?category=grillz', icon: '✨' },
       { name: 'Chains', path: '/catalog?category=chains', icon: '🔗' },
       { name: 'Pendants', path: '/catalog?category=pendants', icon: '💎' },
     ],
     extraCategories: [
-      { name: 'Bracelets', path: '/catalog?category=bracelets', icon: '📿' },
-      { name: 'Earrings', path: '/catalog?category=earrings', icon: '👂' },
-      { name: 'Rings', path: '/catalog?category=rings', icon: '💍' },
+      { name: 'Bracelets', path: '/catalog?category=bracelets' },
+      { name: 'Earrings', path: '/catalog?category=earrings' },
+      { name: 'Rings', path: '/catalog?category=rings' },
     ],
     featuredCategories: [
       {
         name: 'Diamonds',
         path: '/catalog?inventory_type=natural',
         icon: '💎',
-        description: 'Natural & Lab-Grown',
         subcategories: [
           { name: 'Natural Diamonds', path: '/catalog?inventory_type=natural' },
           { name: 'Lab-Grown Diamonds', path: '/catalog?inventory_type=lab-grown' },
@@ -38,7 +39,6 @@ const Navigation = () => {
         name: 'Watches',
         path: '/catalog?category=watches',
         icon: '⌚',
-        description: 'Luxury Timepieces',
         subcategories: [
           { name: 'Custom Watches', path: '/custom/watches' },
           { name: 'Watch Repair', path: '/services/watch-repair' },
@@ -48,8 +48,6 @@ const Navigation = () => {
   };
 
   const menuItems = [
-    { name: 'The Icons', path: '/catalog?featured=true' },
-    { name: 'New In', path: '/catalog' },
     { name: 'Products', path: null, hasDropdown: true },
     { name: 'Bespoke Stories', path: '/custom/engagement-rings' },
     { name: 'Blog', path: '/blog' },
@@ -64,11 +62,12 @@ const Navigation = () => {
       <div className="section-container">
         <div className="flex items-center justify-between py-4">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <Sparkles className="w-6 h-6 text-champagne-gold" />
-            <span className="text-2xl font-heading font-semibold text-deep-charcoal">
-              ALASSALI
-            </span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/prxxxgzj_Al%20Assali%20Jewelry%20Logo.png" 
+              alt="Alassali Jewelry" 
+              className="h-12 w-auto"
+            />
           </Link>
 
           {/* Desktop Menu */}
