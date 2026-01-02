@@ -57,7 +57,7 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-stone"
+      className="sticky top-0 z-50 bg-soft-black/95 backdrop-blur-sm border-b border-champagne-gold/20"
     >
       <div className="section-container">
         <div className="flex items-center justify-between py-4">
@@ -81,7 +81,7 @@ const Navigation = () => {
                   onMouseLeave={() => setIsProductsOpen(false)}
                 >
                   <button
-                    className="text-sm font-medium tracking-wide uppercase text-charcoal hover:text-champagne-gold transition-colors duration-200 flex items-center gap-1"
+                    className="text-sm font-medium tracking-wide uppercase text-white hover:text-champagne-gold transition-colors duration-200 flex items-center gap-1"
                     data-testid="nav-products-dropdown"
                   >
                     {item.name}
@@ -248,10 +248,10 @@ const Navigation = () => {
             
             <button
               onClick={() => navigate('/cart')}
-              className="relative p-2 hover:bg-soft-beige rounded-lg transition-colors"
+              className="relative p-2 hover:bg-champagne-gold/20 rounded-lg transition-colors"
               data-testid="nav-cart-button"
             >
-              <ShoppingCart className="w-6 h-6 text-charcoal" />
+              <ShoppingCart className="w-6 h-6 text-white" />
               {cartCount > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
@@ -265,10 +265,10 @@ const Navigation = () => {
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 hover:bg-soft-beige rounded-lg transition-colors"
+              className="lg:hidden p-2 hover:bg-champagne-gold/20 rounded-lg transition-colors"
               data-testid="nav-mobile-menu-button"
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {isMenuOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
             </button>
           </div>
         </div>
