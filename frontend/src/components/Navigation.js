@@ -75,7 +75,7 @@ const Navigation = () => {
               src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/mos4tvrw_Final-W2-1.png" 
               alt="Alassali Jewelry" 
               className="h-20 w-auto"
-              style={{ filter: 'brightness(0) invert(1)' }}
+              style={{ filter: 'invert(1)' }}
             />
           </Link>
 
