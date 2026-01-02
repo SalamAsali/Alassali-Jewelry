@@ -44,6 +44,9 @@ function App() {
                 <Route path="/custom/grillz" element={<CustomJewelryLanding type="grillz" />} />
                 <Route path="/custom/chains" element={<CustomJewelryLanding type="chains" />} />
                 <Route path="/custom/pendants" element={<CustomJewelryLanding type="pendants" />} />
+                <Route path="/custom/rings" element={<CustomJewelryLanding type="rings" />} />
+                <Route path="/custom/earrings" element={<CustomJewelryLanding type="earrings" />} />
+                <Route path="/custom/bracelets" element={<CustomJewelryLanding type="bracelets" />} />
                 <Route path="/custom-grillz-deposit" element={<CustomGrillzDeposit />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout/success" element={<CheckoutSuccess />} />
