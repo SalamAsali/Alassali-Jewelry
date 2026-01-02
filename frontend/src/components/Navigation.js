@@ -106,7 +106,7 @@ const Navigation = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -10, scale: 0.95 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[700px] rounded-xl shadow-2xl border border-champagne-gold/20 p-6 z-50 overflow-hidden"
+                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[650px] rounded-xl shadow-2xl border border-champagne-gold/20 p-5 z-50 overflow-hidden"
                         style={{
                           background: 'linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(10, 10, 10, 0.98) 100%)',
                           backdropFilter: 'blur(10px)'
@@ -199,12 +199,12 @@ const Navigation = () => {
                           ))}
                         </div>
 
-                        {/* Featured Categories - Compact Big Boxes */}
+                        {/* Featured Categories - Compact Side by Side */}
                         <div className="grid grid-cols-2 gap-3 mt-3">
                           {productMegaMenu.featuredCategories.map((featured) => (
                             <div
                               key={featured.name}
-                              className="group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer"
+                              className="group relative overflow-hidden rounded-lg p-3 transition-all duration-500 hover:scale-105 cursor-pointer"
                               style={{
                                 background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.2) 0%, rgba(10, 10, 10, 0.7) 100%)',
                                 border: '2px solid rgba(201, 167, 94, 0.35)'
@@ -214,20 +214,17 @@ const Navigation = () => {
                                 setIsProductsOpen(false);
                               }}
                             >
-                              {/* Smooth animated gradient overlay */}
                               <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/35 via-transparent to-warm-gold/25 opacity-0 group-hover:opacity-100 transition-all duration-600 ease-out" />
-                              
-                              {/* Pulsing geometric accent */}
-                              <div className="absolute -top-4 -right-4 w-16 h-16 bg-champagne-gold/15 rounded-full blur-xl group-hover:bg-champagne-gold/40 group-hover:scale-150 transition-all duration-600" />
+                              <div className="absolute -top-4 -right-4 w-12 h-12 bg-champagne-gold/15 rounded-full blur-xl group-hover:bg-champagne-gold/40 group-hover:scale-150 transition-all duration-600" />
                               
                               <div className="relative z-10">
-                                <div className="flex items-center gap-3 mb-2">
-                                  <span className="text-3xl group-hover:scale-125 transition-transform duration-500 ease-out">{featured.icon}</span>
-                                  <h3 className="text-lg font-heading font-bold text-white group-hover:text-champagne-gold transition-all duration-400">
+                                <div className="flex items-center gap-2 mb-2">
+                                  <span className="text-2xl group-hover:scale-125 transition-transform duration-500 ease-out">{featured.icon}</span>
+                                  <h3 className="text-base font-heading font-bold text-white group-hover:text-champagne-gold transition-all duration-400">
                                     {featured.name}
                                   </h3>
                                 </div>
-                                <div className="space-y-1 mt-3">
+                                <div className="space-y-1">
                                   {featured.subcategories.map((sub) => (
                                     <Link
                                       key={sub.name}
