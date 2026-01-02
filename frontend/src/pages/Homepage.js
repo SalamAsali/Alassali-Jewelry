@@ -524,7 +524,7 @@ const Homepage = () => {
       </section>
 
       {/* Trust Badges */}
-      <section className="bg-off-white py-16" data-testid="trust-badges-section">
+      <section className="bg-off-white py-24" data-testid="trust-badges-section">
         <div className="section-container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
@@ -554,7 +554,7 @@ const Homepage = () => {
       </section>
 
       {/* Featured Products - "The Icons" */}
-      <section className="bg-white py-20" data-testid="featured-products-section">
+      <section className="bg-white py-24" data-testid="featured-products-section">
         <div className="section-container">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -635,7 +635,7 @@ const Homepage = () => {
       </section>
 
       {/* Final CTA - Black Background */}
-      <section className="relative bg-soft-black text-white py-20" data-testid="final-cta-section">
+      <section className="relative bg-soft-black text-white py-24" data-testid="final-cta-section">
         <DotPattern />
         
         <div className="section-container text-center relative z-10">
