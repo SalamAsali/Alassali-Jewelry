@@ -13,12 +13,12 @@ const Navigation = () => {
 
   const productMegaMenu = {
     mainCategories: [
-      { name: 'The Icons', path: '/catalog?featured=true', icon: '⭐', featured: true },
-      { name: 'New In', path: '/catalog', icon: '✨', featured: true },
-      { name: 'Engagement Rings', path: '/catalog?category=engagement-rings', icon: '💍' },
-      { name: 'Grillz', path: '/catalog?category=grillz', icon: '✨' },
-      { name: 'Chains', path: '/catalog?category=chains', icon: '🔗' },
-      { name: 'Pendants', path: '/catalog?category=pendants', icon: '💎' },
+      { name: 'The Icons', path: '/catalog?featured=true', featured: true },
+      { name: 'New In', path: '/catalog', featured: true },
+      { name: 'Engagement Rings', path: '/catalog?category=engagement-rings' },
+      { name: 'Grillz', path: '/catalog?category=grillz' },
+      { name: 'Chains', path: '/catalog?category=chains' },
+      { name: 'Pendants', path: '/catalog?category=pendants' },
     ],
     extraCategories: [
       { name: 'Bracelets', path: '/catalog?category=bracelets' },
@@ -29,7 +29,6 @@ const Navigation = () => {
       {
         name: 'Diamonds',
         path: '/catalog?inventory_type=natural',
-        icon: '💎',
         subcategories: [
           { name: 'Natural Diamonds', path: '/catalog?inventory_type=natural' },
           { name: 'Lab-Grown Diamonds', path: '/catalog?inventory_type=lab-grown' },
@@ -38,7 +37,6 @@ const Navigation = () => {
       {
         name: 'Watches',
         path: '/catalog?category=watches',
-        icon: '⌚',
         subcategories: [
           { name: 'Custom Watches', path: '/custom/watches' },
           { name: 'Watch Repair', path: '/services/watch-repair' },
@@ -47,12 +45,23 @@ const Navigation = () => {
     ],
   };
 
+  const bespokeMenu = [
+    { name: 'Rings', path: '/custom/rings', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/l3vhvhkh_Design.png' },
+    { name: 'Pendants', path: '/custom/pendants', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png' },
+    { name: 'Chains', path: '/custom/chains', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/ksl2vd8y_Sketch.png' },
+    { name: 'Earrings', path: '/custom/earrings', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/ye0fvbed_Presentation.png' },
+    { name: 'Bracelets', path: '/custom/bracelets', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/9fg6i9rv_In-House-Manufacture.png' },
+    { name: 'Grillz', path: '/custom/grillz', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/l3vhvhkh_Design.png' },
+  ];
+
   const menuItems = [
-    { name: 'Products', path: null, hasDropdown: true },
+    { name: 'Products', path: null, hasDropdown: true, dropdownType: 'products' },
+    { name: 'Bespoke', path: null, hasDropdown: true, dropdownType: 'bespoke' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'FAQ', path: '/faq' },
-    { name: 'Bespoke Stories', path: '/custom/engagement-rings' },
   ];
+
+  const [openDropdown, setOpenDropdown] = useState(null);
 
   return (
     <motion.nav
