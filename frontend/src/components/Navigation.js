@@ -11,15 +11,41 @@ const Navigation = () => {
   const navigate = useNavigate();
   const cartCount = getCartCount();
 
-  const productCategories = [
-    { name: 'All Products', path: '/catalog' },
-    { name: 'Engagement Rings', path: '/catalog?category=engagement-rings' },
-    { name: 'Grillz', path: '/catalog?category=grillz' },
-    { name: 'Chains', path: '/catalog?category=chains' },
-    { name: 'Pendants', path: '/catalog?category=pendants' },
-    { name: 'Natural Diamonds', path: '/catalog?inventory_type=natural' },
-    { name: 'Lab-Grown Diamonds', path: '/catalog?inventory_type=lab-grown' },
-  ];
+  const productMegaMenu = {
+    mainCategories: [
+      { name: 'Engagement Rings', path: '/catalog?category=engagement-rings', icon: '💍' },
+      { name: 'Grillz', path: '/catalog?category=grillz', icon: '✨' },
+      { name: 'Chains', path: '/catalog?category=chains', icon: '🔗' },
+      { name: 'Pendants', path: '/catalog?category=pendants', icon: '💎' },
+    ],
+    extraCategories: [
+      { name: 'Bracelets', path: '/catalog?category=bracelets', icon: '📿' },
+      { name: 'Earrings', path: '/catalog?category=earrings', icon: '👂' },
+      { name: 'Rings', path: '/catalog?category=rings', icon: '💍' },
+    ],
+    featuredCategories: [
+      {
+        name: 'Diamonds',
+        path: '/catalog?inventory_type=natural',
+        icon: '💎',
+        description: 'Natural & Lab-Grown',
+        subcategories: [
+          { name: 'Natural Diamonds', path: '/catalog?inventory_type=natural' },
+          { name: 'Lab-Grown Diamonds', path: '/catalog?inventory_type=lab-grown' },
+        ]
+      },
+      {
+        name: 'Watches',
+        path: '/catalog?category=watches',
+        icon: '⌚',
+        description: 'Luxury Timepieces',
+        subcategories: [
+          { name: 'Custom Watches', path: '/custom/watches' },
+          { name: 'Watch Repair', path: '/services/watch-repair' },
+        ]
+      },
+    ],
+  };
 
   const menuItems = [
     { name: 'The Icons', path: '/catalog?featured=true' },
@@ -79,19 +105,95 @@ const Navigation = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-stone py-2 z-50"
+                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-[800px] bg-white rounded-lg shadow-2xl border border-stone p-8 z-50"
+                        data-testid="products-mega-menu"
                       >
-                        {productCategories.map((category) => (
+                        <div className="grid grid-cols-3 gap-8">
+                          {/* Main Categories - Medium Size */}
+                          <div className="col-span-1">
+                            <h3 className="text-xs uppercase tracking-wider font-semibold text-taupe mb-4">Main Categories</h3>
+                            <div className="space-y-2">
+                              {productMegaMenu.mainCategories.map((category) => (
+                                <Link
+                                  key={category.name}
+                                  to={category.path}
+                                  className="flex items-center gap-3 px-4 py-3 text-base font-medium text-charcoal hover:bg-soft-beige hover:text-champagne-gold rounded-lg transition-all group"
+                                  onClick={() => setIsProductsOpen(false)}
+                                  data-testid={`mega-menu-${category.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                >
+                                  <span className="text-2xl group-hover:scale-110 transition-transform">{category.icon}</span>
+                                  <span>{category.name}</span>
+                                </Link>
+                              ))}
+                            </div>
+
+                            {/* Extra Categories - Smaller */}
+                            <h3 className="text-xs uppercase tracking-wider font-semibold text-taupe mb-3 mt-6">More</h3>
+                            <div className="space-y-1">
+                              {productMegaMenu.extraCategories.map((category) => (
+                                <Link
+                                  key={category.name}
+                                  to={category.path}
+                                  className="flex items-center gap-2 px-3 py-2 text-sm text-taupe hover:text-champagne-gold rounded-lg transition-colors"
+                                  onClick={() => setIsProductsOpen(false)}
+                                >
+                                  <span className="text-lg">{category.icon}</span>
+                                  <span>{category.name}</span>
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* Featured Categories - Big (2 columns) */}
+                          <div className="col-span-2 grid grid-cols-2 gap-6">
+                            {productMegaMenu.featuredCategories.map((featured) => (
+                              <motion.div
+                                key={featured.name}
+                                whileHover={{ y: -4 }}
+                                className="bg-gradient-to-br from-soft-beige to-warm-white rounded-xl p-6 cursor-pointer group"
+                                onClick={() => {
+                                  navigate(featured.path);
+                                  setIsProductsOpen(false);
+                                }}
+                              >
+                                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">{featured.icon}</div>
+                                <h3 className="text-xl font-heading font-semibold text-deep-charcoal mb-2">
+                                  {featured.name}
+                                </h3>
+                                <p className="text-sm text-taupe mb-4">{featured.description}</p>
+                                <div className="space-y-2">
+                                  {featured.subcategories.map((sub) => (
+                                    <Link
+                                      key={sub.name}
+                                      to={sub.path}
+                                      className="block text-sm text-champagne-gold hover:underline"
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        setIsProductsOpen(false);
+                                      }}
+                                    >
+                                      → {sub.name}
+                                    </Link>
+                                  ))}
+                                </div>
+                              </motion.div>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Bottom Banner */}
+                        <div className="mt-6 pt-6 border-t border-stone text-center">
                           <Link
-                            key={category.name}
-                            to={category.path}
-                            className="block px-6 py-3 text-sm text-charcoal hover:bg-soft-beige hover:text-champagne-gold transition-colors"
+                            to="/catalog"
+                            className="inline-flex items-center gap-2 text-sm font-medium text-champagne-gold hover:text-warm-gold transition-colors"
                             onClick={() => setIsProductsOpen(false)}
-                            data-testid={`dropdown-${category.name.toLowerCase().replace(/\s+/g, '-')}`}
                           >
-                            {category.name}
+                            View All Products
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
                           </Link>
-                        ))}
+                        </div>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -187,16 +289,28 @@ const Navigation = () => {
                             exit={{ height: 0, opacity: 0 }}
                             className="pl-4 space-y-2 overflow-hidden"
                           >
-                            {productCategories.map((category) => (
+                            {productMegaMenu.mainCategories.map((category) => (
                               <Link
                                 key={category.name}
                                 to={category.path}
                                 onClick={() => { setIsMenuOpen(false); setIsProductsOpen(false); }}
                                 className="block py-2 text-sm text-taupe hover:text-champagne-gold transition-colors"
                               >
-                                {category.name}
+                                {category.icon} {category.name}
                               </Link>
                             ))}
+                            <div className="border-t border-stone pt-2 mt-2">
+                              {productMegaMenu.extraCategories.map((category) => (
+                                <Link
+                                  key={category.name}
+                                  to={category.path}
+                                  onClick={() => { setIsMenuOpen(false); setIsProductsOpen(false); }}
+                                  className="block py-2 text-xs text-taupe hover:text-champagne-gold transition-colors"
+                                >
+                                  {category.icon} {category.name}
+                                </Link>
+                              ))}
+                            </div>
                           </motion.div>
                         )}
                       </AnimatePresence>
