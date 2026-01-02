@@ -58,17 +58,22 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="sticky top-0 z-50 bg-soft-black/95 backdrop-blur-sm border-b border-champagne-gold/20"
+      className="sticky top-0 z-50 bg-soft-black backdrop-blur-md border-b border-champagne-gold/30 shadow-lg"
     >
       <div className="section-container">
-        <div className="flex items-center justify-between py-4">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
-            <img 
-              src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/prxxxgzj_Al%20Assali%20Jewelry%20Logo.png" 
-              alt="Alassali Jewelry" 
-              className="h-12 w-auto"
-            />
+        <div className="flex items-center justify-between py-5">
+          {/* Logo - Diamond Icon Only */}
+          <Link to="/" className="flex items-center gap-3">
+            <div className="relative">
+              {/* Diamond SVG Icon */}
+              <svg width="48" height="48" viewBox="0 0 60 60" className="text-white">
+                <path d="M30 5 L45 25 L60 30 L45 35 L30 55 L15 35 L0 30 L15 25 Z" fill="currentColor" />
+                <path d="M30 5 L45 25 L60 30 L45 35 L30 55 L15 35 L0 30 L15 25 Z" fill="none" stroke="#C9A75E" strokeWidth="1.5" />
+              </svg>
+            </div>
+            <span className="text-2xl font-bold tracking-wider text-white" style={{ fontFamily: 'var(--font-heading)' }}>
+              ALASSALI
+            </span>
           </Link>
 
           {/* Desktop Menu */}
@@ -245,7 +250,7 @@ const Navigation = () => {
           <div className="flex items-center gap-4">
             <Link
               to="/custom/engagement-rings"
-              className="hidden md:block btn-primary text-sm"
+              className="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-champagne-gold to-warm-gold text-soft-black px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-105 transition-all duration-300"
               data-testid="nav-start-journey"
             >
               Start Your Journey
