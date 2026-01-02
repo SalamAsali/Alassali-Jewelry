@@ -1,0 +1,26 @@
+[
+  {
+    "content": "Phase 1: Get comprehensive design guidelines from design agent",
+    "status": "in_progress"
+  },
+  {
+    "content": "Phase 1: Review and refine design direction with user",
+    "status": "pending"
+  },
+  {
+    "content": "Phase 2: Get Stripe integration playbook",
+    "status": "pending"
+  },
+  {
+    "content": "Phase 2: Implement backend (FastAPI + MongoDB)",
+    "status": "pending"
+  },
+  {
+    "content": "Phase 2: Implement frontend with approved design",
+    "status": "pending"
+  },
+  {
+    "content": "Phase 2: End-to-end testing with testing agent",
+    "status": "pending"
+  }
+]
