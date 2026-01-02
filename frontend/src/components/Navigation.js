@@ -61,8 +61,6 @@ const Navigation = () => {
     { name: 'FAQ', path: '/faq' },
   ];
 
-  const [openDropdown, setOpenDropdown] = useState(null);
-
   return (
     <motion.nav
       initial={{ y: -100 }}
