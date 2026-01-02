@@ -178,7 +178,7 @@ const CustomJewelryLanding = ({ type }) => {
       <div className="relative z-10">
         {/* Portal Header */}
         <div className="border-b border-champagne-gold/20 bg-deep-charcoal/50 backdrop-blur-sm">
-          <div className="section-container py-8">
+          <div className="section-container py-12">
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -198,7 +198,7 @@ const CustomJewelryLanding = ({ type }) => {
         </div>
 
         {/* Portal Content */}
-        <div className="section-container py-16">
+        <div className="section-container py-24">
           <div className="max-w-4xl mx-auto">
             {/* Progress Indicator */}
             <div className="mb-12" data-testid="form-progress">
