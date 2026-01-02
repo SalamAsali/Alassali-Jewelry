@@ -6,7 +6,7 @@ import { useCart } from '../context/CartContext';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
   const { getCartCount } = useCart();
   const navigate = useNavigate();
   const cartCount = getCartCount();
