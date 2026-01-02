@@ -370,15 +370,15 @@ const CustomJewelryLanding = ({ type }) => {
                             {['Diamond', 'Sapphire', 'Ruby', 'Emerald', 'None'].map(stone => (
                               <label 
                                 key={stone} 
-                                className="flex items-center gap-3 cursor-pointer px-4 py-3 rounded-lg bg-white/5 border border-champagne-gold/20 hover:bg-champagne-gold/10 transition-all"
+                                className="flex items-center gap-3 cursor-pointer px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/40 hover:bg-champagne-gold/20 hover:border-champagne-gold transition-all"
                               >
                                 <input
                                   type="checkbox"
                                   checked={formData.stone_preferences.includes(stone)}
                                   onChange={() => handleCheckboxChange(stone)}
-                                  className="w-5 h-5 rounded bg-white/10 border-champagne-gold text-champagne-gold focus:ring-champagne-gold"
+                                  className="w-5 h-5 rounded bg-charcoal border-2 border-champagne-gold text-champagne-gold focus:ring-2 focus:ring-champagne-gold focus:ring-offset-2 focus:ring-offset-charcoal"
                                 />
-                                <span className="text-white text-sm">{stone}</span>
+                                <span className="text-white text-sm font-medium">{stone}</span>
                               </label>
                             ))}
                           </div>
