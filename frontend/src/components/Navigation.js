@@ -120,6 +120,8 @@ const Navigation = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[650px] rounded-xl shadow-2xl border-2 border-stone p-5 z-50 bg-white"
+                        role="menu"
+                        aria-label="Products menu"
                       >
                         <div className="grid grid-cols-6 gap-3">
                           {productMegaMenu.mainCategories.map((category, idx) => (
@@ -187,6 +189,8 @@ const Navigation = () => {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
                         className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[600px] rounded-xl shadow-2xl border-2 border-stone p-5 z-50 bg-white"
+                        role="menu"
+                        aria-label="Bespoke custom jewelry menu"
                       >
                         <div className="grid grid-cols-3 gap-3">
                           {bespokeMenu.map((item) => (
@@ -195,6 +199,7 @@ const Navigation = () => {
                               to={item.path}
                               className="group relative rounded-lg p-4 bg-white border-2 border-soft-black hover:border-champagne-gold transition-all duration-300 hover:scale-105"
                               onClick={() => setOpenDropdown(null)}
+                              role="menuitem"
                             >
                               <div className="absolute inset-0 bg-champagne-gold/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
                               <div className="relative z-10 text-center">
