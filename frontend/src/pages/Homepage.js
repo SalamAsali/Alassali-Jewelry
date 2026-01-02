@@ -236,7 +236,7 @@ const Homepage = () => {
                 {/* M with image */}
                 <div className="relative inline-block">
                   <h2 
-                    className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none opacity-20"
+                    className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none text-white/30"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     M
@@ -247,8 +247,8 @@ const Homepage = () => {
                     viewport={{ once: true }}
                     src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/12igjdxa_DSC_0203_Original-scaled.jpg"
                     alt=""
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 object-cover rounded-lg shadow-2xl border-4 border-champagne-gold/30"
-                    style={{ zIndex: 10 }}
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 object-cover rounded-lg shadow-2xl border-4 border-champagne-gold/50"
+                    style={{ zIndex: 10, mixBlendMode: 'overlay', opacity: 0.9 }}
                   />
                 </div>
                 
@@ -288,7 +288,7 @@ const Homepage = () => {
                 {/* T with image */}
                 <div className="relative inline-block">
                   <h2 
-                    className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none opacity-20"
+                    className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none text-white/30"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     T
@@ -299,8 +299,8 @@ const Homepage = () => {
                     viewport={{ once: true }}
                     src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/2vm3an05_DSC_2764_Original-scaled.jpg"
                     alt=""
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 object-cover rounded-lg shadow-2xl border-4 border-champagne-gold/30"
-                    style={{ zIndex: 10 }}
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 object-cover rounded-lg shadow-2xl border-4 border-champagne-gold/50"
+                    style={{ zIndex: 10, mixBlendMode: 'overlay', opacity: 0.9 }}
                   />
                 </div>
                 
