@@ -108,36 +108,59 @@ const Navigation = () => {
                     </motion.svg>
                   </button>
                   
+          {/* Desktop Menu */}
+          <div className="hidden lg:flex items-center gap-8">
+            {menuItems.map((item) => (
+              item.hasDropdown ? (
+                <div
+                  key={item.name}
+                  className="relative"
+                  onMouseEnter={() => setOpenDropdown(item.dropdownType)}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
+                  <button
+                    className="text-sm font-semibold tracking-wide uppercase text-white/90 hover:text-champagne-gold transition-all duration-300 flex items-center gap-1"
+                    data-testid={`nav-${item.name.toLowerCase()}-dropdown`}
+                  >
+                    {item.name}
+                    <motion.svg
+                      animate={{ rotate: openDropdown === item.dropdownType ? 180 : 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </motion.svg>
+                  </button>
+                  
                   <AnimatePresence>
-                    {isProductsOpen && (
+                    {/* Products Mega Menu */}
+                    {openDropdown === 'products' && (
                       <motion.div
                         initial={{ opacity: 0, y: -10, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -10, scale: 0.95 }}
                         transition={{ duration: 0.3, ease: "easeOut" }}
-                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[650px] rounded-xl shadow-2xl border border-champagne-gold/20 p-5 z-50 overflow-hidden"
-                        style={{
-                          background: 'linear-gradient(135deg, rgba(26, 26, 26, 0.98) 0%, rgba(10, 10, 10, 0.98) 100%)',
-                          backdropFilter: 'blur(10px)'
-                        }}
+                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[650px] md:w-[700px] lg:w-[750px] rounded-xl shadow-2xl border-2 border-stone p-5 z-50 overflow-hidden bg-white"
                         data-testid="products-mega-menu"
                       >
                         <div className="grid grid-cols-6 gap-3">
-                          {/* The Icons & New In - Top row, 3 cols each */}
+                          {/* The Icons & New In - Top row */}
                           <Link
                             to={productMegaMenu.mainCategories[0].path}
-                            className="col-span-3 group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer"
-                            style={{
-                              background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.15) 0%, rgba(44, 44, 44, 0.4) 100%)',
-                              border: '1px solid rgba(201, 167, 94, 0.25)'
-                            }}
-                            onClick={() => setIsProductsOpen(false)}
-                            data-testid="mega-menu-the-icons"
+                            className="col-span-3 group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer bg-white border-2 border-soft-black hover:border-champagne-gold"
+                            onClick={() => setOpenDropdown(null)}
                           >
-                            <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/25 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                             <div className="relative z-10 flex flex-col items-center text-center">
-                              <span className="text-2xl mb-2 group-hover:scale-125 transition-transform duration-500 ease-out">{productMegaMenu.mainCategories[0].icon}</span>
-                              <span className="text-xs font-medium text-white group-hover:text-champagne-gold transition-all duration-300 leading-tight">
+                              <div className="w-10 h-10 mb-2 flex items-center justify-center">
+                                <svg width="32" height="32" viewBox="0 0 32 32" className="group-hover:scale-125 transition-transform duration-500">
+                                  <path d="M16 4 L20 14 L28 16 L20 18 L16 28 L12 18 L4 16 L12 14 Z" fill="none" stroke="currentColor" strokeWidth="2" className="text-soft-black group-hover:text-champagne-gold transition-colors" />
+                                </svg>
+                              </div>
+                              <span className="text-sm font-bold text-soft-black group-hover:text-champagne-gold transition-all duration-300">
                                 {productMegaMenu.mainCategories[0].name}
                               </span>
                             </div>
@@ -145,18 +168,18 @@ const Navigation = () => {
 
                           <Link
                             to={productMegaMenu.mainCategories[1].path}
-                            className="col-span-3 group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer"
-                            style={{
-                              background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.15) 0%, rgba(44, 44, 44, 0.4) 100%)',
-                              border: '1px solid rgba(201, 167, 94, 0.25)'
-                            }}
-                            onClick={() => setIsProductsOpen(false)}
-                            data-testid="mega-menu-new-in"
+                            className="col-span-3 group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer bg-white border-2 border-soft-black hover:border-champagne-gold"
+                            onClick={() => setOpenDropdown(null)}
                           >
-                            <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/25 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                            <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                             <div className="relative z-10 flex flex-col items-center text-center">
-                              <span className="text-2xl mb-2 group-hover:scale-125 transition-transform duration-500 ease-out">{productMegaMenu.mainCategories[1].icon}</span>
-                              <span className="text-xs font-medium text-white group-hover:text-champagne-gold transition-all duration-300 leading-tight">
+                              <div className="w-10 h-10 mb-2 flex items-center justify-center">
+                                <svg width="32" height="32" viewBox="0 0 32 32" className="group-hover:scale-125 transition-transform duration-500">
+                                  <circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" strokeWidth="2" className="text-soft-black group-hover:text-champagne-gold transition-colors" />
+                                  <circle cx="16" cy="16" r="6" fill="currentColor" className="text-soft-black group-hover:text-champagne-gold transition-colors" />
+                                </svg>
+                              </div>
+                              <span className="text-sm font-bold text-soft-black group-hover:text-champagne-gold transition-all duration-300">
                                 {productMegaMenu.mainCategories[1].name}
                               </span>
                             </div>
@@ -167,40 +190,34 @@ const Navigation = () => {
                             <Link
                               key={category.name}
                               to={category.path}
-                              className="col-span-2 group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer"
-                              style={{
-                                background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.15) 0%, rgba(44, 44, 44, 0.4) 100%)',
-                                border: '1px solid rgba(201, 167, 94, 0.25)'
-                              }}
-                              onClick={() => setIsProductsOpen(false)}
-                              data-testid={`mega-menu-${category.name.toLowerCase().replace(/\s+/g, '-')}`}
+                              className="col-span-2 group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer bg-white border-2 border-soft-black hover:border-champagne-gold"
+                              onClick={() => setOpenDropdown(null)}
                             >
-                              <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/25 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                              <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
                               <div className="relative z-10 flex flex-col items-center text-center">
-                                <span className="text-2xl mb-2 group-hover:scale-125 transition-transform duration-500 ease-out">{category.icon}</span>
-                                <span className="text-xs font-medium text-white group-hover:text-champagne-gold transition-all duration-300 leading-tight">
+                                <div className="w-8 h-8 mb-2">
+                                  <svg width="32" height="32" viewBox="0 0 32 32" className="group-hover:scale-125 transition-transform duration-500">
+                                    <rect x="6" y="6" width="20" height="20" rx="2" fill="none" stroke="currentColor" strokeWidth="2" className="text-soft-black group-hover:text-champagne-gold transition-colors" />
+                                  </svg>
+                                </div>
+                                <span className="text-xs font-bold text-soft-black group-hover:text-champagne-gold transition-all duration-300">
                                   {category.name}
                                 </span>
                               </div>
-                              <div className="absolute top-0 right-0 w-8 h-8 bg-champagne-gold/10 transform rotate-45 translate-x-4 -translate-y-4 group-hover:bg-champagne-gold/40 group-hover:scale-150 transition-all duration-500" />
                             </Link>
                           ))}
 
-                          {/* Extra Categories - 2 cols each, more compact */}
+                          {/* Extra Categories - 2 cols each */}
                           {productMegaMenu.extraCategories.map((category) => (
                             <Link
                               key={category.name}
                               to={category.path}
-                              className="col-span-2 group relative overflow-hidden rounded-lg p-3 transition-all duration-400 hover:scale-110 cursor-pointer"
-                              style={{
-                                background: 'linear-gradient(135deg, rgba(139, 125, 107, 0.2) 0%, rgba(44, 44, 44, 0.5) 100%)',
-                                border: '1px solid rgba(139, 125, 107, 0.3)'
-                              }}
-                              onClick={() => setIsProductsOpen(false)}
+                              className="col-span-2 group relative overflow-hidden rounded-lg p-3 transition-all duration-400 hover:scale-105 cursor-pointer bg-white border-2 border-charcoal hover:border-champagne-gold"
+                              onClick={() => setOpenDropdown(null)}
                             >
-                              <div className="absolute inset-0 bg-gradient-to-br from-taupe/30 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-400" />
+                              <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-400" />
                               <div className="relative z-10 flex flex-col items-center text-center">
-                                <span className="text-xs font-medium text-stone group-hover:text-champagne-gold transition-all duration-300 leading-tight">
+                                <span className="text-xs font-bold text-charcoal group-hover:text-champagne-gold transition-all duration-300">
                                   {category.name}
                                 </span>
                               </div>
@@ -208,40 +225,32 @@ const Navigation = () => {
                           ))}
                         </div>
 
-                        {/* Featured Categories - Compact Side by Side */}
+                        {/* Featured Categories - White boxes */}
                         <div className="grid grid-cols-2 gap-3 mt-3">
                           {productMegaMenu.featuredCategories.map((featured) => (
                             <div
                               key={featured.name}
-                              className="group relative overflow-hidden rounded-lg p-3 transition-all duration-500 hover:scale-105 cursor-pointer"
-                              style={{
-                                background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.2) 0%, rgba(10, 10, 10, 0.7) 100%)',
-                                border: '2px solid rgba(201, 167, 94, 0.35)'
-                              }}
+                              className="group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer bg-white border-2 border-soft-black hover:border-champagne-gold"
                               onClick={() => {
                                 navigate(featured.path);
-                                setIsProductsOpen(false);
+                                setOpenDropdown(null);
                               }}
                             >
-                              <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/35 via-transparent to-warm-gold/25 opacity-0 group-hover:opacity-100 transition-all duration-600 ease-out" />
-                              <div className="absolute -top-4 -right-4 w-12 h-12 bg-champagne-gold/15 rounded-full blur-xl group-hover:bg-champagne-gold/40 group-hover:scale-150 transition-all duration-600" />
+                              <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-600" />
                               
                               <div className="relative z-10">
-                                <div className="flex items-center gap-2 mb-2">
-                                  <span className="text-2xl group-hover:scale-125 transition-transform duration-500 ease-out">{featured.icon}</span>
-                                  <h3 className="text-base font-heading font-bold text-white group-hover:text-champagne-gold transition-all duration-400">
-                                    {featured.name}
-                                  </h3>
-                                </div>
+                                <h3 className="text-base font-heading font-bold text-soft-black group-hover:text-champagne-gold transition-all duration-400 mb-2">
+                                  {featured.name}
+                                </h3>
                                 <div className="space-y-1">
                                   {featured.subcategories.map((sub) => (
                                     <Link
                                       key={sub.name}
                                       to={sub.path}
-                                      className="block text-xs text-stone hover:text-champagne-gold transition-all duration-300 pl-2 border-l-2 border-transparent hover:border-champagne-gold hover:pl-3"
+                                      className="block text-xs text-charcoal hover:text-champagne-gold transition-all duration-300 pl-2 border-l-2 border-transparent hover:border-champagne-gold hover:pl-3"
                                       onClick={(e) => {
                                         e.stopPropagation();
-                                        setIsProductsOpen(false);
+                                        setOpenDropdown(null);
                                       }}
                                     >
                                       {sub.name}
@@ -253,8 +262,54 @@ const Navigation = () => {
                           ))}
                         </div>
 
-                        {/* Bottom Banner - Minimal */}
-                        <div className="mt-3 pt-3 border-t border-champagne-gold/20 text-center">
+                        <div className="mt-3 pt-3 border-t border-stone text-center">
+                          <Link
+                            to="/catalog"
+                            className="inline-flex items-center gap-2 text-xs font-medium text-champagne-gold hover:text-warm-gold transition-colors"
+                            onClick={() => setOpenDropdown(null)}
+                          >
+                            View All
+                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                            </svg>
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {/* Bespoke Mega Menu */}
+                    {openDropdown === 'bespoke' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                        transition={{ duration: 0.3, ease: "easeOut" }}
+                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[500px] md:w-[550px] lg:w-[600px] rounded-xl shadow-2xl border-2 border-stone p-5 z-50 bg-white"
+                        data-testid="bespoke-mega-menu"
+                      >
+                        <div className="grid grid-cols-3 gap-3">
+                          {bespokeMenu.map((item) => (
+                            <Link
+                              key={item.name}
+                              to={item.path}
+                              className="group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer bg-white border-2 border-soft-black hover:border-champagne-gold"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                              <div className="relative z-10 flex flex-col items-center text-center">
+                                <div className="w-12 h-12 mb-3 flex items-center justify-center">
+                                  <img src={item.icon} alt={item.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" />
+                                </div>
+                                <span className="text-sm font-bold text-soft-black group-hover:text-champagne-gold transition-all duration-300">
+                                  {item.name}
+                                </span>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                           <Link
                             to="/catalog"
                             className="inline-flex items-center gap-2 text-xs font-medium text-champagne-gold hover:text-warm-gold transition-colors"
