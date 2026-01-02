@@ -49,6 +49,34 @@ const Portfolio = () => {
       category: 'chains',
       images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/2vm3an05_DSC_2764_Original-scaled.jpg'],
       description: 'Hand-crafted custom chain with unique links'
+    },
+    {
+      _id: 'custom-4',
+      name: '"03" Ring',
+      category: 'rings',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/ewu0gr89_image8.png'],
+      description: 'Custom numbered ring design'
+    },
+    {
+      _id: 'custom-5',
+      name: 'Cartier Frames',
+      category: 'accessories',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/0z9wb0kq_image9.png'],
+      description: 'Luxury eyewear customization'
+    },
+    {
+      _id: 'custom-6',
+      name: 'Diamond Tennis Bracelet',
+      category: 'bracelets',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/0lg7vzu6_image10.png'],
+      description: 'Classic tennis bracelet with premium diamonds'
+    },
+    {
+      _id: 'custom-7',
+      name: 'Custom Gold Chain',
+      category: 'chains',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/9milxomg_image11.png'],
+      description: 'Handcrafted gold chain with unique design'
     }
   ];
 
