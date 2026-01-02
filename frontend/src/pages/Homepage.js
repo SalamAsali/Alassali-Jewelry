@@ -218,8 +218,8 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Made In Toronto Section - Black with Integrated Images */}
-      <section className="relative bg-soft-black text-white py-24 overflow-hidden">
+      {/* Made In Toronto Section - Redesigned with Integrated Images */}
+      <section className="relative bg-soft-black text-white py-32 overflow-hidden">
         <DotPattern />
         
         <div className="section-container relative z-10">
@@ -227,36 +227,119 @@ const Homepage = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center"
+            className="relative"
           >
-            <h2 className="text-6xl md:text-8xl font-bold leading-none mb-8" style={{ fontFamily: 'var(--font-heading)' }}>
-              <div className="relative inline-block">
-                <span className="relative">
-                  M
-                  <img 
-                    src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/12igjdxa_DSC_0203_Original-scaled.jpg" 
-                    alt="" 
-                    className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay rounded"
-                    style={{ clipPath: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)' }}
+            {/* Main Text with Integrated Images */}
+            <div className="relative">
+              {/* First Row: MADE */}
+              <div className="flex items-center justify-center mb-8">
+                {/* M with image */}
+                <div className="relative inline-block">
+                  <h2 
+                    className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none opacity-20"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    M
+                  </h2>
+                  <motion.img
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/12igjdxa_DSC_0203_Original-scaled.jpg"
+                    alt=""
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 object-cover rounded-lg shadow-2xl border-4 border-champagne-gold/30"
+                    style={{ zIndex: 10 }}
                   />
-                </span>
-                <span>ADE</span>
+                </div>
+                
+                {/* ADE */}
+                <h2 
+                  className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none"
+                  style={{ 
+                    fontFamily: 'var(--font-heading)',
+                    background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}
+                >
+                  ADE
+                </h2>
               </div>
-              <br />
-              <div className="relative inline-block mt-4">
-                <span>IN </span>
-                <span className="relative">
-                  T
-                  <img 
-                    src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/2vm3an05_DSC_2764_Original-scaled.jpg" 
-                    alt="" 
-                    className="absolute inset-0 w-full h-full object-cover opacity-60 mix-blend-overlay rounded"
-                    style={{ clipPath: 'polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%)' }}
+
+              {/* Second Row: IN */}
+              <div className="flex items-center justify-center mb-8">
+                <h2 
+                  className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none"
+                  style={{ 
+                    fontFamily: 'var(--font-heading)',
+                    background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}
+                >
+                  IN
+                </h2>
+              </div>
+
+              {/* Third Row: TORONTO */}
+              <div className="flex items-center justify-center relative">
+                {/* T with image */}
+                <div className="relative inline-block">
+                  <h2 
+                    className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none opacity-20"
+                    style={{ fontFamily: 'var(--font-heading)' }}
+                  >
+                    T
+                  </h2>
+                  <motion.img
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/2vm3an05_DSC_2764_Original-scaled.jpg"
+                    alt=""
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 object-cover rounded-lg shadow-2xl border-4 border-champagne-gold/30"
+                    style={{ zIndex: 10 }}
                   />
-                </span>
-                <span>ORONTO</span>
+                </div>
+                
+                {/* ORONTO */}
+                <h2 
+                  className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none"
+                  style={{ 
+                    fontFamily: 'var(--font-heading)',
+                    background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text'
+                  }}
+                >
+                  ORONTO
+                </h2>
               </div>
-            </h2>
+
+              {/* Floating accent image */}
+              <motion.img
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/sqmmun3t_image2.png"
+                alt=""
+                className="absolute top-20 right-10 w-32 h-40 object-cover rounded-lg shadow-2xl border-2 border-white/20 transform rotate-12"
+              />
+
+              <motion.img
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5 }}
+                src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/vw4agpvw_4-pendants-on-the-rolls-Royce-scaled.jpeg"
+                alt=""
+                className="absolute bottom-20 left-10 w-40 h-56 object-cover rounded-lg shadow-2xl border-2 border-white/20 transform -rotate-6"
+              />
+            </div>
           </motion.div>
         </div>
       </section>
