@@ -62,18 +62,14 @@ const Navigation = () => {
     >
       <div className="section-container">
         <div className="flex items-center justify-between py-5">
-          {/* Logo - Diamond Icon Only */}
-          <Link to="/" className="flex items-center gap-3">
-            <div className="relative">
-              {/* Diamond SVG Icon */}
-              <svg width="48" height="48" viewBox="0 0 60 60" className="text-white">
-                <path d="M30 5 L45 25 L60 30 L45 35 L30 55 L15 35 L0 30 L15 25 Z" fill="currentColor" />
-                <path d="M30 5 L45 25 L60 30 L45 35 L30 55 L15 35 L0 30 L15 25 Z" fill="none" stroke="#C9A75E" strokeWidth="1.5" />
-              </svg>
-            </div>
-            <span className="text-2xl font-bold tracking-wider text-white" style={{ fontFamily: 'var(--font-heading)' }}>
-              ALASSALI
-            </span>
+          {/* Logo - Full Logo White & Bigger */}
+          <Link to="/" className="flex items-center">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/prxxxgzj_Al%20Assali%20Jewelry%20Logo.png" 
+              alt="Alassali Jewelry" 
+              className="h-16 w-auto brightness-0 invert"
+              style={{ filter: 'brightness(0) invert(1)' }}
+            />
           </Link>
 
           {/* Desktop Menu */}
@@ -117,13 +113,52 @@ const Navigation = () => {
                         }}
                         data-testid="products-mega-menu"
                       >
-                        <div className="grid grid-cols-7 gap-3">
-                          {/* Main Categories - Boxes with futuristic design */}
-                          {productMegaMenu.mainCategories.map((category, idx) => (
+                        <div className="grid grid-cols-6 gap-3">
+                          {/* The Icons & New In - Top row, 3 cols each */}
+                          <Link
+                            to={productMegaMenu.mainCategories[0].path}
+                            className="col-span-3 group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer"
+                            style={{
+                              background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.15) 0%, rgba(44, 44, 44, 0.4) 100%)',
+                              border: '1px solid rgba(201, 167, 94, 0.25)'
+                            }}
+                            onClick={() => setIsProductsOpen(false)}
+                            data-testid="mega-menu-the-icons"
+                          >
+                            <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/25 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                            <div className="relative z-10 flex flex-col items-center text-center">
+                              <span className="text-2xl mb-2 group-hover:scale-125 transition-transform duration-500 ease-out">{productMegaMenu.mainCategories[0].icon}</span>
+                              <span className="text-xs font-medium text-white group-hover:text-champagne-gold transition-all duration-300 leading-tight">
+                                {productMegaMenu.mainCategories[0].name}
+                              </span>
+                            </div>
+                          </Link>
+
+                          <Link
+                            to={productMegaMenu.mainCategories[1].path}
+                            className="col-span-3 group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer"
+                            style={{
+                              background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.15) 0%, rgba(44, 44, 44, 0.4) 100%)',
+                              border: '1px solid rgba(201, 167, 94, 0.25)'
+                            }}
+                            onClick={() => setIsProductsOpen(false)}
+                            data-testid="mega-menu-new-in"
+                          >
+                            <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/25 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
+                            <div className="relative z-10 flex flex-col items-center text-center">
+                              <span className="text-2xl mb-2 group-hover:scale-125 transition-transform duration-500 ease-out">{productMegaMenu.mainCategories[1].icon}</span>
+                              <span className="text-xs font-medium text-white group-hover:text-champagne-gold transition-all duration-300 leading-tight">
+                                {productMegaMenu.mainCategories[1].name}
+                              </span>
+                            </div>
+                          </Link>
+
+                          {/* Main Categories - 2 cols each */}
+                          {productMegaMenu.mainCategories.slice(2).map((category, idx) => (
                             <Link
                               key={category.name}
                               to={category.path}
-                              className={`${category.featured ? 'col-span-2' : 'col-span-2'} group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer`}
+                              className="col-span-2 group relative overflow-hidden rounded-lg p-4 transition-all duration-500 hover:scale-105 cursor-pointer"
                               style={{
                                 background: 'linear-gradient(135deg, rgba(201, 167, 94, 0.15) 0%, rgba(44, 44, 44, 0.4) 100%)',
                                 border: '1px solid rgba(201, 167, 94, 0.25)'
@@ -131,27 +166,23 @@ const Navigation = () => {
                               onClick={() => setIsProductsOpen(false)}
                               data-testid={`mega-menu-${category.name.toLowerCase().replace(/\s+/g, '-')}`}
                             >
-                              {/* Smooth glow effect on hover */}
                               <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/25 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-                              
                               <div className="relative z-10 flex flex-col items-center text-center">
                                 <span className="text-2xl mb-2 group-hover:scale-125 transition-transform duration-500 ease-out">{category.icon}</span>
                                 <span className="text-xs font-medium text-white group-hover:text-champagne-gold transition-all duration-300 leading-tight">
                                   {category.name}
                                 </span>
                               </div>
-                              
-                              {/* Animated corner accent */}
                               <div className="absolute top-0 right-0 w-8 h-8 bg-champagne-gold/10 transform rotate-45 translate-x-4 -translate-y-4 group-hover:bg-champagne-gold/40 group-hover:scale-150 transition-all duration-500" />
                             </Link>
                           ))}
 
-                          {/* Extra Categories - Smaller boxes spanning 1 column each */}
+                          {/* Extra Categories - 2 cols each, more compact */}
                           {productMegaMenu.extraCategories.map((category) => (
                             <Link
                               key={category.name}
                               to={category.path}
-                              className="col-span-1 group relative overflow-hidden rounded-lg p-3 transition-all duration-400 hover:scale-110 cursor-pointer"
+                              className="col-span-2 group relative overflow-hidden rounded-lg p-3 transition-all duration-400 hover:scale-110 cursor-pointer"
                               style={{
                                 background: 'linear-gradient(135deg, rgba(139, 125, 107, 0.2) 0%, rgba(44, 44, 44, 0.5) 100%)',
                                 border: '1px solid rgba(139, 125, 107, 0.3)'

@@ -7,15 +7,15 @@ const Footer = () => {
     <footer className="bg-deep-charcoal text-white mt-24">
       <div className="section-container py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand */}
+          {/* Brand - Logo White & Bigger */}
           <div>
             <Link to="/" className="flex items-center gap-3 mb-4">
-              {/* Diamond Icon - White for dark background */}
-              <svg width="40" height="40" viewBox="0 0 60 60" className="text-white">
-                <path d="M30 5 L45 25 L60 30 L45 35 L30 55 L15 35 L0 30 L15 25 Z" fill="currentColor" />
-                <path d="M30 5 L45 25 L60 30 L45 35 L30 55 L15 35 L0 30 L15 25 Z" fill="none" stroke="#C9A75E" strokeWidth="1.5" />
-              </svg>
-              <span className="text-2xl font-heading font-semibold text-white">ALASSALI</span>
+              <img 
+                src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/prxxxgzj_Al%20Assali%20Jewelry%20Logo.png" 
+                alt="Alassali Jewelry" 
+                className="h-20 w-auto"
+                style={{ filter: 'brightness(0) invert(1)' }}
+              />
             </Link>
             <p className="text-warm-gray text-sm mb-4">
               Crafting bespoke luxury jewelry in Toronto since 2020. Where tradition meets innovation.
