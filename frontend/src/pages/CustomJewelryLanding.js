@@ -56,6 +56,27 @@ const CustomJewelryLanding = ({ type }) => {
       image: 'https://images.unsplash.com/photo-1764179690227-af049306cd20?w=1200',
       styles: ['Initial', 'Name', 'Symbol', 'Religious', 'Custom Design'],
       metals: ['10K Gold', '14K Gold', '18K Gold', 'White Gold', 'Rose Gold', 'Platinum']
+    },
+    'rings': {
+      title: 'Custom Rings',
+      subtitle: 'Unique rings designed just for you',
+      image: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/ewu0gr89_image8.png',
+      styles: ['Statement', 'Band', 'Signet', 'Stackable', 'Custom Design'],
+      metals: ['10K Gold', '14K Gold', '18K Gold', 'White Gold', 'Rose Gold', 'Platinum']
+    },
+    'earrings': {
+      title: 'Custom Earrings',
+      subtitle: 'Elegant earrings crafted to perfection',
+      image: 'https://images.unsplash.com/photo-1764179690227-af049306cd20?w=1200',
+      styles: ['Studs', 'Hoops', 'Drops', 'Chandeliers', 'Custom Design'],
+      metals: ['10K Gold', '14K Gold', '18K Gold', 'White Gold', 'Rose Gold', 'Platinum']
+    },
+    'bracelets': {
+      title: 'Custom Bracelets',
+      subtitle: 'Exquisite bracelets tailored to your style',
+      image: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/0lg7vzu6_image10.png',
+      styles: ['Tennis', 'Chain', 'Bangle', 'Cuff', 'Custom Design'],
+      metals: ['10K Gold', '14K Gold', '18K Gold', 'White Gold', 'Rose Gold', 'Platinum']
     }
   };
 
