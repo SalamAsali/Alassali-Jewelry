@@ -8,6 +8,7 @@ import Homepage from './pages/Homepage';
 import ProductCatalog from './pages/ProductCatalog';
 import ProductDetail from './pages/ProductDetail';
 import CustomJewelryLanding from './pages/CustomJewelryLanding';
+import CustomGrillzDeposit from './pages/CustomGrillzDeposit';
 import Cart from './pages/Cart';
 import CheckoutSuccess from './pages/CheckoutSuccess';
 import CheckoutCancel from './pages/CheckoutCancel';
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/custom/grillz" element={<CustomJewelryLanding type="grillz" />} />
                 <Route path="/custom/chains" element={<CustomJewelryLanding type="chains" />} />
                 <Route path="/custom/pendants" element={<CustomJewelryLanding type="pendants" />} />
+                <Route path="/custom-grillz-deposit" element={<CustomGrillzDeposit />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout/success" element={<CheckoutSuccess />} />
                 <Route path="/checkout/cancel" element={<CheckoutCancel />} />
