@@ -9,9 +9,12 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <Link to="/" className="flex items-center gap-2 mb-4">
-              <Sparkles className="w-6 h-6 text-champagne-gold" />
-              <span className="text-2xl font-heading font-semibold">ALASSALI</span>
+            <Link to="/" className="inline-block mb-4">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/prxxxgzj_Al%20Assali%20Jewelry%20Logo.png" 
+                alt="Alassali Jewelry" 
+                className="h-16 w-auto brightness-0 invert"
+              />
             </Link>
             <p className="text-warm-gray text-sm mb-4">
               Crafting bespoke luxury jewelry in Toronto since 2020. Where tradition meets innovation.
