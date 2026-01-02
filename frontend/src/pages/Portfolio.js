@@ -77,6 +77,41 @@ const Portfolio = () => {
       category: 'chains',
       images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/9milxomg_image11.png'],
       description: 'Handcrafted gold chain with unique design'
+    },
+    {
+      _id: 'custom-8',
+      name: 'Diamond Grillz Set',
+      category: 'grillz',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/yymak1c4_image3.png'],
+      description: 'Full set custom diamond grillz'
+    },
+    {
+      _id: 'custom-9',
+      name: 'Custom Name Pendant',
+      category: 'pendants',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/p7ig6gz1_image4.png'],
+      description: 'Personalized name necklace'
+    },
+    {
+      _id: 'custom-10',
+      name: 'Diamond Photo Pendant',
+      category: 'pendants',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/vmbmd1a1_image5.png'],
+      description: 'Custom photo pendant with diamond frame'
+    },
+    {
+      _id: 'custom-11',
+      name: 'Gold Cuban Link',
+      category: 'chains',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/vymug39g_image6.png'],
+      description: 'Premium gold Cuban link chain'
+    },
+    {
+      _id: 'custom-12',
+      name: 'Custom Diamond Piece',
+      category: 'jewelry',
+      images: ['https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/r0vdc3yj_image7.png'],
+      description: 'Bespoke diamond jewelry piece'
     }
   ];
 
