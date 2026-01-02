@@ -1,53 +1,60 @@
-import { useEffect } from "react";
-import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import axios from 'axios';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
+// Pages
+import Homepage from './pages/Homepage';
+import ProductCatalog from './pages/ProductCatalog';
+import ProductDetail from './pages/ProductDetail';
+import CustomJewelryLanding from './pages/CustomJewelryLanding';
+import Cart from './pages/Cart';
+import CheckoutSuccess from './pages/CheckoutSuccess';
+import CheckoutCancel from './pages/CheckoutCancel';
+import BlogList from './pages/BlogList';
+import BlogPost from './pages/BlogPost';
+import AdminLogin from './pages/AdminLogin';
+import AdminDashboard from './pages/AdminDashboard';
 
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
+// Components
+import Navigation from './components/Navigation';
+import Footer from './components/Footer';
 
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
+// Context
+import { CartProvider } from './context/CartContext';
 
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+const API_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:8001';
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <Router>
+      <CartProvider>
+        <div className="min-h-screen flex flex-col bg-ivory">
+          <Navigation />
+          <main className="flex-grow">
+            <AnimatePresence mode="wait">
+              <Routes>
+                <Route path="/" element={<Homepage />} />
+                <Route path="/catalog" element={<ProductCatalog />} />
+                <Route path="/product/:id" element={<ProductDetail />} />
+                <Route path="/custom/engagement-rings" element={<CustomJewelryLanding type="engagement-rings" />} />
+                <Route path="/custom/grillz" element={<CustomJewelryLanding type="grillz" />} />
+                <Route path="/custom/chains" element={<CustomJewelryLanding type="chains" />} />
+                <Route path="/custom/pendants" element={<CustomJewelryLanding type="pendants" />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout/success" element={<CheckoutSuccess />} />
+                <Route path="/checkout/cancel" element={<CheckoutCancel />} />
+                <Route path="/blog" element={<BlogList />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="/admin/login" element={<AdminLogin />} />
+                <Route path="/admin/dashboard" element={<AdminDashboard />} />
+              </Routes>
+            </AnimatePresence>
+          </main>
+          <Footer />
+        </div>
+      </CartProvider>
+    </Router>
   );
 }
 
