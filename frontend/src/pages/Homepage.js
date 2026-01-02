@@ -198,7 +198,11 @@ const Homepage = () => {
                 className="group flex flex-col items-center bg-white border-2 border-soft-black rounded-xl p-6 w-40 transition-all duration-300 hover:border-champagne-gold"
               >
                 <div className="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-300">
-                  <img src={step.icon} alt={step.label} className="w-full h-full object-contain" />
+                  <img 
+                    src={step.icon} 
+                    alt={`${step.label} - ${step.description}`} 
+                    className="w-full h-full object-contain" 
+                  />
                 </div>
                 <h3 className="text-sm font-bold text-deep-charcoal mb-1 text-center">{step.label}</h3>
                 <p className="text-xs text-taupe text-center">{step.description}</p>
