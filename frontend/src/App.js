@@ -32,7 +32,7 @@ function App() {
   return (
     <Router>
       <CartProvider>
-        <div className="min-h-screen flex flex-col bg-ivory">
+        <div className="min-h-screen flex flex-col bg-white">
           <Navigation />
           <main className="flex-grow">
             <AnimatePresence mode="wait">
