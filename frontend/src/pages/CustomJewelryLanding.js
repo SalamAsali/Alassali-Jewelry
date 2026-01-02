@@ -270,7 +270,7 @@ const CustomJewelryLanding = ({ type }) => {
                             required
                             value={formData.name}
                             onChange={handleInputChange}
-                            className="w-full px-4 py-3 rounded-lg bg-white/5 border border-champagne-gold/30 text-white focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/20 transition-all outline-none"
+                            className="w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/50 text-white placeholder-stone focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/40 transition-all outline-none"
                             placeholder="John Doe"
                           />
                         </div>
@@ -283,7 +283,7 @@ const CustomJewelryLanding = ({ type }) => {
                             required
                             value={formData.email}
                             onChange={handleInputChange}
-                            className="w-full px-4 py-3 rounded-lg bg-white/5 border border-champagne-gold/30 text-white focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/20 transition-all outline-none"
+                            className="w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/50 text-white placeholder-stone focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/40 transition-all outline-none"
                             placeholder="john@example.com"
                           />
                         </div>
@@ -295,7 +295,7 @@ const CustomJewelryLanding = ({ type }) => {
                             name="phone"
                             value={formData.phone}
                             onChange={handleInputChange}
-                            className="w-full px-4 py-3 rounded-lg bg-white/5 border border-champagne-gold/30 text-white focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/20 transition-all outline-none"
+                            className="w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/50 text-white placeholder-stone focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/40 transition-all outline-none"
                             placeholder="+1 (416) 555-1234"
                           />
                         </div>
@@ -306,7 +306,7 @@ const CustomJewelryLanding = ({ type }) => {
                             name="budget" 
                             value={formData.budget} 
                             onChange={handleInputChange} 
-                            className="w-full px-4 py-3 rounded-lg bg-white/5 border border-champagne-gold/30 text-white focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/20 transition-all outline-none"
+                            className="w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/50 text-white placeholder-stone focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/40 transition-all outline-none"
                           >
                             <option value="" className="bg-charcoal">Select your budget</option>
                             <option value="$1,000-$2,500" className="bg-charcoal">$1,000 - $2,500</option>
@@ -338,7 +338,7 @@ const CustomJewelryLanding = ({ type }) => {
                             name="style" 
                             value={formData.style} 
                             onChange={handleInputChange} 
-                            className="w-full px-4 py-3 rounded-lg bg-white/5 border border-champagne-gold/30 text-white focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/20 transition-all outline-none"
+                            className="w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/50 text-white placeholder-stone focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/40 transition-all outline-none"
                           >
                             <option value="" className="bg-charcoal">Select a style</option>
                             {config.styles.map(style => (
@@ -353,7 +353,7 @@ const CustomJewelryLanding = ({ type }) => {
                             name="metal_type" 
                             value={formData.metal_type} 
                             onChange={handleInputChange} 
-                            className="w-full px-4 py-3 rounded-lg bg-white/5 border border-champagne-gold/30 text-white focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/20 transition-all outline-none"
+                            className="w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/50 text-white placeholder-stone focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/40 transition-all outline-none"
                           >
                             <option value="" className="bg-charcoal">Select metal</option>
                             {config.metals.map(metal => (
@@ -460,7 +460,7 @@ const CustomJewelryLanding = ({ type }) => {
                             name="size"
                             value={formData.size}
                             onChange={handleInputChange}
-                            className="w-full px-4 py-3 rounded-lg bg-white/5 border border-champagne-gold/30 text-white focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/20 transition-all outline-none"
+                            className="w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/50 text-white placeholder-stone focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/40 transition-all outline-none"
                             placeholder="e.g., Ring size 7, Chain 22 inches"
                           />
                         </div>
@@ -471,7 +471,7 @@ const CustomJewelryLanding = ({ type }) => {
                             name="timeline" 
                             value={formData.timeline} 
                             onChange={handleInputChange} 
-                            className="w-full px-4 py-3 rounded-lg bg-white/5 border border-champagne-gold/30 text-white focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/20 transition-all outline-none"
+                            className="w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/50 text-white placeholder-stone focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/40 transition-all outline-none"
                           >
                             <option value="" className="bg-charcoal">When do you need this?</option>
                             <option value="No rush" className="bg-charcoal">No Rush</option>
@@ -488,7 +488,7 @@ const CustomJewelryLanding = ({ type }) => {
                             value={formData.notes}
                             onChange={handleInputChange}
                             rows={5}
-                            className="w-full px-4 py-3 rounded-lg bg-white/5 border border-champagne-gold/30 text-white focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/20 transition-all outline-none"
+                            className="w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/50 text-white placeholder-stone focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/40 transition-all outline-none"
                             placeholder="Tell us more about your vision..."
                           />
                         </div>
