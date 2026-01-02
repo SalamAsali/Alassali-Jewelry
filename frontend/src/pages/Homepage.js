@@ -218,8 +218,8 @@ const Homepage = () => {
         </div>
       </section>
 
-      {/* Made In Toronto Section - Redesigned with Integrated Images */}
-      <section className="relative bg-soft-black text-white py-32 overflow-hidden">
+      {/* Made In Toronto Section - FIXED: Mobile Responsive */}
+      <section className="relative bg-soft-black text-white py-24 overflow-hidden">
         <DotPattern />
         
         <div className="section-container relative z-10">
@@ -229,14 +229,41 @@ const Homepage = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            {/* Main Text with Integrated Images */}
-            <div className="relative">
+            {/* Mobile/Tablet: Simplified Layout */}
+            <div className="block lg:hidden text-center py-12">
+              <h2 className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 text-white" style={{ fontFamily: 'var(--font-heading)' }}>
+                MADE IN
+                <br />
+                TORONTO
+              </h2>
+              <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
+                <motion.img
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/12igjdxa_DSC_0203_Original-scaled.jpg"
+                  alt="Silver Cuban chain crafted in Toronto"
+                  className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-champagne-gold/50"
+                />
+                <motion.img
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/2vm3an05_DSC_2764_Original-scaled.jpg"
+                  alt="Custom chain design crafted in Toronto"
+                  className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-champagne-gold/50"
+                />
+              </div>
+            </div>
+
+            {/* Desktop: Advanced Layout with Integrated Images */}
+            <div className="hidden lg:block relative">
               {/* First Row: MADE */}
               <div className="flex items-center justify-center mb-8">
                 {/* M with image */}
                 <div className="relative inline-block">
                   <h2 
-                    className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none text-white/30"
+                    className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     M
@@ -246,15 +273,15 @@ const Homepage = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/12igjdxa_DSC_0203_Original-scaled.jpg"
-                    alt=""
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 object-cover rounded-lg shadow-2xl border-4 border-champagne-gold/50"
+                    alt="Silver Cuban chain - Toronto craftsmanship"
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-48 xl:w-40 xl:h-56 2xl:w-48 2xl:h-64 object-cover rounded-lg shadow-2xl border-4 border-champagne-gold/50"
                     style={{ zIndex: 10, mixBlendMode: 'overlay', opacity: 0.9 }}
                   />
                 </div>
                 
                 {/* ADE */}
                 <h2 
-                  className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none"
+                  className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none"
                   style={{ 
                     fontFamily: 'var(--font-heading)',
                     background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)',
@@ -270,7 +297,7 @@ const Homepage = () => {
               {/* Second Row: IN */}
               <div className="flex items-center justify-center mb-8">
                 <h2 
-                  className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none"
+                  className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none"
                   style={{ 
                     fontFamily: 'var(--font-heading)',
                     background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)',
@@ -288,7 +315,7 @@ const Homepage = () => {
                 {/* T with image */}
                 <div className="relative inline-block">
                   <h2 
-                    className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none text-white/30"
+                    className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30"
                     style={{ fontFamily: 'var(--font-heading)' }}
                   >
                     T
@@ -298,15 +325,15 @@ const Homepage = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/2vm3an05_DSC_2764_Original-scaled.jpg"
-                    alt=""
-                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 object-cover rounded-lg shadow-2xl border-4 border-champagne-gold/50"
+                    alt="Custom gold chain - Toronto artistry"
+                    className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-48 xl:w-40 xl:h-56 2xl:w-48 2xl:h-64 object-cover rounded-lg shadow-2xl border-4 border-champagne-gold/50"
                     style={{ zIndex: 10, mixBlendMode: 'overlay', opacity: 0.9 }}
                   />
                 </div>
                 
                 {/* ORONTO */}
                 <h2 
-                  className="text-[12rem] md:text-[16rem] lg:text-[20rem] font-bold leading-none"
+                  className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none"
                   style={{ 
                     fontFamily: 'var(--font-heading)',
                     background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)',
@@ -319,15 +346,15 @@ const Homepage = () => {
                 </h2>
               </div>
 
-              {/* Floating accent image */}
+              {/* Floating accent images - desktop only */}
               <motion.img
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
                 src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/sqmmun3t_image2.png"
-                alt=""
-                className="absolute top-20 right-10 w-32 h-40 object-cover rounded-lg shadow-2xl border-2 border-white/20 transform rotate-12"
+                alt="Custom diamond ring showcase"
+                className="absolute top-20 right-10 w-24 h-32 xl:w-32 xl:h-40 object-cover rounded-lg shadow-2xl border-2 border-white/20 transform rotate-12"
               />
 
               <motion.img
@@ -336,8 +363,8 @@ const Homepage = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.5 }}
                 src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/vw4agpvw_4-pendants-on-the-rolls-Royce-scaled.jpeg"
-                alt=""
-                className="absolute bottom-20 left-10 w-40 h-56 object-cover rounded-lg shadow-2xl border-2 border-white/20 transform -rotate-6"
+                alt="Custom photo pendants on Rolls Royce - luxury jewelry"
+                className="absolute bottom-20 left-10 w-32 h-44 xl:w-40 xl:h-56 object-cover rounded-lg shadow-2xl border-2 border-white/20 transform -rotate-6"
               />
             </div>
           </motion.div>
