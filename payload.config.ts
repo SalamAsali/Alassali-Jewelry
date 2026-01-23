@@ -14,6 +14,11 @@ function getServerURL() {
   if (process.env.PAYLOAD_PUBLIC_SERVER_URL) {
     return process.env.PAYLOAD_PUBLIC_SERVER_URL
   }
+  if (process.env.NEXT_PUBLIC_CMS_URL) {
+    // Support NEXT_PUBLIC_CMS_URL but ensure it has https://
+    const url = process.env.NEXT_PUBLIC_CMS_URL
+    return url.startsWith('http') ? url : `https://${url}`
+  }
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`
   }
