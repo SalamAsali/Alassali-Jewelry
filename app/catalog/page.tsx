@@ -138,39 +138,40 @@ function CatalogContent() {
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="product-grid">
                 {items.map((item, index) => (
-                  <motion.div
-                    key={item.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                    whileHover={{ y: -8 }}
-                    className="group cursor-pointer"
-                  >
-                    <div className="product-card">
-                      <div className="aspect-square overflow-hidden bg-warm-white relative">
-                        <motion.img
-                          src={getImageUrl(item)}
-                          alt={item.title}
-                          className="w-full h-full object-cover"
-                          whileHover={{ scale: 1.08 }}
-                          transition={{ duration: 0.5 }}
-                        />
+                  <Link href={`/product/${item.id}`} key={item.id}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                      whileHover={{ y: -8 }}
+                      className="group cursor-pointer"
+                    >
+                      <div className="product-card">
+                        <div className="aspect-square overflow-hidden bg-warm-white relative">
+                          <motion.img
+                            src={getImageUrl(item)}
+                            alt={item.title}
+                            className="w-full h-full object-cover"
+                            whileHover={{ scale: 1.08 }}
+                            transition={{ duration: 0.5 }}
+                          />
+                        </div>
+                        <div className="p-6">
+                          <h3 className="font-heading text-lg font-medium text-deep-charcoal mb-2 group-hover:text-champagne-gold transition-colors">
+                            {item.title}
+                          </h3>
+                          {item.description && (
+                            <p className="text-sm text-taupe mb-3 line-clamp-2">{item.description}</p>
+                          )}
+                          {item.category && (
+                            <span className="text-xs uppercase tracking-wider text-champagne-gold font-medium">
+                              {item.category}
+                            </span>
+                          )}
+                        </div>
                       </div>
-                      <div className="p-6">
-                        <h3 className="font-heading text-lg font-medium text-deep-charcoal mb-2 group-hover:text-champagne-gold transition-colors">
-                          {item.title}
-                        </h3>
-                        {item.description && (
-                          <p className="text-sm text-taupe mb-3 line-clamp-2">{item.description}</p>
-                        )}
-                        {item.category && (
-                          <span className="text-xs uppercase tracking-wider text-champagne-gold font-medium">
-                            {item.category}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </motion.div>
+                    </motion.div>
+                  </Link>
                 ))}
               </div>
             )}
