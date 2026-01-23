@@ -1,3 +1,5 @@
+import { withPayload } from '@payloadcms/next/withPayload'
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   transpilePackages: [
@@ -11,6 +13,10 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  experimental: {
+    reactCompiler: false,
+  },
 }
 
-export default nextConfig
+// Wrap withPayload plugin - REQUIRED for Payload 3.0
+export default withPayload(nextConfig)

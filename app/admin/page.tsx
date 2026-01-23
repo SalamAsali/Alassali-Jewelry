@@ -1,6 +1,5 @@
-import { redirect } from 'next/navigation'
-
-// Payload 3.0 admin is served through /api/payload/admin
+// This file is not needed - Payload admin is at /admin via (payload) route group
+// Keeping for backwards compatibility
 export default function AdminPage() {
-  redirect('/api/payload/admin')
+  return null
 }

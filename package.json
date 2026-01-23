@@ -16,6 +16,7 @@
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "payload": "^3.0.0",
+    "@payloadcms/next": "^3.0.0",
     "@payloadcms/db-postgres": "^3.72.0",
     "@payloadcms/richtext-slate": "^3.72.0",
     "resend": "^6.8.0",
@@ -23,7 +24,8 @@
     "lucide-react": "^0.562.0",
     "axios": "^1.13.2",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^3.2.0"
+    "tailwind-merge": "^3.2.0",
+    "sharp": "^0.33.0"
   },
   "devDependencies": {
     "@types/node": "^22",
