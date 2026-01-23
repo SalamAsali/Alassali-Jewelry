@@ -62,7 +62,7 @@ const config = buildConfig({
       connectionString: process.env.DATABASE_URL || 'postgresql://localhost:5432/jewelry',
     },
     // Enable push migrations to auto-create tables
-    // In production, set ENABLE_PUSH_MIGRATIONS=true in Vercel env vars
+    // push: true enables automatic table creation (default in dev, needs ENABLE_PUSH_MIGRATIONS=true in prod)
     push: process.env.NODE_ENV === 'development' || process.env.ENABLE_PUSH_MIGRATIONS === 'true',
   }),
   serverURL: serverURL,
