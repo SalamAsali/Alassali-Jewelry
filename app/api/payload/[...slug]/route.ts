@@ -1,13 +1,47 @@
-import { getPayloadInstance } from '@/lib/payload'
 import { NextRequest } from 'next/server'
+import { getPayloadInstance } from '@/lib/payload'
 
-async function handler(req: NextRequest) {
-  const payload = await getPayloadInstance()
-  return payload.router.handleRequest(req)
+export async function GET(
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string[] }> }
+) {
+  const payloadInstance = await getPayloadInstance()
+  const { slug } = await params
+  return payloadInstance.handler(request, { params: { slug } })
 }
 
-export const GET = handler
-export const POST = handler
-export const PUT = handler
-export const PATCH = handler
-export const DELETE = handler
+export async function POST(
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string[] }> }
+) {
+  const payloadInstance = await getPayloadInstance()
+  const { slug } = await params
+  return payloadInstance.handler(request, { params: { slug } })
+}
+
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string[] }> }
+) {
+  const payloadInstance = await getPayloadInstance()
+  const { slug } = await params
+  return payloadInstance.handler(request, { params: { slug } })
+}
+
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string[] }> }
+) {
+  const payloadInstance = await getPayloadInstance()
+  const { slug } = await params
+  return payloadInstance.handler(request, { params: { slug } })
+}
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: Promise<{ slug: string[] }> }
+) {
+  const payloadInstance = await getPayloadInstance()
+  const { slug } = await params
+  return payloadInstance.handler(request, { params: { slug } })
+}

@@ -43,7 +43,7 @@ export default buildConfig({
     Inquiries,
   ],
   editor: slateEditor({}),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: process.env.PAYLOAD_SECRET || 'change-me-in-production',
   typescript: {
     outputFile: path.resolve(process.cwd(), 'payload-types.ts'),
   },
