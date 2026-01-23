@@ -31,7 +31,7 @@ async function handlePayloadRequest(
         apiURL,
         adminURL: adminBaseURL,
         serverURL,
-        collections: ['users', 'gallery', 'media', 'form-fields', 'inquiries'],
+        collections: ['users', 'gallery', 'media', 'form-fields', 'inquiries', 'pages', 'homepage'],
       })
     }
     
@@ -166,8 +166,8 @@ async function handlePayloadRequest(
     return NextResponse.json({ error: 'Collection not specified' }, { status: 400 })
   }
 
-  // Validate collection exists
-  const validCollections = ['users', 'gallery', 'media', 'form-fields', 'inquiries']
+  // Validate collection exists (including new collections)
+  const validCollections = ['users', 'gallery', 'media', 'form-fields', 'inquiries', 'pages', 'homepage']
   if (!validCollections.includes(collection)) {
     return NextResponse.json(
       { error: `Collection '${collection}' not found` },
@@ -186,7 +186,10 @@ async function handlePayloadRequest(
         // Parse query parameters
         if (searchParams.get('where')) {
           try {
-            Object.assign(where, JSON.parse(searchParams.get('where') || '{}'))
+            const whereParam = searchParams.get('where')
+            if (whereParam) {
+              Object.assign(where, JSON.parse(whereParam))
+            }
           } catch {
             // Invalid JSON, ignore
           }
@@ -196,9 +199,25 @@ async function handlePayloadRequest(
         searchParams.forEach((value, key) => {
           if (key.startsWith('where.')) {
             const field = key.replace('where.', '')
-            where[field] = { equals: value }
+            try {
+              // Try to parse as JSON for complex queries
+              const parsed = JSON.parse(value)
+              where[field] = parsed
+            } catch {
+              // Simple equals query
+              where[field] = { equals: value }
+            }
           }
         })
+
+        // Handle count query (used by admin UI)
+        if (searchParams.get('limit') === '0') {
+          const count = await payloadInstance.count({
+            collection: collection as any,
+            where: Object.keys(where).length > 0 ? where : undefined,
+          })
+          return NextResponse.json({ totalDocs: count })
+        }
 
         const result = await payloadInstance.find({
           collection: collection as any,
@@ -207,11 +226,27 @@ async function handlePayloadRequest(
           page: parseInt(searchParams.get('page') || '1'),
           sort: searchParams.get('sort') || '-createdAt',
         })
-        return NextResponse.json(result)
+        
+        // Return in Payload's expected format
+        return NextResponse.json({
+          docs: result.docs || [],
+          totalDocs: result.totalDocs || 0,
+          limit: result.limit || 10,
+          totalPages: result.totalPages || 1,
+          page: result.page || 1,
+          hasNextPage: result.hasNextPage || false,
+          hasPrevPage: result.hasPrevPage || false,
+          nextPage: result.nextPage || null,
+          prevPage: result.prevPage || null,
+        })
       } catch (error) {
         console.error('Payload find error:', error)
+        console.error('Error details:', error instanceof Error ? error.stack : error)
         return NextResponse.json(
-          { error: error instanceof Error ? error.message : 'Failed to fetch' },
+          { 
+            error: error instanceof Error ? error.message : 'Failed to fetch',
+            details: error instanceof Error ? error.stack : 'Unknown error'
+          },
           { status: 500 }
         )
       }
