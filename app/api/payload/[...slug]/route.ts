@@ -20,15 +20,27 @@ async function handlePayloadRequest(
   // Handle admin routes - Payload 3.0 admin UI
   if (collection === 'admin') {
     const adminPath = rest.join('/') || ''
+    const serverURL = process.env.PAYLOAD_PUBLIC_SERVER_URL || 
+                     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
+    const apiURL = payloadInstance.getAPIURL?.() || '/api/payload'
+    const adminBaseURL = payloadInstance.getAdminURL?.() || '/cms'
     
-    // For Payload 3.0, the admin UI needs to be served
-    // Check if this is a request for the admin HTML page
+    // For admin API requests (config, etc.)
+    if (adminPath === 'config') {
+      return NextResponse.json({
+        apiURL,
+        adminURL: adminBaseURL,
+        serverURL,
+        collections: ['users', 'gallery', 'media', 'form-fields', 'inquiries'],
+      })
+    }
+    
+    // For the main admin page, serve Payload's admin UI
+    // Payload 3.0 admin UI is a React app
+    // We need to serve an HTML page that loads the admin bundle
     if (adminPath === '' || adminPath === 'index.html' || !adminPath.includes('.')) {
-      // Return the admin UI HTML
-      // Payload 3.0 admin is a React SPA that loads from /api/payload/admin
-      const serverURL = payloadInstance.getAPIURL?.() || '/api/payload'
-      const adminBaseURL = payloadInstance.getAdminURL?.() || '/cms'
-      
+      // Payload 3.0 admin UI should be available at /admin in the Payload package
+      // For now, return a page that tries to load it
       return new NextResponse(
         `<!DOCTYPE html>
 <html lang="en">
@@ -37,65 +49,36 @@ async function handlePayloadRequest(
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payload CMS Admin - Alassali Jewelry</title>
   <script>
-    // Payload admin UI configuration
     window.PAYLOAD_CONFIG = {
-      apiURL: '${serverURL}',
+      apiURL: '${apiURL}',
       adminURL: '${adminBaseURL}',
-      serverURL: '${process.env.PAYLOAD_PUBLIC_SERVER_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'}'
+      serverURL: '${serverURL}'
     };
   </script>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-      background: #1a1a1a;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-    }
-    .loading {
-      text-align: center;
-    }
-    .spinner {
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      border-top: 3px solid #fff;
-      border-radius: 50%;
-      width: 40px;
-      height: 40px;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 20px;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
 </head>
 <body>
-  <div class="loading">
-    <div class="spinner"></div>
-    <p>Loading Payload CMS Admin...</p>
-    <p style="font-size: 12px; opacity: 0.7; margin-top: 20px;">
-      If this page doesn't load, the admin UI may need to be embedded differently.<br>
-      Check Payload 3.0 documentation for admin UI setup.
-    </p>
-  </div>
-  <script>
-    // Try to load Payload admin UI
-    // For Payload 3.0, the admin UI might be served from a different endpoint
-    fetch('${serverURL}/admin/config')
-      .then(res => res.json())
-      .then(config => {
-        console.log('Payload config:', config);
-        // Admin UI would be loaded here
-      })
-      .catch(err => {
-        console.error('Failed to load Payload admin:', err);
-        document.querySelector('.loading p').textContent = 'Admin UI not available. Please check Payload configuration.';
-      });
+  <div id="payload-admin-root"></div>
+  <script type="module">
+    // Payload 3.0 admin UI should be loaded here
+    // The admin UI is typically served from Payload's static files
+    // For Next.js integration, we may need to import and render the admin component
+    console.log('Payload Admin UI should load here');
+    console.log('Config:', window.PAYLOAD_CONFIG);
+    
+    // Try to load admin UI
+    // Note: Payload 3.0 admin UI might need to be embedded differently
+    document.getElementById('payload-admin-root').innerHTML = 
+      '<div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #1a1a1a; color: #fff; font-family: system-ui;">' +
+      '<div style="text-align: center;">' +
+      '<div style="border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid #fff; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>' +
+      '<p>Payload CMS Admin UI</p>' +
+      '<p style="font-size: 12px; opacity: 0.7; margin-top: 20px;">' +
+      'The admin UI may need to be embedded as a React component.<br>' +
+      'API is working at: <a href="${apiURL}/gallery" style="color: #4CAF50;">${apiURL}/gallery</a>' +
+      '</p>' +
+      '</div>' +
+      '<style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>' +
+      '</div>';
   </script>
 </body>
 </html>`,
@@ -107,18 +90,7 @@ async function handlePayloadRequest(
       )
     }
     
-    // For admin API requests (config, etc.)
-    if (adminPath === 'config') {
-      return NextResponse.json({
-        apiURL: payloadInstance.getAPIURL?.() || '/api/payload',
-        adminURL: payloadInstance.getAdminURL?.() || '/cms',
-        serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 
-                  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'),
-        collections: ['users', 'gallery', 'media', 'form-fields', 'inquiries'],
-      })
-    }
-    
-    // For other admin paths, return 404
+    // For other admin paths (static files, etc.), return 404 for now
     return NextResponse.json({ error: 'Admin resource not found' }, { status: 404 })
   }
 
