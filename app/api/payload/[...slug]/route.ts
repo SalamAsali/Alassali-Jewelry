@@ -367,8 +367,31 @@ async function handlePayloadRequest(
         return NextResponse.json(result, { status: 201 })
       } catch (error) {
         console.error('Payload create error:', error)
+        
+        // If table doesn't exist, try to create it and retry
+        if (error instanceof Error && (error.message.includes('does not exist') || error.message.includes('Failed query'))) {
+          try {
+            if (payloadInstance.db && typeof (payloadInstance.db as any).push === 'function') {
+              console.log('Creating tables before create operation...')
+              await (payloadInstance.db as any).push({})
+              console.log('Tables created, retrying create operation...')
+              // Retry the create after table creation
+              const result = await payloadInstance.create({
+                collection: collection as any,
+                data: body,
+              })
+              return NextResponse.json(result, { status: 201 })
+            }
+          } catch (pushError) {
+            console.error('Failed to create tables:', pushError)
+          }
+        }
+        
         return NextResponse.json(
-          { error: error instanceof Error ? error.message : 'Failed to create' },
+          { 
+            error: error instanceof Error ? error.message : 'Failed to create',
+            note: 'If table does not exist, ensure ENABLE_PUSH_MIGRATIONS=true is set in Vercel'
+          },
           { status: 500 }
         )
       }
