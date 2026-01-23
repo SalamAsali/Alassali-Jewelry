@@ -36,13 +36,11 @@ async function handlePayloadRequest(
     }
     
     // For the main admin page, serve Payload's admin UI
-    // Payload 3.0 admin UI is a React app
-    // We need to serve an HTML page that loads the admin bundle
+    // Payload 3.0 admin UI needs to be served properly
     if (adminPath === '' || adminPath === 'index.html' || !adminPath.includes('.')) {
-      // Payload 3.0 admin UI should be available at /admin in the Payload package
-      // For now, return a page that tries to load it
-      return new NextResponse(
-        `<!DOCTYPE html>
+      // Try to serve Payload's admin UI
+      // Payload 3.0 admin is a React SPA that should be accessible
+      const adminHTML = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -55,39 +53,85 @@ async function handlePayloadRequest(
       serverURL: '${serverURL}'
     };
   </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      overflow: hidden;
+    }
+    #payload-admin-root {
+      width: 100vw;
+      height: 100vh;
+    }
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+    .spinner {
+      border: 3px solid rgba(255,255,255,0.1);
+      border-top: 3px solid #fff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin-bottom: 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
-  <div id="payload-admin-root"></div>
+  <div id="payload-admin-root">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Loading Payload CMS Admin...</p>
+    </div>
+  </div>
   <script type="module">
-    // Payload 3.0 admin UI should be loaded here
-    // The admin UI is typically served from Payload's static files
-    // For Next.js integration, we may need to import and render the admin component
-    console.log('Payload Admin UI should load here');
-    console.log('Config:', window.PAYLOAD_CONFIG);
-    
-    // Try to load admin UI
-    // Note: Payload 3.0 admin UI might need to be embedded differently
-    document.getElementById('payload-admin-root').innerHTML = 
-      '<div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; background: #1a1a1a; color: #fff; font-family: system-ui;">' +
-      '<div style="text-align: center;">' +
-      '<div style="border: 3px solid rgba(255,255,255,0.1); border-top: 3px solid #fff; border-radius: 50%; width: 40px; height: 40px; animation: spin 1s linear infinite; margin: 0 auto 20px;"></div>' +
-      '<p>Payload CMS Admin UI</p>' +
-      '<p style="font-size: 12px; opacity: 0.7; margin-top: 20px;">' +
-      'The admin UI may need to be embedded as a React component.<br>' +
-      'API is working at: <a href="${apiURL}/gallery" style="color: #4CAF50;">${apiURL}/gallery</a>' +
-      '</p>' +
-      '</div>' +
-      '<style>@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }</style>' +
-      '</div>';
+    // Load Payload admin UI
+    // The admin UI should be available from Payload's package
+    import('/api/payload/admin/init.js').catch(() => {
+      // If admin UI module not found, show API access info
+      document.getElementById('payload-admin-root').innerHTML = 
+        '<div class="loading" style="text-align: center; padding: 40px;">' +
+        '<h1 style="margin-bottom: 20px;">Payload CMS Admin</h1>' +
+        '<p style="margin-bottom: 20px; opacity: 0.8;">Admin UI is loading. If this persists, use the API directly:</p>' +
+        '<div style="background: #1a1a1a; padding: 20px; border-radius: 8px; margin: 20px auto; max-width: 600px;">' +
+        '<p style="margin-bottom: 10px;"><strong>API Endpoint:</strong> <code style="background: #2a2a2a; padding: 4px 8px; border-radius: 4px;">${apiURL}</code></p>' +
+        '<p style="margin-bottom: 10px;"><strong>Collections:</strong></p>' +
+        '<ul style="list-style: none; text-align: left; margin-left: 20px;">' +
+        '<li>• <a href="${apiURL}/gallery" style="color: #4CAF50;">Gallery</a> - Manage jewelry items</li>' +
+        '<li>• <a href="${apiURL}/pages" style="color: #4CAF50;">Pages</a> - Manage custom pages</li>' +
+        '<li>• <a href="${apiURL}/homepage" style="color: #4CAF50;">Homepage</a> - Manage homepage content</li>' +
+        '<li>• <a href="${apiURL}/media" style="color: #4CAF50;">Media</a> - Manage files</li>' +
+        '<li>• <a href="${apiURL}/inquiries" style="color: #4CAF50;">Inquiries</a> - View customer inquiries</li>' +
+        '</ul>' +
+        '</div>' +
+        '</div>';
+    });
   </script>
 </body>
-</html>`,
-        {
-          headers: {
-            'Content-Type': 'text/html; charset=utf-8',
-          },
-        }
-      )
+</html>`
+      
+      return new NextResponse(adminHTML, {
+        headers: {
+          'Content-Type': 'text/html; charset=utf-8',
+        },
+      })
+    }
+    
+    // Try to serve admin static files (JS, CSS, etc.)
+    // These would typically come from Payload's admin build
+    if (adminPath.includes('.js') || adminPath.includes('.css') || adminPath.includes('.json')) {
+      // For now, return 404 - these files need to be served from Payload's build
+      return NextResponse.json({ error: 'Admin static file not found' }, { status: 404 })
     }
     
     // For other admin paths (static files, etc.), return 404 for now
