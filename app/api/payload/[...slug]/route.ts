@@ -212,7 +212,8 @@ async function handlePayloadRequest(
 
         // Handle count query (used by admin UI)
         // Payload admin UI sends limit=0 to get count
-        if (searchParams.get('limit') === '0' || searchParams.get('limit') === '0') {
+        const limitParam = searchParams.get('limit')
+        if (limitParam === '0') {
           try {
             const count = await payloadInstance.count({
               collection: collection as any,
@@ -222,6 +223,7 @@ async function handlePayloadRequest(
           } catch (error) {
             console.error('Count query error:', error)
             // If count fails (table might not exist), return 0
+            // This allows admin UI to load even if tables don't exist yet
             return NextResponse.json({ totalDocs: 0 })
           }
         }

@@ -61,6 +61,8 @@ const config = buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || 'postgresql://localhost:5432/jewelry',
     },
+    // Enable push migrations (auto-create tables)
+    push: true,
   }),
   serverURL: serverURL,
   routes: {
