@@ -23,7 +23,7 @@ async function handlePayloadRequest(
     const serverURL = process.env.PAYLOAD_PUBLIC_SERVER_URL || 
                      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000')
     const apiURL = payloadInstance.getAPIURL?.() || '/api/payload'
-    const adminBaseURL = payloadInstance.getAdminURL?.() || '/cms'
+    const adminBaseURL = payloadInstance.getAdminURL?.() || '/admin'
     
     // For admin API requests (config, etc.)
     if (adminPath === 'config') {
