@@ -14,17 +14,40 @@ export async function GET(
     }
     const { slug } = await params
     
-    // Check if handler exists and is a function
+    // Try different methods that Payload 3.0 might use
     if (payloadInstance.handler && typeof payloadInstance.handler === 'function') {
       return payloadInstance.handler(request, { params: { slug } })
     }
     
-    // If handler doesn't exist, try router or other methods
-    console.error('Payload instance does not have handler method')
-    console.error('Available methods:', Object.keys(payloadInstance).slice(0, 20))
+    // Try router if it exists
+    if (payloadInstance.router && typeof payloadInstance.router === 'function') {
+      return payloadInstance.router(request, { params: { slug } })
+    }
+    
+    // Try handleRequest if it exists
+    if (payloadInstance.handleRequest && typeof payloadInstance.handleRequest === 'function') {
+      return payloadInstance.handleRequest(request, { params: { slug } })
+    }
+    
+    // Log available methods for debugging
+    const availableMethods = Object.keys(payloadInstance).filter(
+      key => typeof payloadInstance[key] === 'function'
+    )
+    console.error('Payload instance methods:', availableMethods.slice(0, 10))
+    console.error('Payload instance type:', typeof payloadInstance)
+    
+    // For Payload 3.0, we might need to use the Local API differently
+    // Let's try importing and using the router from Payload directly
+    const { router } = await import('payload')
+    if (router && typeof router === 'function') {
+      return router(request, { params: { slug } })
+    }
     
     return NextResponse.json(
-      { error: 'Payload handler method not available. Check Payload version and initialization.' },
+      { 
+        error: 'Payload handler method not available',
+        details: `Available methods: ${availableMethods.join(', ')}`
+      },
       { status: 500 }
     )
   } catch (error) {
