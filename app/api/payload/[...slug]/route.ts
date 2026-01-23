@@ -13,6 +13,25 @@ async function handlePayloadRequest(
     return NextResponse.json({ error: 'Payload not initialized' }, { status: 503 })
   }
 
+  // Try to ensure tables exist on first request
+  try {
+    if (payloadInstance.db && typeof payloadInstance.db.push === 'function') {
+      // Only try once per instance to avoid repeated calls
+      if (!(payloadInstance as any)._migrationAttempted) {
+        (payloadInstance as any)._migrationAttempted = true
+        try {
+          await payloadInstance.db.push({})
+          console.log('Database tables created/verified on first request')
+        } catch (migrationError) {
+          // Migration errors are OK - tables might already exist or push might not be available
+          console.log('Migration check:', migrationError instanceof Error ? migrationError.message : 'Skipped')
+        }
+      }
+    }
+  } catch (error) {
+    // Ignore migration errors
+  }
+
   const { slug } = await params
   const [collection, ...rest] = slug || []
   const method = request.method
@@ -224,21 +243,25 @@ async function handlePayloadRequest(
             console.error('Count query error:', error)
             
             // If table doesn't exist, try to create it
-            if (error instanceof Error && error.message.includes('does not exist')) {
+            if (error instanceof Error && (error.message.includes('does not exist') || error.message.includes('Failed query'))) {
               try {
                 // Try to push migrations to create tables
-                if (payloadInstance.db && payloadInstance.db.push) {
+                if (payloadInstance.db && typeof payloadInstance.db.push === 'function') {
+                  console.log('Attempting to create tables via push migration...')
                   await payloadInstance.db.push({})
-                  console.log('Tables created via push migration')
+                  console.log('Tables created successfully via push migration')
                   // Retry count after table creation
                   const count = await payloadInstance.count({
                     collection: collection as any,
                     where: Object.keys(where).length > 0 ? where : undefined,
                   })
                   return NextResponse.json({ totalDocs: count })
+                } else {
+                  console.log('Push migration not available - set ENABLE_PUSH_MIGRATIONS=true')
                 }
               } catch (pushError) {
                 console.error('Failed to create tables:', pushError)
+                console.error('Push error details:', pushError instanceof Error ? pushError.stack : pushError)
               }
             }
             
@@ -274,9 +297,10 @@ async function handlePayloadRequest(
           if (dbError instanceof Error && (dbError.message.includes('does not exist') || dbError.message.includes('Failed query'))) {
             try {
               // Try to push migrations to create tables
-              if (payloadInstance.db && payloadInstance.db.push) {
+              if (payloadInstance.db && typeof payloadInstance.db.push === 'function') {
+                console.log('Attempting to create tables via push migration after query error...')
                 await payloadInstance.db.push({})
-                console.log('Tables created via push migration after query error')
+                console.log('Tables created successfully, retrying query...')
                 // Retry the query after table creation
                 const result = await payloadInstance.find({
                   collection: collection as any,
@@ -296,9 +320,12 @@ async function handlePayloadRequest(
                   nextPage: result.nextPage || null,
                   prevPage: result.prevPage || null,
                 })
+              } else {
+                console.log('Push migration not available - ensure ENABLE_PUSH_MIGRATIONS=true is set')
               }
             } catch (pushError) {
               console.error('Failed to create tables:', pushError)
+              console.error('Push error details:', pushError instanceof Error ? pushError.stack : pushError)
             }
             
             // If we can't create tables, return empty result
