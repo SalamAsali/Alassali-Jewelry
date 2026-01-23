@@ -222,8 +222,27 @@ async function handlePayloadRequest(
             return NextResponse.json({ totalDocs: count })
           } catch (error) {
             console.error('Count query error:', error)
-            // If count fails (table might not exist), return 0
-            // This allows admin UI to load even if tables don't exist yet
+            
+            // If table doesn't exist, try to create it
+            if (error instanceof Error && error.message.includes('does not exist')) {
+              try {
+                // Try to push migrations to create tables
+                if (payloadInstance.db && payloadInstance.db.push) {
+                  await payloadInstance.db.push({})
+                  console.log('Tables created via push migration')
+                  // Retry count after table creation
+                  const count = await payloadInstance.count({
+                    collection: collection as any,
+                    where: Object.keys(where).length > 0 ? where : undefined,
+                  })
+                  return NextResponse.json({ totalDocs: count })
+                }
+              } catch (pushError) {
+                console.error('Failed to create tables:', pushError)
+              }
+            }
+            
+            // If count fails, return 0 to allow admin UI to load
             return NextResponse.json({ totalDocs: 0 })
           }
         }
@@ -250,10 +269,39 @@ async function handlePayloadRequest(
             prevPage: result.prevPage || null,
           })
         } catch (dbError) {
-          // If database query fails (table might not exist), return empty result
+          // If database query fails (table might not exist), try to create it
           console.error('Database query error:', dbError)
-          if (dbError instanceof Error && dbError.message.includes('does not exist')) {
-            // Table doesn't exist - return empty result
+          if (dbError instanceof Error && (dbError.message.includes('does not exist') || dbError.message.includes('Failed query'))) {
+            try {
+              // Try to push migrations to create tables
+              if (payloadInstance.db && payloadInstance.db.push) {
+                await payloadInstance.db.push({})
+                console.log('Tables created via push migration after query error')
+                // Retry the query after table creation
+                const result = await payloadInstance.find({
+                  collection: collection as any,
+                  where: Object.keys(where).length > 0 ? where : undefined,
+                  limit: parseInt(searchParams.get('limit') || '10'),
+                  page: parseInt(searchParams.get('page') || '1'),
+                  sort: searchParams.get('sort') || '-createdAt',
+                })
+                return NextResponse.json({
+                  docs: result.docs || [],
+                  totalDocs: result.totalDocs || 0,
+                  limit: result.limit || 10,
+                  totalPages: result.totalPages || 1,
+                  page: result.page || 1,
+                  hasNextPage: result.hasNextPage || false,
+                  hasPrevPage: result.hasPrevPage || false,
+                  nextPage: result.nextPage || null,
+                  prevPage: result.prevPage || null,
+                })
+              }
+            } catch (pushError) {
+              console.error('Failed to create tables:', pushError)
+            }
+            
+            // If we can't create tables, return empty result
             return NextResponse.json({
               docs: [],
               totalDocs: 0,
