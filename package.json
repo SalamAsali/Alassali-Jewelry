@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "payload": "payload",
+    "payload:generate": "payload generate:types",
+    "payload:migrate": "payload migrate"
   },
   "dependencies": {
     "next": "^15.1.11",

@@ -211,34 +211,61 @@ async function handlePayloadRequest(
         })
 
         // Handle count query (used by admin UI)
-        if (searchParams.get('limit') === '0') {
-          const count = await payloadInstance.count({
-            collection: collection as any,
-            where: Object.keys(where).length > 0 ? where : undefined,
-          })
-          return NextResponse.json({ totalDocs: count })
+        // Payload admin UI sends limit=0 to get count
+        if (searchParams.get('limit') === '0' || searchParams.get('limit') === '0') {
+          try {
+            const count = await payloadInstance.count({
+              collection: collection as any,
+              where: Object.keys(where).length > 0 ? where : undefined,
+            })
+            return NextResponse.json({ totalDocs: count })
+          } catch (error) {
+            console.error('Count query error:', error)
+            // If count fails (table might not exist), return 0
+            return NextResponse.json({ totalDocs: 0 })
+          }
         }
 
-        const result = await payloadInstance.find({
-          collection: collection as any,
-          where: Object.keys(where).length > 0 ? where : undefined,
-          limit: parseInt(searchParams.get('limit') || '10'),
-          page: parseInt(searchParams.get('page') || '1'),
-          sort: searchParams.get('sort') || '-createdAt',
-        })
-        
-        // Return in Payload's expected format
-        return NextResponse.json({
-          docs: result.docs || [],
-          totalDocs: result.totalDocs || 0,
-          limit: result.limit || 10,
-          totalPages: result.totalPages || 1,
-          page: result.page || 1,
-          hasNextPage: result.hasNextPage || false,
-          hasPrevPage: result.hasPrevPage || false,
-          nextPage: result.nextPage || null,
-          prevPage: result.prevPage || null,
-        })
+        try {
+          const result = await payloadInstance.find({
+            collection: collection as any,
+            where: Object.keys(where).length > 0 ? where : undefined,
+            limit: parseInt(searchParams.get('limit') || '10'),
+            page: parseInt(searchParams.get('page') || '1'),
+            sort: searchParams.get('sort') || '-createdAt',
+          })
+          
+          // Return in Payload's expected format
+          return NextResponse.json({
+            docs: result.docs || [],
+            totalDocs: result.totalDocs || 0,
+            limit: result.limit || 10,
+            totalPages: result.totalPages || 1,
+            page: result.page || 1,
+            hasNextPage: result.hasNextPage || false,
+            hasPrevPage: result.hasPrevPage || false,
+            nextPage: result.nextPage || null,
+            prevPage: result.prevPage || null,
+          })
+        } catch (dbError) {
+          // If database query fails (table might not exist), return empty result
+          console.error('Database query error:', dbError)
+          if (dbError instanceof Error && dbError.message.includes('does not exist')) {
+            // Table doesn't exist - return empty result
+            return NextResponse.json({
+              docs: [],
+              totalDocs: 0,
+              limit: parseInt(searchParams.get('limit') || '10'),
+              totalPages: 0,
+              page: 1,
+              hasNextPage: false,
+              hasPrevPage: false,
+              nextPage: null,
+              prevPage: null,
+            })
+          }
+          throw dbError // Re-throw other errors
+        }
       } catch (error) {
         console.error('Payload find error:', error)
         console.error('Error details:', error instanceof Error ? error.stack : error)
