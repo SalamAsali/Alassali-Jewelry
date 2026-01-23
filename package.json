@@ -14,7 +14,7 @@
     "react-dom": "^19.2.3",
     "payload": "^3.0.0",
     "@payloadcms/db-postgres": "^3.72.0",
-    "@payloadcms/richtext-slate": "^1.0.0",
+    "@payloadcms/richtext-slate": "^3.72.0",
     "resend": "^6.8.0"
   },
   "devDependencies": {
