@@ -9,14 +9,10 @@ const nextConfig = {
     serverComponentsExternalPackages: [
       'payload',
       '@payloadcms/db-postgres',
-      '@payloadcms/richtext-slate',
     ],
   },
   eslint: {
     ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
   },
 }
 

@@ -25,7 +25,7 @@ function getServerURL() {
 
 const serverURL = getServerURL()
 
-export default buildConfig({
+const config = buildConfig({
   admin: {
     user: Users.slug,
     baseURL: serverURL,
@@ -49,7 +49,7 @@ export default buildConfig({
   },
   db: postgresAdapter({
     pool: {
-      connectionString: process.env.DATABASE_URL || 'postgresql://localhost:5432/alassali_jewelry',
+      connectionString: process.env.DATABASE_URL || 'postgresql://localhost:5432/jewelry',
     },
   }),
   serverURL: serverURL,
@@ -58,3 +58,5 @@ export default buildConfig({
     api: '/api/payload',
   },
 })
+
+export default config
