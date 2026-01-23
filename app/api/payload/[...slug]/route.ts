@@ -13,7 +13,20 @@ export async function GET(
       return NextResponse.json({ error: 'Payload not initialized' }, { status: 503 })
     }
     const { slug } = await params
-    return payloadInstance.handler(request, { params: { slug } })
+    
+    // Check if handler exists and is a function
+    if (payloadInstance.handler && typeof payloadInstance.handler === 'function') {
+      return payloadInstance.handler(request, { params: { slug } })
+    }
+    
+    // If handler doesn't exist, try router or other methods
+    console.error('Payload instance does not have handler method')
+    console.error('Available methods:', Object.keys(payloadInstance).slice(0, 20))
+    
+    return NextResponse.json(
+      { error: 'Payload handler method not available. Check Payload version and initialization.' },
+      { status: 500 }
+    )
   } catch (error) {
     console.error('Payload GET error:', error)
     return NextResponse.json(
