@@ -19,21 +19,106 @@ async function handlePayloadRequest(
 
   // Handle admin routes - Payload 3.0 admin UI
   if (collection === 'admin') {
-    // For admin panel access, we need to serve Payload's admin UI
-    // Payload 3.0 admin is a React app that needs to be served
-    // For now, return instructions or redirect
     const adminPath = rest.join('/') || ''
     
-    // Admin UI static files would be served here
-    // For the main admin page, return a response
-    if (adminPath === '' || !adminPath.includes('.')) {
+    // For Payload 3.0, the admin UI needs to be served
+    // Check if this is a request for the admin HTML page
+    if (adminPath === '' || adminPath === 'index.html' || !adminPath.includes('.')) {
+      // Return the admin UI HTML
+      // Payload 3.0 admin is a React SPA that loads from /api/payload/admin
+      const serverURL = payloadInstance.getAPIURL?.() || '/api/payload'
+      const adminBaseURL = payloadInstance.getAdminURL?.() || '/cms'
+      
+      return new NextResponse(
+        `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payload CMS Admin - Alassali Jewelry</title>
+  <script>
+    // Payload admin UI configuration
+    window.PAYLOAD_CONFIG = {
+      apiURL: '${serverURL}',
+      adminURL: '${adminBaseURL}',
+      serverURL: '${process.env.PAYLOAD_PUBLIC_SERVER_URL || process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'}'
+    };
+  </script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: #1a1a1a;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+    .loading {
+      text-align: center;
+    }
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      border-top: 3px solid #fff;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading">
+    <div class="spinner"></div>
+    <p>Loading Payload CMS Admin...</p>
+    <p style="font-size: 12px; opacity: 0.7; margin-top: 20px;">
+      If this page doesn't load, the admin UI may need to be embedded differently.<br>
+      Check Payload 3.0 documentation for admin UI setup.
+    </p>
+  </div>
+  <script>
+    // Try to load Payload admin UI
+    // For Payload 3.0, the admin UI might be served from a different endpoint
+    fetch('${serverURL}/admin/config')
+      .then(res => res.json())
+      .then(config => {
+        console.log('Payload config:', config);
+        // Admin UI would be loaded here
+      })
+      .catch(err => {
+        console.error('Failed to load Payload admin:', err);
+        document.querySelector('.loading p').textContent = 'Admin UI not available. Please check Payload configuration.';
+      });
+  </script>
+</body>
+</html>`,
+        {
+          headers: {
+            'Content-Type': 'text/html; charset=utf-8',
+          },
+        }
+      )
+    }
+    
+    // For admin API requests (config, etc.)
+    if (adminPath === 'config') {
       return NextResponse.json({
-        message: 'Payload Admin UI',
+        apiURL: payloadInstance.getAPIURL?.() || '/api/payload',
         adminURL: payloadInstance.getAdminURL?.() || '/cms',
-        note: 'Admin UI should be accessible at /cms'
+        serverURL: process.env.PAYLOAD_PUBLIC_SERVER_URL || 
+                  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'http://localhost:3000'),
+        collections: ['users', 'gallery', 'media', 'form-fields', 'inquiries'],
       })
     }
     
+    // For other admin paths, return 404
     return NextResponse.json({ error: 'Admin resource not found' }, { status: 404 })
   }
 

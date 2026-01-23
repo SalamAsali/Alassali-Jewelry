@@ -39,6 +39,7 @@ const config = buildConfig({
       favicon: '/favicon.ico',
       ogImage: '/og-image.jpg',
     },
+    disable: false,
   },
   collections: [
     Users,
