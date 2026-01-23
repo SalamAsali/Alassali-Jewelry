@@ -5,13 +5,6 @@ const nextConfig = {
     '@payloadcms/db-postgres',
     '@payloadcms/richtext-slate',
   ],
-  experimental: {
-    serverComponentsExternalPackages: [
-      'payload',
-      '@payloadcms/db-postgres',
-      '@payloadcms/richtext-slate',
-    ],
-  },
   eslint: {
     ignoreDuringBuilds: true,
   },
