@@ -38,3 +38,7 @@ next-env.d.ts
 # payload
 /payload-types.ts
 /media
+
+# pnpm
+.pnpm-store
+pnpm-lock.yaml
