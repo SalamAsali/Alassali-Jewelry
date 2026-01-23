@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getPayloadInstance } from '@/lib/payload'
+import config from '@/payload.config'
+import { getPayload } from 'payload'
 
 export const dynamic = 'force-dynamic'
 
@@ -36,17 +38,25 @@ export async function GET(
     console.error('Payload instance methods:', availableMethods.slice(0, 10))
     console.error('Payload instance type:', typeof payloadInstance)
     
-    // For Payload 3.0, we might need to use the Local API differently
-    // Let's try importing and using the router from Payload directly
-    const { router } = await import('payload')
-    if (router && typeof router === 'function') {
-      return router(request, { params: { slug } })
+    // For Payload 3.0, try using getPayload with the request directly
+    // This might be the correct pattern for Next.js App Router
+    try {
+      const payload = await getPayload({ config })
+      // Check if payload has a router or handler
+      if (payload.router) {
+        return payload.router(request, { params: { slug } })
+      }
+      if (payload.handler) {
+        return payload.handler(request, { params: { slug } })
+      }
+    } catch (routerError) {
+      console.error('Error trying alternative router method:', routerError)
     }
     
     return NextResponse.json(
       { 
         error: 'Payload handler method not available',
-        details: `Available methods: ${availableMethods.join(', ')}`
+        details: `Available methods: ${availableMethods.join(', ')}. Please check Vercel logs for full Payload instance structure.`
       },
       { status: 500 }
     )
