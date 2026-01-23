@@ -9,6 +9,10 @@ export async function getPayloadInstance() {
       payloadInstance = await getPayload({ config })
     } catch (error) {
       console.error('Failed to initialize Payload:', error)
+      // In build time, return null to avoid blocking
+      if (process.env.NEXT_PHASE === 'phase-production-build') {
+        return null
+      }
       throw error
     }
   }
