@@ -8,6 +8,8 @@ import { Gallery } from './collections/Gallery'
 import { FormFields } from './collections/FormFields'
 import { Inquiries } from './collections/Inquiries'
 import { Media } from './collections/Media'
+import { Pages } from './collections/Pages'
+import { Homepage } from './collections/Homepage'
 
 // Get the server URL from environment or Vercel
 function getServerURL() {
@@ -47,6 +49,8 @@ const config = buildConfig({
     Gallery,
     FormFields,
     Inquiries,
+    Pages,
+    Homepage,
   ],
   editor: slateEditor({}),
   secret: process.env.PAYLOAD_SECRET || '',
