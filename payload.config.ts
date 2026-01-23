@@ -59,7 +59,7 @@ const config = buildConfig({
   }),
   serverURL: serverURL,
   routes: {
-    admin: '/cms', // Changed from default /admin to /cms
+    admin: '/cms',
     api: '/api/payload',
   },
 })
