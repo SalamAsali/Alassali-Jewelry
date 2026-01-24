@@ -14,7 +14,6 @@ import { Header } from './Header/config.ts'
 import { Footer } from './Footer/config.ts'
 import { sanitizeDatabaseUrl } from './lib/db.ts'
 
-const PRODUCTION_ORIGIN = 'https://alassali-jewelry.vercel.app'
 const LOCAL_ORIGIN = 'http://localhost:3000'
 
 function getServerURL(): string {
@@ -26,7 +25,21 @@ function getServerURL(): string {
     (env.VERCEL_URL ? `https://${env.VERCEL_URL}` : null) ||
     env.NEXT_PUBLIC_SITE_URL ||
     LOCAL_ORIGIN
-  return url.startsWith('http') ? url : `https://${url}`
+  return url && url.startsWith('http') ? url : `https://${url || 'localhost:3000'}`
+}
+
+function getAllowedOrigins(): string[] {
+  const base = [
+    LOCAL_ORIGIN,
+    'http://localhost:3000',
+    'https://alassali-jewelry.vercel.app',
+    'https://alassali-jewelry-dreams3.vercel.app',
+    'https://payload-website-starter.vercel.app',
+    'https://payload-website-starter-dreams3.vercel.app',
+  ]
+  const url = getServerURL()
+  if (url && !base.includes(url)) base.push(url)
+  return [...new Set(base)]
 }
 
 function getSecret(): string {
@@ -67,12 +80,8 @@ const config = buildConfig({
   // plugins: [vercelBlobStorage({ enabled: true, collections: { media: true }, token: process.env.BLOB_READ_WRITE_TOKEN })],
   // and remove staticDir from Media.
   plugins: [],
-  cors: [PRODUCTION_ORIGIN, serverURL, LOCAL_ORIGIN].filter(
-    (u, i, a) => a.indexOf(u) === i
-  ),
-  csrf: [PRODUCTION_ORIGIN, serverURL, LOCAL_ORIGIN].filter(
-    (u, i, a) => a.indexOf(u) === i
-  ),
+  cors: getAllowedOrigins(),
+  csrf: getAllowedOrigins(),
   editor: slateEditor({}),
   secret: getSecret(),
   typescript: {
@@ -81,8 +90,7 @@ const config = buildConfig({
   db: postgresAdapter({
     pool: { connectionString },
     migrationDir: path.resolve(process.cwd(), 'migrations'),
-    // Temporary: force sync schema (bootstrap tables). Disable after /admin works.
-    push: true,
+    push: false,
   }),
   serverURL,
   routes: {

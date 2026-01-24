@@ -1,9 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { pushDevSchema } from '@payloadcms/drizzle'
 import { getPayloadInstance } from '@/lib/payload'
-
-// Force Next.js to bundle drizzle-kit/api (required by pushDevSchema / requireDrizzleKit)
-import 'drizzle-kit/api'
 
 export const dynamic = 'force-dynamic'
 
@@ -19,14 +15,26 @@ async function runPush(adapter: any): Promise<{ ok: boolean; method: string; err
   if (!adapter) return { ok: false, method: '' }
   const db = adapter as any
   if (typeof db.push === 'function') {
-    await db.push({})
-    return { ok: true, method: 'db.push()' }
+    try {
+      await db.push({})
+      return { ok: true, method: 'db.push()' }
+    } catch (e) {
+      const err = e instanceof Error ? e : new Error(String(e))
+      return { ok: false, method: '', error: err.message, stack: err.stack }
+    }
   }
   if (db.drizzle?.push && typeof db.drizzle.push === 'function') {
-    await db.drizzle.push({})
-    return { ok: true, method: 'db.drizzle.push()' }
+    try {
+      await db.drizzle.push({})
+      return { ok: true, method: 'db.drizzle.push()' }
+    } catch (e) {
+      const err = e instanceof Error ? e : new Error(String(e))
+      return { ok: false, method: '', error: err.message, stack: err.stack }
+    }
   }
   try {
+    await import('drizzle-kit/api')
+    const { pushDevSchema } = await import('@payloadcms/drizzle')
     await pushDevSchema(adapter)
     return { ok: true, method: 'pushDevSchema(adapter)' }
   } catch (e) {
