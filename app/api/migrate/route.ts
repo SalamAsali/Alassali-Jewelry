@@ -12,7 +12,7 @@ function diagnostics() {
   }
 }
 
-async function runPush(adapter: any): Promise<{ ok: boolean; method: string }> {
+async function runPush(adapter: any): Promise<{ ok: boolean; method: string; error?: string; stack?: string }> {
   if (!adapter) return { ok: false, method: '' }
   const db = adapter as any
   if (typeof db.push === 'function') {
@@ -26,8 +26,10 @@ async function runPush(adapter: any): Promise<{ ok: boolean; method: string }> {
   try {
     await pushDevSchema(adapter)
     return { ok: true, method: 'pushDevSchema(adapter)' }
-  } catch {
-    return { ok: false, method: '' }
+  } catch (e) {
+    const err = e instanceof Error ? e : new Error(String(e))
+    console.error('[migrate] pushDevSchema failed:', err.message, err.stack)
+    return { ok: false, method: '', error: err.message, stack: err.stack }
   }
 }
 
@@ -41,12 +43,12 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    const { ok, method } = await runPush(payloadInstance.db)
-    if (ok) {
+    const result = await runPush(payloadInstance.db)
+    if (result.ok) {
       return NextResponse.json({
         success: true,
         message: 'Database tables created successfully',
-        method,
+        method: result.method,
         note: 'Go to /admin to create your first user.',
       })
     }
@@ -54,6 +56,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: false,
       error: 'Push migrations not available',
+      pushError: result.error,
+      pushStack: result.stack,
       diagnostics: diagnostics(),
       note: 'In Vercel: set DATABASE_URL and ENABLE_PUSH_MIGRATIONS=true. DATABASE_URL must end with ?sslmode=require (once).',
     }, { status: 400 })
@@ -85,12 +89,12 @@ export async function GET(request: NextRequest) {
       )
     }
 
-    const { ok, method } = await runPush(payloadInstance.db)
-    if (ok) {
+    const result = await runPush(payloadInstance.db)
+    if (result.ok) {
       return NextResponse.json({
         success: true,
         message: 'Database tables created successfully',
-        method,
+        method: result.method,
         note: 'Go to /admin to create your first user.',
       })
     }
@@ -98,6 +102,8 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({
       success: false,
       error: 'Push not available',
+      pushError: result.error,
+      pushStack: result.stack,
       diagnostics: diagnostics(),
       note: 'In Vercel: set DATABASE_URL and ENABLE_PUSH_MIGRATIONS=true. DATABASE_URL must end with ?sslmode=require (once).',
     }, { status: 400 })

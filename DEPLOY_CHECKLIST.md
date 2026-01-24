@@ -1,48 +1,32 @@
 # Deploy Checklist – Alassali Jewelry
 
-## 1. Vercel environment variables (all required)
+## 1. Vercel environment variables (required)
 
-In **Vercel** → Project → **Settings** → **Environment Variables**, add **every** variable below.  
-**Name** and **Value** must match exactly (including `ENABLE_PUSH_MIGRATIONS` = `true`).
+In **Vercel** → Project → **Settings** → **Environment Variables**, set:
 
 | Name | Value | Notes |
 |------|--------|--------|
-| `DATABASE_URL` | `postgresql://...@....neon.tech/neondb?sslmode=require` | Neon connection string. End with `?sslmode=require` **once** — no `?sslmode=require?sslmode=require` or `requireneondb`. |
-| `ENABLE_PUSH_MIGRATIONS` | `true` | Literal string `true`. Required for `/api/migrate?run=1` to create tables. |
+| `DATABASE_URL` | `postgresql://...@....neon.tech/neondb?sslmode=require` | Neon connection string. Use `?sslmode=require` **once** only. |
 | `PAYLOAD_SECRET` | `<random secret>` | e.g. `openssl rand -hex 32` |
 | `PAYLOAD_PUBLIC_SERVER_URL` | `https://alassali-jewelry.vercel.app` | Your production URL. |
-| `NEXT_PUBLIC_SERVER_URL` | `https://alassali-jewelry.vercel.app` | Optional fallback; can match above. |
+| `NEXT_PUBLIC_SERVER_URL` | `https://alassali-jewelry.vercel.app` | Optional fallback. |
 
-`PAYLOAD_CONFIG_PATH` is **not** used. After changing env vars, **redeploy** (e.g. trigger a new deployment).
+**Optional (for `/api/migrate` fallback):** `ENABLE_PUSH_MIGRATIONS` = `true`.
 
-## 2. Create database tables (do this once after each deploy)
+After changing env vars, **redeploy**.
 
-Before using the admin panel, create the Payload tables:
+## 2. Build and migrations
 
-**Option A – Browser**  
-Open:
+**Vercel** uses `vercel.json` → `"buildCommand": "payload migrate && next build"`.
 
-```
-https://alassali-jewelry.vercel.app/api/migrate?run=1
-```
+- **`payload migrate`** runs first: applies migration files from `migrations/` and creates tables (e.g. `users`, `media`, `gallery`).
+- **`next build`** runs after: builds the app.
 
-You should see something like:
-
-```json
-{ "success": true, "message": "Database tables created successfully", ... }
-```
-
-**Option B – cURL**
-
-```bash
-curl "https://alassali-jewelry.vercel.app/api/migrate?run=1"
-# or
-curl -X POST "https://alassali-jewelry.vercel.app/api/migrate"
-```
+So **tables are created during deploy**. You do **not** need to call `/api/migrate?run=1` before using `/admin`, as long as the build succeeds.
 
 ## 3. Open the admin panel
 
-Go to:
+After a successful deploy, go to:
 
 ```
 https://alassali-jewelry.vercel.app/admin
@@ -50,25 +34,27 @@ https://alassali-jewelry.vercel.app/admin
 
 Create your first admin user when prompted.
 
-## 4. If you see “Application error” (Digest 3263770923) or blank /admin
+## 4. If build fails (e.g. "cannot connect to Postgres")
 
-- Usually means **tables are missing** (`relation "users" does not exist`) or **Payload not initialized**.
-- **Fix:** Complete **step 2** (open `/api/migrate?run=1`), then open `/admin` again.
-- Ensure **all** vars from **step 1** are set in Vercel and you **redeployed** after adding them.
+- Check **`DATABASE_URL`** in Vercel (correct Neon URL, `?sslmode=require` once).
+- Ensure the Neon DB is reachable from Vercel (no IP allowlists blocking it, etc.).
 
-## 5. If you see “Push not available” from `/api/migrate?run=1`
+## 5. If you see "Application error" or blank `/admin`
 
-- The response includes `diagnostics`: `hasDatabaseUrl`, `enablePushMigrations`, `nodeEnv`.
-- **Fix:**
-  1. Set `DATABASE_URL` in Vercel (Neon URL ending with `?sslmode=require` once).
-  2. Set `ENABLE_PUSH_MIGRATIONS` = `true` in Vercel (exact name and value).
-  3. **Redeploy** (env vars apply to new deployments only).
-  4. Call `/api/migrate?run=1` again.
+- **Tables missing:** Build may have failed before `payload migrate` completed, or migration failed. Check build logs.
+- **Fix:** Ensure all env vars from **step 1** are set, redeploy, and confirm `payload migrate` runs and succeeds in the build logs.
 
-## 6. No custom middleware
+## 6. Fallback: `/api/migrate?run=1`
 
-There is no `middleware.ts` in this project. Payload and Next.js routing are used as-is.
+If you **cannot** run `payload migrate` at build (e.g. old deploy without it), you can still create tables at runtime:
+
+1. Set `ENABLE_PUSH_MIGRATIONS` = `true` in Vercel.
+2. Redeploy.
+3. Open `https://alassali-jewelry.vercel.app/api/migrate?run=1` once.
+4. Then go to `/admin`.
+
+If push fails, the response now includes `pushError` and `pushStack` for debugging.
 
 ---
 
-**Summary:** Add **all** Vercel env vars → **Redeploy** → open `/api/migrate?run=1` once → then `/admin`.
+**Summary:** Set Vercel env vars → **Redeploy** (migrations run at build) → open **`/admin`** and create your first user.
