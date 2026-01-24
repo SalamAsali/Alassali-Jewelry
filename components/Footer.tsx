@@ -3,7 +3,22 @@
 import Link from 'next/link'
 import { Sparkles, MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react'
 
-export default function Footer() {
+const DEFAULT_LOGO = 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/mos4tvrw_Final-W2-1.png'
+const DEFAULT_TAGLINE = 'Crafting bespoke luxury jewelry in Toronto since 2020. Where tradition meets innovation.'
+const DEFAULT_PHONE = '+1 (416) 555-1234'
+const DEFAULT_EMAIL = 'info@alassali.ca'
+const DEFAULT_LOCATION = 'Toronto & Mississauga, ON'
+
+type FooterProps = {
+  logoUrl?: string | null
+  tagline?: string | null
+  phone?: string | null
+  email?: string | null
+  location?: string | null
+}
+
+export default function Footer(props?: FooterProps) {
+  const logo = props?.logoUrl ?? DEFAULT_LOGO
   return (
     <footer className="bg-deep-charcoal text-white mt-24">
       <div className="section-container py-16">
@@ -12,14 +27,14 @@ export default function Footer() {
           <div>
             <Link href="/" className="flex items-center gap-3 mb-4">
               <img 
-                src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/mos4tvrw_Final-W2-1.png" 
+                src={logo} 
                 alt="Alassali Jewelry" 
                 className="h-24 w-auto"
                 style={{ filter: 'invert(1)' }}
               />
             </Link>
             <p className="text-warm-gray text-sm mb-4">
-              Crafting bespoke luxury jewelry in Toronto since 2020. Where tradition meets innovation.
+              {props?.tagline ?? DEFAULT_TAGLINE}
             </p>
             <div className="flex items-center gap-2 text-champagne-gold font-accent text-sm">
               <MapPin className="w-4 h-4" />
@@ -108,19 +123,19 @@ export default function Footer() {
               <ul className="space-y-3">
                 <li className="flex items-center gap-2 text-warm-gray text-sm">
                   <Phone className="w-4 h-4 text-champagne-gold" />
-                  <a href="tel:+14165551234" className="hover:text-champagne-gold transition-colors">
-                    +1 (416) 555-1234
+                  <a href={`tel:${props?.phone ?? DEFAULT_PHONE}`} className="hover:text-champagne-gold transition-colors">
+                    {props?.phone ?? DEFAULT_PHONE}
                   </a>
                 </li>
                 <li className="flex items-center gap-2 text-warm-gray text-sm">
                   <Mail className="w-4 h-4 text-champagne-gold" />
-                  <a href="mailto:info@alassali.ca" className="hover:text-champagne-gold transition-colors">
-                    info@alassali.ca
+                  <a href={`mailto:${props?.email ?? DEFAULT_EMAIL}`} className="hover:text-champagne-gold transition-colors">
+                    {props?.email ?? DEFAULT_EMAIL}
                   </a>
                 </li>
                 <li className="flex items-center gap-2 text-warm-gray text-sm">
                   <MapPin className="w-4 h-4 text-champagne-gold" />
-                  <span>Toronto & Mississauga, ON</span>
+                  <span>{props?.location ?? DEFAULT_LOCATION}</span>
                 </li>
               </ul>
               <div className="flex items-center gap-4 mt-6">

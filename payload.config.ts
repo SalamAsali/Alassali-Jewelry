@@ -10,6 +10,8 @@ import { Inquiries } from './collections/Inquiries.ts'
 import { Media } from './collections/Media.ts'
 import { Pages } from './collections/Pages.ts'
 import { Homepage } from './collections/Homepage.ts'
+import { Header } from './Header/config.ts'
+import { Footer } from './Footer/config.ts'
 import { sanitizeDatabaseUrl } from './lib/db.ts'
 
 const PRODUCTION_ORIGIN = 'https://alassali-jewelry.vercel.app'
@@ -60,6 +62,11 @@ const config = buildConfig({
     Pages,
     Homepage,
   ],
+  globals: [Header, Footer],
+  // Blob: npm install @payloadcms/storage-vercel-blob, set BLOB_READ_WRITE_TOKEN, then:
+  // plugins: [vercelBlobStorage({ enabled: true, collections: { media: true }, token: process.env.BLOB_READ_WRITE_TOKEN })],
+  // and remove staticDir from Media.
+  plugins: [],
   cors: [PRODUCTION_ORIGIN, serverURL, LOCAL_ORIGIN].filter(
     (u, i, a) => a.indexOf(u) === i
   ),

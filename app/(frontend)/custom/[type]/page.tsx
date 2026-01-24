@@ -4,8 +4,6 @@ import { useState } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { CheckCircle2, Upload, ArrowRight, ArrowLeft, Sparkles } from 'lucide-react'
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 
@@ -143,10 +141,7 @@ export default function CustomJewelryPage() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex flex-col bg-white">
-        <Navigation />
-        <main className="flex-grow">
-          <div className="min-h-screen bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
+      <div className="min-h-screen bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
             <DotPattern />
             <DiamondPattern className="text-white" />
             
@@ -192,18 +187,12 @@ export default function CustomJewelryPage() {
                 </button>
               </div>
             </motion.div>
-          </div>
-        </main>
-        <Footer />
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Navigation />
-      <main className="flex-grow">
-        <div className="min-h-screen bg-soft-black relative overflow-hidden" data-testid="custom-form-hero">
+    <div className="min-h-screen bg-soft-black relative overflow-hidden" data-testid="custom-form-hero">
           <DotPattern />
           <DiamondPattern className="text-white" />
 
@@ -620,9 +609,6 @@ export default function CustomJewelryPage() {
               </div>
             </div>
           </div>
-        </div>
-      </main>
-      <Footer />
     </div>
   )
 }

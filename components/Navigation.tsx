@@ -19,12 +19,19 @@ const getCartCount = () => {
   }
 }
 
-export default function Navigation() {
+const DEFAULT_LOGO = 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/mos4tvrw_Final-W2-1.png'
+
+type NavigationProps = {
+  logoUrl?: string | null
+}
+
+export default function Navigation(props?: NavigationProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const pathname = usePathname()
   const router = useRouter()
   const cartCount = getCartCount()
+  const logo = props?.logoUrl ?? DEFAULT_LOGO
 
   const productMegaMenu = {
     mainCategories: [
@@ -79,7 +86,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img 
-              src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/mos4tvrw_Final-W2-1.png" 
+              src={logo} 
               alt="Alassali Jewelry" 
               className="h-20 w-auto"
               style={{ filter: 'invert(1)' }}

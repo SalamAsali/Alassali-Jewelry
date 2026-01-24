@@ -27,6 +27,7 @@ export async function GET(request: NextRequest) {
       where: Object.keys(query).length > 0 ? query : undefined,
       limit: 100,
       sort: '-createdAt',
+      depth: 1,
     })
 
     // Transform the data to match frontend expectations

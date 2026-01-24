@@ -22,7 +22,9 @@ export async function POST(request: NextRequest) {
         budget: body.budget || undefined,
         style: body.style || undefined,
         metalType: body.metalType || body.metal_type || undefined,
-        stonePreferences: body.stonePreferences || body.stone_preferences || [],
+        stonePreferences: (body.stonePreferences || body.stone_preferences || []).map((s: string) =>
+          typeof s === 'string' ? { stone: s } : s
+        ),
         size: body.size || undefined,
         timeline: body.timeline || undefined,
         notes: body.notes || undefined,

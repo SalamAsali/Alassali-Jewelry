@@ -65,5 +65,36 @@ export const Homepage: CollectionConfig = {
         },
       ],
     },
+    {
+      name: 'processSteps',
+      type: 'array',
+      label: 'Custom Made Process Steps',
+      fields: [
+        { name: 'label', type: 'text', required: true, label: 'Label' },
+        { name: 'description', type: 'text', required: true, label: 'Description' },
+        {
+          name: 'icon',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Icon',
+          required: true,
+        },
+      ],
+    },
+    {
+      name: 'madeInTorontoImages',
+      type: 'array',
+      label: 'Made in Toronto Section Images',
+      maxRows: 2,
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          relationTo: 'media',
+          label: 'Image',
+          required: true,
+        },
+      ],
+    },
   ],
 }

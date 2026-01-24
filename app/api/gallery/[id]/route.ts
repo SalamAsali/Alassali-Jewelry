@@ -18,6 +18,7 @@ export async function GET(
     const result = await payloadInstance.findByID({
       collection: 'gallery',
       id,
+      depth: 1,
     })
 
     if (!result) {

@@ -2,10 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import Navigation from '@/components/Navigation'
-import Footer from '@/components/Footer'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
+import { getImageUrl } from '@/lib/getImageUrl'
 
 export const dynamic = 'force-dynamic'
 
@@ -174,22 +173,9 @@ export default function PortfolioPage() {
 
   const allItems = [...items, ...customPortfolioItems]
 
-  const getImageUrl = (item: GalleryItem) => {
-    if (typeof item.image === 'string') return item.image
-    if (item.image?.url) return item.image.url
-    if (item.image?.filename) {
-      const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
-      return `${baseUrl}/media/${item.image.filename}`
-    }
-    return 'https://via.placeholder.com/400'
-  }
-
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Navigation />
-      <main className="flex-grow">
-        {/* Hero Section - Black with Diamond Pattern */}
-        <section className="relative min-h-[60vh] flex items-center bg-soft-black text-white overflow-hidden">
+    <>
+      <section className="relative min-h-[60vh] flex items-center bg-soft-black text-white overflow-hidden">
           <DotPattern />
           <DiamondPattern className="text-white" />
           
@@ -261,7 +247,7 @@ export default function PortfolioPage() {
                     <div className="relative overflow-hidden rounded-lg border-4 border-soft-black shadow-lg">
                       <div className="aspect-square overflow-hidden bg-white">
                         <motion.img
-                          src={getImageUrl(item)}
+                          src={getImageUrl(item.image)}
                           alt={item.title}
                           className="w-full h-full object-cover"
                           whileHover={{ scale: 1.1 }}
@@ -294,8 +280,6 @@ export default function PortfolioPage() {
             )}
           </div>
         </section>
-      </main>
-      <Footer />
-    </div>
+    </>
   )
 }

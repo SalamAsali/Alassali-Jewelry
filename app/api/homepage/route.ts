@@ -14,6 +14,7 @@ export async function GET(request: NextRequest) {
     const result = await payloadInstance.find({
       collection: 'homepage',
       limit: 1,
+      depth: 2,
     })
 
     if (result.docs && result.docs.length > 0) {
@@ -27,6 +28,8 @@ export async function GET(request: NextRequest) {
       heroSubtitle: '',
       featuredItems: [],
       testimonials: [],
+      processSteps: [],
+      madeInTorontoImages: [],
     })
   } catch (error) {
     const msg = error instanceof Error ? error.message : ''
@@ -38,6 +41,8 @@ export async function GET(request: NextRequest) {
         heroSubtitle: '',
         featuredItems: [],
         testimonials: [],
+        processSteps: [],
+        madeInTorontoImages: [],
       })
     }
     console.error('Homepage API error:', error)
