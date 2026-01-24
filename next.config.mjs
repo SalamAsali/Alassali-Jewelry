@@ -6,6 +6,7 @@ const nextConfig = {
     'payload',
     '@payloadcms/db-postgres',
     '@payloadcms/richtext-slate',
+    'drizzle-kit',
   ],
   eslint: {
     ignoreDuringBuilds: true,

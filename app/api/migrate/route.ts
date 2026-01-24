@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 import { pushDevSchema } from '@payloadcms/drizzle'
 import { getPayloadInstance } from '@/lib/payload'
 
+// Force Next.js to bundle drizzle-kit/api (required by pushDevSchema / requireDrizzleKit)
+import 'drizzle-kit/api'
+
 export const dynamic = 'force-dynamic'
 
 function diagnostics() {
