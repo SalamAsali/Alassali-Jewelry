@@ -9,24 +9,33 @@ In **Vercel** → Project → **Settings** → **Environment Variables**, set:
 | `DATABASE_URL` | `postgresql://...@....neon.tech/neondb?sslmode=require` | Neon connection string. Use `?sslmode=require` **once** only. |
 | `PAYLOAD_SECRET` | `<random secret>` | e.g. `openssl rand -hex 32` |
 | `PAYLOAD_PUBLIC_SERVER_URL` | `https://alassali-jewelry.vercel.app` | Your production URL. |
-| `NEXT_PUBLIC_SERVER_URL` | `https://alassali-jewelry.vercel.app` | Optional fallback. |
-
-**Optional (for `/api/migrate` fallback):** `ENABLE_PUSH_MIGRATIONS` = `true`.
+| `ENABLE_PUSH_MIGRATIONS` | `true` | Required for `/api/migrate?run=1` to create tables. |
 
 After changing env vars, **redeploy**.
 
-## 2. Build and migrations
+## 2. Build (no migrate at build)
 
-**Vercel** uses `vercel.json` → `"buildCommand": "payload migrate && next build"`.
+**Vercel** uses `"buildCommand": "next build"`. We **do not** run `payload migrate` during build because it can fail if the DB is unreachable (e.g. wrong `DATABASE_URL`, Neon paused), which would break deployment.
 
-- **`payload migrate`** runs first: applies migration files from `migrations/` and creates tables (e.g. `users`, `media`, `gallery`).
-- **`next build`** runs after: builds the app.
+## 3. Create tables after deploy
 
-So **tables are created during deploy**. You do **not** need to call `/api/migrate?run=1` before using `/admin`, as long as the build succeeds.
+**Right after each deploy**, open once:
 
-## 3. Open the admin panel
+```
+https://alassali-jewelry.vercel.app/api/migrate?run=1
+```
 
-After a successful deploy, go to:
+You should see:
+
+```json
+{ "success": true, "message": "Database tables created successfully", ... }
+```
+
+If you see `"Push not available"`, the response includes `pushError` and `pushStack` — check those and ensure `DATABASE_URL` and `ENABLE_PUSH_MIGRATIONS=true` are set in Vercel, then redeploy and try again.
+
+## 4. Open the admin panel
+
+Then go to:
 
 ```
 https://alassali-jewelry.vercel.app/admin
@@ -34,27 +43,11 @@ https://alassali-jewelry.vercel.app/admin
 
 Create your first admin user when prompted.
 
-## 4. If build fails (e.g. "cannot connect to Postgres")
+## 5. If deploy fails
 
-- Check **`DATABASE_URL`** in Vercel (correct Neon URL, `?sslmode=require` once).
-- Ensure the Neon DB is reachable from Vercel (no IP allowlists blocking it, etc.).
-
-## 5. If you see "Application error" or blank `/admin`
-
-- **Tables missing:** Build may have failed before `payload migrate` completed, or migration failed. Check build logs.
-- **Fix:** Ensure all env vars from **step 1** are set, redeploy, and confirm `payload migrate` runs and succeeds in the build logs.
-
-## 6. Fallback: `/api/migrate?run=1`
-
-If you **cannot** run `payload migrate` at build (e.g. old deploy without it), you can still create tables at runtime:
-
-1. Set `ENABLE_PUSH_MIGRATIONS` = `true` in Vercel.
-2. Redeploy.
-3. Open `https://alassali-jewelry.vercel.app/api/migrate?run=1` once.
-4. Then go to `/admin`.
-
-If push fails, the response now includes `pushError` and `pushStack` for debugging.
+- **Build error:** Check Vercel build logs. The build runs `next build` only (no DB connection).
+- **`/admin` "Application error" or blank:** Tables missing. Complete **step 3** (`/api/migrate?run=1`), then open `/admin` again.
 
 ---
 
-**Summary:** Set Vercel env vars → **Redeploy** (migrations run at build) → open **`/admin`** and create your first user.
+**Summary:** Set env vars → **Redeploy** → open **`/api/migrate?run=1`** once → then **`/admin`**.
