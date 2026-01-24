@@ -73,10 +73,9 @@ const config = buildConfig({
   },
   db: postgresAdapter({
     pool: { connectionString },
-    push:
-      process.env.NODE_ENV === 'development' ||
-      process.env.ENABLE_PUSH_MIGRATIONS === 'true' ||
-      Boolean(process.env.DATABASE_URL),
+    migrationDir: path.resolve(process.cwd(), 'migrations'),
+    // Temporary: force sync schema (bootstrap tables). Disable after /admin works.
+    push: true,
   }),
   serverURL,
   routes: {
