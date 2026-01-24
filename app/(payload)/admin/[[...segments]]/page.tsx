@@ -10,13 +10,13 @@ type Args = {
   searchParams: Promise<{ [key: string]: string | string[] }>
 }
 
-export const generateMetadata = ({ params }: Args): Promise<Metadata> =>
-  generatePageMetadata({ config, params })
+/** Next.js 15: params/searchParams are Promises and must be awaited. */
+export async function generateMetadata({ params }: Args): Promise<Metadata> {
+  return generatePageMetadata({ config, params })
+}
 
-const Page = async ({ params, searchParams }: Args) => {
+export default async function Page({ params, searchParams }: Args) {
   const resolved = await params
   const normalizedParams = Promise.resolve({ segments: resolved?.segments ?? [] })
   return RootPage({ config, params: normalizedParams, searchParams, importMap })
 }
-
-export default Page

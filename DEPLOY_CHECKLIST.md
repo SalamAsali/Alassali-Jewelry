@@ -2,16 +2,16 @@
 
 ## 1. Vercel environment variables
 
-Set these in your Vercel project (Settings → Environment Variables):
+Set these in your Vercel project (Settings → Environment Variables). Keep in sync with local `.env.local`.
 
 | Variable | Required | Notes |
 |----------|----------|--------|
-| `DATABASE_URL` | ✅ | PostgreSQL connection string (e.g. Neon) |
+| `DATABASE_URL` | ✅ | PostgreSQL (Neon). Use **exactly** `?sslmode=require` once — no `?sslmode=require?sslmode=require`. |
 | `PAYLOAD_SECRET` | ✅ | Random secret, e.g. `openssl rand -hex 32` |
 | `PAYLOAD_PUBLIC_SERVER_URL` | ✅ | `https://alassali-jewelry.vercel.app` |
 | `ENABLE_PUSH_MIGRATIONS` | ✅ | `true` (enables DB table creation) |
 
-`NEXT_PUBLIC_SERVER_URL` is also supported as a fallback if you use that instead.
+`NEXT_PUBLIC_SERVER_URL` is a fallback. `PAYLOAD_CONFIG_PATH` is **not** required.
 
 ## 2. Create database tables (do this once after each deploy)
 

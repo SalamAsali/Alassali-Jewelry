@@ -10,9 +10,12 @@ import { Inquiries } from './collections/Inquiries'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Homepage } from './collections/Homepage'
+import { sanitizeDatabaseUrl } from './lib/db'
 
-// Get the server URL from environment or Vercel
-function getServerURL() {
+const PRODUCTION_ORIGIN = 'https://alassali-jewelry.vercel.app'
+const LOCAL_ORIGIN = 'http://localhost:3000'
+
+function getServerURL(): string {
   const env = process.env
   const url =
     env.PAYLOAD_PUBLIC_SERVER_URL ||
@@ -20,11 +23,22 @@ function getServerURL() {
     env.NEXT_PUBLIC_CMS_URL ||
     (env.VERCEL_URL ? `https://${env.VERCEL_URL}` : null) ||
     env.NEXT_PUBLIC_SITE_URL ||
-    'http://localhost:3000'
+    LOCAL_ORIGIN
   return url.startsWith('http') ? url : `https://${url}`
 }
 
+function getSecret(): string {
+  const secret = process.env.PAYLOAD_SECRET || ''
+  if (process.env.NODE_ENV === 'production' && !secret) {
+    console.warn(
+      '[payload] PAYLOAD_SECRET is missing in production. Set it in Vercel environment variables.'
+    )
+  }
+  return secret
+}
+
 const serverURL = getServerURL()
+const connectionString = sanitizeDatabaseUrl(process.env.DATABASE_URL)
 
 const config = buildConfig({
   admin: {
@@ -46,22 +60,25 @@ const config = buildConfig({
     Pages,
     Homepage,
   ],
+  cors: [PRODUCTION_ORIGIN, serverURL, LOCAL_ORIGIN].filter(
+    (u, i, a) => a.indexOf(u) === i
+  ),
+  csrf: [PRODUCTION_ORIGIN, serverURL, LOCAL_ORIGIN].filter(
+    (u, i, a) => a.indexOf(u) === i
+  ),
   editor: slateEditor({}),
-  secret: process.env.PAYLOAD_SECRET || '',
+  secret: getSecret(),
   typescript: {
     outputFile: path.resolve(process.cwd(), 'payload-types.ts'),
   },
   db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URL || 'postgresql://localhost:5432/jewelry',
-    },
-    // Always enable push when we have a DB (dev or prod) so tables are created
+    pool: { connectionString },
     push:
       process.env.NODE_ENV === 'development' ||
       process.env.ENABLE_PUSH_MIGRATIONS === 'true' ||
       Boolean(process.env.DATABASE_URL),
   }),
-  serverURL: serverURL,
+  serverURL,
   routes: {
     admin: '/admin',
     api: '/api/payload',
