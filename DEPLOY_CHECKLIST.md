@@ -1,17 +1,19 @@
 # Deploy Checklist – Alassali Jewelry
 
-## 1. Vercel environment variables
+## 1. Vercel environment variables (all required)
 
-Set these in your Vercel project (Settings → Environment Variables). Keep in sync with local `.env.local`.
+In **Vercel** → Project → **Settings** → **Environment Variables**, add **every** variable below.  
+**Name** and **Value** must match exactly (including `ENABLE_PUSH_MIGRATIONS` = `true`).
 
-| Variable | Required | Notes |
-|----------|----------|--------|
-| `DATABASE_URL` | ✅ | PostgreSQL (Neon). Use **exactly** `?sslmode=require` once — no `?sslmode=require?sslmode=require`. |
-| `PAYLOAD_SECRET` | ✅ | Random secret, e.g. `openssl rand -hex 32` |
-| `PAYLOAD_PUBLIC_SERVER_URL` | ✅ | `https://alassali-jewelry.vercel.app` |
-| `ENABLE_PUSH_MIGRATIONS` | ✅ | `true` (enables DB table creation) |
+| Name | Value | Notes |
+|------|--------|--------|
+| `DATABASE_URL` | `postgresql://...@....neon.tech/neondb?sslmode=require` | Neon connection string. End with `?sslmode=require` **once** — no `?sslmode=require?sslmode=require` or `requireneondb`. |
+| `ENABLE_PUSH_MIGRATIONS` | `true` | Literal string `true`. Required for `/api/migrate?run=1` to create tables. |
+| `PAYLOAD_SECRET` | `<random secret>` | e.g. `openssl rand -hex 32` |
+| `PAYLOAD_PUBLIC_SERVER_URL` | `https://alassali-jewelry.vercel.app` | Your production URL. |
+| `NEXT_PUBLIC_SERVER_URL` | `https://alassali-jewelry.vercel.app` | Optional fallback; can match above. |
 
-`NEXT_PUBLIC_SERVER_URL` is a fallback. `PAYLOAD_CONFIG_PATH` is **not** required.
+`PAYLOAD_CONFIG_PATH` is **not** used. After changing env vars, **redeploy** (e.g. trigger a new deployment).
 
 ## 2. Create database tables (do this once after each deploy)
 
@@ -48,16 +50,25 @@ https://alassali-jewelry.vercel.app/admin
 
 Create your first admin user when prompted.
 
-## 4. If you see “Application error” or blank /admin
+## 4. If you see “Application error” (Digest 3263770923) or blank /admin
 
-- The `relation "users" does not exist` (and similar) errors mean **tables are missing**.
-- Fix: complete **step 2** (visit `/api/migrate?run=1`), then try `/admin` again.
-- Ensure `ENABLE_PUSH_MIGRATIONS=true` and `DATABASE_URL` are set in Vercel.
+- Usually means **tables are missing** (`relation "users" does not exist`) or **Payload not initialized**.
+- **Fix:** Complete **step 2** (open `/api/migrate?run=1`), then open `/admin` again.
+- Ensure **all** vars from **step 1** are set in Vercel and you **redeployed** after adding them.
 
-## 5. No custom middleware
+## 5. If you see “Push not available” from `/api/migrate?run=1`
 
-There is no `middleware.ts` in this project. Payload and Next.js routing are used as-is, so there are no middleware-related conflicts.
+- The response includes `diagnostics`: `hasDatabaseUrl`, `enablePushMigrations`, `nodeEnv`.
+- **Fix:**
+  1. Set `DATABASE_URL` in Vercel (Neon URL ending with `?sslmode=require` once).
+  2. Set `ENABLE_PUSH_MIGRATIONS` = `true` in Vercel (exact name and value).
+  3. **Redeploy** (env vars apply to new deployments only).
+  4. Call `/api/migrate?run=1` again.
+
+## 6. No custom middleware
+
+There is no `middleware.ts` in this project. Payload and Next.js routing are used as-is.
 
 ---
 
-**Summary:** Set env vars → deploy → open `/api/migrate?run=1` once → then use `/admin`.
+**Summary:** Add **all** Vercel env vars → **Redeploy** → open `/api/migrate?run=1` once → then `/admin`.
