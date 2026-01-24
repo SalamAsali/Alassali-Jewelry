@@ -46,9 +46,17 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(result.docs || [])
   } catch (error) {
+    const msg = error instanceof Error ? error.message : ''
+    const missingTable = /relation "pages" does not exist|does not exist/i.test(msg)
+    if (missingTable) {
+      if (slug) {
+        return NextResponse.json({ error: 'Page not found' }, { status: 404 })
+      }
+      return NextResponse.json([])
+    }
     console.error('Pages API error:', error)
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { error: msg || 'Internal server error' },
       { status: 500 }
     )
   }

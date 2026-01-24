@@ -29,9 +29,20 @@ export async function GET(request: NextRequest) {
       testimonials: [],
     })
   } catch (error) {
+    const msg = error instanceof Error ? error.message : ''
+    const missingTable = /relation "homepage" does not exist|does not exist/i.test(msg)
+    if (missingTable) {
+      return NextResponse.json({
+        title: 'Homepage',
+        heroTitle: '',
+        heroSubtitle: '',
+        featuredItems: [],
+        testimonials: [],
+      })
+    }
     console.error('Homepage API error:', error)
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { error: msg || 'Internal server error' },
       { status: 500 }
     )
   }

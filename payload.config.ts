@@ -13,21 +13,15 @@ import { Homepage } from './collections/Homepage'
 
 // Get the server URL from environment or Vercel
 function getServerURL() {
-  if (process.env.PAYLOAD_PUBLIC_SERVER_URL) {
-    return process.env.PAYLOAD_PUBLIC_SERVER_URL
-  }
-  if (process.env.NEXT_PUBLIC_CMS_URL) {
-    // Support NEXT_PUBLIC_CMS_URL but ensure it has https://
-    const url = process.env.NEXT_PUBLIC_CMS_URL
-    return url.startsWith('http') ? url : `https://${url}`
-  }
-  if (process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`
-  }
-  if (process.env.NEXT_PUBLIC_SITE_URL) {
-    return process.env.NEXT_PUBLIC_SITE_URL
-  }
-  return 'http://localhost:3000'
+  const env = process.env
+  const url =
+    env.PAYLOAD_PUBLIC_SERVER_URL ||
+    env.NEXT_PUBLIC_SERVER_URL ||
+    env.NEXT_PUBLIC_CMS_URL ||
+    (env.VERCEL_URL ? `https://${env.VERCEL_URL}` : null) ||
+    env.NEXT_PUBLIC_SITE_URL ||
+    'http://localhost:3000'
+  return url.startsWith('http') ? url : `https://${url}`
 }
 
 const serverURL = getServerURL()
@@ -61,9 +55,11 @@ const config = buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || 'postgresql://localhost:5432/jewelry',
     },
-    // Enable push migrations to auto-create tables
-    // push: true enables automatic table creation (default in dev, needs ENABLE_PUSH_MIGRATIONS=true in prod)
-    push: process.env.NODE_ENV === 'development' || process.env.ENABLE_PUSH_MIGRATIONS === 'true',
+    // Always enable push when we have a DB (dev or prod) so tables are created
+    push:
+      process.env.NODE_ENV === 'development' ||
+      process.env.ENABLE_PUSH_MIGRATIONS === 'true' ||
+      Boolean(process.env.DATABASE_URL),
   }),
   serverURL: serverURL,
   routes: {

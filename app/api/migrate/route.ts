@@ -88,8 +88,52 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  return NextResponse.json({
-    message: 'Use POST to trigger migrations',
-    note: 'This will create all database tables if they don\'t exist'
-  })
+  const run = new URL(request.url).searchParams.get('run') === '1'
+  if (!run) {
+    return NextResponse.json({
+      message: 'Use POST to trigger migrations, or GET ?run=1 to run now',
+      note: 'This will create all database tables if they don\'t exist',
+      url: '/api/migrate?run=1',
+    })
+  }
+
+  try {
+    const payloadInstance = await getPayloadInstance()
+    if (!payloadInstance) {
+      return NextResponse.json({ error: 'Payload not initialized' }, { status: 503 })
+    }
+
+    let ok = false
+    let method = ''
+    const db = payloadInstance.db as any
+    if (db?.push && typeof db.push === 'function') {
+      await db.push({})
+      ok = true
+      method = 'db.push()'
+    } else if (db?.drizzle?.push) {
+      await db.drizzle.push({})
+      ok = true
+      method = 'db.drizzle.push()'
+    }
+
+    if (ok) {
+      return NextResponse.json({
+        success: true,
+        message: 'Database tables created successfully',
+        method,
+        note: 'Go to /admin to create your first user.',
+      })
+    }
+    return NextResponse.json({
+      success: false,
+      error: 'Push not available',
+      note: 'Set ENABLE_PUSH_MIGRATIONS=true and ensure DATABASE_URL is set.',
+    }, { status: 400 })
+  } catch (e) {
+    console.error('Migration error:', e)
+    return NextResponse.json(
+      { error: 'Migration failed', details: e instanceof Error ? e.message : 'Unknown' },
+      { status: 500 }
+    )
+  }
 }

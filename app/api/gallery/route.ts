@@ -41,9 +41,14 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json(transformedDocs)
   } catch (error) {
+    const msg = error instanceof Error ? error.message : ''
+    const missingTable = /relation "gallery" does not exist|does not exist/i.test(msg)
+    if (missingTable) {
+      return NextResponse.json([])
+    }
     console.error('Gallery API error:', error)
     return NextResponse.json(
-      { error: error instanceof Error ? error.message : 'Internal server error' },
+      { error: msg || 'Internal server error' },
       { status: 500 }
     )
   }
