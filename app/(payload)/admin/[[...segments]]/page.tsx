@@ -1,22 +1,24 @@
-/* THIS FILE WAS GENERATED AUTOMATICALLY BY PAYLOAD. */
-/* DO NOT MODIFY IT BECAUSE IT COULD BE REWRITTEN AT ANY TIME. */
+import { redirect } from 'next/navigation'
 import type { Metadata } from 'next'
-import config from '@payload-config'
-import { RootPage, generatePageMetadata } from '@payloadcms/next/views'
-import { importMap } from '../importMap'
+
+export const metadata: Metadata = {
+  title: 'Admin - Alassali Jewelry',
+  description: 'Content management for Alassali Jewelry',
+}
 
 type Args = {
   params: Promise<{ segments?: string[] }>
   searchParams: Promise<{ [key: string]: string | string[] }>
 }
 
-/** Next.js 15: params/searchParams are Promises and must be awaited. */
-export async function generateMetadata({ params }: Args): Promise<Metadata> {
-  return generatePageMetadata({ config, params })
-}
-
-export default async function Page({ params, searchParams }: Args) {
-  const resolved = await params
-  const normalizedParams = Promise.resolve({ segments: resolved?.segments ?? [] })
-  return RootPage({ config, params: normalizedParams, searchParams, importMap })
+/**
+ * Admin route - Redirects to DatoCMS dashboard
+ * 
+ * Content is now managed through DatoCMS at https://datocms.com
+ * Users will be redirected to the DatoCMS login/dashboard page.
+ */
+export default async function AdminPage({ params, searchParams }: Args) {
+  // Redirect to DatoCMS dashboard
+  // Users can log in with their DatoCMS credentials
+  redirect('https://datocms.com/dashboard')
 }

@@ -1,12 +1,12 @@
-import { getPayloadInstance } from './payload'
+import { datocmsRequest, isDatoCMSConfigured, DatoCMSImage } from './datocms'
 
 export type HeaderData = {
-  logo?: { url?: string; filename?: string } | number | null
+  logo?: DatoCMSImage | null
   navItems?: Array<{ label: string; url: string }>
 }
 
 export type FooterData = {
-  logo?: { url?: string; filename?: string } | number | null
+  logo?: DatoCMSImage | null
   tagline?: string | null
   navItems?: Array<{ label: string; url: string }>
   phone?: string | null
@@ -14,38 +14,66 @@ export type FooterData = {
   location?: string | null
 }
 
+const HEADER_QUERY = `
+  query Header {
+    header {
+      logo {
+        url
+        alt
+      }
+      navItems {
+        label
+        url
+      }
+    }
+  }
+`
+
+const FOOTER_QUERY = `
+  query Footer {
+    footer {
+      logo {
+        url
+        alt
+      }
+      tagline
+      navItems {
+        label
+        url
+      }
+      phone
+      email
+      location
+    }
+  }
+`
+
 export async function getHeader(): Promise<HeaderData | null> {
-  const payload = await getPayloadInstance()
-  if (!payload) return null
+  if (!isDatoCMSConfigured()) return null
   try {
-    const header = await (payload as any).findGlobal({
-      slug: 'header',
-      overrideAccess: true,
-      depth: 1,
+    const data = await datocmsRequest<{ header: HeaderData | null }>({
+      query: HEADER_QUERY,
     })
-    return header as HeaderData
+    return data.header
   } catch {
     return null
   }
 }
 
 export async function getFooter(): Promise<FooterData | null> {
-  const payload = await getPayloadInstance()
-  if (!payload) return null
+  if (!isDatoCMSConfigured()) return null
   try {
-    const footer = await (payload as any).findGlobal({
-      slug: 'footer',
-      overrideAccess: true,
-      depth: 1,
+    const data = await datocmsRequest<{ footer: FooterData | null }>({
+      query: FOOTER_QUERY,
     })
-    return footer as FooterData
+    return data.footer
   } catch {
     return null
   }
 }
 
 export function logoUrl(logo: HeaderData['logo'] | FooterData['logo']): string | null {
-  if (!logo || typeof logo === 'number') return null
+  if (!logo) return null
   if (typeof logo === 'object' && logo && 'url' in logo && logo.url) return logo.url
   return null
 }

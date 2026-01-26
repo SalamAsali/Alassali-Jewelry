@@ -1,19 +1,48 @@
-/* THIS FILE WAS GENERATED AUTOMATICALLY BY PAYLOAD. */
-/* DO NOT MODIFY IT BECAUSE IT COULD BE REWRITTEN AT ANY TIME. */
-import config from '@payload-config'
-import '@payloadcms/next/css'
-import {
-  REST_DELETE,
-  REST_GET,
-  REST_OPTIONS,
-  REST_PATCH,
-  REST_POST,
-  REST_PUT,
-} from '@payloadcms/next/routes'
+import { NextRequest, NextResponse } from 'next/server'
 
-export const GET = REST_GET(config)
-export const POST = REST_POST(config)
-export const PUT = REST_PUT(config)
-export const PATCH = REST_PATCH(config)
-export const DELETE = REST_DELETE(config)
-export const OPTIONS = REST_OPTIONS(config)
+/**
+ * Legacy Payload API route
+ * This route is deprecated - content is now served via DatoCMS.
+ * See /api/gallery, /api/homepage, /api/pages for the new API routes.
+ */
+
+export async function GET(request: NextRequest) {
+  return NextResponse.json({
+    message: 'This API endpoint has been migrated to DatoCMS',
+    note: 'Use /api/gallery, /api/homepage, or /api/pages instead',
+    cms: 'DatoCMS',
+  }, { status: 410 }) // 410 Gone
+}
+
+export async function POST(request: NextRequest) {
+  return NextResponse.json({
+    message: 'This API endpoint has been migrated to DatoCMS',
+    note: 'Content management is now done through DatoCMS dashboard',
+    cms: 'DatoCMS',
+  }, { status: 410 })
+}
+
+export async function PUT(request: NextRequest) {
+  return NextResponse.json({
+    message: 'This API endpoint has been migrated to DatoCMS',
+    cms: 'DatoCMS',
+  }, { status: 410 })
+}
+
+export async function PATCH(request: NextRequest) {
+  return NextResponse.json({
+    message: 'This API endpoint has been migrated to DatoCMS',
+    cms: 'DatoCMS',
+  }, { status: 410 })
+}
+
+export async function DELETE(request: NextRequest) {
+  return NextResponse.json({
+    message: 'This API endpoint has been migrated to DatoCMS',
+    cms: 'DatoCMS',
+  }, { status: 410 })
+}
+
+export async function OPTIONS(request: NextRequest) {
+  return NextResponse.json({ methods: ['GET'] }, { status: 200 })
+}

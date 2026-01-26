@@ -1,53 +1,50 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getPayloadInstance } from '@/lib/payload'
+import { getGalleryItems, isDatoCMSConfigured } from '@/lib/datocms'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET(request: NextRequest) {
   try {
-    const payloadInstance = await getPayloadInstance()
-    if (!payloadInstance) {
-      return NextResponse.json({ error: 'Payload not initialized' }, { status: 503 })
+    // Check if DatoCMS is configured
+    if (!isDatoCMSConfigured()) {
+      console.warn('[Gallery API] DatoCMS not configured, returning empty array')
+      return NextResponse.json([])
     }
 
     const { searchParams } = new URL(request.url)
     const featured = searchParams.get('featured')
     const category = searchParams.get('category')
 
-    const query: any = {}
+    const filter: { featured?: boolean; category?: string } = {}
     if (featured === 'true') {
-      query.featured = { equals: true }
+      filter.featured = true
     }
     if (category) {
-      query.category = { equals: category }
+      filter.category = category
     }
 
-    const result = await payloadInstance.find({
-      collection: 'gallery',
-      where: Object.keys(query).length > 0 ? query : undefined,
-      limit: 100,
-      sort: '-createdAt',
-      depth: 1,
-    })
+    const items = await getGalleryItems({ filter, limit: 100 })
 
     // Transform the data to match frontend expectations
-    const transformedDocs = (result.docs || []).map((doc: any) => ({
-      id: doc.id,
-      title: doc.title,
-      description: doc.description,
-      image: doc.image, // This will be the media relation
-      category: doc.category,
-      featured: doc.featured,
+    const transformedItems = items.map((item) => ({
+      id: item.id,
+      title: item.title,
+      description: item.description,
+      image: item.image,
+      category: item.category,
+      featured: item.featured,
     }))
 
-    return NextResponse.json(transformedDocs)
+    return NextResponse.json(transformedItems)
   } catch (error) {
-    const msg = error instanceof Error ? error.message : ''
-    const missingTable = /relation "gallery" does not exist|does not exist/i.test(msg)
-    if (missingTable) {
+    const msg = error instanceof Error ? error.message : 'Unknown error'
+    console.error('Gallery API error:', error)
+    
+    // Return empty array for missing content/configuration errors
+    if (msg.includes('not configured') || msg.includes('not set')) {
       return NextResponse.json([])
     }
-    console.error('Gallery API error:', error)
+    
     return NextResponse.json(
       { error: msg || 'Internal server error' },
       { status: 500 }
