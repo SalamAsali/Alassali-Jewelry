@@ -5,42 +5,33 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:with-migrate": "payload migrate && next build",
     "start": "next start",
-    "lint": "next lint",
-    "payload": "payload",
-    "payload:generate": "payload generate:types",
-    "payload:migrate": "payload migrate",
-    "payload:migrate:create": "payload migrate:create"
+    "lint": "next lint"
   },
   "dependencies": {
-    "graphql": "^16.9.0",
-    "drizzle-kit": "0.31.7",
-    "next": "^15.1.11",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3",
-    "payload": "^3.72.0",
-    "@payloadcms/next": "^3.72.0",
-    "@payloadcms/storage-vercel-blob": "^3.72.0",
-    "@payloadcms/db-postgres": "^3.72.0",
-    "@payloadcms/richtext-slate": "^3.72.0",
-    "resend": "^6.8.0",
-    "framer-motion": "^12.23.26",
-    "lucide-react": "^0.562.0",
+    "@datocms/cda-client": "^0.2.10",
     "axios": "^1.13.2",
     "clsx": "^2.1.1",
-    "tailwind-merge": "^3.2.0",
-    "sharp": "^0.33.0"
+    "framer-motion": "^12.23.26",
+    "graphql": "^16.9.0",
+    "lucide-react": "^0.562.0",
+    "next": "^15.1.11",
+    "react": "^19.2.3",
+    "react-datocms": "^7.2.10",
+    "react-dom": "^19.2.3",
+    "resend": "^6.8.0",
+    "sharp": "^0.33.0",
+    "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "typescript": "^5",
+    "autoprefixer": "^10.4.20",
     "eslint": "^9",
     "eslint-config-next": "15.1.0",
-    "tailwindcss": "^3.4.17",
     "postcss": "^8.4.49",
-    "autoprefixer": "^10.4.20"
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5"
   }
 }

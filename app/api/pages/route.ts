@@ -1,13 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getPayloadInstance } from '@/lib/payload'
+import { getPages, getPageBySlug, isDatoCMSConfigured } from '@/lib/datocms'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET(request: NextRequest) {
   try {
-    const payloadInstance = await getPayloadInstance()
-    if (!payloadInstance) {
-      return NextResponse.json({ error: 'Payload not initialized' }, { status: 503 })
+    // Check if DatoCMS is configured
+    if (!isDatoCMSConfigured()) {
+      console.warn('[Pages API] DatoCMS not configured')
+      return NextResponse.json([])
     }
 
     const { searchParams } = new URL(request.url)
@@ -16,45 +17,33 @@ export async function GET(request: NextRequest) {
 
     if (slug) {
       // Get specific page by slug
-      const result = await payloadInstance.find({
-        collection: 'pages',
-        where: {
-          slug: { equals: slug },
-          ...(published === 'true' ? { published: { equals: true } } : {}),
-        },
-        limit: 1,
-      })
+      const page = await getPageBySlug(slug)
 
-      if (result.docs && result.docs.length > 0) {
-        return NextResponse.json(result.docs[0])
+      if (page) {
+        // Filter by published status if requested
+        if (published === 'true' && !page.published) {
+          return NextResponse.json({ error: 'Page not found' }, { status: 404 })
+        }
+        return NextResponse.json(page)
       }
       return NextResponse.json({ error: 'Page not found' }, { status: 404 })
     }
 
     // Get all pages
-    const where: any = {}
-    if (published === 'true') {
-      where.published = { equals: true }
-    }
-
-    const result = await payloadInstance.find({
-      collection: 'pages',
-      where: Object.keys(where).length > 0 ? where : undefined,
-      limit: 100,
-      sort: '-createdAt',
+    const pages = await getPages({
+      published: published === 'true' ? true : undefined,
     })
 
-    return NextResponse.json(result.docs || [])
+    return NextResponse.json(pages)
   } catch (error) {
     const msg = error instanceof Error ? error.message : ''
-    const missingTable = /relation "pages" does not exist|does not exist/i.test(msg)
-    if (missingTable) {
-      if (slug) {
-        return NextResponse.json({ error: 'Page not found' }, { status: 404 })
-      }
+    console.error('Pages API error:', error)
+    
+    // Return empty array for configuration errors
+    if (msg.includes('not configured') || msg.includes('not set')) {
       return NextResponse.json([])
     }
-    console.error('Pages API error:', error)
+    
     return NextResponse.json(
       { error: msg || 'Internal server error' },
       { status: 500 }

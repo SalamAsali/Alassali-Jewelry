@@ -1,51 +1,44 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getPayloadInstance } from '@/lib/payload'
+import { getHomepage, isDatoCMSConfigured } from '@/lib/datocms'
 
 export const dynamic = 'force-dynamic'
 
+// Default homepage content when CMS is not configured or no content exists
+const DEFAULT_HOMEPAGE = {
+  title: 'Homepage',
+  heroTitle: '',
+  heroSubtitle: '',
+  featuredItems: [],
+  testimonials: [],
+  processSteps: [],
+  madeInTorontoImages: [],
+}
+
 export async function GET(request: NextRequest) {
   try {
-    const payloadInstance = await getPayloadInstance()
-    if (!payloadInstance) {
-      return NextResponse.json({ error: 'Payload not initialized' }, { status: 503 })
+    // Check if DatoCMS is configured
+    if (!isDatoCMSConfigured()) {
+      console.warn('[Homepage API] DatoCMS not configured, returning defaults')
+      return NextResponse.json(DEFAULT_HOMEPAGE)
     }
 
-    // Get homepage content (should be single document)
-    const result = await payloadInstance.find({
-      collection: 'homepage',
-      limit: 1,
-      depth: 2,
-    })
+    const homepage = await getHomepage()
 
-    if (result.docs && result.docs.length > 0) {
-      return NextResponse.json(result.docs[0])
+    if (homepage) {
+      return NextResponse.json(homepage)
     }
 
     // Return default if no homepage content exists
-    return NextResponse.json({
-      title: 'Homepage',
-      heroTitle: '',
-      heroSubtitle: '',
-      featuredItems: [],
-      testimonials: [],
-      processSteps: [],
-      madeInTorontoImages: [],
-    })
+    return NextResponse.json(DEFAULT_HOMEPAGE)
   } catch (error) {
     const msg = error instanceof Error ? error.message : ''
-    const missingTable = /relation "homepage" does not exist|does not exist/i.test(msg)
-    if (missingTable) {
-      return NextResponse.json({
-        title: 'Homepage',
-        heroTitle: '',
-        heroSubtitle: '',
-        featuredItems: [],
-        testimonials: [],
-        processSteps: [],
-        madeInTorontoImages: [],
-      })
-    }
     console.error('Homepage API error:', error)
+    
+    // Return defaults for configuration errors
+    if (msg.includes('not configured') || msg.includes('not set')) {
+      return NextResponse.json(DEFAULT_HOMEPAGE)
+    }
+    
     return NextResponse.json(
       { error: msg || 'Internal server error' },
       { status: 500 }

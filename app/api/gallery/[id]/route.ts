@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getPayloadInstance } from '@/lib/payload'
+import { getGalleryItemById, isDatoCMSConfigured } from '@/lib/datocms'
 
 export const dynamic = 'force-dynamic'
 
@@ -8,42 +8,32 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const payloadInstance = await getPayloadInstance()
-    if (!payloadInstance) {
-      return NextResponse.json({ error: 'Payload not initialized' }, { status: 503 })
+    // Check if DatoCMS is configured
+    if (!isDatoCMSConfigured()) {
+      return NextResponse.json({ error: 'CMS not configured' }, { status: 503 })
     }
 
     const { id } = await params
 
-    const result = await payloadInstance.findByID({
-      collection: 'gallery',
-      id,
-      depth: 1,
-    })
+    const item = await getGalleryItemById(id)
 
-    if (!result) {
+    if (!item) {
       return NextResponse.json({ error: 'Item not found' }, { status: 404 })
     }
 
     // Transform the data to match frontend expectations
     const transformed = {
-      id: result.id,
-      title: result.title,
-      description: result.description,
-      image: result.image,
-      category: result.category,
-      featured: result.featured,
-      createdAt: result.createdAt,
-      updatedAt: result.updatedAt,
+      id: item.id,
+      title: item.title,
+      description: item.description,
+      image: item.image,
+      category: item.category,
+      featured: item.featured,
     }
 
     return NextResponse.json(transformed)
   } catch (error) {
     const msg = error instanceof Error ? error.message : ''
-    const missingTable = /relation "gallery" does not exist|does not exist/i.test(msg)
-    if (missingTable) {
-      return NextResponse.json({ error: 'Item not found' }, { status: 404 })
-    }
     console.error('Gallery item API error:', error)
     return NextResponse.json(
       { error: msg || 'Internal server error' },
