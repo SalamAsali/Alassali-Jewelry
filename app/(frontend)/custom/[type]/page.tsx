@@ -13,44 +13,44 @@ const typeConfig: Record<string, any> = {
   'engagement-rings': {
     title: 'Custom Engagement Rings',
     subtitle: 'Begin your forever with a ring as unique as your love story',
-    styles: ['Classic', 'Modern', 'Vintage', 'Art Deco', 'Halo', 'Solitaire'],
-    metals: ['Platinum', '18K White Gold', '18K Yellow Gold', '18K Rose Gold', '14K White Gold', '14K Yellow Gold']
+    styles: ['Classic', 'Modern', 'Vintage', 'Art Deco', 'Halo', 'Solitaire', 'Not Sure'],
+    metals: ['Platinum', '18K Gold', '14K Gold']
   },
   'grillz': {
     title: 'Custom Grillz',
     subtitle: 'Bold statements crafted in precious metal',
-    styles: ['Full Set', 'Top 6', 'Bottom 6', 'Single Tooth', 'Fangs'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'White Gold', 'Rose Gold']
+    styles: ['Full Set', 'Top 6', 'Bottom 6', 'Single Tooth', 'Fangs', 'Not Sure'],
+    metals: ['10K Gold', '14K Gold', '18K Gold']
   },
   'chains': {
     title: 'Custom Chains',
     subtitle: 'Wearable art, crafted to your specifications',
-    styles: ['Miami Cuban', 'Rope', 'Franco', 'Figaro', 'Box Chain'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'White Gold', 'Rose Gold', 'Platinum']
+    styles: ['Miami Cuban', 'Rope', 'Franco', 'Figaro', 'Box Chain', 'Not Sure'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum']
   },
   'pendants': {
     title: 'Custom Pendants',
     subtitle: 'Your story, beautifully told',
-    styles: ['Initial', 'Name', 'Symbol', 'Religious', 'Custom Design'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'White Gold', 'Rose Gold', 'Platinum']
+    styles: ['Initial', 'Name', 'Symbol', 'Religious', 'Custom Design', 'Not Sure'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum']
   },
   'rings': {
     title: 'Custom Rings',
     subtitle: 'Unique rings designed just for you',
-    styles: ['Statement', 'Band', 'Signet', 'Stackable', 'Custom Design'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'White Gold', 'Rose Gold', 'Platinum']
+    styles: ['Statement', 'Band', 'Signet', 'Stackable', 'Custom Design', 'Everyday/Essentials', 'Not Sure'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum']
   },
   'earrings': {
     title: 'Custom Earrings',
     subtitle: 'Elegant earrings crafted to perfection',
-    styles: ['Studs', 'Hoops', 'Drops', 'Chandeliers', 'Custom Design'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'White Gold', 'Rose Gold', 'Platinum']
+    styles: ['Studs', 'Hoops', 'Drops', 'Chandeliers', 'Custom Design', 'Not Sure'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum']
   },
   'bracelets': {
     title: 'Custom Bracelets',
     subtitle: 'Exquisite bracelets tailored to your style',
-    styles: ['Tennis', 'Chain', 'Bangle', 'Cuff', 'Custom Design'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'White Gold', 'Rose Gold', 'Platinum']
+    styles: ['Tennis', 'Chain', 'Bangle', 'Cuff', 'Custom Design', 'Not Sure'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum']
   }
 }
 
@@ -67,6 +67,7 @@ export default function CustomJewelryPage() {
     budget: '',
     style: '',
     metalType: '',
+    goldColor: '',
     stonePreferences: [] as string[],
     size: '',
     timeline: '',
@@ -81,7 +82,11 @@ export default function CustomJewelryPage() {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
-    setFormData({ ...formData, [name]: value })
+    if (name === 'metalType' && !value.includes('Gold')) {
+      setFormData({ ...formData, [name]: value, goldColor: '' })
+    } else {
+      setFormData({ ...formData, [name]: value })
+    }
   }
 
   const handleCheckboxChange = (value: string) => {
@@ -116,6 +121,7 @@ export default function CustomJewelryPage() {
           ...formData,
           jewelryCategory: type,
           metalType: formData.metalType,
+          goldColor: formData.goldColor,
           inspirationNames: formData.inspirationImages.join(', ')
         })
       })
@@ -327,6 +333,7 @@ export default function CustomJewelryPage() {
                                 <option value="$2,500-$5,000" className="bg-charcoal">$2,500 - $5,000</option>
                                 <option value="$5,000-$10,000" className="bg-charcoal">$5,000 - $10,000</option>
                                 <option value="$10,000+" className="bg-charcoal">$10,000+</option>
+                                <option value="$50,000+" className="bg-charcoal">$50,000+</option>
                               </select>
                             </div>
                           </motion.div>
@@ -374,6 +381,35 @@ export default function CustomJewelryPage() {
                               </select>
                             </div>
                             
+                            {formData.metalType.includes('Gold') && (
+                              <div>
+                                <label className="block text-sm font-medium text-champagne-gold mb-4 uppercase tracking-wide">
+                                  Gold Colour
+                                </label>
+                                <div className="grid grid-cols-3 gap-3">
+                                  {([
+                                    { label: 'Yellow Gold', color: 'bg-yellow-500' },
+                                    { label: 'White Gold', color: 'bg-gray-200' },
+                                    { label: 'Rose Gold', color: 'bg-rose-400' },
+                                  ] as const).map(({ label, color }) => (
+                                    <button
+                                      key={label}
+                                      type="button"
+                                      onClick={() => setFormData({ ...formData, goldColor: label })}
+                                      className={`flex items-center gap-3 cursor-pointer px-4 py-3 rounded-lg border-2 transition-all ${
+                                        formData.goldColor === label
+                                          ? 'bg-champagne-gold/20 border-champagne-gold'
+                                          : 'bg-charcoal border-champagne-gold/40 hover:bg-champagne-gold/20 hover:border-champagne-gold'
+                                      }`}
+                                    >
+                                      <span className={`w-5 h-5 rounded-full ${color} flex-shrink-0`} />
+                                      <span className="text-white text-sm font-medium">{label}</span>
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                            )}
+
                             <div>
                               <label className="block text-sm font-medium text-champagne-gold mb-4 uppercase tracking-wide">
                                 Stone Preferences
@@ -473,6 +509,7 @@ export default function CustomJewelryPage() {
                                 className="w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/50 text-white focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/40 transition-all outline-none"
                               >
                                 <option value="" className="bg-charcoal">When do you need this?</option>
+                                <option value="As soon as possible" className="bg-charcoal">As Soon As Possible</option>
                                 <option value="No rush" className="bg-charcoal">No Rush</option>
                                 <option value="1-2 months" className="bg-charcoal">1-2 Months</option>
                                 <option value="3-6 months" className="bg-charcoal">3-6 Months</option>
@@ -536,6 +573,12 @@ export default function CustomJewelryPage() {
                                 <div className="flex justify-between border-b border-champagne-gold/10 pb-3">
                                   <span className="font-medium text-champagne-gold">Metal:</span>
                                   <span className="text-white">{formData.metalType}</span>
+                                </div>
+                              )}
+                              {formData.goldColor && (
+                                <div className="flex justify-between border-b border-champagne-gold/10 pb-3">
+                                  <span className="font-medium text-champagne-gold">Gold Colour:</span>
+                                  <span className="text-white">{formData.goldColor}</span>
                                 </div>
                               )}
                               {formData.stonePreferences.length > 0 && (
