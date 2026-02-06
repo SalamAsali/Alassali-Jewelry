@@ -3,7 +3,11 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { Sparkles, Shield, Award, Heart, ArrowRight, Star } from 'lucide-react'
+import {
+  ArrowRight, Star,
+  MessageSquare, Pencil, Gem, PenTool, Hammer, Gift,
+} from 'lucide-react'
+import type { LucideIcon } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 import { getImageUrl } from '@/lib/getImageUrl'
@@ -23,6 +27,24 @@ interface GalleryItem {
 }
 
 type ProcessStep = { label: string; description: string; icon: string | { url?: string; sizes?: { card?: { url?: string }; thumbnail?: { url?: string } } } }
+
+const processIconMap: Record<string, LucideIcon> = {
+  'Consultation': MessageSquare,
+  'Sketch': Pencil,
+  'Material Selection': Gem,
+  'Design': PenTool,
+  'In-House Manufacture': Hammer,
+  'Presentation': Gift,
+}
+
+const FALLBACK_PROCESS: ProcessStep[] = [
+  { icon: '', label: 'Consultation', description: 'Discuss Your Vision' },
+  { icon: '', label: 'Sketch', description: 'Initial Design' },
+  { icon: '', label: 'Material Selection', description: 'Choose Metals & Stones' },
+  { icon: '', label: 'Design', description: 'CAD Rendering' },
+  { icon: '', label: 'In-House Manufacture', description: 'Crafting' },
+  { icon: '', label: 'Presentation', description: 'Final Reveal' },
+]
 
 export default function Home() {
   const [featuredItems, setFeaturedItems] = useState<GalleryItem[]>([])
@@ -76,15 +98,6 @@ export default function Home() {
 
   const MADE_IN_TORONTO_PLACEHOLDER = 'https://via.placeholder.com/400x600?text=Toronto'
 
-const FALLBACK_PROCESS = [
-    { icon: 'https://via.placeholder.com/64?text=1', label: 'Consultation', description: 'Discuss Your Vision' },
-    { icon: 'https://via.placeholder.com/64?text=2', label: 'Sketch', description: 'Initial Design' },
-    { icon: 'https://via.placeholder.com/64?text=3', label: 'Material Selection', description: 'Choose Metals & Stones' },
-    { icon: 'https://via.placeholder.com/64?text=4', label: 'Design', description: 'CAD Rendering' },
-    { icon: 'https://via.placeholder.com/64?text=5', label: 'In-House Manufacture', description: 'Crafting' },
-    { icon: 'https://via.placeholder.com/64?text=6', label: 'Presentation', description: 'Final Reveal' },
-  ]
-
   const testimonials = [
     { name: 'gray', rating: 5, text: 'Had a perfect experience! Unmatched creativity and execution, definitely the only place to go in toronto for jewelry', source: 'Google' },
     { name: 'Umair Alahi', rating: 5, text: 'My experience shopping here was excellent. They answered all my questions, worked out a price that fits my budget, & helped me choose the perfect piece and also kept in touch after the sale to make sure I was satisfied.', source: 'Google' },
@@ -102,7 +115,7 @@ const FALLBACK_PROCESS = [
             <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 1 }} className="text-4xl md:text-5xl font-light mb-6 text-white" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jeweler</motion.h2>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 1 }} className="text-sm uppercase tracking-widest mb-12 text-stone" style={{ fontFamily: 'var(--font-body)' }}>ONLY THE FINEST</motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
-              <Link href="/catalog" className="inline-block bg-white text-soft-black px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-champagne-gold hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl" data-testid="hero-cta-primary">VIEW MY WORK</Link>
+              <Link href="/portfolio" className="inline-block bg-white text-soft-black px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-champagne-gold hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl" data-testid="hero-cta-primary">VIEW MY WORK</Link>
             </motion.div>
           </motion.div>
         </div>
@@ -112,15 +125,28 @@ const FALLBACK_PROCESS = [
         <div className="section-container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Made</h2>
-            <p className="text-lg text-taupe max-w-3xl mx-auto leading-relaxed">"We believe in a collaborative approach to custom jewelry creation. Each piece is a partnership between your vision and our expertise, resulting in truly one-of-a-kind artistry."</p>
+            <p className="text-lg text-taupe max-w-3xl mx-auto leading-relaxed">&quot;We believe in a collaborative approach to custom jewelry creation. Each piece is a partnership between your vision and our expertise, resulting in truly one-of-a-kind artistry.&quot;</p>
           </motion.div>
-          <div className="flex flex-wrap justify-center gap-6 mb-12">
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
             {(processSteps.length ? processSteps : FALLBACK_PROCESS).map((step, index) => {
-              const iconSrc = typeof step.icon === 'string' ? step.icon : getImageUrl(step.icon)
+              const Icon = processIconMap[step.label]
               return (
-                <motion.div key={`${step.label}-${index}`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} whileHover={{ y: -8, backgroundColor: 'rgba(201, 167, 94, 0.1)' }} className="group flex flex-col items-center bg-white border-2 border-soft-black rounded-xl p-6 w-40 transition-all duration-300 hover:border-champagne-gold">
-                  <div className="w-16 h-16 mb-3 group-hover:scale-110 transition-transform duration-300">
-                    <img src={iconSrc} alt={`${step.label} - ${step.description}`} className="w-full h-full object-contain" />
+                <motion.div
+                  key={`${step.label}-${index}`}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -8 }}
+                  className="group flex flex-col items-center bg-white border-2 border-soft-black rounded-2xl p-8 transition-all duration-500 hover:border-champagne-gold hover:shadow-xl hover:shadow-champagne-gold/10"
+                >
+                  <div className="w-20 h-20 rounded-full bg-white border-2 border-soft-black group-hover:border-champagne-gold flex items-center justify-center mb-4 group-hover:shadow-lg group-hover:shadow-champagne-gold/20 transition-all duration-500">
+                    {Icon ? (
+                      <Icon className="w-9 h-9 text-deep-charcoal group-hover:text-champagne-gold group-hover:scale-110 transition-all duration-300" />
+                    ) : (
+                      <img src={typeof step.icon === 'string' ? step.icon : getImageUrl(step.icon)} alt={step.label} className="w-12 h-12 object-contain group-hover:scale-110 transition-transform duration-300" />
+                    )}
                   </div>
                   <h3 className="text-sm font-bold text-deep-charcoal mb-1 text-center">{step.label}</h3>
                   <p className="text-xs text-taupe text-center">{step.description}</p>
@@ -128,6 +154,7 @@ const FALLBACK_PROCESS = [
               )
             })}
           </div>
+
           <div className="text-center">
             <Link href="/custom/engagement-rings" className="inline-flex items-center gap-2 bg-deep-charcoal text-white px-10 py-4 rounded-lg font-semibold hover:bg-champagne-gold hover:text-soft-black transition-all duration-300">SHOP NOW <ArrowRight className="w-5 h-5" /></Link>
           </div>

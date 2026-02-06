@@ -69,7 +69,6 @@ export default function Navigation(props?: NavigationProps) {
   ]
 
   const menuItems = [
-    { name: 'Products', path: null, hasDropdown: true, dropdownType: 'products' },
     { name: 'Bespoke', path: null, hasDropdown: true, dropdownType: 'bespoke' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'FAQ', path: '/faq' },
