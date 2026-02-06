@@ -193,7 +193,8 @@ export default function CustomJewelryPage() {
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState({
     type,
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
     phone: '',
     budget: '',
@@ -263,6 +264,7 @@ export default function CustomJewelryPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
           jewelryCategory: type,
           inspirationNames: formData.inspirationImages.join(', '),
         }),
@@ -452,9 +454,15 @@ export default function CustomJewelryPage() {
                         <h2 className="text-3xl font-bold text-white mb-8" style={{ fontFamily: 'var(--font-heading)' }}>
                           Let&apos;s Get Started
                         </h2>
-                        <div>
-                          <label className="block text-sm font-medium text-champagne-gold mb-2 uppercase tracking-wide">Full Name *</label>
-                          <input type="text" name="name" required value={formData.name} onChange={handleInputChange} className={inputClass} placeholder="John Doe" />
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                          <div>
+                            <label className="block text-sm font-medium text-champagne-gold mb-2 uppercase tracking-wide">First Name *</label>
+                            <input type="text" name="firstName" required value={formData.firstName} onChange={handleInputChange} className={inputClass} placeholder="John" />
+                          </div>
+                          <div>
+                            <label className="block text-sm font-medium text-champagne-gold mb-2 uppercase tracking-wide">Last Name *</label>
+                            <input type="text" name="lastName" required value={formData.lastName} onChange={handleInputChange} className={inputClass} placeholder="Doe" />
+                          </div>
                         </div>
                         <div>
                           <label className="block text-sm font-medium text-champagne-gold mb-2 uppercase tracking-wide">Email *</label>
@@ -667,7 +675,8 @@ export default function CustomJewelryPage() {
                       <motion.div key="s10" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                         <h2 className="text-3xl font-bold text-white mb-8" style={{ fontFamily: 'var(--font-heading)' }}>Review Your Request</h2>
                         <div className="space-y-4 bg-white/5 rounded-lg p-6 border border-champagne-gold/20">
-                          <ReviewRow label="Name" value={formData.name} />
+                          <ReviewRow label="First Name" value={formData.firstName} />
+                          <ReviewRow label="Last Name" value={formData.lastName} />
                           <ReviewRow label="Email" value={formData.email} />
                           {formData.phone && <ReviewRow label="Phone" value={formData.phone} />}
                           {formData.budget && <ReviewRow label="Budget" value={formData.budget} />}
