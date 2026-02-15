@@ -13,8 +13,8 @@
     --charcoal: #2C2C2C;
     --deep-charcoal: #1A1A1A;
     --soft-black: #0A0A0A;
-    --glacier-grey: #8899AA;
-    --glacier-grey-light: #9AACBE;
+    --glacier-grey: #8E9196;
+    --glacier-grey-light: #A3A7AC;
     --rose-gold: #B89778;
     --taupe: #8B7D6B;
     --warm-gray: #A9A9A9;
@@ -78,8 +78,8 @@
 @layer components {
   /* Button styles */
   .btn-primary {
-    @apply bg-[#8899AA] text-[#0A0A0A] px-8 py-3.5 rounded-lg font-medium transition-all duration-300;
-    @apply hover:bg-[#9AACBE] hover:shadow-lg focus:ring-2 focus:ring-[#8899AA] focus:ring-offset-2;
+    @apply bg-[#8E9196] text-[#0A0A0A] px-8 py-3.5 rounded-lg font-medium transition-all duration-300;
+    @apply hover:bg-[#A3A7AC] hover:shadow-lg focus:ring-2 focus:ring-[#8E9196] focus:ring-offset-2;
   }
 
   .btn-secondary {
@@ -101,7 +101,7 @@
   /* Input styles */
   .input-field {
     @apply w-full px-4 py-3 rounded-lg border border-[#D4CFC5] bg-white;
-    @apply focus:border-[#8899AA] focus:ring-2 focus:ring-[#8899AA] focus:ring-opacity-20;
+    @apply focus:border-[#8E9196] focus:ring-2 focus:ring-[#8E9196] focus:ring-opacity-20;
     @apply transition-all duration-200 outline-none;
   }
 
@@ -142,7 +142,7 @@
   }
 
   .gradient-gold {
-    background: linear-gradient(135deg, #9AACBE 0%, #8899AA 100%);
+    background: linear-gradient(135deg, #A3A7AC 0%, #8E9196 100%);
   }
 }
 

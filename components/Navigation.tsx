@@ -92,9 +92,9 @@ export default function Navigation(props?: NavigationProps) {
               className="w-6 h-6 md:w-8 md:h-8"
               style={{ animation: 'spin 8s linear infinite' }}
             >
-              <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8899AA" />
-              <path d="M16 2 L24 12 L16 14 L8 12 Z" fill="#9AACBE" />
-              <path d="M8 12 L16 14 L16 30 Z" fill="#778899" />
+              <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8E9196" />
+              <path d="M16 2 L24 12 L16 14 L8 12 Z" fill="#A3A7AC" />
+              <path d="M8 12 L16 14 L16 30 Z" fill="#7D8186" />
             </svg>
             <img
               src={logo}
@@ -115,7 +115,7 @@ export default function Navigation(props?: NavigationProps) {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <button
-                    className="text-sm font-semibold tracking-wide uppercase text-white/90 hover:text-glacier-grey transition-all duration-300 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-glacier-grey focus:ring-offset-2 focus:ring-offset-soft-black rounded px-2 py-1"
+                    className="text-sm font-semibold tracking-wide uppercase text-glacier-grey hover:text-glacier-grey-light transition-all duration-300 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-glacier-grey focus:ring-offset-2 focus:ring-offset-soft-black rounded px-2 py-1"
                     aria-expanded={openDropdown === item.dropdownType}
                     aria-haspopup="true"
                   >
@@ -244,7 +244,7 @@ export default function Navigation(props?: NavigationProps) {
                 <Link
                   key={item.name}
                   href={item.path || '#'}
-                  className="text-sm font-semibold tracking-wide uppercase text-white/90 hover:text-glacier-grey transition-all duration-300"
+                  className="text-sm font-semibold tracking-wide uppercase text-glacier-grey hover:text-glacier-grey-light transition-all duration-300"
                 >
                   {item.name}
                 </Link>
@@ -306,7 +306,7 @@ export default function Navigation(props?: NavigationProps) {
                     <div className="mb-2">
                       <button
                         onClick={() => setOpenDropdown(openDropdown === item.dropdownType ? null : item.dropdownType || null)}
-                        className="w-full text-left py-3 px-4 text-base font-medium text-white hover:text-glacier-grey transition-colors flex items-center justify-between"
+                        className="w-full text-left py-3 px-4 text-base font-medium text-glacier-grey hover:text-glacier-grey-light transition-colors flex items-center justify-between"
                       >
                         {item.name}
                         <motion.svg
@@ -364,7 +364,7 @@ export default function Navigation(props?: NavigationProps) {
                     <Link
                       href={item.path || '#'}
                       onClick={() => setIsMenuOpen(false)}
-                      className="block py-3 px-4 text-base font-medium text-white hover:text-glacier-grey transition-colors"
+                      className="block py-3 px-4 text-base font-medium text-glacier-grey hover:text-glacier-grey-light transition-colors"
                     >
                       {item.name}
                     </Link>

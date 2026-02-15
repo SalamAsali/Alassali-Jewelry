@@ -165,14 +165,14 @@ export default function Home() {
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]">
           <div style={{ animation: 'orbit 20s linear infinite' }} className="hidden md:block">
             <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-              <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8899AA" opacity="0.7" />
-              <path d="M16 2 L24 12 L16 14 L8 12 Z" fill="#9AACBE" opacity="0.8" />
+              <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8E9196" opacity="0.7" />
+              <path d="M16 2 L24 12 L16 14 L8 12 Z" fill="#A3A7AC" opacity="0.8" />
             </svg>
           </div>
           <div style={{ animation: 'orbit-mobile 20s linear infinite' }} className="block md:hidden">
             <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
-              <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8899AA" opacity="0.7" />
-              <path d="M16 2 L24 12 L16 14 L8 12 Z" fill="#9AACBE" opacity="0.8" />
+              <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8E9196" opacity="0.7" />
+              <path d="M16 2 L24 12 L16 14 L8 12 Z" fill="#A3A7AC" opacity="0.8" />
             </svg>
           </div>
         </div>
@@ -180,17 +180,17 @@ export default function Home() {
         {/* Floating diamonds */}
         <div className="absolute top-[20%] right-[15%] pointer-events-none z-[5]" style={{ animation: 'float 6s ease-in-out infinite' }}>
           <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
-            <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8899AA" opacity="0.5" />
+            <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8E9196" opacity="0.5" />
           </svg>
         </div>
         <div className="absolute bottom-[30%] left-[10%] pointer-events-none z-[5]" style={{ animation: 'float-slow 8s ease-in-out infinite' }}>
           <svg width="12" height="12" viewBox="0 0 32 32" fill="none">
-            <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#9AACBE" opacity="0.4" />
+            <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#A3A7AC" opacity="0.4" />
           </svg>
         </div>
         <div className="absolute top-[60%] right-[25%] pointer-events-none z-[5]" style={{ animation: 'float 10s ease-in-out infinite 2s' }}>
           <svg width="10" height="10" viewBox="0 0 32 32" fill="none">
-            <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8899AA" opacity="0.3" />
+            <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8E9196" opacity="0.3" />
           </svg>
         </div>
 
@@ -317,7 +317,7 @@ export default function Home() {
         <div className="section-container relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <div className="inline-block mb-8">
-              <svg width="60" height="60" viewBox="0 0 60 60"><path d="M30 5 L40 25 L60 30 L40 35 L30 55 L20 35 L0 30 L20 25 Z" fill="#8899AA" /></svg>
+              <svg width="60" height="60" viewBox="0 0 60 60"><path d="M30 5 L40 25 L60 30 L40 35 L30 55 L20 35 L0 30 L20 25 Z" fill="#8E9196" /></svg>
             </div>
           </motion.div>
           <div className="grid md:grid-cols-3 gap-8">
