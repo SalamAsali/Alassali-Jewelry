@@ -54,7 +54,7 @@ export default function CartPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin w-12 h-12 border-4 border-champagne-gold border-t-transparent rounded-full" />
+        <div className="animate-spin w-12 h-12 border-4 border-glacier-grey border-t-transparent rounded-full" />
       </div>
     )
   }
@@ -68,7 +68,7 @@ export default function CartPage() {
             <ShoppingCart className="w-24 h-24 text-taupe mx-auto mb-6 opacity-50" />
             <h2 className="text-2xl font-bold text-deep-charcoal mb-4">Your cart is empty</h2>
             <p className="text-taupe mb-8">Start adding items to your cart to see them here.</p>
-            <Link href="/catalog" className="inline-block bg-champagne-gold text-soft-black px-8 py-3 rounded-lg font-semibold hover:bg-warm-gold transition-all">Browse Collection</Link>
+            <Link href="/catalog" className="inline-block bg-glacier-grey text-soft-black px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">Browse Collection</Link>
           </div>
         ) : (
           <div className="grid lg:grid-cols-3 gap-8">
@@ -104,7 +104,7 @@ export default function CartPage() {
                   <div className="flex justify-between text-taupe"><span>Shipping</span><span>Calculated at checkout</span></div>
                   <div className="border-t border-stone pt-4 flex justify-between text-lg font-bold text-deep-charcoal"><span>Total</span><span>${getTotal().toLocaleString()}</span></div>
                 </div>
-                <Link href="/checkout" className="block w-full bg-champagne-gold text-soft-black text-center px-8 py-3 rounded-lg font-semibold hover:bg-warm-gold transition-all">Proceed to Checkout</Link>
+                <Link href="/checkout" className="block w-full bg-glacier-grey text-soft-black text-center px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">Proceed to Checkout</Link>
                 <Link href="/catalog" className="block w-full text-center mt-4 text-taupe hover:text-deep-charcoal transition-colors">Continue Shopping</Link>
               </div>
             </div>

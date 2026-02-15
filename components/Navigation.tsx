@@ -78,16 +78,28 @@ export default function Navigation(props?: NavigationProps) {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className="sticky top-0 z-50 bg-soft-black backdrop-blur-md border-b border-champagne-gold/30 shadow-lg"
+      className="sticky top-0 z-50 bg-soft-black backdrop-blur-md border-b border-glacier-grey/30 shadow-lg"
     >
       <div className="section-container">
         <div className="flex items-center justify-between py-5">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
-            <img 
-              src={logo} 
-              alt="Alassali Jewelry" 
-              className="h-20 w-auto"
+          <Link href="/" className="flex items-center gap-2">
+            <svg
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+              fill="none"
+              className="w-6 h-6 md:w-8 md:h-8"
+              style={{ animation: 'spin 8s linear infinite' }}
+            >
+              <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8899AA" />
+              <path d="M16 2 L24 12 L16 14 L8 12 Z" fill="#9AACBE" />
+              <path d="M8 12 L16 14 L16 30 Z" fill="#778899" />
+            </svg>
+            <img
+              src={logo}
+              alt="Alassali Jewelry"
+              className="h-14 w-auto"
               style={{ filter: 'invert(1)' }}
             />
           </Link>
@@ -103,7 +115,7 @@ export default function Navigation(props?: NavigationProps) {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <button
-                    className="text-sm font-semibold tracking-wide uppercase text-white/90 hover:text-champagne-gold transition-all duration-300 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-champagne-gold focus:ring-offset-2 focus:ring-offset-soft-black rounded px-2 py-1"
+                    className="text-sm font-semibold tracking-wide uppercase text-white/90 hover:text-glacier-grey transition-all duration-300 flex items-center gap-1 focus:outline-none focus:ring-2 focus:ring-glacier-grey focus:ring-offset-2 focus:ring-offset-soft-black rounded px-2 py-1"
                     aria-expanded={openDropdown === item.dropdownType}
                     aria-haspopup="true"
                   >
@@ -135,12 +147,12 @@ export default function Navigation(props?: NavigationProps) {
                             <Link
                               key={category.name}
                               href={category.path}
-                              className={`${idx < 2 ? 'col-span-3' : 'col-span-2'} group relative rounded-lg p-4 bg-white border-2 border-soft-black hover:border-champagne-gold transition-all duration-300 hover:scale-105`}
+                              className={`${idx < 2 ? 'col-span-3' : 'col-span-2'} group relative rounded-lg p-4 bg-white border-2 border-soft-black hover:border-glacier-grey transition-all duration-300 hover:scale-105`}
                               onClick={() => setOpenDropdown(null)}
                             >
-                              <div className="absolute inset-0 bg-champagne-gold/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+                              <div className="absolute inset-0 bg-glacier-grey/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
                               <div className="relative z-10 text-center">
-                                <span className="text-sm font-bold text-soft-black group-hover:text-champagne-gold block">
+                                <span className="text-sm font-bold text-soft-black group-hover:text-glacier-grey block">
                                   {category.name}
                                 </span>
                               </div>
@@ -150,12 +162,12 @@ export default function Navigation(props?: NavigationProps) {
                             <Link
                               key={category.name}
                               href={category.path}
-                              className="col-span-2 group relative rounded-lg p-3 bg-white border-2 border-charcoal hover:border-champagne-gold transition-all duration-300 hover:scale-105"
+                              className="col-span-2 group relative rounded-lg p-3 bg-white border-2 border-charcoal hover:border-glacier-grey transition-all duration-300 hover:scale-105"
                               onClick={() => setOpenDropdown(null)}
                             >
-                              <div className="absolute inset-0 bg-champagne-gold/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+                              <div className="absolute inset-0 bg-glacier-grey/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
                               <div className="relative z-10 text-center">
-                                <span className="text-xs font-bold text-charcoal group-hover:text-champagne-gold">
+                                <span className="text-xs font-bold text-charcoal group-hover:text-glacier-grey">
                                   {category.name}
                                 </span>
                               </div>
@@ -166,10 +178,10 @@ export default function Navigation(props?: NavigationProps) {
                           {productMegaMenu.featuredCategories.map((featured) => (
                             <div
                               key={featured.name}
-                              className="group relative rounded-lg p-4 bg-white border-2 border-soft-black hover:border-champagne-gold transition-all duration-300 hover:scale-105 cursor-pointer"
+                              className="group relative rounded-lg p-4 bg-white border-2 border-soft-black hover:border-glacier-grey transition-all duration-300 hover:scale-105 cursor-pointer"
                               onClick={() => { router.push(featured.path); setOpenDropdown(null); }}
                             >
-                              <h3 className="text-base font-bold text-soft-black group-hover:text-champagne-gold mb-2">
+                              <h3 className="text-base font-bold text-soft-black group-hover:text-glacier-grey mb-2">
                                 {featured.name}
                               </h3>
                               <div className="space-y-1">
@@ -177,7 +189,7 @@ export default function Navigation(props?: NavigationProps) {
                                   <Link
                                     key={sub.name}
                                     href={sub.path}
-                                    className="block text-xs text-charcoal hover:text-champagne-gold pl-2 border-l-2 border-transparent hover:border-champagne-gold"
+                                    className="block text-xs text-charcoal hover:text-glacier-grey pl-2 border-l-2 border-transparent hover:border-glacier-grey"
                                     onClick={(e) => { e.stopPropagation(); setOpenDropdown(null); }}
                                   >
                                     {sub.name}
@@ -204,11 +216,11 @@ export default function Navigation(props?: NavigationProps) {
                             <Link
                               key={item.name}
                               href={item.path}
-                              className="group relative rounded-lg p-4 bg-white border-2 border-soft-black hover:border-champagne-gold transition-all duration-300 hover:scale-105"
+                              className="group relative rounded-lg p-4 bg-white border-2 border-soft-black hover:border-glacier-grey transition-all duration-300 hover:scale-105"
                               onClick={() => setOpenDropdown(null)}
                               role="menuitem"
                             >
-                              <div className="absolute inset-0 bg-champagne-gold/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
+                              <div className="absolute inset-0 bg-glacier-grey/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
                               <div className="relative z-10 text-center">
                                 <div className="w-12 h-12 mx-auto mb-3">
                                   <img 
@@ -217,7 +229,7 @@ export default function Navigation(props?: NavigationProps) {
                                     className="w-full h-full object-contain group-hover:scale-110 transition-transform" 
                                   />
                                 </div>
-                                <span className="text-sm font-bold text-soft-black group-hover:text-champagne-gold block">
+                                <span className="text-sm font-bold text-soft-black group-hover:text-glacier-grey block">
                                   {item.name}
                                 </span>
                               </div>
@@ -232,7 +244,7 @@ export default function Navigation(props?: NavigationProps) {
                 <Link
                   key={item.name}
                   href={item.path || '#'}
-                  className="text-sm font-semibold tracking-wide uppercase text-white/90 hover:text-champagne-gold transition-all duration-300"
+                  className="text-sm font-semibold tracking-wide uppercase text-white/90 hover:text-glacier-grey transition-all duration-300"
                 >
                   {item.name}
                 </Link>
@@ -244,21 +256,21 @@ export default function Navigation(props?: NavigationProps) {
           <div className="flex items-center gap-4">
             <Link
               href="/custom/engagement-rings"
-              className="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-champagne-gold to-warm-gold text-soft-black px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-105 transition-all duration-300"
+              className="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-soft-black px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Start Your Journey
             </Link>
             
             <button
               onClick={() => router.push('/cart')}
-              className="relative p-2 hover:bg-champagne-gold/20 rounded-lg transition-colors"
+              className="relative p-2 hover:bg-glacier-grey/20 rounded-lg transition-colors"
             >
               <ShoppingCart className="w-6 h-6 text-white" />
               {cartCount > 0 && (
                 <motion.span
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 bg-champagne-gold text-soft-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
+                  className="absolute -top-1 -right-1 bg-glacier-grey text-soft-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
                 >
                   {cartCount}
                 </motion.span>
@@ -267,7 +279,7 @@ export default function Navigation(props?: NavigationProps) {
 
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 hover:bg-champagne-gold/20 rounded-lg transition-colors"
+              className="lg:hidden p-2 hover:bg-glacier-grey/20 rounded-lg transition-colors"
             >
               {isMenuOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
             </button>
@@ -281,7 +293,7 @@ export default function Navigation(props?: NavigationProps) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="lg:hidden py-4 border-t border-champagne-gold/30 bg-charcoal/50"
+              className="lg:hidden py-4 border-t border-glacier-grey/30 bg-charcoal/50"
             >
               {menuItems.map((item, index) => (
                 <motion.div
@@ -294,7 +306,7 @@ export default function Navigation(props?: NavigationProps) {
                     <div className="mb-2">
                       <button
                         onClick={() => setOpenDropdown(openDropdown === item.dropdownType ? null : item.dropdownType || null)}
-                        className="w-full text-left py-3 px-4 text-base font-medium text-white hover:text-champagne-gold transition-colors flex items-center justify-between"
+                        className="w-full text-left py-3 px-4 text-base font-medium text-white hover:text-glacier-grey transition-colors flex items-center justify-between"
                       >
                         {item.name}
                         <motion.svg
@@ -320,7 +332,7 @@ export default function Navigation(props?: NavigationProps) {
                                 key={category.name}
                                 href={category.path}
                                 onClick={() => { setIsMenuOpen(false); setOpenDropdown(null); }}
-                                className="block py-2 text-sm text-stone hover:text-champagne-gold transition-colors"
+                                className="block py-2 text-sm text-stone hover:text-glacier-grey transition-colors"
                               >
                                 {category.name}
                               </Link>
@@ -339,7 +351,7 @@ export default function Navigation(props?: NavigationProps) {
                                 key={bespoke.name}
                                 href={bespoke.path}
                                 onClick={() => { setIsMenuOpen(false); setOpenDropdown(null); }}
-                                className="block py-2 text-sm text-stone hover:text-champagne-gold transition-colors"
+                                className="block py-2 text-sm text-stone hover:text-glacier-grey transition-colors"
                               >
                                 {bespoke.name}
                               </Link>
@@ -352,7 +364,7 @@ export default function Navigation(props?: NavigationProps) {
                     <Link
                       href={item.path || '#'}
                       onClick={() => setIsMenuOpen(false)}
-                      className="block py-3 px-4 text-base font-medium text-white hover:text-champagne-gold transition-colors"
+                      className="block py-3 px-4 text-base font-medium text-white hover:text-glacier-grey transition-colors"
                     >
                       {item.name}
                     </Link>
@@ -362,7 +374,7 @@ export default function Navigation(props?: NavigationProps) {
               <Link
                 href="/custom/engagement-rings"
                 onClick={() => setIsMenuOpen(false)}
-                className="block mt-4 mx-4 text-center bg-gradient-to-r from-champagne-gold to-warm-gold text-soft-black px-8 py-3 rounded-lg font-bold"
+                className="block mt-4 mx-4 text-center bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-soft-black px-8 py-3 rounded-lg font-bold"
               >
                 Start Your Journey
               </Link>

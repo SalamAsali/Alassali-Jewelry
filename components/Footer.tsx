@@ -36,7 +36,7 @@ export default function Footer(props?: FooterProps) {
             <p className="text-warm-gray text-sm mb-4">
               {props?.tagline ?? DEFAULT_TAGLINE}
             </p>
-            <div className="flex items-center gap-2 text-champagne-gold font-accent text-sm">
+            <div className="flex items-center gap-2 text-glacier-grey font-accent text-sm">
               <MapPin className="w-4 h-4" />
               <span>Made in Toronto</span>
             </div>
@@ -47,27 +47,27 @@ export default function Footer(props?: FooterProps) {
             <h3 className="text-lg font-heading font-semibold mb-4">Shop</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/catalog?category=engagement-rings" className="text-warm-gray hover:text-champagne-gold transition-colors text-sm">
+                <Link href="/catalog?category=engagement-rings" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
                   Engagement Rings
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?category=grillz" className="text-warm-gray hover:text-champagne-gold transition-colors text-sm">
+                <Link href="/catalog?category=grillz" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
                   Grillz
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?category=chains" className="text-warm-gray hover:text-champagne-gold transition-colors text-sm">
+                <Link href="/catalog?category=chains" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
                   Chains
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?category=pendants" className="text-warm-gray hover:text-champagne-gold transition-colors text-sm">
+                <Link href="/catalog?category=pendants" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
                   Pendants
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?featured=true" className="text-warm-gray hover:text-champagne-gold transition-colors text-sm">
+                <Link href="/catalog?featured=true" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
                   Featured
                 </Link>
               </li>
@@ -79,22 +79,22 @@ export default function Footer(props?: FooterProps) {
             <h3 className="text-lg font-heading font-semibold mb-4">Bespoke Services</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/custom/engagement-rings" className="text-warm-gray hover:text-champagne-gold transition-colors text-sm">
+                <Link href="/custom/engagement-rings" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
                   Custom Engagement Rings
                 </Link>
               </li>
               <li>
-                <Link href="/custom/grillz" className="text-warm-gray hover:text-champagne-gold transition-colors text-sm">
+                <Link href="/custom/grillz" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
                   Custom Grillz
                 </Link>
               </li>
               <li>
-                <Link href="/custom/chains" className="text-warm-gray hover:text-champagne-gold transition-colors text-sm">
+                <Link href="/custom/chains" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
                   Custom Chains
                 </Link>
               </li>
               <li>
-                <Link href="/custom/pendants" className="text-warm-gray hover:text-champagne-gold transition-colors text-sm">
+                <Link href="/custom/pendants" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
                   Custom Pendants
                 </Link>
               </li>
@@ -108,12 +108,12 @@ export default function Footer(props?: FooterProps) {
               <input
                 type="email"
                 placeholder="Your email address"
-                className="w-full px-4 py-2 rounded bg-charcoal border border-champagne-gold/30 text-white placeholder-warm-gray focus:border-champagne-gold focus:outline-none transition-colors"
+                className="w-full px-4 py-2 rounded bg-charcoal border border-glacier-grey/30 text-white placeholder-warm-gray focus:border-glacier-grey focus:outline-none transition-colors"
                 required
               />
               <button
                 type="submit"
-                className="w-full bg-champagne-gold text-soft-black px-6 py-2 rounded font-semibold hover:bg-warm-gold transition-colors"
+                className="w-full bg-glacier-grey text-soft-black px-6 py-2 rounded font-semibold hover:bg-glacier-grey-light transition-colors"
               >
                 SUBSCRIBE
               </button>
@@ -122,27 +122,27 @@ export default function Footer(props?: FooterProps) {
               <h3 className="text-lg font-heading font-semibold mb-4">Connect</h3>
               <ul className="space-y-3">
                 <li className="flex items-center gap-2 text-warm-gray text-sm">
-                  <Phone className="w-4 h-4 text-champagne-gold" />
-                  <a href={`tel:${props?.phone ?? DEFAULT_PHONE}`} className="hover:text-champagne-gold transition-colors">
+                  <Phone className="w-4 h-4 text-glacier-grey" />
+                  <a href={`tel:${props?.phone ?? DEFAULT_PHONE}`} className="hover:text-glacier-grey transition-colors">
                     {props?.phone ?? DEFAULT_PHONE}
                   </a>
                 </li>
                 <li className="flex items-center gap-2 text-warm-gray text-sm">
-                  <Mail className="w-4 h-4 text-champagne-gold" />
-                  <a href={`mailto:${props?.email ?? DEFAULT_EMAIL}`} className="hover:text-champagne-gold transition-colors">
+                  <Mail className="w-4 h-4 text-glacier-grey" />
+                  <a href={`mailto:${props?.email ?? DEFAULT_EMAIL}`} className="hover:text-glacier-grey transition-colors">
                     {props?.email ?? DEFAULT_EMAIL}
                   </a>
                 </li>
                 <li className="flex items-center gap-2 text-warm-gray text-sm">
-                  <MapPin className="w-4 h-4 text-champagne-gold" />
+                  <MapPin className="w-4 h-4 text-glacier-grey" />
                   <span>{props?.location ?? DEFAULT_LOCATION}</span>
                 </li>
               </ul>
               <div className="flex items-center gap-4 mt-6">
-                <a href="#" className="text-warm-gray hover:text-champagne-gold transition-colors">
+                <a href="#" className="text-warm-gray hover:text-glacier-grey transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="text-warm-gray hover:text-champagne-gold transition-colors">
+                <a href="#" className="text-warm-gray hover:text-glacier-grey transition-colors">
                   <Facebook className="w-5 h-5" />
                 </a>
               </div>
@@ -153,19 +153,19 @@ export default function Footer(props?: FooterProps) {
         {/* Trust Badges */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-12 border-t border-charcoal">
           <div className="text-center">
-            <p className="text-xs uppercase tracking-wider text-champagne-gold mb-1 font-medium">Fully Insured</p>
+            <p className="text-xs uppercase tracking-wider text-glacier-grey mb-1 font-medium">Fully Insured</p>
             <p className="text-warm-gray text-sm">Shipping</p>
           </div>
           <div className="text-center">
-            <p className="text-xs uppercase tracking-wider text-champagne-gold mb-1 font-medium">Lifetime</p>
+            <p className="text-xs uppercase tracking-wider text-glacier-grey mb-1 font-medium">Lifetime</p>
             <p className="text-warm-gray text-sm">Warranty</p>
           </div>
           <div className="text-center">
-            <p className="text-xs uppercase tracking-wider text-champagne-gold mb-1 font-medium">Complimentary</p>
+            <p className="text-xs uppercase tracking-wider text-glacier-grey mb-1 font-medium">Complimentary</p>
             <p className="text-warm-gray text-sm">Resizing</p>
           </div>
           <div className="text-center">
-            <p className="text-xs uppercase tracking-wider text-champagne-gold mb-1 font-medium">Adult Signature</p>
+            <p className="text-xs uppercase tracking-wider text-glacier-grey mb-1 font-medium">Adult Signature</p>
             <p className="text-warm-gray text-sm">Required (21+)</p>
           </div>
         </div>

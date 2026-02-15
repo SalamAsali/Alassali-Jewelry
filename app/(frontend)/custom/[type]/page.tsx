@@ -174,8 +174,8 @@ const getSubIdx = (page: number) => {
 
 function ReviewRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between border-b border-champagne-gold/10 pb-3">
-      <span className="font-medium text-champagne-gold">{label}:</span>
+    <div className="flex justify-between border-b border-glacier-grey/10 pb-3">
+      <span className="font-medium text-glacier-grey">{label}:</span>
       <span className="text-white">{value}</span>
     </div>
   )
@@ -286,9 +286,9 @@ export default function CustomJewelryPage() {
   // ---- shared style helpers ----
 
   const cardBase = 'flex flex-col items-center justify-center rounded-xl border-2 transition-all cursor-pointer'
-  const cardSelected = 'bg-champagne-gold/20 border-champagne-gold shadow-lg shadow-champagne-gold/20'
-  const cardUnselected = 'bg-charcoal/50 border-champagne-gold/20 hover:border-champagne-gold/50 hover:bg-charcoal'
-  const inputClass = 'w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-champagne-gold/50 text-white placeholder-stone focus:border-champagne-gold focus:ring-2 focus:ring-champagne-gold/40 transition-all outline-none'
+  const cardSelected = 'bg-glacier-grey/20 border-glacier-grey shadow-lg shadow-glacier-grey/20'
+  const cardUnselected = 'bg-charcoal/50 border-glacier-grey/20 hover:border-glacier-grey/50 hover:bg-charcoal'
+  const inputClass = 'w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-glacier-grey/50 text-white placeholder-stone focus:border-glacier-grey focus:ring-2 focus:ring-glacier-grey/40 transition-all outline-none'
 
   // ---- progress helpers ----
 
@@ -316,8 +316,8 @@ export default function CustomJewelryPage() {
             transition={{ delay: 0.2, type: 'spring' }}
             className="inline-block mb-8"
           >
-            <div className="w-32 h-32 rounded-full bg-champagne-gold/20 flex items-center justify-center">
-              <CheckCircle2 className="w-20 h-20 text-champagne-gold" />
+            <div className="w-32 h-32 rounded-full bg-glacier-grey/20 flex items-center justify-center">
+              <CheckCircle2 className="w-20 h-20 text-glacier-grey" />
             </div>
           </motion.div>
           <h1 className="text-5xl md:text-6xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
@@ -334,7 +334,7 @@ export default function CustomJewelryPage() {
             <button onClick={() => router.push('/')} className="bg-white/10 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-soft-black transition-all">
               Return Home
             </button>
-            <button onClick={() => router.push('/catalog')} className="bg-champagne-gold text-soft-black px-8 py-3 rounded-lg font-semibold hover:bg-warm-gold transition-all">
+            <button onClick={() => router.push('/catalog')} className="bg-glacier-grey text-soft-black px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">
               Browse Collection
             </button>
           </div>
@@ -354,11 +354,11 @@ export default function CustomJewelryPage() {
 
       <div className="relative z-10">
         {/* Header */}
-        <div className="border-b border-champagne-gold/20 bg-deep-charcoal/50 backdrop-blur-sm">
+        <div className="border-b border-glacier-grey/20 bg-deep-charcoal/50 backdrop-blur-sm">
           <div className="section-container py-12">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
               <div className="inline-flex items-center gap-3 mb-4">
-                <Sparkles className="w-8 h-8 text-champagne-gold" />
+                <Sparkles className="w-8 h-8 text-glacier-grey" />
                 <h1 className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: 'var(--font-heading)' }}>
                   {config.title}
                 </h1>
@@ -383,20 +383,20 @@ export default function CustomJewelryPage() {
                     <div key={i} className="flex-1 mx-2">
                       <div className="relative">
                         <div className={`h-1.5 rounded-full transition-all duration-500 ${
-                          isCompleted || isActive ? 'bg-gradient-to-r from-champagne-gold to-warm-gold' : 'bg-charcoal'
+                          isCompleted || isActive ? 'bg-gradient-to-r from-glacier-grey to-glacier-grey-light' : 'bg-charcoal'
                         }`} />
                         <div className={`absolute -top-3.5 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all duration-500 ${
                           isCompleted
-                            ? 'bg-champagne-gold border-champagne-gold text-soft-black'
+                            ? 'bg-glacier-grey border-glacier-grey text-soft-black'
                             : isActive
-                              ? 'bg-champagne-gold border-champagne-gold text-soft-black scale-110'
+                              ? 'bg-glacier-grey border-glacier-grey text-soft-black scale-110'
                               : 'bg-charcoal border-taupe text-taupe'
                         }`}>
                           {isCompleted ? <Check className="w-3.5 h-3.5" strokeWidth={3} /> : i + 1}
                         </div>
                       </div>
                       <p className={`text-center text-xs mt-4 font-medium transition-colors duration-300 ${
-                        isCompleted || isActive ? 'text-champagne-gold' : 'text-taupe'
+                        isCompleted || isActive ? 'text-glacier-grey' : 'text-taupe'
                       }`}>{step.label}</p>
                     </div>
                   )
@@ -411,7 +411,7 @@ export default function CustomJewelryPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 4 }}
                   transition={{ duration: 0.25 }}
-                  className="flex justify-center items-center gap-4 mt-6 py-3 px-4 rounded-lg bg-white/5 border border-champagne-gold/10"
+                  className="flex justify-center items-center gap-4 mt-6 py-3 px-4 rounded-lg bg-white/5 border border-glacier-grey/10"
                 >
                   {subPages.map((label, i) => {
                     const isDone = i < currentSub
@@ -419,10 +419,10 @@ export default function CustomJewelryPage() {
                     return (
                       <div key={label} className="flex items-center gap-2">
                         <div className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                          isDone ? 'bg-champagne-gold' : isActive ? 'bg-champagne-gold scale-125' : 'bg-charcoal'
+                          isDone ? 'bg-glacier-grey' : isActive ? 'bg-glacier-grey scale-125' : 'bg-charcoal'
                         }`} />
                         <span className={`text-xs font-medium transition-colors duration-300 ${
-                          isDone || isActive ? 'text-champagne-gold' : 'text-taupe'
+                          isDone || isActive ? 'text-glacier-grey' : 'text-taupe'
                         }`}>{label}</span>
                       </div>
                     )
@@ -442,7 +442,7 @@ export default function CustomJewelryPage() {
                 boxShadow: '0 0 60px rgba(201, 167, 94, 0.15)',
               }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-champagne-gold/10 via-transparent to-champagne-gold/5 pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-br from-glacier-grey/10 via-transparent to-glacier-grey/5 pointer-events-none" />
 
               <div className="relative z-10 p-8 md:p-12" data-testid="form-container">
                 <form onSubmit={handleSubmit}>
@@ -456,20 +456,20 @@ export default function CustomJewelryPage() {
                         </h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                           <div>
-                            <label className="block text-sm font-medium text-champagne-gold mb-2 uppercase tracking-wide">First Name *</label>
+                            <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">First Name *</label>
                             <input type="text" name="firstName" required value={formData.firstName} onChange={handleInputChange} className={inputClass} placeholder="John" />
                           </div>
                           <div>
-                            <label className="block text-sm font-medium text-champagne-gold mb-2 uppercase tracking-wide">Last Name *</label>
+                            <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Last Name *</label>
                             <input type="text" name="lastName" required value={formData.lastName} onChange={handleInputChange} className={inputClass} placeholder="Doe" />
                           </div>
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-champagne-gold mb-2 uppercase tracking-wide">Email *</label>
+                          <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Email *</label>
                           <input type="email" name="email" required value={formData.email} onChange={handleInputChange} className={inputClass} placeholder="john@example.com" />
                         </div>
                         <div>
-                          <label className="block text-sm font-medium text-champagne-gold mb-2 uppercase tracking-wide">Phone</label>
+                          <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Phone</label>
                           <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} className={inputClass} placeholder="+1 (416) 555-1234" />
                         </div>
                       </motion.div>
@@ -485,7 +485,7 @@ export default function CustomJewelryPage() {
                             <button key={value} type="button" onClick={() => setFormData(prev => ({ ...prev, budget: value }))} className={`${cardBase} p-6 min-h-[120px] ${formData.budget === value ? cardSelected : cardUnselected}`}>
                               <div className="flex gap-0.5 mb-3">
                                 {Array.from({ length: tier }).map((_, i) => (
-                                  <DollarSign key={i} className={`w-5 h-5 ${formData.budget === value ? 'text-champagne-gold' : 'text-champagne-gold/60'}`} />
+                                  <DollarSign key={i} className={`w-5 h-5 ${formData.budget === value ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
                                 ))}
                               </div>
                               <span className="text-white font-semibold text-sm">{label}</span>
@@ -506,7 +506,7 @@ export default function CustomJewelryPage() {
                             const selected = formData.style === style
                             return (
                               <button key={style} type="button" onClick={() => setFormData(prev => ({ ...prev, style }))} className={`${cardBase} p-6 min-h-[140px] ${selected ? cardSelected : cardUnselected}`}>
-                                <Icon className={`w-10 h-10 mb-3 ${selected ? 'text-champagne-gold' : 'text-champagne-gold/60'}`} />
+                                <Icon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
                                 <span className="text-white font-medium text-sm text-center">{style}</span>
                               </button>
                             )
@@ -541,7 +541,7 @@ export default function CustomJewelryPage() {
                               {goldColorOptions.map(({ label, gradient, shadow }) => {
                                 const selected = formData.goldColor === label
                                 return (
-                                  <button key={label} type="button" onClick={() => setFormData(prev => ({ ...prev, goldColor: label }))} className={`${cardBase} p-6 ${selected ? 'border-champagne-gold shadow-lg' : 'border-champagne-gold/20 hover:border-champagne-gold/50'}`} style={{ background: selected ? 'rgba(201, 167, 94, 0.15)' : 'rgba(30, 30, 30, 0.5)', boxShadow: selected ? `0 0 24px ${shadow}` : 'none' }}>
+                                  <button key={label} type="button" onClick={() => setFormData(prev => ({ ...prev, goldColor: label }))} className={`${cardBase} p-6 ${selected ? 'border-glacier-grey shadow-lg' : 'border-glacier-grey/20 hover:border-glacier-grey/50'}`} style={{ background: selected ? 'rgba(201, 167, 94, 0.15)' : 'rgba(30, 30, 30, 0.5)', boxShadow: selected ? `0 0 24px ${shadow}` : 'none' }}>
                                     <div className="w-14 h-14 rounded-full mb-3 border-2 border-white/20" style={{ background: gradient, boxShadow: `0 4px 14px ${shadow}` }} />
                                     <span className="text-white font-medium text-sm">{label}</span>
                                   </button>
@@ -564,7 +564,7 @@ export default function CustomJewelryPage() {
                               const selected = formData.stonePreferences.includes(name)
                               return (
                                 <button key={name} type="button" onClick={() => toggleStone(name)} className={`${cardBase} p-6 min-h-[130px] ${selected ? cardSelected : cardUnselected}`}>
-                                  <StoneIcon className={`w-10 h-10 mb-3 ${selected ? color : 'text-champagne-gold/60'}`} />
+                                  <StoneIcon className={`w-10 h-10 mb-3 ${selected ? color : 'text-glacier-grey/60'}`} />
                                   <span className="text-white font-medium text-sm">{name}</span>
                                 </button>
                               )
@@ -583,7 +583,7 @@ export default function CustomJewelryPage() {
                                 const selected = formData.diamondType === label
                                 return (
                                   <button key={label} type="button" onClick={() => setFormData(prev => ({ ...prev, diamondType: label }))} className={`${cardBase} p-6 min-h-[150px] ${selected ? cardSelected : cardUnselected}`}>
-                                    <DIcon className={`w-10 h-10 mb-3 ${selected ? 'text-champagne-gold' : 'text-champagne-gold/60'}`} />
+                                    <DIcon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
                                     <span className="text-white font-semibold text-sm mb-1">{label}</span>
                                     <span className="text-stone text-xs text-center">{desc}</span>
                                   </button>
@@ -600,10 +600,10 @@ export default function CustomJewelryPage() {
                       <motion.div key="s6" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                         <h2 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>Share Your Inspiration</h2>
                         <p className="text-stone mb-8">Upload images that inspire you. This helps us understand your vision better.</p>
-                        <div className="relative border-2 border-dashed border-champagne-gold/30 rounded-xl p-12 text-center bg-white/5 hover:bg-white/10 transition-all">
-                          <Upload className="w-16 h-16 text-champagne-gold mx-auto mb-4" />
+                        <div className="relative border-2 border-dashed border-glacier-grey/30 rounded-xl p-12 text-center bg-white/5 hover:bg-white/10 transition-all">
+                          <Upload className="w-16 h-16 text-glacier-grey mx-auto mb-4" />
                           <input type="file" multiple accept="image/*" onChange={handleFileUpload} className="hidden" id="file-upload" disabled={uploading} />
-                          <label htmlFor="file-upload" className="inline-block bg-champagne-gold text-soft-black px-8 py-3 rounded-lg font-semibold cursor-pointer hover:bg-warm-gold transition-all">
+                          <label htmlFor="file-upload" className="inline-block bg-glacier-grey text-soft-black px-8 py-3 rounded-lg font-semibold cursor-pointer hover:bg-glacier-grey-light transition-all">
                             {uploading ? 'Uploading...' : 'Choose Images'}
                           </label>
                           <p className="text-sm text-stone mt-3">PNG, JPG up to 10MB each</p>
@@ -622,10 +622,10 @@ export default function CustomJewelryPage() {
                         <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Size &amp; Dimensions</h2>
                         <p className="text-stone mb-8">Tell us your measurements so we can craft a perfect fit</p>
                         <div>
-                          <label className="block text-sm font-medium text-champagne-gold mb-2 uppercase tracking-wide">Size / Dimensions</label>
+                          <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Size / Dimensions</label>
                           <input type="text" name="size" value={formData.size} onChange={handleInputChange} className={inputClass} placeholder="e.g., Ring size 7, Chain 22 inches" />
                         </div>
-                        <div className="p-5 bg-white/5 rounded-xl border border-champagne-gold/10">
+                        <div className="p-5 bg-white/5 rounded-xl border border-glacier-grey/10">
                           <p className="text-stone text-sm leading-relaxed">Not sure of your size? Don&apos;t worry — we can help determine the perfect fit during your consultation.</p>
                         </div>
                       </motion.div>
@@ -641,7 +641,7 @@ export default function CustomJewelryPage() {
                             const selected = formData.timeline === value
                             return (
                               <button key={value} type="button" onClick={() => setFormData(prev => ({ ...prev, timeline: value }))} className={`${cardBase} p-6 min-h-[130px] ${selected ? cardSelected : cardUnselected}`}>
-                                <TIcon className={`w-9 h-9 mb-3 ${selected ? 'text-champagne-gold' : 'text-champagne-gold/60'}`} />
+                                <TIcon className={`w-9 h-9 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
                                 <span className="text-white font-semibold text-sm mb-1">{label}</span>
                                 <span className="text-stone text-xs text-center">{desc}</span>
                               </button>
@@ -657,7 +657,7 @@ export default function CustomJewelryPage() {
                         <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Anything Else?</h2>
                         <p className="text-stone mb-8">Share any additional details, special engravings, or references that will help bring your vision to life</p>
                         <div>
-                          <label className="block text-sm font-medium text-champagne-gold mb-2 uppercase tracking-wide">Additional Notes</label>
+                          <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Additional Notes</label>
                           <textarea
                             name="notes"
                             value={formData.notes}
@@ -674,7 +674,7 @@ export default function CustomJewelryPage() {
                     {currentStep === 10 && (
                       <motion.div key="s10" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                         <h2 className="text-3xl font-bold text-white mb-8" style={{ fontFamily: 'var(--font-heading)' }}>Review Your Request</h2>
-                        <div className="space-y-4 bg-white/5 rounded-lg p-6 border border-champagne-gold/20">
+                        <div className="space-y-4 bg-white/5 rounded-lg p-6 border border-glacier-grey/20">
                           <ReviewRow label="First Name" value={formData.firstName} />
                           <ReviewRow label="Last Name" value={formData.lastName} />
                           <ReviewRow label="Email" value={formData.email} />
@@ -690,14 +690,14 @@ export default function CustomJewelryPage() {
                           {formData.size && <ReviewRow label="Size" value={formData.size} />}
                           {formData.timeline && <ReviewRow label="Timeline" value={formData.timeline} />}
                           {formData.notes && (
-                            <div className="border-b border-champagne-gold/10 pb-3">
-                              <span className="font-medium text-champagne-gold block mb-2">Notes:</span>
+                            <div className="border-b border-glacier-grey/10 pb-3">
+                              <span className="font-medium text-glacier-grey block mb-2">Notes:</span>
                               <span className="text-white text-sm">{formData.notes}</span>
                             </div>
                           )}
                           {formData.inspirationImages.length > 0 && (
                             <div>
-                              <span className="font-medium text-champagne-gold block mb-2">Inspiration Images:</span>
+                              <span className="font-medium text-glacier-grey block mb-2">Inspiration Images:</span>
                               <span className="text-white text-sm">{formData.inspirationImages.length} image(s) uploaded</span>
                             </div>
                           )}
@@ -708,18 +708,18 @@ export default function CustomJewelryPage() {
                   </AnimatePresence>
 
                   {/* Navigation */}
-                  <div className="flex justify-between mt-12 pt-8 border-t border-champagne-gold/20" data-testid="form-navigation">
+                  <div className="flex justify-between mt-12 pt-8 border-t border-glacier-grey/20" data-testid="form-navigation">
                     {currentStep > 1 && (
-                      <button type="button" onClick={prevStep} className="flex items-center gap-2 px-8 py-3 rounded-lg bg-white/5 border border-champagne-gold/30 text-white hover:bg-white/10 transition-all font-semibold">
+                      <button type="button" onClick={prevStep} className="flex items-center gap-2 px-8 py-3 rounded-lg bg-white/5 border border-glacier-grey/30 text-white hover:bg-white/10 transition-all font-semibold">
                         <ArrowLeft className="w-5 h-5" /> Back
                       </button>
                     )}
                     {currentStep < totalSteps ? (
-                      <button type="button" onClick={nextStep} className="ml-auto flex items-center gap-2 px-8 py-3 rounded-lg bg-champagne-gold text-soft-black hover:bg-warm-gold transition-all font-semibold shadow-lg hover:shadow-xl">
+                      <button type="button" onClick={nextStep} className="ml-auto flex items-center gap-2 px-8 py-3 rounded-lg bg-glacier-grey text-soft-black hover:bg-glacier-grey-light transition-all font-semibold shadow-lg hover:shadow-xl">
                         Next <ArrowRight className="w-5 h-5" />
                       </button>
                     ) : (
-                      <button type="submit" className="ml-auto px-8 py-3 rounded-lg bg-champagne-gold text-soft-black hover:bg-warm-gold transition-all font-semibold shadow-lg hover:shadow-xl">
+                      <button type="submit" className="ml-auto px-8 py-3 rounded-lg bg-glacier-grey text-soft-black hover:bg-glacier-grey-light transition-all font-semibold shadow-lg hover:shadow-xl">
                         Submit Request
                       </button>
                     )}

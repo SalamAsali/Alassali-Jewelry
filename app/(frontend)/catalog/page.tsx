@@ -102,7 +102,7 @@ function CatalogContent() {
         ) : items.length === 0 ? (
           <div className="text-center py-20">
             <p className="text-taupe text-lg">No items found matching your filters.</p>
-            <Link href="/catalog" className="text-champagne-gold hover:underline mt-4 inline-block">View All Items</Link>
+            <Link href="/catalog" className="text-glacier-grey hover:underline mt-4 inline-block">View All Items</Link>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="product-grid">
@@ -114,9 +114,9 @@ function CatalogContent() {
                       <motion.img src={getImageUrl(item.image)} alt={item.title} className="w-full h-full object-cover" whileHover={{ scale: 1.08 }} transition={{ duration: 0.5 }} />
                     </div>
                     <div className="p-6">
-                      <h3 className="font-heading text-lg font-medium text-deep-charcoal mb-2 group-hover:text-champagne-gold transition-colors">{item.title}</h3>
+                      <h3 className="font-heading text-lg font-medium text-deep-charcoal mb-2 group-hover:text-glacier-grey transition-colors">{item.title}</h3>
                       {item.description && <p className="text-sm text-taupe mb-3 line-clamp-2">{item.description}</p>}
-                      {item.category && <span className="text-xs uppercase tracking-wider text-champagne-gold font-medium">{item.category}</span>}
+                      {item.category && <span className="text-xs uppercase tracking-wider text-glacier-grey font-medium">{item.category}</span>}
                     </div>
                   </div>
                 </motion.div>
@@ -133,7 +133,7 @@ export default function CatalogPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin w-12 h-12 border-4 border-champagne-gold border-t-transparent rounded-full" />
+        <div className="animate-spin w-12 h-12 border-4 border-glacier-grey border-t-transparent rounded-full" />
       </div>
     }>
       <CatalogContent />

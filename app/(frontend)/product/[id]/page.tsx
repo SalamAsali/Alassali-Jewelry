@@ -65,7 +65,7 @@ export default function ProductDetailPage() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin w-12 h-12 border-4 border-champagne-gold border-t-transparent rounded-full" />
+        <div className="animate-spin w-12 h-12 border-4 border-glacier-grey border-t-transparent rounded-full" />
       </div>
     )
   }
@@ -75,7 +75,7 @@ export default function ProductDetailPage() {
       <div className="min-h-screen flex items-center justify-center bg-off-white">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-deep-charcoal mb-4">Product Not Found</h2>
-          <Link href="/catalog" className="inline-block bg-champagne-gold text-soft-black px-8 py-3 rounded-lg font-semibold hover:bg-warm-gold transition-all">Return to Catalog</Link>
+          <Link href="/catalog" className="inline-block bg-glacier-grey text-soft-black px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">Return to Catalog</Link>
         </div>
       </div>
     )
@@ -97,7 +97,7 @@ export default function ProductDetailPage() {
             {images.length > 1 && (
               <div className="grid grid-cols-4 gap-4">
                 {images.map((img, idx) => (
-                  <motion.button key={idx} whileHover={{ scale: 1.05 }} onClick={() => setSelectedImage(idx)} className={`aspect-square rounded-lg overflow-hidden ${selectedImage === idx ? 'ring-2 ring-champagne-gold' : ''}`}>
+                  <motion.button key={idx} whileHover={{ scale: 1.05 }} onClick={() => setSelectedImage(idx)} className={`aspect-square rounded-lg overflow-hidden ${selectedImage === idx ? 'ring-2 ring-glacier-grey' : ''}`}>
                     <img src={img} alt={`View ${idx + 1}`} className="w-full h-full object-cover" />
                   </motion.button>
                 ))}
@@ -106,7 +106,7 @@ export default function ProductDetailPage() {
           </div>
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
             {product.category && (
-              <span className="inline-block text-xs uppercase tracking-wider text-champagne-gold font-medium">{product.category}</span>
+              <span className="inline-block text-xs uppercase tracking-wider text-glacier-grey font-medium">{product.category}</span>
             )}
             <h1 className="text-4xl md:text-5xl font-bold text-deep-charcoal" style={{ fontFamily: 'var(--font-heading)' }}>{product.title}</h1>
             {product.description && (
@@ -115,7 +115,7 @@ export default function ProductDetailPage() {
               </div>
             )}
             <div className="flex items-center gap-4 pt-6 border-t border-stone">
-              <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={handleAddToCart} className="flex-1 bg-champagne-gold text-soft-black px-8 py-4 rounded-lg font-semibold hover:bg-warm-gold transition-all flex items-center justify-center gap-2">
+              <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={handleAddToCart} className="flex-1 bg-glacier-grey text-soft-black px-8 py-4 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all flex items-center justify-center gap-2">
                 <ShoppingCart className="w-5 h-5" /> Add to Cart
               </motion.button>
               <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="p-4 border-2 border-deep-charcoal rounded-lg hover:bg-deep-charcoal hover:text-white transition-all">
@@ -130,7 +130,7 @@ export default function ProductDetailPage() {
             <div className="pt-6 space-y-4 border-t border-stone">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-soft-beige flex items-center justify-center flex-shrink-0">
-                  <Sparkles className="w-6 h-6 text-champagne-gold" />
+                  <Sparkles className="w-6 h-6 text-glacier-grey" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-deep-charcoal mb-1">Custom Design Available</h3>

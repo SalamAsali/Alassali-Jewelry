@@ -268,7 +268,7 @@ export default function PortfolioPage() {
                           <p className="text-sm text-stone">{item.description}</p>
                         )}
                         {item.category && (
-                          <span className="inline-block mt-2 text-xs uppercase tracking-wider text-champagne-gold font-medium">
+                          <span className="inline-block mt-2 text-xs uppercase tracking-wider text-glacier-grey font-medium">
                             {item.category.replace('-', ' ')}
                           </span>
                         )}

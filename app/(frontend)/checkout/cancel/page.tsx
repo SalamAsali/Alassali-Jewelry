@@ -19,7 +19,7 @@ export default function CheckoutCancelPage() {
         <p className="text-lg text-taupe mb-8">Your payment was cancelled. No charges have been made.</p>
         <p className="text-taupe mb-12">If you experienced any issues, please contact us and we&apos;ll be happy to help.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Link href="/cart" className="bg-champagne-gold text-soft-black px-8 py-3 rounded-lg font-semibold hover:bg-warm-gold transition-all">Return to Cart</Link>
+          <Link href="/cart" className="bg-glacier-grey text-soft-black px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">Return to Cart</Link>
           <Link href="/catalog" className="bg-white border-2 border-deep-charcoal text-deep-charcoal px-8 py-3 rounded-lg font-semibold hover:bg-deep-charcoal hover:text-white transition-all">Continue Shopping</Link>
         </div>
       </div>

@@ -62,7 +62,7 @@ export default function FAQPage() {
                     <div key={faq.id} className="bg-off-white rounded-lg border border-stone overflow-hidden">
                       <button onClick={() => toggleItem(faq.id)} className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-soft-beige transition-colors">
                         <span className="font-semibold text-deep-charcoal pr-4">{faq.question}</span>
-                        {expandedItems.includes(faq.id) ? <Minus className="w-5 h-5 text-champagne-gold flex-shrink-0" /> : <Plus className="w-5 h-5 text-champagne-gold flex-shrink-0" />}
+                        {expandedItems.includes(faq.id) ? <Minus className="w-5 h-5 text-glacier-grey flex-shrink-0" /> : <Plus className="w-5 h-5 text-glacier-grey flex-shrink-0" />}
                       </button>
                       <AnimatePresence>
                         {expandedItems.includes(faq.id) && (

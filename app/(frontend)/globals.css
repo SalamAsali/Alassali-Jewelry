@@ -13,8 +13,8 @@
     --charcoal: #2C2C2C;
     --deep-charcoal: #1A1A1A;
     --soft-black: #0A0A0A;
-    --champagne-gold: #C9A75E;
-    --warm-gold: #D4AF37;
+    --glacier-grey: #8899AA;
+    --glacier-grey-light: #9AACBE;
     --rose-gold: #B89778;
     --taupe: #8B7D6B;
     --warm-gray: #A9A9A9;
@@ -71,15 +71,15 @@
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--champagne-gold);
+    background: var(--glacier-grey);
   }
 }
 
 @layer components {
   /* Button styles */
   .btn-primary {
-    @apply bg-[#C9A75E] text-[#0A0A0A] px-8 py-3.5 rounded-lg font-medium transition-all duration-300;
-    @apply hover:bg-[#D4AF37] hover:shadow-lg focus:ring-2 focus:ring-[#C9A75E] focus:ring-offset-2;
+    @apply bg-[#8899AA] text-[#0A0A0A] px-8 py-3.5 rounded-lg font-medium transition-all duration-300;
+    @apply hover:bg-[#9AACBE] hover:shadow-lg focus:ring-2 focus:ring-[#8899AA] focus:ring-offset-2;
   }
 
   .btn-secondary {
@@ -101,7 +101,7 @@
   /* Input styles */
   .input-field {
     @apply w-full px-4 py-3 rounded-lg border border-[#D4CFC5] bg-white;
-    @apply focus:border-[#C9A75E] focus:ring-2 focus:ring-[#C9A75E] focus:ring-opacity-20;
+    @apply focus:border-[#8899AA] focus:ring-2 focus:ring-[#8899AA] focus:ring-opacity-20;
     @apply transition-all duration-200 outline-none;
   }
 
@@ -136,12 +136,38 @@
   .text-balance {
     text-wrap: balance;
   }
-  
+
   .gradient-hero {
     background: linear-gradient(180deg, #FFFFF0 0%, #F5F5F0 50%, #E8E3D9 100%);
   }
-  
+
   .gradient-gold {
-    background: linear-gradient(135deg, #D4AF37 0%, #C9A75E 100%);
+    background: linear-gradient(135deg, #9AACBE 0%, #8899AA 100%);
   }
+}
+
+/* Diamond animations */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(180px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(180px) rotate(-360deg); }
+}
+
+@keyframes orbit-mobile {
+  0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.6; }
+  50% { transform: translateY(-20px) rotate(180deg); opacity: 1; }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.4; }
+  50% { transform: translateY(-30px) rotate(90deg); opacity: 0.8; }
 }
