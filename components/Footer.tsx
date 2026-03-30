@@ -29,7 +29,7 @@ export default function Footer(props?: FooterProps) {
               <img
                 src={logo}
                 alt="Alassali Jewelry"
-                className="h-20 w-auto"
+                className="h-28 w-auto"
               />
             </Link>
             <p className="text-warm-gray text-sm mb-4">
