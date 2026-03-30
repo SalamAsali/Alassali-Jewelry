@@ -75,7 +75,7 @@ export default function ProductDetailPage() {
       <div className="min-h-screen flex items-center justify-center bg-off-white">
         <div className="text-center">
           <h2 className="text-3xl font-bold text-deep-charcoal mb-4">Product Not Found</h2>
-          <Link href="/catalog" className="inline-block bg-glacier-grey text-soft-black px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">Return to Catalog</Link>
+          <Link href="/catalog" className="inline-block bg-glacier-grey text-white px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">Return to Catalog</Link>
         </div>
       </div>
     )
@@ -115,7 +115,7 @@ export default function ProductDetailPage() {
               </div>
             )}
             <div className="flex items-center gap-4 pt-6 border-t border-stone">
-              <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={handleAddToCart} className="flex-1 bg-glacier-grey text-soft-black px-8 py-4 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all flex items-center justify-center gap-2">
+              <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={handleAddToCart} className="flex-1 bg-glacier-grey text-white px-8 py-4 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all flex items-center justify-center gap-2">
                 <ShoppingCart className="w-5 h-5" /> Add to Cart
               </motion.button>
               <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="p-4 border-2 border-deep-charcoal rounded-lg hover:bg-deep-charcoal hover:text-white transition-all">

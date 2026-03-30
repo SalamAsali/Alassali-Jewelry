@@ -19,7 +19,7 @@ const getCartCount = () => {
   }
 }
 
-const DEFAULT_LOGO = 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/mos4tvrw_Final-W2-1.png'
+const DEFAULT_LOGO = '/images/logo.png'
 
 type NavigationProps = {
   logoUrl?: string | null
@@ -83,24 +83,11 @@ export default function Navigation(props?: NavigationProps) {
       <div className="section-container">
         <div className="flex items-center justify-between py-5">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
-            <svg
-              width="32"
-              height="32"
-              viewBox="0 0 32 32"
-              fill="none"
-              className="w-6 h-6 md:w-8 md:h-8"
-              style={{ animation: 'spin 8s linear infinite' }}
-            >
-              <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8E9196" />
-              <path d="M16 2 L24 12 L16 14 L8 12 Z" fill="#A3A7AC" />
-              <path d="M8 12 L16 14 L16 30 Z" fill="#7D8186" />
-            </svg>
+          <Link href="/" className="flex items-center">
             <img
               src={logo}
               alt="Alassali Jewelry"
-              className="h-14 w-auto"
-              style={{ filter: 'invert(1)' }}
+              className="h-16 w-auto"
             />
           </Link>
 
@@ -256,7 +243,7 @@ export default function Navigation(props?: NavigationProps) {
           <div className="flex items-center gap-4">
             <Link
               href="/custom/engagement-rings"
-              className="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-soft-black px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-105 transition-all duration-300"
+              className="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-white px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Start Your Journey
             </Link>
@@ -374,7 +361,7 @@ export default function Navigation(props?: NavigationProps) {
               <Link
                 href="/custom/engagement-rings"
                 onClick={() => setIsMenuOpen(false)}
-                className="block mt-4 mx-4 text-center bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-soft-black px-8 py-3 rounded-lg font-bold"
+                className="block mt-4 mx-4 text-center bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-white px-8 py-3 rounded-lg font-bold"
               >
                 Start Your Journey
               </Link>

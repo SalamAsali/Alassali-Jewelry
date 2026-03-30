@@ -24,7 +24,7 @@ export default function CheckoutSuccessPage() {
         <p className="text-stone mb-12 max-w-2xl mx-auto">You will receive an email confirmation shortly with your order details and tracking information.</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link href="/" className="bg-white/10 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-soft-black transition-all">Return Home</Link>
-          <Link href="/catalog" className="bg-glacier-grey text-soft-black px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">Continue Shopping</Link>
+          <Link href="/catalog" className="bg-glacier-grey text-white px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">Continue Shopping</Link>
         </div>
       </motion.div>
     </div>

@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import { Sparkles, MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react'
 
-const DEFAULT_LOGO = 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/mos4tvrw_Final-W2-1.png'
+const DEFAULT_LOGO = '/images/logo.png'
 const DEFAULT_TAGLINE = 'Crafting bespoke luxury jewelry in Toronto since 2020. Where tradition meets innovation.'
 const DEFAULT_PHONE = '+1 (416) 555-1234'
 const DEFAULT_EMAIL = 'info@alassali.ca'
@@ -26,11 +26,10 @@ export default function Footer(props?: FooterProps) {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-3 mb-4">
-              <img 
-                src={logo} 
-                alt="Alassali Jewelry" 
-                className="h-24 w-auto"
-                style={{ filter: 'invert(1)' }}
+              <img
+                src={logo}
+                alt="Alassali Jewelry"
+                className="h-20 w-auto"
               />
             </Link>
             <p className="text-warm-gray text-sm mb-4">
@@ -113,7 +112,7 @@ export default function Footer(props?: FooterProps) {
               />
               <button
                 type="submit"
-                className="w-full bg-glacier-grey text-soft-black px-6 py-2 rounded font-semibold hover:bg-glacier-grey-light transition-colors"
+                className="w-full bg-glacier-grey text-white px-6 py-2 rounded font-semibold hover:bg-glacier-grey-light transition-colors"
               >
                 SUBSCRIBE
               </button>

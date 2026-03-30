@@ -334,7 +334,7 @@ export default function CustomJewelryPage() {
             <button onClick={() => router.push('/')} className="bg-white/10 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-soft-black transition-all">
               Return Home
             </button>
-            <button onClick={() => router.push('/catalog')} className="bg-glacier-grey text-soft-black px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">
+            <button onClick={() => router.push('/catalog')} className="bg-glacier-grey text-white px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">
               Browse Collection
             </button>
           </div>
@@ -603,7 +603,7 @@ export default function CustomJewelryPage() {
                         <div className="relative border-2 border-dashed border-glacier-grey/30 rounded-xl p-12 text-center bg-white/5 hover:bg-white/10 transition-all">
                           <Upload className="w-16 h-16 text-glacier-grey mx-auto mb-4" />
                           <input type="file" multiple accept="image/*" onChange={handleFileUpload} className="hidden" id="file-upload" disabled={uploading} />
-                          <label htmlFor="file-upload" className="inline-block bg-glacier-grey text-soft-black px-8 py-3 rounded-lg font-semibold cursor-pointer hover:bg-glacier-grey-light transition-all">
+                          <label htmlFor="file-upload" className="inline-block bg-glacier-grey text-white px-8 py-3 rounded-lg font-semibold cursor-pointer hover:bg-glacier-grey-light transition-all">
                             {uploading ? 'Uploading...' : 'Choose Images'}
                           </label>
                           <p className="text-sm text-stone mt-3">PNG, JPG up to 10MB each</p>
@@ -715,11 +715,11 @@ export default function CustomJewelryPage() {
                       </button>
                     )}
                     {currentStep < totalSteps ? (
-                      <button type="button" onClick={nextStep} className="ml-auto flex items-center gap-2 px-8 py-3 rounded-lg bg-glacier-grey text-soft-black hover:bg-glacier-grey-light transition-all font-semibold shadow-lg hover:shadow-xl">
+                      <button type="button" onClick={nextStep} className="ml-auto flex items-center gap-2 px-8 py-3 rounded-lg bg-glacier-grey text-white hover:bg-glacier-grey-light transition-all font-semibold shadow-lg hover:shadow-xl">
                         Next <ArrowRight className="w-5 h-5" />
                       </button>
                     ) : (
-                      <button type="submit" className="ml-auto px-8 py-3 rounded-lg bg-glacier-grey text-soft-black hover:bg-glacier-grey-light transition-all font-semibold shadow-lg hover:shadow-xl">
+                      <button type="submit" className="ml-auto px-8 py-3 rounded-lg bg-glacier-grey text-white hover:bg-glacier-grey-light transition-all font-semibold shadow-lg hover:shadow-xl">
                         Submit Request
                       </button>
                     )}

@@ -242,7 +242,7 @@ export default function Home() {
           </div>
 
           <div className="text-center">
-            <Link href="/custom/engagement-rings" className="inline-flex items-center gap-2 bg-deep-charcoal text-white px-10 py-4 rounded-lg font-semibold hover:bg-glacier-grey hover:text-soft-black transition-all duration-300">SHOP NOW <ArrowRight className="w-5 h-5" /></Link>
+            <Link href="/custom/engagement-rings" className="inline-flex items-center gap-2 bg-deep-charcoal text-white px-10 py-4 rounded-lg font-semibold hover:bg-glacier-grey hover:text-white transition-all duration-300">SHOP NOW <ArrowRight className="w-5 h-5" /></Link>
           </div>
         </div>
       </section>
@@ -385,7 +385,7 @@ export default function Home() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Ready to Create Something<br /><span className="text-glacier-grey">Extraordinary?</span></h2>
             <p className="text-lg text-stone mb-8 max-w-2xl mx-auto">Let&apos;s bring your vision to life. Schedule a consultation with our master craftspeople.</p>
-            <Link href="/custom/engagement-rings" className="inline-block bg-glacier-grey text-soft-black px-12 py-4 rounded-lg font-bold hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">START YOUR JOURNEY TODAY</Link>
+            <Link href="/custom/engagement-rings" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-bold hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">START YOUR JOURNEY TODAY</Link>
           </motion.div>
         </div>
       </section>
