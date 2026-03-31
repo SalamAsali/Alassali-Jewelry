@@ -100,7 +100,7 @@ const bespokeCategories = [
   { name: 'Earrings', path: '/custom/earrings', icon: Ear, description: 'Elegant, tailored earrings' },
   { name: 'Bracelets', path: '/custom/bracelets', icon: Watch, description: 'Exquisite wrist pieces' },
   { name: 'Grillz', path: '/custom/grillz', icon: Smile, description: 'Bold precious metal statements' },
-  { name: 'General Inquiry', path: '/custom/engagement-rings', icon: MessageSquare, description: 'Not sure? Start here' },
+  { name: 'General Inquiry', path: '/custom/general', icon: MessageSquare, description: 'Not sure? Start here' },
 ]
 
 export default function Home() {
@@ -235,7 +235,7 @@ export default function Home() {
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 1 }} className="text-sm uppercase tracking-widest mb-12 text-stone" style={{ fontFamily: 'var(--font-body)' }}>ONLY THE FINEST</motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }} className="flex flex-col sm:flex-row gap-4">
               <Link href="/portfolio" className="inline-block bg-white text-soft-black px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-glacier-grey hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl text-center" data-testid="hero-cta-primary">VIEW MY WORK</Link>
-              <Link href="/custom/engagement-rings" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-lg hover:shadow-2xl text-center">INQUIRE NOW</Link>
+              <Link href="/custom/general" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-lg hover:shadow-2xl text-center">INQUIRE NOW</Link>
             </motion.div>
           </motion.div>
         </div>
@@ -479,7 +479,7 @@ export default function Home() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Ready to Create Something<br /><span className="text-glacier-grey">Extraordinary?</span></h2>
             <p className="text-lg text-stone mb-8 max-w-2xl mx-auto">Let&apos;s bring your vision to life. Schedule a consultation with our master craftspeople.</p>
-            <Link href="/custom/engagement-rings" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-bold hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">START YOUR JOURNEY TODAY</Link>
+            <Link href="/custom/general" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-bold hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">START YOUR JOURNEY TODAY</Link>
           </motion.div>
         </div>
       </section>

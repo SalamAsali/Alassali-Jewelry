@@ -66,6 +66,12 @@ const typeConfig: Record<string, { title: string; subtitle: string; styles: stri
     styles: ['Tennis', 'Chain', 'Bangle', 'Cuff', 'Custom Design', 'Not Sure'],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver'],
   },
+  'general': {
+    title: 'General Inquiry',
+    subtitle: 'Tell us about your dream piece — we\'ll bring it to life',
+    styles: ['Ring', 'Chain', 'Pendant', 'Earrings', 'Bracelet', 'Grillz', 'Other'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver'],
+  },
 }
 
 // ---------------------------------------------------------------------------
@@ -100,6 +106,10 @@ const styleIcons: Record<string, Record<string, LucideIcon>> = {
   'bracelets': {
     Tennis: Gem, Chain: Link, Bangle: Circle,
     Cuff: Shield, 'Custom Design': Paintbrush, 'Not Sure': HelpCircle,
+  },
+  'general': {
+    Ring: Circle, Chain: Link, Pendant: Layers,
+    Earrings: CircleDot, Bracelet: Gem, Grillz: Flame, Other: HelpCircle,
   },
 }
 

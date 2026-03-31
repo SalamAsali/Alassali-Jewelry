@@ -242,7 +242,7 @@ export default function Navigation(props?: NavigationProps) {
           {/* Right Section */}
           <div className="flex items-center gap-4">
             <Link
-              href="/custom/engagement-rings"
+              href="/custom/general"
               className="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-white px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Start Your Journey
@@ -359,7 +359,7 @@ export default function Navigation(props?: NavigationProps) {
                 </motion.div>
               ))}
               <Link
-                href="/custom/engagement-rings"
+                href="/custom/general"
                 onClick={() => setIsMenuOpen(false)}
                 className="block mt-4 mx-4 text-center bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-white px-8 py-3 rounded-lg font-bold"
               >
