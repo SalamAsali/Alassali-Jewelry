@@ -1,11 +1,12 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import {
   ArrowRight, Star,
   MessageSquare, Pencil, Gem, PenTool, Hammer, Gift,
+  CircleDot, Layers, Link2, Ear, Watch, Smile,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
@@ -38,12 +39,12 @@ const processIconMap: Record<string, LucideIcon> = {
 }
 
 const FALLBACK_PROCESS: ProcessStep[] = [
-  { icon: '', label: 'Consultation', description: 'Discuss Your Vision' },
-  { icon: '', label: 'Sketch', description: 'Initial Design' },
-  { icon: '', label: 'Material Selection', description: 'Choose Metals & Stones' },
-  { icon: '', label: 'Design', description: 'CAD Rendering' },
-  { icon: '', label: 'In-House Manufacture', description: 'Crafting' },
-  { icon: '', label: 'Presentation', description: 'Final Reveal' },
+  { icon: '', label: 'Consultation', description: 'We start with a personal conversation to understand your vision, style preferences, and the story behind your piece.' },
+  { icon: '', label: 'Sketch', description: 'Our designers create detailed sketches and CAD renderings, refining until every detail matches your dream.' },
+  { icon: '', label: 'Material Selection', description: 'Hand-pick from the finest metals and ethically sourced gemstones — diamonds, sapphires, rubies, and more.' },
+  { icon: '', label: 'Design', description: 'Your approved design is finalized with precise CAD models, ready for our master craftspeople.' },
+  { icon: '', label: 'In-House Manufacture', description: 'Every piece is crafted entirely in-house in Toronto using traditional techniques and modern precision.' },
+  { icon: '', label: 'Presentation', description: 'Your finished piece is presented in luxury packaging — a moment as special as the jewelry itself.' },
 ]
 
 const FALLBACK_FEATURED: GalleryItem[] = [
@@ -91,15 +92,46 @@ const ACCENT_IMAGES = [
   { src: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/vw4agpvw_4-pendants-on-the-rolls-Royce-scaled.jpeg', alt: 'Custom pendants on Rolls Royce' },
 ]
 
+const bespokeCategories = [
+  { name: 'Engagement Rings', path: '/custom/engagement-rings', icon: Gem, description: 'Begin your forever story' },
+  { name: 'Rings', path: '/custom/rings', icon: CircleDot, description: 'Statement & signature rings' },
+  { name: 'Pendants', path: '/custom/pendants', icon: Layers, description: 'Your story, beautifully told' },
+  { name: 'Chains', path: '/custom/chains', icon: Link2, description: 'Wearable art, crafted to spec' },
+  { name: 'Earrings', path: '/custom/earrings', icon: Ear, description: 'Elegant, tailored earrings' },
+  { name: 'Bracelets', path: '/custom/bracelets', icon: Watch, description: 'Exquisite wrist pieces' },
+  { name: 'Grillz', path: '/custom/grillz', icon: Smile, description: 'Bold precious metal statements' },
+]
+
 export default function Home() {
   const [featuredItems, setFeaturedItems] = useState<GalleryItem[]>([])
   const [processSteps, setProcessSteps] = useState<ProcessStep[]>([])
   const [torontoImages, setTorontoImages] = useState<string[]>(MADE_IN_TORONTO_IMAGES)
   const [loading, setLoading] = useState(true)
+  const [processProgress, setProcessProgress] = useState(0)
+  const processRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     fetchFeaturedItems()
     fetchHomepage()
+  }, [])
+
+  // Scroll-based progress for the process section
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!processRef.current) return
+      const rect = processRef.current.getBoundingClientRect()
+      const sectionHeight = processRef.current.offsetHeight
+      const viewportHeight = window.innerHeight
+      // Start filling when section top hits bottom of viewport
+      // Finish when section bottom hits top of viewport
+      const scrolledPast = viewportHeight - rect.top
+      const totalTravel = sectionHeight + viewportHeight
+      const progress = Math.min(Math.max(scrolledPast / totalTravel, 0), 1)
+      setProcessProgress(progress)
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const fetchFeaturedItems = async () => {
@@ -147,6 +179,7 @@ export default function Home() {
   const displayedItems = featuredItems.length > 0 ? featuredItems : FALLBACK_FEATURED
   const img1 = torontoImages[0]
   const img2 = torontoImages[1]
+  const steps = processSteps.length ? processSteps : FALLBACK_PROCESS
 
   const testimonials = [
     { name: 'gray', rating: 5, text: 'Had a perfect experience! Unmatched creativity and execution, definitely the only place to go in toronto for jewelry', source: 'Google' },
@@ -156,8 +189,8 @@ export default function Home() {
 
   return (
     <div className="overflow-hidden bg-white">
-      {/* Hero Section with Orbiting Diamonds */}
-      <section className="relative min-h-screen flex items-center bg-soft-black text-white overflow-hidden" data-testid="homepage-hero">
+      {/* ===== HERO — Fullscreen ===== */}
+      <section className="relative h-[100dvh] flex items-center bg-soft-black text-white overflow-hidden" data-testid="homepage-hero">
         <DotPattern />
         <DiamondPattern className="text-white" />
 
@@ -194,60 +227,56 @@ export default function Home() {
           </svg>
         </div>
 
-        <div className="section-container py-20 relative z-10">
+        <div className="section-container relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="max-w-3xl">
             <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} className="text-7xl md:text-8xl lg:text-9xl font-bold mb-4" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>TORONTO</motion.h1>
             <motion.h2 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.7, duration: 1 }} className="text-4xl md:text-5xl font-light mb-6 text-white" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jeweler</motion.h2>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 1 }} className="text-sm uppercase tracking-widest mb-12 text-stone" style={{ fontFamily: 'var(--font-body)' }}>ONLY THE FINEST</motion.p>
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }}>
-              <Link href="/portfolio" className="inline-block bg-white text-soft-black px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-glacier-grey hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl" data-testid="hero-cta-primary">VIEW MY WORK</Link>
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }} className="flex flex-col sm:flex-row gap-4">
+              <Link href="/portfolio" className="inline-block bg-white text-soft-black px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-glacier-grey hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl text-center" data-testid="hero-cta-primary">VIEW MY WORK</Link>
+              <Link href="/custom/engagement-rings" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-lg hover:shadow-2xl text-center">INQUIRE NOW</Link>
             </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Custom Made Section - Mobile-optimized sizing */}
-      <section className="bg-white py-24" data-testid="custom-made-section">
+      {/* ===== BESPOKE SERVICES — Links to each custom form ===== */}
+      <section className="bg-white py-24" data-testid="bespoke-services-section">
         <div className="section-container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Made</h2>
-            <p className="text-sm md:text-lg text-taupe max-w-3xl mx-auto leading-relaxed">&quot;We believe in a collaborative approach to custom jewelry creation. Each piece is a partnership between your vision and our expertise, resulting in truly one-of-a-kind artistry.&quot;</p>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Bespoke Services</h2>
+            <p className="text-sm md:text-lg text-taupe max-w-3xl mx-auto leading-relaxed">Every piece is a partnership between your vision and our expertise. Choose your category to begin.</p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 mb-12">
-            {(processSteps.length ? processSteps : FALLBACK_PROCESS).map((step, index) => {
-              const Icon = processIconMap[step.label]
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {bespokeCategories.map((cat, index) => {
+              const Icon = cat.icon
               return (
                 <motion.div
-                  key={`${step.label}-${index}`}
+                  key={cat.name}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -8 }}
-                  className="group flex flex-col items-center bg-white border-2 border-soft-black rounded-2xl p-4 md:p-8 transition-all duration-500 hover:border-glacier-grey hover:shadow-xl hover:shadow-glacier-grey/10"
+                  transition={{ delay: index * 0.07 }}
                 >
-                  <div className="w-14 h-14 md:w-20 md:h-20 rounded-full bg-white border-2 border-soft-black group-hover:border-glacier-grey flex items-center justify-center mb-4 group-hover:shadow-lg group-hover:shadow-glacier-grey/20 transition-all duration-500">
-                    {Icon ? (
-                      <Icon className="w-6 h-6 md:w-9 md:h-9 text-deep-charcoal group-hover:text-glacier-grey group-hover:scale-110 transition-all duration-300" />
-                    ) : (
-                      <img src={typeof step.icon === 'string' ? step.icon : getImageUrl(step.icon)} alt={step.label} className="w-8 h-8 md:w-12 md:h-12 object-contain group-hover:scale-110 transition-transform duration-300" />
-                    )}
-                  </div>
-                  <h3 className="text-sm font-bold text-deep-charcoal mb-1 text-center">{step.label}</h3>
-                  <p className="text-xs text-taupe text-center">{step.description}</p>
+                  <Link
+                    href={cat.path}
+                    className="group flex flex-col items-center bg-white border-2 border-soft-black rounded-2xl p-6 md:p-8 transition-all duration-500 hover:border-glacier-grey hover:shadow-xl hover:shadow-glacier-grey/10 hover:-translate-y-2 h-full"
+                  >
+                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white border-2 border-soft-black group-hover:border-glacier-grey flex items-center justify-center mb-4 group-hover:shadow-lg group-hover:shadow-glacier-grey/20 transition-all duration-500">
+                      <Icon className="w-7 h-7 md:w-9 md:h-9 text-deep-charcoal group-hover:text-glacier-grey group-hover:scale-110 transition-all duration-300" />
+                    </div>
+                    <h3 className="text-sm md:text-base font-bold text-deep-charcoal mb-1 text-center group-hover:text-glacier-grey transition-colors">{cat.name}</h3>
+                    <p className="text-xs text-taupe text-center">{cat.description}</p>
+                  </Link>
                 </motion.div>
               )
             })}
           </div>
-
-          <div className="text-center">
-            <Link href="/custom/engagement-rings" className="inline-flex items-center gap-2 bg-deep-charcoal text-white px-10 py-4 rounded-lg font-semibold hover:bg-glacier-grey hover:text-white transition-all duration-300">SHOP NOW <ArrowRight className="w-5 h-5" /></Link>
-          </div>
         </div>
       </section>
 
-      {/* Made in Toronto - Hardcoded CDN images */}
+      {/* ===== MADE IN TORONTO ===== */}
       <section className="relative bg-soft-black text-white py-24 overflow-hidden">
         <DotPattern />
         <div className="section-container relative z-10">
@@ -259,7 +288,6 @@ export default function Home() {
                 <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt="Silver Cuban chain crafted in Toronto" className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
                 <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom chain design crafted in Toronto" className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
               </div>
-              {/* Accent images on mobile */}
               <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto mt-6">
                 {ACCENT_IMAGES.map((accent, i) => (
                   <motion.img key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 + i * 0.15 }} src={accent.src} alt={accent.alt} className="w-full aspect-square object-cover rounded-lg shadow-xl border border-glacier-grey/30" />
@@ -269,7 +297,6 @@ export default function Home() {
 
             {/* Desktop layout */}
             <div className="hidden lg:block relative">
-              {/* Floating accent images */}
               <motion.img
                 initial={{ opacity: 0, x: 60 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -309,7 +336,73 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
+      {/* ===== OUR PROCESS — Vertical scroll with interactive progress line ===== */}
+      <section className="bg-white py-24 overflow-hidden" data-testid="process-section">
+        <div className="section-container">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Our Process</h2>
+            <p className="text-sm md:text-lg text-taupe max-w-3xl mx-auto leading-relaxed">From first conversation to final reveal — every step crafted with care.</p>
+          </motion.div>
+
+          <div ref={processRef} className="relative max-w-3xl mx-auto">
+            {/* Progress line track */}
+            <div className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-stone/30" />
+            {/* Progress line fill */}
+            <div
+              className="absolute left-6 md:left-8 top-0 w-0.5 bg-glacier-grey transition-all duration-100 ease-out"
+              style={{ height: `${processProgress * 100}%` }}
+            />
+
+            <div className="space-y-16">
+              {steps.map((step, index) => {
+                const Icon = processIconMap[step.label]
+                const stepThreshold = (index + 0.5) / steps.length
+                const isActive = processProgress >= stepThreshold
+
+                return (
+                  <motion.div
+                    key={`${step.label}-${index}`}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true, margin: '-50px' }}
+                    transition={{ delay: 0.1 }}
+                    className="relative pl-16 md:pl-24"
+                  >
+                    {/* Step dot on the line */}
+                    <div className={`absolute left-3.5 md:left-5.5 top-1 w-5 h-5 md:w-5 md:h-5 rounded-full border-2 transition-all duration-500 ${
+                      isActive
+                        ? 'bg-glacier-grey border-glacier-grey scale-125'
+                        : 'bg-white border-stone'
+                    }`} />
+
+                    <div className="flex items-start gap-5">
+                      <div className={`flex-shrink-0 w-14 h-14 md:w-16 md:h-16 rounded-2xl flex items-center justify-center transition-all duration-500 ${
+                        isActive
+                          ? 'bg-glacier-grey/10 border-2 border-glacier-grey'
+                          : 'bg-off-white border-2 border-stone/40'
+                      }`}>
+                        {Icon ? (
+                          <Icon className={`w-7 h-7 transition-colors duration-500 ${isActive ? 'text-glacier-grey' : 'text-taupe'}`} />
+                        ) : (
+                          <img src={typeof step.icon === 'string' ? step.icon : getImageUrl(step.icon)} alt={step.label} className="w-8 h-8 object-contain" />
+                        )}
+                      </div>
+                      <div>
+                        <h3 className={`text-lg md:text-xl font-bold mb-2 transition-colors duration-500 ${isActive ? 'text-deep-charcoal' : 'text-taupe'}`} style={{ fontFamily: 'var(--font-heading)' }}>
+                          {step.label}
+                        </h3>
+                        <p className="text-sm md:text-base text-taupe leading-relaxed">{step.description}</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ===== TESTIMONIALS ===== */}
       <section className="bg-white py-24 relative overflow-hidden">
         <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1000 500" preserveAspectRatio="none">
           <path d="M 0,250 Q 250,100 500,250 T 1000,250" fill="none" stroke="#8B7D6B" strokeWidth="2" />
@@ -340,7 +433,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The Icons - with fallback products */}
+      {/* ===== THE ICONS ===== */}
       <section className="bg-white py-24" data-testid="featured-products-section">
         <div className="section-container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
@@ -378,7 +471,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Final CTA */}
+      {/* ===== FINAL CTA ===== */}
       <section className="relative bg-soft-black text-white py-24" data-testid="final-cta-section">
         <DotPattern />
         <div className="section-container text-center relative z-10">
