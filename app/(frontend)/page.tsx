@@ -100,6 +100,7 @@ const bespokeCategories = [
   { name: 'Earrings', path: '/custom/earrings', icon: Ear, description: 'Elegant, tailored earrings' },
   { name: 'Bracelets', path: '/custom/bracelets', icon: Watch, description: 'Exquisite wrist pieces' },
   { name: 'Grillz', path: '/custom/grillz', icon: Smile, description: 'Bold precious metal statements' },
+  { name: 'General Inquiry', path: '/custom/engagement-rings', icon: MessageSquare, description: 'Not sure? Start here' },
 ]
 
 export default function Home() {
