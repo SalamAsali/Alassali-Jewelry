@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
@@ -20,7 +20,22 @@ import DotPattern from '@/components/DotPattern'
 export const dynamic = 'force-dynamic'
 
 // ---------------------------------------------------------------------------
-// Config
+// Piece type options (for the unified selector on Page 3)
+// ---------------------------------------------------------------------------
+
+const pieceTypeOptions: { value: string; label: string; icon: LucideIcon; subtitle: string }[] = [
+  { value: 'engagement-rings', label: 'Engagement Ring', icon: Diamond, subtitle: 'Begin your forever' },
+  { value: 'rings', label: 'Ring', icon: Circle, subtitle: 'Statement, band, signet & more' },
+  { value: 'chains', label: 'Chain', icon: Link, subtitle: 'Cuban, rope, franco & more' },
+  { value: 'pendants', label: 'Pendant', icon: Layers, subtitle: 'Initial, name, symbol & more' },
+  { value: 'earrings', label: 'Earrings', icon: CircleDot, subtitle: 'Studs, hoops, drops & more' },
+  { value: 'bracelets', label: 'Bracelet', icon: Gem, subtitle: 'Tennis, bangle, cuff & more' },
+  { value: 'grillz', label: 'Grillz', icon: Flame, subtitle: 'Bold precious metal statements' },
+  { value: 'other', label: 'Other', icon: HelpCircle, subtitle: 'Something unique — tell us more' },
+]
+
+// ---------------------------------------------------------------------------
+// Config per piece type (styles & metals)
 // ---------------------------------------------------------------------------
 
 const typeConfig: Record<string, { title: string; subtitle: string; styles: string[]; metals: string[] }> = {
@@ -66,16 +81,16 @@ const typeConfig: Record<string, { title: string; subtitle: string; styles: stri
     styles: ['Tennis', 'Chain', 'Bangle', 'Cuff', 'Custom Design', 'Not Sure'],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver'],
   },
-  'general': {
-    title: 'General Inquiry',
+  'other': {
+    title: 'Custom Piece',
     subtitle: 'Tell us about your dream piece — we\'ll bring it to life',
-    styles: ['Ring', 'Chain', 'Pendant', 'Earrings', 'Bracelet', 'Grillz', 'Other'],
+    styles: [],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver'],
   },
 }
 
 // ---------------------------------------------------------------------------
-// Icon maps
+// Icon maps (per piece type)
 // ---------------------------------------------------------------------------
 
 const styleIcons: Record<string, Record<string, LucideIcon>> = {
@@ -107,11 +122,26 @@ const styleIcons: Record<string, Record<string, LucideIcon>> = {
     Tennis: Gem, Chain: Link, Bangle: Circle,
     Cuff: Shield, 'Custom Design': Paintbrush, 'Not Sure': HelpCircle,
   },
-  'general': {
-    Ring: Circle, Chain: Link, Pendant: Layers,
-    Earrings: CircleDot, Bracelet: Gem, Grillz: Flame, Other: HelpCircle,
-  },
 }
+
+// ---------------------------------------------------------------------------
+// Size field config per piece type
+// ---------------------------------------------------------------------------
+
+const sizeConfig: Record<string, { label: string; placeholder: string }> = {
+  'engagement-rings': { label: 'Ring Size', placeholder: 'e.g., Size 7' },
+  'rings': { label: 'Ring Size', placeholder: 'e.g., Size 7' },
+  'chains': { label: 'Chain Length', placeholder: 'e.g., 22 inches' },
+  'pendants': { label: 'Chain Length (optional)', placeholder: 'e.g., 18 inches' },
+  'bracelets': { label: 'Wrist Size', placeholder: 'e.g., 7.5 inches' },
+  'earrings': { label: 'Size Preference (optional)', placeholder: 'e.g., 1 inch hoops' },
+  'grillz': { label: 'Teeth Info', placeholder: 'e.g., Top 6 teeth, mold kit needed' },
+  'other': { label: 'Size / Dimensions', placeholder: 'e.g., describe your dimensions' },
+}
+
+// ---------------------------------------------------------------------------
+// Shared options
+// ---------------------------------------------------------------------------
 
 const stoneOptions: { name: string; icon: LucideIcon; color: string }[] = [
   { name: 'Diamond', icon: Diamond, color: 'text-white' },
@@ -152,33 +182,6 @@ const timelineOptions: { value: string; label: string; icon: LucideIcon; desc: s
 ]
 
 // ---------------------------------------------------------------------------
-// Progress helpers — 4 main steps, 10 total pages
-// ---------------------------------------------------------------------------
-// Pages: 1=Contact, 2=Budget, 3=Style, 4=Metal, 5=Stones,
-//        6=Photos, 7=Size, 8=Timeline, 9=Notes, 10=Review
-
-const mainSteps = [
-  { label: 'About You', pages: ['Contact', 'Budget'] },
-  { label: 'Design', pages: ['Style', 'Metal', 'Stones'] },
-  { label: 'Details', pages: ['Photos', 'Size', 'Timeline', 'Notes'] },
-  { label: 'Review', pages: ['Review'] },
-]
-
-const getMainIdx = (page: number) => {
-  if (page <= 2) return 0
-  if (page <= 5) return 1
-  if (page <= 9) return 2
-  return 3
-}
-
-const getSubIdx = (page: number) => {
-  if (page <= 2) return page - 1
-  if (page <= 5) return page - 3
-  if (page <= 9) return page - 6
-  return 0
-}
-
-// ---------------------------------------------------------------------------
 // Shared sub-component
 // ---------------------------------------------------------------------------
 
@@ -198,11 +201,15 @@ function ReviewRow({ label, value }: { label: string; value: string }) {
 export default function CustomJewelryPage() {
   const params = useParams()
   const router = useRouter()
-  const type = (params?.type as string) || 'engagement-rings'
+  const urlType = (params?.type as string) || 'general'
+
+  // If user came via a direct link like /custom/chains, pre-select that type.
+  // If they came via /custom/general, they'll pick on Page 3.
+  const isDirectType = urlType !== 'general' && urlType in typeConfig
 
   const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState({
-    type,
+    pieceType: isDirectType ? urlType : '',
     firstName: '',
     lastName: '',
     email: '',
@@ -221,14 +228,136 @@ export default function CustomJewelryPage() {
   const [submitted, setSubmitted] = useState(false)
   const [uploading, setUploading] = useState(false)
 
-  const config = typeConfig[type] || typeConfig['engagement-rings']
-  const totalSteps = 10
+  // ---------------------------------------------------------------------------
+  // Derived config based on selected piece type
+  // ---------------------------------------------------------------------------
 
-  // ---- handlers ----
+  const activeType = formData.pieceType || 'other'
+  const config = typeConfig[activeType] || typeConfig['other']
+
+  // ---------------------------------------------------------------------------
+  // Dynamic page sequence — build ordered list of page IDs, skipping
+  // pages that don't apply to the selected piece type
+  // ---------------------------------------------------------------------------
+  // Logical pages:
+  //   contact, budget, pieceType, style, metal, stones,
+  //   photos, size, timeline, notes, review
+  //
+  // Skips:
+  //   - pieceType page skipped if user came via direct /custom/[type] URL
+  //   - style page skipped if pieceType is 'other' (no predefined styles)
+  //   - stones page skipped if pieceType is 'grillz'
+
+  const pageSequence = useMemo(() => {
+    const pages: string[] = ['contact', 'budget']
+
+    // Page 3: piece type selector (skip if pre-selected via URL)
+    if (!isDirectType) {
+      pages.push('pieceType')
+    }
+
+    // Page 4: style (skip for 'other' — no predefined styles)
+    if (activeType !== 'other') {
+      pages.push('style')
+    }
+
+    pages.push('metal')
+
+    // Stones page (skip for grillz)
+    if (activeType !== 'grillz') {
+      pages.push('stones')
+    }
+
+    pages.push('photos', 'size', 'timeline', 'notes', 'review')
+    return pages
+  }, [isDirectType, activeType])
+
+  const totalSteps = pageSequence.length
+  const currentPageId = pageSequence[currentStep - 1] || 'contact'
+
+  // ---------------------------------------------------------------------------
+  // Progress helpers — 4 main steps, dynamic sub-pages
+  // ---------------------------------------------------------------------------
+
+  const mainStepsConfig = useMemo(() => {
+    const aboutYou = ['contact', 'budget'].filter(p => pageSequence.includes(p))
+    const design = ['pieceType', 'style', 'metal', 'stones'].filter(p => pageSequence.includes(p))
+    const details = ['photos', 'size', 'timeline', 'notes'].filter(p => pageSequence.includes(p))
+    const review = ['review']
+
+    return [
+      { label: 'About You', pages: aboutYou },
+      { label: 'Design', pages: design },
+      { label: 'Details', pages: details },
+      { label: 'Review', pages: review },
+    ]
+  }, [pageSequence])
+
+  const pageLabels: Record<string, string> = {
+    contact: 'Contact',
+    budget: 'Budget',
+    pieceType: 'Piece Type',
+    style: 'Style',
+    metal: 'Metal',
+    stones: 'Stones',
+    photos: 'Photos',
+    size: 'Size',
+    timeline: 'Timeline',
+    notes: 'Notes',
+    review: 'Review',
+  }
+
+  const getMainIdx = (step: number) => {
+    const pageId = pageSequence[step - 1]
+    for (let i = 0; i < mainStepsConfig.length; i++) {
+      if (mainStepsConfig[i].pages.includes(pageId)) return i
+    }
+    return 0
+  }
+
+  const getSubIdx = (step: number) => {
+    const pageId = pageSequence[step - 1]
+    const mainIdx = getMainIdx(step)
+    return mainStepsConfig[mainIdx].pages.indexOf(pageId)
+  }
+
+  const currentMain = getMainIdx(currentStep)
+  const currentSub = getSubIdx(currentStep)
+  const subPages = mainStepsConfig[currentMain].pages
+
+  // ---------------------------------------------------------------------------
+  // Header title — adapts to piece type selection
+  // ---------------------------------------------------------------------------
+
+  const headerTitle = formData.pieceType && typeConfig[formData.pieceType]
+    ? typeConfig[formData.pieceType].title
+    : 'Start Your Journey'
+
+  const headerSubtitle = formData.pieceType && typeConfig[formData.pieceType]
+    ? typeConfig[formData.pieceType].subtitle
+    : 'Tell us about your dream piece — we\'ll bring it to life'
+
+  // ---------------------------------------------------------------------------
+  // Handlers
+  // ---------------------------------------------------------------------------
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const selectPieceType = (pieceType: string) => {
+    // Reset design choices when changing piece type
+    setFormData(prev => ({
+      ...prev,
+      pieceType,
+      style: '',
+      metalType: '',
+      goldColor: '',
+      stonePreferences: [],
+      diamondType: '',
+      size: '',
+    }))
   }
 
   const selectMetal = (metal: string) => {
@@ -274,8 +403,9 @@ export default function CustomJewelryPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           ...formData,
+          type: formData.pieceType || 'general',
           name: `${formData.firstName} ${formData.lastName}`.trim(),
-          jewelryCategory: type,
+          jewelryCategory: formData.pieceType || 'general',
           inspirationNames: formData.inspirationImages.join(', '),
         }),
       })
@@ -293,18 +423,26 @@ export default function CustomJewelryPage() {
   const nextStep = () => { if (currentStep < totalSteps) setCurrentStep(currentStep + 1) }
   const prevStep = () => { if (currentStep > 1) setCurrentStep(currentStep - 1) }
 
-  // ---- shared style helpers ----
+  // ---------------------------------------------------------------------------
+  // Shared style helpers
+  // ---------------------------------------------------------------------------
 
   const cardBase = 'flex flex-col items-center justify-center rounded-xl border-2 transition-all cursor-pointer'
   const cardSelected = 'bg-glacier-grey/20 border-glacier-grey shadow-lg shadow-glacier-grey/20'
   const cardUnselected = 'bg-charcoal/50 border-glacier-grey/20 hover:border-glacier-grey/50 hover:bg-charcoal'
   const inputClass = 'w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-glacier-grey/50 text-white placeholder-stone focus:border-glacier-grey focus:ring-2 focus:ring-glacier-grey/40 transition-all outline-none'
 
-  // ---- progress helpers ----
+  // ---------------------------------------------------------------------------
+  // Size field labels
+  // ---------------------------------------------------------------------------
 
-  const currentMain = getMainIdx(currentStep)
-  const currentSub = getSubIdx(currentStep)
-  const subPages = mainSteps[currentMain].pages
+  const activeSizeConfig = sizeConfig[activeType] || sizeConfig['other']
+
+  // ---------------------------------------------------------------------------
+  // Piece type display label for review
+  // ---------------------------------------------------------------------------
+
+  const pieceTypeLabel = pieceTypeOptions.find(p => p.value === formData.pieceType)?.label || formData.pieceType
 
   // =========================================================================
   // SUBMITTED
@@ -334,7 +472,7 @@ export default function CustomJewelryPage() {
             Thank You!
           </h1>
           <p className="text-xl text-stone mb-6">
-            Your custom {type.replace('-', ' ')} inquiry has been received.
+            Your custom {pieceTypeLabel.toLowerCase()} inquiry has been received.
           </p>
           <p className="text-stone mb-12 max-w-2xl mx-auto">
             Our master craftspeople will review your request and contact you within 24-48 hours
@@ -370,10 +508,10 @@ export default function CustomJewelryPage() {
               <div className="inline-flex items-center gap-3 mb-4">
                 <Sparkles className="w-8 h-8 text-glacier-grey" />
                 <h1 className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: 'var(--font-heading)' }}>
-                  {config.title}
+                  {headerTitle}
                 </h1>
               </div>
-              <p className="text-xl text-stone font-light max-w-3xl mx-auto">{config.subtitle}</p>
+              <p className="text-xl text-stone font-light max-w-3xl mx-auto">{headerSubtitle}</p>
             </motion.div>
           </div>
         </div>
@@ -386,7 +524,7 @@ export default function CustomJewelryPage() {
             <div className="mb-12" data-testid="form-progress">
               {/* Main steps */}
               <div className="flex justify-between items-center mb-2">
-                {mainSteps.map((step, i) => {
+                {mainStepsConfig.map((step, i) => {
                   const isCompleted = i < currentMain
                   const isActive = i === currentMain
                   return (
@@ -423,17 +561,17 @@ export default function CustomJewelryPage() {
                   transition={{ duration: 0.25 }}
                   className="flex justify-center items-center gap-4 mt-6 py-3 px-4 rounded-lg bg-white/5 border border-glacier-grey/10"
                 >
-                  {subPages.map((label, i) => {
+                  {subPages.map((pageId, i) => {
                     const isDone = i < currentSub
                     const isActive = i === currentSub
                     return (
-                      <div key={label} className="flex items-center gap-2">
+                      <div key={pageId} className="flex items-center gap-2">
                         <div className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
                           isDone ? 'bg-glacier-grey' : isActive ? 'bg-glacier-grey scale-125' : 'bg-charcoal'
                         }`} />
                         <span className={`text-xs font-medium transition-colors duration-300 ${
                           isDone || isActive ? 'text-glacier-grey' : 'text-taupe'
-                        }`}>{label}</span>
+                        }`}>{pageLabels[pageId] || pageId}</span>
                       </div>
                     )
                   })}
@@ -458,9 +596,9 @@ export default function CustomJewelryPage() {
                 <form onSubmit={handleSubmit}>
                   <AnimatePresence mode="wait">
 
-                    {/* ===== PAGE 1 — Contact ===== */}
-                    {currentStep === 1 && (
-                      <motion.div key="s1" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
+                    {/* ===== CONTACT ===== */}
+                    {currentPageId === 'contact' && (
+                      <motion.div key="contact" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
                         <h2 className="text-3xl font-bold text-white mb-8" style={{ fontFamily: 'var(--font-heading)' }}>
                           Let&apos;s Get Started
                         </h2>
@@ -485,9 +623,9 @@ export default function CustomJewelryPage() {
                       </motion.div>
                     )}
 
-                    {/* ===== PAGE 2 — Budget ===== */}
-                    {currentStep === 2 && (
-                      <motion.div key="s2" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+                    {/* ===== BUDGET ===== */}
+                    {currentPageId === 'budget' && (
+                      <motion.div key="budget" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                         <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Your Budget</h2>
                         <p className="text-stone mb-8">Select the range that fits your vision</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -505,14 +643,34 @@ export default function CustomJewelryPage() {
                       </motion.div>
                     )}
 
-                    {/* ===== PAGE 3 — Style ===== */}
-                    {currentStep === 3 && (
-                      <motion.div key="s3" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+                    {/* ===== PIECE TYPE (unified selector) ===== */}
+                    {currentPageId === 'pieceType' && (
+                      <motion.div key="pieceType" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+                        <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>What Are You Looking For?</h2>
+                        <p className="text-stone mb-8">Select the type of custom piece you&apos;d like us to create</p>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                          {pieceTypeOptions.map(({ value, label, icon: PIcon, subtitle: sub }) => {
+                            const selected = formData.pieceType === value
+                            return (
+                              <button key={value} type="button" onClick={() => selectPieceType(value)} className={`${cardBase} p-6 min-h-[160px] ${selected ? cardSelected : cardUnselected}`}>
+                                <PIcon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
+                                <span className="text-white font-semibold text-sm mb-1">{label}</span>
+                                <span className="text-stone text-xs text-center leading-tight">{sub}</span>
+                              </button>
+                            )
+                          })}
+                        </div>
+                      </motion.div>
+                    )}
+
+                    {/* ===== STYLE (conditional per piece type) ===== */}
+                    {currentPageId === 'style' && (
+                      <motion.div key="style" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                         <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Choose Your Style</h2>
                         <p className="text-stone mb-8">Select the style that speaks to you</p>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                           {config.styles.map((style: string) => {
-                            const Icon = styleIcons[type]?.[style] || HelpCircle
+                            const Icon = styleIcons[activeType]?.[style] || HelpCircle
                             const selected = formData.style === style
                             return (
                               <button key={style} type="button" onClick={() => setFormData(prev => ({ ...prev, style }))} className={`${cardBase} p-6 min-h-[140px] ${selected ? cardSelected : cardUnselected}`}>
@@ -525,9 +683,9 @@ export default function CustomJewelryPage() {
                       </motion.div>
                     )}
 
-                    {/* ===== PAGE 4 — Metal + Gold Colour ===== */}
-                    {currentStep === 4 && (
-                      <motion.div key="s4" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-10">
+                    {/* ===== METAL + GOLD COLOUR ===== */}
+                    {currentPageId === 'metal' && (
+                      <motion.div key="metal" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-10">
                         <div>
                           <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Select Your Metal</h2>
                           <p className="text-stone mb-8">Choose your preferred metal type</p>
@@ -563,9 +721,9 @@ export default function CustomJewelryPage() {
                       </motion.div>
                     )}
 
-                    {/* ===== PAGE 5 — Stones + Diamond Type ===== */}
-                    {currentStep === 5 && (
-                      <motion.div key="s5" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-10">
+                    {/* ===== STONES + DIAMOND TYPE ===== */}
+                    {currentPageId === 'stones' && (
+                      <motion.div key="stones" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-10">
                         <div>
                           <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Stone Preferences</h2>
                           <p className="text-stone mb-8">Select one or more stones for your piece</p>
@@ -605,9 +763,9 @@ export default function CustomJewelryPage() {
                       </motion.div>
                     )}
 
-                    {/* ===== PAGE 6 — Inspiration ===== */}
-                    {currentStep === 6 && (
-                      <motion.div key="s6" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+                    {/* ===== PHOTOS / INSPIRATION ===== */}
+                    {currentPageId === 'photos' && (
+                      <motion.div key="photos" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                         <h2 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>Share Your Inspiration</h2>
                         <p className="text-stone mb-8">Upload images that inspire you. This helps us understand your vision better.</p>
                         <div className="relative border-2 border-dashed border-glacier-grey/30 rounded-xl p-12 text-center bg-white/5 hover:bg-white/10 transition-all">
@@ -626,14 +784,14 @@ export default function CustomJewelryPage() {
                       </motion.div>
                     )}
 
-                    {/* ===== PAGE 7 — Size ===== */}
-                    {currentStep === 7 && (
-                      <motion.div key="s7" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
+                    {/* ===== SIZE (conditional label per piece type) ===== */}
+                    {currentPageId === 'size' && (
+                      <motion.div key="size" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
                         <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Size &amp; Dimensions</h2>
                         <p className="text-stone mb-8">Tell us your measurements so we can craft a perfect fit</p>
                         <div>
-                          <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Size / Dimensions</label>
-                          <input type="text" name="size" value={formData.size} onChange={handleInputChange} className={inputClass} placeholder="e.g., Ring size 7, Chain 22 inches" />
+                          <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">{activeSizeConfig.label}</label>
+                          <input type="text" name="size" value={formData.size} onChange={handleInputChange} className={inputClass} placeholder={activeSizeConfig.placeholder} />
                         </div>
                         <div className="p-5 bg-white/5 rounded-xl border border-glacier-grey/10">
                           <p className="text-stone text-sm leading-relaxed">Not sure of your size? Don&apos;t worry — we can help determine the perfect fit during your consultation.</p>
@@ -641,9 +799,9 @@ export default function CustomJewelryPage() {
                       </motion.div>
                     )}
 
-                    {/* ===== PAGE 8 — Timeline ===== */}
-                    {currentStep === 8 && (
-                      <motion.div key="s8" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+                    {/* ===== TIMELINE ===== */}
+                    {currentPageId === 'timeline' && (
+                      <motion.div key="timeline" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                         <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Your Timeline</h2>
                         <p className="text-stone mb-8">When do you need your piece?</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -661,9 +819,9 @@ export default function CustomJewelryPage() {
                       </motion.div>
                     )}
 
-                    {/* ===== PAGE 9 — Notes ===== */}
-                    {currentStep === 9 && (
-                      <motion.div key="s9" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
+                    {/* ===== NOTES ===== */}
+                    {currentPageId === 'notes' && (
+                      <motion.div key="notes" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
                         <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Anything Else?</h2>
                         <p className="text-stone mb-8">Share any additional details, special engravings, or references that will help bring your vision to life</p>
                         <div>
@@ -680,9 +838,9 @@ export default function CustomJewelryPage() {
                       </motion.div>
                     )}
 
-                    {/* ===== PAGE 10 — Review ===== */}
-                    {currentStep === 10 && (
-                      <motion.div key="s10" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
+                    {/* ===== REVIEW ===== */}
+                    {currentPageId === 'review' && (
+                      <motion.div key="review" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
                         <h2 className="text-3xl font-bold text-white mb-8" style={{ fontFamily: 'var(--font-heading)' }}>Review Your Request</h2>
                         <div className="space-y-4 bg-white/5 rounded-lg p-6 border border-glacier-grey/20">
                           <ReviewRow label="First Name" value={formData.firstName} />
@@ -690,6 +848,7 @@ export default function CustomJewelryPage() {
                           <ReviewRow label="Email" value={formData.email} />
                           {formData.phone && <ReviewRow label="Phone" value={formData.phone} />}
                           {formData.budget && <ReviewRow label="Budget" value={formData.budget} />}
+                          {formData.pieceType && <ReviewRow label="Piece Type" value={pieceTypeLabel} />}
                           {formData.style && <ReviewRow label="Style" value={formData.style} />}
                           {formData.metalType && <ReviewRow label="Metal" value={formData.metalType} />}
                           {formData.goldColor && <ReviewRow label="Gold Colour" value={formData.goldColor} />}
