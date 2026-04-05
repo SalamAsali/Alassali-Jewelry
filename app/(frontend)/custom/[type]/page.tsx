@@ -6,11 +6,11 @@ import NextLink from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  CheckCircle2, Upload, ArrowRight, ArrowLeft, Sparkles,
+  CheckCircle2, Upload, ArrowRight, ArrowLeft, ArrowDown, Sparkles,
   Heart, Zap, Clock, Hexagon, Sun, Diamond, HelpCircle,
   LayoutGrid, ChevronUp, ChevronDown, Square, Flame,
-  Link, Waves, Shield, Type, Pen, Star,
-  Paintbrush, Crown, Circle, Layers,
+  Link, Waves, Shield, Type, Pen, Star, MapPin, Wrench, MessageSquare,
+  Paintbrush, Crown, Circle, Layers, ShieldCheck,
   CircleDot, Droplet, Gem,
   MinusCircle, Leaf, FlaskConical,
   DollarSign, Calendar, CalendarDays, CalendarCheck,
