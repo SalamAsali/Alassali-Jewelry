@@ -81,7 +81,7 @@ export default function Navigation(props?: NavigationProps) {
       className="sticky top-0 z-50 bg-soft-black backdrop-blur-md border-b border-glacier-grey/30 shadow-lg"
     >
       <div className="section-container">
-        <div className="flex items-center justify-between py-5">
+        <div className="flex items-center justify-between py-2">
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <img

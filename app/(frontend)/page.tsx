@@ -192,50 +192,50 @@ export default function Home() {
   return (
     <div className="overflow-hidden bg-white">
       {/* ===== HERO — Fullscreen ===== */}
-      <section className="relative h-[100svh] flex items-center bg-soft-black text-white overflow-hidden" data-testid="homepage-hero">
+      <section className="relative h-[calc(100svh-theme(spacing.20))] md:h-[calc(100svh-theme(spacing.40))] flex items-center bg-soft-black text-white overflow-hidden" data-testid="homepage-hero">
         <DotPattern />
         <DiamondPattern className="text-white" />
 
         {/* Orbiting diamond */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]">
           <div style={{ animation: 'orbit 20s linear infinite' }} className="hidden md:block">
-            <Image src="/images/icon-white.png" alt="" width={48} height={48} className="opacity-70" />
+            <Image src="/images/icon-white.png" alt="" width={48} height={48} className="opacity-70 invert" />
           </div>
           <div style={{ animation: 'orbit-mobile 20s linear infinite' }} className="block md:hidden">
-            <Image src="/images/icon-white.png" alt="" width={32} height={32} className="opacity-70" />
+            <Image src="/images/icon-white.png" alt="" width={32} height={32} className="opacity-70 invert" />
           </div>
         </div>
 
         {/* Floating diamonds */}
         <div className="absolute top-[8%] right-[10%] pointer-events-none z-[5]" style={{ animation: 'float 6s ease-in-out infinite' }}>
-          <Image src="/images/icon-white.png" alt="" width={60} height={60} className="opacity-30" />
+          <Image src="/images/icon-white.png" alt="" width={60} height={60} className="opacity-30 invert" />
         </div>
         <div className="absolute bottom-[22%] left-[6%] pointer-events-none z-[5]" style={{ animation: 'float-slow 8s ease-in-out infinite' }}>
-          <Image src="/images/icon-white.png" alt="" width={44} height={44} className="opacity-25" />
+          <Image src="/images/icon-white.png" alt="" width={44} height={44} className="opacity-25 invert" />
         </div>
         <div className="absolute top-[50%] right-[18%] pointer-events-none z-[5]" style={{ animation: 'float 10s ease-in-out infinite 2s' }}>
-          <Image src="/images/icon-white.png" alt="" width={36} height={36} className="opacity-20" />
+          <Image src="/images/icon-white.png" alt="" width={36} height={36} className="opacity-20 invert" />
         </div>
         <div className="absolute top-[30%] left-[18%] pointer-events-none z-[5]" style={{ animation: 'float-slow 12s ease-in-out infinite 1s' }}>
-          <Image src="/images/icon-white.png" alt="" width={72} height={72} className="opacity-15" />
+          <Image src="/images/icon-white.png" alt="" width={72} height={72} className="opacity-15 invert" />
         </div>
         <div className="absolute bottom-[12%] right-[32%] pointer-events-none z-[5]" style={{ animation: 'float 7s ease-in-out infinite 3s' }}>
-          <Image src="/images/icon-white.png" alt="" width={28} height={28} className="opacity-35" />
+          <Image src="/images/icon-white.png" alt="" width={28} height={28} className="opacity-35 invert" />
         </div>
         <div className="absolute top-[18%] left-[35%] pointer-events-none z-[5]" style={{ animation: 'float-slow 9s ease-in-out infinite 0.5s' }}>
-          <Image src="/images/icon-white.png" alt="" width={52} height={52} className="opacity-15" />
+          <Image src="/images/icon-white.png" alt="" width={52} height={52} className="opacity-15 invert" />
         </div>
         <div className="absolute bottom-[40%] right-[8%] pointer-events-none z-[5]" style={{ animation: 'float 11s ease-in-out infinite 4s' }}>
-          <Image src="/images/icon-white.png" alt="" width={40} height={40} className="opacity-20" />
+          <Image src="/images/icon-white.png" alt="" width={40} height={40} className="opacity-20 invert" />
         </div>
         <div className="absolute top-[70%] left-[30%] pointer-events-none z-[5]" style={{ animation: 'float-slow 14s ease-in-out infinite 2s' }}>
-          <Image src="/images/icon-white.png" alt="" width={32} height={32} className="opacity-12" />
+          <Image src="/images/icon-white.png" alt="" width={32} height={32} className="opacity-12 invert" />
         </div>
         <div className="absolute top-[5%] left-[50%] pointer-events-none z-[5]" style={{ animation: 'float 8s ease-in-out infinite 1.5s' }}>
-          <Image src="/images/icon-white.png" alt="" width={24} height={24} className="opacity-25" />
+          <Image src="/images/icon-white.png" alt="" width={24} height={24} className="opacity-25 invert" />
         </div>
         <div className="absolute bottom-[8%] left-[45%] pointer-events-none z-[5]" style={{ animation: 'float-slow 10s ease-in-out infinite 3.5s' }}>
-          <Image src="/images/icon-white.png" alt="" width={48} height={48} className="opacity-10" />
+          <Image src="/images/icon-white.png" alt="" width={48} height={48} className="opacity-10 invert" />
         </div>
 
         <div className="section-container relative z-10">
