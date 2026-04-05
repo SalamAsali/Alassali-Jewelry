@@ -87,7 +87,7 @@ export default function Navigation(props?: NavigationProps) {
             <img
               src={logo}
               alt="Alassali Jewelry"
-              className="h-28 w-auto"
+              className="h-20 md:h-36 lg:h-40 w-auto"
             />
           </Link>
 
