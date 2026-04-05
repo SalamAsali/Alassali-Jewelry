@@ -60,12 +60,14 @@ export default function Navigation(props?: NavigationProps) {
   }
 
   const bespokeMenu = [
+    { name: 'Engagement Rings', path: '/custom/engagement-rings', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png' },
     { name: 'Rings', path: '/custom/rings', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/l3vhvhkh_Design.png' },
     { name: 'Pendants', path: '/custom/pendants', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png' },
     { name: 'Chains', path: '/custom/chains', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/ksl2vd8y_Sketch.png' },
     { name: 'Earrings', path: '/custom/earrings', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/ye0fvbed_Presentation.png' },
     { name: 'Bracelets', path: '/custom/bracelets', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/9fg6i9rv_In-House-Manufacture.png' },
     { name: 'Grillz', path: '/custom/grillz', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/l3vhvhkh_Design.png' },
+    { name: 'General Inquiry', path: '/custom/general', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png' },
   ]
 
   const menuItems = [
@@ -194,11 +196,11 @@ export default function Navigation(props?: NavigationProps) {
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -10 }}
-                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[600px] rounded-xl shadow-2xl border-2 border-stone p-5 z-50 bg-white"
+                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[680px] rounded-xl shadow-2xl border-2 border-stone p-5 z-50 bg-white"
                         role="menu"
                         aria-label="Bespoke custom jewelry menu"
                       >
-                        <div className="grid grid-cols-3 gap-3">
+                        <div className="grid grid-cols-4 gap-3">
                           {bespokeMenu.map((item) => (
                             <Link
                               key={item.name}

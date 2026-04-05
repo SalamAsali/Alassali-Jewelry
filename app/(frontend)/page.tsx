@@ -94,13 +94,13 @@ const ACCENT_IMAGES = [
 ]
 
 const bespokeCategories = [
-  { name: 'Engagement Rings', path: '/custom/engagement-rings', icon: Gem, description: 'Begin your forever story' },
-  { name: 'Rings', path: '/custom/rings', icon: CircleDot, description: 'Statement & signature rings' },
-  { name: 'Pendants', path: '/custom/pendants', icon: Layers, description: 'Your story, beautifully told' },
-  { name: 'Chains', path: '/custom/chains', icon: Link2, description: 'Wearable art, crafted to spec' },
-  { name: 'Earrings', path: '/custom/earrings', icon: Ear, description: 'Elegant, tailored earrings' },
-  { name: 'Bracelets', path: '/custom/bracelets', icon: Watch, description: 'Exquisite wrist pieces' },
-  { name: 'Grillz', path: '/custom/grillz', icon: Smile, description: 'Bold precious metal statements' },
+  { name: 'Custom Engagement Rings', path: '/custom/engagement-rings', icon: Gem, description: 'Design your dream ring in Toronto' },
+  { name: 'Custom Rings', path: '/custom/rings', icon: CircleDot, description: 'Signet, statement & wedding rings' },
+  { name: 'Custom Pendants', path: '/custom/pendants', icon: Layers, description: 'Name, photo & diamond pendants' },
+  { name: 'Custom Chains', path: '/custom/chains', icon: Link2, description: 'Cuban link, rope & gold chains' },
+  { name: 'Custom Earrings', path: '/custom/earrings', icon: Ear, description: 'Diamond, gold & handcrafted' },
+  { name: 'Custom Bracelets', path: '/custom/bracelets', icon: Watch, description: 'Tennis, bangle & engraved' },
+  { name: 'Custom Grillz', path: '/custom/grillz', icon: Smile, description: 'Gold & diamond grillz in Toronto' },
   { name: 'General Inquiry', path: '/custom/general', icon: MessageSquare, description: 'Not sure? Start here' },
 ]
 
