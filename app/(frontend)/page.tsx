@@ -192,7 +192,7 @@ export default function Home() {
   return (
     <div className="overflow-hidden bg-white">
       {/* ===== HERO — Fullscreen ===== */}
-      <section className="relative h-[calc(100svh-theme(spacing.20))] md:h-[calc(100svh-theme(spacing.40))] flex items-center bg-soft-black text-white overflow-hidden" data-testid="homepage-hero">
+      <section className="relative h-svh flex items-center bg-soft-black text-white overflow-hidden" data-testid="homepage-hero">
         <DotPattern />
         <DiamondPattern className="text-white" />
 
