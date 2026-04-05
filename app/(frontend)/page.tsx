@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import {
   ArrowRight, Star,
@@ -191,41 +192,29 @@ export default function Home() {
   return (
     <div className="overflow-hidden bg-white">
       {/* ===== HERO — Fullscreen ===== */}
-      <section className="relative h-[100dvh] flex items-center bg-soft-black text-white overflow-hidden" data-testid="homepage-hero">
+      <section className="relative h-[100svh] flex items-center bg-soft-black text-white overflow-hidden" data-testid="homepage-hero">
         <DotPattern />
         <DiamondPattern className="text-white" />
 
         {/* Orbiting diamond */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-[5]">
           <div style={{ animation: 'orbit 20s linear infinite' }} className="hidden md:block">
-            <svg width="24" height="24" viewBox="0 0 32 32" fill="none">
-              <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8E9196" opacity="0.7" />
-              <path d="M16 2 L24 12 L16 14 L8 12 Z" fill="#A3A7AC" opacity="0.8" />
-            </svg>
+            <Image src="/images/icon-white.png" alt="" width={28} height={28} className="opacity-70" />
           </div>
           <div style={{ animation: 'orbit-mobile 20s linear infinite' }} className="block md:hidden">
-            <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
-              <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8E9196" opacity="0.7" />
-              <path d="M16 2 L24 12 L16 14 L8 12 Z" fill="#A3A7AC" opacity="0.8" />
-            </svg>
+            <Image src="/images/icon-white.png" alt="" width={18} height={18} className="opacity-70" />
           </div>
         </div>
 
         {/* Floating diamonds */}
         <div className="absolute top-[20%] right-[15%] pointer-events-none z-[5]" style={{ animation: 'float 6s ease-in-out infinite' }}>
-          <svg width="16" height="16" viewBox="0 0 32 32" fill="none">
-            <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8E9196" opacity="0.5" />
-          </svg>
+          <Image src="/images/icon-white.png" alt="" width={20} height={20} className="opacity-50" />
         </div>
         <div className="absolute bottom-[30%] left-[10%] pointer-events-none z-[5]" style={{ animation: 'float-slow 8s ease-in-out infinite' }}>
-          <svg width="12" height="12" viewBox="0 0 32 32" fill="none">
-            <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#A3A7AC" opacity="0.4" />
-          </svg>
+          <Image src="/images/icon-white.png" alt="" width={16} height={16} className="opacity-40" />
         </div>
         <div className="absolute top-[60%] right-[25%] pointer-events-none z-[5]" style={{ animation: 'float 10s ease-in-out infinite 2s' }}>
-          <svg width="10" height="10" viewBox="0 0 32 32" fill="none">
-            <path d="M16 2 L24 12 L16 30 L8 12 Z" fill="#8E9196" opacity="0.3" />
-          </svg>
+          <Image src="/images/icon-white.png" alt="" width={14} height={14} className="opacity-30" />
         </div>
 
         <div className="section-container relative z-10">
