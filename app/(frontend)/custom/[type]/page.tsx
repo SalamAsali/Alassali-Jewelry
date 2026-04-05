@@ -1,10 +1,10 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  CheckCircle2, Upload, ArrowRight, ArrowLeft, Sparkles, Check,
+  CheckCircle2, Upload, Sparkles,
   Heart, Zap, Clock, Hexagon, Sun, Diamond, HelpCircle,
   LayoutGrid, ChevronUp, ChevronDown, Square, Flame,
   Link, Waves, Shield, Type, Pen, Star,
@@ -20,7 +20,7 @@ import DotPattern from '@/components/DotPattern'
 export const dynamic = 'force-dynamic'
 
 // ---------------------------------------------------------------------------
-// Piece type options (for the unified selector on Page 3)
+// Piece type options
 // ---------------------------------------------------------------------------
 
 const pieceTypeOptions: { value: string; label: string; icon: LucideIcon; subtitle: string }[] = [
@@ -35,7 +35,7 @@ const pieceTypeOptions: { value: string; label: string; icon: LucideIcon; subtit
 ]
 
 // ---------------------------------------------------------------------------
-// Config per piece type (styles & metals)
+// Config per piece type
 // ---------------------------------------------------------------------------
 
 const typeConfig: Record<string, { title: string; subtitle: string; styles: string[]; metals: string[] }> = {
@@ -90,7 +90,7 @@ const typeConfig: Record<string, { title: string; subtitle: string; styles: stri
 }
 
 // ---------------------------------------------------------------------------
-// Icon maps (per piece type)
+// Icon maps
 // ---------------------------------------------------------------------------
 
 const styleIcons: Record<string, Record<string, LucideIcon>> = {
@@ -182,15 +182,35 @@ const timelineOptions: { value: string; label: string; icon: LucideIcon; desc: s
 ]
 
 // ---------------------------------------------------------------------------
-// Shared sub-component
+// Section wrapper — each form section with a title and divider
 // ---------------------------------------------------------------------------
 
-function ReviewRow({ label, value }: { label: string; value: string }) {
+function Section({ id, title, subtitle, children, refProp }: {
+  id: string
+  title: string
+  subtitle?: string
+  children: React.ReactNode
+  refProp?: React.Ref<HTMLDivElement>
+}) {
   return (
-    <div className="flex justify-between border-b border-glacier-grey/10 pb-3">
-      <span className="font-medium text-glacier-grey">{label}:</span>
-      <span className="text-white">{value}</span>
-    </div>
+    <motion.section
+      id={id}
+      ref={refProp}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-40px' }}
+      transition={{ duration: 0.5 }}
+      className="scroll-mt-8"
+    >
+      <div className="border-t border-glacier-grey/15 pt-10 mt-10 first:border-t-0 first:pt-0 first:mt-0">
+        <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
+          {title}
+        </h2>
+        {subtitle && <p className="text-stone mb-8">{subtitle}</p>}
+        {!subtitle && <div className="mb-8" />}
+        {children}
+      </div>
+    </motion.section>
   )
 }
 
@@ -203,11 +223,9 @@ export default function CustomJewelryPage() {
   const router = useRouter()
   const urlType = (params?.type as string) || 'general'
 
-  // If user came via a direct link like /custom/chains, pre-select that type.
-  // If they came via /custom/general, they'll pick on Page 3.
+  // If user came via a direct link like /custom/chains, pre-select that type
   const isDirectType = urlType !== 'general' && urlType in typeConfig
 
-  const [currentStep, setCurrentStep] = useState(1)
   const [formData, setFormData] = useState({
     pieceType: isDirectType ? urlType : '',
     firstName: '',
@@ -228,126 +246,31 @@ export default function CustomJewelryPage() {
   const [submitted, setSubmitted] = useState(false)
   const [uploading, setUploading] = useState(false)
 
-  // ---------------------------------------------------------------------------
-  // Derived config based on selected piece type
-  // ---------------------------------------------------------------------------
+  // Refs for scroll-to behavior
+  const styleRef = useRef<HTMLDivElement>(null)
 
-  const activeType = formData.pieceType || 'other'
-  const config = typeConfig[activeType] || typeConfig['other']
+  // Derived config
+  const activeType = formData.pieceType || ''
+  const config = typeConfig[activeType] || null
+  const activeSizeConfig = sizeConfig[activeType] || sizeConfig['other']
+  const showStyle = activeType !== '' && activeType !== 'other' && config && config.styles.length > 0
+  const showStones = activeType !== '' && activeType !== 'grillz'
+  const pieceTypeLabel = pieceTypeOptions.find(p => p.value === formData.pieceType)?.label || formData.pieceType
 
-  // ---------------------------------------------------------------------------
-  // Dynamic page sequence — build ordered list of page IDs, skipping
-  // pages that don't apply to the selected piece type
-  // ---------------------------------------------------------------------------
-  // Logical pages:
-  //   contact, budget, pieceType, style, metal, stones,
-  //   photos, size, timeline, notes, review
-  //
-  // Skips:
-  //   - pieceType page skipped if user came via direct /custom/[type] URL
-  //   - style page skipped if pieceType is 'other' (no predefined styles)
-  //   - stones page skipped if pieceType is 'grillz'
-
-  const pageSequence = useMemo(() => {
-    const pages: string[] = ['contact', 'budget']
-
-    // Page 3: piece type selector (skip if pre-selected via URL)
-    if (!isDirectType) {
-      pages.push('pieceType')
-    }
-
-    // Page 4: style (skip for 'other' — no predefined styles)
-    if (activeType !== 'other') {
-      pages.push('style')
-    }
-
-    pages.push('metal')
-
-    // Stones page (skip for grillz)
-    if (activeType !== 'grillz') {
-      pages.push('stones')
-    }
-
-    pages.push('photos', 'size', 'timeline', 'notes', 'review')
-    return pages
-  }, [isDirectType, activeType])
-
-  const totalSteps = pageSequence.length
-  const currentPageId = pageSequence[currentStep - 1] || 'contact'
-
-  // ---------------------------------------------------------------------------
-  // Progress helpers — 4 main steps, dynamic sub-pages
-  // ---------------------------------------------------------------------------
-
-  const mainStepsConfig = useMemo(() => {
-    const aboutYou = ['contact', 'budget'].filter(p => pageSequence.includes(p))
-    const design = ['pieceType', 'style', 'metal', 'stones'].filter(p => pageSequence.includes(p))
-    const details = ['photos', 'size', 'timeline', 'notes'].filter(p => pageSequence.includes(p))
-    const review = ['review']
-
-    return [
-      { label: 'About You', pages: aboutYou },
-      { label: 'Design', pages: design },
-      { label: 'Details', pages: details },
-      { label: 'Review', pages: review },
-    ]
-  }, [pageSequence])
-
-  const pageLabels: Record<string, string> = {
-    contact: 'Contact',
-    budget: 'Budget',
-    pieceType: 'Piece Type',
-    style: 'Style',
-    metal: 'Metal',
-    stones: 'Stones',
-    photos: 'Photos',
-    size: 'Size',
-    timeline: 'Timeline',
-    notes: 'Notes',
-    review: 'Review',
-  }
-
-  const getMainIdx = (step: number) => {
-    const pageId = pageSequence[step - 1]
-    for (let i = 0; i < mainStepsConfig.length; i++) {
-      if (mainStepsConfig[i].pages.includes(pageId)) return i
-    }
-    return 0
-  }
-
-  const getSubIdx = (step: number) => {
-    const pageId = pageSequence[step - 1]
-    const mainIdx = getMainIdx(step)
-    return mainStepsConfig[mainIdx].pages.indexOf(pageId)
-  }
-
-  const currentMain = getMainIdx(currentStep)
-  const currentSub = getSubIdx(currentStep)
-  const subPages = mainStepsConfig[currentMain].pages
-
-  // ---------------------------------------------------------------------------
-  // Header title — adapts to piece type selection
-  // ---------------------------------------------------------------------------
-
-  const headerTitle = formData.pieceType && typeConfig[formData.pieceType]
-    ? typeConfig[formData.pieceType].title
-    : 'Start Your Journey'
-
-  const headerSubtitle = formData.pieceType && typeConfig[formData.pieceType]
-    ? typeConfig[formData.pieceType].subtitle
-    : 'Tell us about your dream piece — we\'ll bring it to life'
+  // Header adapts to selection
+  const headerTitle = config ? config.title : 'Start Your Journey'
+  const headerSubtitle = config ? config.subtitle : 'Tell us about your dream piece — we\'ll bring it to life'
 
   // ---------------------------------------------------------------------------
   // Handlers
   // ---------------------------------------------------------------------------
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prev => ({ ...prev, [name]: value }))
   }
 
   const selectPieceType = (pieceType: string) => {
-    // Reset design choices when changing piece type
     setFormData(prev => ({
       ...prev,
       pieceType,
@@ -358,6 +281,10 @@ export default function CustomJewelryPage() {
       diamondType: '',
       size: '',
     }))
+    // Scroll to the next section after selection
+    setTimeout(() => {
+      styleRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    }, 100)
   }
 
   const selectMetal = (metal: string) => {
@@ -411,6 +338,7 @@ export default function CustomJewelryPage() {
       })
       if (response.ok) {
         setSubmitted(true)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
         alert('Error submitting inquiry. Please try again.')
       }
@@ -419,9 +347,6 @@ export default function CustomJewelryPage() {
       alert('Error submitting inquiry. Please try again.')
     }
   }
-
-  const nextStep = () => { if (currentStep < totalSteps) setCurrentStep(currentStep + 1) }
-  const prevStep = () => { if (currentStep > 1) setCurrentStep(currentStep - 1) }
 
   // ---------------------------------------------------------------------------
   // Shared style helpers
@@ -432,20 +357,8 @@ export default function CustomJewelryPage() {
   const cardUnselected = 'bg-charcoal/50 border-glacier-grey/20 hover:border-glacier-grey/50 hover:bg-charcoal'
   const inputClass = 'w-full px-4 py-3 rounded-lg bg-charcoal border-2 border-glacier-grey/50 text-white placeholder-stone focus:border-glacier-grey focus:ring-2 focus:ring-glacier-grey/40 transition-all outline-none'
 
-  // ---------------------------------------------------------------------------
-  // Size field labels
-  // ---------------------------------------------------------------------------
-
-  const activeSizeConfig = sizeConfig[activeType] || sizeConfig['other']
-
-  // ---------------------------------------------------------------------------
-  // Piece type display label for review
-  // ---------------------------------------------------------------------------
-
-  const pieceTypeLabel = pieceTypeOptions.find(p => p.value === formData.pieceType)?.label || formData.pieceType
-
   // =========================================================================
-  // SUBMITTED
+  // SUBMITTED — Thank you screen
   // =========================================================================
 
   if (submitted) {
@@ -472,7 +385,7 @@ export default function CustomJewelryPage() {
             Thank You!
           </h1>
           <p className="text-xl text-stone mb-6">
-            Your custom {pieceTypeLabel.toLowerCase()} inquiry has been received.
+            Your custom {pieceTypeLabel.toLowerCase() || 'jewelry'} inquiry has been received.
           </p>
           <p className="text-stone mb-12 max-w-2xl mx-auto">
             Our master craftspeople will review your request and contact you within 24-48 hours
@@ -492,98 +405,37 @@ export default function CustomJewelryPage() {
   }
 
   // =========================================================================
-  // MAIN FORM
+  // MAIN FORM — Single scrollable page
   // =========================================================================
 
   return (
-    <div className="h-[100svh] bg-soft-black relative overflow-hidden flex flex-col" data-testid="custom-form-hero">
+    <div className="min-h-screen bg-soft-black relative overflow-hidden" data-testid="custom-form-hero">
       <DotPattern />
       <DiamondPattern className="text-white" />
 
-      <div className="relative z-10 flex flex-col flex-1 min-h-0">
+      <div className="relative z-10">
         {/* Header */}
-        <div className="border-b border-glacier-grey/20 bg-deep-charcoal/50 backdrop-blur-sm shrink-0">
-          <div className="section-container py-4 md:py-6">
+        <div className="border-b border-glacier-grey/20 bg-deep-charcoal/50 backdrop-blur-sm">
+          <div className="section-container py-12">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-              <div className="inline-flex items-center gap-2 mb-1">
-                <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-glacier-grey" />
-                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white" style={{ fontFamily: 'var(--font-heading)' }}>
+              <div className="inline-flex items-center gap-3 mb-4">
+                <Sparkles className="w-8 h-8 text-glacier-grey" />
+                <h1 className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: 'var(--font-heading)' }}>
                   {headerTitle}
                 </h1>
               </div>
-              <p className="text-sm md:text-base text-stone font-light max-w-3xl mx-auto">{headerSubtitle}</p>
+              <p className="text-xl text-stone font-light max-w-3xl mx-auto">{headerSubtitle}</p>
             </motion.div>
           </div>
         </div>
 
-        {/* Body */}
-        <div className="section-container py-4 md:py-6 flex-1 min-h-0 flex flex-col">
-          <div className="max-w-4xl mx-auto w-full flex flex-col flex-1 min-h-0">
-
-            {/* ============ TWO-TIER PROGRESS BAR ============ */}
-            <div className="mb-4 md:mb-6 shrink-0" data-testid="form-progress">
-              {/* Main steps */}
-              <div className="flex justify-between items-center mb-2">
-                {mainStepsConfig.map((step, i) => {
-                  const isCompleted = i < currentMain
-                  const isActive = i === currentMain
-                  return (
-                    <div key={i} className="flex-1 mx-2">
-                      <div className="relative">
-                        <div className={`h-1.5 rounded-full transition-all duration-500 ${
-                          isCompleted || isActive ? 'bg-gradient-to-r from-glacier-grey to-glacier-grey-light' : 'bg-charcoal'
-                        }`} />
-                        <div className={`absolute -top-3.5 left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all duration-500 ${
-                          isCompleted
-                            ? 'bg-glacier-grey border-glacier-grey text-soft-black'
-                            : isActive
-                              ? 'bg-glacier-grey border-glacier-grey text-soft-black scale-110'
-                              : 'bg-charcoal border-taupe text-taupe'
-                        }`}>
-                          {isCompleted ? <Check className="w-3.5 h-3.5" strokeWidth={3} /> : i + 1}
-                        </div>
-                      </div>
-                      <p className={`text-center text-xs mt-4 font-medium transition-colors duration-300 ${
-                        isCompleted || isActive ? 'text-glacier-grey' : 'text-taupe'
-                      }`}>{step.label}</p>
-                    </div>
-                  )
-                })}
-              </div>
-
-              {/* Sub-steps */}
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentMain}
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 4 }}
-                  transition={{ duration: 0.25 }}
-                  className="flex justify-center items-center gap-4 mt-3 py-2 px-4 rounded-lg bg-white/5 border border-glacier-grey/10"
-                >
-                  {subPages.map((pageId, i) => {
-                    const isDone = i < currentSub
-                    const isActive = i === currentSub
-                    return (
-                      <div key={pageId} className="flex items-center gap-2">
-                        <div className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                          isDone ? 'bg-glacier-grey' : isActive ? 'bg-glacier-grey scale-125' : 'bg-charcoal'
-                        }`} />
-                        <span className={`text-xs font-medium transition-colors duration-300 ${
-                          isDone || isActive ? 'text-glacier-grey' : 'text-taupe'
-                        }`}>{pageLabels[pageId] || pageId}</span>
-                      </div>
-                    )
-                  })}
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* ============ FORM CARD ============ */}
+        {/* Form body — single scroll */}
+        <div className="section-container py-16 md:py-24">
+          <div className="max-w-4xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="relative overflow-hidden rounded-2xl flex-1 min-h-0 flex flex-col"
+              className="relative overflow-hidden rounded-2xl"
               style={{
                 background: 'linear-gradient(135deg, rgba(44, 44, 44, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%)',
                 border: '1px solid rgba(201, 167, 94, 0.3)',
@@ -592,311 +444,246 @@ export default function CustomJewelryPage() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-glacier-grey/10 via-transparent to-glacier-grey/5 pointer-events-none" />
 
-              <div className="relative z-10 p-5 md:p-8 flex flex-col flex-1 min-h-0 overflow-y-auto" data-testid="form-container">
-                <form onSubmit={handleSubmit}>
-                  <AnimatePresence mode="wait">
+              <div className="relative z-10 p-8 md:p-12" data-testid="form-container">
+                <form onSubmit={handleSubmit} className="space-y-0">
 
-                    {/* ===== CONTACT ===== */}
-                    {currentPageId === 'contact' && (
-                      <motion.div key="contact" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
-                        <h2 className="text-xl md:text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-                          Let&apos;s Get Started
-                        </h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                          <div>
-                            <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">First Name *</label>
-                            <input type="text" name="firstName" required value={formData.firstName} onChange={handleInputChange} className={inputClass} placeholder="John" />
-                          </div>
-                          <div>
-                            <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Last Name *</label>
-                            <input type="text" name="lastName" required value={formData.lastName} onChange={handleInputChange} className={inputClass} placeholder="Doe" />
-                          </div>
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Email *</label>
-                          <input type="email" name="email" required value={formData.email} onChange={handleInputChange} className={inputClass} placeholder="john@example.com" />
-                        </div>
-                        <div>
-                          <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Phone</label>
-                          <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} className={inputClass} placeholder="+1 (416) 555-1234" />
-                        </div>
-                      </motion.div>
-                    )}
+                  {/* ===== 1. CONTACT ===== */}
+                  <Section id="contact" title="Let's Get Started" subtitle="Tell us a bit about yourself">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                      <div>
+                        <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">First Name *</label>
+                        <input type="text" name="firstName" required value={formData.firstName} onChange={handleInputChange} className={inputClass} placeholder="John" />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Last Name *</label>
+                        <input type="text" name="lastName" required value={formData.lastName} onChange={handleInputChange} className={inputClass} placeholder="Doe" />
+                      </div>
+                    </div>
+                    <div className="mt-6">
+                      <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Email *</label>
+                      <input type="email" name="email" required value={formData.email} onChange={handleInputChange} className={inputClass} placeholder="john@example.com" />
+                    </div>
+                    <div className="mt-6">
+                      <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Phone</label>
+                      <input type="tel" name="phone" value={formData.phone} onChange={handleInputChange} className={inputClass} placeholder="+1 (416) 555-1234" />
+                    </div>
+                  </Section>
 
-                    {/* ===== BUDGET ===== */}
-                    {currentPageId === 'budget' && (
-                      <motion.div key="budget" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Your Budget</h2>
-                        <p className="text-stone text-sm mb-4">Select the range that fits your vision</p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                          {budgetOptions.map(({ value, label, tier }) => (
-                            <button key={value} type="button" onClick={() => setFormData(prev => ({ ...prev, budget: value }))} className={`${cardBase} p-6 min-h-[80px] md:min-h-[100px] ${formData.budget === value ? cardSelected : cardUnselected}`}>
-                              <div className="flex gap-0.5 mb-3">
-                                {Array.from({ length: tier }).map((_, i) => (
-                                  <DollarSign key={i} className={`w-5 h-5 ${formData.budget === value ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
-                                ))}
-                              </div>
-                              <span className="text-white font-semibold text-sm">{label}</span>
+                  {/* ===== 2. BUDGET ===== */}
+                  <Section id="budget" title="Your Budget" subtitle="Select the range that fits your vision">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                      {budgetOptions.map(({ value, label, tier }) => (
+                        <button key={value} type="button" onClick={() => setFormData(prev => ({ ...prev, budget: value }))} className={`${cardBase} p-6 min-h-[120px] ${formData.budget === value ? cardSelected : cardUnselected}`}>
+                          <div className="flex gap-0.5 mb-3">
+                            {Array.from({ length: tier }).map((_, i) => (
+                              <DollarSign key={i} className={`w-5 h-5 ${formData.budget === value ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
+                            ))}
+                          </div>
+                          <span className="text-white font-semibold text-sm">{label}</span>
+                        </button>
+                      ))}
+                    </div>
+                  </Section>
+
+                  {/* ===== 3. PIECE TYPE (only if coming from /custom/general) ===== */}
+                  {!isDirectType && (
+                    <Section id="piece-type" title="What Are You Looking For?" subtitle="Select the type of custom piece you'd like us to create">
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {pieceTypeOptions.map(({ value, label, icon: PIcon, subtitle: sub }) => {
+                          const selected = formData.pieceType === value
+                          return (
+                            <button key={value} type="button" onClick={() => selectPieceType(value)} className={`${cardBase} p-6 min-h-[160px] ${selected ? cardSelected : cardUnselected}`}>
+                              <PIcon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
+                              <span className="text-white font-semibold text-sm mb-1">{label}</span>
+                              <span className="text-stone text-xs text-center leading-tight">{sub}</span>
                             </button>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
+                          )
+                        })}
+                      </div>
+                    </Section>
+                  )}
 
-                    {/* ===== PIECE TYPE (unified selector) ===== */}
-                    {currentPageId === 'pieceType' && (
-                      <motion.div key="pieceType" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>What Are You Looking For?</h2>
-                        <p className="text-stone text-sm mb-4">Select the type of custom piece you&apos;d like us to create</p>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                          {pieceTypeOptions.map(({ value, label, icon: PIcon, subtitle: sub }) => {
-                            const selected = formData.pieceType === value
-                            return (
-                              <button key={value} type="button" onClick={() => selectPieceType(value)} className={`${cardBase} p-6 min-h-[100px] md:min-h-[130px] ${selected ? cardSelected : cardUnselected}`}>
-                                <PIcon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
-                                <span className="text-white font-semibold text-sm mb-1">{label}</span>
-                                <span className="text-stone text-xs text-center leading-tight">{sub}</span>
-                              </button>
-                            )
-                          })}
-                        </div>
-                      </motion.div>
-                    )}
+                  {/* ===== Everything below only renders once a piece type is selected ===== */}
+                  <AnimatePresence>
+                    {formData.pieceType && (
+                      <motion.div
+                        key={formData.pieceType}
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        transition={{ duration: 0.4 }}
+                      >
 
-                    {/* ===== STYLE (conditional per piece type) ===== */}
-                    {currentPageId === 'style' && (
-                      <motion.div key="style" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Choose Your Style</h2>
-                        <p className="text-stone text-sm mb-4">Select the style that speaks to you</p>
-                        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                          {config.styles.map((style: string) => {
-                            const Icon = styleIcons[activeType]?.[style] || HelpCircle
-                            const selected = formData.style === style
-                            return (
-                              <button key={style} type="button" onClick={() => setFormData(prev => ({ ...prev, style }))} className={`${cardBase} p-6 min-h-[90px] md:min-h-[110px] ${selected ? cardSelected : cardUnselected}`}>
-                                <Icon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
-                                <span className="text-white font-medium text-sm text-center">{style}</span>
-                              </button>
-                            )
-                          })}
-                        </div>
-                      </motion.div>
-                    )}
+                        {/* ===== 4. STYLE (conditional — hidden for 'other') ===== */}
+                        {showStyle && (
+                          <Section id="style" title="Choose Your Style" subtitle="Select the style that speaks to you" refProp={styleRef}>
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                              {config!.styles.map((style: string) => {
+                                const Icon = styleIcons[activeType]?.[style] || HelpCircle
+                                const selected = formData.style === style
+                                return (
+                                  <button key={style} type="button" onClick={() => setFormData(prev => ({ ...prev, style }))} className={`${cardBase} p-6 min-h-[140px] ${selected ? cardSelected : cardUnselected}`}>
+                                    <Icon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
+                                    <span className="text-white font-medium text-sm text-center">{style}</span>
+                                  </button>
+                                )
+                              })}
+                            </div>
+                          </Section>
+                        )}
 
-                    {/* ===== METAL + GOLD COLOUR ===== */}
-                    {currentPageId === 'metal' && (
-                      <motion.div key="metal" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-10">
-                        <div>
-                          <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Select Your Metal</h2>
-                          <p className="text-stone text-sm mb-4">Choose your preferred metal type</p>
+                        {/* For 'other' — style ref target so scroll still works */}
+                        {!showStyle && <div ref={styleRef} />}
+
+                        {/* ===== 5. METAL + GOLD COLOUR ===== */}
+                        <Section id="metal" title="Select Your Metal" subtitle="Choose your preferred metal type">
                           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            {config.metals.map((metal: string) => {
+                            {config!.metals.map((metal: string) => {
                               const selected = formData.metalType === metal
                               return (
-                                <button key={metal} type="button" onClick={() => selectMetal(metal)} className={`${cardBase} p-6 min-h-[85px] md:min-h-[105px] ${selected ? cardSelected : cardUnselected}`}>
+                                <button key={metal} type="button" onClick={() => selectMetal(metal)} className={`${cardBase} p-6 min-h-[130px] ${selected ? cardSelected : cardUnselected}`}>
                                   <div className="w-10 h-10 rounded-full mb-3 border border-white/20" style={{ background: metalSwatches[metal] || metalSwatches['Silver'], boxShadow: selected ? '0 0 14px rgba(200,170,80,0.3)' : 'none' }} />
                                   <span className="text-white font-medium text-sm text-center">{metal}</span>
                                 </button>
                               )
                             })}
                           </div>
-                        </div>
-                        {formData.metalType.includes('Gold') && (
-                          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-                            <h3 className="text-xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Gold Colour</h3>
-                            <p className="text-stone mb-6">Choose your preferred gold colour</p>
-                            <div className="grid grid-cols-3 gap-4">
-                              {goldColorOptions.map(({ label, gradient, shadow }) => {
-                                const selected = formData.goldColor === label
+                          {formData.metalType.includes('Gold') && (
+                            <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-8">
+                              <h3 className="text-xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Gold Colour</h3>
+                              <p className="text-stone mb-6">Choose your preferred gold colour</p>
+                              <div className="grid grid-cols-3 gap-4">
+                                {goldColorOptions.map(({ label, gradient, shadow }) => {
+                                  const selected = formData.goldColor === label
+                                  return (
+                                    <button key={label} type="button" onClick={() => setFormData(prev => ({ ...prev, goldColor: label }))} className={`${cardBase} p-6 ${selected ? 'border-glacier-grey shadow-lg' : 'border-glacier-grey/20 hover:border-glacier-grey/50'}`} style={{ background: selected ? 'rgba(201, 167, 94, 0.15)' : 'rgba(30, 30, 30, 0.5)', boxShadow: selected ? `0 0 24px ${shadow}` : 'none' }}>
+                                      <div className="w-14 h-14 rounded-full mb-3 border-2 border-white/20" style={{ background: gradient, boxShadow: `0 4px 14px ${shadow}` }} />
+                                      <span className="text-white font-medium text-sm">{label}</span>
+                                    </button>
+                                  )
+                                })}
+                              </div>
+                            </motion.div>
+                          )}
+                        </Section>
+
+                        {/* ===== 6. STONES (hidden for grillz) ===== */}
+                        {showStones && (
+                          <Section id="stones" title="Stone Preferences" subtitle="Select one or more stones for your piece">
+                            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                              {stoneOptions.map(({ name, icon: StoneIcon, color }) => {
+                                const selected = formData.stonePreferences.includes(name)
                                 return (
-                                  <button key={label} type="button" onClick={() => setFormData(prev => ({ ...prev, goldColor: label }))} className={`${cardBase} p-6 ${selected ? 'border-glacier-grey shadow-lg' : 'border-glacier-grey/20 hover:border-glacier-grey/50'}`} style={{ background: selected ? 'rgba(201, 167, 94, 0.15)' : 'rgba(30, 30, 30, 0.5)', boxShadow: selected ? `0 0 24px ${shadow}` : 'none' }}>
-                                    <div className="w-14 h-14 rounded-full mb-3 border-2 border-white/20" style={{ background: gradient, boxShadow: `0 4px 14px ${shadow}` }} />
-                                    <span className="text-white font-medium text-sm">{label}</span>
+                                  <button key={name} type="button" onClick={() => toggleStone(name)} className={`${cardBase} p-6 min-h-[130px] ${selected ? cardSelected : cardUnselected}`}>
+                                    <StoneIcon className={`w-10 h-10 mb-3 ${selected ? color : 'text-glacier-grey/60'}`} />
+                                    <span className="text-white font-medium text-sm">{name}</span>
                                   </button>
                                 )
                               })}
                             </div>
-                          </motion.div>
+                            {formData.stonePreferences.includes('Diamond') && (
+                              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mt-8">
+                                <h3 className="text-xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Diamond Type</h3>
+                                <p className="text-stone mb-6">Choose your preferred diamond origin</p>
+                                <div className="grid grid-cols-2 gap-4">
+                                  {([
+                                    { label: 'Natural', icon: Leaf, desc: 'Earth-mined diamonds' },
+                                    { label: 'Lab-Grown', icon: FlaskConical, desc: 'Laboratory-created diamonds' },
+                                  ] as const).map(({ label, icon: DIcon, desc }) => {
+                                    const selected = formData.diamondType === label
+                                    return (
+                                      <button key={label} type="button" onClick={() => setFormData(prev => ({ ...prev, diamondType: label }))} className={`${cardBase} p-6 min-h-[150px] ${selected ? cardSelected : cardUnselected}`}>
+                                        <DIcon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
+                                        <span className="text-white font-semibold text-sm mb-1">{label}</span>
+                                        <span className="text-stone text-xs text-center">{desc}</span>
+                                      </button>
+                                    )
+                                  })}
+                                </div>
+                              </motion.div>
+                            )}
+                          </Section>
                         )}
-                      </motion.div>
-                    )}
 
-                    {/* ===== STONES + DIAMOND TYPE ===== */}
-                    {currentPageId === 'stones' && (
-                      <motion.div key="stones" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-10">
-                        <div>
-                          <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Stone Preferences</h2>
-                          <p className="text-stone text-sm mb-4">Select one or more stones for your piece</p>
-                          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                            {stoneOptions.map(({ name, icon: StoneIcon, color }) => {
-                              const selected = formData.stonePreferences.includes(name)
+                        {/* ===== 7. INSPIRATION PHOTOS ===== */}
+                        <Section id="photos" title="Share Your Inspiration" subtitle="Upload images that inspire you. This helps us understand your vision better.">
+                          <div className="relative border-2 border-dashed border-glacier-grey/30 rounded-xl p-12 text-center bg-white/5 hover:bg-white/10 transition-all">
+                            <Upload className="w-16 h-16 text-glacier-grey mx-auto mb-4" />
+                            <input type="file" multiple accept="image/*" onChange={handleFileUpload} className="hidden" id="file-upload" disabled={uploading} />
+                            <label htmlFor="file-upload" className="inline-block bg-glacier-grey text-white px-8 py-3 rounded-lg font-semibold cursor-pointer hover:bg-glacier-grey-light transition-all">
+                              {uploading ? 'Uploading...' : 'Choose Images'}
+                            </label>
+                            <p className="text-sm text-stone mt-3">PNG, JPG up to 10MB each</p>
+                          </div>
+                          {formData.inspirationImages.length > 0 && (
+                            <div className="mt-6">
+                              <p className="text-white">{formData.inspirationImages.length} image(s) selected</p>
+                            </div>
+                          )}
+                        </Section>
+
+                        {/* ===== 8. SIZE (conditional label) ===== */}
+                        <Section id="size" title="Size & Dimensions" subtitle="Tell us your measurements so we can craft a perfect fit">
+                          <div>
+                            <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">{activeSizeConfig.label}</label>
+                            <input type="text" name="size" value={formData.size} onChange={handleInputChange} className={inputClass} placeholder={activeSizeConfig.placeholder} />
+                          </div>
+                          <div className="mt-6 p-5 bg-white/5 rounded-xl border border-glacier-grey/10">
+                            <p className="text-stone text-sm leading-relaxed">Not sure of your size? Don&apos;t worry — we can help determine the perfect fit during your consultation.</p>
+                          </div>
+                        </Section>
+
+                        {/* ===== 9. TIMELINE ===== */}
+                        <Section id="timeline" title="Your Timeline" subtitle="When do you need your piece?">
+                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            {timelineOptions.map(({ value, label, icon: TIcon, desc }) => {
+                              const selected = formData.timeline === value
                               return (
-                                <button key={name} type="button" onClick={() => toggleStone(name)} className={`${cardBase} p-6 min-h-[85px] md:min-h-[105px] ${selected ? cardSelected : cardUnselected}`}>
-                                  <StoneIcon className={`w-10 h-10 mb-3 ${selected ? color : 'text-glacier-grey/60'}`} />
-                                  <span className="text-white font-medium text-sm">{name}</span>
+                                <button key={value} type="button" onClick={() => setFormData(prev => ({ ...prev, timeline: value }))} className={`${cardBase} p-6 min-h-[130px] ${selected ? cardSelected : cardUnselected}`}>
+                                  <TIcon className={`w-9 h-9 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
+                                  <span className="text-white font-semibold text-sm mb-1">{label}</span>
+                                  <span className="text-stone text-xs text-center">{desc}</span>
                                 </button>
                               )
                             })}
                           </div>
-                        </div>
-                        {formData.stonePreferences.includes('Diamond') && (
-                          <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-                            <h3 className="text-xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Diamond Type</h3>
-                            <p className="text-stone mb-6">Choose your preferred diamond origin</p>
-                            <div className="grid grid-cols-2 gap-4">
-                              {([
-                                { label: 'Natural', icon: Leaf, desc: 'Earth-mined diamonds' },
-                                { label: 'Lab-Grown', icon: FlaskConical, desc: 'Laboratory-created diamonds' },
-                              ] as const).map(({ label, icon: DIcon, desc }) => {
-                                const selected = formData.diamondType === label
-                                return (
-                                  <button key={label} type="button" onClick={() => setFormData(prev => ({ ...prev, diamondType: label }))} className={`${cardBase} p-6 min-h-[95px] md:min-h-[120px] ${selected ? cardSelected : cardUnselected}`}>
-                                    <DIcon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
-                                    <span className="text-white font-semibold text-sm mb-1">{label}</span>
-                                    <span className="text-stone text-xs text-center">{desc}</span>
-                                  </button>
-                                )
-                              })}
-                            </div>
-                          </motion.div>
-                        )}
-                      </motion.div>
-                    )}
+                        </Section>
 
-                    {/* ===== PHOTOS / INSPIRATION ===== */}
-                    {currentPageId === 'photos' && (
-                      <motion.div key="photos" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-xl md:text-2xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Share Your Inspiration</h2>
-                        <p className="text-stone text-sm mb-4">Upload images that inspire you. This helps us understand your vision better.</p>
-                        <div className="relative border-2 border-dashed border-glacier-grey/30 rounded-xl p-12 text-center bg-white/5 hover:bg-white/10 transition-all">
-                          <Upload className="w-16 h-16 text-glacier-grey mx-auto mb-4" />
-                          <input type="file" multiple accept="image/*" onChange={handleFileUpload} className="hidden" id="file-upload" disabled={uploading} />
-                          <label htmlFor="file-upload" className="inline-block bg-glacier-grey text-white px-8 py-3 rounded-lg font-semibold cursor-pointer hover:bg-glacier-grey-light transition-all">
-                            {uploading ? 'Uploading...' : 'Choose Images'}
-                          </label>
-                          <p className="text-sm text-stone mt-3">PNG, JPG up to 10MB each</p>
-                        </div>
-                        {formData.inspirationImages.length > 0 && (
-                          <div className="mt-8">
-                            <p className="text-white mb-4">{formData.inspirationImages.length} image(s) selected</p>
+                        {/* ===== 10. NOTES ===== */}
+                        <Section id="notes" title="Anything Else?" subtitle="Share any additional details, special engravings, or references that will help bring your vision to life">
+                          <div>
+                            <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Additional Notes</label>
+                            <textarea
+                              name="notes"
+                              value={formData.notes}
+                              onChange={handleInputChange}
+                              rows={5}
+                              className={inputClass}
+                              placeholder="Tell us more about your vision..."
+                            />
                           </div>
-                        )}
+                        </Section>
+
+                        {/* ===== SUBMIT ===== */}
+                        <div className="border-t border-glacier-grey/15 pt-10 mt-10">
+                          <button
+                            type="submit"
+                            className="w-full py-4 rounded-xl bg-glacier-grey text-white text-lg font-semibold hover:bg-glacier-grey-light transition-all shadow-lg hover:shadow-xl"
+                          >
+                            Submit Your Inquiry
+                          </button>
+                          <p className="text-center text-stone text-sm mt-4">
+                            We&apos;ll review your request and get back to you within 24-48 hours.
+                          </p>
+                        </div>
+
                       </motion.div>
                     )}
-
-                    {/* ===== SIZE (conditional label per piece type) ===== */}
-                    {currentPageId === 'size' && (
-                      <motion.div key="size" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
-                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Size &amp; Dimensions</h2>
-                        <p className="text-stone text-sm mb-4">Tell us your measurements so we can craft a perfect fit</p>
-                        <div>
-                          <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">{activeSizeConfig.label}</label>
-                          <input type="text" name="size" value={formData.size} onChange={handleInputChange} className={inputClass} placeholder={activeSizeConfig.placeholder} />
-                        </div>
-                        <div className="p-5 bg-white/5 rounded-xl border border-glacier-grey/10">
-                          <p className="text-stone text-sm leading-relaxed">Not sure of your size? Don&apos;t worry — we can help determine the perfect fit during your consultation.</p>
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {/* ===== TIMELINE ===== */}
-                    {currentPageId === 'timeline' && (
-                      <motion.div key="timeline" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Your Timeline</h2>
-                        <p className="text-stone text-sm mb-4">When do you need your piece?</p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                          {timelineOptions.map(({ value, label, icon: TIcon, desc }) => {
-                            const selected = formData.timeline === value
-                            return (
-                              <button key={value} type="button" onClick={() => setFormData(prev => ({ ...prev, timeline: value }))} className={`${cardBase} p-6 min-h-[85px] md:min-h-[105px] ${selected ? cardSelected : cardUnselected}`}>
-                                <TIcon className={`w-9 h-9 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
-                                <span className="text-white font-semibold text-sm mb-1">{label}</span>
-                                <span className="text-stone text-xs text-center">{desc}</span>
-                              </button>
-                            )
-                          })}
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {/* ===== NOTES ===== */}
-                    {currentPageId === 'notes' && (
-                      <motion.div key="notes" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
-                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Anything Else?</h2>
-                        <p className="text-stone text-sm mb-4">Share any additional details, special engravings, or references that will help bring your vision to life</p>
-                        <div>
-                          <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Additional Notes</label>
-                          <textarea
-                            name="notes"
-                            value={formData.notes}
-                            onChange={handleInputChange}
-                            rows={7}
-                            className={inputClass}
-                            placeholder="Tell us more about your vision..."
-                          />
-                        </div>
-                      </motion.div>
-                    )}
-
-                    {/* ===== REVIEW ===== */}
-                    {currentPageId === 'review' && (
-                      <motion.div key="review" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-xl md:text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>Review Your Request</h2>
-                        <div className="space-y-4 bg-white/5 rounded-lg p-6 border border-glacier-grey/20">
-                          <ReviewRow label="First Name" value={formData.firstName} />
-                          <ReviewRow label="Last Name" value={formData.lastName} />
-                          <ReviewRow label="Email" value={formData.email} />
-                          {formData.phone && <ReviewRow label="Phone" value={formData.phone} />}
-                          {formData.budget && <ReviewRow label="Budget" value={formData.budget} />}
-                          {formData.pieceType && <ReviewRow label="Piece Type" value={pieceTypeLabel} />}
-                          {formData.style && <ReviewRow label="Style" value={formData.style} />}
-                          {formData.metalType && <ReviewRow label="Metal" value={formData.metalType} />}
-                          {formData.goldColor && <ReviewRow label="Gold Colour" value={formData.goldColor} />}
-                          {formData.stonePreferences.length > 0 && (
-                            <ReviewRow label="Stones" value={formData.stonePreferences.join(', ')} />
-                          )}
-                          {formData.diamondType && <ReviewRow label="Diamond Type" value={formData.diamondType} />}
-                          {formData.size && <ReviewRow label="Size" value={formData.size} />}
-                          {formData.timeline && <ReviewRow label="Timeline" value={formData.timeline} />}
-                          {formData.notes && (
-                            <div className="border-b border-glacier-grey/10 pb-3">
-                              <span className="font-medium text-glacier-grey block mb-2">Notes:</span>
-                              <span className="text-white text-sm">{formData.notes}</span>
-                            </div>
-                          )}
-                          {formData.inspirationImages.length > 0 && (
-                            <div>
-                              <span className="font-medium text-glacier-grey block mb-2">Inspiration Images:</span>
-                              <span className="text-white text-sm">{formData.inspirationImages.length} image(s) uploaded</span>
-                            </div>
-                          )}
-                        </div>
-                      </motion.div>
-                    )}
-
                   </AnimatePresence>
 
-                  {/* Navigation */}
-                  <div className="flex justify-between mt-6 pt-4 border-t border-glacier-grey/20 shrink-0" data-testid="form-navigation">
-                    {currentStep > 1 && (
-                      <button type="button" onClick={prevStep} className="flex items-center gap-2 px-8 py-3 rounded-lg bg-white/5 border border-glacier-grey/30 text-white hover:bg-white/10 transition-all font-semibold">
-                        <ArrowLeft className="w-5 h-5" /> Back
-                      </button>
-                    )}
-                    {currentStep < totalSteps ? (
-                      <button type="button" onClick={nextStep} className="ml-auto flex items-center gap-2 px-8 py-3 rounded-lg bg-glacier-grey text-white hover:bg-glacier-grey-light transition-all font-semibold shadow-lg hover:shadow-xl">
-                        Next <ArrowRight className="w-5 h-5" />
-                      </button>
-                    ) : (
-                      <button type="submit" className="ml-auto px-8 py-3 rounded-lg bg-glacier-grey text-white hover:bg-glacier-grey-light transition-all font-semibold shadow-lg hover:shadow-xl">
-                        Submit Request
-                      </button>
-                    )}
-                  </div>
                 </form>
               </div>
             </motion.div>
-
           </div>
         </div>
       </div>
