@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { useRouter, useParams } from 'next/navigation'
+import NextLink from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   CheckCircle2, Upload, ArrowRight, ArrowLeft, Sparkles,
@@ -207,11 +208,175 @@ type StepId =
 // Page component
 // ---------------------------------------------------------------------------
 
+// ---------------------------------------------------------------------------
+// Landing page for specific types (not the form)
+// ---------------------------------------------------------------------------
+
+function LandingPage({ type }: { type: string }) {
+  const config = typeConfig[type]
+  if (!config) return null
+
+  const styles = config.styles
+  const metals = config.metals
+  const icons = styleIcons[type] || {}
+
+  return (
+    <div className="min-h-screen bg-soft-black relative overflow-hidden" data-testid="custom-landing">
+      <DotPattern />
+      <DiamondPattern className="text-white" />
+
+      <div className="relative z-10">
+        {/* Hero */}
+        <section className="h-[70vh] flex items-center justify-center text-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-3xl"
+          >
+            <div className="inline-flex items-center gap-3 mb-6">
+              <Sparkles className="w-8 h-8 text-glacier-grey" />
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+              {config.title}
+            </h1>
+            <p className="text-xl md:text-2xl text-stone font-light mb-10 max-w-2xl mx-auto">
+              {config.subtitle}
+            </p>
+            <NextLink
+              href="/custom/general"
+              className="inline-flex items-center gap-2 bg-glacier-grey text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl"
+            >
+              Start Your Journey <ArrowRight className="w-5 h-5" />
+            </NextLink>
+          </motion.div>
+        </section>
+
+        {/* Available Styles */}
+        {styles.length > 0 && (
+          <section className="py-20 px-4">
+            <div className="max-w-5xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="text-center mb-12"
+              >
+                <h2 className="text-3xl md:text-4xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+                  Available Styles
+                </h2>
+                <p className="text-stone">Choose from our curated collection of styles</p>
+              </motion.div>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {styles.filter(s => s !== 'Not Sure').map((style, i) => {
+                  const Icon = icons[style] || HelpCircle
+                  return (
+                    <motion.div
+                      key={style}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: i * 0.08 }}
+                      className="flex flex-col items-center justify-center p-6 rounded-xl bg-charcoal/50 border border-glacier-grey/20 hover:border-glacier-grey/50 transition-all"
+                    >
+                      <Icon className="w-10 h-10 mb-3 text-glacier-grey/70" />
+                      <span className="text-white font-medium text-sm text-center">{style}</span>
+                    </motion.div>
+                  )
+                })}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Available Metals */}
+        <section className="py-20 px-4">
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-12"
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+                Premium Metals
+              </h2>
+              <p className="text-stone">Crafted with the finest materials</p>
+            </motion.div>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              {metals.map((metal, i) => (
+                <motion.div
+                  key={metal}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className="flex flex-col items-center justify-center p-6 rounded-xl bg-charcoal/50 border border-glacier-grey/20"
+                >
+                  <div
+                    className="w-12 h-12 rounded-full mb-3 border border-white/20"
+                    style={{ background: metalSwatches[metal] || metalSwatches['Silver'] }}
+                  />
+                  <span className="text-white font-medium text-sm text-center">{metal}</span>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Bottom CTA */}
+        <section className="py-20 px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+                Ready to Begin?
+              </h2>
+              <p className="text-stone mb-8 max-w-xl mx-auto">
+                Start your custom journey and our master craftspeople will bring your vision to life.
+              </p>
+              <NextLink
+                href="/custom/general"
+                className="inline-flex items-center gap-2 bg-glacier-grey text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl"
+              >
+                Start Your Journey <ArrowRight className="w-5 h-5" />
+              </NextLink>
+            </motion.div>
+          </div>
+        </section>
+      </div>
+    </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// Router — landing page for specific types, portal form for /custom/general
+// ---------------------------------------------------------------------------
+
 export default function CustomJewelryPage() {
   const params = useParams()
-  const router = useRouter()
   const urlType = (params?.type as string) || 'general'
-  const isDirectType = urlType !== 'general' && urlType in typeConfig
+
+  // Specific type → landing page (no form)
+  if (urlType !== 'general' && urlType in typeConfig) {
+    return <LandingPage type={urlType} />
+  }
+
+  // /custom/general → portal form
+  return <PortalForm />
+}
+
+// ---------------------------------------------------------------------------
+// Portal form (only for /custom/general — Start Your Journey)
+// ---------------------------------------------------------------------------
+
+function PortalForm() {
+  const router = useRouter()
+  const urlType = 'general'
+  const isDirectType = false
 
   const [formData, setFormData] = useState({
     pieceType: isDirectType ? urlType : '',
