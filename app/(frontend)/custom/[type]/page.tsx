@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { useRouter, useParams } from 'next/navigation'
 import NextLink from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   CheckCircle2, Upload, ArrowRight, ArrowLeft, Sparkles,
@@ -17,6 +18,46 @@ import {
 import type { LucideIcon } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
+
+// ---------------------------------------------------------------------------
+// Floating diamond icons (matches homepage hero)
+// ---------------------------------------------------------------------------
+
+const floatingDiamonds = [
+  { top: '5%', left: '8%', size: 64, opacity: 'opacity-[0.12]', anim: 'float 8s ease-in-out infinite' },
+  { top: '12%', right: '6%', size: 48, opacity: 'opacity-[0.18]', anim: 'float-slow 12s ease-in-out infinite 1s' },
+  { top: '30%', left: '3%', size: 36, opacity: 'opacity-[0.15]', anim: 'float 10s ease-in-out infinite 2s' },
+  { top: '22%', right: '15%', size: 28, opacity: 'opacity-[0.22]', anim: 'float-slow 9s ease-in-out infinite 0.5s' },
+  { top: '50%', left: '6%', size: 52, opacity: 'opacity-[0.10]', anim: 'float-slow 14s ease-in-out infinite 3s' },
+  { top: '45%', right: '4%', size: 40, opacity: 'opacity-[0.15]', anim: 'float 7s ease-in-out infinite 1.5s' },
+  { top: '68%', left: '10%', size: 24, opacity: 'opacity-[0.25]', anim: 'float 6s ease-in-out infinite 2.5s' },
+  { top: '72%', right: '10%', size: 56, opacity: 'opacity-[0.10]', anim: 'float-slow 11s ease-in-out infinite 4s' },
+  { top: '85%', left: '20%', size: 32, opacity: 'opacity-[0.20]', anim: 'float 9s ease-in-out infinite 1s' },
+  { top: '88%', right: '22%', size: 20, opacity: 'opacity-[0.28]', anim: 'float-slow 8s ease-in-out infinite 3.5s' },
+  { top: '15%', left: '45%', size: 22, opacity: 'opacity-[0.20]', anim: 'float 7s ease-in-out infinite 0.5s' },
+  { top: '60%', left: '48%', size: 18, opacity: 'opacity-[0.25]', anim: 'float-slow 10s ease-in-out infinite 2s' },
+]
+
+function FloatingDiamonds() {
+  return (
+    <>
+      {floatingDiamonds.map((d, i) => (
+        <div
+          key={i}
+          className={`absolute pointer-events-none z-[5] ${d.opacity}`}
+          style={{
+            top: d.top,
+            left: 'left' in d ? d.left : undefined,
+            right: 'right' in d ? d.right : undefined,
+            animation: d.anim,
+          }}
+        >
+          <Image src="/images/icon-white.png" alt="" width={d.size} height={d.size} />
+        </div>
+      ))}
+    </>
+  )
+}
 
 export const dynamic = 'force-dynamic'
 
@@ -224,6 +265,7 @@ function LandingPage({ type }: { type: string }) {
     <div className="min-h-screen bg-soft-black relative overflow-hidden" data-testid="custom-landing">
       <DotPattern />
       <DiamondPattern className="text-white" />
+      <FloatingDiamonds />
 
       <div className="relative z-10">
         {/* Hero */}
@@ -559,6 +601,7 @@ function PortalForm() {
       <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] -mb-24 bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
         <DotPattern />
         <DiamondPattern className="text-white" />
+        <FloatingDiamonds />
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="max-w-3xl mx-auto text-center px-4 relative z-10">
           <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2, type: 'spring' }} className="inline-block mb-8">
             <div className="w-28 h-28 rounded-full bg-glacier-grey/20 flex items-center justify-center">
@@ -585,6 +628,7 @@ function PortalForm() {
     <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] -mb-24 bg-soft-black relative overflow-hidden flex flex-col" data-testid="custom-form-hero">
       <DotPattern />
       <DiamondPattern className="text-white" />
+      <FloatingDiamonds />
 
       {/* Progress line */}
       <div className="relative z-20 w-full shrink-0">
