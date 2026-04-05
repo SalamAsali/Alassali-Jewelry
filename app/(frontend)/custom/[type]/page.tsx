@@ -2,14 +2,16 @@
 
 import { useState, useRef, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
+import NextLink from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
-  CheckCircle2, Upload, Sparkles,
+  CheckCircle2, Upload, Sparkles, ArrowDown,
   Heart, Zap, Clock, Hexagon, Sun, Diamond, HelpCircle,
   LayoutGrid, ChevronUp, ChevronDown, Square, Flame,
   Link, Waves, Shield, Type, Pen, Star,
   Paintbrush, Crown, Circle, Layers,
-  CircleDot, Droplet, Gem,
+  CircleDot, Droplet, Gem, MapPin, Wrench, ShieldCheck, MessageSquare,
   MinusCircle, Leaf, FlaskConical,
   DollarSign, Calendar, CalendarDays, CalendarCheck,
 } from 'lucide-react'
@@ -140,6 +142,179 @@ const sizeConfig: Record<string, { label: string; placeholder: string }> = {
 }
 
 // ---------------------------------------------------------------------------
+// SEO Landing page content per type
+// ---------------------------------------------------------------------------
+
+const landingContent: Record<string, {
+  heroHeadline: string
+  heroSub: string
+  intro: string
+  whyCards: { icon: LucideIcon; title: string; text: string }[]
+  faq: { q: string; a: string }[]
+  relatedPages: { name: string; path: string }[]
+}> = {
+  'engagement-rings': {
+    heroHeadline: 'Custom Engagement Rings in Toronto',
+    heroSub: 'Design a one-of-a-kind ring as unique as your love story — handcrafted in-house by Toronto\'s finest.',
+    intro: 'At Al-Assali Jewelry, every custom engagement ring begins with your vision. Whether you dream of a classic solitaire, a vintage halo setting, or a bold modern design, our master craftspeople bring it to life entirely in-house in Toronto. Choose from ethically sourced natural and lab-grown diamonds, sapphires, rubies, and emeralds — set in platinum, 18K, or 14K gold. From first sketch to final presentation, your ring is crafted with the care and precision your moment deserves.',
+    whyCards: [
+      { icon: MapPin, title: 'Made in Toronto', text: 'Every ring crafted entirely in-house at our Toronto studio — no outsourcing.' },
+      { icon: Diamond, title: 'Ethically Sourced', text: 'Natural and lab-grown diamonds, conflict-free sapphires, rubies, and emeralds.' },
+      { icon: MessageSquare, title: 'One-on-One Design', text: 'Personal consultation from concept to CAD rendering to finished piece.' },
+      { icon: ShieldCheck, title: 'Craftsmanship Guarantee', text: 'Lifetime guarantee on every engagement ring we create.' },
+    ],
+    faq: [
+      { q: 'How long does it take to make a custom engagement ring?', a: 'Most custom engagement rings take 4-6 weeks from design approval to completion. Rush orders are available for an additional fee.' },
+      { q: 'How much does a custom engagement ring cost in Toronto?', a: 'Custom engagement rings start at $1,000 and vary based on materials, stones, and complexity. We work within your budget during consultation.' },
+      { q: 'Can I design my own engagement ring?', a: 'Absolutely. Bring us your sketches, photos, or just an idea — our designers will create detailed CAD renderings for your approval before crafting begins.' },
+      { q: 'Do you offer lab-grown diamonds?', a: 'Yes. We offer both natural and lab-grown diamonds, giving you the choice of origin without compromising on brilliance or quality.' },
+      { q: 'Can I see the ring before it\'s finished?', a: 'Yes — we share CAD renderings and 3D models for your approval before any manufacturing begins.' },
+    ],
+    relatedPages: [
+      { name: 'Custom Rings', path: '/custom/rings' },
+      { name: 'Custom Pendants', path: '/custom/pendants' },
+      { name: 'Custom Bracelets', path: '/custom/bracelets' },
+    ],
+  },
+  'rings': {
+    heroHeadline: 'Custom Rings in Toronto',
+    heroSub: 'Signet rings, statement rings, wedding bands, and more — designed around your vision, handcrafted in Toronto.',
+    intro: 'From bold signet rings to elegant wedding bands and one-of-a-kind statement pieces, Al-Assali Jewelry creates custom rings that are uniquely yours. Every ring is handcrafted in-house in Toronto using the finest gold, platinum, and silver, with optional diamond and gemstone settings. Whether you have a detailed sketch or just an idea, our craftspeople will bring your ring to life.',
+    whyCards: [
+      { icon: MapPin, title: 'Made in Toronto', text: 'Handcrafted in our Toronto studio — no outsourcing, no middlemen.' },
+      { icon: Wrench, title: 'Any Style, Any Design', text: 'Signet, statement, band, stackable, or something entirely new.' },
+      { icon: MessageSquare, title: 'Personal Consultation', text: 'Work directly with our designers from concept to finished piece.' },
+      { icon: ShieldCheck, title: 'Premium Materials', text: '10K-18K gold, platinum, and sterling silver with optional gemstones.' },
+    ],
+    faq: [
+      { q: 'What types of custom rings can you make?', a: 'We craft signet rings, statement rings, wedding bands, stackable rings, and fully custom designs in any style.' },
+      { q: 'How much does a custom ring cost?', a: 'Custom rings start at $1,000 and vary based on metal, stones, and design complexity.' },
+      { q: 'Can I bring my own design for a ring?', a: 'Yes — bring sketches, reference photos, or describe your idea. We\'ll create CAD renderings for your approval.' },
+      { q: 'How do I determine my ring size?', a: 'We can measure your ring size during consultation, or you can visit us for a quick free sizing.' },
+    ],
+    relatedPages: [
+      { name: 'Custom Engagement Rings', path: '/custom/engagement-rings' },
+      { name: 'Custom Chains', path: '/custom/chains' },
+      { name: 'Custom Bracelets', path: '/custom/bracelets' },
+    ],
+  },
+  'pendants': {
+    heroHeadline: 'Custom Pendants in Toronto',
+    heroSub: 'Name pendants, photo pendants, diamond initials, and more — your story, beautifully told in gold and silver.',
+    intro: 'Al-Assali Jewelry creates custom pendants that carry meaning. From diamond-encrusted name pendants and photo pendants to religious symbols and custom designs, every piece is handcrafted in-house in Toronto. Choose your metal, your stones, and your design — we\'ll create a pendant that\'s as unique as the story it tells.',
+    whyCards: [
+      { icon: MapPin, title: 'Made in Toronto', text: 'Every pendant crafted in our Toronto studio with precision and care.' },
+      { icon: Layers, title: 'Endless Designs', text: 'Name, initial, photo, religious, symbol — or bring your own concept.' },
+      { icon: Diamond, title: 'Diamond Setting', text: 'Add natural or lab-grown diamonds, sapphires, and other precious stones.' },
+      { icon: ShieldCheck, title: 'Premium Craftsmanship', text: '10K-18K gold, platinum, or sterling silver with lifetime quality guarantee.' },
+    ],
+    faq: [
+      { q: 'What types of custom pendants do you make?', a: 'We create name pendants, initial pendants, photo pendants, religious symbols, custom logos, and any design you can imagine.' },
+      { q: 'Can you make a photo pendant?', a: 'Yes — we create custom photo pendants where your image is set behind crystal or surrounded by diamonds.' },
+      { q: 'How much does a custom gold pendant cost?', a: 'Custom gold pendants start around $1,000 depending on size, gold karat, and stone settings.' },
+      { q: 'What chain comes with a custom pendant?', a: 'Chains are crafted or selected separately. We can create a matching custom chain or help you choose the perfect pairing.' },
+      { q: 'Can I add diamonds to my pendant?', a: 'Absolutely — we can set natural or lab-grown diamonds, as well as sapphires, rubies, and emeralds.' },
+    ],
+    relatedPages: [
+      { name: 'Custom Chains', path: '/custom/chains' },
+      { name: 'Custom Rings', path: '/custom/rings' },
+      { name: 'Custom Earrings', path: '/custom/earrings' },
+    ],
+  },
+  'chains': {
+    heroHeadline: 'Custom Chains in Toronto',
+    heroSub: 'Cuban links, rope chains, franco chains, and more — built to your exact specifications in gold, silver, or platinum.',
+    intro: 'Al-Assali Jewelry is Toronto\'s destination for custom chains. Whether you want a heavyweight Miami Cuban link, a classic rope chain, or a sleek franco — every chain is handcrafted in-house to your exact length, width, and weight specifications. Choose from 10K, 14K, or 18K gold in yellow, white, or rose, as well as platinum and sterling silver.',
+    whyCards: [
+      { icon: MapPin, title: 'Made in Toronto', text: 'Every link crafted by hand in our Toronto workshop.' },
+      { icon: Wrench, title: 'Custom Specifications', text: 'Choose your exact length, width, weight, and clasp style.' },
+      { icon: Link, title: 'Every Style Available', text: 'Cuban link, rope, franco, figaro, box chain, and custom designs.' },
+      { icon: ShieldCheck, title: 'Solid Construction', text: 'No hollow chains — solid gold and silver built to last a lifetime.' },
+    ],
+    faq: [
+      { q: 'What types of custom chains do you offer?', a: 'Miami Cuban link, rope, franco, figaro, box chain, and fully custom designs. Any style, any weight.' },
+      { q: 'How much does a custom Cuban link chain cost?', a: 'Custom Cuban link chains start at $1,000 and vary based on gold karat, weight, and dimensions.' },
+      { q: 'What gold karats are available for chains?', a: 'We offer 10K, 14K, and 18K gold in yellow, white, and rose, plus platinum and sterling silver.' },
+      { q: 'Can I customize the length and width?', a: 'Yes — every chain is made to your exact specifications. Choose your length, width, and weight.' },
+      { q: 'Do you make chains with name plates?', a: 'Yes — we can integrate custom name plates, pendants, and diamond settings into your chain design.' },
+    ],
+    relatedPages: [
+      { name: 'Custom Pendants', path: '/custom/pendants' },
+      { name: 'Custom Bracelets', path: '/custom/bracelets' },
+      { name: 'Custom Grillz', path: '/custom/grillz' },
+    ],
+  },
+  'earrings': {
+    heroHeadline: 'Custom Earrings in Toronto',
+    heroSub: 'Diamond studs, gold hoops, drop earrings, and more — handcrafted to your design in our Toronto studio.',
+    intro: 'From elegant diamond studs to bold statement hoops, Al-Assali Jewelry designs and crafts custom earrings entirely in-house in Toronto. Choose your style, your metal, and your stones — whether you want a matching pair for a special occasion or everyday signature pieces, we\'ll craft them to perfection.',
+    whyCards: [
+      { icon: MapPin, title: 'Made in Toronto', text: 'Every pair handcrafted in our Toronto studio.' },
+      { icon: CircleDot, title: 'Every Style', text: 'Studs, hoops, drops, chandeliers, and fully custom designs.' },
+      { icon: Diamond, title: 'Stone Options', text: 'Diamonds, sapphires, rubies, emeralds — natural or lab-grown.' },
+      { icon: ShieldCheck, title: 'Perfect Pairing', text: 'Create matching sets with pendants, rings, or bracelets.' },
+    ],
+    faq: [
+      { q: 'What types of custom earrings can you make?', a: 'We create studs, hoops, drop earrings, chandeliers, and fully custom designs in any style.' },
+      { q: 'How much do custom diamond earrings cost?', a: 'Custom diamond earrings start at $1,000 depending on stone size, quality, and metal choice.' },
+      { q: 'Can I design matching earrings and pendant?', a: 'Yes — we love creating matching sets. Design your earrings and pendant together for a cohesive look.' },
+      { q: 'What metals are available for earrings?', a: '10K-18K gold (yellow, white, rose), platinum, and sterling silver.' },
+    ],
+    relatedPages: [
+      { name: 'Custom Pendants', path: '/custom/pendants' },
+      { name: 'Custom Rings', path: '/custom/rings' },
+      { name: 'Custom Bracelets', path: '/custom/bracelets' },
+    ],
+  },
+  'bracelets': {
+    heroHeadline: 'Custom Bracelets in Toronto',
+    heroSub: 'Tennis bracelets, bangles, cuffs, and engraved pieces for men and women — designed and crafted in Toronto.',
+    intro: 'Al-Assali Jewelry creates custom bracelets for every style and occasion. From diamond tennis bracelets and elegant bangles to bold cuffs and engraved pieces for men, every bracelet is handcrafted in-house in Toronto. Choose your metal, your stones, and your design — we\'ll create a bracelet that fits your wrist and your vision perfectly.',
+    whyCards: [
+      { icon: MapPin, title: 'Made in Toronto', text: 'Every bracelet crafted in our Toronto workshop.' },
+      { icon: Gem, title: 'Every Style', text: 'Tennis, chain, bangle, cuff, charm, and custom designs.' },
+      { icon: Wrench, title: 'Men\'s & Women\'s', text: 'Custom bracelets and engraved pieces for every wrist.' },
+      { icon: ShieldCheck, title: 'Perfect Fit', text: 'Measured and crafted to your exact wrist size.' },
+    ],
+    faq: [
+      { q: 'What types of custom bracelets do you make?', a: 'Tennis bracelets, chain bracelets, bangles, cuffs, charm bracelets, and fully custom designs.' },
+      { q: 'How much does a custom tennis bracelet cost?', a: 'Custom tennis bracelets start at $2,500 depending on stone quality, size, and metal choice.' },
+      { q: 'Can I get an engraved bracelet for men?', a: 'Yes — we create engraved bracelets for men in gold, platinum, and silver with custom text or designs.' },
+      { q: 'How do I measure my wrist for a bracelet?', a: 'We measure your wrist during consultation for a perfect fit. You can also visit us for a quick free measurement.' },
+    ],
+    relatedPages: [
+      { name: 'Custom Chains', path: '/custom/chains' },
+      { name: 'Custom Rings', path: '/custom/rings' },
+      { name: 'Custom Pendants', path: '/custom/pendants' },
+    ],
+  },
+  'grillz': {
+    heroHeadline: 'Custom Grillz in Toronto',
+    heroSub: 'Gold grillz, diamond grillz, and VVS sets — Toronto\'s premier custom grillz studio. In-house craftsmanship, competitive prices.',
+    intro: 'Al-Assali Jewelry is Toronto\'s go-to for custom grillz. From single-tooth pieces to full diamond-set grillz, every set is handcrafted in-house using real gold and genuine diamonds. We offer 10K, 14K, and 18K gold in yellow, white, and rose, with optional VVS diamond, diamond dust, and custom designs. Our mold process ensures a perfect fit every time.',
+    whyCards: [
+      { icon: MapPin, title: 'Toronto\'s Best Grillz', text: 'Handcrafted in our Toronto studio — not mass-produced overseas.' },
+      { icon: Flame, title: 'Real Gold & Diamonds', text: '10K-18K solid gold with genuine VVS diamonds, not plated or CZ.' },
+      { icon: Wrench, title: 'Perfect Fit Guaranteed', text: 'Custom mold process ensures your grillz fit perfectly every time.' },
+      { icon: DollarSign, title: 'Competitive Pricing', text: 'Fair pricing explained upfront — no hidden fees, no surprises.' },
+    ],
+    faq: [
+      { q: 'How much do custom grillz cost in Toronto?', a: 'Custom grillz start at $500 for a single tooth in 10K gold. Full sets with diamonds range from $2,000-$10,000+ depending on gold karat and stone quality.' },
+      { q: 'What types of grillz do you offer?', a: 'Full sets (top & bottom), top 6, bottom 6, single tooth, fangs, open-face, diamond dust, and fully custom designs.' },
+      { q: 'Are your grillz removable?', a: 'Yes — all our grillz are removable. We create a custom mold of your teeth for a snug, secure fit.' },
+      { q: 'What gold karats are available for grillz?', a: '10K, 14K, and 18K gold in yellow, white, and rose gold options.' },
+      { q: 'Do you use real diamonds in grillz?', a: 'Yes — we use genuine natural and lab-grown diamonds including VVS clarity stones. No cubic zirconia.' },
+      { q: 'How long does it take to make custom grillz?', a: 'Most custom grillz are completed in 1-2 weeks after your mold appointment. Rush orders available.' },
+    ],
+    relatedPages: [
+      { name: 'Custom Chains', path: '/custom/chains' },
+      { name: 'Custom Pendants', path: '/custom/pendants' },
+      { name: 'Custom Rings', path: '/custom/rings' },
+    ],
+  },
+}
+
+// ---------------------------------------------------------------------------
 // Shared options
 // ---------------------------------------------------------------------------
 
@@ -248,6 +423,7 @@ export default function CustomJewelryPage() {
 
   // Refs for scroll-to behavior
   const styleRef = useRef<HTMLDivElement>(null)
+  const formRef = useRef<HTMLDivElement>(null)
 
   // Derived config
   const activeType = formData.pieceType || ''
@@ -405,7 +581,14 @@ export default function CustomJewelryPage() {
   }
 
   // =========================================================================
-  // MAIN FORM — Single scrollable page
+  // Landing page content (only for direct type URLs, not /custom/general)
+  // =========================================================================
+
+  const landing = isDirectType ? landingContent[urlType] : null
+  const scrollToForm = () => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+
+  // =========================================================================
+  // MAIN PAGE — Landing content + form
   // =========================================================================
 
   return (
@@ -414,17 +597,184 @@ export default function CustomJewelryPage() {
       <DiamondPattern className="text-white" />
 
       <div className="relative z-10">
+
+        {/* ===== SEO LANDING PAGE SECTIONS (only for product pages, not general) ===== */}
+        {landing && (
+          <>
+            {/* HERO */}
+            <section className="relative py-24 md:py-32 overflow-hidden">
+              <div className="section-container relative z-10">
+                <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} className="max-w-4xl mx-auto text-center">
+                  <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+                    {landing.heroHeadline}
+                  </h1>
+                  <p className="text-xl md:text-2xl text-stone font-light max-w-3xl mx-auto mb-10 leading-relaxed">
+                    {landing.heroSub}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onClick={scrollToForm} className="inline-flex items-center gap-2 bg-glacier-grey text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">
+                      Design Your {config?.title.replace('Custom ', '') || 'Piece'}
+                      <ArrowDown className="w-4 h-4" />
+                    </button>
+                    <NextLink href="/portfolio" className="inline-block bg-white/10 border-2 border-white text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white hover:text-soft-black transition-all duration-300">
+                      View Our Work
+                    </NextLink>
+                  </div>
+                </motion.div>
+                {/* 📸 IMAGE SLOT 1: Hero image placeholder — replace with real product photography */}
+              </div>
+            </section>
+
+            {/* WHY CHOOSE AL-ASSALI */}
+            <section className="py-20 border-t border-glacier-grey/10">
+              <div className="section-container">
+                <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-white text-center mb-14" style={{ fontFamily: 'var(--font-heading)' }}>
+                  Why Choose Al-Assali
+                </motion.h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                  {landing.whyCards.map((card, i) => {
+                    const CardIcon = card.icon
+                    return (
+                      <motion.div key={card.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-6 text-center hover:border-glacier-grey/40 transition-all">
+                        <div className="w-14 h-14 rounded-full bg-glacier-grey/10 border border-glacier-grey/30 flex items-center justify-center mx-auto mb-4">
+                          <CardIcon className="w-7 h-7 text-glacier-grey" />
+                        </div>
+                        <h3 className="text-white font-bold mb-2">{card.title}</h3>
+                        <p className="text-stone text-sm leading-relaxed">{card.text}</p>
+                      </motion.div>
+                    )
+                  })}
+                </div>
+              </div>
+            </section>
+
+            {/* INTRO + STYLES AVAILABLE */}
+            <section className="py-20 border-t border-glacier-grey/10">
+              <div className="section-container">
+                <div className="max-w-4xl mx-auto">
+                  <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                    <p className="text-lg text-stone leading-relaxed mb-12">{landing.intro}</p>
+                  </motion.div>
+                  {/* 📸 IMAGE SLOT 2: Style showcase grid — replace with real product photography */}
+                  {config && config.styles.length > 0 && (
+                    <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                      <h2 className="text-3xl md:text-4xl font-bold text-white mb-8" style={{ fontFamily: 'var(--font-heading)' }}>
+                        Available Styles
+                      </h2>
+                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        {config.styles.filter(s => s !== 'Not Sure').map((style) => {
+                          const StyleIcon = styleIcons[urlType]?.[style] || HelpCircle
+                          return (
+                            <div key={style} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5 text-center hover:border-glacier-grey/40 transition-all">
+                              <StyleIcon className="w-8 h-8 text-glacier-grey mx-auto mb-3" />
+                              <span className="text-white font-medium text-sm">{style}</span>
+                            </div>
+                          )
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              </div>
+            </section>
+
+            {/* MATERIALS */}
+            <section className="py-20 border-t border-glacier-grey/10">
+              <div className="section-container">
+                <div className="max-w-4xl mx-auto">
+                  <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-8" style={{ fontFamily: 'var(--font-heading)' }}>
+                      Materials &amp; Craftsmanship
+                    </h2>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-8">
+                      {config?.metals.map((metal) => (
+                        <div key={metal} className="flex items-center gap-3 bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-4">
+                          <div className="w-8 h-8 rounded-full border border-white/20 flex-shrink-0" style={{ background: metalSwatches[metal] || metalSwatches['Silver'] }} />
+                          <span className="text-white font-medium text-sm">{metal}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <p className="text-stone text-sm leading-relaxed">
+                      Gold pieces are available in yellow, white, and rose gold. Every piece is crafted entirely in-house in Toronto using traditional techniques and modern precision.
+                    </p>
+                    {/* 📸 IMAGE SLOT 3: Portfolio / craftsmanship images */}
+                  </motion.div>
+                </div>
+              </div>
+            </section>
+
+            {/* FAQ — Schema eligible */}
+            <section className="py-20 border-t border-glacier-grey/10">
+              <div className="section-container">
+                <div className="max-w-3xl mx-auto">
+                  <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-white text-center mb-12" style={{ fontFamily: 'var(--font-heading)' }}>
+                    Frequently Asked Questions
+                  </motion.h2>
+                  <div className="space-y-6">
+                    {landing.faq.map((item, i) => (
+                      <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-6">
+                        <h3 className="text-white font-bold mb-2">{item.q}</h3>
+                        <p className="text-stone text-sm leading-relaxed">{item.a}</p>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* EXPLORE MORE + CTA */}
+            <section className="py-20 border-t border-glacier-grey/10">
+              <div className="section-container">
+                <div className="max-w-4xl mx-auto text-center">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+                    Ready to Start?
+                  </h2>
+                  <p className="text-stone text-lg mb-8">Fill out the form below to begin your custom {config?.title.replace('Custom ', '').toLowerCase() || 'piece'} journey.</p>
+                  <button onClick={scrollToForm} className="inline-flex items-center gap-2 bg-glacier-grey text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl mb-12">
+                    Start Your Design <ArrowDown className="w-4 h-4" />
+                  </button>
+                  <div className="flex flex-wrap justify-center gap-4">
+                    {landing.relatedPages.map((page) => (
+                      <NextLink key={page.path} href={page.path} className="text-glacier-grey text-sm font-medium hover:text-glacier-grey-light hover:underline transition-all">
+                        {page.name} →
+                      </NextLink>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* FAQ Schema JSON-LD */}
+            <script
+              type="application/ld+json"
+              dangerouslySetInnerHTML={{
+                __html: JSON.stringify({
+                  '@context': 'https://schema.org',
+                  '@type': 'FAQPage',
+                  mainEntity: landing.faq.map((item) => ({
+                    '@type': 'Question',
+                    name: item.q,
+                    acceptedAnswer: { '@type': 'Answer', text: item.a },
+                  })),
+                }),
+              }}
+            />
+          </>
+        )}
+
+        {/* ===== INQUIRY FORM ===== */}
+        <div ref={formRef}>
         {/* Header */}
         <div className="border-b border-glacier-grey/20 bg-deep-charcoal/50 backdrop-blur-sm">
           <div className="section-container py-12">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
               <div className="inline-flex items-center gap-3 mb-4">
                 <Sparkles className="w-8 h-8 text-glacier-grey" />
-                <h1 className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: 'var(--font-heading)' }}>
-                  {headerTitle}
-                </h1>
+                <h2 className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: 'var(--font-heading)' }}>
+                  {landing ? 'Start Your Inquiry' : headerTitle}
+                </h2>
               </div>
-              <p className="text-xl text-stone font-light max-w-3xl mx-auto">{headerSubtitle}</p>
+              <p className="text-xl text-stone font-light max-w-3xl mx-auto">{landing ? 'Fill out the details below and we\'ll get back to you within 24-48 hours.' : headerSubtitle}</p>
             </motion.div>
           </div>
         </div>
@@ -686,6 +1036,7 @@ export default function CustomJewelryPage() {
             </motion.div>
           </div>
         </div>
+        </div>{/* end formRef */}
       </div>
     </div>
   )
