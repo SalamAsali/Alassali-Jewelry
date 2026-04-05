@@ -556,7 +556,7 @@ function PortalForm() {
 
   if (submitted) {
     return (
-      <div className="h-[100dvh] bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
+      <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] -mb-24 bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
         <DotPattern />
         <DiamondPattern className="text-white" />
         <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="max-w-3xl mx-auto text-center px-4 relative z-10">
@@ -582,7 +582,7 @@ function PortalForm() {
   // =========================================================================
 
   return (
-    <div className="h-[100dvh] bg-soft-black relative overflow-hidden flex flex-col" data-testid="custom-form-hero">
+    <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] -mb-24 bg-soft-black relative overflow-hidden flex flex-col" data-testid="custom-form-hero">
       <DotPattern />
       <DiamondPattern className="text-white" />
 
