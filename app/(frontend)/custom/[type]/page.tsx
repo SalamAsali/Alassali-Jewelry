@@ -496,32 +496,32 @@ export default function CustomJewelryPage() {
   // =========================================================================
 
   return (
-    <div className="min-h-screen bg-soft-black relative overflow-hidden" data-testid="custom-form-hero">
+    <div className="h-[100svh] bg-soft-black relative overflow-hidden flex flex-col" data-testid="custom-form-hero">
       <DotPattern />
       <DiamondPattern className="text-white" />
 
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col flex-1 min-h-0">
         {/* Header */}
-        <div className="border-b border-glacier-grey/20 bg-deep-charcoal/50 backdrop-blur-sm">
-          <div className="section-container py-12">
+        <div className="border-b border-glacier-grey/20 bg-deep-charcoal/50 backdrop-blur-sm shrink-0">
+          <div className="section-container py-4 md:py-6">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-              <div className="inline-flex items-center gap-3 mb-4">
-                <Sparkles className="w-8 h-8 text-glacier-grey" />
-                <h1 className="text-4xl md:text-5xl font-bold text-white" style={{ fontFamily: 'var(--font-heading)' }}>
+              <div className="inline-flex items-center gap-2 mb-1">
+                <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-glacier-grey" />
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white" style={{ fontFamily: 'var(--font-heading)' }}>
                   {headerTitle}
                 </h1>
               </div>
-              <p className="text-xl text-stone font-light max-w-3xl mx-auto">{headerSubtitle}</p>
+              <p className="text-sm md:text-base text-stone font-light max-w-3xl mx-auto">{headerSubtitle}</p>
             </motion.div>
           </div>
         </div>
 
         {/* Body */}
-        <div className="section-container py-24">
-          <div className="max-w-4xl mx-auto">
+        <div className="section-container py-4 md:py-6 flex-1 min-h-0 flex flex-col">
+          <div className="max-w-4xl mx-auto w-full flex flex-col flex-1 min-h-0">
 
             {/* ============ TWO-TIER PROGRESS BAR ============ */}
-            <div className="mb-12" data-testid="form-progress">
+            <div className="mb-4 md:mb-6 shrink-0" data-testid="form-progress">
               {/* Main steps */}
               <div className="flex justify-between items-center mb-2">
                 {mainStepsConfig.map((step, i) => {
@@ -559,7 +559,7 @@ export default function CustomJewelryPage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 4 }}
                   transition={{ duration: 0.25 }}
-                  className="flex justify-center items-center gap-4 mt-6 py-3 px-4 rounded-lg bg-white/5 border border-glacier-grey/10"
+                  className="flex justify-center items-center gap-4 mt-3 py-2 px-4 rounded-lg bg-white/5 border border-glacier-grey/10"
                 >
                   {subPages.map((pageId, i) => {
                     const isDone = i < currentSub
@@ -583,7 +583,7 @@ export default function CustomJewelryPage() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="relative overflow-hidden rounded-2xl"
+              className="relative overflow-hidden rounded-2xl flex-1 min-h-0 flex flex-col"
               style={{
                 background: 'linear-gradient(135deg, rgba(44, 44, 44, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%)',
                 border: '1px solid rgba(201, 167, 94, 0.3)',
@@ -592,14 +592,14 @@ export default function CustomJewelryPage() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-glacier-grey/10 via-transparent to-glacier-grey/5 pointer-events-none" />
 
-              <div className="relative z-10 p-8 md:p-12" data-testid="form-container">
+              <div className="relative z-10 p-5 md:p-8 flex flex-col flex-1 min-h-0 overflow-y-auto" data-testid="form-container">
                 <form onSubmit={handleSubmit}>
                   <AnimatePresence mode="wait">
 
                     {/* ===== CONTACT ===== */}
                     {currentPageId === 'contact' && (
                       <motion.div key="contact" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
-                        <h2 className="text-3xl font-bold text-white mb-8" style={{ fontFamily: 'var(--font-heading)' }}>
+                        <h2 className="text-xl md:text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
                           Let&apos;s Get Started
                         </h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -626,11 +626,11 @@ export default function CustomJewelryPage() {
                     {/* ===== BUDGET ===== */}
                     {currentPageId === 'budget' && (
                       <motion.div key="budget" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Your Budget</h2>
-                        <p className="text-stone mb-8">Select the range that fits your vision</p>
+                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Your Budget</h2>
+                        <p className="text-stone text-sm mb-4">Select the range that fits your vision</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                           {budgetOptions.map(({ value, label, tier }) => (
-                            <button key={value} type="button" onClick={() => setFormData(prev => ({ ...prev, budget: value }))} className={`${cardBase} p-6 min-h-[120px] ${formData.budget === value ? cardSelected : cardUnselected}`}>
+                            <button key={value} type="button" onClick={() => setFormData(prev => ({ ...prev, budget: value }))} className={`${cardBase} p-6 min-h-[80px] md:min-h-[100px] ${formData.budget === value ? cardSelected : cardUnselected}`}>
                               <div className="flex gap-0.5 mb-3">
                                 {Array.from({ length: tier }).map((_, i) => (
                                   <DollarSign key={i} className={`w-5 h-5 ${formData.budget === value ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
@@ -646,13 +646,13 @@ export default function CustomJewelryPage() {
                     {/* ===== PIECE TYPE (unified selector) ===== */}
                     {currentPageId === 'pieceType' && (
                       <motion.div key="pieceType" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>What Are You Looking For?</h2>
-                        <p className="text-stone mb-8">Select the type of custom piece you&apos;d like us to create</p>
+                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>What Are You Looking For?</h2>
+                        <p className="text-stone text-sm mb-4">Select the type of custom piece you&apos;d like us to create</p>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                           {pieceTypeOptions.map(({ value, label, icon: PIcon, subtitle: sub }) => {
                             const selected = formData.pieceType === value
                             return (
-                              <button key={value} type="button" onClick={() => selectPieceType(value)} className={`${cardBase} p-6 min-h-[160px] ${selected ? cardSelected : cardUnselected}`}>
+                              <button key={value} type="button" onClick={() => selectPieceType(value)} className={`${cardBase} p-6 min-h-[100px] md:min-h-[130px] ${selected ? cardSelected : cardUnselected}`}>
                                 <PIcon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
                                 <span className="text-white font-semibold text-sm mb-1">{label}</span>
                                 <span className="text-stone text-xs text-center leading-tight">{sub}</span>
@@ -666,14 +666,14 @@ export default function CustomJewelryPage() {
                     {/* ===== STYLE (conditional per piece type) ===== */}
                     {currentPageId === 'style' && (
                       <motion.div key="style" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Choose Your Style</h2>
-                        <p className="text-stone mb-8">Select the style that speaks to you</p>
+                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Choose Your Style</h2>
+                        <p className="text-stone text-sm mb-4">Select the style that speaks to you</p>
                         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                           {config.styles.map((style: string) => {
                             const Icon = styleIcons[activeType]?.[style] || HelpCircle
                             const selected = formData.style === style
                             return (
-                              <button key={style} type="button" onClick={() => setFormData(prev => ({ ...prev, style }))} className={`${cardBase} p-6 min-h-[140px] ${selected ? cardSelected : cardUnselected}`}>
+                              <button key={style} type="button" onClick={() => setFormData(prev => ({ ...prev, style }))} className={`${cardBase} p-6 min-h-[90px] md:min-h-[110px] ${selected ? cardSelected : cardUnselected}`}>
                                 <Icon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
                                 <span className="text-white font-medium text-sm text-center">{style}</span>
                               </button>
@@ -687,13 +687,13 @@ export default function CustomJewelryPage() {
                     {currentPageId === 'metal' && (
                       <motion.div key="metal" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-10">
                         <div>
-                          <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Select Your Metal</h2>
-                          <p className="text-stone mb-8">Choose your preferred metal type</p>
+                          <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Select Your Metal</h2>
+                          <p className="text-stone text-sm mb-4">Choose your preferred metal type</p>
                           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                             {config.metals.map((metal: string) => {
                               const selected = formData.metalType === metal
                               return (
-                                <button key={metal} type="button" onClick={() => selectMetal(metal)} className={`${cardBase} p-6 min-h-[130px] ${selected ? cardSelected : cardUnselected}`}>
+                                <button key={metal} type="button" onClick={() => selectMetal(metal)} className={`${cardBase} p-6 min-h-[85px] md:min-h-[105px] ${selected ? cardSelected : cardUnselected}`}>
                                   <div className="w-10 h-10 rounded-full mb-3 border border-white/20" style={{ background: metalSwatches[metal] || metalSwatches['Silver'], boxShadow: selected ? '0 0 14px rgba(200,170,80,0.3)' : 'none' }} />
                                   <span className="text-white font-medium text-sm text-center">{metal}</span>
                                 </button>
@@ -725,13 +725,13 @@ export default function CustomJewelryPage() {
                     {currentPageId === 'stones' && (
                       <motion.div key="stones" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-10">
                         <div>
-                          <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Stone Preferences</h2>
-                          <p className="text-stone mb-8">Select one or more stones for your piece</p>
+                          <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Stone Preferences</h2>
+                          <p className="text-stone text-sm mb-4">Select one or more stones for your piece</p>
                           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                             {stoneOptions.map(({ name, icon: StoneIcon, color }) => {
                               const selected = formData.stonePreferences.includes(name)
                               return (
-                                <button key={name} type="button" onClick={() => toggleStone(name)} className={`${cardBase} p-6 min-h-[130px] ${selected ? cardSelected : cardUnselected}`}>
+                                <button key={name} type="button" onClick={() => toggleStone(name)} className={`${cardBase} p-6 min-h-[85px] md:min-h-[105px] ${selected ? cardSelected : cardUnselected}`}>
                                   <StoneIcon className={`w-10 h-10 mb-3 ${selected ? color : 'text-glacier-grey/60'}`} />
                                   <span className="text-white font-medium text-sm">{name}</span>
                                 </button>
@@ -750,7 +750,7 @@ export default function CustomJewelryPage() {
                               ] as const).map(({ label, icon: DIcon, desc }) => {
                                 const selected = formData.diamondType === label
                                 return (
-                                  <button key={label} type="button" onClick={() => setFormData(prev => ({ ...prev, diamondType: label }))} className={`${cardBase} p-6 min-h-[150px] ${selected ? cardSelected : cardUnselected}`}>
+                                  <button key={label} type="button" onClick={() => setFormData(prev => ({ ...prev, diamondType: label }))} className={`${cardBase} p-6 min-h-[95px] md:min-h-[120px] ${selected ? cardSelected : cardUnselected}`}>
                                     <DIcon className={`w-10 h-10 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
                                     <span className="text-white font-semibold text-sm mb-1">{label}</span>
                                     <span className="text-stone text-xs text-center">{desc}</span>
@@ -766,8 +766,8 @@ export default function CustomJewelryPage() {
                     {/* ===== PHOTOS / INSPIRATION ===== */}
                     {currentPageId === 'photos' && (
                       <motion.div key="photos" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-3xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>Share Your Inspiration</h2>
-                        <p className="text-stone mb-8">Upload images that inspire you. This helps us understand your vision better.</p>
+                        <h2 className="text-xl md:text-2xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Share Your Inspiration</h2>
+                        <p className="text-stone text-sm mb-4">Upload images that inspire you. This helps us understand your vision better.</p>
                         <div className="relative border-2 border-dashed border-glacier-grey/30 rounded-xl p-12 text-center bg-white/5 hover:bg-white/10 transition-all">
                           <Upload className="w-16 h-16 text-glacier-grey mx-auto mb-4" />
                           <input type="file" multiple accept="image/*" onChange={handleFileUpload} className="hidden" id="file-upload" disabled={uploading} />
@@ -787,8 +787,8 @@ export default function CustomJewelryPage() {
                     {/* ===== SIZE (conditional label per piece type) ===== */}
                     {currentPageId === 'size' && (
                       <motion.div key="size" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
-                        <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Size &amp; Dimensions</h2>
-                        <p className="text-stone mb-8">Tell us your measurements so we can craft a perfect fit</p>
+                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Size &amp; Dimensions</h2>
+                        <p className="text-stone text-sm mb-4">Tell us your measurements so we can craft a perfect fit</p>
                         <div>
                           <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">{activeSizeConfig.label}</label>
                           <input type="text" name="size" value={formData.size} onChange={handleInputChange} className={inputClass} placeholder={activeSizeConfig.placeholder} />
@@ -802,13 +802,13 @@ export default function CustomJewelryPage() {
                     {/* ===== TIMELINE ===== */}
                     {currentPageId === 'timeline' && (
                       <motion.div key="timeline" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Your Timeline</h2>
-                        <p className="text-stone mb-8">When do you need your piece?</p>
+                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Your Timeline</h2>
+                        <p className="text-stone text-sm mb-4">When do you need your piece?</p>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                           {timelineOptions.map(({ value, label, icon: TIcon, desc }) => {
                             const selected = formData.timeline === value
                             return (
-                              <button key={value} type="button" onClick={() => setFormData(prev => ({ ...prev, timeline: value }))} className={`${cardBase} p-6 min-h-[130px] ${selected ? cardSelected : cardUnselected}`}>
+                              <button key={value} type="button" onClick={() => setFormData(prev => ({ ...prev, timeline: value }))} className={`${cardBase} p-6 min-h-[85px] md:min-h-[105px] ${selected ? cardSelected : cardUnselected}`}>
                                 <TIcon className={`w-9 h-9 mb-3 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
                                 <span className="text-white font-semibold text-sm mb-1">{label}</span>
                                 <span className="text-stone text-xs text-center">{desc}</span>
@@ -822,8 +822,8 @@ export default function CustomJewelryPage() {
                     {/* ===== NOTES ===== */}
                     {currentPageId === 'notes' && (
                       <motion.div key="notes" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-6">
-                        <h2 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Anything Else?</h2>
-                        <p className="text-stone mb-8">Share any additional details, special engravings, or references that will help bring your vision to life</p>
+                        <h2 className="text-xl md:text-2xl font-bold text-white mb-1" style={{ fontFamily: 'var(--font-heading)' }}>Anything Else?</h2>
+                        <p className="text-stone text-sm mb-4">Share any additional details, special engravings, or references that will help bring your vision to life</p>
                         <div>
                           <label className="block text-sm font-medium text-glacier-grey mb-2 uppercase tracking-wide">Additional Notes</label>
                           <textarea
@@ -841,7 +841,7 @@ export default function CustomJewelryPage() {
                     {/* ===== REVIEW ===== */}
                     {currentPageId === 'review' && (
                       <motion.div key="review" initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }}>
-                        <h2 className="text-3xl font-bold text-white mb-8" style={{ fontFamily: 'var(--font-heading)' }}>Review Your Request</h2>
+                        <h2 className="text-xl md:text-2xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>Review Your Request</h2>
                         <div className="space-y-4 bg-white/5 rounded-lg p-6 border border-glacier-grey/20">
                           <ReviewRow label="First Name" value={formData.firstName} />
                           <ReviewRow label="Last Name" value={formData.lastName} />
@@ -877,7 +877,7 @@ export default function CustomJewelryPage() {
                   </AnimatePresence>
 
                   {/* Navigation */}
-                  <div className="flex justify-between mt-12 pt-8 border-t border-glacier-grey/20" data-testid="form-navigation">
+                  <div className="flex justify-between mt-6 pt-4 border-t border-glacier-grey/20 shrink-0" data-testid="form-navigation">
                     {currentStep > 1 && (
                       <button type="button" onClick={prevStep} className="flex items-center gap-2 px-8 py-3 rounded-lg bg-white/5 border border-glacier-grey/30 text-white hover:bg-white/10 transition-all font-semibold">
                         <ArrowLeft className="w-5 h-5" /> Back
