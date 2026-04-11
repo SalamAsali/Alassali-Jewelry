@@ -467,44 +467,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== THE ICONS ===== */}
-      <section className="bg-white py-24" data-testid="featured-products-section">
-        <div className="section-container">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-deep-charcoal mb-4" style={{ fontFamily: 'var(--font-heading)' }}>The Icons</h2>
-            <p className="text-lg text-taupe max-w-2xl mx-auto">Our signature pieces that define timeless luxury</p>
-          </motion.div>
-          {loading ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[...Array(4)].map((_, i) => (
-                <div key={i} className="bg-white rounded-lg h-96 animate-pulse border border-stone" />
-              ))}
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-testid="featured-products-grid">
-              {displayedItems.map((item, index) => {
-                const imgSrc = typeof item.image === 'string' ? item.image : getImageUrl(item.image)
-                return (
-                  <Link href={`/product/${item.id}`} key={item.id}>
-                    <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} whileHover={{ y: -8 }} className="group cursor-pointer">
-                      <div className="bg-white rounded-lg overflow-hidden border border-stone hover:border-glacier-grey transition-all shadow-lg hover:shadow-2xl">
-                        <div className="aspect-square overflow-hidden bg-white relative">
-                          <motion.img src={imgSrc} alt={item.title} className="w-full h-full object-cover" whileHover={{ scale: 1.08 }} transition={{ duration: 0.5 }} />
-                        </div>
-                        <div className="p-6">
-                          <h3 className="font-heading text-lg font-semibold text-deep-charcoal mb-2 group-hover:text-glacier-grey transition-colors">{item.title}</h3>
-                          {item.description && <p className="text-sm text-taupe mb-3 line-clamp-2">{item.description}</p>}
-                        </div>
-                      </div>
-                    </motion.div>
-                  </Link>
-                )
-              })}
-            </div>
-          )}
-        </div>
-      </section>
-
       {/* ===== FINAL CTA ===== */}
       <section className="relative bg-soft-black text-white py-24" data-testid="final-cta-section">
         <DotPattern />

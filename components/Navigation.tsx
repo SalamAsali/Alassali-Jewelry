@@ -4,20 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ShoppingCart, Menu, X } from 'lucide-react'
-
-// Simple cart count - will be replaced with proper cart context later
-const getCartCount = () => {
-  if (typeof window === 'undefined') return 0
-  const cart = localStorage.getItem('cart')
-  if (!cart) return 0
-  try {
-    const items = JSON.parse(cart)
-    return items.reduce((count: number, item: any) => count + (item.quantity || 1), 0)
-  } catch {
-    return 0
-  }
-}
+import { Menu, X } from 'lucide-react'
 
 const DEFAULT_LOGO = '/images/logo.png'
 
@@ -30,7 +17,6 @@ export default function Navigation(props?: NavigationProps) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const pathname = usePathname()
   const router = useRouter()
-  const cartCount = getCartCount()
   const logo = props?.logoUrl ?? DEFAULT_LOGO
 
   const productMegaMenu = {
@@ -250,22 +236,6 @@ export default function Navigation(props?: NavigationProps) {
               Start Your Journey
             </Link>
             
-            <button
-              onClick={() => router.push('/cart')}
-              className="relative p-2 hover:bg-glacier-grey/20 rounded-lg transition-colors"
-            >
-              <ShoppingCart className="w-6 h-6 text-white" />
-              {cartCount > 0 && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  className="absolute -top-1 -right-1 bg-glacier-grey text-soft-black text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center"
-                >
-                  {cartCount}
-                </motion.span>
-              )}
-            </button>
-
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-2 hover:bg-glacier-grey/20 rounded-lg transition-colors"
