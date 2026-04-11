@@ -144,26 +144,6 @@ export default function Footer(props?: FooterProps) {
           </div>
         </div>
 
-        {/* Trust Badges */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-12 border-t border-charcoal">
-          <div className="text-center">
-            <p className="text-xs uppercase tracking-wider text-glacier-grey mb-1 font-medium">Fully Insured</p>
-            <p className="text-warm-gray text-sm">Shipping</p>
-          </div>
-          <div className="text-center">
-            <p className="text-xs uppercase tracking-wider text-glacier-grey mb-1 font-medium">Lifetime</p>
-            <p className="text-warm-gray text-sm">Warranty</p>
-          </div>
-          <div className="text-center">
-            <p className="text-xs uppercase tracking-wider text-glacier-grey mb-1 font-medium">Complimentary</p>
-            <p className="text-warm-gray text-sm">Resizing</p>
-          </div>
-          <div className="text-center">
-            <p className="text-xs uppercase tracking-wider text-glacier-grey mb-1 font-medium">Adult Signature</p>
-            <p className="text-warm-gray text-sm">Required (21+)</p>
-          </div>
-        </div>
-
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-charcoal text-center text-warm-gray text-sm">
           <p>&copy; {new Date().getFullYear()} Alassali Jewelry. Crafted with precision in Toronto.</p>
