@@ -349,11 +349,7 @@ export default function Home() {
               />
 
               <div className="flex items-center justify-center mb-8">
-                <div className="relative inline-block">
-                  <h2 className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30" style={{ fontFamily: 'var(--font-heading)' }}>M</h2>
-                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt="Silver Cuban chain - Toronto craftsmanship" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-48 xl:w-40 xl:h-56 2xl:w-48 2xl:h-64 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
-                </div>
-                <h2 className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>ADE</h2>
+                <h2 className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>MADE</h2>
               </div>
               <div className="flex items-center justify-center mb-8">
                 <h2 className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>IN</h2>
@@ -361,7 +357,10 @@ export default function Home() {
               <div className="flex items-center justify-center relative">
                 <div className="relative inline-block">
                   <h2 className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30" style={{ fontFamily: 'var(--font-heading)' }}>T</h2>
-                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom gold chain - Toronto artistry" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-48 xl:w-40 xl:h-56 2xl:w-48 2xl:h-64 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
+                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col gap-3" style={{ zIndex: 10 }}>
+                    <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt="Silver Cuban chain - Toronto craftsmanship" className="w-28 h-36 xl:w-36 xl:h-44 2xl:w-44 2xl:h-52 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" />
+                    <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.15 }} src={img2} alt="Custom gold chain - Toronto artistry" className="w-28 h-36 xl:w-36 xl:h-44 2xl:w-44 2xl:h-52 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" />
+                  </div>
                 </div>
                 <h2 className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>ORONTO</h2>
               </div>
