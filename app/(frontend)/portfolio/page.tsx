@@ -208,20 +208,51 @@ export default function PortfolioPage() {
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="section-container relative z-10">
           {/* Category Buttons */}
-          <div className="flex flex-wrap justify-center gap-2.5 mb-16 max-w-2xl mx-auto">
-            {categories.map((cat) => (
+          <div className="mb-16 max-w-4xl mx-auto">
+            {/* Mobile: "All" on its own row, rest wrap into 2 rows */}
+            <div className="flex flex-col items-center gap-2.5 lg:hidden">
               <button
-                key={cat}
-                onClick={() => setActiveCategory(cat)}
-                className={`px-4 py-2 text-xs uppercase tracking-wider font-semibold rounded-lg transition-all duration-300 ${
-                  activeCategory === cat
+                onClick={() => setActiveCategory('All')}
+                className={`px-6 py-2 text-xs uppercase tracking-wider font-semibold rounded-lg transition-all duration-300 ${
+                  activeCategory === 'All'
                     ? 'bg-soft-black text-white shadow-lg'
                     : 'bg-transparent text-charcoal border border-stone hover:bg-soft-black hover:text-white hover:border-soft-black hover:shadow-lg'
                 }`}
               >
-                {cat}
+                All
               </button>
-            ))}
+              <div className="flex flex-wrap justify-center gap-2.5">
+                {categories.filter((c) => c !== 'All').map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveCategory(cat)}
+                    className={`px-4 py-2 text-xs uppercase tracking-wider font-semibold rounded-lg transition-all duration-300 ${
+                      activeCategory === cat
+                        ? 'bg-soft-black text-white shadow-lg'
+                        : 'bg-transparent text-charcoal border border-stone hover:bg-soft-black hover:text-white hover:border-soft-black hover:shadow-lg'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+            {/* Desktop: all on one row */}
+            <div className="hidden lg:flex justify-center gap-2.5">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`px-4 py-2 text-xs uppercase tracking-wider font-semibold rounded-lg transition-all duration-300 whitespace-nowrap ${
+                    activeCategory === cat
+                      ? 'bg-soft-black text-white shadow-lg'
+                      : 'bg-transparent text-charcoal border border-stone hover:bg-soft-black hover:text-white hover:border-soft-black hover:shadow-lg'
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Portfolio Grid */}
