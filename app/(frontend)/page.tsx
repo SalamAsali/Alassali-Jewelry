@@ -111,25 +111,50 @@ export default function Home() {
   const [loading, setLoading] = useState(true)
   const [processProgress, setProcessProgress] = useState(0)
   const processRef = useRef<HTMLDivElement>(null)
+  const stepRefs = useRef<(HTMLDivElement | null)[]>([])
 
   useEffect(() => {
     fetchFeaturedItems()
     fetchHomepage()
   }, [])
 
-  // Scroll-based progress for the process section
+  // Scroll-based progress — line tracks viewport midpoint against step dot positions
   useEffect(() => {
     const handleScroll = () => {
       if (!processRef.current) return
-      const rect = processRef.current.getBoundingClientRect()
-      const sectionHeight = processRef.current.offsetHeight
-      const viewportHeight = window.innerHeight
-      // Start filling when section top hits bottom of viewport
-      // Finish when section bottom hits top of viewport
-      const scrolledPast = viewportHeight - rect.top
-      const totalTravel = sectionHeight + viewportHeight
-      const progress = Math.min(Math.max(scrolledPast / totalTravel, 0), 1)
-      setProcessProgress(progress)
+      const containerRect = processRef.current.getBoundingClientRect()
+      const containerTop = containerRect.top + window.scrollY
+      const containerHeight = processRef.current.offsetHeight
+      const viewMid = window.scrollY + window.innerHeight / 2
+
+      // Find each step dot's Y position relative to the container
+      const dotOffsets = stepRefs.current
+        .filter(Boolean)
+        .map((el) => {
+          const elTop = el!.getBoundingClientRect().top + window.scrollY
+          return elTop - containerTop
+        })
+
+      if (dotOffsets.length === 0) return
+
+      // Progress = how far the viewport midpoint is between first and last dot
+      const firstDot = dotOffsets[0]
+      const lastDot = dotOffsets[dotOffsets.length - 1]
+      const scrollRelative = viewMid - containerTop - firstDot
+      const totalSpan = lastDot - firstDot
+
+      if (totalSpan <= 0) return
+
+      // Map to 0–1 where 0 = first dot, 1 = last dot
+      const raw = scrollRelative / totalSpan
+      const progress = Math.min(Math.max(raw, 0), 1)
+
+      // Convert to container-height percentage (line goes from first dot to last dot)
+      const lineStart = firstDot / containerHeight
+      const lineEnd = lastDot / containerHeight
+      const lineProgress = lineStart + progress * (lineEnd - lineStart)
+
+      setProcessProgress(lineProgress)
     }
     window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
@@ -390,12 +415,16 @@ export default function Home() {
             <div className="space-y-16">
               {steps.map((step, index) => {
                 const Icon = processIconMap[step.label]
-                const stepThreshold = (index + 0.5) / steps.length
-                const isActive = processProgress >= stepThreshold
+                // Check if the fill line has reached this dot's position
+                const dotOffset = stepRefs.current[index] && processRef.current
+                  ? (stepRefs.current[index]!.getBoundingClientRect().top - processRef.current.getBoundingClientRect().top) / processRef.current.offsetHeight
+                  : (index + 0.5) / steps.length
+                const isActive = processProgress >= dotOffset
 
                 return (
                   <motion.div
                     key={`${step.label}-${index}`}
+                    ref={(el) => { stepRefs.current[index] = el }}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, margin: '-50px' }}
