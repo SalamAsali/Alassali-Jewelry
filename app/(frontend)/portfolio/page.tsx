@@ -208,15 +208,15 @@ export default function PortfolioPage() {
       <section className="py-24 bg-white relative overflow-hidden">
         <div className="section-container relative z-10">
           {/* Category Buttons */}
-          <div className="flex flex-wrap justify-center gap-3 mb-16">
+          <div className="flex flex-wrap justify-center gap-2.5 mb-16 max-w-2xl mx-auto">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`px-5 py-2.5 text-sm uppercase tracking-widest font-medium border transition-all duration-300 ${
+                className={`px-4 py-2 text-xs uppercase tracking-wider font-semibold rounded-lg transition-all duration-300 ${
                   activeCategory === cat
-                    ? 'bg-soft-black text-white border-soft-black'
-                    : 'bg-transparent text-charcoal border-stone hover:border-soft-black hover:bg-soft-black hover:text-white'
+                    ? 'bg-soft-black text-white shadow-lg'
+                    : 'bg-transparent text-charcoal border border-stone hover:bg-soft-black hover:text-white hover:border-soft-black hover:shadow-lg'
                 }`}
               >
                 {cat}
