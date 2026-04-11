@@ -29,7 +29,7 @@ export default function Footer(props?: FooterProps) {
               <img
                 src={logo}
                 alt="Alassali Jewelry"
-                className="h-28 w-auto"
+                className="h-10 md:h-14 lg:h-16 w-auto"
               />
             </Link>
             <p className="text-warm-gray text-sm mb-4">
@@ -41,60 +41,55 @@ export default function Footer(props?: FooterProps) {
             </div>
           </div>
 
-          {/* Shop */}
+          {/* Bespoke Column 1 */}
           <div>
-            <h3 className="text-lg font-heading font-semibold mb-4">Shop</h3>
+            <h3 className="text-lg font-heading font-semibold mb-4">Bespoke</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/catalog?category=engagement-rings" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
+                <Link href="/custom/engagement-rings" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
                   Engagement Rings
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?category=grillz" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Grillz
+                <Link href="/custom/rings" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
+                  Rings
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?category=chains" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Chains
-                </Link>
-              </li>
-              <li>
-                <Link href="/catalog?category=pendants" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
+                <Link href="/custom/pendants" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
                   Pendants
                 </Link>
               </li>
               <li>
-                <Link href="/catalog?featured=true" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Featured
+                <Link href="/custom/chains" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
+                  Chains
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Custom */}
+          {/* Bespoke Column 2 */}
           <div>
-            <h3 className="text-lg font-heading font-semibold mb-4">Bespoke Services</h3>
+            <h3 className="text-lg font-heading font-semibold mb-4">&nbsp;</h3>
             <ul className="space-y-2">
               <li>
-                <Link href="/custom/engagement-rings" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Custom Engagement Rings
+                <Link href="/custom/earrings" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
+                  Earrings
+                </Link>
+              </li>
+              <li>
+                <Link href="/custom/bracelets" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
+                  Bracelets
                 </Link>
               </li>
               <li>
                 <Link href="/custom/grillz" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Custom Grillz
+                  Grillz
                 </Link>
               </li>
               <li>
-                <Link href="/custom/chains" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Custom Chains
-                </Link>
-              </li>
-              <li>
-                <Link href="/custom/pendants" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Custom Pendants
+                <Link href="/custom/general" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
+                  General Inquiry
                 </Link>
               </li>
             </ul>
