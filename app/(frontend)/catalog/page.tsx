@@ -61,7 +61,7 @@ function CatalogContent() {
 
   const categories = [
     { value: '', label: 'All' },
-    { value: 'engagement-rings', label: 'Engagement Rings' },
+    { value: 'engagement-rings', label: 'Engagement & Bridal Rings' },
     { value: 'grillz', label: 'Grillz' },
     { value: 'chains', label: 'Chains' },
     { value: 'pendants', label: 'Pendants' },

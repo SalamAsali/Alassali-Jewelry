@@ -23,7 +23,7 @@ export default function Navigation(props?: NavigationProps) {
     mainCategories: [
       { name: 'The Icons', path: '/catalog?featured=true' },
       { name: 'New In', path: '/catalog' },
-      { name: 'Engagement Rings', path: '/catalog?category=engagement-rings' },
+      { name: 'Engagement & Bridal Rings', path: '/catalog?category=engagement-rings' },
       { name: 'Grillz', path: '/catalog?category=grillz' },
       { name: 'Chains', path: '/catalog?category=chains' },
       { name: 'Pendants', path: '/catalog?category=pendants' },
@@ -46,7 +46,7 @@ export default function Navigation(props?: NavigationProps) {
   }
 
   const bespokeMenu = [
-    { name: 'Engagement Rings', path: '/custom/engagement-rings', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png' },
+    { name: 'Engagement & Bridal Rings', path: '/custom/engagement-rings', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png' },
     { name: 'Rings', path: '/custom/rings', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/l3vhvhkh_Design.png' },
     { name: 'Pendants', path: '/custom/pendants', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png' },
     { name: 'Chains', path: '/custom/chains', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/ksl2vd8y_Sketch.png' },

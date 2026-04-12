@@ -66,7 +66,7 @@ export const dynamic = 'force-dynamic'
 // ---------------------------------------------------------------------------
 
 const pieceTypeOptions: { value: string; label: string; icon: LucideIcon; subtitle: string }[] = [
-  { value: 'engagement-rings', label: 'Engagement Ring', icon: Diamond, subtitle: 'Begin your forever' },
+  { value: 'engagement-rings', label: 'Engagement & Bridal Rings', icon: Diamond, subtitle: 'Begin your forever' },
   { value: 'rings', label: 'Ring', icon: Circle, subtitle: 'Statement, band, signet & more' },
   { value: 'chains', label: 'Chain', icon: Link, subtitle: 'Cuban, rope, franco & more' },
   { value: 'pendants', label: 'Pendant', icon: Layers, subtitle: 'Initial, name, symbol & more' },
@@ -82,10 +82,10 @@ const pieceTypeOptions: { value: string; label: string; icon: LucideIcon; subtit
 
 const typeConfig: Record<string, { title: string; subtitle: string; styles: string[]; metals: string[] }> = {
   'engagement-rings': {
-    title: 'Custom Engagement Rings',
+    title: 'Custom Engagement & Bridal Rings',
     subtitle: 'Begin your forever with a ring as unique as your love story',
-    styles: ['Classic', 'Modern', 'Vintage', 'Art Deco', 'Halo', 'Solitaire', 'Not Sure'],
-    metals: ['Platinum', '18K Gold', '14K Gold', 'Silver'],
+    styles: ['Classic', 'Modern', 'Vintage', 'Art Deco', 'Halo', 'Solitaire', 'Bridal', 'Other'],
+    metals: ['Platinum', '18K Gold', '14K Gold', '10K Gold', 'Silver'],
   },
   'grillz': {
     title: 'Custom Grillz',
@@ -138,7 +138,7 @@ const typeConfig: Record<string, { title: string; subtitle: string; styles: stri
 const styleIcons: Record<string, Record<string, LucideIcon>> = {
   'engagement-rings': {
     Classic: Heart, Modern: Zap, Vintage: Clock, 'Art Deco': Hexagon,
-    Halo: Sun, Solitaire: Diamond, 'Not Sure': HelpCircle,
+    Halo: Sun, Solitaire: Diamond, Bridal: Crown, Other: HelpCircle,
   },
   'grillz': {
     'Full Set': LayoutGrid, 'Top 6': ChevronUp, 'Bottom 6': ChevronDown,
@@ -190,7 +190,24 @@ const stoneOptions: { name: string; icon: LucideIcon; color: string }[] = [
   { name: 'Sapphire', icon: Gem, color: 'text-blue-400' },
   { name: 'Ruby', icon: Gem, color: 'text-red-400' },
   { name: 'Emerald', icon: Gem, color: 'text-emerald-400' },
+  { name: 'Other', icon: HelpCircle, color: 'text-glacier-grey' },
   { name: 'None', icon: MinusCircle, color: 'text-stone' },
+]
+
+const stoneShapeOptions: { name: string; icon: LucideIcon }[] = [
+  { name: 'Round', icon: Circle },
+  { name: 'Princess', icon: Square },
+  { name: 'Oval', icon: CircleDot },
+  { name: 'Emerald', icon: Hexagon },
+  { name: 'Cushion', icon: Shield },
+  { name: 'Pear', icon: Droplet },
+  { name: 'Marquise', icon: Diamond },
+  { name: 'Radiant', icon: Sun },
+  { name: 'Asscher', icon: Layers },
+  { name: 'Heart', icon: Heart },
+  { name: 'Trillion', icon: Flame },
+  { name: 'Baguette', icon: MinusCircle },
+  { name: 'Other', icon: HelpCircle },
 ]
 
 const metalSwatches: Record<string, string> = {
@@ -242,7 +259,7 @@ function ReviewRow({ label, value }: { label: string; value: string }) {
 
 type StepId =
   | 'contact' | 'budget' | 'pieceType' | 'style' | 'metal'
-  | 'goldColor' | 'stones' | 'diamondType' | 'photos'
+  | 'goldColor' | 'stones' | 'stoneShape' | 'diamondType' | 'photos'
   | 'size' | 'timeline' | 'notes' | 'review'
 
 // ---------------------------------------------------------------------------
@@ -269,7 +286,7 @@ const landingContent: Record<string, {
   relatedPages: { name: string; path: string }[]
 }> = {
   'engagement-rings': {
-    heroH1: 'Custom Engagement Rings in Toronto',
+    heroH1: 'Custom Engagement & Bridal Rings in Toronto',
     heroSub: 'Design a one-of-a-kind ring as unique as your love story — handcrafted in-house by Toronto\'s finest.',
     intro: 'At Al-Assali Jewelry, every custom engagement ring begins with your vision. Whether you dream of a classic solitaire, a vintage halo setting, or a bold modern design, our master craftspeople bring it to life entirely in-house in Toronto. Choose from ethically sourced natural and lab-grown diamonds, sapphires, rubies, and emeralds — set in platinum, 18K, or 14K gold. From the first sketch to the final presentation, your engagement ring is crafted with the care and precision your moment deserves. Couples across the GTA trust us because we don\'t outsource — every cut, setting, and polish happens under our roof.',
     whyCards: [
@@ -287,7 +304,7 @@ const landingContent: Record<string, {
       { q: 'Can I design my own engagement ring?', a: 'Absolutely. Bring us your sketches, Pinterest boards, or just a rough idea — our designers will create detailed CAD renderings for your approval before any crafting begins.' },
       { q: 'Do you offer lab-grown diamonds for engagement rings?', a: 'Yes. We offer both natural and lab-grown diamonds. Lab-grown stones are chemically identical and offer exceptional value without compromising brilliance.' },
       { q: 'Can I see my engagement ring before it\'s finished?', a: 'Yes — we share 3D CAD renderings and models for your approval before manufacturing begins. You\'ll know exactly what your ring will look like.' },
-      { q: 'What engagement ring styles do you offer?', a: 'We create Classic, Modern, Vintage, Art Deco, Halo, and Solitaire engagement rings — or any fully custom design you envision.' },
+      { q: 'What engagement ring styles do you offer?', a: 'We create Classic, Modern, Vintage, Art Deco, Halo, Solitaire, and Bridal engagement rings — or any fully custom design you envision.' },
     ],
     relatedPages: [
       { name: 'Custom Rings', path: '/custom/rings' },
@@ -791,6 +808,7 @@ function PortalForm() {
     metalType: '',
     goldColor: '',
     stonePreferences: [] as string[],
+    stoneShape: '',
     diamondType: '',
     size: '',
     timeline: '',
@@ -823,6 +841,7 @@ function PortalForm() {
       s.push('metal')
       if (formData.metalType.includes('Gold')) s.push('goldColor')
       if (pt !== 'grillz') s.push('stones')
+      if (formData.stonePreferences.length > 0 && !formData.stonePreferences.every(sp => sp === 'None')) s.push('stoneShape')
       if (formData.stonePreferences.includes('Diamond')) s.push('diamondType')
       s.push('photos', 'size', 'timeline', 'notes', 'review')
     }
@@ -863,7 +882,7 @@ function PortalForm() {
   const selectPieceType = (pieceType: string) => {
     setFormData(prev => ({
       ...prev, pieceType, style: '', metalType: '', goldColor: '',
-      stonePreferences: [], diamondType: '', size: '',
+      stonePreferences: [], stoneShape: '', diamondType: '', size: '',
     }))
     setTimeout(() => {
       setDirection(1)
@@ -1169,6 +1188,27 @@ function PortalForm() {
               </motion.div>
             )}
 
+            {/* STONE SHAPE */}
+            {currentStep === 'stoneShape' && (
+              <motion.div key="stoneShape" custom={direction} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3 }}>
+                <div className="text-center mb-8">
+                  <h2 className="text-3xl md:text-4xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Stone Shape</h2>
+                  <p className="text-stone text-sm">Choose your preferred stone shape</p>
+                </div>
+                <div className="grid grid-cols-3 md:grid-cols-4 gap-3">
+                  {stoneShapeOptions.map(({ name, icon: ShapeIcon }) => {
+                    const selected = formData.stoneShape === name
+                    return (
+                      <button key={name} type="button" onClick={() => { setFormData(prev => ({ ...prev, stoneShape: name })); setTimeout(goNext, 300) }} className={`${cardBase} p-4 min-h-[90px] ${selected ? cardSelected : cardUnselected}`}>
+                        <ShapeIcon className={`w-7 h-7 mb-2 ${selected ? 'text-glacier-grey' : 'text-glacier-grey/60'}`} />
+                        <span className="text-white font-medium text-xs">{name}</span>
+                      </button>
+                    )
+                  })}
+                </div>
+              </motion.div>
+            )}
+
             {/* DIAMOND TYPE */}
             {currentStep === 'diamondType' && (
               <motion.div key="diamondType" custom={direction} variants={slideVariants} initial="enter" animate="center" exit="exit" transition={{ duration: 0.3 }}>
@@ -1285,6 +1325,7 @@ function PortalForm() {
                   {formData.metalType && <ReviewRow label="Metal" value={formData.metalType} />}
                   {formData.goldColor && <ReviewRow label="Gold Colour" value={formData.goldColor} />}
                   {formData.stonePreferences.length > 0 && <ReviewRow label="Stones" value={formData.stonePreferences.join(', ')} />}
+                  {formData.stoneShape && <ReviewRow label="Stone Shape" value={formData.stoneShape} />}
                   {formData.diamondType && <ReviewRow label="Diamond Type" value={formData.diamondType} />}
                   {formData.size && <ReviewRow label="Size" value={formData.size} />}
                   {formData.timeline && <ReviewRow label="Timeline" value={formData.timeline} />}
