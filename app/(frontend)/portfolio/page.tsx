@@ -185,12 +185,12 @@ export default function PortfolioPage() {
       <section className="relative min-h-[60vh] flex items-center bg-soft-black text-white overflow-hidden">
         <DotPattern />
         <DiamondPattern className="text-white" />
-        <div className="section-container py-20 relative z-10">
+        <div className="section-container py-20 relative z-10 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-7xl md:text-8xl lg:text-9xl font-bold"
+            className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold"
             style={{
               fontFamily: 'var(--font-heading)',
               background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)',
