@@ -501,12 +501,23 @@ export default function Home() {
         <DotPattern />
         <div className="section-container text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Ready to Create Something<br /><span className="text-glacier-grey">Extraordinary?</span></h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ fontFamily: 'var(--font-heading)' }}>Ready to Create Something<br /><span className="text-glacier-grey">Extraordinary?</span></h2>
             <p className="text-lg text-stone mb-8 max-w-2xl mx-auto">Let&apos;s bring your vision to life. Schedule a consultation with our master craftspeople.</p>
             <Link href="/custom/general" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-bold hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">START YOUR JOURNEY TODAY</Link>
           </motion.div>
         </div>
       </section>
+
+      {/* ===== DIVIDER ===== */}
+      <div className="bg-soft-black">
+        <div className="flex items-center justify-center gap-4 py-4">
+          <div className="h-px flex-1 max-w-[120px] bg-gradient-to-r from-transparent to-glacier-grey/40" />
+          <div className="w-1.5 h-1.5 rotate-45 bg-glacier-grey/50" />
+          <div className="w-2 h-2 rotate-45 bg-glacier-grey/70" />
+          <div className="w-1.5 h-1.5 rotate-45 bg-glacier-grey/50" />
+          <div className="h-px flex-1 max-w-[120px] bg-gradient-to-l from-transparent to-glacier-grey/40" />
+        </div>
+      </div>
     </div>
   )
 }

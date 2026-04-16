@@ -20,7 +20,7 @@ type FooterProps = {
 export default function Footer(props?: FooterProps) {
   const logo = props?.logoUrl ?? DEFAULT_LOGO
   return (
-    <footer className="bg-deep-charcoal text-white mt-24">
+    <footer className="bg-deep-charcoal text-white">
       <div className="section-container py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
