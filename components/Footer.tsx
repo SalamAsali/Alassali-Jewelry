@@ -47,7 +47,7 @@ export default function Footer(props?: FooterProps) {
             <ul className="space-y-2">
               <li>
                 <Link href="/custom/engagement-rings" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Engagement & Bridal Rings
+                  Engagement Rings
                 </Link>
               </li>
               <li>

@@ -66,7 +66,7 @@ export const dynamic = 'force-dynamic'
 // ---------------------------------------------------------------------------
 
 const pieceTypeOptions: { value: string; label: string; icon: LucideIcon; subtitle: string }[] = [
-  { value: 'engagement-rings', label: 'Engagement & Bridal Rings', icon: Diamond, subtitle: 'Begin your forever' },
+  { value: 'engagement-rings', label: 'Engagement Rings', icon: Diamond, subtitle: 'Begin your forever' },
   { value: 'rings', label: 'Ring', icon: Circle, subtitle: 'Statement, band, signet & more' },
   { value: 'chains', label: 'Chain', icon: Link, subtitle: 'Cuban, rope, franco & more' },
   { value: 'pendants', label: 'Pendant', icon: Layers, subtitle: 'Initial, name, symbol & more' },
@@ -82,7 +82,7 @@ const pieceTypeOptions: { value: string; label: string; icon: LucideIcon; subtit
 
 const typeConfig: Record<string, { title: string; subtitle: string; styles: string[]; metals: string[] }> = {
   'engagement-rings': {
-    title: 'Custom Engagement & Bridal Rings',
+    title: 'Custom Engagement Rings',
     subtitle: 'Begin your forever with a ring as unique as your love story',
     styles: ['Classic', 'Modern', 'Vintage', 'Art Deco', 'Halo', 'Solitaire', 'Bridal', 'Other'],
     metals: ['Platinum', '18K Gold', '14K Gold', '10K Gold', 'Silver', 'Other'],
@@ -287,7 +287,7 @@ const landingContent: Record<string, {
   relatedPages: { name: string; path: string }[]
 }> = {
   'engagement-rings': {
-    heroH1: 'Custom Engagement & Bridal Rings in Toronto',
+    heroH1: 'Custom Engagement Rings in Toronto',
     heroSub: 'Design a one-of-a-kind ring as unique as your love story — handcrafted in-house by Toronto\'s finest.',
     intro: 'At Al-Assali Jewelry, every custom engagement ring begins with your vision. Whether you dream of a classic solitaire, a vintage halo setting, or a bold modern design, our master craftspeople bring it to life entirely in-house in Toronto. Choose from ethically sourced natural and lab-grown diamonds, sapphires, rubies, and emeralds — set in platinum, 18K, or 14K gold. From the first sketch to the final presentation, your engagement ring is crafted with the care and precision your moment deserves. Couples across the GTA trust us because we don\'t outsource — every cut, setting, and polish happens under our roof.',
     whyCards: [
