@@ -4,8 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, Diamond, Circle, Layers, Link as LinkIcon, CircleDot, Gem, Flame, Heart } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 const DEFAULT_LOGO = '/images/logo.png'
 
@@ -46,15 +45,15 @@ export default function Navigation(props?: NavigationProps) {
     ],
   }
 
-  const bespokeMenu: { name: string; path: string; icon: LucideIcon }[] = [
-    { name: 'Engagement Rings', path: '/custom/engagement-rings', icon: Diamond },
-    { name: 'Rings', path: '/custom/rings', icon: Circle },
-    { name: 'Pendants', path: '/custom/pendants', icon: Layers },
-    { name: 'Chains', path: '/custom/chains', icon: LinkIcon },
-    { name: 'Earrings', path: '/custom/earrings', icon: CircleDot },
-    { name: 'Bracelets', path: '/custom/bracelets', icon: Gem },
-    { name: 'Grillz', path: '/custom/grillz', icon: Flame },
-    { name: 'Bridal Bands', path: '/custom/general', icon: Heart },
+  const bespokeMenu = [
+    { name: 'Engagement Rings', path: '/custom/engagement-rings', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png' },
+    { name: 'Rings', path: '/custom/rings', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/l3vhvhkh_Design.png' },
+    { name: 'Pendants', path: '/custom/pendants', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png' },
+    { name: 'Chains', path: '/custom/chains', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/ksl2vd8y_Sketch.png' },
+    { name: 'Earrings', path: '/custom/earrings', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/ye0fvbed_Presentation.png' },
+    { name: 'Bracelets', path: '/custom/bracelets', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/9fg6i9rv_In-House-Manufacture.png' },
+    { name: 'Grillz', path: '/custom/grillz', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/l3vhvhkh_Design.png' },
+    { name: 'Bridal Bands', path: '/custom/general', icon: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/twegjzfj_Consultation.png' },
   ]
 
   const menuItems = [
@@ -198,10 +197,14 @@ export default function Navigation(props?: NavigationProps) {
                             >
                               <div className="absolute inset-0 bg-glacier-grey/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
                               <div className="relative z-10 text-center">
-                                <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-soft-black/5 group-hover:bg-glacier-grey/10 flex items-center justify-center transition-all duration-300 group-hover:scale-105">
-                                  <item.icon className="w-6 h-6 text-soft-black/60 group-hover:text-glacier-grey transition-colors duration-300" strokeWidth={1.5} />
+                                <div className="w-12 h-12 mx-auto mb-3">
+                                  <img
+                                    src={item.icon}
+                                    alt={`Custom ${item.name} icon`}
+                                    className="w-full h-full object-contain group-hover:scale-110 transition-transform"
+                                  />
                                 </div>
-                                <span className="text-xs font-bold text-soft-black group-hover:text-glacier-grey block uppercase tracking-wide">
+                                <span className="text-sm font-bold text-soft-black group-hover:text-glacier-grey block">
                                   {item.name}
                                 </span>
                               </div>
