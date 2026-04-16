@@ -2,8 +2,49 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import Image from 'next/image'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
+
+// ---------------------------------------------------------------------------
+// Floating diamond icons (matches homepage hero)
+// ---------------------------------------------------------------------------
+
+const floatingDiamonds = [
+  { top: '5%', left: '8%', size: 64, opacity: 'opacity-[0.12]', anim: 'float 8s ease-in-out infinite' },
+  { top: '12%', right: '6%', size: 48, opacity: 'opacity-[0.18]', anim: 'float-slow 12s ease-in-out infinite 1s' },
+  { top: '30%', left: '3%', size: 36, opacity: 'opacity-[0.15]', anim: 'float 10s ease-in-out infinite 2s' },
+  { top: '22%', right: '15%', size: 28, opacity: 'opacity-[0.22]', anim: 'float-slow 9s ease-in-out infinite 0.5s' },
+  { top: '50%', left: '6%', size: 52, opacity: 'opacity-[0.10]', anim: 'float-slow 14s ease-in-out infinite 3s' },
+  { top: '45%', right: '4%', size: 40, opacity: 'opacity-[0.15]', anim: 'float 7s ease-in-out infinite 1.5s' },
+  { top: '68%', left: '10%', size: 24, opacity: 'opacity-[0.25]', anim: 'float 6s ease-in-out infinite 2.5s' },
+  { top: '72%', right: '10%', size: 56, opacity: 'opacity-[0.10]', anim: 'float-slow 11s ease-in-out infinite 4s' },
+  { top: '85%', left: '20%', size: 32, opacity: 'opacity-[0.20]', anim: 'float 9s ease-in-out infinite 1s' },
+  { top: '88%', right: '22%', size: 20, opacity: 'opacity-[0.28]', anim: 'float-slow 8s ease-in-out infinite 3.5s' },
+  { top: '15%', left: '45%', size: 22, opacity: 'opacity-[0.20]', anim: 'float 7s ease-in-out infinite 0.5s' },
+  { top: '60%', left: '48%', size: 18, opacity: 'opacity-[0.25]', anim: 'float-slow 10s ease-in-out infinite 2s' },
+]
+
+function FloatingDiamonds() {
+  return (
+    <>
+      {floatingDiamonds.map((d, i) => (
+        <div
+          key={i}
+          className={`absolute pointer-events-none z-[5] ${d.opacity}`}
+          style={{
+            top: d.top,
+            left: 'left' in d ? d.left : undefined,
+            right: 'right' in d ? d.right : undefined,
+            animation: d.anim,
+          }}
+        >
+          <Image src="/images/icon-white.png" alt="" width={d.size} height={d.size} />
+        </div>
+      ))}
+    </>
+  )
+}
 
 interface PortfolioItem {
   id: string
@@ -185,6 +226,7 @@ export default function PortfolioPage() {
       <section className="relative min-h-[60vh] flex items-center bg-soft-black text-white overflow-hidden">
         <DotPattern />
         <DiamondPattern className="text-white" />
+        <FloatingDiamonds />
         <div className="section-container py-20 relative z-10 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}

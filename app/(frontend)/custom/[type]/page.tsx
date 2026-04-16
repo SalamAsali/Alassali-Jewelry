@@ -85,49 +85,49 @@ const typeConfig: Record<string, { title: string; subtitle: string; styles: stri
     title: 'Custom Engagement & Bridal Rings',
     subtitle: 'Begin your forever with a ring as unique as your love story',
     styles: ['Classic', 'Modern', 'Vintage', 'Art Deco', 'Halo', 'Solitaire', 'Bridal', 'Other'],
-    metals: ['Platinum', '18K Gold', '14K Gold', '10K Gold', 'Silver'],
+    metals: ['Platinum', '18K Gold', '14K Gold', '10K Gold', 'Silver', 'Other'],
   },
   'grillz': {
     title: 'Custom Grillz',
     subtitle: 'Bold statements crafted in precious metal',
-    styles: ['Full Set', 'Top 6', 'Bottom 6', 'Single Tooth', 'Fangs', 'Not Sure'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'Silver'],
+    styles: ['Full Set', 'Top 6', 'Bottom 6', 'Single Tooth', 'Fangs', 'Other'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'chains': {
     title: 'Custom Chains',
     subtitle: 'Wearable art, crafted to your specifications',
-    styles: ['Miami Cuban', 'Rope', 'Franco', 'Figaro', 'Box Chain', 'Not Sure'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver'],
+    styles: ['Miami Cuban', 'Rope', 'Franco', 'Figaro', 'Box Chain', 'Custom Design and/or Logo Design', 'Other'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'pendants': {
     title: 'Custom Pendants',
     subtitle: 'Your story, beautifully told',
-    styles: ['Initial', 'Name', 'Symbol', 'Religious', 'Custom Design', 'Not Sure'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver'],
+    styles: ['Initial', 'Name', 'Symbol', 'Religious', 'Custom Design and/or Logo Design', 'Other'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'rings': {
     title: 'Custom Rings',
     subtitle: 'Unique rings designed just for you',
-    styles: ['Statement', 'Band', 'Signet', 'Stackable', 'Custom Design', 'Everyday/Essentials', 'Not Sure'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver'],
+    styles: ['Statement', 'Band', 'Signet', 'Stackable', 'Custom Design and/or Logo Design', 'Everyday/Essentials', 'Other'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'earrings': {
     title: 'Custom Earrings',
     subtitle: 'Elegant earrings crafted to perfection',
-    styles: ['Studs', 'Hoops', 'Drops', 'Chandeliers', 'Custom Design', 'Not Sure'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver'],
+    styles: ['Studs', 'Hoops', 'Drops', 'Chandeliers', 'Custom Design and/or Logo Design', 'Other'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'bracelets': {
     title: 'Custom Bracelets',
     subtitle: 'Exquisite bracelets tailored to your style',
-    styles: ['Tennis', 'Chain', 'Bangle', 'Cuff', 'Custom Design', 'Not Sure'],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver'],
+    styles: ['Tennis', 'Chain', 'Bangle', 'Cuff', 'Custom Design and/or Logo Design', 'Other'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'other': {
     title: 'Custom Piece',
     subtitle: 'Tell us about your dream piece — we\'ll bring it to life',
     styles: [],
-    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver'],
+    metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
 }
 
@@ -142,27 +142,27 @@ const styleIcons: Record<string, Record<string, LucideIcon>> = {
   },
   'grillz': {
     'Full Set': LayoutGrid, 'Top 6': ChevronUp, 'Bottom 6': ChevronDown,
-    'Single Tooth': Square, Fangs: Flame, 'Not Sure': HelpCircle,
+    'Single Tooth': Square, Fangs: Flame, Other: HelpCircle,
   },
   'chains': {
     'Miami Cuban': Link, Rope: Waves, Franco: Shield,
-    Figaro: Circle, 'Box Chain': Square, 'Not Sure': HelpCircle,
+    Figaro: Circle, 'Box Chain': Square, 'Custom Design and/or Logo Design': Paintbrush, Other: HelpCircle,
   },
   'pendants': {
     Initial: Type, Name: Pen, Symbol: Star,
-    Religious: Sparkles, 'Custom Design': Paintbrush, 'Not Sure': HelpCircle,
+    Religious: Sparkles, 'Custom Design and/or Logo Design': Paintbrush, Other: HelpCircle,
   },
   'rings': {
     Statement: Crown, Band: Circle, Signet: Shield, Stackable: Layers,
-    'Custom Design': Paintbrush, 'Everyday/Essentials': Sun, 'Not Sure': HelpCircle,
+    'Custom Design and/or Logo Design': Paintbrush, 'Everyday/Essentials': Sun, Other: HelpCircle,
   },
   'earrings': {
     Studs: CircleDot, Hoops: Circle, Drops: Droplet,
-    Chandeliers: Sparkles, 'Custom Design': Paintbrush, 'Not Sure': HelpCircle,
+    Chandeliers: Sparkles, 'Custom Design and/or Logo Design': Paintbrush, Other: HelpCircle,
   },
   'bracelets': {
     Tennis: Gem, Chain: Link, Bangle: Circle,
-    Cuff: Shield, 'Custom Design': Paintbrush, 'Not Sure': HelpCircle,
+    Cuff: Shield, 'Custom Design and/or Logo Design': Paintbrush, Other: HelpCircle,
   },
 }
 
@@ -216,6 +216,7 @@ const metalSwatches: Record<string, string> = {
   '14K Gold': 'linear-gradient(135deg, #E8B923 0%, #D4A437 50%, #B8942A 100%)',
   '18K Gold': 'linear-gradient(135deg, #FFD700 0%, #E8B923 50%, #D4A437 100%)',
   'Silver': 'linear-gradient(135deg, #D0D0D0 0%, #B0B0B0 50%, #969696 100%)',
+  'Other': 'linear-gradient(135deg, #8B8B8B 0%, #6B6B6B 50%, #505050 100%)',
 }
 
 const goldColorOptions = [
