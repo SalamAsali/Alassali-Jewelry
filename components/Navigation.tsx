@@ -198,10 +198,10 @@ export default function Navigation(props?: NavigationProps) {
                             >
                               <div className="absolute inset-0 bg-glacier-grey/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
                               <div className="relative z-10 text-center">
-                                <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center">
-                                  <item.icon className="w-7 h-7 text-soft-black/70 group-hover:text-glacier-grey group-hover:scale-110 transition-all" strokeWidth={1.5} />
+                                <div className="w-14 h-14 mx-auto mb-3 rounded-full bg-soft-black/5 group-hover:bg-glacier-grey/10 flex items-center justify-center transition-all duration-300 group-hover:scale-105">
+                                  <item.icon className="w-6 h-6 text-soft-black/60 group-hover:text-glacier-grey transition-colors duration-300" strokeWidth={1.5} />
                                 </div>
-                                <span className="text-sm font-bold text-soft-black group-hover:text-glacier-grey block">
+                                <span className="text-xs font-bold text-soft-black group-hover:text-glacier-grey block uppercase tracking-wide">
                                   {item.name}
                                 </span>
                               </div>
