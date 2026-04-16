@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Chain/necklace arc -->
+  <path d="M12 8 Q12 20 24 26" />
+  <path d="M52 8 Q52 20 40 26" />
+  <!-- Bail (connector) -->
+  <path d="M28 24 Q32 20 36 24" />
+  <!-- Pendant body - teardrop/medallion shape -->
+  <path d="M28 26 Q28 28 26 32 Q24 38 32 48 Q40 38 38 32 Q36 28 36 26 Z" fill="#1a1a1a" opacity="0.06"/>
+  <!-- Inner pendant detail -->
+  <path d="M30 30 Q30 32 29 34 Q28 37 32 42 Q36 37 35 34 Q34 32 34 30" />
+  <!-- Center gem -->
+  <circle cx="32" cy="35" r="2" fill="#1a1a1a" opacity="0.12"/>
+  <!-- Sparkle -->
+  <line x1="44" y1="18" x2="44" y2="14" />
+  <line x1="42" y1="16" x2="46" y2="16" />
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Ring band -->
+  <ellipse cx="32" cy="40" rx="14" ry="10" />
+  <!-- Prong setting base -->
+  <path d="M26 34 L28 24 L36 24 L38 34" />
+  <!-- Diamond shape -->
+  <polygon points="32,12 38,20 36,24 28,24 26,20" fill="#1a1a1a" opacity="0.08" stroke="#1a1a1a" stroke-width="2"/>
+  <!-- Diamond facet lines -->
+  <line x1="32" y1="12" x2="28" y2="24" />
+  <line x1="32" y1="12" x2="36" y2="24" />
+  <line x1="26" y1="20" x2="38" y2="20" />
+  <!-- Sparkle left -->
+  <line x1="19" y1="14" x2="19" y2="10" />
+  <line x1="17" y1="12" x2="21" y2="12" />
+  <!-- Sparkle right -->
+  <line x1="45" y1="16" x2="45" y2="13" />
+  <line x1="43.5" y1="14.5" x2="46.5" y2="14.5" />
+</svg>
