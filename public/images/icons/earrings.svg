@@ -1,27 +1,55 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Left earring -->
-  <!-- Hook -->
-  <path d="M16 8 Q10 8 10 14 Q10 20 16 20" />
-  <!-- Drop connector -->
-  <line x1="16" y1="20" x2="16" y2="26" />
-  <!-- Teardrop gem -->
-  <path d="M16 26 Q10 32 16 44 Q22 32 16 26 Z" fill="#1a1a1a" opacity="0.06"/>
-  <path d="M16 30 Q13 34 16 40 Q19 34 16 30 Z" fill="#1a1a1a" opacity="0.08"/>
-  <!-- Post dot -->
-  <circle cx="16" cy="8" r="1.5" fill="#1a1a1a"/>
-
-  <!-- Right earring -->
-  <!-- Hook -->
-  <path d="M48 8 Q54 8 54 14 Q54 20 48 20" />
-  <!-- Drop connector -->
-  <line x1="48" y1="20" x2="48" y2="26" />
-  <!-- Teardrop gem -->
-  <path d="M48 26 Q42 32 48 44 Q54 32 48 26 Z" fill="#1a1a1a" opacity="0.06"/>
-  <path d="M48 30 Q45 34 48 40 Q51 34 48 30 Z" fill="#1a1a1a" opacity="0.08"/>
-  <!-- Post dot -->
-  <circle cx="48" cy="8" r="1.5" fill="#1a1a1a"/>
-
-  <!-- Sparkle between -->
-  <line x1="32" y1="14" x2="32" y2="10" />
-  <line x1="30" y1="12" x2="34" y2="12" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- LEFT EARRING -->
+  <!-- Lever-back hook -->
+  <path d="M17 8 Q11 10 10 16 Q9 22 14 24" />
+  <circle cx="17" cy="8" r="1.5" fill="#1a1a1a"/>
+  <!-- Stud/top halo -->
+  <circle cx="17" cy="22" r="3" fill="#1a1a1a" opacity="0.1"/>
+  <circle cx="17" cy="22" r="3" stroke-width="1.3"/>
+  <circle cx="17" cy="22" r="1" fill="#1a1a1a" opacity="0.4"/>
+  <!-- Halo small stones -->
+  <circle cx="17" cy="18.5" r="0.7" fill="#1a1a1a" opacity="0.5"/>
+  <circle cx="20.5" cy="22" r="0.7" fill="#1a1a1a" opacity="0.5"/>
+  <circle cx="13.5" cy="22" r="0.7" fill="#1a1a1a" opacity="0.5"/>
+  <circle cx="17" cy="25.5" r="0.7" fill="#1a1a1a" opacity="0.5"/>
+  <!-- Connector link -->
+  <line x1="17" y1="25.5" x2="17" y2="30" stroke-width="1.2"/>
+  <circle cx="17" cy="31" r="1" stroke-width="1" fill="none"/>
+  <!-- Teardrop gemstone -->
+  <path d="M17 33 Q10 40 12 48 Q14 54 17 54 Q20 54 22 48 Q24 40 17 33 Z" fill="#1a1a1a" opacity="0.1"/>
+  <!-- Teardrop facet lines -->
+  <line x1="17" y1="33" x2="17" y2="54" stroke-width="0.8" opacity="0.5"/>
+  <line x1="13" y1="44" x2="21" y2="44" stroke-width="0.8" opacity="0.5"/>
+  <path d="M14 40 Q17 42 20 40" stroke-width="0.8" opacity="0.4"/>
+  <!-- RIGHT EARRING -->
+  <!-- Lever-back hook -->
+  <path d="M47 8 Q53 10 54 16 Q55 22 50 24" />
+  <circle cx="47" cy="8" r="1.5" fill="#1a1a1a"/>
+  <!-- Stud/top halo -->
+  <circle cx="47" cy="22" r="3" fill="#1a1a1a" opacity="0.1"/>
+  <circle cx="47" cy="22" r="3" stroke-width="1.3"/>
+  <circle cx="47" cy="22" r="1" fill="#1a1a1a" opacity="0.4"/>
+  <!-- Halo small stones -->
+  <circle cx="47" cy="18.5" r="0.7" fill="#1a1a1a" opacity="0.5"/>
+  <circle cx="50.5" cy="22" r="0.7" fill="#1a1a1a" opacity="0.5"/>
+  <circle cx="43.5" cy="22" r="0.7" fill="#1a1a1a" opacity="0.5"/>
+  <circle cx="47" cy="25.5" r="0.7" fill="#1a1a1a" opacity="0.5"/>
+  <!-- Connector link -->
+  <line x1="47" y1="25.5" x2="47" y2="30" stroke-width="1.2"/>
+  <circle cx="47" cy="31" r="1" stroke-width="1" fill="none"/>
+  <!-- Teardrop gemstone -->
+  <path d="M47 33 Q40 40 42 48 Q44 54 47 54 Q50 54 52 48 Q54 40 47 33 Z" fill="#1a1a1a" opacity="0.1"/>
+  <!-- Teardrop facet lines -->
+  <line x1="47" y1="33" x2="47" y2="54" stroke-width="0.8" opacity="0.5"/>
+  <line x1="43" y1="44" x2="51" y2="44" stroke-width="0.8" opacity="0.5"/>
+  <path d="M44 40 Q47 42 50 40" stroke-width="0.8" opacity="0.4"/>
+  <!-- Sparkle between earrings -->
+  <g stroke-width="1" opacity="0.7">
+    <line x1="32" y1="18" x2="32" y2="12" />
+    <line x1="29" y1="15" x2="35" y2="15" />
+  </g>
+  <g stroke-width="0.9" opacity="0.5">
+    <line x1="32" y1="38" x2="32" y2="34" />
+    <line x1="30" y1="36" x2="34" y2="36" />
+  </g>
 </svg>

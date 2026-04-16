@@ -1,21 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Back ring (slightly behind) -->
-  <ellipse cx="36" cy="36" rx="14" ry="10" fill="#1a1a1a" opacity="0.04"/>
-  <!-- Front ring (overlapping) -->
-  <ellipse cx="28" cy="34" rx="14" ry="10" fill="#1a1a1a" opacity="0.04"/>
-  <!-- Band detail on front ring -->
-  <path d="M18 28 Q22 24 28 24 Q34 24 38 28" />
-  <path d="M19 29 Q23 25.5 28 25.5 Q33 25.5 37 29" stroke-width="1" opacity="0.4"/>
-  <!-- Band detail on back ring -->
-  <path d="M26 30 Q30 26 36 26 Q42 26 46 30" />
-  <path d="M27 31 Q31 27.5 36 27.5 Q41 27.5 45 31" stroke-width="1" opacity="0.4"/>
-  <!-- Small gems on front band -->
-  <circle cx="24" cy="25.5" r="1.2" fill="#1a1a1a" opacity="0.15"/>
-  <circle cx="28" cy="24.5" r="1.5" fill="#1a1a1a" opacity="0.2"/>
-  <circle cx="32" cy="25.5" r="1.2" fill="#1a1a1a" opacity="0.15"/>
-  <!-- Heart between rings -->
-  <path d="M32 16 Q34 12 37 14 Q38 16 32 22 Q26 16 27 14 Q30 12 32 16 Z" fill="#1a1a1a" opacity="0.08" stroke="#1a1a1a"/>
-  <!-- Sparkle -->
-  <line x1="44" y1="14" x2="44" y2="10" />
-  <line x1="42" y1="12" x2="46" y2="12" />
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Heart above the rings -->
+  <path d="M32 10 Q34 6 38 7 Q42 9 41 13 Q40 17 32 22 Q24 17 23 13 Q22 9 26 7 Q30 6 32 10 Z" fill="#1a1a1a" opacity="0.1"/>
+  <path d="M32 10 Q34 6 38 7 Q42 9 41 13 Q40 17 32 22 Q24 17 23 13 Q22 9 26 7 Q30 6 32 10 Z" stroke-width="1.4"/>
+  <!-- Small gem inside heart -->
+  <circle cx="32" cy="13" r="1.2" fill="#1a1a1a" opacity="0.4"/>
+  <!-- BACK RING (right, slightly behind) - plain band -->
+  <ellipse cx="38" cy="42" rx="13" ry="9" fill="#1a1a1a" opacity="0.06"/>
+  <ellipse cx="38" cy="42" rx="13" ry="9" stroke-width="1.4"/>
+  <!-- Inner edge of back ring -->
+  <ellipse cx="38" cy="42" rx="10.5" ry="7" stroke-width="1" opacity="0.5"/>
+  <!-- Band thickness highlight back -->
+  <path d="M25 42 Q25 39 27 36" stroke-width="1" opacity="0.5"/>
+  <path d="M51 42 Q51 39 49 36" stroke-width="1" opacity="0.5"/>
+  <!-- FRONT RING (left, overlapping) - diamond pave band -->
+  <ellipse cx="26" cy="42" rx="13" ry="9" fill="#1a1a1a" opacity="0.08"/>
+  <ellipse cx="26" cy="42" rx="13" ry="9" stroke-width="1.4"/>
+  <!-- Inner edge of front ring -->
+  <ellipse cx="26" cy="42" rx="10.5" ry="7" stroke-width="1" opacity="0.5"/>
+  <!-- Band thickness on front -->
+  <path d="M13 42 Q13 39 15 36" stroke-width="1" opacity="0.5"/>
+  <path d="M39 42 Q39 39 37 36" stroke-width="1" opacity="0.5"/>
+  <!-- Pave diamonds across front of front ring -->
+  <circle cx="16" cy="34" r="1" fill="#1a1a1a" opacity="0.4" stroke-width="0.8"/>
+  <circle cx="20" cy="32" r="1.1" fill="#1a1a1a" opacity="0.5" stroke-width="0.8"/>
+  <circle cx="24" cy="31" r="1.2" fill="#1a1a1a" opacity="0.6" stroke-width="0.8"/>
+  <circle cx="28" cy="31" r="1.2" fill="#1a1a1a" opacity="0.6" stroke-width="0.8"/>
+  <circle cx="32" cy="32" r="1.1" fill="#1a1a1a" opacity="0.5" stroke-width="0.8"/>
+  <circle cx="36" cy="34" r="1" fill="#1a1a1a" opacity="0.4" stroke-width="0.8"/>
+  <!-- Overlap intersection shadow -->
+  <path d="M25 33 Q26 34 26 35" stroke-width="0.8" opacity="0.4"/>
+  <path d="M25 51 Q26 50 26 49" stroke-width="0.8" opacity="0.4"/>
+  <!-- Sparkle on heart -->
+  <g stroke-width="1" opacity="0.6">
+    <line x1="50" y1="18" x2="50" y2="14" />
+    <line x1="48" y1="16" x2="52" y2="16" />
+  </g>
+  <!-- Sparkle bottom -->
+  <g stroke-width="0.9" opacity="0.5">
+    <line x1="12" y1="20" x2="12" y2="17" />
+    <line x1="10.5" y1="18.5" x2="13.5" y2="18.5" />
+  </g>
 </svg>

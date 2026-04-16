@@ -1,16 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-  <!-- Chain/necklace arc -->
-  <path d="M12 8 Q12 20 24 26" />
-  <path d="M52 8 Q52 20 40 26" />
-  <!-- Bail (connector) -->
-  <path d="M28 24 Q32 20 36 24" />
-  <!-- Pendant body - teardrop/medallion shape -->
-  <path d="M28 26 Q28 28 26 32 Q24 38 32 48 Q40 38 38 32 Q36 28 36 26 Z" fill="#1a1a1a" opacity="0.06"/>
-  <!-- Inner pendant detail -->
-  <path d="M30 30 Q30 32 29 34 Q28 37 32 42 Q36 37 35 34 Q34 32 34 30" />
-  <!-- Center gem -->
-  <circle cx="32" cy="35" r="2" fill="#1a1a1a" opacity="0.12"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#1a1a1a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Chain - left side draping -->
+  <path d="M8 8 Q10 18 18 24 Q24 28 28 30" stroke-width="1.2"/>
+  <!-- Chain - right side draping -->
+  <path d="M56 8 Q54 18 46 24 Q40 28 36 30" stroke-width="1.2"/>
+  <!-- Chain link texture - left -->
+  <circle cx="11" cy="13" r="0.9" fill="#1a1a1a" opacity="0.4"/>
+  <circle cx="14" cy="19" r="0.9" fill="#1a1a1a" opacity="0.4"/>
+  <circle cx="19" cy="24" r="0.9" fill="#1a1a1a" opacity="0.4"/>
+  <circle cx="24" cy="28" r="0.9" fill="#1a1a1a" opacity="0.4"/>
+  <!-- Chain link texture - right -->
+  <circle cx="53" cy="13" r="0.9" fill="#1a1a1a" opacity="0.4"/>
+  <circle cx="50" cy="19" r="0.9" fill="#1a1a1a" opacity="0.4"/>
+  <circle cx="45" cy="24" r="0.9" fill="#1a1a1a" opacity="0.4"/>
+  <circle cx="40" cy="28" r="0.9" fill="#1a1a1a" opacity="0.4"/>
+  <!-- Bail (connector loop) -->
+  <path d="M28 28 Q28 23 32 23 Q36 23 36 28" stroke-width="1.4"/>
+  <circle cx="32" cy="28" r="1.2" fill="#1a1a1a" opacity="0.2"/>
+  <!-- Pendant outer frame - ornate shield/medallion -->
+  <path d="M24 30 Q22 32 22 36 Q22 44 28 50 Q32 54 32 54 Q32 54 36 50 Q42 44 42 36 Q42 32 40 30 Q36 28 32 28 Q28 28 24 30 Z" fill="#1a1a1a" opacity="0.08"/>
+  <!-- Inner decorative border -->
+  <path d="M26 32 Q25 34 25 37 Q25 44 31 50 Q32 51 32 51 Q32 51 33 50 Q39 44 39 37 Q39 34 38 32 Q35 30 32 30 Q29 30 26 32 Z" stroke-width="1" opacity="0.5"/>
+  <!-- Center gemstone - marquise/oval cut -->
+  <ellipse cx="32" cy="38" rx="3.5" ry="5" fill="#1a1a1a" opacity="0.2"/>
+  <ellipse cx="32" cy="38" rx="3.5" ry="5" stroke-width="1.2"/>
+  <!-- Gemstone facets -->
+  <line x1="32" y1="33" x2="32" y2="43" stroke-width="0.8" opacity="0.6"/>
+  <line x1="28.5" y1="38" x2="35.5" y2="38" stroke-width="0.8" opacity="0.6"/>
+  <!-- Small accent gems around center -->
+  <circle cx="28" cy="34" r="0.9" fill="#1a1a1a" opacity="0.5"/>
+  <circle cx="36" cy="34" r="0.9" fill="#1a1a1a" opacity="0.5"/>
+  <circle cx="28" cy="44" r="0.9" fill="#1a1a1a" opacity="0.5"/>
+  <circle cx="36" cy="44" r="0.9" fill="#1a1a1a" opacity="0.5"/>
+  <circle cx="32" cy="48" r="1" fill="#1a1a1a" opacity="0.5"/>
   <!-- Sparkle -->
-  <line x1="44" y1="18" x2="44" y2="14" />
-  <line x1="42" y1="16" x2="46" y2="16" />
+  <g stroke-width="1" opacity="0.6">
+    <line x1="50" y1="36" x2="50" y2="32" />
+    <line x1="48" y1="34" x2="52" y2="34" />
+  </g>
 </svg>
