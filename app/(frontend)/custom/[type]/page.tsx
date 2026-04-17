@@ -11,13 +11,23 @@ import {
   LayoutGrid, ChevronUp, ChevronDown, Square, Flame,
   Link, Waves, Shield, Type, Pen, Star, MapPin, Wrench, MessageSquare,
   Paintbrush, Crown, Circle, Layers, ShieldCheck,
-  CircleDot, Droplet, Gem,
+  CircleDot, Droplet, Gem, Hammer,
   MinusCircle, Leaf, FlaskConical,
   DollarSign, Calendar, CalendarDays, CalendarCheck,
+  Quote, Ruler, Coins, Ring, Scroll,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
+import StoneShapeSection from '@/components/bespoke/StoneShapeSection'
+import PricingTableSection from '@/components/bespoke/PricingTableSection'
+import NaturalVsLabSection from '@/components/bespoke/NaturalVsLabSection'
+import GrillzConfigSection from '@/components/bespoke/GrillzConfigSection'
+import PendantsHeritageSection from '@/components/bespoke/PendantsHeritageSection'
+import TestimonialsSection from '@/components/bespoke/TestimonialsSection'
+import LocationSection from '@/components/bespoke/LocationSection'
+import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
+import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 // ---------------------------------------------------------------------------
 // Floating diamond icons (matches homepage hero)
@@ -123,6 +133,12 @@ const typeConfig: Record<string, { title: string; subtitle: string; styles: stri
     styles: ['Tennis', 'Chain', 'Bangle', 'Cuff', 'Custom Design and/or Logo Design', 'Other'],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
+  'wedding-bands': {
+    title: 'Custom Wedding Bands',
+    subtitle: 'Bands as timeless as your vow — handcrafted to match your ring',
+    styles: ['Classic Band', 'Comfort Fit', 'Eternity', 'Half-Eternity', 'Men\'s Band', 'Engraved', 'Contour / Shaped', 'Stackable', 'Other'],
+    metals: ['Platinum', '18K Gold', '14K Gold', '10K Gold', 'Silver', 'Other'],
+  },
   'other': {
     title: 'Custom Piece',
     subtitle: 'Tell us about your dream piece — we\'ll bring it to life',
@@ -164,6 +180,11 @@ const styleIcons: Record<string, Record<string, LucideIcon>> = {
     Tennis: Gem, Chain: Link, Bangle: Circle,
     Cuff: Shield, 'Custom Design and/or Logo Design': Paintbrush, Other: HelpCircle,
   },
+  'wedding-bands': {
+    'Classic Band': Circle, 'Comfort Fit': CircleDot, Eternity: Sparkles,
+    'Half-Eternity': Star, 'Men\'s Band': Shield, Engraved: Pen,
+    'Contour / Shaped': Waves, Stackable: Layers, Other: HelpCircle,
+  },
 }
 
 // ---------------------------------------------------------------------------
@@ -173,6 +194,7 @@ const styleIcons: Record<string, Record<string, LucideIcon>> = {
 const sizeConfig: Record<string, { label: string; placeholder: string }> = {
   'engagement-rings': { label: 'Ring Size', placeholder: 'e.g., Size 7' },
   'rings': { label: 'Ring Size', placeholder: 'e.g., Size 7' },
+  'wedding-bands': { label: 'Ring Size', placeholder: 'e.g., Size 7' },
   'chains': { label: 'Chain Length', placeholder: 'e.g., 22 inches' },
   'pendants': { label: 'Chain Length (optional)', placeholder: 'e.g., 18 inches' },
   'bracelets': { label: 'Wrist Size', placeholder: 'e.g., 7.5 inches' },
@@ -300,12 +322,18 @@ const landingContent: Record<string, {
     budgetGuide: 'Custom engagement rings start at $1,000 and scale based on your choice of metal, stone type, carat weight, and design complexity. During consultation, we\'ll work within your budget to maximize brilliance — whether that means a stunning lab-grown diamond or a natural stone with exceptional cut quality.',
     stoneNote: 'Choose from natural diamonds, lab-grown diamonds, sapphires, rubies, and emeralds. We source every stone for maximum fire and brilliance, and we\'re happy to walk you through the 4Cs (cut, clarity, colour, carat) during your consultation. Lab-grown diamonds offer the same physical properties at a lower price point.',
     faq: [
-      { q: 'How long does it take to make a custom engagement ring in Toronto?', a: 'Most custom engagement rings take 4-6 weeks from design approval to completion. Rush orders can be completed in 2-3 weeks for an additional fee.' },
-      { q: 'How much does a custom engagement ring cost?', a: 'Custom engagement rings start at $1,000 and vary based on materials, stone selection, and design complexity. We work within your budget during our consultation.' },
-      { q: 'Can I design my own engagement ring?', a: 'Absolutely. Bring us your sketches, Pinterest boards, or just a rough idea — our designers will create detailed CAD renderings for your approval before any crafting begins.' },
-      { q: 'Do you offer lab-grown diamonds for engagement rings?', a: 'Yes. We offer both natural and lab-grown diamonds. Lab-grown stones are chemically identical and offer exceptional value without compromising brilliance.' },
-      { q: 'Can I see my engagement ring before it\'s finished?', a: 'Yes — we share 3D CAD renderings and models for your approval before manufacturing begins. You\'ll know exactly what your ring will look like.' },
-      { q: 'What engagement ring styles do you offer?', a: 'We create Classic, Modern, Vintage, Art Deco, Halo, Solitaire, and Bridal engagement rings — or any fully custom design you envision.' },
+      { q: 'How long does it take to make a custom engagement ring in Toronto?', a: 'Most custom engagement rings take 4-6 weeks from design approval to completion. Rush orders can be completed in 2-3 weeks for an additional fee, and we\'ll keep you updated at every stage.' },
+      { q: 'How much does a custom engagement ring cost in Toronto?', a: 'Custom engagement rings start at $1,000 and scale with metal choice, diamond origin (lab-grown or natural), carat weight, and design complexity. Solitaires start around $1,800, halo rings around $3,500, and three-stone designs from $4,500. We quote every project up front with no hidden fees.' },
+      { q: 'Can I design my own engagement ring?', a: 'Absolutely. Bring us sketches, Pinterest boards, or just a rough idea — our designers will create detailed 3D CAD renderings for your approval before any crafting begins. You can iterate as many times as you need.' },
+      { q: 'Lab-grown vs natural diamonds — which is better for an engagement ring?', a: 'Both are real diamonds with identical physical, chemical, and optical properties. Natural diamonds hold long-term resale value better, while lab-grown diamonds offer 40-60% more carat for the same budget. We help you weigh both during consultation.' },
+      { q: 'Do you provide GIA certification for diamonds?', a: 'Yes — every natural diamond over 0.50ct ships with a GIA grading report. Lab-grown diamonds ship with IGI or GCAL reports. You can also request certification for smaller stones on request.' },
+      { q: 'Can I see my engagement ring before it\'s finished?', a: 'Yes — we share 3D CAD renderings within 5-7 business days of your consultation, plus a wax or resin model before we cast in precious metal. You\'ll know exactly what your ring will look like before we begin final crafting.' },
+      { q: 'What engagement ring styles do you offer?', a: 'We create Classic, Modern, Vintage, Art Deco, Halo, Solitaire, Three-Stone, and Bridal engagement rings — or any fully custom design you can envision. Unusual settings like toi et moi, cluster, and bezel-set are all within scope.' },
+      { q: 'Which diamond shape is best for me?', a: 'Round brilliant is the most popular for its fire, oval and pear look larger per carat, princess and emerald cuts suit modern tastes, and cushion and radiant offer vintage warmth. We walk through every shape in person with loose stones so you can compare on your finger.' },
+      { q: 'Can I reset a family diamond into my new engagement ring?', a: 'Yes — heirloom resets are some of our most meaningful projects. We carefully remove your existing stone and design a new setting around it, preserving the sentiment while modernizing the look.' },
+      { q: 'Do you offer financing for custom engagement rings?', a: 'Yes — we offer flexible payment plans and 0% financing options for qualified buyers. Ask during consultation and we\'ll walk you through what fits your timeline and budget.' },
+      { q: 'Do you resize engagement rings for free?', a: 'Yes — every custom engagement ring we create includes free resizing within the first year, and free resizing for life if you have any significant finger-size change. Free cleanings and inspections for life as well.' },
+      { q: 'Where in Toronto is your engagement ring studio?', a: 'Our studio is at 624 Vaughan Rd in Toronto (M6E 2Y3), in the Oakwood–Vaughan neighbourhood. We see clients by appointment from across the GTA — Mississauga, Etobicoke, North York, Vaughan, Markham, Oakville, and beyond.' },
     ],
     relatedPages: [
       { name: 'Custom Rings', path: '/custom/rings' },
@@ -327,11 +355,16 @@ const landingContent: Record<string, {
     budgetGuide: 'Custom rings start at $1,000 for simpler designs in 10K gold or silver, and scale with gold karat, platinum, stone settings, and design intricacy. Signet rings and wedding bands are among our most popular commissions.',
     stoneNote: 'Add diamonds (natural or lab-grown), sapphires, rubies, or emeralds to any custom ring. Stones can be flush-set, prong-set, or channel-set depending on your design and daily wear needs.',
     faq: [
-      { q: 'What types of custom rings can you make?', a: 'We craft signet rings, statement rings, wedding bands, stackable rings, and fully custom designs in any style you can imagine.' },
-      { q: 'How much does a custom ring cost in Toronto?', a: 'Custom rings start at $1,000 and vary based on metal, stones, and design complexity. We work within your budget.' },
-      { q: 'Can I bring my own design for a ring?', a: 'Yes — bring sketches, reference photos, or describe your idea. We create CAD renderings for approval before crafting.' },
-      { q: 'How do I determine my ring size?', a: 'We measure your ring size during consultation for free, or you can visit us anytime for a quick sizing.' },
-      { q: 'What metals are available for custom rings?', a: '10K gold, 14K gold, 18K gold (yellow, white, rose), platinum, and sterling silver.' },
+      { q: 'What types of custom rings can you make in Toronto?', a: 'Signet rings, statement rings, wedding bands, stackable rings, cocktail rings, pinky rings, mens rings, promise rings, birthstone rings, everyday essentials, and fully custom designs in any style you can imagine.' },
+      { q: 'How much does a custom ring cost in Toronto?', a: 'Custom rings start at $1,000 in 10K gold or silver for simpler designs. Signet rings start around $1,400, statement rings $1,800, and stackable sets from $2,500 for three bands. Final price depends on metal, gold weight, stone count, and engraving.' },
+      { q: 'Can I bring my own design for a ring?', a: 'Yes — bring sketches, reference photos, or describe your idea verbally. Our designers create detailed 3D CAD renderings for your approval before any crafting begins. Revisions are included.' },
+      { q: 'How do I determine my ring size?', a: 'We measure your ring size in-studio for free during consultation. If you can\'t come in, we can mail you a free ring sizer or walk you through measuring with string. Every custom ring also includes free resizing.' },
+      { q: 'Can you make a custom signet ring with a family crest?', a: 'Yes — family-crest signet rings are one of our favourite commissions. Send us your crest, coat of arms, monogram, or initial design and we\'ll hand-engrave it into your ring.' },
+      { q: 'Can I get a matching men\'s and women\'s ring set?', a: 'Absolutely — matching couples rings and promise rings are a regular request. We design them in proportional sizes and complementary finishes (often different widths in matching metal).' },
+      { q: 'What metals are available for custom rings?', a: '10K gold, 14K gold, 18K gold in yellow, white, and rose, plus platinum and sterling silver. We\'ll recommend the right choice based on your daily wear, finger size, and budget.' },
+      { q: 'Do you engrave custom rings?', a: 'Yes — we engrave inside or outside the band in any font, including Arabic calligraphy, dates, names, coordinates, fingerprints, and soundwaves. Engraving is free with most custom rings.' },
+      { q: 'Can you set diamonds or gemstones in a custom ring?', a: 'Yes — natural or lab-grown diamonds, sapphires, rubies, emeralds, birthstones, and any gemstone you source. Prong, bezel, channel, pavé, flush, and tension settings all available.' },
+      { q: 'How long does a custom ring take in Toronto?', a: 'Simpler rings take 3-4 weeks. Signet rings with engraving take 4-5 weeks. Diamond-set rings and complex designs take 5-6 weeks. Rush orders can be completed in 2-3 weeks for an additional fee.' },
     ],
     relatedPages: [
       { name: 'Custom Engagement Rings', path: '/custom/engagement-rings' },
@@ -353,11 +386,17 @@ const landingContent: Record<string, {
     budgetGuide: 'Custom pendants start at $1,000. Simple name pendants in 10K gold are the most accessible, while diamond-set photo pendants and large statement pieces sit at the higher end. We\'ll help you find the right balance of size, metal, and stone work for your budget.',
     stoneNote: 'Pendants can be set with diamonds (natural or lab-grown), sapphires, rubies, or emeralds. Popular options include diamond-encrusted initials, pave-set name pendants, and bezel-set center stones.',
     faq: [
-      { q: 'What types of custom pendants do you make?', a: 'We create name pendants, initial pendants, photo pendants, bubble letter pendants, religious symbols, custom logos, and any design you can imagine.' },
-      { q: 'Can you make a photo pendant?', a: 'Yes — we create custom photo pendants where your image is set behind crystal or surrounded by diamonds in gold or silver.' },
-      { q: 'How much does a custom gold pendant cost?', a: 'Custom gold pendants start around $1,000 depending on size, gold karat, and stone settings.' },
-      { q: 'What chain comes with a custom pendant?', a: 'Chains are crafted or selected separately. We can create a matching custom chain or help you choose the perfect pairing.' },
-      { q: 'Can I add diamonds to my pendant?', a: 'Absolutely — we can set natural or lab-grown diamonds, as well as sapphires, rubies, and emeralds in any pendant design.' },
+      { q: 'What types of custom pendants do you make in Toronto?', a: 'Name pendants, initial pendants, photo pendants, bubble letter pendants, script pendants, Old English pendants, religious symbols (Allah, Ayat al-Kursi, Bismillah, Cross, Hamsa, Om, Star of David), zodiac pendants, memorial pendants, company logos, and fully custom designs.' },
+      { q: 'Can you make a photo pendant?', a: 'Yes — we create custom photo pendants where your image is laser-engraved onto gold or set behind a crystal dome. You can also add a diamond halo or pavé border for extra detail.' },
+      { q: 'How much does a custom gold pendant cost in Toronto?', a: 'Custom gold pendants start around $1,000 in 10K gold, $1,500 in 14K gold, and $2,000 in 18K gold. Diamond-set pendants start from $2,500, with photo pendants from $1,800. Size, stone count, and gold weight drive final price.' },
+      { q: 'Do you make Arabic calligraphy pendants in Toronto?', a: 'Yes — Arabic calligraphy pendants are one of our signature offerings. We craft Arabic name pendants in any font (Thuluth, Naskh, Diwani, modern script), Allah pendants, Ayat al-Kursi, Bismillah, Mashallah, and fully custom Arabic calligraphy in gold, platinum, or silver.' },
+      { q: 'Can you make a bubble letter pendant?', a: 'Absolutely — bubble letter pendants are one of our most popular styles. Available in 10K, 14K, or 18K gold, with or without diamond pavé, in any size and name or word you want.' },
+      { q: 'What chain comes with a custom pendant?', a: 'Chains are priced separately so you can choose the perfect pairing. We can craft a matching custom chain (cuban, rope, franco, box) in the same metal, or help you choose a stock chain from our collection.' },
+      { q: 'Can I add diamonds to my pendant?', a: 'Yes — we set natural or lab-grown diamonds, as well as sapphires, rubies, emeralds, and birthstones. Popular options include diamond-encrusted initials, pavé-set name pendants, and bezel-set centre stones.' },
+      { q: 'Can you make a memorial pendant?', a: 'Yes — we craft memorial pendants that incorporate fingerprints, handwriting, silhouette portraits, or small keepsakes. Cremation-ash pendants can also be arranged with advance notice.' },
+      { q: 'How long does a custom pendant take in Toronto?', a: 'Simple name or initial pendants take 2-3 weeks. Diamond-set pendants and photo pendants take 3-4 weeks. Complex multi-stone pieces can take 4-6 weeks. Rush orders are available on request.' },
+      { q: 'Can you make a custom logo or company pendant?', a: 'Yes — we frequently produce custom logo pendants for brands, companies, and sports teams. Send us a logo file and we\'ll translate it into a 3D CAD model for your approval before crafting.' },
+      { q: 'Where do I pick up my custom pendant in Toronto?', a: 'Pickup is at our studio at 624 Vaughan Rd, Toronto M6E 2Y3, by appointment. We also ship securely across the GTA and anywhere in Canada.' },
     ],
     relatedPages: [
       { name: 'Custom Chains', path: '/custom/chains' },
@@ -379,11 +418,16 @@ const landingContent: Record<string, {
     budgetGuide: 'Custom chain pricing depends primarily on gold weight. A lighter 10K gold box chain starts around $1,000, while a heavy 18K Cuban link can reach $10,000+. We quote based on current gold prices, karat, and your desired dimensions.',
     stoneNote: 'Chains can incorporate diamond-set clasps, diamond-cut links, or integrated diamond settings. We can also create matching chain-and-pendant combinations.',
     faq: [
-      { q: 'What types of custom chains do you offer?', a: 'Miami Cuban link, rope, franco, figaro, box chain, and fully custom link designs. Any style, any weight.' },
-      { q: 'How much does a custom Cuban link chain cost in Toronto?', a: 'Custom Cuban link chains start at $1,000 and vary based on gold karat, total weight, and dimensions.' },
-      { q: 'What gold karats are available for chains?', a: '10K, 14K, and 18K gold in yellow, white, and rose, plus platinum and sterling silver.' },
-      { q: 'Can I customize the length and width of my chain?', a: 'Yes — every chain is made to your exact length, width, and weight specifications.' },
-      { q: 'Do you make chains with name plates?', a: 'Yes — we can integrate custom name plates, pendants, and diamond settings into any chain design.' },
+      { q: 'What types of custom chains do you offer in Toronto?', a: 'Miami Cuban link, rope, franco, figaro, box, wheat, anchor, curb, herringbone, paperclip, byzantine, and fully custom link designs. Any style, any weight, any length.' },
+      { q: 'How much does a custom Cuban link chain cost in Toronto?', a: 'A 22" 10K gold Cuban link starts around $2,500 at 5mm width and scales with width, length, and karat. A 22" 14K Cuban at 8mm typically runs $6,000-$8,000. Solid 18K heavyweight chains at 10mm+ can reach $12,000+. We quote by exact gram weight.' },
+      { q: 'Solid gold vs hollow gold chains — what\'s the difference?', a: 'Hollow chains are lightweight and cheaper but dent, kink, and snap under everyday wear. We only make solid gold chains — they hold their shape, last a lifetime, and hold resale value. We\'ll walk you through the weight trade-offs during consultation.' },
+      { q: 'How many grams is a 5mm Cuban chain?', a: 'A 22" 5mm solid Cuban chain is roughly 40-50 grams in 10K gold, 45-55 grams in 14K, and 50-60 grams in 18K. Exact weight varies slightly by link style. We weigh and measure to your spec before finishing.' },
+      { q: 'What gold karats are available for chains?', a: '10K, 14K, and 18K gold in yellow, white, and rose, plus platinum and sterling silver. 14K is our most popular — a great balance of colour, durability, and price for everyday wear.' },
+      { q: 'Can I customize the length and width of my chain?', a: 'Yes — every chain is made to your exact length, width, and gram weight specifications. Common lengths: 18", 20", 22", 24", 26", 28", 30". Widths from 2mm to 15mm+ depending on chain style.' },
+      { q: 'Do you make chains with name plates or pendants integrated?', a: 'Yes — we can integrate custom name plates, ID bars, pendants, and diamond-set sections into any chain design. Matching chain-and-pendant sets are a signature offering.' },
+      { q: 'Can you add diamonds to a chain clasp or links?', a: 'Yes — diamond-set clasps, diamond-cut facets, and fully diamond-embedded links (iced-out chains) are all available. Natural or lab-grown, any clarity tier.' },
+      { q: 'How long does a custom chain take in Toronto?', a: 'Most chains take 2-4 weeks. Lightweight chains 2-3 weeks, heavyweight Cuban or franco chains 3-4 weeks, fully iced-out chains 5-6 weeks due to setting work. Rush production is available.' },
+      { q: 'Do you repair or re-solder broken chains?', a: 'Yes — we repair, re-solder, and re-plate chains (even if they weren\'t made here). We also shorten and extend existing chains to your preferred length.' },
     ],
     relatedPages: [
       { name: 'Custom Pendants', path: '/custom/pendants' },
@@ -405,10 +449,16 @@ const landingContent: Record<string, {
     budgetGuide: 'Custom earrings start at $1,000. Diamond stud earrings are priced based on stone size and quality, while gold hoops depend on weight and karat. We\'ll find the best combination for your budget.',
     stoneNote: 'Earrings can feature diamonds (natural or lab-grown), sapphires, rubies, and emeralds. Popular choices include diamond stud earrings, pave-set hoops, and drop earrings with colored gemstones.',
     faq: [
-      { q: 'What types of custom earrings can you make?', a: 'We create studs, hoops, drop earrings, chandeliers, and fully custom designs in any style.' },
-      { q: 'How much do custom diamond earrings cost?', a: 'Custom diamond earrings start at $1,000 depending on stone size, quality, and metal choice.' },
-      { q: 'Can I design matching earrings and pendant?', a: 'Yes — we love creating matching sets. Design your earrings and pendant together for a cohesive look.' },
-      { q: 'What metals are available for earrings?', a: '10K-18K gold (yellow, white, rose), platinum, and sterling silver.' },
+      { q: 'What types of custom earrings can you make in Toronto?', a: 'Diamond studs, gold hoops, huggies, drop earrings, chandelier earrings, ear climbers, ear cuffs, threader earrings, cluster earrings, and fully custom designs — all handcrafted in our Toronto studio.' },
+      { q: 'How much do custom diamond stud earrings cost in Toronto?', a: '0.5ctw lab-grown studs start around $1,000 in 14K gold. 1ctw studs $1,500-$2,500 (lab) or $3,500-$5,000 (natural). 2ctw studs $3,000-$6,000 (lab) or $8,000-$15,000 (natural). Premium VVS clarity adds 15-25% to each tier.' },
+      { q: 'Lab-grown vs natural diamond studs — which should I choose?', a: 'Lab-grown studs deliver the same brilliance and hardness for roughly 50% less — ideal if you want bigger visible size. Natural diamonds hold long-term resale value and carry heirloom sentiment. Both are real diamonds; we\'ll show you loose stones of each to compare.' },
+      { q: 'How much do custom gold hoops cost?', a: 'Plain 10K gold hoops start around $800, 14K from $1,100, 18K from $1,500. Diamond-set pavé hoops start from $2,500. Final price scales with diameter, width, and gold weight.' },
+      { q: 'Can I design matching earrings, pendant, and ring?', a: 'Yes — matching sets are a signature offering. Design your earrings alongside a pendant, ring, or bracelet for a cohesive collection. We offer set discounts when ordered together.' },
+      { q: 'Do you make huggies and small everyday earrings?', a: 'Yes — huggies, small hoops, and everyday studs are some of our most popular pieces. We make them in 10K, 14K, or 18K gold with optional diamond pavé.' },
+      { q: 'What metals are available for earrings?', a: '10K, 14K, and 18K gold in yellow, white, and rose, plus platinum and sterling silver. Platinum is the most durable and hypoallergenic — ideal if you have sensitive ears.' },
+      { q: 'What\'s the difference between push-back and screw-back studs?', a: 'Push-back (friction-back) is the standard — easy to wear daily. Screw-back is more secure for high-value diamonds you never want to lose. We offer both and will recommend based on stone size and how you\'ll wear them.' },
+      { q: 'How long do custom earrings take in Toronto?', a: 'Diamond studs take 2-3 weeks, plain gold hoops 2-3 weeks, pavé hoops 3-4 weeks, chandelier and complex multi-stone designs 4-5 weeks. Rush production available.' },
+      { q: 'Can I get earrings re-plated or diamonds tightened?', a: 'Yes — free rhodium re-plating and free diamond tightening for life on every pair we create. We also service earrings from other jewellers at competitive rates.' },
     ],
     relatedPages: [
       { name: 'Custom Pendants', path: '/custom/pendants' },
@@ -430,11 +480,16 @@ const landingContent: Record<string, {
     budgetGuide: 'Custom bracelets start at $1,000. Tennis bracelets are priced based on stone count and quality, while bangles and cuffs depend on metal weight. Engraved bracelets for men are among our most popular commissions.',
     stoneNote: 'Bracelets can feature diamonds, sapphires, and other gemstones. Tennis bracelets with round brilliant diamonds are our most popular stone-set bracelet style. We also offer diamond-accented cuffs and charm bracelets.',
     faq: [
-      { q: 'What types of custom bracelets do you make?', a: 'Tennis bracelets, chain bracelets, bangles, cuffs, charm bracelets, and fully custom designs for men and women.' },
-      { q: 'How much does a custom tennis bracelet cost in Toronto?', a: 'Custom tennis bracelets start at $2,500 depending on stone quality, total carat weight, and metal choice.' },
-      { q: 'Can I get an engraved bracelet for men?', a: 'Yes — we create engraved bracelets for men in gold, platinum, and silver with custom text, dates, or designs.' },
-      { q: 'How do I measure my wrist for a bracelet?', a: 'We measure your wrist during consultation for a perfect fit. You can also visit us anytime for a quick free measurement.' },
-      { q: 'What metals are available for custom bracelets?', a: '10K gold, 14K gold, 18K gold (yellow, white, rose), platinum, and sterling silver.' },
+      { q: 'What types of custom bracelets do you make in Toronto?', a: 'Tennis bracelets, chain bracelets (Cuban, rope, franco, figaro), bangles, cuffs, charm bracelets, ID bracelets, engraved mens bracelets, byzantine bracelets, and fully custom designs for men and women.' },
+      { q: 'How much does a custom tennis bracelet cost in Toronto?', a: 'Lab-grown diamond tennis bracelets: 2ctw from $2,500, 3ctw from $3,800, 5ctw from $6,500, 7ctw from $9,500, 10ctw from $14,000. Natural diamond tennis bracelets typically cost 2.5-3x the lab-grown equivalent. All prices in 14K gold.' },
+      { q: 'Can I get an engraved bracelet for men in Toronto?', a: 'Yes — engraved men\'s bracelets are one of our most requested pieces. ID bracelets, Cuban link with name plate, Figaro with engraved bar, or solid cuffs — all with custom engraving in any font including Arabic calligraphy, dates, names, or logos.' },
+      { q: 'How do I measure my wrist for a bracelet?', a: 'We measure your wrist in-studio for a perfect fit. You can also wrap a flexible tape measure snugly around your wrist just below the wrist bone, then add 0.5" (loose) or 0.25" (snug). Standard men\'s: 7.5-8.5". Standard women\'s: 6.5-7".' },
+      { q: 'What\'s the difference between a tennis bracelet and a diamond chain bracelet?', a: 'A tennis bracelet has prong-set diamonds in a continuous line, each stone visible front and side. A diamond chain bracelet has stones set into chain links. Tennis bracelets typically show more stone face-up and are the more formal style.' },
+      { q: 'Do you make custom ID bracelets?', a: 'Yes — ID bracelets are a staple of our mens collection. Solid gold, platinum, or silver plates engraved with names, dates, Arabic calligraphy, or any custom design. Attached to Cuban, figaro, or rope link chains.' },
+      { q: 'Can I add diamonds to a bangle or cuff?', a: 'Yes — pavé-set bangles, diamond-accent cuffs, and fully diamond-encrusted cuffs are all available. Natural or lab-grown, any clarity tier.' },
+      { q: 'What metals are available for custom bracelets?', a: '10K, 14K, and 18K gold in yellow, white, and rose, plus platinum and sterling silver. 14K and 18K are our most popular for bracelets due to everyday durability.' },
+      { q: 'Do you offer safety chains on tennis bracelets?', a: 'Yes — every tennis bracelet we make includes a safety chain and a double-lock box clasp as standard. Lost a stone from an older bracelet? We can repair and add safety chains to bracelets made elsewhere.' },
+      { q: 'How long does a custom bracelet take in Toronto?', a: 'Tennis bracelets 4-5 weeks due to hand-setting each stone. Bangles and cuffs 3-4 weeks. Chain bracelets 2-3 weeks. Engraved ID bracelets 3-4 weeks. Rush production available.' },
     ],
     relatedPages: [
       { name: 'Custom Chains', path: '/custom/chains' },
@@ -456,12 +511,18 @@ const landingContent: Record<string, {
     budgetGuide: 'Grillz start at $500 for a single tooth in 10K gold. Top 6 or bottom 6 sets range from $2,000-$5,000 in solid gold. Full diamond-set VVS grillz start around $5,000 and scale with diamond quality and coverage.',
     stoneNote: 'We set genuine natural and lab-grown diamonds in grillz, including VVS clarity stones. Diamond dust finishes, channel-set diamonds, and fully iced-out options are all available. No cubic zirconia — ever.',
     faq: [
-      { q: 'How much do custom grillz cost in Toronto?', a: 'Custom grillz start at $500 for a single tooth in 10K gold. Full sets with diamonds range from $2,000-$10,000+ depending on gold karat and stone quality.' },
-      { q: 'What types of grillz do you offer?', a: 'Full sets (top & bottom), top 6, bottom 6, single tooth, fangs, open-face, diamond dust, and fully custom designs.' },
-      { q: 'Are your grillz removable?', a: 'Yes — all our grillz are removable. We create a custom mold of your teeth for a snug, secure fit that clicks in and out.' },
-      { q: 'What gold karats are available for grillz?', a: '10K, 14K, and 18K gold in yellow, white, and rose gold options.' },
-      { q: 'Do you use real diamonds in grillz?', a: 'Yes — we use genuine natural and lab-grown diamonds including VVS clarity stones. No cubic zirconia, no moissanite substitutions.' },
-      { q: 'How long does it take to make custom grillz in Toronto?', a: 'Most custom grillz are completed in 1-2 weeks after your mold appointment. Rush orders can be accommodated.' },
+      { q: 'How much do custom grillz cost in Toronto?', a: 'Single tooth grillz start at $500 in 10K gold. Top 6 or bottom 6 sets range from $2,000-$5,000 in solid gold. Full diamond-set VVS grillz start around $5,000 and scale to $15,000+ for fully iced-out sets. Every quote is broken down up front by gold weight, karat, and stone count.' },
+      { q: 'What types of grillz do you offer?', a: 'Full sets (top + bottom), top 6, bottom 6, top 8, bottom 8, single tooth, fangs, open-face, honeycomb, bar, diamond dust, and fully custom designs. We also create matching grillz for couples and teams.' },
+      { q: 'Are your grillz removable?', a: 'Yes — every grillz we make is removable. We create a precise dental mold of your teeth for a snug, secure fit that clicks in and out without permanently altering your teeth.' },
+      { q: 'Are removable grillz safe for your teeth?', a: 'Yes, when properly made. Because our grillz are custom-fit from your exact dental mold, they sit snugly without damaging enamel. We recommend removing them before eating and cleaning them with a soft brush daily.' },
+      { q: 'VVS vs VS vs SI — which clarity should I pick for grillz?', a: 'VVS offers the cleanest, brightest look and is our premium tier. VS gives a near-identical visual face-up for about 20-30% less. SI stones look great in micro-pavé or dust settings. We\'ll walk through all three with loose stones during consultation.' },
+      { q: 'Do you use real diamonds in grillz?', a: 'Yes — genuine natural and lab-grown diamonds only, including VVS clarity stones. No cubic zirconia, no moissanite substitutions, ever. Every stone is hand-set by our master jeweller in Toronto.' },
+      { q: 'What gold karats are available for grillz?', a: '10K, 14K, and 18K gold in yellow, white, and rose gold. 10K is the most durable and affordable. 14K is our most popular — a great balance of colour and price. 18K delivers the deepest yellow but is softer and needs gentler care.' },
+      { q: 'How long does it take to make custom grillz in Toronto?', a: 'Most custom grillz are completed in 1-2 weeks after your mold appointment. Full diamond-set VVS sets can take 3-4 weeks due to the setting work. Rush orders are available on request.' },
+      { q: 'How does the grillz mold process work?', a: 'We take a precise dental-grade silicone impression of your teeth in-studio. The impression is cast into a stone model that we use to shape and fit your grillz exactly to your bite. The appointment takes about 20 minutes.' },
+      { q: 'Can I eat or drink with grillz in?', a: 'We recommend removing grillz before eating to protect both the grillz and your teeth. Drinking water is fine. Avoid sugary drinks with grillz in to prevent buildup along the gum line.' },
+      { q: 'Do you offer permanent grillz?', a: 'We specialize in removable custom grillz because they\'re safer for your long-term oral health. If you\'re looking for semi-permanent grillz, we\'ll discuss the pros, cons, and dental considerations during consultation.' },
+      { q: 'Do you make matching grillz for couples?', a: 'Yes — matching couples grillz are one of our most requested orders. We can create mirrored designs, shared stones, or complementary styles between partners.' },
     ],
     relatedPages: [
       { name: 'Custom Chains', path: '/custom/chains' },
@@ -469,6 +530,47 @@ const landingContent: Record<string, {
       { name: 'Custom Rings', path: '/custom/rings' },
     ],
   },
+  'wedding-bands': {
+    heroH1: 'Custom Wedding Bands in Toronto',
+    heroSub: 'Bands as timeless as your vow — handcrafted in Toronto to match your ring, your finish, and your story.',
+    intro: 'A wedding band is the piece you\'ll wear every single day for the rest of your life, so it deserves the same care as the engagement ring it sits beside. At Al-Assali Jewelry, every custom wedding band is designed and handcrafted in-house in Toronto — from classic comfort-fit bands and eternity rings to contour-shaped bands that nest perfectly against a halo or solitaire. Choose platinum, 18K, 14K, or 10K gold in yellow, white, or rose, with optional diamond or gemstone accents and any engraving you can imagine, including Arabic calligraphy, fingerprints, and soundwaves. We craft matching bridal sets for couples, modern men\'s bands in brushed or hammered finishes, and stackable anniversary bands — all with our lifetime craftsmanship guarantee.',
+    whyCards: [
+      { icon: MapPin, title: 'Made in Toronto', text: 'Every band crafted entirely in our Toronto studio — no outsourcing, no middlemen.' },
+      { icon: Heart, title: 'Matching Bridal Sets', text: 'Contour and shaped bands designed to nest flush against your engagement ring.' },
+      { icon: Pen, title: 'Any Engraving', text: 'Inside or outside engraving in any font — including Arabic calligraphy, fingerprints, and soundwaves.' },
+      { icon: ShieldCheck, title: 'Lifetime Guarantee', text: 'Free polishing, rhodium re-plating, and resizing for life on every band we create.' },
+    ],
+    processNote: 'Custom wedding bands take 3-5 weeks from design approval to completion. We start with a free consultation to understand the fit, finish, and story you want, create CAD renderings for your approval, then hand-craft each band in your chosen metal. Matching bridal sets are designed alongside the engagement ring when possible to ensure a perfect nest. Rush orders can be completed in 2-3 weeks for an additional fee.',
+    budgetGuide: 'Custom wedding bands start at $900 for plain 10K gold bands and scale with karat, width, eternity stone coverage, and engraving complexity. A solid platinum comfort-fit band typically starts around $1,800, a half-eternity diamond band around $3,500, and a full diamond eternity band from $6,000. We quote every band up front with no hidden fees.',
+    stoneNote: 'Bands can be set with diamonds (natural or lab-grown), sapphires, rubies, or emeralds in channel, bead, or shared-prong settings. Eternity and half-eternity bands are our most popular stone-set options, with birthstone bands a close second for anniversary pieces.',
+    faq: [
+      { q: 'How much does a custom wedding band cost in Toronto?', a: 'Custom wedding bands start at $900 for plain 10K gold and scale with metal karat, width, diamond coverage, and engraving. Platinum bands start around $1,800, half-eternity diamond bands from $3,500.' },
+      { q: 'Do you match wedding bands to engagement rings?', a: 'Yes — we specialize in contour and shaped bands that nest flush against halo, solitaire, and three-stone engagement rings. Bring in your engagement ring and we\'ll design a band to match.' },
+      { q: 'What\'s the difference between comfort fit and standard fit?', a: 'Comfort-fit bands have a slightly domed interior, making them easier to slide over the knuckle and more comfortable for daily wear. Standard-fit bands have a flat interior and feel slightly more traditional.' },
+      { q: 'Can you engrave Arabic calligraphy on a wedding band?', a: 'Absolutely — we engrave Arabic calligraphy, scripture, names, dates, fingerprints, soundwaves, and any custom design you envision, inside or outside the band.' },
+      { q: 'Do you make men\'s wedding bands?', a: 'Yes — we craft men\'s wedding bands in widths from 4mm to 10mm with brushed, hammered, polished, or matte finishes. Popular options include tungsten-look platinum, two-tone gold, and diamond-accent bands.' },
+      { q: 'How long does a custom wedding band take in Toronto?', a: 'Most bands take 3-5 weeks from design approval. Matching bridal sets take 4-6 weeks. Rush orders can be completed in 2-3 weeks for an additional fee.' },
+      { q: 'Can I reset diamonds from a family ring into a new band?', a: 'Yes — heirloom resets are one of our most meaningful projects. We\'ll carefully remove the stones and reset them into your new custom band design.' },
+      { q: 'Do you make stackable anniversary bands?', a: 'Yes — we love designing stackable sets that add a new band for every anniversary or milestone. Mix metals, karats, and stone colours for a truly personal stack.' },
+      { q: 'Can you size my band precisely?', a: 'Yes — we measure your ring size during consultation at no charge, and every custom band includes free resizing for life if your size changes.' },
+    ],
+    relatedPages: [
+      { name: 'Custom Engagement Rings', path: '/custom/engagement-rings' },
+      { name: 'Custom Rings', path: '/custom/rings' },
+      { name: 'Custom Pendants', path: '/custom/pendants' },
+    ],
+  },
+}
+
+const servicePricing: Record<string, { minPrice: number; maxPrice?: number; serviceType: string }> = {
+  'engagement-rings': { minPrice: 1000, maxPrice: 50000, serviceType: 'Custom Engagement Ring Design' },
+  'rings': { minPrice: 1000, maxPrice: 25000, serviceType: 'Custom Ring Design' },
+  'wedding-bands': { minPrice: 900, maxPrice: 15000, serviceType: 'Custom Wedding Band Design' },
+  'pendants': { minPrice: 1000, maxPrice: 20000, serviceType: 'Custom Pendant Design' },
+  'chains': { minPrice: 1000, maxPrice: 30000, serviceType: 'Custom Chain Design' },
+  'earrings': { minPrice: 1000, maxPrice: 20000, serviceType: 'Custom Earring Design' },
+  'bracelets': { minPrice: 1000, maxPrice: 25000, serviceType: 'Custom Bracelet Design' },
+  'grillz': { minPrice: 500, maxPrice: 25000, serviceType: 'Custom Grillz Design' },
 }
 
 function LandingPage({ type }: { type: string }) {
@@ -483,6 +585,27 @@ function LandingPage({ type }: { type: string }) {
   const icons = styleIcons[type] || {}
   const showStones = type !== 'grillz'
   const sizeInfo = sizeConfig[type] || sizeConfig['other']
+
+  const pricing = servicePricing[type]
+  const serviceSchema = pricing
+    ? buildServiceSchema({
+        slug: type,
+        serviceType: pricing.serviceType,
+        name: landing.heroH1,
+        description: landing.heroSub,
+        minPrice: pricing.minPrice,
+        maxPrice: pricing.maxPrice,
+        styles: config.styles,
+      })
+    : null
+
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: 'Home', url: SITE_CONFIG.url },
+    { name: 'Bespoke', url: `${SITE_CONFIG.url}/custom/general` },
+    { name: config.title, url: `${SITE_CONFIG.url}/custom/${type}` },
+  ])
+
+  const faqSchema = buildFaqSchema(landing.faq)
 
   return (
     <div className="min-h-screen bg-soft-black relative overflow-hidden" data-testid="custom-landing">
@@ -633,6 +756,22 @@ function LandingPage({ type }: { type: string }) {
           </div>
         </section>
 
+        {/* ===== STONE SHAPES (types where shape matters) ===== */}
+        {['engagement-rings', 'rings', 'earrings', 'bracelets', 'pendants', 'wedding-bands'].includes(type) && (
+          <StoneShapeSection />
+        )}
+
+        {/* ===== NATURAL VS LAB-GROWN (diamond-centric types) ===== */}
+        {['engagement-rings', 'earrings', 'bracelets', 'wedding-bands'].includes(type) && (
+          <NaturalVsLabSection />
+        )}
+
+        {/* ===== GRILLZ: teeth config + clarity ladder ===== */}
+        {type === 'grillz' && <GrillzConfigSection />}
+
+        {/* ===== PENDANTS: Arabic calligraphy + religious + logo showcase ===== */}
+        {type === 'pendants' && <PendantsHeritageSection />}
+
         {/* ===== BUDGET GUIDE ===== */}
         <section className="py-20 px-4 border-t border-glacier-grey/10">
           <div className="max-w-4xl mx-auto">
@@ -658,6 +797,9 @@ function LandingPage({ type }: { type: string }) {
             </motion.p>
           </div>
         </section>
+
+        {/* ===== PRICING TABLE (real starting prices per style x metal) ===== */}
+        <PricingTableSection type={type} />
 
         {/* ===== TIMELINE & PROCESS ===== */}
         <section className="py-20 px-4 border-t border-glacier-grey/10">
@@ -693,6 +835,12 @@ function LandingPage({ type }: { type: string }) {
             </motion.div>
           </div>
         </section>
+
+        {/* ===== TESTIMONIALS (Google reviews strip) ===== */}
+        <TestimonialsSection type={type} />
+
+        {/* ===== LOCATION with embedded Google Map ===== */}
+        <LocationSection />
 
         {/* ===== FAQ (Schema eligible) ===== */}
         <section className="py-20 px-4 border-t border-glacier-grey/10">
@@ -753,19 +901,13 @@ function LandingPage({ type }: { type: string }) {
         </section>
       </div>
 
-      {/* FAQ Schema JSON-LD */}
+      {/* Schema JSON-LD: Service + BreadcrumbList + FAQPage */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: landing.faq.map((item) => ({
-              '@type': 'Question',
-              name: item.q,
-              acceptedAnswer: { '@type': 'Answer', text: item.a },
-            })),
-          }),
+          __html: JSON.stringify(
+            [serviceSchema, breadcrumbSchema, faqSchema].filter(Boolean),
+          ),
         }}
       />
     </div>
@@ -785,8 +927,13 @@ export default function CustomJewelryPage() {
     return <LandingPage type={urlType} />
   }
 
-  // /custom/general → portal form
-  return <PortalForm />
+  // /custom/general → portal form above, hub SEO content below
+  return (
+    <>
+      <PortalForm />
+      <GeneralHub />
+    </>
+  )
 }
 
 // ---------------------------------------------------------------------------
@@ -978,7 +1125,7 @@ function PortalForm() {
 
   if (submitted) {
     return (
-      <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] -mb-24 bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
+      <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
         <DotPattern />
         <DiamondPattern className="text-white" />
         <FloatingDiamonds />
@@ -1005,7 +1152,7 @@ function PortalForm() {
   // =========================================================================
 
   return (
-    <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] -mb-24 bg-soft-black relative overflow-hidden flex flex-col" data-testid="custom-form-hero">
+    <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] bg-soft-black relative overflow-hidden flex flex-col" data-testid="custom-form-hero">
       <DotPattern />
       <DiamondPattern className="text-white" />
       <FloatingDiamonds />
@@ -1370,5 +1517,207 @@ function PortalForm() {
         </div>
       </div>
     </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// GeneralHub — SEO-rich hub content rendered below the PortalForm on /custom/general
+// Targets "custom jeweller Toronto", "bespoke jewellery Toronto", "custom jewellery Toronto"
+// ---------------------------------------------------------------------------
+
+const hubBespokeCards: { name: string; path: string; icon: LucideIcon; blurb: string }[] = [
+  { name: 'Custom Engagement Rings', path: '/custom/engagement-rings', icon: Diamond, blurb: 'Solitaire, halo, vintage, three-stone — designed around your love story.' },
+  { name: 'Custom Wedding Bands', path: '/custom/wedding-bands', icon: Heart, blurb: 'Matching bridal sets, eternity bands, men\'s bands, and engraved pieces.' },
+  { name: 'Custom Rings', path: '/custom/rings', icon: Circle, blurb: 'Signet, statement, stackable, everyday — in gold, platinum, or silver.' },
+  { name: 'Custom Pendants', path: '/custom/pendants', icon: Layers, blurb: 'Name pendants, photo pendants, religious symbols, Arabic calligraphy.' },
+  { name: 'Custom Chains', path: '/custom/chains', icon: Link, blurb: 'Miami Cuban, rope, franco, figaro — solid gold, never hollow.' },
+  { name: 'Custom Earrings', path: '/custom/earrings', icon: CircleDot, blurb: 'Studs, hoops, drops, chandeliers — diamond and gold.' },
+  { name: 'Custom Bracelets', path: '/custom/bracelets', icon: Gem, blurb: 'Tennis bracelets, bangles, cuffs, engraved men\'s ID bracelets.' },
+  { name: 'Custom Grillz', path: '/custom/grillz', icon: Flame, blurb: 'Gold and VVS diamond grillz — single tooth to full sets.' },
+]
+
+const hubProcessSteps = [
+  { icon: MessageSquare, title: 'Consultation', body: 'Free in-studio or virtual consultation to understand your vision, budget, and timeline.' },
+  { icon: Pen, title: 'Design & CAD', body: 'Our designers produce detailed sketches and 3D CAD renderings for your approval before crafting begins.' },
+  { icon: Diamond, title: 'Stone & Metal Selection', body: 'Hand-pick GIA-graded natural or lab-grown diamonds, coloured gems, and your choice of gold, platinum, or silver.' },
+  { icon: Wrench, title: 'In-House Crafting', body: 'Every piece is cast, set, and finished entirely in our Toronto workshop by master jeweller Mohammad Al-Assali — no outsourcing.' },
+  { icon: Gem, title: 'Presentation', body: 'Your finished piece is inspected, photographed, and presented in luxury packaging with a lifetime craftsmanship guarantee.' },
+]
+
+const hubFaq = [
+  { q: 'Where is Al-Assali Jewelry located in Toronto?', a: 'Our studio is at 624 Vaughan Rd in Toronto (M6E 2Y3), in the Oakwood–Vaughan neighbourhood. We operate by appointment only to give every client our full attention.' },
+  { q: 'Do I need an appointment to visit the Toronto studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we\'ll confirm a time that works for you.' },
+  { q: 'What areas around Toronto do you serve?', a: 'Our studio is in Toronto, and we regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, and Milton.' },
+  { q: 'How do I start a custom jewellery project?', a: 'Book a free consultation (virtual or in-studio). We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
+  { q: 'How much does custom jewellery cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal, stones, and design complexity. We quote every project up front with no hidden fees.' },
+  { q: 'Do you offer lab-grown diamonds?', a: 'Yes — we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value.' },
+  { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We\'ll carefully remove the stones from your existing piece and set them into your new custom design.' },
+  { q: 'Do you offer Arabic calligraphy jewellery?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweller is fluent in the art of Arabic calligraphy casting.' },
+  { q: 'What is the typical timeline for custom jewellery?', a: 'Most pieces take 2-6 weeks: grillz 1-2 weeks, pendants 2-4 weeks, chains and earrings 2-4 weeks, rings and bracelets 3-5 weeks, engagement rings 4-6 weeks. Rush orders are available.' },
+  { q: 'Do you ship outside of Toronto?', a: 'Yes — we ship securely across the GTA and anywhere in Canada. Finished pieces are always fully insured in transit.' },
+]
+
+function GeneralHub() {
+  const hubBreadcrumb = buildBreadcrumbSchema([
+    { name: 'Home', url: SITE_CONFIG.url },
+    { name: 'Bespoke', url: `${SITE_CONFIG.url}/custom/general` },
+  ])
+  const hubFaqSchema = buildFaqSchema(hubFaq)
+
+  return (
+    <section className="bg-soft-black text-white relative overflow-hidden">
+      <DotPattern />
+      <DiamondPattern className="text-white" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 md:py-28 space-y-20">
+
+        {/* INTRO */}
+        <header className="text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 mb-5">
+            <Sparkles className="w-4 h-4 text-glacier-grey" />
+            <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">Toronto&apos;s Custom Jewellery Studio</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
+            Toronto&apos;s Premier Custom Jeweller
+          </h2>
+          <p className="text-stone leading-relaxed text-base md:text-lg">
+            Al-Assali Jewelry is a bespoke jewellery studio on Vaughan Road in Toronto. Master jeweller Mohammad Al-Assali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
+          </p>
+        </header>
+
+        {/* BESPOKE GRID */}
+        <div>
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+            What We Create
+          </h3>
+          <p className="text-stone text-center mb-10 max-w-xl mx-auto text-sm">
+            Every category we offer is fully customizable. Choose a piece type to see styles, materials, pricing, and timelines.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {hubBespokeCards.map(({ name, path, icon: Icon, blurb }) => (
+              <NextLink
+                key={path}
+                href={path}
+                className="group bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5 hover:border-glacier-grey/60 hover:bg-charcoal transition-all"
+              >
+                <Icon className="w-8 h-8 text-glacier-grey/70 group-hover:text-glacier-grey mb-3 transition-colors" />
+                <h4 className="text-white font-bold text-sm mb-1.5">{name}</h4>
+                <p className="text-stone text-xs leading-relaxed">{blurb}</p>
+                <span className="inline-flex items-center gap-1 text-glacier-grey text-xs font-medium mt-3 group-hover:gap-2 transition-all">
+                  Explore <ArrowRight className="w-3 h-3" />
+                </span>
+              </NextLink>
+            ))}
+          </div>
+        </div>
+
+        {/* PROCESS */}
+        <div>
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+            How Our Custom Process Works
+          </h3>
+          <p className="text-stone text-center mb-10 max-w-xl mx-auto text-sm">
+            Every project follows the same five-step process, tuned to your timeline and budget.
+          </p>
+          <ol className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            {hubProcessSteps.map(({ icon: Icon, title, body }, i) => (
+              <li key={title} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5 relative">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-9 h-9 rounded-full bg-glacier-grey/20 border border-glacier-grey/40 flex items-center justify-center text-glacier-grey text-sm font-bold">{i + 1}</div>
+                  <Icon className="w-5 h-5 text-glacier-grey" />
+                </div>
+                <h4 className="text-white font-bold text-sm mb-1.5">{title}</h4>
+                <p className="text-stone text-xs leading-relaxed">{body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        {/* WHY AL-ASSALI */}
+        <div className="bg-charcoal/40 border border-glacier-grey/20 rounded-2xl p-8 md:p-12">
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+            Why Al-Assali Jewelry
+          </h3>
+          <p className="text-stone text-center mb-10 max-w-2xl mx-auto text-sm">
+            We are a small, focused Toronto workshop. Every piece is crafted by a master jeweller — not a factory — and backed by a lifetime craftsmanship guarantee.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: MapPin, title: 'Made in Toronto', body: 'Designed, cast, set, and finished entirely in our Vaughan Rd studio.' },
+              { icon: ShieldCheck, title: 'Lifetime Guarantee', body: 'Free polishing, rhodium re-plating, and resizing for life on every piece.' },
+              { icon: Diamond, title: 'GIA-Graded Diamonds', body: 'Conflict-free natural and lab-grown diamonds, graded to GIA standards.' },
+              { icon: Star, title: '5.0 on Google', body: '5-star rated by clients across the Greater Toronto Area.' },
+            ].map(({ icon: Icon, title, body }) => (
+              <div key={title} className="text-center">
+                <div className="w-12 h-12 rounded-full bg-glacier-grey/20 border border-glacier-grey/40 flex items-center justify-center mx-auto mb-3">
+                  <Icon className="w-6 h-6 text-glacier-grey" />
+                </div>
+                <h4 className="text-white font-bold text-sm mb-1.5">{title}</h4>
+                <p className="text-stone text-xs leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* MASTER JEWELLER */}
+        <div className="bg-charcoal/30 border border-glacier-grey/20 rounded-2xl p-8 md:p-12 text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-glacier-grey/20 border border-glacier-grey/40 mb-5">
+            <Hammer className="w-6 h-6 text-glacier-grey" />
+          </div>
+          <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweller &amp; Founder</div>
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+            Mohammad Al-Assali
+          </h3>
+          <p className="text-stone leading-relaxed text-sm md:text-base">
+            Mohammad is the founder and master jeweller behind Al-Assali Jewelry Studio. A George Brown College Jewellery Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
+          </p>
+        </div>
+
+        {/* LOCATION */}
+        <div className="text-center max-w-2xl mx-auto">
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
+            Visit Our Toronto Studio
+          </h3>
+          <p className="text-stone leading-relaxed text-sm mb-6">
+            Al-Assali Jewelry Studio is located at 624 Vaughan Rd in Toronto (M6E 2Y3), in the Oakwood–Vaughan neighbourhood. We work by appointment only — book a free consultation and we&apos;ll confirm a time that works for you.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <a href="tel:+16475624340" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
+              <MessageSquare className="w-4 h-4" /> (647) 562-4340
+            </a>
+            <a href="mailto:contact@alassalijewellerystudio.com" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
+              <Type className="w-4 h-4" /> contact@alassalijewellerystudio.com
+            </a>
+          </div>
+          <p className="text-stone text-xs mt-5">
+            Serving Toronto, Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, Milton, and the wider GTA.
+          </p>
+        </div>
+
+        {/* FAQ */}
+        <div className="max-w-3xl mx-auto">
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-10" style={{ fontFamily: 'var(--font-heading)' }}>
+            Frequently Asked Questions
+          </h3>
+          <div className="space-y-4">
+            {hubFaq.map((item, i) => (
+              <div key={i} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5">
+                <h4 className="text-white font-bold text-sm mb-1.5">{item.q}</h4>
+                <p className="text-stone text-sm leading-relaxed">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      {/* Schema JSON-LD: Breadcrumb + Hub FAQ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([hubBreadcrumb, hubFaqSchema]),
+        }}
+      />
+    </section>
   )
 }

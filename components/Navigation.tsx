@@ -47,13 +47,13 @@ export default function Navigation(props?: NavigationProps) {
 
   const bespokeMenu = [
     { name: 'Engagement Rings', path: '/custom/engagement-rings', icon: '/images/icons/engagement-rings.svg' },
+    { name: 'Wedding Bands', path: '/custom/wedding-bands', icon: '/images/icons/bridal-bands.svg' },
     { name: 'Rings', path: '/custom/rings', icon: '/images/icons/rings.svg' },
     { name: 'Pendants', path: '/custom/pendants', icon: '/images/icons/pendants.svg' },
     { name: 'Chains', path: '/custom/chains', icon: '/images/icons/chains.svg' },
     { name: 'Earrings', path: '/custom/earrings', icon: '/images/icons/earrings.svg' },
     { name: 'Bracelets', path: '/custom/bracelets', icon: '/images/icons/bracelets.svg' },
     { name: 'Grillz', path: '/custom/grillz', icon: '/images/icons/grillz.svg' },
-    { name: 'Bridal Bands', path: '/custom/general', icon: '/images/icons/bridal-bands.svg' },
   ]
 
   const menuItems = [
