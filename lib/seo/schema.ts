@@ -113,7 +113,6 @@ export function buildMasterJewellerSchema() {
     name: MASTER_JEWELLER.name,
     jobTitle: MASTER_JEWELLER.jobTitle,
     description: MASTER_JEWELLER.bio,
-    image: `${SITE_CONFIG.url}/images/master-jeweller.jpg`,
     url: `${SITE_CONFIG.url}/about/master-jeweller/${MASTER_JEWELLER.slug}`,
     worksFor: STORE_REF,
     knowsAbout: [...MASTER_JEWELLER.knowsAbout],

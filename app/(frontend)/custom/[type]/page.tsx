@@ -11,9 +11,10 @@ import {
   LayoutGrid, ChevronUp, ChevronDown, Square, Flame,
   Link, Waves, Shield, Type, Pen, Star, MapPin, Wrench, MessageSquare,
   Paintbrush, Crown, Circle, Layers, ShieldCheck,
-  CircleDot, Droplet, Gem,
+  CircleDot, Droplet, Gem, Hammer,
   MinusCircle, Leaf, FlaskConical,
   DollarSign, Calendar, CalendarDays, CalendarCheck,
+  Quote, Ruler, Coins, Ring, Scroll,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
@@ -1588,22 +1589,17 @@ function GeneralHub() {
         </div>
 
         {/* MASTER JEWELLER */}
-        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center bg-charcoal/30 border border-glacier-grey/20 rounded-2xl p-8 md:p-12">
-          <div className="md:w-1/3 text-center">
-            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto bg-glacier-grey/20 border-2 border-glacier-grey/40 flex items-center justify-center overflow-hidden">
-              {/* 📸 MASTER JEWELLER PHOTO — replace with real headshot */}
-              <span className="text-3xl text-glacier-grey font-bold">MA</span>
-            </div>
+        <div className="bg-charcoal/30 border border-glacier-grey/20 rounded-2xl p-8 md:p-12 text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-glacier-grey/20 border border-glacier-grey/40 mb-5">
+            <Hammer className="w-6 h-6 text-glacier-grey" />
           </div>
-          <div className="md:w-2/3 text-center md:text-left">
-            <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweller &amp; Founder</div>
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
-              Mohammad Al-Assali
-            </h3>
-            <p className="text-stone leading-relaxed text-sm md:text-base">
-              Mohammad is the founder and master jeweller behind Al-Assali Jewelry Studio. A George Brown College Jewellery Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
-            </p>
-          </div>
+          <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweller &amp; Founder</div>
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
+            Mohammad Al-Assali
+          </h3>
+          <p className="text-stone leading-relaxed text-sm md:text-base">
+            Mohammad is the founder and master jeweller behind Al-Assali Jewelry Studio. A George Brown College Jewellery Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
+          </p>
         </div>
 
         {/* LOCATION */}

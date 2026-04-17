@@ -25,21 +25,20 @@ export const SITE_CONFIG = {
     addressCountry: 'CA',
   },
 
-  // NOTE: approximate coordinates for 624 Vaughan Rd, Toronto M6E 2Y3.
-  // Replace with the exact lat/lng from Google Business Profile.
+  // Exact coordinates from the Al-Assali Jewelry Studio GBP embed.
   geo: {
-    latitude: 43.6855,
-    longitude: -79.4447,
+    latitude: 43.69254459710162,
+    longitude: -79.44107981534424,
   },
+  googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2884.8662181637624!2d-79.44107981534424!3d43.69254459710162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b43ebc5d39ceb%3A0xe7cb39f29dad222f!2sAl-assali%20Jewelry%20Studio!5e0!3m2!1sen!2sca!4v1776446921332!5m2!1sen!2sca',
+  googleMapsPlaceId: 'ChIJ658z3OtDK4gRLyKtnfI5y-c',
 
-  // Appointment-only studio. Hours mirror competitor norms for custom jewellers
-  // in Toronto (Linara, Orosergio, Kimberfire all run Tue–Sat 11–7). Confirm and
-  // update GBP to match.
+  // Appointment-only studio.
   hours: [
-    { dayOfWeek: ['Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '11:00', closes: '19:00' },
+    { dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '11:00', closes: '19:00' },
     { dayOfWeek: 'Saturday', opens: '11:00', closes: '17:00' },
   ],
-  closedDays: ['Sunday', 'Monday'],
+  closedDays: ['Sunday'],
   hoursNote: 'By appointment only',
 
   // Primary ranking target. Extended GTA cities listed in schema but copy stays Toronto-led.
