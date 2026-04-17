@@ -20,6 +20,7 @@ import type { LucideIcon } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 import StoneShapeSection from '@/components/bespoke/StoneShapeSection'
+import PricingTableSection from '@/components/bespoke/PricingTableSection'
 import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
@@ -780,6 +781,9 @@ function LandingPage({ type }: { type: string }) {
             </motion.p>
           </div>
         </section>
+
+        {/* ===== PRICING TABLE (real starting prices per style x metal) ===== */}
+        <PricingTableSection type={type} />
 
         {/* ===== TIMELINE & PROCESS ===== */}
         <section className="py-20 px-4 border-t border-glacier-grey/10">
