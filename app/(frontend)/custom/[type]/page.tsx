@@ -19,6 +19,7 @@ import {
 import type { LucideIcon } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
+import StoneShapeSection from '@/components/bespoke/StoneShapeSection'
 import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
@@ -748,6 +749,11 @@ function LandingPage({ type }: { type: string }) {
             </motion.p>
           </div>
         </section>
+
+        {/* ===== STONE SHAPES (types where shape matters) ===== */}
+        {['engagement-rings', 'rings', 'earrings', 'bracelets', 'pendants', 'wedding-bands'].includes(type) && (
+          <StoneShapeSection />
+        )}
 
         {/* ===== BUDGET GUIDE ===== */}
         <section className="py-20 px-4 border-t border-glacier-grey/10">
