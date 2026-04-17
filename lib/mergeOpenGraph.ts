@@ -3,12 +3,13 @@ import { getServerSideURL } from './getURL'
 
 const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
-  description: 'Crafting bespoke luxury jewelry in Toronto. Custom engagement rings, grillz, chains, pendants, and more. Made in Toronto, serving globally.',
+  description: 'Toronto\'s premier custom jeweller. Bespoke engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz — handcrafted in-house. 5-star rated on Google.',
   images: [
     { url: `${getServerSideURL()}/opengraph-image.jpg` },
   ].filter(Boolean),
-  siteName: 'Alassali Jewelry',
-  title: 'Alassali Jewelry - Custom Jewelry & Grillz | Toronto',
+  siteName: 'Al-Assali Jewelry',
+  locale: 'en_CA',
+  title: 'Custom Jeweller Toronto | Bespoke Engagement Rings, Chains & Grillz — Al-Assali Jewelry',
 }
 
 export function mergeOpenGraph(og?: Metadata['openGraph']): Metadata['openGraph'] {

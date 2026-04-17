@@ -29,9 +29,13 @@ const pageMeta: Record<string, { title: string; description: string }> = {
     title: 'Custom Grillz Toronto | Gold & Diamond Grillz — Al-Assali Jewelry',
     description: 'Toronto\'s premier custom grillz studio. Gold, diamond, and VVS grillz — from single tooth to full sets. In-house craftsmanship, competitive prices.',
   },
+  'wedding-bands': {
+    title: 'Custom Wedding Bands Toronto | Bridal, Eternity & Men\'s Bands — Al-Assali Jewelry',
+    description: 'Custom wedding bands handcrafted in Toronto. Matching bridal sets, eternity bands, men\'s wedding rings, engraved bands, and Arabic calligraphy rings — in gold, platinum, or silver.',
+  },
   'general': {
-    title: 'Start Your Custom Jewelry Journey | Al-Assali Jewelry Toronto',
-    description: 'Begin your custom jewelry journey with Toronto\'s premier jeweler. Engagement rings, grillz, chains, pendants, and more — all handcrafted in-house.',
+    title: 'Custom Jewellery Toronto | Bespoke Jeweller — Al-Assali Jewelry',
+    description: 'Design custom jewellery with Toronto\'s premier bespoke jeweller. Engagement rings, wedding bands, chains, pendants, grillz, and more — all handcrafted in-house on Vaughan Rd.',
   },
 }
 

@@ -1,13 +1,24 @@
 import type { Metadata } from 'next'
 import { getServerSideURL } from '@/lib/getURL'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
+import JsonLd from '@/components/seo/JsonLd'
+import {
+  buildJewelryStoreSchema,
+  buildOrganizationSchema,
+  buildMasterJewellerSchema,
+  buildWebsiteSchema,
+} from '@/lib/seo/schema'
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
-  title: 'Alassali Jewelry - Custom Jewelry & Grillz | Toronto',
-  description: 'Crafting bespoke luxury jewelry in Toronto. Custom engagement rings, grillz, chains, pendants, and more. Made in Toronto, serving globally.',
+  title: {
+    default: 'Custom Jeweller Toronto | Bespoke Engagement Rings, Chains & Grillz — Al-Assali Jewelry',
+    template: '%s | Al-Assali Jewelry',
+  },
+  description: 'Toronto\'s premier custom jeweller. Bespoke engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz — handcrafted in-house on Vaughan Rd. 5-star rated on Google.',
   openGraph: mergeOpenGraph(),
   twitter: { card: 'summary_large_image' },
+  alternates: { canonical: '/' },
 }
 
 export default function RootLayout({
@@ -17,7 +28,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        <JsonLd
+          id="site-schema"
+          data={[
+            buildJewelryStoreSchema(),
+            buildOrganizationSchema(),
+            buildMasterJewellerSchema(),
+            buildWebsiteSchema(),
+          ]}
+        />
+        {children}
+      </body>
     </html>
   )
 }

@@ -18,6 +18,8 @@ import {
 import type { LucideIcon } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
+import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
+import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 // ---------------------------------------------------------------------------
 // Floating diamond icons (matches homepage hero)
@@ -123,6 +125,12 @@ const typeConfig: Record<string, { title: string; subtitle: string; styles: stri
     styles: ['Tennis', 'Chain', 'Bangle', 'Cuff', 'Custom Design and/or Logo Design', 'Other'],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
+  'wedding-bands': {
+    title: 'Custom Wedding Bands',
+    subtitle: 'Bands as timeless as your vow — handcrafted to match your ring',
+    styles: ['Classic Band', 'Comfort Fit', 'Eternity', 'Half-Eternity', 'Men\'s Band', 'Engraved', 'Contour / Shaped', 'Stackable', 'Other'],
+    metals: ['Platinum', '18K Gold', '14K Gold', '10K Gold', 'Silver', 'Other'],
+  },
   'other': {
     title: 'Custom Piece',
     subtitle: 'Tell us about your dream piece — we\'ll bring it to life',
@@ -164,6 +172,11 @@ const styleIcons: Record<string, Record<string, LucideIcon>> = {
     Tennis: Gem, Chain: Link, Bangle: Circle,
     Cuff: Shield, 'Custom Design and/or Logo Design': Paintbrush, Other: HelpCircle,
   },
+  'wedding-bands': {
+    'Classic Band': Circle, 'Comfort Fit': CircleDot, Eternity: Sparkles,
+    'Half-Eternity': Star, 'Men\'s Band': Shield, Engraved: Pen,
+    'Contour / Shaped': Waves, Stackable: Layers, Other: HelpCircle,
+  },
 }
 
 // ---------------------------------------------------------------------------
@@ -173,6 +186,7 @@ const styleIcons: Record<string, Record<string, LucideIcon>> = {
 const sizeConfig: Record<string, { label: string; placeholder: string }> = {
   'engagement-rings': { label: 'Ring Size', placeholder: 'e.g., Size 7' },
   'rings': { label: 'Ring Size', placeholder: 'e.g., Size 7' },
+  'wedding-bands': { label: 'Ring Size', placeholder: 'e.g., Size 7' },
   'chains': { label: 'Chain Length', placeholder: 'e.g., 22 inches' },
   'pendants': { label: 'Chain Length (optional)', placeholder: 'e.g., 18 inches' },
   'bracelets': { label: 'Wrist Size', placeholder: 'e.g., 7.5 inches' },
@@ -469,6 +483,47 @@ const landingContent: Record<string, {
       { name: 'Custom Rings', path: '/custom/rings' },
     ],
   },
+  'wedding-bands': {
+    heroH1: 'Custom Wedding Bands in Toronto',
+    heroSub: 'Bands as timeless as your vow — handcrafted in Toronto to match your ring, your finish, and your story.',
+    intro: 'A wedding band is the piece you\'ll wear every single day for the rest of your life, so it deserves the same care as the engagement ring it sits beside. At Al-Assali Jewelry, every custom wedding band is designed and handcrafted in-house in Toronto — from classic comfort-fit bands and eternity rings to contour-shaped bands that nest perfectly against a halo or solitaire. Choose platinum, 18K, 14K, or 10K gold in yellow, white, or rose, with optional diamond or gemstone accents and any engraving you can imagine, including Arabic calligraphy, fingerprints, and soundwaves. We craft matching bridal sets for couples, modern men\'s bands in brushed or hammered finishes, and stackable anniversary bands — all with our lifetime craftsmanship guarantee.',
+    whyCards: [
+      { icon: MapPin, title: 'Made in Toronto', text: 'Every band crafted entirely in our Toronto studio — no outsourcing, no middlemen.' },
+      { icon: Heart, title: 'Matching Bridal Sets', text: 'Contour and shaped bands designed to nest flush against your engagement ring.' },
+      { icon: Pen, title: 'Any Engraving', text: 'Inside or outside engraving in any font — including Arabic calligraphy, fingerprints, and soundwaves.' },
+      { icon: ShieldCheck, title: 'Lifetime Guarantee', text: 'Free polishing, rhodium re-plating, and resizing for life on every band we create.' },
+    ],
+    processNote: 'Custom wedding bands take 3-5 weeks from design approval to completion. We start with a free consultation to understand the fit, finish, and story you want, create CAD renderings for your approval, then hand-craft each band in your chosen metal. Matching bridal sets are designed alongside the engagement ring when possible to ensure a perfect nest. Rush orders can be completed in 2-3 weeks for an additional fee.',
+    budgetGuide: 'Custom wedding bands start at $900 for plain 10K gold bands and scale with karat, width, eternity stone coverage, and engraving complexity. A solid platinum comfort-fit band typically starts around $1,800, a half-eternity diamond band around $3,500, and a full diamond eternity band from $6,000. We quote every band up front with no hidden fees.',
+    stoneNote: 'Bands can be set with diamonds (natural or lab-grown), sapphires, rubies, or emeralds in channel, bead, or shared-prong settings. Eternity and half-eternity bands are our most popular stone-set options, with birthstone bands a close second for anniversary pieces.',
+    faq: [
+      { q: 'How much does a custom wedding band cost in Toronto?', a: 'Custom wedding bands start at $900 for plain 10K gold and scale with metal karat, width, diamond coverage, and engraving. Platinum bands start around $1,800, half-eternity diamond bands from $3,500.' },
+      { q: 'Do you match wedding bands to engagement rings?', a: 'Yes — we specialize in contour and shaped bands that nest flush against halo, solitaire, and three-stone engagement rings. Bring in your engagement ring and we\'ll design a band to match.' },
+      { q: 'What\'s the difference between comfort fit and standard fit?', a: 'Comfort-fit bands have a slightly domed interior, making them easier to slide over the knuckle and more comfortable for daily wear. Standard-fit bands have a flat interior and feel slightly more traditional.' },
+      { q: 'Can you engrave Arabic calligraphy on a wedding band?', a: 'Absolutely — we engrave Arabic calligraphy, scripture, names, dates, fingerprints, soundwaves, and any custom design you envision, inside or outside the band.' },
+      { q: 'Do you make men\'s wedding bands?', a: 'Yes — we craft men\'s wedding bands in widths from 4mm to 10mm with brushed, hammered, polished, or matte finishes. Popular options include tungsten-look platinum, two-tone gold, and diamond-accent bands.' },
+      { q: 'How long does a custom wedding band take in Toronto?', a: 'Most bands take 3-5 weeks from design approval. Matching bridal sets take 4-6 weeks. Rush orders can be completed in 2-3 weeks for an additional fee.' },
+      { q: 'Can I reset diamonds from a family ring into a new band?', a: 'Yes — heirloom resets are one of our most meaningful projects. We\'ll carefully remove the stones and reset them into your new custom band design.' },
+      { q: 'Do you make stackable anniversary bands?', a: 'Yes — we love designing stackable sets that add a new band for every anniversary or milestone. Mix metals, karats, and stone colours for a truly personal stack.' },
+      { q: 'Can you size my band precisely?', a: 'Yes — we measure your ring size during consultation at no charge, and every custom band includes free resizing for life if your size changes.' },
+    ],
+    relatedPages: [
+      { name: 'Custom Engagement Rings', path: '/custom/engagement-rings' },
+      { name: 'Custom Rings', path: '/custom/rings' },
+      { name: 'Custom Pendants', path: '/custom/pendants' },
+    ],
+  },
+}
+
+const servicePricing: Record<string, { minPrice: number; maxPrice?: number; serviceType: string }> = {
+  'engagement-rings': { minPrice: 1000, maxPrice: 50000, serviceType: 'Custom Engagement Ring Design' },
+  'rings': { minPrice: 1000, maxPrice: 25000, serviceType: 'Custom Ring Design' },
+  'wedding-bands': { minPrice: 900, maxPrice: 15000, serviceType: 'Custom Wedding Band Design' },
+  'pendants': { minPrice: 1000, maxPrice: 20000, serviceType: 'Custom Pendant Design' },
+  'chains': { minPrice: 1000, maxPrice: 30000, serviceType: 'Custom Chain Design' },
+  'earrings': { minPrice: 1000, maxPrice: 20000, serviceType: 'Custom Earring Design' },
+  'bracelets': { minPrice: 1000, maxPrice: 25000, serviceType: 'Custom Bracelet Design' },
+  'grillz': { minPrice: 500, maxPrice: 25000, serviceType: 'Custom Grillz Design' },
 }
 
 function LandingPage({ type }: { type: string }) {
@@ -483,6 +538,27 @@ function LandingPage({ type }: { type: string }) {
   const icons = styleIcons[type] || {}
   const showStones = type !== 'grillz'
   const sizeInfo = sizeConfig[type] || sizeConfig['other']
+
+  const pricing = servicePricing[type]
+  const serviceSchema = pricing
+    ? buildServiceSchema({
+        slug: type,
+        serviceType: pricing.serviceType,
+        name: landing.heroH1,
+        description: landing.heroSub,
+        minPrice: pricing.minPrice,
+        maxPrice: pricing.maxPrice,
+        styles: config.styles,
+      })
+    : null
+
+  const breadcrumbSchema = buildBreadcrumbSchema([
+    { name: 'Home', url: SITE_CONFIG.url },
+    { name: 'Bespoke', url: `${SITE_CONFIG.url}/custom/general` },
+    { name: config.title, url: `${SITE_CONFIG.url}/custom/${type}` },
+  ])
+
+  const faqSchema = buildFaqSchema(landing.faq)
 
   return (
     <div className="min-h-screen bg-soft-black relative overflow-hidden" data-testid="custom-landing">
@@ -753,19 +829,13 @@ function LandingPage({ type }: { type: string }) {
         </section>
       </div>
 
-      {/* FAQ Schema JSON-LD */}
+      {/* Schema JSON-LD: Service + BreadcrumbList + FAQPage */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'FAQPage',
-            mainEntity: landing.faq.map((item) => ({
-              '@type': 'Question',
-              name: item.q,
-              acceptedAnswer: { '@type': 'Answer', text: item.a },
-            })),
-          }),
+          __html: JSON.stringify(
+            [serviceSchema, breadcrumbSchema, faqSchema].filter(Boolean),
+          ),
         }}
       />
     </div>
@@ -785,8 +855,13 @@ export default function CustomJewelryPage() {
     return <LandingPage type={urlType} />
   }
 
-  // /custom/general → portal form
-  return <PortalForm />
+  // /custom/general → portal form above, hub SEO content below
+  return (
+    <>
+      <PortalForm />
+      <GeneralHub />
+    </>
+  )
 }
 
 // ---------------------------------------------------------------------------
@@ -978,7 +1053,7 @@ function PortalForm() {
 
   if (submitted) {
     return (
-      <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] -mb-24 bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
+      <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
         <DotPattern />
         <DiamondPattern className="text-white" />
         <FloatingDiamonds />
@@ -1005,7 +1080,7 @@ function PortalForm() {
   // =========================================================================
 
   return (
-    <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] -mb-24 bg-soft-black relative overflow-hidden flex flex-col" data-testid="custom-form-hero">
+    <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] bg-soft-black relative overflow-hidden flex flex-col" data-testid="custom-form-hero">
       <DotPattern />
       <DiamondPattern className="text-white" />
       <FloatingDiamonds />
@@ -1370,5 +1445,212 @@ function PortalForm() {
         </div>
       </div>
     </div>
+  )
+}
+
+// ---------------------------------------------------------------------------
+// GeneralHub — SEO-rich hub content rendered below the PortalForm on /custom/general
+// Targets "custom jeweller Toronto", "bespoke jewellery Toronto", "custom jewellery Toronto"
+// ---------------------------------------------------------------------------
+
+const hubBespokeCards: { name: string; path: string; icon: LucideIcon; blurb: string }[] = [
+  { name: 'Custom Engagement Rings', path: '/custom/engagement-rings', icon: Diamond, blurb: 'Solitaire, halo, vintage, three-stone — designed around your love story.' },
+  { name: 'Custom Wedding Bands', path: '/custom/wedding-bands', icon: Heart, blurb: 'Matching bridal sets, eternity bands, men\'s bands, and engraved pieces.' },
+  { name: 'Custom Rings', path: '/custom/rings', icon: Circle, blurb: 'Signet, statement, stackable, everyday — in gold, platinum, or silver.' },
+  { name: 'Custom Pendants', path: '/custom/pendants', icon: Layers, blurb: 'Name pendants, photo pendants, religious symbols, Arabic calligraphy.' },
+  { name: 'Custom Chains', path: '/custom/chains', icon: Link, blurb: 'Miami Cuban, rope, franco, figaro — solid gold, never hollow.' },
+  { name: 'Custom Earrings', path: '/custom/earrings', icon: CircleDot, blurb: 'Studs, hoops, drops, chandeliers — diamond and gold.' },
+  { name: 'Custom Bracelets', path: '/custom/bracelets', icon: Gem, blurb: 'Tennis bracelets, bangles, cuffs, engraved men\'s ID bracelets.' },
+  { name: 'Custom Grillz', path: '/custom/grillz', icon: Flame, blurb: 'Gold and VVS diamond grillz — single tooth to full sets.' },
+]
+
+const hubProcessSteps = [
+  { icon: MessageSquare, title: 'Consultation', body: 'Free in-studio or virtual consultation to understand your vision, budget, and timeline.' },
+  { icon: Pen, title: 'Design & CAD', body: 'Our designers produce detailed sketches and 3D CAD renderings for your approval before crafting begins.' },
+  { icon: Diamond, title: 'Stone & Metal Selection', body: 'Hand-pick GIA-graded natural or lab-grown diamonds, coloured gems, and your choice of gold, platinum, or silver.' },
+  { icon: Wrench, title: 'In-House Crafting', body: 'Every piece is cast, set, and finished entirely in our Toronto workshop by master jeweller Mohammad Al-Assali — no outsourcing.' },
+  { icon: Gem, title: 'Presentation', body: 'Your finished piece is inspected, photographed, and presented in luxury packaging with a lifetime craftsmanship guarantee.' },
+]
+
+const hubFaq = [
+  { q: 'Where is Al-Assali Jewelry located in Toronto?', a: 'Our studio is at 624 Vaughan Rd in Toronto (M6E 2Y3), in the Oakwood–Vaughan neighbourhood. We operate by appointment only to give every client our full attention.' },
+  { q: 'Do I need an appointment to visit the Toronto studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we\'ll confirm a time that works for you.' },
+  { q: 'What areas around Toronto do you serve?', a: 'Our studio is in Toronto, and we regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, and Milton.' },
+  { q: 'How do I start a custom jewellery project?', a: 'Book a free consultation (virtual or in-studio). We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
+  { q: 'How much does custom jewellery cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal, stones, and design complexity. We quote every project up front with no hidden fees.' },
+  { q: 'Do you offer lab-grown diamonds?', a: 'Yes — we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value.' },
+  { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We\'ll carefully remove the stones from your existing piece and set them into your new custom design.' },
+  { q: 'Do you offer Arabic calligraphy jewellery?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweller is fluent in the art of Arabic calligraphy casting.' },
+  { q: 'What is the typical timeline for custom jewellery?', a: 'Most pieces take 2-6 weeks: grillz 1-2 weeks, pendants 2-4 weeks, chains and earrings 2-4 weeks, rings and bracelets 3-5 weeks, engagement rings 4-6 weeks. Rush orders are available.' },
+  { q: 'Do you ship outside of Toronto?', a: 'Yes — we ship securely across the GTA and anywhere in Canada. Finished pieces are always fully insured in transit.' },
+]
+
+function GeneralHub() {
+  const hubBreadcrumb = buildBreadcrumbSchema([
+    { name: 'Home', url: SITE_CONFIG.url },
+    { name: 'Bespoke', url: `${SITE_CONFIG.url}/custom/general` },
+  ])
+  const hubFaqSchema = buildFaqSchema(hubFaq)
+
+  return (
+    <section className="bg-soft-black text-white relative overflow-hidden">
+      <DotPattern />
+      <DiamondPattern className="text-white" />
+
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-20 md:py-28 space-y-20">
+
+        {/* INTRO */}
+        <header className="text-center max-w-3xl mx-auto">
+          <div className="inline-flex items-center gap-2 mb-5">
+            <Sparkles className="w-4 h-4 text-glacier-grey" />
+            <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">Toronto&apos;s Custom Jewellery Studio</span>
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
+            Toronto&apos;s Premier Custom Jeweller
+          </h2>
+          <p className="text-stone leading-relaxed text-base md:text-lg">
+            Al-Assali Jewelry is a bespoke jewellery studio on Vaughan Road in Toronto. Master jeweller Mohammad Al-Assali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
+          </p>
+        </header>
+
+        {/* BESPOKE GRID */}
+        <div>
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+            What We Create
+          </h3>
+          <p className="text-stone text-center mb-10 max-w-xl mx-auto text-sm">
+            Every category we offer is fully customizable. Choose a piece type to see styles, materials, pricing, and timelines.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {hubBespokeCards.map(({ name, path, icon: Icon, blurb }) => (
+              <NextLink
+                key={path}
+                href={path}
+                className="group bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5 hover:border-glacier-grey/60 hover:bg-charcoal transition-all"
+              >
+                <Icon className="w-8 h-8 text-glacier-grey/70 group-hover:text-glacier-grey mb-3 transition-colors" />
+                <h4 className="text-white font-bold text-sm mb-1.5">{name}</h4>
+                <p className="text-stone text-xs leading-relaxed">{blurb}</p>
+                <span className="inline-flex items-center gap-1 text-glacier-grey text-xs font-medium mt-3 group-hover:gap-2 transition-all">
+                  Explore <ArrowRight className="w-3 h-3" />
+                </span>
+              </NextLink>
+            ))}
+          </div>
+        </div>
+
+        {/* PROCESS */}
+        <div>
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+            How Our Custom Process Works
+          </h3>
+          <p className="text-stone text-center mb-10 max-w-xl mx-auto text-sm">
+            Every project follows the same five-step process, tuned to your timeline and budget.
+          </p>
+          <ol className="grid grid-cols-1 md:grid-cols-5 gap-4">
+            {hubProcessSteps.map(({ icon: Icon, title, body }, i) => (
+              <li key={title} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5 relative">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-9 h-9 rounded-full bg-glacier-grey/20 border border-glacier-grey/40 flex items-center justify-center text-glacier-grey text-sm font-bold">{i + 1}</div>
+                  <Icon className="w-5 h-5 text-glacier-grey" />
+                </div>
+                <h4 className="text-white font-bold text-sm mb-1.5">{title}</h4>
+                <p className="text-stone text-xs leading-relaxed">{body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+
+        {/* WHY AL-ASSALI */}
+        <div className="bg-charcoal/40 border border-glacier-grey/20 rounded-2xl p-8 md:p-12">
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+            Why Al-Assali Jewelry
+          </h3>
+          <p className="text-stone text-center mb-10 max-w-2xl mx-auto text-sm">
+            We are a small, focused Toronto workshop. Every piece is crafted by a master jeweller — not a factory — and backed by a lifetime craftsmanship guarantee.
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { icon: MapPin, title: 'Made in Toronto', body: 'Designed, cast, set, and finished entirely in our Vaughan Rd studio.' },
+              { icon: ShieldCheck, title: 'Lifetime Guarantee', body: 'Free polishing, rhodium re-plating, and resizing for life on every piece.' },
+              { icon: Diamond, title: 'GIA-Graded Diamonds', body: 'Conflict-free natural and lab-grown diamonds, graded to GIA standards.' },
+              { icon: Star, title: '5.0 on Google', body: '5-star rated by clients across the Greater Toronto Area.' },
+            ].map(({ icon: Icon, title, body }) => (
+              <div key={title} className="text-center">
+                <div className="w-12 h-12 rounded-full bg-glacier-grey/20 border border-glacier-grey/40 flex items-center justify-center mx-auto mb-3">
+                  <Icon className="w-6 h-6 text-glacier-grey" />
+                </div>
+                <h4 className="text-white font-bold text-sm mb-1.5">{title}</h4>
+                <p className="text-stone text-xs leading-relaxed">{body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* MASTER JEWELLER */}
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-center bg-charcoal/30 border border-glacier-grey/20 rounded-2xl p-8 md:p-12">
+          <div className="md:w-1/3 text-center">
+            <div className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto bg-glacier-grey/20 border-2 border-glacier-grey/40 flex items-center justify-center overflow-hidden">
+              {/* 📸 MASTER JEWELLER PHOTO — replace with real headshot */}
+              <span className="text-3xl text-glacier-grey font-bold">MA</span>
+            </div>
+          </div>
+          <div className="md:w-2/3 text-center md:text-left">
+            <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweller &amp; Founder</div>
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
+              Mohammad Al-Assali
+            </h3>
+            <p className="text-stone leading-relaxed text-sm md:text-base">
+              Mohammad is the founder and master jeweller behind Al-Assali Jewelry Studio. A George Brown College Jewellery Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
+            </p>
+          </div>
+        </div>
+
+        {/* LOCATION */}
+        <div className="text-center max-w-2xl mx-auto">
+          <h3 className="text-2xl md:text-3xl font-bold text-white mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
+            Visit Our Toronto Studio
+          </h3>
+          <p className="text-stone leading-relaxed text-sm mb-6">
+            Al-Assali Jewelry Studio is located at 624 Vaughan Rd in Toronto (M6E 2Y3), in the Oakwood–Vaughan neighbourhood. We work by appointment only — book a free consultation and we&apos;ll confirm a time that works for you.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <a href="tel:+16475624340" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
+              <MessageSquare className="w-4 h-4" /> (647) 562-4340
+            </a>
+            <a href="mailto:contact@alassalijewellerystudio.com" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
+              <Type className="w-4 h-4" /> contact@alassalijewellerystudio.com
+            </a>
+          </div>
+          <p className="text-stone text-xs mt-5">
+            Serving Toronto, Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, Milton, and the wider GTA.
+          </p>
+        </div>
+
+        {/* FAQ */}
+        <div className="max-w-3xl mx-auto">
+          <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-10" style={{ fontFamily: 'var(--font-heading)' }}>
+            Frequently Asked Questions
+          </h3>
+          <div className="space-y-4">
+            {hubFaq.map((item, i) => (
+              <div key={i} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5">
+                <h4 className="text-white font-bold text-sm mb-1.5">{item.q}</h4>
+                <p className="text-stone text-sm leading-relaxed">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+      </div>
+
+      {/* Schema JSON-LD: Breadcrumb + Hub FAQ */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([hubBreadcrumb, hubFaqSchema]),
+        }}
+      />
+    </section>
   )
 }
