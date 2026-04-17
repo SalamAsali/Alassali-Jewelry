@@ -21,6 +21,7 @@ import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 import StoneShapeSection from '@/components/bespoke/StoneShapeSection'
 import PricingTableSection from '@/components/bespoke/PricingTableSection'
+import NaturalVsLabSection from '@/components/bespoke/NaturalVsLabSection'
 import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
@@ -754,6 +755,11 @@ function LandingPage({ type }: { type: string }) {
         {/* ===== STONE SHAPES (types where shape matters) ===== */}
         {['engagement-rings', 'rings', 'earrings', 'bracelets', 'pendants', 'wedding-bands'].includes(type) && (
           <StoneShapeSection />
+        )}
+
+        {/* ===== NATURAL VS LAB-GROWN (diamond-centric types) ===== */}
+        {['engagement-rings', 'earrings', 'bracelets', 'wedding-bands'].includes(type) && (
+          <NaturalVsLabSection />
         )}
 
         {/* ===== BUDGET GUIDE ===== */}
