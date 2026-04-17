@@ -22,6 +22,7 @@ import DotPattern from '@/components/DotPattern'
 import StoneShapeSection from '@/components/bespoke/StoneShapeSection'
 import PricingTableSection from '@/components/bespoke/PricingTableSection'
 import NaturalVsLabSection from '@/components/bespoke/NaturalVsLabSection'
+import GrillzConfigSection from '@/components/bespoke/GrillzConfigSection'
 import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
@@ -761,6 +762,9 @@ function LandingPage({ type }: { type: string }) {
         {['engagement-rings', 'earrings', 'bracelets', 'wedding-bands'].includes(type) && (
           <NaturalVsLabSection />
         )}
+
+        {/* ===== GRILLZ: teeth config + clarity ladder ===== */}
+        {type === 'grillz' && <GrillzConfigSection />}
 
         {/* ===== BUDGET GUIDE ===== */}
         <section className="py-20 px-4 border-t border-glacier-grey/10">
