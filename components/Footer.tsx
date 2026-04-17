@@ -1,13 +1,23 @@
 'use client'
 
 import Link from 'next/link'
-import { Sparkles, MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react'
+import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react'
+import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 const DEFAULT_LOGO = '/images/logo.png'
-const DEFAULT_TAGLINE = 'Crafting bespoke luxury jewelry in Toronto since 2020. Where tradition meets innovation.'
-const DEFAULT_PHONE = '+1 (416) 555-1234'
-const DEFAULT_EMAIL = 'info@alassali.ca'
-const DEFAULT_LOCATION = 'Toronto & Mississauga, ON'
+const DEFAULT_TAGLINE = `Custom jeweller in Toronto since ${SITE_CONFIG.founded}. Every piece designed, cast, set, and finished in-house on Vaughan Rd.`
+const DEFAULT_PHONE = SITE_CONFIG.phoneDisplay
+const DEFAULT_EMAIL = SITE_CONFIG.email
+const DEFAULT_LOCATION = `${SITE_CONFIG.address.streetAddress}, ${SITE_CONFIG.address.addressLocality}, ${SITE_CONFIG.address.addressRegion}`
+
+// TikTok icon — lucide doesn't ship one
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M19.321 5.562a5.124 5.124 0 0 1-.443-.258 6.228 6.228 0 0 1-1.137-.966c-.849-.958-1.166-1.928-1.282-2.606h.004C16.367 1.24 16.417.86 16.417.5h-3.584v14.175c0 .191 0 .38-.008.566v.066a2.905 2.905 0 0 1-2.898 2.828 2.907 2.907 0 1 1 0-5.814c.168 0 .334.013.496.04V8.702a6.49 6.49 0 0 0-.496-.018 6.487 6.487 0 0 0-6.487 6.487 6.487 6.487 0 0 0 6.487 6.487 6.487 6.487 0 0 0 6.486-6.487V8.17a9.95 9.95 0 0 0 5.808 1.856V6.483a6.036 6.036 0 0 1-2.9-.921z" />
+    </svg>
+  )
+}
 
 type FooterProps = {
   logoUrl?: string | null
@@ -41,57 +51,40 @@ export default function Footer(props?: FooterProps) {
             </div>
           </div>
 
-          {/* Bespoke Column 1 */}
+          {/* Bespoke */}
           <div>
             <h3 className="text-lg font-heading font-semibold mb-4">Bespoke</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/custom/engagement-rings" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Engagement Rings
-                </Link>
-              </li>
-              <li>
-                <Link href="/custom/rings" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Rings
-                </Link>
-              </li>
-              <li>
-                <Link href="/custom/pendants" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Pendants
-                </Link>
-              </li>
-              <li>
-                <Link href="/custom/chains" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Chains
-                </Link>
-              </li>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/custom/engagement-rings" className="text-warm-gray hover:text-glacier-grey transition-colors">Engagement Rings</Link></li>
+              <li><Link href="/custom/wedding-bands" className="text-warm-gray hover:text-glacier-grey transition-colors">Wedding Bands</Link></li>
+              <li><Link href="/custom/rings" className="text-warm-gray hover:text-glacier-grey transition-colors">Rings</Link></li>
+              <li><Link href="/custom/pendants" className="text-warm-gray hover:text-glacier-grey transition-colors">Pendants</Link></li>
+              <li><Link href="/custom/chains" className="text-warm-gray hover:text-glacier-grey transition-colors">Chains</Link></li>
+              <li><Link href="/custom/earrings" className="text-warm-gray hover:text-glacier-grey transition-colors">Earrings</Link></li>
+              <li><Link href="/custom/bracelets" className="text-warm-gray hover:text-glacier-grey transition-colors">Bracelets</Link></li>
+              <li><Link href="/custom/grillz" className="text-warm-gray hover:text-glacier-grey transition-colors">Grillz</Link></li>
             </ul>
           </div>
 
-          {/* Bespoke Column 2 */}
+          {/* Guides & Studio */}
           <div>
-            <h3 className="text-lg font-heading font-semibold mb-4">&nbsp;</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href="/custom/earrings" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Earrings
-                </Link>
-              </li>
-              <li>
-                <Link href="/custom/bracelets" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Bracelets
-                </Link>
-              </li>
-              <li>
-                <Link href="/custom/grillz" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  Grillz
-                </Link>
-              </li>
-              <li>
-                <Link href="/custom/general" className="text-warm-gray hover:text-glacier-grey transition-colors text-sm">
-                  General Inquiry
-                </Link>
-              </li>
+            <h3 className="text-lg font-heading font-semibold mb-4">Guides &amp; Studio</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/blog/custom-engagement-ring-cost-toronto-2026" className="text-warm-gray hover:text-glacier-grey transition-colors">Engagement Ring Cost Guide</Link></li>
+              <li><Link href="/blog/grillz-price-guide-toronto-2026" className="text-warm-gray hover:text-glacier-grey transition-colors">Grillz Price Guide</Link></li>
+              <li><Link href="/blog/lab-grown-vs-natural-diamonds-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Lab vs Natural Diamonds</Link></li>
+              <li><Link href="/blog" className="text-warm-gray hover:text-glacier-grey transition-colors">All Guides</Link></li>
+              <li className="pt-2"><Link href="/about/master-jeweller/mohammad-al-assali" className="text-warm-gray hover:text-glacier-grey transition-colors">Master Jeweller</Link></li>
+              <li><Link href="/portfolio" className="text-warm-gray hover:text-glacier-grey transition-colors">Portfolio</Link></li>
+              <li><Link href="/faq" className="text-warm-gray hover:text-glacier-grey transition-colors">FAQ</Link></li>
+            </ul>
+            <h3 className="text-lg font-heading font-semibold mt-6 mb-3">Serving Toronto</h3>
+            <ul className="space-y-2 text-sm">
+              <li><Link href="/toronto/oakwood-vaughan" className="text-warm-gray hover:text-glacier-grey transition-colors">Oakwood–Vaughan</Link></li>
+              <li><Link href="/toronto/yorkville" className="text-warm-gray hover:text-glacier-grey transition-colors">Yorkville</Link></li>
+              <li><Link href="/toronto/north-york" className="text-warm-gray hover:text-glacier-grey transition-colors">North York</Link></li>
+              <li><Link href="/toronto/etobicoke" className="text-warm-gray hover:text-glacier-grey transition-colors">Etobicoke</Link></li>
+              <li><Link href="/toronto/scarborough" className="text-warm-gray hover:text-glacier-grey transition-colors">Scarborough</Link></li>
             </ul>
           </div>
 
@@ -133,10 +126,13 @@ export default function Footer(props?: FooterProps) {
                 </li>
               </ul>
               <div className="flex items-center gap-4 mt-6">
-                <a href="#" className="text-warm-gray hover:text-glacier-grey transition-colors">
+                <a href={SITE_CONFIG.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-warm-gray hover:text-glacier-grey transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href="#" className="text-warm-gray hover:text-glacier-grey transition-colors">
+                <a href={SITE_CONFIG.social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-warm-gray hover:text-glacier-grey transition-colors">
+                  <TikTokIcon className="w-5 h-5" />
+                </a>
+                <a href={SITE_CONFIG.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-warm-gray hover:text-glacier-grey transition-colors">
                   <Facebook className="w-5 h-5" />
                 </a>
               </div>

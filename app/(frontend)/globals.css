@@ -144,6 +144,43 @@
   .gradient-gold {
     background: linear-gradient(135deg, #A3A7AC 0%, #8E9196 100%);
   }
+
+  /* Blog typography — used by components/blog/BlogLayout.tsx children */
+  .prose-blog h2 {
+    @apply text-2xl md:text-3xl font-bold text-white mt-10 mb-4;
+    font-family: var(--font-heading);
+  }
+  .prose-blog h3 {
+    @apply text-xl md:text-2xl font-bold text-white mt-8 mb-3;
+    font-family: var(--font-heading);
+  }
+  .prose-blog p {
+    @apply text-stone leading-relaxed mb-5;
+  }
+  .prose-blog a {
+    @apply text-glacier-grey hover:text-glacier-grey-light underline underline-offset-2;
+  }
+  .prose-blog strong {
+    @apply text-white font-semibold;
+  }
+  .prose-blog ul {
+    @apply space-y-2 my-5 list-disc pl-5 text-stone;
+  }
+  .prose-blog ol {
+    @apply space-y-2 my-5 list-decimal pl-5 text-stone;
+  }
+  .prose-blog table {
+    @apply w-full my-6 text-sm border-collapse;
+  }
+  .prose-blog th {
+    @apply text-left p-3 text-glacier-grey text-xs uppercase tracking-wider font-semibold border-b border-glacier-grey/30;
+  }
+  .prose-blog td {
+    @apply p-3 text-stone border-b border-glacier-grey/10;
+  }
+  .prose-blog blockquote {
+    @apply border-l-4 border-glacier-grey/40 pl-5 italic text-stone my-6;
+  }
 }
 
 /* Diamond animations */
