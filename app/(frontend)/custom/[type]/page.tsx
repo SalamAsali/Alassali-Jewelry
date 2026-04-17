@@ -24,6 +24,8 @@ import PricingTableSection from '@/components/bespoke/PricingTableSection'
 import NaturalVsLabSection from '@/components/bespoke/NaturalVsLabSection'
 import GrillzConfigSection from '@/components/bespoke/GrillzConfigSection'
 import PendantsHeritageSection from '@/components/bespoke/PendantsHeritageSection'
+import TestimonialsSection from '@/components/bespoke/TestimonialsSection'
+import LocationSection from '@/components/bespoke/LocationSection'
 import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
@@ -833,6 +835,12 @@ function LandingPage({ type }: { type: string }) {
             </motion.div>
           </div>
         </section>
+
+        {/* ===== TESTIMONIALS (Google reviews strip) ===== */}
+        <TestimonialsSection type={type} />
+
+        {/* ===== LOCATION with embedded Google Map ===== */}
+        <LocationSection />
 
         {/* ===== FAQ (Schema eligible) ===== */}
         <section className="py-20 px-4 border-t border-glacier-grey/10">
