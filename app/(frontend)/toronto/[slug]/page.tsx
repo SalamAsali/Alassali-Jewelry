@@ -7,6 +7,7 @@ import {
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 import LocationSection from '@/components/bespoke/LocationSection'
+import LiveReviewsStrip from '@/components/reviews/LiveReviewsStrip'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { buildBreadcrumbSchema, buildFaqSchema, STORE_REF } from '@/lib/seo/schema'
 import { neighbourhoods, neighbourhoodSlugs } from './neighbourhoods'
@@ -182,6 +183,8 @@ export default function NeighbourhoodPage({ params }: { params: Params }) {
         </section>
 
       </div>
+
+      <LiveReviewsStrip />
 
       {/* Embedded map + full NAP */}
       <LocationSection />

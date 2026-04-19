@@ -4,6 +4,7 @@ import { MapPin, ArrowRight, Building2 } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 import LocationSection from '@/components/bespoke/LocationSection'
+import LiveReviewsStrip from '@/components/reviews/LiveReviewsStrip'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { neighbourhoods } from '../toronto/[slug]/neighbourhoods'
@@ -119,6 +120,7 @@ export default function ServiceAreasPage() {
 
       </div>
 
+      <LiveReviewsStrip />
       <LocationSection />
 
       <script
