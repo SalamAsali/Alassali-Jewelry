@@ -80,11 +80,18 @@ export default function Footer(props?: FooterProps) {
             </ul>
             <h3 className="text-lg font-heading font-semibold mt-6 mb-3">Serving Toronto</h3>
             <ul className="space-y-2 text-sm">
+              <li><Link href="/service-areas" className="text-glacier-grey hover:text-glacier-grey-light font-medium transition-colors">All service areas →</Link></li>
               <li><Link href="/toronto/oakwood-vaughan" className="text-warm-gray hover:text-glacier-grey transition-colors">Oakwood–Vaughan</Link></li>
+              <li><Link href="/toronto/wychwood" className="text-warm-gray hover:text-glacier-grey transition-colors">Wychwood</Link></li>
+              <li><Link href="/toronto/forest-hill" className="text-warm-gray hover:text-glacier-grey transition-colors">Forest Hill</Link></li>
+              <li><Link href="/toronto/bathurst-st-clair" className="text-warm-gray hover:text-glacier-grey transition-colors">Bathurst–St Clair</Link></li>
               <li><Link href="/toronto/yorkville" className="text-warm-gray hover:text-glacier-grey transition-colors">Yorkville</Link></li>
               <li><Link href="/toronto/north-york" className="text-warm-gray hover:text-glacier-grey transition-colors">North York</Link></li>
               <li><Link href="/toronto/etobicoke" className="text-warm-gray hover:text-glacier-grey transition-colors">Etobicoke</Link></li>
               <li><Link href="/toronto/scarborough" className="text-warm-gray hover:text-glacier-grey transition-colors">Scarborough</Link></li>
+              <li className="pt-2 border-t border-charcoal mt-2"><Link href="/gta/mississauga" className="text-warm-gray hover:text-glacier-grey transition-colors">Mississauga</Link></li>
+              <li><Link href="/gta/vaughan" className="text-warm-gray hover:text-glacier-grey transition-colors">Vaughan</Link></li>
+              <li><Link href="/gta/markham" className="text-warm-gray hover:text-glacier-grey transition-colors">Markham</Link></li>
             </ul>
           </div>
 

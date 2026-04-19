@@ -46,6 +46,14 @@ const posts: Post[] = [
     readingMinutes: 8,
     tag: 'Diamonds',
   },
+  {
+    slug: 'arabic-calligraphy-jewellery-toronto',
+    title: 'Arabic Calligraphy Jewellery in Toronto: A Craftsman\'s Guide',
+    excerpt: 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweller. Fonts, verses, meanings, prices, and what to ask for.',
+    date: '2026-04-19',
+    readingMinutes: 7,
+    tag: 'Heritage',
+  },
 ]
 
 export default function BlogIndex() {
