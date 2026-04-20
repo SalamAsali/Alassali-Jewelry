@@ -294,6 +294,17 @@ type StepId =
 // ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
+// Global "Why Choose Al-Assali" cards — identical across every bespoke page
+// ---------------------------------------------------------------------------
+
+const globalWhyCards: { icon: LucideIcon; title: string; text: string }[] = [
+  { icon: MapPin, title: 'Made in Toronto', text: 'Every piece crafted entirely in-house in Toronto — no outsourcing, no middlemen.' },
+  { icon: Diamond, title: 'Ethically Sourced', text: 'Natural and lab-grown diamonds, conflict-free sapphires, rubies, and emeralds.' },
+  { icon: MessageSquare, title: 'One-on-One Design', text: 'Personal consultation from concept to CAD rendering to finished piece.' },
+  { icon: ShieldCheck, title: 'Premium Materials', text: '10K-18K gold, platinum, and sterling silver with optional gemstones.' },
+]
+
+// ---------------------------------------------------------------------------
 // SEO landing page content per type
 // ---------------------------------------------------------------------------
 
@@ -301,7 +312,6 @@ const landingContent: Record<string, {
   heroH1: string
   heroSub: string
   intro: string
-  whyCards: { icon: LucideIcon; title: string; text: string }[]
   processNote: string
   budgetGuide: string
   stoneNote: string
@@ -312,12 +322,6 @@ const landingContent: Record<string, {
     heroH1: 'Custom Engagement Rings in Toronto',
     heroSub: 'Design a one-of-a-kind ring as unique as your love story — handcrafted in-house by Toronto\'s finest.',
     intro: 'At Al-Assali Jewelry, every custom engagement ring begins with your vision. Whether you dream of a classic solitaire, a vintage halo setting, or a bold modern design, our master craftspeople bring it to life entirely in-house in Toronto. Choose from ethically sourced natural and lab-grown diamonds, sapphires, rubies, and emeralds — set in platinum, 18K, or 14K gold. From the first sketch to the final presentation, your engagement ring is crafted with the care and precision your moment deserves. Couples across the GTA trust us because we don\'t outsource — every cut, setting, and polish happens under our roof.',
-    whyCards: [
-      { icon: MapPin, title: 'Made in Toronto', text: 'Every ring crafted entirely in-house at our Toronto studio — no outsourcing, no middlemen.' },
-      { icon: Diamond, title: 'Ethically Sourced', text: 'Natural and lab-grown diamonds, conflict-free sapphires, rubies, and emeralds.' },
-      { icon: MessageSquare, title: 'One-on-One Design', text: 'Personal consultation from concept to CAD rendering to finished piece.' },
-      { icon: ShieldCheck, title: 'Craftsmanship Guarantee', text: 'Lifetime guarantee on every engagement ring we create.' },
-    ],
     processNote: 'Most custom engagement rings take 4-6 weeks from design approval to completion. We start with a personal consultation to understand your vision, create detailed CAD renderings for your approval, then hand-select your stones before our master jewelers begin crafting. Rush orders are available when your timeline demands it.',
     budgetGuide: 'Custom engagement rings start at $1,000 and scale based on your choice of metal, stone type, carat weight, and design complexity. During consultation, we\'ll work within your budget to maximize brilliance — whether that means a stunning lab-grown diamond or a natural stone with exceptional cut quality.',
     stoneNote: 'Choose from natural diamonds, lab-grown diamonds, sapphires, rubies, and emeralds. We source every stone for maximum fire and brilliance, and we\'re happy to walk you through the 4Cs (cut, clarity, colour, carat) during your consultation. Lab-grown diamonds offer the same physical properties at a lower price point.',
@@ -345,12 +349,6 @@ const landingContent: Record<string, {
     heroH1: 'Custom Rings in Toronto',
     heroSub: 'Signet rings, statement rings, wedding bands, and more — designed around your vision, handcrafted in Toronto.',
     intro: 'From bold signet rings to elegant wedding bands and one-of-a-kind statement pieces, Al-Assali Jewelry creates custom rings that are uniquely yours. Every ring is handcrafted in-house in Toronto using the finest gold, platinum, and silver, with optional diamond and gemstone settings. Whether you have a detailed sketch or just an idea, our craftspeople will bring your ring to life with precision and care.',
-    whyCards: [
-      { icon: MapPin, title: 'Made in Toronto', text: 'Handcrafted in our Toronto studio — no outsourcing, no middlemen.' },
-      { icon: Wrench, title: 'Any Style, Any Design', text: 'Signet, statement, band, stackable, or something entirely new.' },
-      { icon: MessageSquare, title: 'Personal Consultation', text: 'Work directly with our designers from concept to finished piece.' },
-      { icon: ShieldCheck, title: 'Premium Materials', text: '10K-18K gold, platinum, and sterling silver with optional gemstones.' },
-    ],
     processNote: 'Custom rings typically take 3-5 weeks. We begin with a design consultation, create CAD renderings, and hand-select any stones before crafting begins. Whether it\'s a wedding band, a family signet ring, or a bold everyday statement piece, we treat every ring with the same level of detail.',
     budgetGuide: 'Custom rings start at $1,000 for simpler designs in 10K gold or silver, and scale with gold karat, platinum, stone settings, and design intricacy. Signet rings and wedding bands are among our most popular commissions.',
     stoneNote: 'Add diamonds (natural or lab-grown), sapphires, rubies, or emeralds to any custom ring. Stones can be flush-set, prong-set, or channel-set depending on your design and daily wear needs.',
@@ -376,12 +374,6 @@ const landingContent: Record<string, {
     heroH1: 'Custom Pendants in Toronto',
     heroSub: 'Name pendants, photo pendants, diamond initials, and more — your story, beautifully told in gold and silver.',
     intro: 'Al-Assali Jewelry creates custom pendants that carry meaning. From diamond-encrusted name pendants and photo pendants to religious symbols and fully custom designs, every piece is handcrafted in-house in Toronto. Choose your metal, your stones, and your design — we\'ll create a pendant as unique as the story it tells. Our custom name chains and bubble letter pendants are among the most requested pieces in the GTA.',
-    whyCards: [
-      { icon: MapPin, title: 'Made in Toronto', text: 'Every pendant crafted in our Toronto studio with precision and care.' },
-      { icon: Layers, title: 'Endless Designs', text: 'Name, initial, photo, religious, symbol — or bring your own concept.' },
-      { icon: Diamond, title: 'Diamond Setting', text: 'Add natural or lab-grown diamonds, sapphires, and other precious stones.' },
-      { icon: ShieldCheck, title: 'Premium Craftsmanship', text: '10K-18K gold, platinum, or sterling silver with lifetime quality guarantee.' },
-    ],
     processNote: 'Custom pendants take 2-4 weeks depending on complexity. Name and initial pendants are on the faster end, while photo pendants and diamond-set pieces require additional crafting time. We create a detailed mockup for your approval before beginning work.',
     budgetGuide: 'Custom pendants start at $1,000. Simple name pendants in 10K gold are the most accessible, while diamond-set photo pendants and large statement pieces sit at the higher end. We\'ll help you find the right balance of size, metal, and stone work for your budget.',
     stoneNote: 'Pendants can be set with diamonds (natural or lab-grown), sapphires, rubies, or emeralds. Popular options include diamond-encrusted initials, pave-set name pendants, and bezel-set center stones.',
@@ -408,12 +400,6 @@ const landingContent: Record<string, {
     heroH1: 'Custom Chains in Toronto',
     heroSub: 'Cuban links, rope chains, franco chains, and more — built to your exact specifications in gold, silver, or platinum.',
     intro: 'Al-Assali Jewelry is Toronto\'s destination for custom chains. Whether you want a heavyweight Miami Cuban link, a classic rope chain, or a sleek franco — every chain is handcrafted in-house to your exact length, width, and weight specifications. Choose from 10K, 14K, or 18K gold in yellow, white, or rose, as well as platinum and sterling silver. Our custom gold chains and name chains are among the most sought-after pieces in the GTA, built solid — never hollow.',
-    whyCards: [
-      { icon: MapPin, title: 'Made in Toronto', text: 'Every link crafted by hand in our Toronto workshop.' },
-      { icon: Wrench, title: 'Custom Specifications', text: 'Choose your exact length, width, weight, and clasp style.' },
-      { icon: Link, title: 'Every Style Available', text: 'Cuban link, rope, franco, figaro, box chain, and custom designs.' },
-      { icon: ShieldCheck, title: 'Solid Construction', text: 'No hollow chains — solid gold and silver built to last a lifetime.' },
-    ],
     processNote: 'Custom chains take 2-4 weeks depending on complexity and weight. Cuban links and heavier chains require more crafting time. We weigh and measure each chain to your exact specifications before finishing.',
     budgetGuide: 'Custom chain pricing depends primarily on gold weight. A lighter 10K gold box chain starts around $1,000, while a heavy 18K Cuban link can reach $10,000+. We quote based on current gold prices, karat, and your desired dimensions.',
     stoneNote: 'Chains can incorporate diamond-set clasps, diamond-cut links, or integrated diamond settings. We can also create matching chain-and-pendant combinations.',
@@ -439,12 +425,6 @@ const landingContent: Record<string, {
     heroH1: 'Custom Earrings in Toronto',
     heroSub: 'Diamond studs, gold hoops, drop earrings, and more — handcrafted to your design in our Toronto studio.',
     intro: 'From elegant diamond studs to bold statement hoops, Al-Assali Jewelry designs and crafts custom earrings entirely in-house in Toronto. Choose your style, your metal, and your stones — whether you want a subtle everyday pair or a show-stopping set for a special occasion, we craft them to perfection. We also create matching earring-and-pendant sets for a cohesive look.',
-    whyCards: [
-      { icon: MapPin, title: 'Made in Toronto', text: 'Every pair handcrafted in our Toronto studio.' },
-      { icon: CircleDot, title: 'Every Style', text: 'Studs, hoops, drops, chandeliers, and fully custom designs.' },
-      { icon: Diamond, title: 'Stone Options', text: 'Diamonds, sapphires, rubies, emeralds — natural or lab-grown.' },
-      { icon: ShieldCheck, title: 'Perfect Pairing', text: 'Create matching sets with pendants, rings, or bracelets.' },
-    ],
     processNote: 'Custom earrings take 2-4 weeks. Stud earrings are quicker to produce, while complex chandelier designs with multiple stone settings require more time. We create a detailed design for your approval before crafting.',
     budgetGuide: 'Custom earrings start at $1,000. Diamond stud earrings are priced based on stone size and quality, while gold hoops depend on weight and karat. We\'ll find the best combination for your budget.',
     stoneNote: 'Earrings can feature diamonds (natural or lab-grown), sapphires, rubies, and emeralds. Popular choices include diamond stud earrings, pave-set hoops, and drop earrings with colored gemstones.',
@@ -470,12 +450,6 @@ const landingContent: Record<string, {
     heroH1: 'Custom Bracelets in Toronto',
     heroSub: 'Tennis bracelets, bangles, cuffs, and engraved pieces for men and women — designed and crafted in Toronto.',
     intro: 'Al-Assali Jewelry creates custom bracelets for every style and occasion. From diamond tennis bracelets and elegant bangles to bold cuffs and engraved pieces for men, every bracelet is handcrafted in-house in Toronto. Whether you want a personalized name bracelet, a custom charm bracelet, or a mens engraved bracelet in solid gold — we\'ll create a piece that fits your wrist and your vision perfectly.',
-    whyCards: [
-      { icon: MapPin, title: 'Made in Toronto', text: 'Every bracelet crafted in our Toronto workshop.' },
-      { icon: Gem, title: 'Every Style', text: 'Tennis, chain, bangle, cuff, charm, and custom designs.' },
-      { icon: Wrench, title: 'Men\'s & Women\'s', text: 'Custom bracelets and engraved pieces for every wrist.' },
-      { icon: ShieldCheck, title: 'Perfect Fit', text: 'Measured and crafted to your exact wrist size.' },
-    ],
     processNote: 'Custom bracelets take 3-5 weeks. Tennis bracelets with many individual stone settings require more time, while bangles and cuffs are quicker. We measure your wrist for a precise fit during consultation.',
     budgetGuide: 'Custom bracelets start at $1,000. Tennis bracelets are priced based on stone count and quality, while bangles and cuffs depend on metal weight. Engraved bracelets for men are among our most popular commissions.',
     stoneNote: 'Bracelets can feature diamonds, sapphires, and other gemstones. Tennis bracelets with round brilliant diamonds are our most popular stone-set bracelet style. We also offer diamond-accented cuffs and charm bracelets.',
@@ -501,12 +475,6 @@ const landingContent: Record<string, {
     heroH1: 'Custom Grillz in Toronto',
     heroSub: 'Gold grillz, diamond grillz, and VVS sets — Toronto\'s premier custom grillz studio. In-house craftsmanship, competitive prices.',
     intro: 'Al-Assali Jewelry is Toronto\'s go-to destination for custom grillz. From single-tooth pieces to full diamond-set grillz, every set is handcrafted in-house using real gold and genuine diamonds — not plated, not CZ. We offer 10K, 14K, and 18K gold in yellow, white, and rose, with optional VVS diamond, diamond dust, and fully custom designs. Our mold process ensures a perfect fit every time, and our prices are explained upfront with no surprises. Whether you\'re looking for gold grillz, diamond grillz, or something entirely unique, we\'re the only shop in Toronto that does it all under one roof.',
-    whyCards: [
-      { icon: MapPin, title: 'Toronto\'s Best Grillz', text: 'Handcrafted in our Toronto studio — not mass-produced overseas.' },
-      { icon: Flame, title: 'Real Gold & Diamonds', text: '10K-18K solid gold with genuine VVS diamonds, not plated or CZ.' },
-      { icon: Wrench, title: 'Perfect Fit Guaranteed', text: 'Custom mold process ensures your grillz fit perfectly every time.' },
-      { icon: DollarSign, title: 'Competitive Pricing', text: 'Fair pricing explained upfront — no hidden fees, no surprises.' },
-    ],
     processNote: 'Custom grillz take 1-2 weeks after your mold appointment. We take a precise dental impression, design your grillz, and handcraft them in your chosen metal and stone configuration. Walk-in mold appointments are available.',
     budgetGuide: 'Grillz start at $500 for a single tooth in 10K gold. Top 6 or bottom 6 sets range from $2,000-$5,000 in solid gold. Full diamond-set VVS grillz start around $5,000 and scale with diamond quality and coverage.',
     stoneNote: 'We set genuine natural and lab-grown diamonds in grillz, including VVS clarity stones. Diamond dust finishes, channel-set diamonds, and fully iced-out options are all available. No cubic zirconia — ever.',
@@ -534,12 +502,6 @@ const landingContent: Record<string, {
     heroH1: 'Custom Wedding Bands in Toronto',
     heroSub: 'Bands as timeless as your vow — handcrafted in Toronto to match your ring, your finish, and your story.',
     intro: 'A wedding band is the piece you\'ll wear every single day for the rest of your life, so it deserves the same care as the engagement ring it sits beside. At Al-Assali Jewelry, every custom wedding band is designed and handcrafted in-house in Toronto — from classic comfort-fit bands and eternity rings to contour-shaped bands that nest perfectly against a halo or solitaire. Choose platinum, 18K, 14K, or 10K gold in yellow, white, or rose, with optional diamond or gemstone accents and any engraving you can imagine, including Arabic calligraphy, fingerprints, and soundwaves. We craft matching bridal sets for couples, modern men\'s bands in brushed or hammered finishes, and stackable anniversary bands — all with our lifetime craftsmanship guarantee.',
-    whyCards: [
-      { icon: MapPin, title: 'Made in Toronto', text: 'Every band crafted entirely in our Toronto studio — no outsourcing, no middlemen.' },
-      { icon: Heart, title: 'Matching Bridal Sets', text: 'Contour and shaped bands designed to nest flush against your engagement ring.' },
-      { icon: Pen, title: 'Any Engraving', text: 'Inside or outside engraving in any font — including Arabic calligraphy, fingerprints, and soundwaves.' },
-      { icon: ShieldCheck, title: 'Lifetime Guarantee', text: 'Free polishing, rhodium re-plating, and resizing for life on every band we create.' },
-    ],
     processNote: 'Custom wedding bands take 3-5 weeks from design approval to completion. We start with a free consultation to understand the fit, finish, and story you want, create CAD renderings for your approval, then hand-craft each band in your chosen metal. Matching bridal sets are designed alongside the engagement ring when possible to ensure a perfect nest. Rush orders can be completed in 2-3 weeks for an additional fee.',
     budgetGuide: 'Custom wedding bands start at $900 for plain 10K gold bands and scale with karat, width, eternity stone coverage, and engraving complexity. A solid platinum comfort-fit band typically starts around $1,800, a half-eternity diamond band around $3,500, and a full diamond eternity band from $6,000. We quote every band up front with no hidden fees.',
     stoneNote: 'Bands can be set with diamonds (natural or lab-grown), sapphires, rubies, or emeralds in channel, bead, or shared-prong settings. Eternity and half-eternity bands are our most popular stone-set options, with birthstone bands a close second for anniversary pieces.',
@@ -642,7 +604,7 @@ function LandingPage({ type }: { type: string }) {
               Why Choose Al-Assali
             </motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {landing.whyCards.map((card, i) => {
+              {globalWhyCards.map((card, i) => {
                 const CardIcon = card.icon
                 return (
                   <motion.div key={card.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-6 text-center hover:border-glacier-grey/40 transition-all">
