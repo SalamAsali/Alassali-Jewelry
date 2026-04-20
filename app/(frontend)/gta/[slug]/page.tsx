@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import NextLink from 'next/link'
 import {
   MapPin, ArrowRight, Phone, Mail, Diamond, Hammer, Scroll, Sparkles, Heart, Gem, Flame,
-  Link as LinkIcon, Clock, Truck,
+  Link as LinkIcon, Video, Truck,
 } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
@@ -93,14 +93,14 @@ export default function GtaCityPage({ params }: { params: Params }) {
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
           <div className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5">
-            <Clock className="w-6 h-6 text-glacier-grey mb-3" />
-            <h2 className="text-white font-bold text-sm mb-2">Drive Time</h2>
+            <Video className="w-6 h-6 text-glacier-grey mb-3" />
+            <h2 className="text-white font-bold text-sm mb-2">Virtual Consultation</h2>
             <p className="text-stone text-sm leading-relaxed">{c.driveTime}</p>
           </div>
           <div className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5">
             <Truck className="w-6 h-6 text-glacier-grey mb-3" />
-            <h2 className="text-white font-bold text-sm mb-2">Delivery</h2>
-            <p className="text-stone text-sm leading-relaxed">Secure insured delivery available anywhere in {c.name}.</p>
+            <h2 className="text-white font-bold text-sm mb-2">Secure Delivery</h2>
+            <p className="text-stone text-sm leading-relaxed">Complimentary insured delivery to your door anywhere in {c.name}.</p>
           </div>
         </section>
 
@@ -157,7 +157,7 @@ export default function GtaCityPage({ params }: { params: Params }) {
             Book a Free Consultation from {c.name}
           </h2>
           <p className="text-stone text-sm mb-6 leading-relaxed">
-            Call, email, or submit our custom inquiry form. Virtual or in-studio consultations available.
+            Call, email, or submit our custom inquiry form. Free virtual consultations — in-person in Toronto by appointment.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm">
             <a href={`tel:${SITE_CONFIG.phone}`} className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">

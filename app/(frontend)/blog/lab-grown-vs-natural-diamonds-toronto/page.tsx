@@ -147,12 +147,12 @@ export default function Page() {
 
       <h2>How we source at Al-Assali Jewelry</h2>
       <p>
-        We stock both lab-grown and natural diamonds in our Toronto studio. Every natural diamond over 0.5ct ships with a GIA grading report. Every lab-grown over 0.5ct ships with an IGI or GCAL report. We&apos;ll bring out loose stones of both during your consultation so you can compare face-up — most couples change their mind at least once after seeing them in person.
+        We stock both lab-grown and natural diamonds at our Toronto studio. Every natural diamond over 0.5ct ships with a GIA grading report. Every lab-grown over 0.5ct ships with an IGI or GCAL report. During your consultation we compare loose stones of both — on camera in high resolution, or in person by appointment in Toronto. Most couples change their mind at least once after seeing them side by side.
       </p>
 
       <h2>Book a consultation</h2>
       <p>
-        No pressure, no sales script. Come into our Toronto studio and we&apos;ll walk through the trade-offs that matter to you, pull loose stones in both categories, and help you choose with eyes open.
+        No pressure, no sales script. Book a free virtual consultation — or come meet us in Toronto by appointment. We&apos;ll walk through the trade-offs that matter to you, pull loose stones in both categories, and help you choose with eyes open.
       </p>
 
       <script

@@ -131,13 +131,13 @@ export default function Page() {
         <li>Every piece handcrafted in our Toronto studio — not mass-produced overseas</li>
         <li>Real solid gold (10K / 14K / 18K) and real diamonds only — no CZ, no moissanite, no plating</li>
         <li>Transparent per-tooth pricing explained up front</li>
-        <li>Precise dental-mold fit process done in-studio</li>
+        <li>Precise dental-mold fit taken in person at a by-appointment session in Toronto</li>
         <li>Specialized in both Toronto-style iced-out sets and cleaner minimalist pieces</li>
       </ul>
 
       <h2>Book your grillz mold appointment</h2>
       <p>
-        Our studio is at 624 Vaughan Rd in Toronto. Book by phone or through our custom inquiry form. Free consultation — come in, we&apos;ll take the mold, we&apos;ll walk through pricing, and you decide.
+        Book by phone or through our custom inquiry form. Free consultation — we&apos;ll walk through pricing virtually, and once you&apos;re ready we book a mold session in Toronto to take the impression in person.
       </p>
 
       <script
