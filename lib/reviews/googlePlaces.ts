@@ -29,6 +29,8 @@ export type GoogleReview = {
 
 type PlacesDetailsResponse = {
   result?: {
+    name?: string
+    formatted_address?: string
     rating?: number
     user_ratings_total?: number
     reviews?: Array<{
@@ -45,6 +47,13 @@ type PlacesDetailsResponse = {
 }
 
 const PLACE_ID = SITE_CONFIG.googleMapsPlaceId
+
+// Verification anchors — the Places API response must match one of these name
+// fragments and the address must contain this substring, otherwise we refuse
+// to render the reviews. Prevents silently showing a stranger's reviews if the
+// Place ID ever gets corrupted (env var swap, copy-paste error, etc.).
+const EXPECTED_NAME_FRAGMENTS = ['al-assali', 'alassali']
+const EXPECTED_ADDRESS_FRAGMENT = 'vaughan rd'
 
 export async function fetchGoogleReviews(): Promise<{
   reviews: GoogleReview[]
@@ -64,7 +73,9 @@ export async function fetchGoogleReviews(): Promise<{
 
   const url = new URL('https://maps.googleapis.com/maps/api/place/details/json')
   url.searchParams.set('place_id', PLACE_ID)
-  url.searchParams.set('fields', 'rating,user_ratings_total,reviews')
+  // Request `name` + `formatted_address` too so we can verify we're pulling
+  // from the correct place before rendering any reviews.
+  url.searchParams.set('fields', 'name,formatted_address,rating,user_ratings_total,reviews')
   url.searchParams.set('reviews_sort', 'newest')
   url.searchParams.set('reviews_no_translations', 'true')
   url.searchParams.set('language', 'en')
@@ -81,6 +92,25 @@ export async function fetchGoogleReviews(): Promise<{
 
     if (data.status !== 'OK' || !data.result) {
       throw new Error(data.error_message || `Places API status: ${data.status}`)
+    }
+
+    // Identity check: refuse to render reviews unless the returned place looks
+    // like Al-Assali Jewelry Studio. Guards against accidentally pulling a
+    // stranger's reviews if the Place ID ever gets corrupted.
+    const name = (data.result.name || '').toLowerCase()
+    const address = (data.result.formatted_address || '').toLowerCase()
+    const nameMatches = EXPECTED_NAME_FRAGMENTS.some((f) => name.includes(f))
+    const addressMatches = address.includes(EXPECTED_ADDRESS_FRAGMENT)
+    if (!nameMatches || !addressMatches) {
+      console.error(
+        `[googlePlaces] Identity check FAILED — Place ID ${PLACE_ID} resolved to "${data.result.name}" at "${data.result.formatted_address}". Expected name to include one of [${EXPECTED_NAME_FRAGMENTS.join(', ')}] and address to include "${EXPECTED_ADDRESS_FRAGMENT}". Refusing to render these reviews.`,
+      )
+      return {
+        reviews: [],
+        rating: Number(SITE_CONFIG.aggregateRating.ratingValue),
+        totalReviews: SITE_CONFIG.aggregateRating.reviewCount,
+        source: 'fallback',
+      }
     }
 
     const reviews = (data.result.reviews || []).map((r) => ({

@@ -31,6 +31,13 @@ export const SITE_CONFIG = {
     longitude: -79.44107981534424,
   },
   googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2884.8662181637624!2d-79.44107981534424!3d43.69254459710162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b43ebc5d39ceb%3A0xe7cb39f29dad222f!2sAl-assali%20Jewelry%20Studio!5e0!3m2!1sen!2sca!4v1776446921332!5m2!1sen!2sca',
+  // Source of truth for reviews / local-pack schema. Matches the FTID
+  // `0x882b43ebc5d39ceb:0xe7cb39f29dad222f` in the embed URL above.
+  // To re-verify or swap: paste into https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder
+  // and confirm the resolved name reads "Al-Assali Jewelry Studio".
+  // A runtime identity-check in lib/reviews/googlePlaces.ts will also refuse
+  // to render reviews unless the API-returned name contains "al-assali" and
+  // the address contains "Vaughan Rd".
   googleMapsPlaceId: 'ChIJ658z3OtDK4gRLyKtnfI5y-c',
 
   // Appointment-only studio.
