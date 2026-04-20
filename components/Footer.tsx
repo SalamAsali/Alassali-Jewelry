@@ -5,7 +5,7 @@ import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 const DEFAULT_LOGO = '/images/logo.png'
-const DEFAULT_TAGLINE = `Custom jeweller in Toronto since ${SITE_CONFIG.founded}. Every piece designed, cast, set, and finished in-house on Vaughan Rd.`
+const DEFAULT_TAGLINE = `Custom jeweller in Toronto since ${SITE_CONFIG.founded}. Every piece designed, cast, set, and finished in-house in Toronto.`
 const DEFAULT_PHONE = SITE_CONFIG.phoneDisplay
 const DEFAULT_EMAIL = SITE_CONFIG.email
 const DEFAULT_LOCATION = `${SITE_CONFIG.address.streetAddress}, ${SITE_CONFIG.address.addressLocality}, ${SITE_CONFIG.address.addressRegion}`

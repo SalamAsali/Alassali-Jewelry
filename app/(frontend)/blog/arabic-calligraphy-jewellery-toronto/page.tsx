@@ -131,7 +131,7 @@ export default function Page() {
 
       <h2>Book a consultation</h2>
       <p>
-        Whether you have a specific verse in mind, a family member&apos;s handwriting you want preserved in gold, or just an idea — we&apos;ll walk you through it. Consultations are free, and we work in-studio or virtually.
+        Whether you have a specific verse in mind, a family member&apos;s handwriting you want preserved in gold, or just an idea — we&apos;ll walk you through it. Consultations are free — virtual via Zoom, phone, or message, or in-person in Toronto by appointment.
       </p>
 
       <script

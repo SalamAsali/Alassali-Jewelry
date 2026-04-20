@@ -154,7 +154,7 @@ export default function NeighbourhoodPage({ params }: { params: Params }) {
             Book a Free Consultation from {n.name}
           </h2>
           <p className="text-stone text-sm mb-6 leading-relaxed">
-            Call, email, or submit our custom inquiry form. Virtual or in-studio consultations available — whichever fits your schedule.
+            Call, email, or submit our custom inquiry form. Free virtual consultations — in-person in Toronto by appointment.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm">
             <a href={`tel:${SITE_CONFIG.phone}`} className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
