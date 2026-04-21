@@ -5,16 +5,16 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import {
-  ArrowRight, Star,
+  ArrowRight,
   MessageSquare, Pencil, Gem, PenTool, Hammer, Gift,
   CircleDot, Layers, Link2, Ear, Watch, Smile,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
+import ReviewsScroller from '@/components/reviews/ReviewsScroller'
 import { getImageUrl } from '@/lib/getImageUrl'
 import type { GoogleReview } from '@/lib/reviews/googlePlaces'
-import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 type HomePageClientProps = {
   liveReviews?: GoogleReview[]
@@ -213,12 +213,6 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
   const img1 = torontoImages[0]
   const img2 = torontoImages[1]
   const steps = processSteps.length ? processSteps : FALLBACK_PROCESS
-
-  const testimonials = [
-    { name: 'gray', rating: 5, text: 'Had a perfect experience! Unmatched creativity and execution, definitely the only place to go in toronto for jewelry', source: 'Google' },
-    { name: 'Umair Alahi', rating: 5, text: 'My experience shopping here was excellent. They answered all my questions, worked out a price that fits my budget, & helped me choose the perfect piece and also kept in touch after the sale to make sure I was satisfied.', source: 'Google' },
-    { name: 'Padrono', rating: 5, text: "I've been to many shops looking for custom grillz and kept getting really high quotes. At this shop I was taken care of and the price was explained. The final product was worth way more than what I paid. By far the only place I will be going!", source: 'Google' },
-  ]
 
   return (
     <div className="overflow-hidden bg-white">
@@ -472,67 +466,14 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
       </section>
 
       {/* ===== TESTIMONIALS ===== */}
-      <section className="bg-white py-24 relative overflow-hidden">
-        <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1000 500" preserveAspectRatio="none">
-          <path d="M 0,250 Q 250,100 500,250 T 1000,250" fill="none" stroke="#8B7D6B" strokeWidth="2" />
-        </svg>
-        <div className="section-container relative z-10">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
-            <div className="inline-block mb-6">
-              <svg width="60" height="60" viewBox="0 0 60 60"><path d="M30 5 L40 25 L60 30 L40 35 L30 55 L20 35 L0 30 L20 25 Z" fill="#8E9196" /></svg>
-            </div>
-            {(liveRating || liveReviewCount) && (
-              <div className="flex items-center justify-center gap-2 text-sm text-taupe">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <span className="font-semibold text-deep-charcoal">
-                  {(liveRating ?? 5).toFixed(1)} · {liveReviewCount ?? 24} Google reviews
-                </span>
-              </div>
-            )}
-          </motion.div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {(liveReviews && liveReviews.length > 0
-              ? liveReviews.slice(0, 3).map((r) => ({
-                  name: r.authorName,
-                  rating: r.rating,
-                  text: r.text,
-                  relativeTime: r.relativeTime,
-                }))
-              : testimonials.map((t) => ({ ...t, relativeTime: undefined as string | undefined }))
-            ).map((testimonial, index) => (
-              <motion.div key={`${testimonial.name}-${index}`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: index * 0.1 }} className="bg-white rounded-xl shadow-lg p-6 border border-stone">
-                <div className="flex items-center gap-2 mb-3">
-                  <span className="font-semibold text-deep-charcoal">{testimonial.name}</span>
-                  <img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png" alt="Google" className="h-4" />
-                </div>
-                <div className="flex gap-1 mb-3">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-taupe text-sm leading-relaxed mb-3 line-clamp-5">{testimonial.text}</p>
-                {testimonial.relativeTime && (
-                  <p className="text-glacier-grey text-xs">{testimonial.relativeTime}</p>
-                )}
-              </motion.div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <a
-              href={SITE_CONFIG.social.googleBusiness}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-glacier-grey hover:text-deep-charcoal text-sm font-medium"
-            >
-              Read all {liveReviewCount ?? 24} reviews on Google →
-            </a>
-          </div>
-        </div>
-      </section>
+      <ReviewsScroller
+        reviews={liveReviews}
+        rating={liveRating}
+        totalReviews={liveReviewCount}
+        variant="light"
+        heading="What Our Toronto Clients Say"
+      />
+
 
       {/* ===== FINAL CTA ===== */}
       <section className="relative bg-soft-black text-white py-24" data-testid="final-cta-section">
