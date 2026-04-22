@@ -1,0 +1,98 @@
+name: DatoCMS migrate
+
+# Manually-triggered workflow that runs the DatoCMS migration scripts in
+# GitHub Actions infrastructure (which can reach the DatoCMS CMA, unlike
+# the Claude Code sandbox). Trigger from the Actions tab → "DatoCMS
+# migrate" → "Run workflow".
+#
+# Prerequisites:
+#   1. Create a CMA token in DatoCMS (Settings → API Tokens).
+#   2. Add it as a repo secret named `DATOCMS_CMA_TOKEN`
+#      (Settings → Secrets and variables → Actions → New repository secret).
+#   3. Optional: add `DATOCMS_ENVIRONMENT` secret/variable to target a
+#      non-primary environment.
+
+on:
+  workflow_dispatch:
+    inputs:
+      stage:
+        description: 'Which stage to run'
+        required: true
+        default: 'all'
+        type: choice
+        options:
+          - all
+          - models
+          - uploads
+          - records
+      environment:
+        description: 'DatoCMS environment (blank = primary)'
+        required: false
+        default: ''
+        type: string
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify CMA token is present
+        env:
+          DATOCMS_CMA_TOKEN: ${{ secrets.DATOCMS_CMA_TOKEN }}
+        run: |
+          if [ -z "$DATOCMS_CMA_TOKEN" ]; then
+            echo "::error::DATOCMS_CMA_TOKEN secret is not set."
+            echo "Add it in repo Settings → Secrets and variables → Actions."
+            exit 1
+          fi
+          echo "Token present (length: ${#DATOCMS_CMA_TOKEN})."
+
+      - name: Restore upload map
+        if: inputs.stage == 'records' || inputs.stage == 'all'
+        uses: actions/cache@v4
+        with:
+          path: scripts/migrate/.uploads.json
+          key: datocms-uploads-${{ inputs.environment || 'primary' }}-v1
+
+      - name: Run migration — models
+        if: inputs.stage == 'models' || inputs.stage == 'all'
+        env:
+          DATOCMS_CMA_TOKEN: ${{ secrets.DATOCMS_CMA_TOKEN }}
+          DATOCMS_ENVIRONMENT: ${{ inputs.environment }}
+        run: npm run migrate:models
+
+      - name: Run migration — uploads
+        if: inputs.stage == 'uploads' || inputs.stage == 'all'
+        env:
+          DATOCMS_CMA_TOKEN: ${{ secrets.DATOCMS_CMA_TOKEN }}
+          DATOCMS_ENVIRONMENT: ${{ inputs.environment }}
+        run: npm run migrate:uploads
+
+      - name: Run migration — records
+        if: inputs.stage == 'records' || inputs.stage == 'all'
+        env:
+          DATOCMS_CMA_TOKEN: ${{ secrets.DATOCMS_CMA_TOKEN }}
+          DATOCMS_ENVIRONMENT: ${{ inputs.environment }}
+        run: npm run migrate:records
+
+      - name: Save upload map
+        if: always() && (inputs.stage == 'uploads' || inputs.stage == 'all')
+        uses: actions/upload-artifact@v4
+        with:
+          name: datocms-uploads-${{ inputs.environment || 'primary' }}
+          path: scripts/migrate/.uploads.json
+          if-no-files-found: ignore
+          retention-days: 30

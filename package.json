@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "migrate:models": "node scripts/migrate/01-models.mjs",
+    "migrate:uploads": "node scripts/migrate/02-uploads.mjs",
+    "migrate:records": "node scripts/migrate/03-records.mjs",
+    "migrate:all": "node scripts/migrate/01-models.mjs && node scripts/migrate/02-uploads.mjs && node scripts/migrate/03-records.mjs"
   },
   "dependencies": {
     "@datocms/cda-client": "^0.2.10",
@@ -24,6 +28,7 @@
     "tailwind-merge": "^3.2.0"
   },
   "devDependencies": {
+    "@datocms/cma-client-node": "^3.3.16",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
