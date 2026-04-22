@@ -7,7 +7,6 @@ import { motion } from 'framer-motion'
 import {
   ArrowRight,
   MessageSquare, Pencil, Gem, PenTool, Hammer, Gift,
-  CircleDot, Layers, Link2, Ear, Watch, Smile,
 } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
@@ -100,14 +99,14 @@ const ACCENT_IMAGES = [
 ]
 
 const bespokeCategories = [
-  { name: 'Custom Engagement Rings', path: '/custom/engagement-rings', icon: Gem, description: 'Design your dream ring in Toronto' },
-  { name: 'Custom Rings', path: '/custom/rings', icon: CircleDot, description: 'Signet, statement & wedding rings' },
-  { name: 'Custom Pendants', path: '/custom/pendants', icon: Layers, description: 'Name, photo & diamond pendants' },
-  { name: 'Custom Chains', path: '/custom/chains', icon: Link2, description: 'Cuban link, rope & gold chains' },
-  { name: 'Custom Earrings', path: '/custom/earrings', icon: Ear, description: 'Diamond, gold & handcrafted' },
-  { name: 'Custom Bracelets', path: '/custom/bracelets', icon: Watch, description: 'Tennis, bangle & engraved' },
-  { name: 'Custom Grillz', path: '/custom/grillz', icon: Smile, description: 'Gold & diamond grillz in Toronto' },
-  { name: 'General Inquiry', path: '/custom/general', icon: MessageSquare, description: 'Not sure? Start here' },
+  { name: 'Custom Engagement Rings', path: '/custom/engagement-rings', icon: '/images/icons/engagement-rings.svg', description: 'Design your dream ring in Toronto' },
+  { name: 'Custom Wedding Bands', path: '/custom/wedding-bands', icon: '/images/icons/bridal-bands.svg', description: 'Matching sets, eternity & men\'s bands' },
+  { name: 'Custom Rings', path: '/custom/rings', icon: '/images/icons/rings.svg', description: 'Signet, statement & heirloom rings' },
+  { name: 'Custom Pendants', path: '/custom/pendants', icon: '/images/icons/pendants.svg', description: 'Name, photo & diamond pendants' },
+  { name: 'Custom Chains', path: '/custom/chains', icon: '/images/icons/chains.svg', description: 'Cuban link, rope & gold chains' },
+  { name: 'Custom Earrings', path: '/custom/earrings', icon: '/images/icons/earrings.svg', description: 'Diamond, gold & handcrafted' },
+  { name: 'Custom Bracelets', path: '/custom/bracelets', icon: '/images/icons/bracelets.svg', description: 'Tennis, bangle & engraved' },
+  { name: 'Custom Grillz', path: '/custom/grillz', icon: '/images/icons/grillz.svg', description: 'Gold & diamond grillz in Toronto' },
 ]
 
 export default function HomePageClient({ liveReviews, liveRating, liveReviewCount }: HomePageClientProps = {}) {
@@ -308,29 +307,30 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
-            {bespokeCategories.map((cat, index) => {
-              const Icon = cat.icon
-              return (
-                <motion.div
-                  key={cat.name}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.07 }}
+            {bespokeCategories.map((cat, index) => (
+              <motion.div
+                key={cat.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.07 }}
+              >
+                <Link
+                  href={cat.path}
+                  className="group flex flex-col items-center bg-white border-2 border-soft-black rounded-2xl p-6 md:p-8 transition-all duration-500 hover:border-glacier-grey hover:shadow-xl hover:shadow-glacier-grey/10 hover:-translate-y-2 h-full"
                 >
-                  <Link
-                    href={cat.path}
-                    className="group flex flex-col items-center bg-white border-2 border-soft-black rounded-2xl p-6 md:p-8 transition-all duration-500 hover:border-glacier-grey hover:shadow-xl hover:shadow-glacier-grey/10 hover:-translate-y-2 h-full"
-                  >
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white border-2 border-soft-black group-hover:border-glacier-grey flex items-center justify-center mb-4 group-hover:shadow-lg group-hover:shadow-glacier-grey/20 transition-all duration-500">
-                      <Icon className="w-7 h-7 md:w-9 md:h-9 text-deep-charcoal group-hover:text-glacier-grey group-hover:scale-110 transition-all duration-300" />
-                    </div>
-                    <h3 className="text-sm md:text-base font-bold text-deep-charcoal mb-1 text-center group-hover:text-glacier-grey transition-colors">{cat.name}</h3>
-                    <p className="text-xs text-taupe text-center">{cat.description}</p>
-                  </Link>
-                </motion.div>
-              )
-            })}
+                  <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-white border-2 border-soft-black group-hover:border-glacier-grey flex items-center justify-center mb-4 group-hover:shadow-lg group-hover:shadow-glacier-grey/20 transition-all duration-500">
+                    <img
+                      src={cat.icon}
+                      alt={`${cat.name} icon`}
+                      className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-110 transition-transform duration-300"
+                    />
+                  </div>
+                  <h3 className="text-sm md:text-base font-bold text-deep-charcoal mb-1 text-center group-hover:text-glacier-grey transition-colors">{cat.name}</h3>
+                  <p className="text-xs text-taupe text-center">{cat.description}</p>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
