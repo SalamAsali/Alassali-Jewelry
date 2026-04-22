@@ -6,6 +6,28 @@ with the same content the site currently ships as `FALLBACK_*` constants.
 All scripts are **idempotent** — safe to re-run. Models/fields/records that
 already exist are updated in place, not duplicated.
 
+## How to run
+
+You have two paths. Pick one.
+
+### Path A — GitHub Actions (no terminal needed, recommended)
+
+1. Create a DatoCMS **CMA token** with write access
+   (DatoCMS → Settings → API Tokens → New token → role `Admin`).
+2. Add it as a repo secret:
+   GitHub → repo Settings → Secrets and variables → Actions →
+   **New repository secret** → name `DATOCMS_CMA_TOKEN` → paste value.
+3. GitHub → repo Actions tab → **DatoCMS migrate** workflow → **Run workflow**.
+   Leave stage on `all`. Watch the log — every model, upload, and record is
+   logged line-by-line as `created` / `updated` / `exists`.
+4. After success, delete the CMA token in DatoCMS.
+
+The workflow uploads `.uploads.json` as an artifact (in case you need to
+re-run `records` later without re-uploading images) and caches it between
+runs keyed on environment.
+
+### Path B — Local terminal
+
 ## Prerequisites
 
 1. A DatoCMS **CMA (Content Management API) token** with write access.
