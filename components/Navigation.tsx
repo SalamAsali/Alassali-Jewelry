@@ -5,8 +5,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-
-const DEFAULT_LOGO = '/images/logo.png'
+import Logo from '@/components/Logo'
 
 type NavigationProps = {
   logoUrl?: string | null
@@ -17,7 +16,7 @@ export default function Navigation(props?: NavigationProps) {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const pathname = usePathname()
   const router = useRouter()
-  const logo = props?.logoUrl ?? DEFAULT_LOGO
+  const customLogo = props?.logoUrl
 
   const productMegaMenu = {
     mainCategories: [
@@ -72,11 +71,15 @@ export default function Navigation(props?: NavigationProps) {
         <div className="flex items-center justify-between py-2">
           {/* Logo */}
           <Link href="/" className="flex items-center">
-            <img
-              src={logo}
-              alt="Alassali Jewelry"
-              className="h-10 md:h-14 lg:h-16 w-auto"
-            />
+            {customLogo ? (
+              <img
+                src={customLogo}
+                alt="Al-Asali Jewelry"
+                className="h-10 md:h-14 lg:h-16 w-auto"
+              />
+            ) : (
+              <Logo className="h-10 md:h-14 lg:h-16 w-auto text-white" />
+            )}
           </Link>
 
           {/* Desktop Menu */}
