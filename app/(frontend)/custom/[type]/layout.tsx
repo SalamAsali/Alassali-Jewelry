@@ -35,7 +35,7 @@ const pageMeta: Record<string, { title: string; description: string }> = {
   },
   'general': {
     title: 'Custom Jewellery Toronto | Bespoke Jeweller — Al-Assali Jewelry',
-    description: 'Design custom jewellery with Toronto\'s premier bespoke jeweller. Engagement rings, wedding bands, chains, pendants, grillz, and more — all handcrafted in-house on Vaughan Rd.',
+    description: 'Design custom jewellery with Toronto\'s premier bespoke jeweller. Engagement rings, wedding bands, chains, pendants, grillz, and more — all handcrafted in-house in Toronto.',
   },
 }
 

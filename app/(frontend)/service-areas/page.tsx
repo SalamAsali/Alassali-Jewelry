@@ -41,7 +41,7 @@ export default function ServiceAreasPage() {
             Service Areas
           </h1>
           <p className="text-lg text-stone leading-relaxed mb-6">
-            Al-Assali Jewelry Studio is a Toronto-based custom jeweller on Vaughan Rd. We craft custom engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz for clients across Toronto and the wider Greater Toronto Area — all handcrafted at our Toronto studio.
+            Al-Assali Jewelry is a Toronto-based bespoke atelier — appointment only. We craft custom engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz for clients across Toronto and the wider Greater Toronto Area, with free virtual consultations, complimentary insured delivery across the GTA, and private in-person sessions available on request.
           </p>
         </header>
 

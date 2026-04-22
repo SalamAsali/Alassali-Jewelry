@@ -333,11 +333,11 @@ const landingContent: Record<string, {
       { q: 'Do you provide GIA certification for diamonds?', a: 'Yes — every natural diamond over 0.50ct ships with a GIA grading report. Lab-grown diamonds ship with IGI or GCAL reports. You can also request certification for smaller stones on request.' },
       { q: 'Can I see my engagement ring before it\'s finished?', a: 'Yes — we share 3D CAD renderings within 5-7 business days of your consultation, plus a wax or resin model before we cast in precious metal. You\'ll know exactly what your ring will look like before we begin final crafting.' },
       { q: 'What engagement ring styles do you offer?', a: 'We create Classic, Modern, Vintage, Art Deco, Halo, Solitaire, Three-Stone, and Bridal engagement rings — or any fully custom design you can envision. Unusual settings like toi et moi, cluster, and bezel-set are all within scope.' },
-      { q: 'Which diamond shape is best for me?', a: 'Round brilliant is the most popular for its fire, oval and pear look larger per carat, princess and emerald cuts suit modern tastes, and cushion and radiant offer vintage warmth. We walk through every shape in person with loose stones so you can compare on your finger.' },
+      { q: 'Which diamond shape is best for me?', a: 'Round brilliant is the most popular for its fire, oval and pear look larger per carat, princess and emerald cuts suit modern tastes, and cushion and radiant offer vintage warmth. During your consultation we walk through every shape and, where helpful, ship preview stones or renders so you can compare before committing.' },
       { q: 'Can I reset a family diamond into my new engagement ring?', a: 'Yes — heirloom resets are some of our most meaningful projects. We carefully remove your existing stone and design a new setting around it, preserving the sentiment while modernizing the look.' },
       { q: 'Do you offer financing for custom engagement rings?', a: 'Yes — we offer flexible payment plans and 0% financing options for qualified buyers. Ask during consultation and we\'ll walk you through what fits your timeline and budget.' },
       { q: 'Do you resize engagement rings for free?', a: 'Yes — every custom engagement ring we create includes free resizing within the first year, and free resizing for life if you have any significant finger-size change. Free cleanings and inspections for life as well.' },
-      { q: 'Where in Toronto is your engagement ring studio?', a: 'Our studio is at 624 Vaughan Rd in Toronto (M6E 2Y3), in the Oakwood–Vaughan neighbourhood. We see clients by appointment from across the GTA — Mississauga, Etobicoke, North York, Vaughan, Markham, Oakville, and beyond.' },
+      { q: 'Where are you based?', a: 'We are a Toronto-based bespoke atelier — appointment only, no walk-in storefront. Consultations run virtually by default and finished pieces ship insured across the GTA, with private in-person sessions in Toronto available on request.' },
     ],
     relatedPages: [
       { name: 'Custom Rings', path: '/custom/rings' },
@@ -356,7 +356,7 @@ const landingContent: Record<string, {
       { q: 'What types of custom rings can you make in Toronto?', a: 'Signet rings, statement rings, wedding bands, stackable rings, cocktail rings, pinky rings, mens rings, promise rings, birthstone rings, everyday essentials, and fully custom designs in any style you can imagine.' },
       { q: 'How much does a custom ring cost in Toronto?', a: 'Custom rings start at $1,000 in 10K gold or silver for simpler designs. Signet rings start around $1,400, statement rings $1,800, and stackable sets from $2,500 for three bands. Final price depends on metal, gold weight, stone count, and engraving.' },
       { q: 'Can I bring my own design for a ring?', a: 'Yes — bring sketches, reference photos, or describe your idea verbally. Our designers create detailed 3D CAD renderings for your approval before any crafting begins. Revisions are included.' },
-      { q: 'How do I determine my ring size?', a: 'We measure your ring size in-studio for free during consultation. If you can\'t come in, we can mail you a free ring sizer or walk you through measuring with string. Every custom ring also includes free resizing.' },
+      { q: 'How do I determine my ring size?', a: 'We ship a free ring sizer kit to your door, or walk you through measuring with a printable sizer or string. A precise in-person sizing by appointment in Toronto is available when preferred. Every custom ring also includes free resizing.' },
       { q: 'Can you make a custom signet ring with a family crest?', a: 'Yes — family-crest signet rings are one of our favourite commissions. Send us your crest, coat of arms, monogram, or initial design and we\'ll hand-engrave it into your ring.' },
       { q: 'Can I get a matching men\'s and women\'s ring set?', a: 'Absolutely — matching couples rings and promise rings are a regular request. We design them in proportional sizes and complementary finishes (often different widths in matching metal).' },
       { q: 'What metals are available for custom rings?', a: '10K gold, 14K gold, 18K gold in yellow, white, and rose, plus platinum and sterling silver. We\'ll recommend the right choice based on your daily wear, finger size, and budget.' },
@@ -388,7 +388,7 @@ const landingContent: Record<string, {
       { q: 'Can you make a memorial pendant?', a: 'Yes — we craft memorial pendants that incorporate fingerprints, handwriting, silhouette portraits, or small keepsakes. Cremation-ash pendants can also be arranged with advance notice.' },
       { q: 'How long does a custom pendant take in Toronto?', a: 'Simple name or initial pendants take 2-3 weeks. Diamond-set pendants and photo pendants take 3-4 weeks. Complex multi-stone pieces can take 4-6 weeks. Rush orders are available on request.' },
       { q: 'Can you make a custom logo or company pendant?', a: 'Yes — we frequently produce custom logo pendants for brands, companies, and sports teams. Send us a logo file and we\'ll translate it into a 3D CAD model for your approval before crafting.' },
-      { q: 'Where do I pick up my custom pendant in Toronto?', a: 'Pickup is at our studio at 624 Vaughan Rd, Toronto M6E 2Y3, by appointment. We also ship securely across the GTA and anywhere in Canada.' },
+      { q: 'How do I receive my finished pendant?', a: 'Complimentary insured delivery anywhere in the GTA — or a private in-person handover in Toronto by appointment if you prefer. We also ship securely anywhere in Canada.' },
     ],
     relatedPages: [
       { name: 'Custom Chains', path: '/custom/chains' },
@@ -457,7 +457,7 @@ const landingContent: Record<string, {
       { q: 'What types of custom bracelets do you make in Toronto?', a: 'Tennis bracelets, chain bracelets (Cuban, rope, franco, figaro), bangles, cuffs, charm bracelets, ID bracelets, engraved mens bracelets, byzantine bracelets, and fully custom designs for men and women.' },
       { q: 'How much does a custom tennis bracelet cost in Toronto?', a: 'Lab-grown diamond tennis bracelets: 2ctw from $2,500, 3ctw from $3,800, 5ctw from $6,500, 7ctw from $9,500, 10ctw from $14,000. Natural diamond tennis bracelets typically cost 2.5-3x the lab-grown equivalent. All prices in 14K gold.' },
       { q: 'Can I get an engraved bracelet for men in Toronto?', a: 'Yes — engraved men\'s bracelets are one of our most requested pieces. ID bracelets, Cuban link with name plate, Figaro with engraved bar, or solid cuffs — all with custom engraving in any font including Arabic calligraphy, dates, names, or logos.' },
-      { q: 'How do I measure my wrist for a bracelet?', a: 'We measure your wrist in-studio for a perfect fit. You can also wrap a flexible tape measure snugly around your wrist just below the wrist bone, then add 0.5" (loose) or 0.25" (snug). Standard men\'s: 7.5-8.5". Standard women\'s: 6.5-7".' },
+      { q: 'How do I measure my wrist for a bracelet?', a: 'Wrap a flexible tape measure snugly around your wrist just below the wrist bone, then add 0.5" (loose) or 0.25" (snug). Standard men\'s: 7.5-8.5". Standard women\'s: 6.5-7". A precise in-person measurement by appointment in Toronto is available if preferred.' },
       { q: 'What\'s the difference between a tennis bracelet and a diamond chain bracelet?', a: 'A tennis bracelet has prong-set diamonds in a continuous line, each stone visible front and side. A diamond chain bracelet has stones set into chain links. Tennis bracelets typically show more stone face-up and are the more formal style.' },
       { q: 'Do you make custom ID bracelets?', a: 'Yes — ID bracelets are a staple of our mens collection. Solid gold, platinum, or silver plates engraved with names, dates, Arabic calligraphy, or any custom design. Attached to Cuban, figaro, or rope link chains.' },
       { q: 'Can I add diamonds to a bangle or cuff?', a: 'Yes — pavé-set bangles, diamond-accent cuffs, and fully diamond-encrusted cuffs are all available. Natural or lab-grown, any clarity tier.' },
@@ -475,7 +475,7 @@ const landingContent: Record<string, {
     heroH1: 'Custom Grillz in Toronto',
     heroSub: 'Gold grillz, diamond grillz, and VVS sets — Toronto\'s premier custom grillz studio. In-house craftsmanship, competitive prices.',
     intro: 'Al-Assali Jewelry is Toronto\'s go-to destination for custom grillz. From single-tooth pieces to full diamond-set grillz, every set is handcrafted in-house using real gold and genuine diamonds — not plated, not CZ. We offer 10K, 14K, and 18K gold in yellow, white, and rose, with optional VVS diamond, diamond dust, and fully custom designs. Our mold process ensures a perfect fit every time, and our prices are explained upfront with no surprises. Whether you\'re looking for gold grillz, diamond grillz, or something entirely unique, we\'re the only shop in Toronto that does it all under one roof.',
-    processNote: 'Custom grillz take 1-2 weeks after your mold appointment. We take a precise dental impression, design your grillz, and handcraft them in your chosen metal and stone configuration. Walk-in mold appointments are available.',
+    processNote: 'Custom grillz take 1-2 weeks after your mold appointment. We take a precise dental impression, design your grillz, and handcraft them in your chosen metal and stone configuration. Mold sessions are by appointment only — book a time in Toronto or request a mail-in mold kit for out-of-area clients.',
     budgetGuide: 'Grillz start at $500 for a single tooth in 10K gold. Top 6 or bottom 6 sets range from $2,000-$5,000 in solid gold. Full diamond-set VVS grillz start around $5,000 and scale with diamond quality and coverage.',
     stoneNote: 'We set genuine natural and lab-grown diamonds in grillz, including VVS clarity stones. Diamond dust finishes, channel-set diamonds, and fully iced-out options are all available. No cubic zirconia — ever.',
     faq: [
@@ -483,11 +483,11 @@ const landingContent: Record<string, {
       { q: 'What types of grillz do you offer?', a: 'Full sets (top + bottom), top 6, bottom 6, top 8, bottom 8, single tooth, fangs, open-face, honeycomb, bar, diamond dust, and fully custom designs. We also create matching grillz for couples and teams.' },
       { q: 'Are your grillz removable?', a: 'Yes — every grillz we make is removable. We create a precise dental mold of your teeth for a snug, secure fit that clicks in and out without permanently altering your teeth.' },
       { q: 'Are removable grillz safe for your teeth?', a: 'Yes, when properly made. Because our grillz are custom-fit from your exact dental mold, they sit snugly without damaging enamel. We recommend removing them before eating and cleaning them with a soft brush daily.' },
-      { q: 'VVS vs VS vs SI — which clarity should I pick for grillz?', a: 'VVS offers the cleanest, brightest look and is our premium tier. VS gives a near-identical visual face-up for about 20-30% less. SI stones look great in micro-pavé or dust settings. We\'ll walk through all three with loose stones during consultation.' },
+      { q: 'VVS vs VS vs SI — which clarity should I pick for grillz?', a: 'VVS offers the cleanest, brightest look and is our premium tier. VS gives a near-identical visual face-up for about 20-30% less. SI stones look great in micro-pavé or dust settings. We walk through all three during your consultation with high-res photography of loose stones.' },
       { q: 'Do you use real diamonds in grillz?', a: 'Yes — genuine natural and lab-grown diamonds only, including VVS clarity stones. No cubic zirconia, no moissanite substitutions, ever. Every stone is hand-set by our master jeweller in Toronto.' },
       { q: 'What gold karats are available for grillz?', a: '10K, 14K, and 18K gold in yellow, white, and rose gold. 10K is the most durable and affordable. 14K is our most popular — a great balance of colour and price. 18K delivers the deepest yellow but is softer and needs gentler care.' },
       { q: 'How long does it take to make custom grillz in Toronto?', a: 'Most custom grillz are completed in 1-2 weeks after your mold appointment. Full diamond-set VVS sets can take 3-4 weeks due to the setting work. Rush orders are available on request.' },
-      { q: 'How does the grillz mold process work?', a: 'We take a precise dental-grade silicone impression of your teeth in-studio. The impression is cast into a stone model that we use to shape and fit your grillz exactly to your bite. The appointment takes about 20 minutes.' },
+      { q: 'How does the grillz mold process work?', a: 'We take a precise dental-grade silicone impression of your teeth at a private in-person mold session in Toronto (book by appointment) — or we can ship you a mail-in mold kit with step-by-step instructions for out-of-area clients. The impression is cast into a stone model that we use to shape and fit your grillz exactly to your bite. The in-person session takes about 20 minutes.' },
       { q: 'Can I eat or drink with grillz in?', a: 'We recommend removing grillz before eating to protect both the grillz and your teeth. Drinking water is fine. Avoid sugary drinks with grillz in to prevent buildup along the gum line.' },
       { q: 'Do you offer permanent grillz?', a: 'We specialize in removable custom grillz because they\'re safer for your long-term oral health. If you\'re looking for semi-permanent grillz, we\'ll discuss the pros, cons, and dental considerations during consultation.' },
       { q: 'Do you make matching grillz for couples?', a: 'Yes — matching couples grillz are one of our most requested orders. We can create mirrored designs, shared stones, or complementary styles between partners.' },
@@ -1499,7 +1499,7 @@ const hubBespokeCards: { name: string; path: string; icon: LucideIcon; blurb: st
 ]
 
 const hubProcessSteps = [
-  { icon: MessageSquare, title: 'Consultation', body: 'Free in-studio or virtual consultation to understand your vision, budget, and timeline.' },
+  { icon: MessageSquare, title: 'Consultation', body: 'Free virtual consultation (Zoom or phone) to understand your vision, budget, and timeline. Private in-person sessions available by appointment.' },
   { icon: Pen, title: 'Design & CAD', body: 'Our designers produce detailed sketches and 3D CAD renderings for your approval before crafting begins.' },
   { icon: Diamond, title: 'Stone & Metal Selection', body: 'Hand-pick GIA-graded natural or lab-grown diamonds, coloured gems, and your choice of gold, platinum, or silver.' },
   { icon: Wrench, title: 'In-House Crafting', body: 'Every piece is cast, set, and finished entirely in our Toronto workshop by master jeweller Mohammad Al-Assali — no outsourcing.' },
@@ -1507,10 +1507,10 @@ const hubProcessSteps = [
 ]
 
 const hubFaq = [
-  { q: 'Where is Al-Assali Jewelry located in Toronto?', a: 'Our studio is at 624 Vaughan Rd in Toronto (M6E 2Y3), in the Oakwood–Vaughan neighbourhood. We operate by appointment only to give every client our full attention.' },
-  { q: 'Do I need an appointment to visit the Toronto studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we\'ll confirm a time that works for you.' },
-  { q: 'What areas around Toronto do you serve?', a: 'Our studio is in Toronto, and we regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, and Milton.' },
-  { q: 'How do I start a custom jewellery project?', a: 'Book a free consultation (virtual or in-studio). We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
+  { q: 'Where is Al-Assali Jewelry based?', a: 'We are a Toronto-based bespoke atelier. There is no walk-in storefront — we operate by appointment only, running consultations virtually by default with private in-person sessions in Toronto available on request.' },
+  { q: 'Do I need an appointment to work with you?', a: 'Yes — we work by appointment only. Book a free virtual consultation by phone, email, or through our custom inquiry form and we\'ll confirm a time that works for you.' },
+  { q: 'What areas around Toronto do you serve?', a: 'We are based in Toronto and regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, and Milton — with complimentary insured delivery anywhere in the GTA.' },
+  { q: 'How do I start a custom jewellery project?', a: 'Book a free virtual consultation. We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
   { q: 'How much does custom jewellery cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal, stones, and design complexity. We quote every project up front with no hidden fees.' },
   { q: 'Do you offer lab-grown diamonds?', a: 'Yes — we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value.' },
   { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We\'ll carefully remove the stones from your existing piece and set them into your new custom design.' },
@@ -1543,7 +1543,7 @@ function GeneralHub() {
             Toronto&apos;s Premier Custom Jeweller
           </h2>
           <p className="text-stone leading-relaxed text-base md:text-lg">
-            Al-Assali Jewelry is a bespoke jewellery studio on Vaughan Road in Toronto. Master jeweller Mohammad Al-Assali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
+            Al-Assali Jewelry is a Toronto-based bespoke jewellery atelier. Master jeweller Mohammad Al-Assali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house in Toronto — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
           </p>
         </header>
 
@@ -1605,7 +1605,7 @@ function GeneralHub() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: MapPin, title: 'Made in Toronto', body: 'Designed, cast, set, and finished entirely in our Vaughan Rd studio.' },
+              { icon: MapPin, title: 'Made in Toronto', body: 'Designed, cast, set, and finished entirely in-house in our Toronto workshop.' },
               { icon: ShieldCheck, title: 'Lifetime Guarantee', body: 'Free polishing, rhodium re-plating, and resizing for life on every piece.' },
               { icon: Diamond, title: 'GIA-Graded Diamonds', body: 'Conflict-free natural and lab-grown diamonds, graded to GIA standards.' },
               { icon: Star, title: '5.0 on Google', body: '5-star rated by clients across the Greater Toronto Area.' },
@@ -1631,17 +1631,17 @@ function GeneralHub() {
             Mohammad Al-Assali
           </h3>
           <p className="text-stone leading-relaxed text-sm md:text-base">
-            Mohammad is the founder and master jeweller behind Al-Assali Jewelry Studio. A George Brown College Jewellery Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
+            Mohammad is the founder and master jeweller behind Al-Assali Jewelry. A George Brown College Jewellery Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto workshop has been personally inspected and finished by Mohammad.
           </p>
         </div>
 
         {/* LOCATION */}
         <div className="text-center max-w-2xl mx-auto">
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
-            Visit Our Toronto Studio
+            How We Work Together
           </h3>
           <p className="text-stone leading-relaxed text-sm mb-6">
-            Al-Assali Jewelry Studio is located at 624 Vaughan Rd in Toronto (M6E 2Y3), in the Oakwood–Vaughan neighbourhood. We work by appointment only — book a free consultation and we&apos;ll confirm a time that works for you.
+            Al-Assali Jewelry is a Toronto-based bespoke atelier working by appointment only. Most projects run virtually — free Zoom or phone consultations, CAD renders shared remotely, and the finished piece delivered insured anywhere in the GTA. Private in-person sessions in Toronto can be booked when a project calls for one.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <a href="tel:+16475624340" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">

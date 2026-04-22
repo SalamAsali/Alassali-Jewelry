@@ -49,7 +49,7 @@ export default function MasterJewellerPage() {
             Mohammad Al-Assali is the founder and master jeweller behind Al-Assali Jewelry Studio in Toronto. A graduate of the George Brown College Jewellery Arts Program and a working goldsmith since 2017, Mohammad has personally designed and handcrafted hundreds of bespoke engagement rings, wedding bands, diamond pendants, gold chains, tennis bracelets, and custom grillz for clients across the Greater Toronto Area.
           </p>
           <p>
-            What began as a sole-proprietor commission practice at the end of 2020 has grown into a full Toronto studio on Vaughan Rd — still operating with the same principle Mohammad started with: every piece is designed, cast, set, and finished in-house. No outsourcing, no middlemen, no shortcuts. If Al-Assali Jewelry made it, Mohammad inspected it.
+            What began as a sole-proprietor commission practice at the end of 2020 has grown into a full Toronto-based bespoke atelier — still operating with the same principle Mohammad started with: every piece is designed, cast, set, and finished in-house in Toronto. No outsourcing, no middlemen, no shortcuts. If Al-Assali Jewelry made it, Mohammad inspected it.
           </p>
           <p>
             Mohammad has built a reputation for deep expertise in Arabic calligraphy jewellery — a specialty few Toronto jewellers can authentically execute. From Allah pendants and Ayat al-Kursi pendants to custom Arabic name rings and engraved wedding bands, his work has been carried by clients in Toronto, Mississauga, Vaughan, Markham, and beyond.
@@ -113,7 +113,7 @@ export default function MasterJewellerPage() {
             Book a Free Consultation
           </h2>
           <p className="text-stone text-sm mb-6">
-            Every custom project starts with a free consultation — in-studio on Vaughan Rd or virtually via Zoom. Mohammad leads every initial consultation personally.
+            Every custom project starts with a free virtual consultation over Zoom or phone, with a private in-person session in Toronto available by appointment. Mohammad leads every initial consultation personally.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm mb-6">
             <a href={`tel:${SITE_CONFIG.phone}`} className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">

@@ -145,7 +145,7 @@ export default function Page() {
         Every custom engagement ring at Al-Assali Jewelry includes:
       </p>
       <ul>
-        <li>Free consultation (in-studio or virtual)</li>
+        <li>Free virtual consultation (Zoom or phone), with private in-person sessions in Toronto available by appointment</li>
         <li>Unlimited 3D CAD renderings and revisions until approved</li>
         <li>Wax or resin model before final casting</li>
         <li>Hand-setting by our master jeweller</li>
@@ -167,7 +167,7 @@ export default function Page() {
 
       <h2>Ready to start?</h2>
       <p>
-        Book a free consultation at our Toronto studio on Vaughan Rd, or schedule a virtual call. We&apos;ll walk through stones, settings, and styles until we find the ring you want — and the price you&apos;re comfortable with.
+        Book a free virtual consultation with our Toronto-based atelier, or request a private in-person session in Toronto by appointment. We&apos;ll walk through stones, settings, and styles until we find the ring you want — and the price you&apos;re comfortable with.
       </p>
 
       <script
