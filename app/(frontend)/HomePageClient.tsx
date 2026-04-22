@@ -302,7 +302,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
       <section className="bg-white py-24" data-testid="bespoke-services-section">
         <div className="section-container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Bespoke Services</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Bespoke Jewelry</h2>
             <p className="text-sm md:text-lg text-taupe max-w-3xl mx-auto leading-relaxed">Every piece is a partnership between your vision and our expertise. Choose your category to begin.</p>
           </motion.div>
 
