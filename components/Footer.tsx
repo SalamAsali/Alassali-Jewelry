@@ -3,8 +3,8 @@
 import Link from 'next/link'
 import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
-import Logo from '@/components/Logo'
 
+const DEFAULT_LOGO = '/images/logo.png'
 const DEFAULT_TAGLINE = `Custom jeweller in Toronto since ${SITE_CONFIG.founded}. Every piece designed, cast, set, and finished in-house in Toronto.`
 const DEFAULT_PHONE = SITE_CONFIG.phoneDisplay
 const DEFAULT_EMAIL = SITE_CONFIG.email
@@ -28,7 +28,7 @@ type FooterProps = {
 }
 
 export default function Footer(props?: FooterProps) {
-  const customLogo = props?.logoUrl
+  const logo = props?.logoUrl ?? DEFAULT_LOGO
   return (
     <footer className="bg-deep-charcoal text-white">
       <div className="section-container py-16">
@@ -36,15 +36,11 @@ export default function Footer(props?: FooterProps) {
           {/* Brand */}
           <div>
             <Link href="/" className="flex items-center gap-3 mb-4">
-              {customLogo ? (
-                <img
-                  src={customLogo}
-                  alt="Al-Asali Jewelry"
-                  className="h-10 md:h-14 lg:h-16 w-auto"
-                />
-              ) : (
-                <Logo className="h-10 md:h-14 lg:h-16 w-auto text-white" />
-              )}
+              <img
+                src={logo}
+                alt="Alassali Jewelry"
+                className="h-10 md:h-14 lg:h-16 w-auto"
+              />
             </Link>
             <p className="text-warm-gray text-sm mb-4">
               {props?.tagline ?? DEFAULT_TAGLINE}
