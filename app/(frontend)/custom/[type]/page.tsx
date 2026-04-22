@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter, useParams } from 'next/navigation'
+import { useState, Suspense } from 'react'
+import { useRouter, useParams, useSearchParams } from 'next/navigation'
 import NextLink from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -587,7 +587,7 @@ function LandingPage({ type }: { type: string }) {
             </p>
             {/* 📸 IMAGE SLOT 1: Hero product image */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <NextLink href="/custom/general" className="inline-flex items-center gap-2 bg-glacier-grey text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">
+              <NextLink href={`/custom/general?type=${type}`} className="inline-flex items-center gap-2 bg-glacier-grey text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">
                 Design Your {config.title.replace('Custom ', '')} <ArrowRight className="w-5 h-5" />
               </NextLink>
               <NextLink href="/portfolio" className="inline-flex items-center gap-2 bg-white/10 border-2 border-white text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white hover:text-soft-black transition-all duration-300">
@@ -831,7 +831,7 @@ function LandingPage({ type }: { type: string }) {
               <p className="text-stone mb-8 max-w-xl mx-auto">
                 Start your custom journey and our master craftspeople will bring your vision to life within 24-48 hours of your inquiry.
               </p>
-              <NextLink href="/custom/general" className="inline-flex items-center gap-2 bg-glacier-grey text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl mb-12">
+              <NextLink href={`/custom/general?type=${type}`} className="inline-flex items-center gap-2 bg-glacier-grey text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl mb-12">
                 Start Your Journey <ArrowRight className="w-5 h-5" />
               </NextLink>
               <div className="flex flex-wrap justify-center gap-6 pt-4 border-t border-glacier-grey/10">
@@ -892,7 +892,9 @@ export default function CustomJewelryPage() {
   // /custom/general → portal form above, hub SEO content below
   return (
     <>
-      <PortalForm />
+      <Suspense fallback={null}>
+        <PortalForm />
+      </Suspense>
       <GeneralHub />
     </>
   )
@@ -904,8 +906,10 @@ export default function CustomJewelryPage() {
 
 function PortalForm() {
   const router = useRouter()
-  const urlType = 'general'
-  const isDirectType = false
+  const searchParams = useSearchParams()
+  const typeParam = searchParams?.get('type') || ''
+  const isDirectType = typeParam in typeConfig
+  const urlType = isDirectType ? typeParam : 'general'
 
   const [formData, setFormData] = useState({
     pieceType: isDirectType ? urlType : '',
