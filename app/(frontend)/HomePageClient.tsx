@@ -99,14 +99,14 @@ const ACCENT_IMAGES = [
 ]
 
 const bespokeCategories = [
-  { name: 'Custom Engagement Rings', path: '/custom/engagement-rings', icon: '/images/icons/engagement-rings.svg', description: 'Design your dream ring in Toronto' },
-  { name: 'Custom Wedding Bands', path: '/custom/wedding-bands', icon: '/images/icons/bridal-bands.svg', description: 'Matching sets, eternity & men\'s bands' },
-  { name: 'Custom Rings', path: '/custom/rings', icon: '/images/icons/rings.svg', description: 'Signet, statement & heirloom rings' },
-  { name: 'Custom Pendants', path: '/custom/pendants', icon: '/images/icons/pendants.svg', description: 'Name, photo & diamond pendants' },
-  { name: 'Custom Chains', path: '/custom/chains', icon: '/images/icons/chains.svg', description: 'Cuban link, rope & gold chains' },
-  { name: 'Custom Earrings', path: '/custom/earrings', icon: '/images/icons/earrings.svg', description: 'Diamond, gold & handcrafted' },
-  { name: 'Custom Bracelets', path: '/custom/bracelets', icon: '/images/icons/bracelets.svg', description: 'Tennis, bangle & engraved' },
-  { name: 'Custom Grillz', path: '/custom/grillz', icon: '/images/icons/grillz.svg', description: 'Gold & diamond grillz in Toronto' },
+  { name: 'Engagement Rings', path: '/custom/engagement-rings', icon: '/images/icons/engagement-rings.svg' },
+  { name: 'Wedding Bands', path: '/custom/wedding-bands', icon: '/images/icons/bridal-bands.svg' },
+  { name: 'Rings', path: '/custom/rings', icon: '/images/icons/rings.svg' },
+  { name: 'Pendants', path: '/custom/pendants', icon: '/images/icons/pendants.svg' },
+  { name: 'Chains', path: '/custom/chains', icon: '/images/icons/chains.svg' },
+  { name: 'Earrings', path: '/custom/earrings', icon: '/images/icons/earrings.svg' },
+  { name: 'Bracelets', path: '/custom/bracelets', icon: '/images/icons/bracelets.svg' },
+  { name: 'Grillz', path: '/custom/grillz', icon: '/images/icons/grillz.svg' },
 ]
 
 export default function HomePageClient({ liveReviews, liveRating, liveReviewCount }: HomePageClientProps = {}) {
@@ -326,8 +326,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
                       className="w-8 h-8 md:w-10 md:h-10 object-contain group-hover:scale-110 transition-transform duration-300"
                     />
                   </div>
-                  <h3 className="text-sm md:text-base font-bold text-deep-charcoal mb-1 text-center group-hover:text-glacier-grey transition-colors">{cat.name}</h3>
-                  <p className="text-xs text-taupe text-center">{cat.description}</p>
+                  <h3 className="text-sm md:text-base font-bold text-deep-charcoal text-center group-hover:text-glacier-grey transition-colors">{cat.name}</h3>
                 </Link>
               </motion.div>
             ))}
