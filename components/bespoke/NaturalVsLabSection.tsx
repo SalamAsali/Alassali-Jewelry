@@ -15,7 +15,7 @@ const rows: Row[] = [
   { attribute: 'Physical properties', natural: 'Identical (same carbon lattice)', lab: 'Identical (same carbon lattice)' },
   { attribute: 'Brilliance / fire', natural: 'Identical', lab: 'Identical' },
   { attribute: 'Hardness (Mohs 10)', natural: 'Identical', lab: 'Identical' },
-  { attribute: 'Certification', natural: 'GIA (standard)', lab: 'IGI or GCAL (standard)' },
+  { attribute: 'Certification', natural: 'GIA (standard)', lab: 'GIA & IGI (standard)' },
   { attribute: 'Price per carat', natural: 'Higher (~2.5–3× lab)', lab: 'Lower (40–60% of natural)', labWin: true },
   { attribute: 'Resale / long-term value', natural: 'Holds value better over decades', lab: 'Limited secondary market', naturalWin: true },
   { attribute: 'Ethical sourcing', natural: 'Conflict-free (Kimberley + SCS)', lab: 'Zero mining impact', labWin: true },

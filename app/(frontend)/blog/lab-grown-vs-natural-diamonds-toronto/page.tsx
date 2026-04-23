@@ -88,7 +88,7 @@ export default function Page() {
           <tr><td>Chemical composition</td><td>Carbon (C)</td><td>Carbon (C)</td></tr>
           <tr><td>Hardness (Mohs)</td><td>10</td><td>10</td></tr>
           <tr><td>Brilliance / fire</td><td>Identical</td><td>Identical</td></tr>
-          <tr><td>Certification</td><td>GIA (standard)</td><td>IGI, GCAL, GIA</td></tr>
+          <tr><td>Certification</td><td>GIA (standard)</td><td>GIA & IGI</td></tr>
           <tr><td>Price (1ct, G VS1)</td><td>~$6,500</td><td>~$2,800</td></tr>
           <tr><td>Price per carat trend</td><td>Stable / rising</td><td>Falling year over year</td></tr>
           <tr><td>Resale value</td><td>Good over decades</td><td>Limited secondary market</td></tr>
