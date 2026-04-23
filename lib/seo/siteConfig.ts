@@ -5,7 +5,7 @@ export const SITE_CONFIG = {
   legalName: 'Al-Assali Jewelry Studio',
   brandName: 'Al-Assali Jewelry',
   shortName: 'Al-Assali',
-  url: 'https://www.alassalijewelry.com',
+  url: 'https://www.alasalicustomjewelry.ca',
   logoPath: '/images/logo.png',
   defaultOgPath: '/opengraph-image.jpg',
   phone: '+1-647-562-4340',
