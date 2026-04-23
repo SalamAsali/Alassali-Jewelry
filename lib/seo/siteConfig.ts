@@ -2,9 +2,9 @@
 // Keep values in sync with Google Business Profile, Instagram bio, and footer.
 
 export const SITE_CONFIG = {
-  legalName: 'Al-Assali Jewelry Studio',
-  brandName: 'Al-Assali Jewelry',
-  shortName: 'Al-Assali',
+  legalName: 'Al-Asali Custom Jewelry',
+  brandName: 'Al-Asali Custom Jewelry',
+  shortName: 'Al-Asali',
   url: 'https://www.alasalicustomjewelry.ca',
   logoPath: '/images/logo.png',
   defaultOgPath: '/opengraph-image.jpg',
