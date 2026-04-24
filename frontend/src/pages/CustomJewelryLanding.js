@@ -33,7 +33,7 @@ const CustomJewelryLanding = ({ type }) => {
       title: 'Custom Engagement Rings',
       subtitle: 'Begin your forever with a ring as unique as your love story',
       image: 'https://images.unsplash.com/photo-1721103428207-597c5ceff1cd?w=1200',
-      styles: ['Classic', 'Modern', 'Vintage', 'Art Deco', 'Halo', 'Solitaire'],
+      styles: ['Classic', 'Vintage', 'Art Deco', 'Halo', 'Solitaire'],
       metals: ['Platinum', '18K White Gold', '18K Yellow Gold', '18K Rose Gold', '14K White Gold', '14K Yellow Gold']
     },
     'grillz': {

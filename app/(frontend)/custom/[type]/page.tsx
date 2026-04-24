@@ -93,7 +93,7 @@ const typeConfig: Record<string, { title: string; subtitle: string; styles: stri
   'engagement-rings': {
     title: 'Custom Engagement Rings',
     subtitle: 'Begin your forever with a ring as unique as your love story',
-    styles: ['Classic', 'Modern', 'Vintage', 'Art Deco', 'Halo', 'Solitaire', 'Bridal', 'Other'],
+    styles: ['Classic', 'Vintage', 'Art Deco', 'Halo', 'Solitaire', 'Other'],
     metals: ['Platinum', '18K Gold', '14K Gold', '10K Gold', 'Silver', 'Other'],
   },
   'grillz': {
@@ -152,8 +152,8 @@ const typeConfig: Record<string, { title: string; subtitle: string; styles: stri
 
 const styleIcons: Record<string, Record<string, LucideIcon>> = {
   'engagement-rings': {
-    Classic: Heart, Modern: Zap, Vintage: Clock, 'Art Deco': Hexagon,
-    Halo: Sun, Solitaire: Diamond, Bridal: Crown, Other: HelpCircle,
+    Classic: Heart, Vintage: Clock, 'Art Deco': Hexagon,
+    Halo: Sun, Solitaire: Diamond, Other: HelpCircle,
   },
   'grillz': {
     'Full Set': LayoutGrid, 'Top 6': ChevronUp, 'Bottom 6': ChevronDown,
@@ -331,7 +331,7 @@ const landingContent: Record<string, {
       { q: 'Lab-grown vs natural diamonds — which is better for an engagement ring?', a: 'Both are real diamonds with identical physical, chemical, and optical properties. Natural diamonds hold long-term resale value better, while lab-grown diamonds offer 40-60% more carat for the same budget. We help you weigh both during consultation.' },
       { q: 'Do you provide GIA certification for diamonds?', a: 'Yes — every natural diamond over 0.50ct ships with a GIA grading report. Lab-grown diamonds ship with IGI or GCAL reports. You can also request certification for smaller stones on request.' },
       { q: 'Can I see my engagement ring before it\'s finished?', a: 'Yes — we share 3D CAD renderings within 5-7 business days of your consultation, plus a wax or resin model before we cast in precious metal. You\'ll know exactly what your ring will look like before we begin final crafting.' },
-      { q: 'What engagement ring styles do you offer?', a: 'We create Classic, Modern, Vintage, Art Deco, Halo, Solitaire, Three-Stone, and Bridal engagement rings — or any fully custom design you can envision. Unusual settings like toi et moi, cluster, and bezel-set are all within scope.' },
+      { q: 'What engagement ring styles do you offer?', a: 'We create Classic, Vintage, Art Deco, Halo, Solitaire, Three-Stone, and other engagement rings — or any fully custom design you can envision. Unusual settings like toi et moi, cluster, and bezel-set are all within scope.' },
       { q: 'Which diamond shape is best for me?', a: 'Round brilliant is the most popular for its fire, oval and pear look larger per carat, princess and emerald cuts suit modern tastes, and cushion and radiant offer vintage warmth. During consultation we walk through every shape with loose stones — virtually on camera or in-person by appointment — so you can compare before choosing.' },
       { q: 'Can I reset a family diamond into my new engagement ring?', a: 'Yes — heirloom resets are some of our most meaningful projects. We carefully remove your existing stone and design a new setting around it, preserving the sentiment while modernizing the look.' },
       { q: 'Do you offer financing for custom engagement rings?', a: 'Yes — we offer flexible payment plans and 0% financing options for qualified buyers. Ask during consultation and we\'ll walk you through what fits your timeline and budget.' },
