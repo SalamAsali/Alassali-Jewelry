@@ -17,11 +17,11 @@ const placeholderTestimonials: Record<string, Testimonial[]> = {
   'engagement-rings': [
     { name: 'Sara', neighbourhood: 'Mississauga', piece: 'Oval halo engagement ring', quote: 'Mohammad walked me through every shape and stone option before my partner proposed. The final ring is exactly what I pictured — down to the milgrain detailing.' },
     { name: 'James', neighbourhood: 'North York', piece: 'Three-stone engagement ring', quote: 'Reset my grandmother\'s diamond into a custom three-stone design. Incredible craftsmanship and genuine care for the heirloom meaning.' },
-    { name: 'Priya', neighbourhood: 'Etobicoke', piece: 'Emerald cut solitaire', quote: 'Got three quotes across Toronto. Al-Assali came in the most transparent and delivered a stunner. Ring still gets compliments a year later.' },
+    { name: 'Priya', neighbourhood: 'Etobicoke', piece: 'Emerald cut solitaire', quote: 'Got three quotes across Toronto. Al-Asali came in the most transparent and delivered a stunner. Ring still gets compliments a year later.' },
   ],
   'wedding-bands': [
     { name: 'Hassan', neighbourhood: 'Vaughan', piece: 'Matching Arabic calligraphy bands', quote: 'Mohammad engraved our names in Arabic inside matching platinum bands. The calligraphy is flawless — every stroke correct.' },
-    { name: 'Lauren', neighbourhood: 'Oakville', piece: 'Half-eternity diamond band', quote: 'My engagement ring was from a different jeweller but the contour band from Al-Assali fits flush like they were made together.' },
+    { name: 'Lauren', neighbourhood: 'Oakville', piece: 'Half-eternity diamond band', quote: 'My engagement ring was from a different jeweller but the contour band from Al-Asali fits flush like they were made together.' },
   ],
   'rings': [
     { name: 'David', neighbourhood: 'Toronto', piece: 'Family-crest signet ring', quote: 'Hand-engraved signet with my family crest. The level of detail is museum-grade. Will pass this down.' },

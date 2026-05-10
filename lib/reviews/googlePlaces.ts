@@ -95,7 +95,7 @@ export async function fetchGoogleReviews(): Promise<{
     }
 
     // Identity check: refuse to render reviews unless the returned place looks
-    // like Al-Assali Jewelry Studio. Guards against accidentally pulling a
+    // like Al-Asali Jewelry Studio. Guards against accidentally pulling a
     // stranger's reviews if the Place ID ever gets corrupted.
     const name = (data.result.name || '').toLowerCase()
     const address = (data.result.formatted_address || '').toLowerCase()

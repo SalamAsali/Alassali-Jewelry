@@ -11,8 +11,8 @@ import { neighbourhoods } from '../toronto/[slug]/neighbourhoods'
 import { gtaCities } from '../gta/[slug]/cities'
 
 export const metadata: Metadata = {
-  title: 'Service Areas | Al-Assali Jewelry Studio Toronto',
-  description: 'Al-Assali Jewelry Studio is a Toronto-based custom jeweller serving Toronto neighbourhoods and the entire Greater Toronto Area — Mississauga, Vaughan, Markham, and more.',
+  title: 'Service Areas | Al-Asali Jewelry Studio Toronto',
+  description: 'Al-Asali Jewelry Studio is a Toronto-based custom jeweller serving Toronto neighbourhoods and the entire Greater Toronto Area — Mississauga, Vaughan, Markham, and more.',
   alternates: { canonical: '/service-areas' },
 }
 
@@ -41,7 +41,7 @@ export default function ServiceAreasPage() {
             Service Areas
           </h1>
           <p className="text-lg text-stone leading-relaxed mb-6">
-            Al-Assali Jewelry Studio is a Toronto-based bespoke custom jeweller. We craft custom engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz for clients across Toronto and the wider Greater Toronto Area — by appointment, with free virtual consultations, complimentary secure insured delivery, and optional in-person meetings in Toronto.
+            Al-Asali Jewelry Studio is a Toronto-based bespoke custom jeweller. We craft custom engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz for clients across Toronto and the wider Greater Toronto Area — by appointment, with free virtual consultations, complimentary secure insured delivery, and optional in-person meetings in Toronto.
           </p>
         </header>
 

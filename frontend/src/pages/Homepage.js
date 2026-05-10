@@ -487,12 +487,12 @@ const Homepage = () => {
             >
               <img
                 src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/w5nwegci_storeout.jpg"
-                alt="Alassali Jewelry Studio Exterior"
+                alt="Alasali Jewelry Studio Exterior"
                 className="col-span-2 w-full rounded-xl shadow-2xl"
               />
               <img
                 src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/w7ayj2uj_storein.jpg"
-                alt="Alassali Jewelry Studio Interior"
+                alt="Alasali Jewelry Studio Interior"
                 className="col-span-2 w-full rounded-xl shadow-2xl"
               />
             </motion.div>

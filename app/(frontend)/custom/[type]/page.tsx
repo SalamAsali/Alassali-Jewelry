@@ -293,7 +293,7 @@ type StepId =
 // ---------------------------------------------------------------------------
 
 // ---------------------------------------------------------------------------
-// Global "Why Choose Al-Assali" cards — identical across every bespoke page
+// Global "Why Choose Al-Asali" cards — identical across every bespoke page
 // ---------------------------------------------------------------------------
 
 const globalWhyCards: { icon: LucideIcon; title: string; text: string }[] = [
@@ -320,7 +320,7 @@ const landingContent: Record<string, {
   'engagement-rings': {
     heroH1: 'Custom Engagement Rings in Toronto',
     heroSub: 'Design a one-of-a-kind ring as unique as your love story — handcrafted in-house by Toronto\'s finest.',
-    intro: 'At Al-Assali Jewelry, every custom engagement ring begins with your vision. Whether you dream of a classic solitaire, a vintage halo setting, or a bold modern design, our master craftspeople bring it to life entirely in-house in Toronto. Choose from ethically sourced natural and lab-grown diamonds, sapphires, rubies, and emeralds — set in platinum, 18K, or 14K gold. From the first sketch to the final presentation, your engagement ring is crafted with the care and precision your moment deserves. Couples across the GTA trust us because we don\'t outsource — every cut, setting, and polish happens under our roof.',
+    intro: 'At Al-Asali Jewelry, every custom engagement ring begins with your vision. Whether you dream of a classic solitaire, a vintage halo setting, or a bold modern design, our master craftspeople bring it to life entirely in-house in Toronto. Choose from ethically sourced natural and lab-grown diamonds, sapphires, rubies, and emeralds — set in platinum, 18K, or 14K gold. From the first sketch to the final presentation, your engagement ring is crafted with the care and precision your moment deserves. Couples across the GTA trust us because we don\'t outsource — every cut, setting, and polish happens under our roof.',
     processNote: 'Most custom engagement rings take 4-6 weeks from design approval to completion. We start with a personal consultation to understand your vision, create detailed CAD renderings for your approval, then hand-select your stones before our master jewelers begin crafting. Rush orders are available when your timeline demands it.',
     budgetGuide: 'Custom engagement rings start at $1,000 and scale based on your choice of metal, stone type, carat weight, and design complexity. During consultation, we\'ll work within your budget to maximize brilliance — whether that means a stunning lab-grown diamond or a natural stone with exceptional cut quality.',
     stoneNote: 'Choose from natural diamonds, lab-grown diamonds, sapphires, rubies, and emeralds. We source every stone for maximum fire and brilliance, and we\'re happy to walk you through the 4Cs (cut, clarity, colour, carat) during your consultation. Lab-grown diamonds offer the same physical properties at a lower price point.',
@@ -336,7 +336,7 @@ const landingContent: Record<string, {
       { q: 'Can I reset a family diamond into my new engagement ring?', a: 'Yes — heirloom resets are some of our most meaningful projects. We carefully remove your existing stone and design a new setting around it, preserving the sentiment while modernizing the look.' },
       { q: 'Do you offer financing for custom engagement rings?', a: 'Yes — we offer flexible payment plans and 0% financing options for qualified buyers. Ask during consultation and we\'ll walk you through what fits your timeline and budget.' },
       { q: 'Do you resize engagement rings for free?', a: 'Yes — every custom engagement ring we create includes free resizing within the first year, and free resizing for life if you have any significant finger-size change. Free cleanings and inspections for life as well.' },
-      { q: 'Where are you based?', a: 'Al-Assali Jewelry Studio is a Toronto-based bespoke jeweller. We work by appointment only — free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery across Toronto and the GTA, and optional in-person meetings in Toronto at a time that works for you.' },
+      { q: 'Where are you based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweller. We work by appointment only — free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery across Toronto and the GTA, and optional in-person meetings in Toronto at a time that works for you.' },
     ],
     relatedPages: [
       { name: 'Custom Rings', path: '/custom-rings' },
@@ -347,7 +347,7 @@ const landingContent: Record<string, {
   'rings': {
     heroH1: 'Custom Rings in Toronto',
     heroSub: 'Signet rings, statement rings, wedding bands, and more — designed around your vision, handcrafted in Toronto.',
-    intro: 'From bold signet rings to elegant wedding bands and one-of-a-kind statement pieces, Al-Assali Jewelry creates custom rings that are uniquely yours. Every ring is handcrafted in-house in Toronto using the finest gold, platinum, and silver, with optional diamond and gemstone settings. Whether you have a detailed sketch or just an idea, our craftspeople will bring your ring to life with precision and care.',
+    intro: 'From bold signet rings to elegant wedding bands and one-of-a-kind statement pieces, Al-Asali Jewelry creates custom rings that are uniquely yours. Every ring is handcrafted in-house in Toronto using the finest gold, platinum, and silver, with optional diamond and gemstone settings. Whether you have a detailed sketch or just an idea, our craftspeople will bring your ring to life with precision and care.',
     processNote: 'Custom rings typically take 3-5 weeks. We begin with a design consultation, create CAD renderings, and hand-select any stones before crafting begins. Whether it\'s a wedding band, a family signet ring, or a bold everyday statement piece, we treat every ring with the same level of detail.',
     budgetGuide: 'Custom rings start at $1,000 for simpler designs in 10K gold or silver, and scale with gold karat, platinum, stone settings, and design intricacy. Signet rings and wedding bands are among our most popular commissions.',
     stoneNote: 'Add diamonds (natural or lab-grown), sapphires, rubies, or emeralds to any custom ring. Stones can be flush-set, prong-set, or channel-set depending on your design and daily wear needs.',
@@ -372,7 +372,7 @@ const landingContent: Record<string, {
   'pendants': {
     heroH1: 'Custom Pendants in Toronto',
     heroSub: 'Name pendants, photo pendants, diamond initials, and more — your story, beautifully told in gold and silver.',
-    intro: 'Al-Assali Jewelry creates custom pendants that carry meaning. From diamond-encrusted name pendants and photo pendants to religious symbols and fully custom designs, every piece is handcrafted in-house in Toronto. Choose your metal, your stones, and your design — we\'ll create a pendant as unique as the story it tells. Our custom name chains and bubble letter pendants are among the most requested pieces in the GTA.',
+    intro: 'Al-Asali Jewelry creates custom pendants that carry meaning. From diamond-encrusted name pendants and photo pendants to religious symbols and fully custom designs, every piece is handcrafted in-house in Toronto. Choose your metal, your stones, and your design — we\'ll create a pendant as unique as the story it tells. Our custom name chains and bubble letter pendants are among the most requested pieces in the GTA.',
     processNote: 'Custom pendants take 2-4 weeks depending on complexity. Name and initial pendants are on the faster end, while photo pendants and diamond-set pieces require additional crafting time. We create a detailed mockup for your approval before beginning work.',
     budgetGuide: 'Custom pendants start at $1,000. Simple name pendants in 10K gold are the most accessible, while diamond-set photo pendants and large statement pieces sit at the higher end. We\'ll help you find the right balance of size, metal, and stone work for your budget.',
     stoneNote: 'Pendants can be set with diamonds (natural or lab-grown), sapphires, rubies, or emeralds. Popular options include diamond-encrusted initials, pave-set name pendants, and bezel-set center stones.',
@@ -398,7 +398,7 @@ const landingContent: Record<string, {
   'chains': {
     heroH1: 'Custom Chains in Toronto',
     heroSub: 'Cuban links, rope chains, franco chains, and more — built to your exact specifications in gold, silver, or platinum.',
-    intro: 'Al-Assali Jewelry is Toronto\'s destination for custom chains. Whether you want a heavyweight Miami Cuban link, a classic rope chain, or a sleek franco — every chain is handcrafted in-house to your exact length, width, and weight specifications. Choose from 10K, 14K, or 18K gold in yellow, white, or rose, as well as platinum and sterling silver. Our custom gold chains and name chains are among the most sought-after pieces in the GTA, built solid — never hollow.',
+    intro: 'Al-Asali Jewelry is Toronto\'s destination for custom chains. Whether you want a heavyweight Miami Cuban link, a classic rope chain, or a sleek franco — every chain is handcrafted in-house to your exact length, width, and weight specifications. Choose from 10K, 14K, or 18K gold in yellow, white, or rose, as well as platinum and sterling silver. Our custom gold chains and name chains are among the most sought-after pieces in the GTA, built solid — never hollow.',
     processNote: 'Custom chains take 2-4 weeks depending on complexity and weight. Cuban links and heavier chains require more crafting time. We weigh and measure each chain to your exact specifications before finishing.',
     budgetGuide: 'Custom chain pricing depends primarily on gold weight. A lighter 10K gold box chain starts around $1,000, while a heavy 18K Cuban link can reach $10,000+. We quote based on current gold prices, karat, and your desired dimensions.',
     stoneNote: 'Chains can incorporate diamond-set clasps, diamond-cut links, or integrated diamond settings. We can also create matching chain-and-pendant combinations.',
@@ -423,7 +423,7 @@ const landingContent: Record<string, {
   'earrings': {
     heroH1: 'Custom Earrings in Toronto',
     heroSub: 'Diamond studs, gold hoops, drop earrings, and more — handcrafted to your design in our Toronto studio.',
-    intro: 'From elegant diamond studs to bold statement hoops, Al-Assali Jewelry designs and crafts custom earrings entirely in-house in Toronto. Choose your style, your metal, and your stones — whether you want a subtle everyday pair or a show-stopping set for a special occasion, we craft them to perfection. We also create matching earring-and-pendant sets for a cohesive look.',
+    intro: 'From elegant diamond studs to bold statement hoops, Al-Asali Jewelry designs and crafts custom earrings entirely in-house in Toronto. Choose your style, your metal, and your stones — whether you want a subtle everyday pair or a show-stopping set for a special occasion, we craft them to perfection. We also create matching earring-and-pendant sets for a cohesive look.',
     processNote: 'Custom earrings take 2-4 weeks. Stud earrings are quicker to produce, while complex chandelier designs with multiple stone settings require more time. We create a detailed design for your approval before crafting.',
     budgetGuide: 'Custom earrings start at $1,000. Diamond stud earrings are priced based on stone size and quality, while gold hoops depend on weight and karat. We\'ll find the best combination for your budget.',
     stoneNote: 'Earrings can feature diamonds (natural or lab-grown), sapphires, rubies, and emeralds. Popular choices include diamond stud earrings, pave-set hoops, and drop earrings with colored gemstones.',
@@ -448,7 +448,7 @@ const landingContent: Record<string, {
   'bracelets': {
     heroH1: 'Custom Bracelets in Toronto',
     heroSub: 'Tennis bracelets, bangles, cuffs, and engraved pieces for men and women — designed and crafted in Toronto.',
-    intro: 'Al-Assali Jewelry creates custom bracelets for every style and occasion. From diamond tennis bracelets and elegant bangles to bold cuffs and engraved pieces for men, every bracelet is handcrafted in-house in Toronto. Whether you want a personalized name bracelet, a custom charm bracelet, or a mens engraved bracelet in solid gold — we\'ll create a piece that fits your wrist and your vision perfectly.',
+    intro: 'Al-Asali Jewelry creates custom bracelets for every style and occasion. From diamond tennis bracelets and elegant bangles to bold cuffs and engraved pieces for men, every bracelet is handcrafted in-house in Toronto. Whether you want a personalized name bracelet, a custom charm bracelet, or a mens engraved bracelet in solid gold — we\'ll create a piece that fits your wrist and your vision perfectly.',
     processNote: 'Custom bracelets take 3-5 weeks. Tennis bracelets with many individual stone settings require more time, while bangles and cuffs are quicker. We measure your wrist for a precise fit during consultation.',
     budgetGuide: 'Custom bracelets start at $1,000. Tennis bracelets are priced based on stone count and quality, while bangles and cuffs depend on metal weight. Engraved bracelets for men are among our most popular commissions.',
     stoneNote: 'Bracelets can feature diamonds, sapphires, and other gemstones. Tennis bracelets with round brilliant diamonds are our most popular stone-set bracelet style. We also offer diamond-accented cuffs and charm bracelets.',
@@ -473,7 +473,7 @@ const landingContent: Record<string, {
   'grillz': {
     heroH1: 'Custom Grillz in Toronto',
     heroSub: 'Gold grillz, diamond grillz, and VVS sets — Toronto\'s premier custom grillz studio. In-house craftsmanship, competitive prices.',
-    intro: 'Al-Assali Jewelry is Toronto\'s go-to destination for custom grillz. From single-tooth pieces to full diamond-set grillz, every set is handcrafted in-house using real gold and genuine diamonds — not plated, not CZ. We offer 10K, 14K, and 18K gold in yellow, white, and rose, with optional VVS diamond, diamond dust, and fully custom designs. Our mold process ensures a perfect fit every time, and our prices are explained upfront with no surprises. Whether you\'re looking for gold grillz, diamond grillz, or something entirely unique, we\'re the only shop in Toronto that does it all under one roof.',
+    intro: 'Al-Asali Jewelry is Toronto\'s go-to destination for custom grillz. From single-tooth pieces to full diamond-set grillz, every set is handcrafted in-house using real gold and genuine diamonds — not plated, not CZ. We offer 10K, 14K, and 18K gold in yellow, white, and rose, with optional VVS diamond, diamond dust, and fully custom designs. Our mold process ensures a perfect fit every time, and our prices are explained upfront with no surprises. Whether you\'re looking for gold grillz, diamond grillz, or something entirely unique, we\'re the only shop in Toronto that does it all under one roof.',
     processNote: 'Custom grillz take 1-2 weeks after your mold appointment. We take a precise dental impression, design your grillz, and handcraft them in your chosen metal and stone configuration. Mold sessions are booked by appointment in Toronto.',
     budgetGuide: 'Grillz start at $500 for a single tooth in 10K gold. Top 6 or bottom 6 sets range from $2,000-$5,000 in solid gold. Full diamond-set VVS grillz start around $5,000 and scale with diamond quality and coverage.',
     stoneNote: 'We set genuine natural and lab-grown diamonds in grillz, including VVS clarity stones. Diamond dust finishes, channel-set diamonds, and fully iced-out options are all available. No cubic zirconia — ever.',
@@ -500,7 +500,7 @@ const landingContent: Record<string, {
   'wedding-bands': {
     heroH1: 'Custom Wedding Bands in Toronto',
     heroSub: 'Bands as timeless as your vow — handcrafted in Toronto to match your ring, your finish, and your story.',
-    intro: 'A wedding band is the piece you\'ll wear every single day for the rest of your life, so it deserves the same care as the engagement ring it sits beside. At Al-Assali Jewelry, every custom wedding band is designed and handcrafted in-house in Toronto — from classic comfort-fit bands and eternity rings to contour-shaped bands that nest perfectly against a halo or solitaire. Choose platinum, 18K, 14K, or 10K gold in yellow, white, or rose, with optional diamond or gemstone accents and any engraving you can imagine, including Arabic calligraphy, fingerprints, and soundwaves. We craft matching bridal sets for couples, modern men\'s bands in brushed or hammered finishes, and stackable anniversary bands — all with our lifetime craftsmanship guarantee.',
+    intro: 'A wedding band is the piece you\'ll wear every single day for the rest of your life, so it deserves the same care as the engagement ring it sits beside. At Al-Asali Jewelry, every custom wedding band is designed and handcrafted in-house in Toronto — from classic comfort-fit bands and eternity rings to contour-shaped bands that nest perfectly against a halo or solitaire. Choose platinum, 18K, 14K, or 10K gold in yellow, white, or rose, with optional diamond or gemstone accents and any engraving you can imagine, including Arabic calligraphy, fingerprints, and soundwaves. We craft matching bridal sets for couples, modern men\'s bands in brushed or hammered finishes, and stackable anniversary bands — all with our lifetime craftsmanship guarantee.',
     processNote: 'Custom wedding bands take 3-5 weeks from design approval to completion. We start with a free consultation to understand the fit, finish, and story you want, create CAD renderings for your approval, then hand-craft each band in your chosen metal. Matching bridal sets are designed alongside the engagement ring when possible to ensure a perfect nest. Rush orders can be completed in 2-3 weeks for an additional fee.',
     budgetGuide: 'Custom wedding bands start at $900 for plain 10K gold bands and scale with karat, width, eternity stone coverage, and engraving complexity. A solid platinum comfort-fit band typically starts around $1,800, a half-eternity diamond band around $3,500, and a full diamond eternity band from $6,000. We quote every band up front with no hidden fees.',
     stoneNote: 'Bands can be set with diamonds (natural or lab-grown), sapphires, rubies, or emeralds in channel, bead, or shared-prong settings. Eternity and half-eternity bands are our most popular stone-set options, with birthstone bands a close second for anniversary pieces.',
@@ -599,7 +599,7 @@ function LandingPage({ type }: { type: string }) {
         <section className="py-20 px-4 border-t border-glacier-grey/10">
           <div className="max-w-5xl mx-auto">
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-white text-center mb-14" style={{ fontFamily: 'var(--font-heading)' }}>
-              Why Choose Al-Assali
+              Why Choose Al-Asali
             </motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {globalWhyCards.map((card, i) => {
@@ -805,12 +805,22 @@ function LandingPage({ type }: { type: string }) {
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-white text-center mb-12" style={{ fontFamily: 'var(--font-heading)' }}>
               Frequently Asked Questions
             </motion.h2>
-            <div className="space-y-6">
+            <div className="space-y-3">
               {landing.faq.map((item, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-6">
-                  <h3 className="text-white font-bold mb-2">{item.q}</h3>
-                  <p className="text-stone text-sm leading-relaxed">{item.a}</p>
-                </motion.div>
+                <motion.details
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.05 }}
+                  className="group bg-charcoal/50 border border-glacier-grey/20 rounded-xl overflow-hidden hover:border-glacier-grey/40 transition-colors"
+                >
+                  <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+                    <h3 className="text-white font-bold text-sm md:text-base">{item.q}</h3>
+                    <span className="flex-shrink-0 w-7 h-7 rounded-full bg-glacier-grey flex items-center justify-center text-white group-open:rotate-45 transition-transform">+</span>
+                  </summary>
+                  <div className="px-5 pb-5 text-stone text-sm leading-relaxed">{item.a}</div>
+                </motion.details>
               ))}
             </div>
           </div>
@@ -1500,12 +1510,12 @@ const hubProcessSteps = [
   { icon: MessageSquare, title: 'Consultation', body: 'Free virtual consultation via Zoom, phone, or message — or in-person in Toronto by appointment. We discuss your vision, budget, and timeline.' },
   { icon: Pen, title: 'Design & CAD', body: 'Our designers produce detailed sketches and 3D CAD renderings for your approval before crafting begins.' },
   { icon: Diamond, title: 'Stone & Metal Selection', body: 'Hand-pick GIA-graded natural or lab-grown diamonds, coloured gems, and your choice of gold, platinum, or silver.' },
-  { icon: Wrench, title: 'In-House Crafting', body: 'Every piece is cast, set, and finished entirely in our Toronto workshop by master jeweller Mohammad Al-Assali — no outsourcing.' },
+  { icon: Wrench, title: 'In-House Crafting', body: 'Every piece is cast, set, and finished entirely in our Toronto workshop by master jeweller Mohammad Al-Asali — no outsourcing.' },
   { icon: Gem, title: 'Presentation', body: 'Your finished piece is inspected, photographed, and presented in luxury packaging with a lifetime craftsmanship guarantee.' },
 ]
 
 const hubFaq = [
-  { q: 'Where is Al-Assali Jewelry based?', a: 'Al-Assali Jewelry Studio is a Toronto-based bespoke jeweller. We operate by appointment only — virtual consultations, secure insured delivery across the GTA, and optional in-person meetings in Toronto when preferred.' },
+  { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweller. We operate by appointment only — virtual consultations, secure insured delivery across the GTA, and optional in-person meetings in Toronto when preferred.' },
   { q: 'Do I need an appointment to visit the Toronto studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we\'ll confirm a time that works for you.' },
   { q: 'What areas around Toronto do you serve?', a: 'Our studio is in Toronto, and we regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, and Milton.' },
   { q: 'How do I start a custom jewellery project?', a: 'Book a free consultation — virtual via Zoom, phone, or message, or in-person in Toronto by appointment. We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
@@ -1541,7 +1551,7 @@ function GeneralHub() {
             Toronto&apos;s Premier Custom Jeweller
           </h2>
           <p className="text-stone leading-relaxed text-base md:text-lg">
-            Al-Assali Jewelry is a Toronto-based bespoke jewellery studio, working by appointment. Master jeweller Mohammad Al-Assali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
+            Al-Asali Jewelry is a Toronto-based bespoke jewellery studio, working by appointment. Master jeweller Mohammad Al-Asali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
           </p>
         </header>
 
@@ -1596,7 +1606,7 @@ function GeneralHub() {
         {/* WHY AL-ASSALI */}
         <div className="bg-charcoal/40 border border-glacier-grey/20 rounded-2xl p-8 md:p-12">
           <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
-            Why Al-Assali Jewelry
+            Why Al-Asali Jewelry
           </h3>
           <p className="text-stone text-center mb-10 max-w-2xl mx-auto text-sm">
             We are a small, focused Toronto workshop. Every piece is crafted by a master jeweller — not a factory — and backed by a lifetime craftsmanship guarantee.
@@ -1626,10 +1636,10 @@ function GeneralHub() {
           </div>
           <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweller &amp; Founder</div>
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-            Mohammad Al-Assali
+            Mohammad Al-Asali
           </h3>
           <p className="text-stone leading-relaxed text-sm md:text-base">
-            Mohammad is the founder and master jeweller behind Al-Assali Jewelry Studio. A George Brown College Jewellery Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
+            Mohammad is the founder and master jeweller behind Al-Asali Jewelry Studio. A George Brown College Jewellery Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
           </p>
         </div>
 
@@ -1639,7 +1649,7 @@ function GeneralHub() {
             How We Work Together
           </h3>
           <p className="text-stone leading-relaxed text-sm mb-6">
-            Al-Assali Jewelry Studio is a Toronto-based bespoke jeweller, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
+            Al-Asali Jewelry Studio is a Toronto-based bespoke jeweller, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <a href="tel:+16475624340" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
@@ -1659,12 +1669,22 @@ function GeneralHub() {
           <h3 className="text-2xl md:text-3xl font-bold text-white text-center mb-10" style={{ fontFamily: 'var(--font-heading)' }}>
             Frequently Asked Questions
           </h3>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {hubFaq.map((item, i) => (
-              <div key={i} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5">
-                <h4 className="text-white font-bold text-sm mb-1.5">{item.q}</h4>
-                <p className="text-stone text-sm leading-relaxed">{item.a}</p>
-              </div>
+              <motion.details
+                key={i}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.04 }}
+                className="group bg-charcoal/50 border border-glacier-grey/20 rounded-xl overflow-hidden hover:border-glacier-grey/40 transition-colors"
+              >
+                <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+                  <h4 className="text-white font-bold text-sm md:text-base">{item.q}</h4>
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-glacier-grey flex items-center justify-center text-white group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div className="px-5 pb-5 text-stone text-sm leading-relaxed">{item.a}</div>
+              </motion.details>
             ))}
           </div>
         </div>

@@ -97,7 +97,7 @@ export default function NeighbourhoodPage({ params }: { params: Params }) {
         {/* WHY LOCAL */}
         <section>
           <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
-            Why {n.name} Clients Choose Al-Assali Jewelry
+            Why {n.name} Clients Choose Al-Asali Jewelry
           </h2>
           <p className="text-stone text-center mb-10 max-w-2xl mx-auto">{n.distanceNote}</p>
           <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
@@ -172,12 +172,18 @@ export default function NeighbourhoodPage({ params }: { params: Params }) {
           <h2 className="text-2xl md:text-3xl font-bold text-white text-center mb-10" style={{ fontFamily: 'var(--font-heading)' }}>
             Frequently Asked Questions
           </h2>
-          <div className="space-y-4">
+          <div className="space-y-3">
             {n.faq.map((item, i) => (
-              <div key={i} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5">
-                <h3 className="text-white font-bold text-sm mb-2">{item.q}</h3>
-                <p className="text-stone text-sm leading-relaxed">{item.a}</p>
-              </div>
+              <details
+                key={i}
+                className="group bg-charcoal/50 border border-glacier-grey/20 rounded-xl overflow-hidden hover:border-glacier-grey/40 transition-colors"
+              >
+                <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+                  <h3 className="text-white font-bold text-sm md:text-base">{item.q}</h3>
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-glacier-grey flex items-center justify-center text-white group-open:rotate-45 transition-transform">+</span>
+                </summary>
+                <div className="px-5 pb-5 text-stone text-sm leading-relaxed">{item.a}</div>
+              </details>
             ))}
           </div>
         </section>

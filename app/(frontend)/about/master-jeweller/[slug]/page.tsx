@@ -11,15 +11,15 @@ import { buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { getMasterJeweller } from '@/lib/getMasterJeweller'
 
 const FALLBACK_TITLE = 'Master Jeweller & Founder'
-const FALLBACK_TAGLINE = "Toronto's bespoke jeweller behind every piece that leaves Al-Assali Jewelry Studio."
+const FALLBACK_TAGLINE = "Toronto's bespoke jeweller behind every piece that leaves Al-Asali Jewelry Studio."
 const FALLBACK_BIO = [
-  'Mohammad Al-Assali is the founder and master jeweller behind Al-Assali Jewelry Studio in Toronto. A graduate of the George Brown College Jewellery Arts Program and a working goldsmith since 2017, Mohammad has personally designed and handcrafted hundreds of bespoke engagement rings, wedding bands, diamond pendants, gold chains, tennis bracelets, and custom grillz for clients across the Greater Toronto Area.',
-  'What began as a sole-proprietor commission practice at the end of 2020 has grown into a full Toronto bespoke studio — still operating with the same principle Mohammad started with: every piece is designed, cast, set, and finished in-house. No outsourcing, no middlemen, no shortcuts. If Al-Assali Jewelry made it, Mohammad inspected it.',
+  'Mohammad Al-Asali is the founder and master jeweller behind Al-Asali Jewelry Studio in Toronto. A graduate of the George Brown College Jewellery Arts Program and a working goldsmith since 2017, Mohammad has personally designed and handcrafted hundreds of bespoke engagement rings, wedding bands, diamond pendants, gold chains, tennis bracelets, and custom grillz for clients across the Greater Toronto Area.',
+  'What began as a sole-proprietor commission practice at the end of 2020 has grown into a full Toronto bespoke studio — still operating with the same principle Mohammad started with: every piece is designed, cast, set, and finished in-house. No outsourcing, no middlemen, no shortcuts. If Al-Asali Jewelry made it, Mohammad inspected it.',
   'Mohammad has built a reputation for deep expertise in Arabic calligraphy jewellery — a specialty few Toronto jewellers can authentically execute. From Allah pendants and Ayat al-Kursi pendants to custom Arabic name rings and engraved wedding bands, his work has been carried by clients in Toronto, Mississauga, Vaughan, Markham, and beyond.',
 ].join('\n\n')
-const FALLBACK_SEO_TITLE = 'Mohammad Al-Assali — Master Jeweller & Founder | Al-Assali Jewelry Toronto'
+const FALLBACK_SEO_TITLE = 'Mohammad Al-Asali — Master Jeweller & Founder | Al-Asali Jewelry Toronto'
 const FALLBACK_SEO_DESCRIPTION =
-  'Meet Mohammad Al-Assali — master jeweller and founder of Al-Assali Jewelry Studio in Toronto. George Brown College Jewellery Arts graduate, practicing since 2017.'
+  'Meet Mohammad Al-Asali — master jeweller and founder of Al-Asali Jewelry Studio in Toronto. George Brown College Jewellery Arts graduate, practicing since 2017.'
 
 export async function generateMetadata({
   params,
@@ -102,7 +102,7 @@ export default async function MasterJewellerPage({
             </h2>
             <ul className="space-y-2 text-stone text-sm">
               <li><span className="text-white font-medium">Practicing since 2017</span></li>
-              <li><span className="text-white font-medium">Al-Assali Jewelry Studio</span> — Founder &amp; Master Jeweller (Toronto, 2020–present)</li>
+              <li><span className="text-white font-medium">Al-Asali Jewelry Studio</span> — Founder &amp; Master Jeweller (Toronto, 2020–present)</li>
               <li>Hundreds of bespoke pieces handcrafted for GTA clients</li>
             </ul>
           </div>

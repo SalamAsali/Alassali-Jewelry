@@ -10,7 +10,7 @@ const DESCRIPTION = 'Arabic calligraphy pendants, rings, and engravings — expl
 const DATE = '2026-04-19'
 
 export const metadata: Metadata = {
-  title: 'Arabic Calligraphy Jewellery Toronto | Al-Assali Jewelry',
+  title: 'Arabic Calligraphy Jewellery Toronto | Al-Asali Jewelry',
   description: DESCRIPTION,
   alternates: { canonical: `/blog/${SLUG}` },
   openGraph: { title: TITLE, description: DESCRIPTION, type: 'article' },
@@ -55,7 +55,7 @@ export default function Page() {
         Arabic calligraphy is a craft, not a font. When it&apos;s rendered correctly in jewellery, it flows — the strokes balance, the letters connect as the script demands, the proportions feel alive. When it&apos;s rendered poorly, it looks like a copy-pasted shape that happens to be in Arabic. The difference matters, especially for pieces that carry sacred text or a loved one&apos;s name.
       </p>
       <p>
-        Al-Assali Jewelry Studio specializes in Arabic calligraphy jewellery in Toronto. This guide walks through the fonts we work with, the most-requested pieces, pricing, and what to ask for when you commission a piece.
+        Al-Asali Jewelry Studio specializes in Arabic calligraphy jewellery in Toronto. This guide walks through the fonts we work with, the most-requested pieces, pricing, and what to ask for when you commission a piece.
       </p>
 
       <h2>The fonts we work with</h2>
@@ -126,7 +126,7 @@ export default function Page() {
         Many jewellers will accept an Arabic calligraphy commission by running the text through a font converter and casting whatever comes out. That produces shapes that approximate Arabic but don&apos;t read correctly — letters disconnect where they should join, proportions feel cramped, and religious text sometimes renders with errors.
       </p>
       <p>
-        Our master jeweller, Mohammad Al-Assali, hand-verifies every Arabic piece and personally adjusts the calligraphy where the font renders need correcting. It&apos;s slower. It&apos;s why we&apos;re the first stop for Arabic calligraphy commissions across the GTA.
+        Our master jeweller, Mohammad Al-Asali, hand-verifies every Arabic piece and personally adjusts the calligraphy where the font renders need correcting. It&apos;s slower. It&apos;s why we&apos;re the first stop for Arabic calligraphy commissions across the GTA.
       </p>
 
       <h2>Book a consultation</h2>

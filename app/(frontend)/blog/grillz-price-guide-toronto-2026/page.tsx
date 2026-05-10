@@ -10,7 +10,7 @@ const DESCRIPTION = 'A Toronto custom jeweller\'s real 2026 pricing for gold gri
 const DATE = '2026-04-17'
 
 export const metadata: Metadata = {
-  title: 'Custom Grillz Price Guide Toronto 2026 | Al-Assali Jewelry',
+  title: 'Custom Grillz Price Guide Toronto 2026 | Al-Asali Jewelry',
   description: DESCRIPTION,
   alternates: { canonical: `/blog/${SLUG}` },
   openGraph: { title: TITLE, description: DESCRIPTION, type: 'article' },
@@ -126,7 +126,7 @@ export default function Page() {
         We don&apos;t offer permanent grillz because the dental-work involved introduces long-term enamel risk. If you&apos;re set on a permanent look, we&apos;ll discuss alternatives during consultation — some clients opt for thicker gold caps that grip more firmly without permanent bonding.
       </p>
 
-      <h2>Why Al-Assali Jewelry for grillz in Toronto</h2>
+      <h2>Why Al-Asali Jewelry for grillz in Toronto</h2>
       <ul>
         <li>Every piece handcrafted in our Toronto studio — not mass-produced overseas</li>
         <li>Real solid gold (10K / 14K / 18K) and real diamonds only — no CZ, no moissanite, no plating</li>

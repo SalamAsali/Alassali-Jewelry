@@ -123,7 +123,7 @@ const FAQ = () => {
             className="mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-deep-charcoal mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
-              Alassali Jewelry Studio:
+              Alasali Jewelry Studio:
             </h2>
           </motion.div>
 

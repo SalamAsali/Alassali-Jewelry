@@ -12,7 +12,7 @@ const Footer = () => {
             <Link to="/" className="flex items-center gap-3 mb-4">
               <img 
                 src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/mos4tvrw_Final-W2-1.png" 
-                alt="Alassali Jewelry" 
+                alt="Alasali Jewelry" 
                 className="h-24 w-auto"
                 style={{ filter: 'invert(1)' }}
               />
@@ -161,7 +161,7 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-charcoal text-center text-warm-gray text-sm">
-          <p>&copy; {new Date().getFullYear()} Alassali Jewelry. Crafted with precision in Toronto.</p>
+          <p>&copy; {new Date().getFullYear()} Alasali Jewelry. Crafted with precision in Toronto.</p>
         </div>
       </div>
     </footer>

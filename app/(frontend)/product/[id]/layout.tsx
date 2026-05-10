@@ -17,8 +17,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const doc = await getGalleryItemById(id)
     if (!doc) return {}
     
-    const title = doc.title ? `${doc.title} | Alassali Jewelry` : 'Alassali Jewelry'
-    const description = doc.description || 'Custom jewelry by Alassali Jewelry, Toronto.'
+    const title = doc.title ? `${doc.title} | Alasali Jewelry` : 'Alasali Jewelry'
+    const description = doc.description || 'Custom jewelry by Alasali Jewelry, Toronto.'
     const img = doc.image ? getImageUrl(doc.image) : null
     const ogImage = img && !img.includes('placeholder') ? (img.startsWith('http') ? img : `${getServerSideURL()}${img}`) : undefined
     
