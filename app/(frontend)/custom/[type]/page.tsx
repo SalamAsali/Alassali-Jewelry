@@ -896,7 +896,7 @@ export default function CustomJewelryPage() {
 
   // /custom-form → form-only conversion utility. Hub SEO content was
   // moved to the homepage to consolidate ranking authority on a single
-  // "custom jewellery toronto" page; this URL is excluded from the sitemap.
+  // "custom jewelry toronto" page; this URL is excluded from the sitemap.
   return (
     <Suspense fallback={null}>
       <PortalForm />
@@ -1492,7 +1492,7 @@ function PortalForm() {
 
 // ---------------------------------------------------------------------------
 // GeneralHub — SEO-rich hub content rendered below the PortalForm on /custom/general
-// Targets "custom jeweller Toronto", "bespoke jewellery Toronto", "custom jewellery Toronto"
+// Targets "custom jeweller Toronto", "bespoke jewelry Toronto", "custom jewelry Toronto"
 // ---------------------------------------------------------------------------
 
 const hubBespokeCards: { name: string; path: string; icon: LucideIcon; blurb: string }[] = [
@@ -1518,12 +1518,12 @@ const hubFaq = [
   { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweller. We operate by appointment only — virtual consultations, secure insured delivery across the GTA, and optional in-person meetings in Toronto when preferred.' },
   { q: 'Do I need an appointment to visit the Toronto studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we\'ll confirm a time that works for you.' },
   { q: 'What areas around Toronto do you serve?', a: 'Our studio is in Toronto, and we regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, and Milton.' },
-  { q: 'How do I start a custom jewellery project?', a: 'Book a free consultation — virtual via Zoom, phone, or message, or in-person in Toronto by appointment. We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
-  { q: 'How much does custom jewellery cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal, stones, and design complexity. We quote every project up front with no hidden fees.' },
+  { q: 'How do I start a custom jewelry project?', a: 'Book a free consultation — virtual via Zoom, phone, or message, or in-person in Toronto by appointment. We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
+  { q: 'How much does custom jewelry cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal, stones, and design complexity. We quote every project up front with no hidden fees.' },
   { q: 'Do you offer lab-grown diamonds?', a: 'Yes — we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value.' },
   { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We\'ll carefully remove the stones from your existing piece and set them into your new custom design.' },
-  { q: 'Do you offer Arabic calligraphy jewellery?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweller is fluent in the art of Arabic calligraphy casting.' },
-  { q: 'What is the typical timeline for custom jewellery?', a: 'Most pieces take 2-6 weeks: grillz 1-2 weeks, pendants 2-4 weeks, chains and earrings 2-4 weeks, rings and bracelets 3-5 weeks, engagement rings 4-6 weeks. Rush orders are available.' },
+  { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweller is fluent in the art of Arabic calligraphy casting.' },
+  { q: 'What is the typical timeline for custom jewelry?', a: 'Most pieces take 2-6 weeks: grillz 1-2 weeks, pendants 2-4 weeks, chains and earrings 2-4 weeks, rings and bracelets 3-5 weeks, engagement rings 4-6 weeks. Rush orders are available.' },
   { q: 'Do you ship outside of Toronto?', a: 'Yes — we ship securely across the GTA and anywhere in Canada. Finished pieces are always fully insured in transit.' },
 ]
 
@@ -1545,13 +1545,13 @@ function GeneralHub() {
         <header className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 mb-5">
             <Sparkles className="w-4 h-4 text-glacier-grey" />
-            <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">Toronto&apos;s Custom Jewellery Studio</span>
+            <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">Toronto&apos;s Custom Jewelry Studio</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
             Toronto&apos;s Premier Custom Jeweller
           </h2>
           <p className="text-stone leading-relaxed text-base md:text-lg">
-            Al-Asali Jewelry is a Toronto-based bespoke jewellery studio, working by appointment. Master jeweller Mohammad Al-Asali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
+            Al-Asali Jewelry is a Toronto-based bespoke jewelry studio, working by appointment. Master jeweller Mohammad Al-Asali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
           </p>
         </header>
 
@@ -1639,7 +1639,7 @@ function GeneralHub() {
             Mohammad Al-Asali
           </h3>
           <p className="text-stone leading-relaxed text-sm md:text-base">
-            Mohammad is the founder and master jeweller behind Al-Asali Jewelry Studio. A George Brown College Jewellery Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
+            Mohammad is the founder and master jeweller behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
           </p>
         </div>
 
@@ -1655,8 +1655,8 @@ function GeneralHub() {
             <a href="tel:+16475624340" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
               <MessageSquare className="w-4 h-4" /> (647) 562-4340
             </a>
-            <a href="mailto:contact@alassalijewellerystudio.com" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
-              <Type className="w-4 h-4" /> contact@alassalijewellerystudio.com
+            <a href="mailto:contact@alassalijewelrystudio.com" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
+              <Type className="w-4 h-4" /> contact@alassalijewelrystudio.com
             </a>
           </div>
           <p className="text-stone text-xs mt-5">

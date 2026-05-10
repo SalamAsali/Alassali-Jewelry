@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   defaultOgPath: '/opengraph-image.jpg',
   phone: '+1-647-562-4340',
   phoneDisplay: '(647) 562-4340',
-  email: 'contact@alassalijewellerystudio.com',
+  email: 'contact@alassalijewelrystudio.com',
   founded: '2017',
   founder: 'Mohammad Al-Asali',
   priceRange: '$$$',
@@ -86,20 +86,20 @@ export const MASTER_JEWELLER = {
   jobTitle: 'Master Jeweller & Founder',
   slug: 'mohammad-al-assali',
   credentials: [
-    'George Brown College — Jewellery Arts Program (Diploma)',
+    'George Brown College — Jewelry Arts Program (Diploma)',
   ],
   practicingSince: '2017',
-  bio: 'Mohammad Al-Asali is the founder and master jeweller behind Al-Asali Jewelry Studio in Toronto. A George Brown College Jewellery Arts Program graduate practicing since 2017, Mohammad has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area — every piece finished in-house with no outsourcing.',
+  bio: 'Mohammad Al-Asali is the founder and master jeweller behind Al-Asali Jewelry Studio in Toronto. A George Brown College Jewelry Arts Program graduate practicing since 2017, Mohammad has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area — every piece finished in-house with no outsourcing.',
   knowsAbout: [
     'Bespoke Engagement Ring Design',
     'Diamond Grading (4Cs)',
     'Goldsmithing',
-    'CAD Jewellery Design',
+    'CAD Jewelry Design',
     'Custom Gold Chains',
     'Diamond Setting',
     'Custom Grillz Fabrication',
     'Lost-Wax Casting',
-    'Arabic Calligraphy Jewellery',
+    'Arabic Calligraphy Jewelry',
   ],
 } as const
 

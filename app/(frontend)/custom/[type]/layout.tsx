@@ -34,8 +34,8 @@ const pageMeta: Record<string, { title: string; description: string }> = {
     description: 'Custom wedding bands handcrafted in Toronto. Matching bridal sets, eternity bands, men\'s wedding rings, engraved bands, and Arabic calligraphy rings — in gold, platinum, or silver.',
   },
   'general': {
-    title: 'Start Your Custom Jewellery Project — Al-Asali Jewelry',
-    description: 'Tell us about your custom jewellery project — we’ll send back a sketch, a quote, and a timeline within 24 hours.',
+    title: 'Start Your Custom Jewelry Project — Al-Asali Jewelry',
+    description: 'Tell us about your custom jewelry project — we’ll send back a sketch, a quote, and a timeline within 24 hours.',
   },
 }
 
@@ -43,7 +43,7 @@ export function generateMetadata({ params }: { params: { type: string } }): Meta
   const meta = pageMeta[params.type] || pageMeta['general']
   // /custom-form is a form-only conversion utility excluded from the
   // sitemap. Noindex prevents it from competing with the homepage for
-  // "custom jewellery toronto" intent.
+  // "custom jewelry toronto" intent.
   const isFormPage = params.type === 'general'
   return {
     title: meta.title,

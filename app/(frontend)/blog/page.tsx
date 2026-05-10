@@ -7,10 +7,10 @@ import { buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { getBlogIndex, BlogPostSummary } from '@/lib/getBlog'
 
-const FALLBACK_HEADING = 'Jewellery Guides'
+const FALLBACK_HEADING = 'Jewelry Guides'
 const FALLBACK_INTRO =
-  'Straight answers on pricing, craftsmanship, and how to shop for custom jewellery in Toronto — from our master jeweller.'
-const FALLBACK_SEO_TITLE = 'Custom Jewellery Guides & Toronto Jeweller Insights | Al-Asali Jewelry'
+  'Straight answers on pricing, craftsmanship, and how to shop for custom jewelry in Toronto — from our master jeweller.'
+const FALLBACK_SEO_TITLE = 'Custom Jewelry Guides & Toronto Jeweller Insights | Al-Asali Jewelry'
 const FALLBACK_SEO_DESCRIPTION =
   "Expert guides from Toronto's bespoke jeweller: custom engagement ring costs, grillz pricing, lab-grown vs natural diamonds, and more."
 
@@ -43,9 +43,9 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     tag: 'Diamonds',
   },
   {
-    id: 'arabic-calligraphy-jewellery-toronto',
-    slug: 'arabic-calligraphy-jewellery-toronto',
-    title: "Arabic Calligraphy Jewellery in Toronto: A Craftsman's Guide",
+    id: 'arabic-calligraphy-jewelry-toronto',
+    slug: 'arabic-calligraphy-jewelry-toronto',
+    title: "Arabic Calligraphy Jewelry in Toronto: A Craftsman's Guide",
     excerpt: 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweller. Fonts, verses, meanings, prices, and what to ask for.',
     date: '2026-04-19',
     readingMinutes: 7,
