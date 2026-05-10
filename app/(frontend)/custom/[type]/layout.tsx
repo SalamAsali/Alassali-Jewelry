@@ -41,7 +41,7 @@ const pageMeta: Record<string, { title: string; description: string }> = {
 
 export function generateMetadata({ params }: { params: { type: string } }): Metadata {
   const meta = pageMeta[params.type] || pageMeta['general']
-  // /custom-general is a form-only conversion utility excluded from the
+  // /custom-form is a form-only conversion utility excluded from the
   // sitemap. Noindex prevents it from competing with the homepage for
   // "custom jewellery toronto" intent.
   const isFormPage = params.type === 'general'

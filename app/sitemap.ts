@@ -5,9 +5,10 @@ import { gtaCitySlugs } from './(frontend)/gta/[slug]/cities'
 
 const BASE = SITE_CONFIG.url
 
-// Bespoke category landing pages. /custom/general is intentionally excluded —
-// its hub content moved to the homepage; the URL now serves a form-only
-// conversion utility and shouldn't compete for "custom jewellery toronto".
+// Bespoke category landing pages. The inquiry form (public URL /custom-form,
+// internal route /custom/general) is intentionally excluded — its hub
+// content moved to the homepage; the form is noindex and shouldn't compete
+// with the home page for "custom jewellery toronto" intent.
 const bespokeSlugs = [
   'engagement-rings',
   'wedding-bands',

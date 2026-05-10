@@ -89,7 +89,7 @@ export default function BlogLayout({
 
         <div className="mt-14 pt-10 border-t border-glacier-grey/20 text-center">
           <NextLink
-            href="/custom-general"
+            href="/custom-form"
             className="inline-flex items-center gap-2 bg-glacier-grey text-white px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:bg-glacier-grey-light transition-all"
           >
             Start Your Custom Project <ArrowRight className="w-4 h-4" />

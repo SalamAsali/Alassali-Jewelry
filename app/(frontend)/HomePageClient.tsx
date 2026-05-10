@@ -322,7 +322,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }} className="flex flex-col sm:flex-row gap-4">
               <Link href="/portfolio" className="inline-block bg-white text-soft-black px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-glacier-grey hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl text-center" data-testid="hero-cta-primary">VIEW MY WORK</Link>
-              <Link href="/custom-general" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-lg hover:shadow-2xl text-center">INQUIRE NOW</Link>
+              <Link href="/custom-form" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-lg hover:shadow-2xl text-center">INQUIRE NOW</Link>
             </motion.div>
           </motion.div>
         </div>
@@ -631,7 +631,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ fontFamily: 'var(--font-heading)' }}>Start Your Custom Jewellery Project<br /><span className="text-glacier-grey">in Toronto</span></h2>
             <p className="text-base md:text-lg text-stone mb-8 max-w-2xl mx-auto">Free consultation. No obligation. Tell us what you have in mind and we’ll send back a sketch, a quote, and a timeline.</p>
-            <Link href="/custom-general" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-bold hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">START YOUR JOURNEY TODAY</Link>
+            <Link href="/custom-form" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-bold hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">START YOUR JOURNEY TODAY</Link>
           </motion.div>
         </div>
       </section>
