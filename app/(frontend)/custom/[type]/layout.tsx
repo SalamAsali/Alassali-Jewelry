@@ -34,16 +34,21 @@ const pageMeta: Record<string, { title: string; description: string }> = {
     description: 'Custom wedding bands handcrafted in Toronto. Matching bridal sets, eternity bands, men\'s wedding rings, engraved bands, and Arabic calligraphy rings — in gold, platinum, or silver.',
   },
   'general': {
-    title: 'Custom Jewellery Toronto | Bespoke Jeweller — Al-Assali Jewelry',
-    description: 'Design custom jewellery with Toronto\'s premier bespoke jeweller. Engagement rings, wedding bands, chains, pendants, grillz, and more — all handcrafted in-house in Toronto, by appointment.',
+    title: 'Start Your Custom Jewellery Project — Al-Assali Jewelry',
+    description: 'Tell us about your custom jewellery project — we’ll send back a sketch, a quote, and a timeline within 24 hours.',
   },
 }
 
 export function generateMetadata({ params }: { params: { type: string } }): Metadata {
   const meta = pageMeta[params.type] || pageMeta['general']
+  // /custom-general is a form-only conversion utility excluded from the
+  // sitemap. Noindex prevents it from competing with the homepage for
+  // "custom jewellery toronto" intent.
+  const isFormPage = params.type === 'general'
   return {
     title: meta.title,
     description: meta.description,
+    ...(isFormPage ? { robots: { index: false, follow: true } } : {}),
   }
 }
 

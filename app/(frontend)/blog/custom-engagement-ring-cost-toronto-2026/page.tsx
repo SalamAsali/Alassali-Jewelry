@@ -46,8 +46,8 @@ export default function Page() {
       datePublished={DATE}
       readingMinutes={7}
       relatedLinks={[
-        { label: 'Custom Engagement Rings in Toronto', href: '/custom/engagement-rings' },
-        { label: 'Custom Wedding Bands in Toronto', href: '/custom/wedding-bands' },
+        { label: 'Custom Engagement Rings in Toronto', href: '/custom-engagement-rings' },
+        { label: 'Custom Wedding Bands in Toronto', href: '/custom-wedding-bands' },
         { label: 'Meet the Master Jeweller', href: '/about/master-jeweller/mohammad-al-assali' },
       ]}
     >

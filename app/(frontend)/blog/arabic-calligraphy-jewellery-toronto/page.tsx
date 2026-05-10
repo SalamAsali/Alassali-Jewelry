@@ -46,8 +46,8 @@ export default function Page() {
       datePublished={DATE}
       readingMinutes={7}
       relatedLinks={[
-        { label: 'Custom Pendants in Toronto', href: '/custom/pendants' },
-        { label: 'Custom Wedding Bands in Toronto', href: '/custom/wedding-bands' },
+        { label: 'Custom Pendants in Toronto', href: '/custom-pendants' },
+        { label: 'Custom Wedding Bands in Toronto', href: '/custom-wedding-bands' },
         { label: 'Meet the Master Jeweller', href: '/about/master-jeweller/mohammad-al-assali' },
       ]}
     >

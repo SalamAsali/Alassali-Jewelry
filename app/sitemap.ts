@@ -5,6 +5,9 @@ import { gtaCitySlugs } from './(frontend)/gta/[slug]/cities'
 
 const BASE = SITE_CONFIG.url
 
+// Bespoke category landing pages. /custom/general is intentionally excluded —
+// its hub content moved to the homepage; the URL now serves a form-only
+// conversion utility and shouldn't compete for "custom jewellery toronto".
 const bespokeSlugs = [
   'engagement-rings',
   'wedding-bands',
@@ -14,7 +17,6 @@ const bespokeSlugs = [
   'earrings',
   'bracelets',
   'grillz',
-  'general',
 ]
 
 const blogSlugs = [
@@ -38,10 +40,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   const bespokePages: MetadataRoute.Sitemap = bespokeSlugs.map((slug) => ({
-    url: `${BASE}/custom/${slug}`,
+    url: `${BASE}/custom-${slug}`,
     lastModified: now,
     changeFrequency: 'weekly',
-    priority: slug === 'general' ? 0.8 : 0.9,
+    priority: 0.9,
   }))
 
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({

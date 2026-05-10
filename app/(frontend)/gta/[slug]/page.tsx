@@ -30,14 +30,14 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
 }
 
 const bespokeGrid = [
-  { name: 'Custom Engagement Rings', path: '/custom/engagement-rings', icon: Diamond },
-  { name: 'Custom Wedding Bands', path: '/custom/wedding-bands', icon: Heart },
-  { name: 'Custom Rings', path: '/custom/rings', icon: Hammer },
-  { name: 'Custom Pendants', path: '/custom/pendants', icon: Scroll },
-  { name: 'Custom Chains', path: '/custom/chains', icon: LinkIcon },
-  { name: 'Custom Earrings', path: '/custom/earrings', icon: Sparkles },
-  { name: 'Custom Bracelets', path: '/custom/bracelets', icon: Gem },
-  { name: 'Custom Grillz', path: '/custom/grillz', icon: Flame },
+  { name: 'Custom Engagement Rings', path: '/custom-engagement-rings', icon: Diamond },
+  { name: 'Custom Wedding Bands', path: '/custom-wedding-bands', icon: Heart },
+  { name: 'Custom Rings', path: '/custom-rings', icon: Hammer },
+  { name: 'Custom Pendants', path: '/custom-pendants', icon: Scroll },
+  { name: 'Custom Chains', path: '/custom-chains', icon: LinkIcon },
+  { name: 'Custom Earrings', path: '/custom-earrings', icon: Sparkles },
+  { name: 'Custom Bracelets', path: '/custom-bracelets', icon: Gem },
+  { name: 'Custom Grillz', path: '/custom-grillz', icon: Flame },
 ]
 
 export default function GtaCityPage({ params }: { params: Params }) {
@@ -79,7 +79,7 @@ export default function GtaCityPage({ params }: { params: Params }) {
           </h1>
           <p className="text-lg md:text-xl text-stone leading-relaxed mb-6">{c.hook}</p>
           <NextLink
-            href="/custom/general"
+            href="/custom-general"
             className="inline-flex items-center gap-2 bg-glacier-grey text-white px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:bg-glacier-grey-light transition-all"
           >
             Start Your Custom Project <ArrowRight className="w-4 h-4" />
