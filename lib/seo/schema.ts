@@ -1,8 +1,8 @@
-import { SITE_CONFIG, MASTER_JEWELLER } from './siteConfig'
+import { SITE_CONFIG, MASTER_JEWELER } from './siteConfig'
 
 const STORE_ID = `${SITE_CONFIG.url}/#jewelrystore`
 const ORG_ID = `${SITE_CONFIG.url}/#organization`
-const FOUNDER_ID = `${SITE_CONFIG.url}/about/master-jeweller/${MASTER_JEWELLER.slug}#person`
+const FOUNDER_ID = `${SITE_CONFIG.url}/about/master-jeweler/${MASTER_JEWELER.slug}#person`
 
 export const STORE_REF = { '@id': STORE_ID }
 export const ORG_REF = { '@id': ORG_ID }
@@ -105,24 +105,24 @@ export function buildOrganizationSchema() {
   }
 }
 
-export function buildMasterJewellerSchema() {
+export function buildMasterJewelerSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Person',
     '@id': FOUNDER_ID,
-    name: MASTER_JEWELLER.name,
-    jobTitle: MASTER_JEWELLER.jobTitle,
-    description: MASTER_JEWELLER.bio,
-    url: `${SITE_CONFIG.url}/about/master-jeweller/${MASTER_JEWELLER.slug}`,
+    name: MASTER_JEWELER.name,
+    jobTitle: MASTER_JEWELER.jobTitle,
+    description: MASTER_JEWELER.bio,
+    url: `${SITE_CONFIG.url}/about/master-jeweler/${MASTER_JEWELER.slug}`,
     worksFor: STORE_REF,
-    knowsAbout: [...MASTER_JEWELLER.knowsAbout],
+    knowsAbout: [...MASTER_JEWELER.knowsAbout],
     alumniOf: {
       '@type': 'EducationalOrganization',
       name: 'George Brown College',
       department: 'Jewelry Arts Program',
       url: 'https://www.georgebrown.ca/programs/jewelry-arts-program-g103',
     },
-    hasCredential: MASTER_JEWELLER.credentials.map((c) => ({
+    hasCredential: MASTER_JEWELER.credentials.map((c) => ({
       '@type': 'EducationalOccupationalCredential',
       name: c,
     })),

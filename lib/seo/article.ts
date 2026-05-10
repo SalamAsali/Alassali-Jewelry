@@ -1,6 +1,6 @@
-import { SITE_CONFIG, MASTER_JEWELLER } from './siteConfig'
+import { SITE_CONFIG, MASTER_JEWELER } from './siteConfig'
 
-const FOUNDER_ID = `${SITE_CONFIG.url}/about/master-jeweller/${MASTER_JEWELLER.slug}#person`
+const FOUNDER_ID = `${SITE_CONFIG.url}/about/master-jeweler/${MASTER_JEWELER.slug}#person`
 const ORG_ID = `${SITE_CONFIG.url}/#organization`
 
 export type ArticleInput = {

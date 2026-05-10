@@ -81,15 +81,15 @@ export const SITE_CONFIG = {
   },
 } as const
 
-export const MASTER_JEWELLER = {
+export const MASTER_JEWELER = {
   name: 'Mohammad Al-Asali',
-  jobTitle: 'Master Jeweller & Founder',
+  jobTitle: 'Master Jeweler & Founder',
   slug: 'mohammad-al-assali',
   credentials: [
     'George Brown College — Jewelry Arts Program (Diploma)',
   ],
   practicingSince: '2017',
-  bio: 'Mohammad Al-Asali is the founder and master jeweller behind Al-Asali Jewelry Studio in Toronto. A George Brown College Jewelry Arts Program graduate practicing since 2017, Mohammad has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area — every piece finished in-house with no outsourcing.',
+  bio: 'Mohammad Al-Asali is the founder and master jeweler behind Al-Asali Jewelry Studio in Toronto. A George Brown College Jewelry Arts Program graduate practicing since 2017, Mohammad has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area — every piece finished in-house with no outsourcing.',
   knowsAbout: [
     'Bespoke Engagement Ring Design',
     'Diamond Grading (4Cs)',
@@ -104,4 +104,4 @@ export const MASTER_JEWELLER = {
 } as const
 
 export type SiteConfig = typeof SITE_CONFIG
-export type MasterJeweller = typeof MASTER_JEWELLER
+export type MasterJeweler = typeof MASTER_JEWELER

@@ -6,7 +6,7 @@ import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 const SLUG = 'custom-engagement-ring-cost-toronto-2026'
 const TITLE = 'How Much Does a Custom Engagement Ring Cost in Toronto? (2026 Guide)'
-const DESCRIPTION = 'A real Toronto jeweller breaks down exactly what a custom engagement ring costs in 2026 — by style, metal, diamond origin, and carat weight. No generic ranges.'
+const DESCRIPTION = 'A real Toronto jeweler breaks down exactly what a custom engagement ring costs in 2026 — by style, metal, diamond origin, and carat weight. No generic ranges.'
 const DATE = '2026-04-17'
 
 export const metadata: Metadata = {
@@ -42,17 +42,17 @@ export default function Page() {
   return (
     <BlogLayout
       title={TITLE}
-      subtitle="No generic ranges — real starting prices by style, metal, and diamond origin, from a working Toronto custom jeweller."
+      subtitle="No generic ranges — real starting prices by style, metal, and diamond origin, from a working Toronto custom jeweler."
       datePublished={DATE}
       readingMinutes={7}
       relatedLinks={[
         { label: 'Custom Engagement Rings in Toronto', href: '/custom-engagement-rings' },
         { label: 'Custom Wedding Bands in Toronto', href: '/custom-wedding-bands' },
-        { label: 'Meet the Master Jeweller', href: '/about/master-jeweller/mohammad-al-assali' },
+        { label: 'Meet the Master Jeweler', href: '/about/master-jeweler/mohammad-al-assali' },
       ]}
     >
       <p>
-        If you&apos;re shopping for a custom engagement ring in Toronto, price anxiety is usually the biggest blocker. Most jewellers bury the number behind &quot;starting at&quot; language or redirect you to a consultation before they&apos;ll quote. This guide doesn&apos;t do that.
+        If you&apos;re shopping for a custom engagement ring in Toronto, price anxiety is usually the biggest blocker. Most jewelers bury the number behind &quot;starting at&quot; language or redirect you to a consultation before they&apos;ll quote. This guide doesn&apos;t do that.
       </p>
       <p>
         Below is exactly how we price custom engagement rings at Al-Asali Jewelry Studio in Toronto in 2026 — by style, metal, diamond origin, and carat weight. Every price is pre-HST and assumes a G-H colour, VS clarity stone unless noted. Your quote may vary slightly with gold spot rates and premium stone upgrades, but these are the real numbers you&apos;ll see on our sheet.
@@ -148,7 +148,7 @@ export default function Page() {
         <li>Free consultation (virtual via Zoom, phone, or message — in-person in Toronto by appointment)</li>
         <li>Unlimited 3D CAD renderings and revisions until approved</li>
         <li>Wax or resin model before final casting</li>
-        <li>Hand-setting by our master jeweller</li>
+        <li>Hand-setting by our master jeweler</li>
         <li>GIA (natural) or IGI/GCAL (lab-grown) diamond certification</li>
         <li>Luxury presentation box</li>
         <li>Lifetime free cleanings, polishing, and inspections</li>

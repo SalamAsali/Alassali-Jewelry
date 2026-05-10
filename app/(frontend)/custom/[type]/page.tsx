@@ -336,7 +336,7 @@ const landingContent: Record<string, {
       { q: 'Can I reset a family diamond into my new engagement ring?', a: 'Yes — heirloom resets are some of our most meaningful projects. We carefully remove your existing stone and design a new setting around it, preserving the sentiment while modernizing the look.' },
       { q: 'Do you offer financing for custom engagement rings?', a: 'Yes — we offer flexible payment plans and 0% financing options for qualified buyers. Ask during consultation and we\'ll walk you through what fits your timeline and budget.' },
       { q: 'Do you resize engagement rings for free?', a: 'Yes — every custom engagement ring we create includes free resizing within the first year, and free resizing for life if you have any significant finger-size change. Free cleanings and inspections for life as well.' },
-      { q: 'Where are you based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweller. We work by appointment only — free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery across Toronto and the GTA, and optional in-person meetings in Toronto at a time that works for you.' },
+      { q: 'Where are you based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweler. We work by appointment only — free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery across Toronto and the GTA, and optional in-person meetings in Toronto at a time that works for you.' },
     ],
     relatedPages: [
       { name: 'Custom Rings', path: '/custom-rings' },
@@ -437,7 +437,7 @@ const landingContent: Record<string, {
       { q: 'What metals are available for earrings?', a: '10K, 14K, and 18K gold in yellow, white, and rose, plus platinum and sterling silver. Platinum is the most durable and hypoallergenic — ideal if you have sensitive ears.' },
       { q: 'What\'s the difference between push-back and screw-back studs?', a: 'Push-back (friction-back) is the standard — easy to wear daily. Screw-back is more secure for high-value diamonds you never want to lose. We offer both and will recommend based on stone size and how you\'ll wear them.' },
       { q: 'How long do custom earrings take in Toronto?', a: 'Diamond studs take 2-3 weeks, plain gold hoops 2-3 weeks, pavé hoops 3-4 weeks, chandelier and complex multi-stone designs 4-5 weeks. Rush production available.' },
-      { q: 'Can I get earrings re-plated or diamonds tightened?', a: 'Yes — free rhodium re-plating and free diamond tightening for life on every pair we create. We also service earrings from other jewellers at competitive rates.' },
+      { q: 'Can I get earrings re-plated or diamonds tightened?', a: 'Yes — free rhodium re-plating and free diamond tightening for life on every pair we create. We also service earrings from other jewelers at competitive rates.' },
     ],
     relatedPages: [
       { name: 'Custom Pendants', path: '/custom-pendants' },
@@ -483,7 +483,7 @@ const landingContent: Record<string, {
       { q: 'Are your grillz removable?', a: 'Yes — every grillz we make is removable. We create a precise dental mold of your teeth for a snug, secure fit that clicks in and out without permanently altering your teeth.' },
       { q: 'Are removable grillz safe for your teeth?', a: 'Yes, when properly made. Because our grillz are custom-fit from your exact dental mold, they sit snugly without damaging enamel. We recommend removing them before eating and cleaning them with a soft brush daily.' },
       { q: 'VVS vs VS vs SI — which clarity should I pick for grillz?', a: 'VVS offers the cleanest, brightest look and is our premium tier. VS gives a near-identical visual face-up for about 20-30% less. SI stones look great in micro-pavé or dust settings. We\'ll walk through all three with loose stones during consultation.' },
-      { q: 'Do you use real diamonds in grillz?', a: 'Yes — genuine natural and lab-grown diamonds only, including VVS clarity stones. No cubic zirconia, no moissanite substitutions, ever. Every stone is hand-set by our master jeweller in Toronto.' },
+      { q: 'Do you use real diamonds in grillz?', a: 'Yes — genuine natural and lab-grown diamonds only, including VVS clarity stones. No cubic zirconia, no moissanite substitutions, ever. Every stone is hand-set by our master jeweler in Toronto.' },
       { q: 'What gold karats are available for grillz?', a: '10K, 14K, and 18K gold in yellow, white, and rose gold. 10K is the most durable and affordable. 14K is our most popular — a great balance of colour and price. 18K delivers the deepest yellow but is softer and needs gentler care.' },
       { q: 'How long does it take to make custom grillz in Toronto?', a: 'Most custom grillz are completed in 1-2 weeks after your mold appointment. Full diamond-set VVS sets can take 3-4 weeks due to the setting work. Rush orders are available on request.' },
       { q: 'How does the grillz mold process work?', a: 'We take a precise dental-grade silicone impression of your teeth at a by-appointment mold session in Toronto. The impression is cast into a stone model that we use to shape and fit your grillz exactly to your bite. The appointment takes about 20 minutes.' },
@@ -1492,7 +1492,7 @@ function PortalForm() {
 
 // ---------------------------------------------------------------------------
 // GeneralHub — SEO-rich hub content rendered below the PortalForm on /custom/general
-// Targets "custom jeweller Toronto", "bespoke jewelry Toronto", "custom jewelry Toronto"
+// Targets "custom jeweler Toronto", "bespoke jewelry Toronto", "custom jewelry Toronto"
 // ---------------------------------------------------------------------------
 
 const hubBespokeCards: { name: string; path: string; icon: LucideIcon; blurb: string }[] = [
@@ -1510,19 +1510,19 @@ const hubProcessSteps = [
   { icon: MessageSquare, title: 'Consultation', body: 'Free virtual consultation via Zoom, phone, or message — or in-person in Toronto by appointment. We discuss your vision, budget, and timeline.' },
   { icon: Pen, title: 'Design & CAD', body: 'Our designers produce detailed sketches and 3D CAD renderings for your approval before crafting begins.' },
   { icon: Diamond, title: 'Stone & Metal Selection', body: 'Hand-pick GIA-graded natural or lab-grown diamonds, coloured gems, and your choice of gold, platinum, or silver.' },
-  { icon: Wrench, title: 'In-House Crafting', body: 'Every piece is cast, set, and finished entirely in our Toronto workshop by master jeweller Mohammad Al-Asali — no outsourcing.' },
+  { icon: Wrench, title: 'In-House Crafting', body: 'Every piece is cast, set, and finished entirely in our Toronto workshop by master jeweler Mohammad Al-Asali — no outsourcing.' },
   { icon: Gem, title: 'Presentation', body: 'Your finished piece is inspected, photographed, and presented in luxury packaging with a lifetime craftsmanship guarantee.' },
 ]
 
 const hubFaq = [
-  { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweller. We operate by appointment only — virtual consultations, secure insured delivery across the GTA, and optional in-person meetings in Toronto when preferred.' },
+  { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweler. We operate by appointment only — virtual consultations, secure insured delivery across the GTA, and optional in-person meetings in Toronto when preferred.' },
   { q: 'Do I need an appointment to visit the Toronto studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we\'ll confirm a time that works for you.' },
   { q: 'What areas around Toronto do you serve?', a: 'Our studio is in Toronto, and we regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, and Milton.' },
   { q: 'How do I start a custom jewelry project?', a: 'Book a free consultation — virtual via Zoom, phone, or message, or in-person in Toronto by appointment. We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
   { q: 'How much does custom jewelry cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal, stones, and design complexity. We quote every project up front with no hidden fees.' },
   { q: 'Do you offer lab-grown diamonds?', a: 'Yes — we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value.' },
   { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We\'ll carefully remove the stones from your existing piece and set them into your new custom design.' },
-  { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweller is fluent in the art of Arabic calligraphy casting.' },
+  { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweler is fluent in the art of Arabic calligraphy casting.' },
   { q: 'What is the typical timeline for custom jewelry?', a: 'Most pieces take 2-6 weeks: grillz 1-2 weeks, pendants 2-4 weeks, chains and earrings 2-4 weeks, rings and bracelets 3-5 weeks, engagement rings 4-6 weeks. Rush orders are available.' },
   { q: 'Do you ship outside of Toronto?', a: 'Yes — we ship securely across the GTA and anywhere in Canada. Finished pieces are always fully insured in transit.' },
 ]
@@ -1548,10 +1548,10 @@ function GeneralHub() {
             <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">Toronto&apos;s Custom Jewelry Studio</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
-            Toronto&apos;s Premier Custom Jeweller
+            Toronto&apos;s Premier Custom Jeweler
           </h2>
           <p className="text-stone leading-relaxed text-base md:text-lg">
-            Al-Asali Jewelry is a Toronto-based bespoke jewelry studio, working by appointment. Master jeweller Mohammad Al-Asali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
+            Al-Asali Jewelry is a Toronto-based bespoke jewelry studio, working by appointment. Master jeweler Mohammad Al-Asali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
           </p>
         </header>
 
@@ -1609,7 +1609,7 @@ function GeneralHub() {
             Why Al-Asali Jewelry
           </h3>
           <p className="text-stone text-center mb-10 max-w-2xl mx-auto text-sm">
-            We are a small, focused Toronto workshop. Every piece is crafted by a master jeweller — not a factory — and backed by a lifetime craftsmanship guarantee.
+            We are a small, focused Toronto workshop. Every piece is crafted by a master jeweler — not a factory — and backed by a lifetime craftsmanship guarantee.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -1629,17 +1629,17 @@ function GeneralHub() {
           </div>
         </div>
 
-        {/* MASTER JEWELLER */}
+        {/* MASTER JEWELER */}
         <div className="bg-charcoal/30 border border-glacier-grey/20 rounded-2xl p-8 md:p-12 text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-glacier-grey/20 border border-glacier-grey/40 mb-5">
             <Hammer className="w-6 h-6 text-glacier-grey" />
           </div>
-          <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweller &amp; Founder</div>
+          <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweler &amp; Founder</div>
           <h3 className="text-2xl md:text-3xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
             Mohammad Al-Asali
           </h3>
           <p className="text-stone leading-relaxed text-sm md:text-base">
-            Mohammad is the founder and master jeweller behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
+            Mohammad is the founder and master jeweler behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
           </p>
         </div>
 
@@ -1649,7 +1649,7 @@ function GeneralHub() {
             How We Work Together
           </h3>
           <p className="text-stone leading-relaxed text-sm mb-6">
-            Al-Asali Jewelry Studio is a Toronto-based bespoke jeweller, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
+            Al-Asali Jewelry Studio is a Toronto-based bespoke jeweler, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <a href="tel:+16475624340" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">

@@ -6,20 +6,20 @@ import {
 } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
-import { SITE_CONFIG, MASTER_JEWELLER } from '@/lib/seo/siteConfig'
+import { SITE_CONFIG, MASTER_JEWELER } from '@/lib/seo/siteConfig'
 import { buildBreadcrumbSchema } from '@/lib/seo/schema'
-import { getMasterJeweller } from '@/lib/getMasterJeweller'
+import { getMasterJeweler } from '@/lib/getMasterJeweler'
 
-const FALLBACK_TITLE = 'Master Jeweller & Founder'
-const FALLBACK_TAGLINE = "Toronto's bespoke jeweller behind every piece that leaves Al-Asali Jewelry Studio."
+const FALLBACK_TITLE = 'Master Jeweler & Founder'
+const FALLBACK_TAGLINE = "Toronto's bespoke jeweler behind every piece that leaves Al-Asali Jewelry Studio."
 const FALLBACK_BIO = [
-  'Mohammad Al-Asali is the founder and master jeweller behind Al-Asali Jewelry Studio in Toronto. A graduate of the George Brown College Jewelry Arts Program and a working goldsmith since 2017, Mohammad has personally designed and handcrafted hundreds of bespoke engagement rings, wedding bands, diamond pendants, gold chains, tennis bracelets, and custom grillz for clients across the Greater Toronto Area.',
+  'Mohammad Al-Asali is the founder and master jeweler behind Al-Asali Jewelry Studio in Toronto. A graduate of the George Brown College Jewelry Arts Program and a working goldsmith since 2017, Mohammad has personally designed and handcrafted hundreds of bespoke engagement rings, wedding bands, diamond pendants, gold chains, tennis bracelets, and custom grillz for clients across the Greater Toronto Area.',
   'What began as a sole-proprietor commission practice at the end of 2020 has grown into a full Toronto bespoke studio — still operating with the same principle Mohammad started with: every piece is designed, cast, set, and finished in-house. No outsourcing, no middlemen, no shortcuts. If Al-Asali Jewelry made it, Mohammad inspected it.',
-  'Mohammad has built a reputation for deep expertise in Arabic calligraphy jewelry — a specialty few Toronto jewellers can authentically execute. From Allah pendants and Ayat al-Kursi pendants to custom Arabic name rings and engraved wedding bands, his work has been carried by clients in Toronto, Mississauga, Vaughan, Markham, and beyond.',
+  'Mohammad has built a reputation for deep expertise in Arabic calligraphy jewelry — a specialty few Toronto jewelers can authentically execute. From Allah pendants and Ayat al-Kursi pendants to custom Arabic name rings and engraved wedding bands, his work has been carried by clients in Toronto, Mississauga, Vaughan, Markham, and beyond.',
 ].join('\n\n')
-const FALLBACK_SEO_TITLE = 'Mohammad Al-Asali — Master Jeweller & Founder | Al-Asali Jewelry Toronto'
+const FALLBACK_SEO_TITLE = 'Mohammad Al-Asali — Master Jeweler & Founder | Al-Asali Jewelry Toronto'
 const FALLBACK_SEO_DESCRIPTION =
-  'Meet Mohammad Al-Asali — master jeweller and founder of Al-Asali Jewelry Studio in Toronto. George Brown College Jewelry Arts graduate, practicing since 2017.'
+  'Meet Mohammad Al-Asali — master jeweler and founder of Al-Asali Jewelry Studio in Toronto. George Brown College Jewelry Arts graduate, practicing since 2017.'
 
 export async function generateMetadata({
   params,
@@ -27,23 +27,23 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>
 }): Promise<Metadata> {
   const { slug } = await params
-  const cms = await getMasterJeweller(slug)
+  const cms = await getMasterJeweler(slug)
   return {
     title: cms?.seoTitle?.trim() || FALLBACK_SEO_TITLE,
     description: cms?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION,
-    alternates: { canonical: `/about/master-jeweller/${slug}` },
+    alternates: { canonical: `/about/master-jeweler/${slug}` },
   }
 }
 
-export default async function MasterJewellerPage({
+export default async function MasterJewelerPage({
   params,
 }: {
   params: Promise<{ slug: string }>
 }) {
   const { slug } = await params
-  const cms = await getMasterJeweller(slug)
+  const cms = await getMasterJeweler(slug)
 
-  const name = cms?.name?.trim() || MASTER_JEWELLER.name
+  const name = cms?.name?.trim() || MASTER_JEWELER.name
   const title = cms?.title?.trim() || FALLBACK_TITLE
   const tagline = cms?.tagline?.trim() || FALLBACK_TAGLINE
   const bio = cms?.bio?.trim() || FALLBACK_BIO
@@ -51,8 +51,8 @@ export default async function MasterJewellerPage({
 
   const breadcrumb = buildBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
-    { name: 'About', url: `${SITE_CONFIG.url}/about/master-jeweller/${slug}` },
-    { name, url: `${SITE_CONFIG.url}/about/master-jeweller/${slug}` },
+    { name: 'About', url: `${SITE_CONFIG.url}/about/master-jeweler/${slug}` },
+    { name, url: `${SITE_CONFIG.url}/about/master-jeweler/${slug}` },
   ])
 
   return (
@@ -102,7 +102,7 @@ export default async function MasterJewellerPage({
             </h2>
             <ul className="space-y-2 text-stone text-sm">
               <li><span className="text-white font-medium">Practicing since 2017</span></li>
-              <li><span className="text-white font-medium">Al-Asali Jewelry Studio</span> — Founder &amp; Master Jeweller (Toronto, 2020–present)</li>
+              <li><span className="text-white font-medium">Al-Asali Jewelry Studio</span> — Founder &amp; Master Jeweler (Toronto, 2020–present)</li>
               <li>Hundreds of bespoke pieces handcrafted for GTA clients</li>
             </ul>
           </div>

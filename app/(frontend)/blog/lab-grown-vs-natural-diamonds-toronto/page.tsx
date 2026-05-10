@@ -5,8 +5,8 @@ import { buildFaqSchema, buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 const SLUG = 'lab-grown-vs-natural-diamonds-toronto'
-const TITLE = 'Lab-Grown vs Natural Diamonds in Toronto: A Jeweller\'s Honest 2026 Guide'
-const DESCRIPTION = 'Lab-grown or natural? A working Toronto jeweller explains the real differences, prices, ethics, and resale value — without sales pressure.'
+const TITLE = 'Lab-Grown vs Natural Diamonds in Toronto: A Jeweler\'s Honest 2026 Guide'
+const DESCRIPTION = 'Lab-grown or natural? A working Toronto jeweler explains the real differences, prices, ethics, and resale value — without sales pressure.'
 const DATE = '2026-04-17'
 
 export const metadata: Metadata = {
@@ -21,7 +21,7 @@ const faq = [
   { q: 'Which is cheaper for the same carat size?', a: 'Lab-grown is 40-60% cheaper than natural at the same 4C specs. A 1ct lab-grown solitaire costs around $2,800 vs $6,500 for natural in 14K gold.' },
   { q: 'Do lab-grown diamonds hold value?', a: 'Not well. The resale market is limited and lab-grown values have dropped ~70% since 2020. Natural diamonds hold value better over decades.' },
   { q: 'Are lab-grown diamonds more ethical than natural?', a: 'Neither is automatically more ethical. Lab-grown has zero mining impact but uses significant energy. Our natural diamonds are Kimberley Process and SCS-certified conflict-free.' },
-  { q: 'Can you tell lab-grown from natural by looking?', a: 'No — not with the naked eye, a jeweller\'s loupe, or most handheld testers. Professional gemmological equipment can detect the difference.' },
+  { q: 'Can you tell lab-grown from natural by looking?', a: 'No — not with the naked eye, a jeweler\'s loupe, or most handheld testers. Professional gemmological equipment can detect the difference.' },
 ]
 
 export default function Page() {
@@ -48,14 +48,14 @@ export default function Page() {
       relatedLinks={[
         { label: 'Custom Engagement Rings in Toronto', href: '/custom-engagement-rings' },
         { label: 'Custom Engagement Ring Cost Guide', href: '/blog/custom-engagement-ring-cost-toronto-2026' },
-        { label: 'Meet the Master Jeweller', href: '/about/master-jeweller/mohammad-al-assali' },
+        { label: 'Meet the Master Jeweler', href: '/about/master-jeweler/mohammad-al-assali' },
       ]}
     >
       <p>
         Lab-grown diamonds went from &quot;what are those?&quot; to 60% of our engagement ring orders in under five years. Every week a couple walks into our Toronto studio asking the same question: lab or natural?
       </p>
       <p>
-        There is no universally right answer. This guide gives you the real differences and helps you pick based on what actually matters to you — not what a jeweller is trying to sell you.
+        There is no universally right answer. This guide gives you the real differences and helps you pick based on what actually matters to you — not what a jeweler is trying to sell you.
       </p>
 
       <h2>The short version</h2>

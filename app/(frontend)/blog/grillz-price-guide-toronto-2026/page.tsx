@@ -6,7 +6,7 @@ import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 const SLUG = 'grillz-price-guide-toronto-2026'
 const TITLE = 'How Much Do Custom Grillz Cost in Toronto? (2026 Price Guide)'
-const DESCRIPTION = 'A Toronto custom jeweller\'s real 2026 pricing for gold grillz, diamond grillz, VVS grillz, and full sets. Straight numbers, no generic ranges.'
+const DESCRIPTION = 'A Toronto custom jeweler\'s real 2026 pricing for gold grillz, diamond grillz, VVS grillz, and full sets. Straight numbers, no generic ranges.'
 const DATE = '2026-04-17'
 
 export const metadata: Metadata = {
@@ -48,7 +48,7 @@ export default function Page() {
       relatedLinks={[
         { label: 'Custom Grillz in Toronto', href: '/custom-grillz' },
         { label: 'Custom Gold Chains in Toronto', href: '/custom-chains' },
-        { label: 'Meet the Master Jeweller', href: '/about/master-jeweller/mohammad-al-assali' },
+        { label: 'Meet the Master Jeweler', href: '/about/master-jeweler/mohammad-al-assali' },
       ]}
     >
       <p>
@@ -96,7 +96,7 @@ export default function Page() {
 
       <h2>VS vs VVS: is VVS worth it?</h2>
       <p>
-        VS (Very Slightly Included) diamonds have small inclusions visible under 10x magnification but look eye-clean face-up. VVS (Very, Very Slightly Included) have inclusions so small most jewellers struggle to find them under a loupe.
+        VS (Very Slightly Included) diamonds have small inclusions visible under 10x magnification but look eye-clean face-up. VVS (Very, Very Slightly Included) have inclusions so small most jewelers struggle to find them under a loupe.
       </p>
       <p>
         Face-up on a grillz set, the visual difference between VS and VVS is subtle — the VVS set will sparkle noticeably brighter in direct light, and will hold its brilliance longer over time as it resists clouding. If you&apos;re going full-set iced out, VVS is worth the premium. If you&apos;re doing a top 6 or a single tooth, VS delivers near-identical aesthetics for 30-40% less.
