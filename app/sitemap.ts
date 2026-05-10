@@ -8,7 +8,7 @@ const BASE = SITE_CONFIG.url
 // Bespoke category landing pages. The inquiry form (public URL /custom-form,
 // internal route /custom/general) is intentionally excluded — its hub
 // content moved to the homepage; the form is noindex and shouldn't compete
-// with the home page for "custom jewellery toronto" intent.
+// with the home page for "custom jewelry toronto" intent.
 const bespokeSlugs = [
   'engagement-rings',
   'wedding-bands',
@@ -24,7 +24,7 @@ const blogSlugs = [
   'custom-engagement-ring-cost-toronto-2026',
   'grillz-price-guide-toronto-2026',
   'lab-grown-vs-natural-diamonds-toronto',
-  'arabic-calligraphy-jewellery-toronto',
+  'arabic-calligraphy-jewelry-toronto',
 ]
 
 export default function sitemap(): MetadataRoute.Sitemap {

@@ -77,8 +77,8 @@ export function buildJewelryStoreSchema() {
       'Custom Diamond Pendants',
       'Custom Grillz',
       'Custom Tennis Bracelets',
-      'Bespoke Jewellery Design',
-      'Arabic Calligraphy Jewellery',
+      'Bespoke Jewelry Design',
+      'Arabic Calligraphy Jewelry',
     ],
   }
 }
@@ -119,8 +119,8 @@ export function buildMasterJewellerSchema() {
     alumniOf: {
       '@type': 'EducationalOrganization',
       name: 'George Brown College',
-      department: 'Jewellery Arts Program',
-      url: 'https://www.georgebrown.ca/programs/jewellery-arts-program-g103',
+      department: 'Jewelry Arts Program',
+      url: 'https://www.georgebrown.ca/programs/jewelry-arts-program-g103',
     },
     hasCredential: MASTER_JEWELLER.credentials.map((c) => ({
       '@type': 'EducationalOccupationalCredential',

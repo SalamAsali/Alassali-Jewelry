@@ -4,13 +4,13 @@ import { buildArticleSchema } from '@/lib/seo/article'
 import { buildFaqSchema, buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
-const SLUG = 'arabic-calligraphy-jewellery-toronto'
-const TITLE = 'Arabic Calligraphy Jewellery in Toronto: A Craftsman\'s Guide'
+const SLUG = 'arabic-calligraphy-jewelry-toronto'
+const TITLE = 'Arabic Calligraphy Jewelry in Toronto: A Craftsman\'s Guide'
 const DESCRIPTION = 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweller. Fonts, verses, meanings, prices, and what to ask for.'
 const DATE = '2026-04-19'
 
 export const metadata: Metadata = {
-  title: 'Arabic Calligraphy Jewellery Toronto | Al-Asali Jewelry',
+  title: 'Arabic Calligraphy Jewelry Toronto | Al-Asali Jewelry',
   description: DESCRIPTION,
   alternates: { canonical: `/blog/${SLUG}` },
   openGraph: { title: TITLE, description: DESCRIPTION, type: 'article' },
@@ -30,7 +30,7 @@ export default function Page() {
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: DATE,
-    keywords: ['Arabic calligraphy pendant Toronto', 'Allah pendant Toronto', 'Ayat al-Kursi pendant Toronto', 'Arabic jewellery Toronto', 'custom Arabic name pendant'],
+    keywords: ['Arabic calligraphy pendant Toronto', 'Allah pendant Toronto', 'Ayat al-Kursi pendant Toronto', 'Arabic jewelry Toronto', 'custom Arabic name pendant'],
   })
   const breadcrumb = buildBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
@@ -52,10 +52,10 @@ export default function Page() {
       ]}
     >
       <p>
-        Arabic calligraphy is a craft, not a font. When it&apos;s rendered correctly in jewellery, it flows — the strokes balance, the letters connect as the script demands, the proportions feel alive. When it&apos;s rendered poorly, it looks like a copy-pasted shape that happens to be in Arabic. The difference matters, especially for pieces that carry sacred text or a loved one&apos;s name.
+        Arabic calligraphy is a craft, not a font. When it&apos;s rendered correctly in jewelry, it flows — the strokes balance, the letters connect as the script demands, the proportions feel alive. When it&apos;s rendered poorly, it looks like a copy-pasted shape that happens to be in Arabic. The difference matters, especially for pieces that carry sacred text or a loved one&apos;s name.
       </p>
       <p>
-        Al-Asali Jewelry Studio specializes in Arabic calligraphy jewellery in Toronto. This guide walks through the fonts we work with, the most-requested pieces, pricing, and what to ask for when you commission a piece.
+        Al-Asali Jewelry Studio specializes in Arabic calligraphy jewelry in Toronto. This guide walks through the fonts we work with, the most-requested pieces, pricing, and what to ask for when you commission a piece.
       </p>
 
       <h2>The fonts we work with</h2>
@@ -94,7 +94,7 @@ export default function Page() {
       </p>
       <h3>Arabic handwriting pieces</h3>
       <p>
-        One of our most meaningful categories. Clients send us a handwritten phrase — from a parent, a grandparent, a loved one who has passed — and we render it in gold. The asymmetry and texture of real handwriting translates beautifully into jewellery.
+        One of our most meaningful categories. Clients send us a handwritten phrase — from a parent, a grandparent, a loved one who has passed — and we render it in gold. The asymmetry and texture of real handwriting translates beautifully into jewelry.
       </p>
 
       <h2>What pricing looks like</h2>

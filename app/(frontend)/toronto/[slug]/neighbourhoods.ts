@@ -114,7 +114,7 @@ export const neighbourhoods: Record<string, Neighbourhood> = {
     metaDescription: 'Bespoke Toronto custom jeweller serving Scarborough by appointment. Custom engagement rings, gold chains, diamond pendants, grillz — handcrafted in-house.',
     hook: 'Scarborough clients make up a strong share of our grillz and custom chain orders.',
     intro: 'Scarborough is Toronto\'s most diverse borough and a big portion of our gold chain, custom pendant, and custom grillz clientele. Al-Asali Jewelry Studio works with Scarborough clients by free virtual consultation, with secure insured delivery of finished pieces and optional in-person meetings in Toronto by appointment.',
-    aboutArea: 'Scarborough stretches from Victoria Park Ave in the west to the Rouge River in the east, covering Agincourt, Birchcliff, Cedarbrae, Malvern, Morningside, Rouge Hill, Scarborough Village, and many more neighbourhoods. The area has vibrant South Asian, Caribbean, East Asian, and Middle Eastern communities — and a rich tradition of bespoke gold and diamond jewellery.',
+    aboutArea: 'Scarborough stretches from Victoria Park Ave in the west to the Rouge River in the east, covering Agincourt, Birchcliff, Cedarbrae, Malvern, Morningside, Rouge Hill, Scarborough Village, and many more neighbourhoods. The area has vibrant South Asian, Caribbean, East Asian, and Middle Eastern communities — and a rich tradition of bespoke gold and diamond jewelry.',
     whyLocal: [
       'Free virtual consultations via Zoom, phone, or message',
       'Complimentary secure insured delivery anywhere in Scarborough',
@@ -160,7 +160,7 @@ export const neighbourhoods: Record<string, Neighbourhood> = {
     metaDescription: 'Bespoke Toronto custom jeweller serving Forest Hill by appointment. Engagement rings, wedding bands, diamond pendants, and heirloom resets handcrafted in-house.',
     hook: 'Forest Hill clients choose us for heirloom resets, milestone pieces, and discreet luxury work.',
     intro: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweller serving Forest Hill clients by private appointment. Forest Hill families come to us for milestone engagement rings, heirloom diamond resets, anniversary bands, and discreet private commissions — with free virtual consultations, secure insured delivery, and by-appointment in-person meetings in Toronto.',
-    aboutArea: 'Forest Hill is one of Toronto\'s most established residential neighbourhoods, running between Bathurst St and Spadina Rd, roughly from St Clair Ave W north to Eglinton. Known for its beautiful homes and tree-lined streets, Forest Hill has long been home to Toronto\'s collectors of fine jewellery — and families with multi-generational diamond pieces ready for modern redesign.',
+    aboutArea: 'Forest Hill is one of Toronto\'s most established residential neighbourhoods, running between Bathurst St and Spadina Rd, roughly from St Clair Ave W north to Eglinton. Known for its beautiful homes and tree-lined streets, Forest Hill has long been home to Toronto\'s collectors of fine jewelry — and families with multi-generational diamond pieces ready for modern redesign.',
     whyLocal: [
       'Free private virtual consultations via Zoom, phone, or message',
       'Complimentary secure insured delivery anywhere in Forest Hill',

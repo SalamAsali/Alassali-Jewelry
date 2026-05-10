@@ -22,13 +22,13 @@ export const gtaCities: Record<string, GtaCity> = {
     metaDescription: 'Bespoke Toronto custom jeweller serving Mississauga by appointment. Custom engagement rings, gold chains, diamond pendants, grillz — handcrafted in-house, no outsourcing.',
     hook: 'Mississauga clients make up one of our largest GTA bases.',
     intro: 'Al-Asali Jewelry Studio is a Toronto-based bespoke custom jeweller that regularly serves clients from across Mississauga — from Port Credit and Clarkson in the south to Meadowvale, Streetsville, and Malton in the north. Every piece is designed and handcrafted in-house in Toronto, then delivered fully insured to your door anywhere in Mississauga.',
-    aboutArea: 'Mississauga is the largest city in the GTA outside of Toronto, with distinctive districts including Square One, Port Credit, Streetsville, Erin Mills, Meadowvale, and Malton. The city has a large South Asian, Middle Eastern, and Italian community — and historically strong demand for heritage jewellery, engagement rings, and custom pendants.',
+    aboutArea: 'Mississauga is the largest city in the GTA outside of Toronto, with distinctive districts including Square One, Port Credit, Streetsville, Erin Mills, Meadowvale, and Malton. The city has a large South Asian, Middle Eastern, and Italian community — and historically strong demand for heritage jewelry, engagement rings, and custom pendants.',
     driveTime: 'Free Zoom, phone, or message consultation — no travel required. In-person meetings in Toronto by appointment if preferred.',
     highlights: [
       'Free virtual consultations via Zoom, phone, or message',
       'Complimentary secure insured delivery anywhere in Mississauga',
       'In-person meetings in Toronto by appointment when preferred',
-      'Specialist in Arabic calligraphy pendants, heirloom ring resets, and heritage jewellery',
+      'Specialist in Arabic calligraphy pendants, heirloom ring resets, and heritage jewelry',
     ],
     popularOrders: [
       'Custom engagement rings in platinum and 18K',
@@ -41,7 +41,7 @@ export const gtaCities: Record<string, GtaCity> = {
       { q: 'Do you serve all of Mississauga?', a: 'Yes — we work with clients from every part of Mississauga including Square One, Port Credit, Clarkson, Streetsville, Meadowvale, Erin Mills, and Malton.' },
       { q: 'How do consultations work for Mississauga clients?', a: 'Most of the process happens virtually over Zoom, phone, or message — share references, review CAD renderings, and approve stones without leaving home. If you\'d prefer to meet in person, we arrange a private by-appointment meeting in Toronto at a time that works for you.' },
       { q: 'Do you deliver to Mississauga?', a: 'Yes — complimentary secure insured delivery of finished pieces to your door anywhere in Mississauga and across the GTA.' },
-      { q: 'Do you serve Muslim and South Asian communities in Mississauga for traditional jewellery?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, and traditional Middle Eastern heritage jewellery, which are among our most requested pieces from Mississauga clients.' },
+      { q: 'Do you serve Muslim and South Asian communities in Mississauga for traditional jewelry?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, and traditional Middle Eastern heritage jewelry, which are among our most requested pieces from Mississauga clients.' },
     ],
   },
   'vaughan': {
@@ -52,13 +52,13 @@ export const gtaCities: Record<string, GtaCity> = {
     metaDescription: 'Bespoke Toronto custom jeweller serving Vaughan and Woodbridge by appointment. Custom engagement rings, gold chains, diamond pendants, grillz — handcrafted in-house.',
     hook: 'Woodbridge, Thornhill, and Maple clients choose us for in-house craftsmanship and transparent pricing.',
     intro: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweller serving Vaughan clients by appointment. Woodbridge, Thornhill, Maple, Concord, and Kleinburg clients make up a significant part of our custom engagement ring and wedding band bookings, drawn by in-house craftsmanship, transparent pricing, and deep Arabic calligraphy expertise.',
-    aboutArea: 'Vaughan sits immediately north of Toronto and includes Woodbridge, Thornhill, Maple, Concord, and Kleinburg. It\'s one of the fastest-growing cities in Canada with strong Italian, Middle Eastern, and Eastern European communities — all with rich jewellery traditions.',
+    aboutArea: 'Vaughan sits immediately north of Toronto and includes Woodbridge, Thornhill, Maple, Concord, and Kleinburg. It\'s one of the fastest-growing cities in Canada with strong Italian, Middle Eastern, and Eastern European communities — all with rich jewelry traditions.',
     driveTime: 'Free Zoom, phone, or message consultation — no travel required. In-person meetings in Toronto by appointment if preferred.',
     highlights: [
       'Free virtual consultations via Zoom, phone, or message',
       'Complimentary secure insured delivery anywhere in Vaughan',
       'In-person meetings in Toronto by appointment when preferred',
-      'Specialist in heritage jewellery, Italian gold finishes, and Arabic calligraphy pendants',
+      'Specialist in heritage jewelry, Italian gold finishes, and Arabic calligraphy pendants',
     ],
     popularOrders: [
       'Custom engagement rings with Italian-style settings',
@@ -81,7 +81,7 @@ export const gtaCities: Record<string, GtaCity> = {
     metaDescription: 'Bespoke Toronto custom jeweller serving Markham, Unionville, and Thornhill by appointment. Custom engagement rings, gold chains, diamond pendants, grillz.',
     hook: 'Markham clients bring us some of our most intricate custom design briefs.',
     intro: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweller serving Markham clients by appointment. Unionville, Thornhill, Milliken, and Cornell clients come to us for bespoke engagement rings, custom heritage pendants, tennis bracelets, and solid gold chains — always crafted in-house with GIA-graded diamonds.',
-    aboutArea: 'Markham is one of the fastest-growing cities in Canada and home to vibrant East Asian, South Asian, and Middle Eastern communities — each with distinct jewellery traditions we work with regularly. Historic Unionville, modern Cornell, and the Markham-Stouffville corridor all fall within our service area.',
+    aboutArea: 'Markham is one of the fastest-growing cities in Canada and home to vibrant East Asian, South Asian, and Middle Eastern communities — each with distinct jewelry traditions we work with regularly. Historic Unionville, modern Cornell, and the Markham-Stouffville corridor all fall within our service area.',
     driveTime: 'Free Zoom, phone, or message consultation — no travel required. In-person meetings in Toronto by appointment if preferred.',
     highlights: [
       'Free virtual consultations via Zoom, phone, or message',
@@ -92,7 +92,7 @@ export const gtaCities: Record<string, GtaCity> = {
     popularOrders: [
       'Custom engagement rings with intricate pavé work',
       'Tennis bracelets in lab-grown diamonds',
-      'Custom gold chains for mens jewellery',
+      'Custom gold chains for mens jewelry',
       'Arabic and Islamic religious pendants',
       'Custom logo pendants for family businesses',
     ],
