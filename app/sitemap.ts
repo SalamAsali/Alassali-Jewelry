@@ -35,7 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/portfolio`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/catalog`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
-    { url: `${BASE}/about/master-jeweller/mohammad-al-assali`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/about/master-jeweler/mohammad-al-assali`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/service-areas`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
   ]

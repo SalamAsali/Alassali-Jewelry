@@ -21,7 +21,7 @@ const placeholderTestimonials: Record<string, Testimonial[]> = {
   ],
   'wedding-bands': [
     { name: 'Hassan', neighbourhood: 'Vaughan', piece: 'Matching Arabic calligraphy bands', quote: 'Mohammad engraved our names in Arabic inside matching platinum bands. The calligraphy is flawless — every stroke correct.' },
-    { name: 'Lauren', neighbourhood: 'Oakville', piece: 'Half-eternity diamond band', quote: 'My engagement ring was from a different jeweller but the contour band from Al-Asali fits flush like they were made together.' },
+    { name: 'Lauren', neighbourhood: 'Oakville', piece: 'Half-eternity diamond band', quote: 'My engagement ring was from a different jeweler but the contour band from Al-Asali fits flush like they were made together.' },
   ],
   'rings': [
     { name: 'David', neighbourhood: 'Toronto', piece: 'Family-crest signet ring', quote: 'Hand-engraved signet with my family crest. The level of detail is museum-grade. Will pass this down.' },

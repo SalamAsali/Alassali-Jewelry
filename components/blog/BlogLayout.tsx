@@ -3,7 +3,7 @@ import NextLink from 'next/link'
 import { ArrowRight, Calendar, Hammer } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
-import { MASTER_JEWELLER } from '@/lib/seo/siteConfig'
+import { MASTER_JEWELER } from '@/lib/seo/siteConfig'
 
 type Props = {
   title: string
@@ -49,7 +49,7 @@ export default function BlogLayout({
           <div className="flex flex-wrap items-center gap-4 text-xs text-stone">
             <span className="inline-flex items-center gap-1.5">
               <Hammer className="w-3.5 h-3.5 text-glacier-grey" />
-              By {MASTER_JEWELLER.name}, Master Jeweller
+              By {MASTER_JEWELER.name}, Master Jeweler
             </span>
             <span>·</span>
             <span className="inline-flex items-center gap-1.5">

@@ -9,17 +9,17 @@ import { getBlogIndex, BlogPostSummary } from '@/lib/getBlog'
 
 const FALLBACK_HEADING = 'Jewelry Guides'
 const FALLBACK_INTRO =
-  'Straight answers on pricing, craftsmanship, and how to shop for custom jewelry in Toronto — from our master jeweller.'
-const FALLBACK_SEO_TITLE = 'Custom Jewelry Guides & Toronto Jeweller Insights | Al-Asali Jewelry'
+  'Straight answers on pricing, craftsmanship, and how to shop for custom jewelry in Toronto — from our master jeweler.'
+const FALLBACK_SEO_TITLE = 'Custom Jewelry Guides & Toronto Jeweler Insights | Al-Asali Jewelry'
 const FALLBACK_SEO_DESCRIPTION =
-  "Expert guides from Toronto's bespoke jeweller: custom engagement ring costs, grillz pricing, lab-grown vs natural diamonds, and more."
+  "Expert guides from Toronto's bespoke jeweler: custom engagement ring costs, grillz pricing, lab-grown vs natural diamonds, and more."
 
 const FALLBACK_POSTS: BlogPostSummary[] = [
   {
     id: 'custom-engagement-ring-cost-toronto-2026',
     slug: 'custom-engagement-ring-cost-toronto-2026',
     title: 'How Much Does a Custom Engagement Ring Cost in Toronto? (2026 Guide)',
-    excerpt: 'No generic ranges — real starting prices by style, metal, and diamond origin, from a working Toronto custom jeweller.',
+    excerpt: 'No generic ranges — real starting prices by style, metal, and diamond origin, from a working Toronto custom jeweler.',
     date: '2026-04-17',
     readingMinutes: 7,
     tag: 'Engagement Rings',
@@ -36,7 +36,7 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
   {
     id: 'lab-grown-vs-natural-diamonds-toronto',
     slug: 'lab-grown-vs-natural-diamonds-toronto',
-    title: "Lab-Grown vs Natural Diamonds in Toronto: A Jeweller's Honest 2026 Guide",
+    title: "Lab-Grown vs Natural Diamonds in Toronto: A Jeweler's Honest 2026 Guide",
     excerpt: "Both are real diamonds. Here's how to choose — without the sales pitch.",
     date: '2026-04-17',
     readingMinutes: 8,
@@ -46,7 +46,7 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     id: 'arabic-calligraphy-jewelry-toronto',
     slug: 'arabic-calligraphy-jewelry-toronto',
     title: "Arabic Calligraphy Jewelry in Toronto: A Craftsman's Guide",
-    excerpt: 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweller. Fonts, verses, meanings, prices, and what to ask for.',
+    excerpt: 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweler. Fonts, verses, meanings, prices, and what to ask for.',
     date: '2026-04-19',
     readingMinutes: 7,
     tag: 'Heritage',

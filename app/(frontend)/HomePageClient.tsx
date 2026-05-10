@@ -112,7 +112,7 @@ const bespokeCategories = [
   { name: 'Grillz', path: '/custom-grillz', icon: '/images/icons/grillz.svg', blurb: 'Gold and VVS diamond grillz — single tooth to full sets.' },
 ]
 
-// SEO trust pillars — the four reasons clients pick a custom jeweller in Toronto
+// SEO trust pillars — the four reasons clients pick a custom jeweler in Toronto
 const whyAlAssali: { icon: LucideIcon; title: string; body: string }[] = [
   { icon: MapPin, title: 'Made in Toronto', body: 'Designed, cast, set, and finished entirely in-house in our Toronto studio — no outsourcing.' },
   { icon: ShieldCheck, title: 'Lifetime Guarantee', body: 'Free polishing, rhodium re-plating, and resizing for life on every piece we craft.' },
@@ -128,7 +128,7 @@ const homepageFaq = [
   { q: 'How do I start a custom jewelry project?', a: 'Book a free consultation — virtual via Zoom, phone, or message, or in-person in Toronto by appointment. We discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins.' },
   { q: 'Do you offer lab-grown diamonds?', a: 'Yes — we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value, both fully GIA-graded.' },
   { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We carefully remove the stones from your existing piece and set them into your new custom design while preserving every detail you want to keep.' },
-  { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweller is fluent in the art of Arabic calligraphy casting.' },
+  { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweler is fluent in the art of Arabic calligraphy casting.' },
   { q: 'What areas around Toronto do you serve?', a: 'Our studio is in Toronto, and we regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, Milton, and Richmond Hill.' },
   { q: 'Do I need an appointment to visit the studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we’ll confirm a time that works for you.' },
   { q: 'Do you ship outside of Toronto?', a: 'Yes — we ship securely across the GTA and anywhere in Canada. Finished pieces are always fully insured in transit.' },
@@ -314,11 +314,11 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="max-w-3xl">
             <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} className="mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
               <span className="block text-7xl md:text-8xl lg:text-9xl font-bold mb-4" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>TORONTO</span>
-              <span className="block text-4xl md:text-5xl font-light text-white">Custom Jeweller</span>
+              <span className="block text-4xl md:text-5xl font-light text-white">Custom Jeweler</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 1 }} className="text-sm uppercase tracking-widest mb-6 text-stone" style={{ fontFamily: 'var(--font-body)' }}>ONLY THE FINEST</motion.p>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0, duration: 1 }} className="text-base md:text-lg text-stone leading-relaxed mb-12 max-w-2xl">
-              Bespoke engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz — handcrafted in our Toronto studio by master jeweller Mohammad Al-Asali, by appointment.
+              Bespoke engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz — handcrafted in our Toronto studio by master jeweler Mohammad Al-Asali, by appointment.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }} className="flex flex-col sm:flex-row gap-4">
               <Link href="/portfolio" className="inline-block bg-white text-soft-black px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-glacier-grey hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl text-center" data-testid="hero-cta-primary">VIEW MY WORK</Link>
@@ -338,7 +338,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jewelry, Made in Toronto</h2>
             <p className="text-sm md:text-lg text-taupe max-w-3xl mx-auto leading-relaxed">
-              Al-Asali Jewelry is a Toronto-based bespoke jewelry studio. Master jeweller Mohammad Al-Asali designs and handcrafts every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — from first sketch to final polish, under one roof, with a lifetime craftsmanship guarantee. Choose a category to begin.
+              Al-Asali Jewelry is a Toronto-based bespoke jewelry studio. Master jeweler Mohammad Al-Asali designs and handcrafts every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — from first sketch to final polish, under one roof, with a lifetime craftsmanship guarantee. Choose a category to begin.
             </p>
           </motion.div>
 
@@ -511,7 +511,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Why Al-Asali Jewelry</h2>
             <p className="text-sm md:text-lg text-stone leading-relaxed">
-              We are a small, focused Toronto workshop. Every piece is crafted by a master jeweller — not a factory — and backed by a lifetime craftsmanship guarantee.
+              We are a small, focused Toronto workshop. Every piece is crafted by a master jeweler — not a factory — and backed by a lifetime craftsmanship guarantee.
             </p>
           </motion.div>
 
@@ -536,19 +536,19 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
         </div>
       </section>
 
-      {/* ===== MASTER JEWELLER (white) ===== */}
-      <section className="bg-white py-24" data-testid="master-jeweller-section">
+      {/* ===== MASTER JEWELER (white) ===== */}
+      <section className="bg-white py-24" data-testid="master-jeweler-section">
         <div className="section-container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center">
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-glacier-grey/10 border border-glacier-grey/40 mb-5">
               <Hammer className="w-6 h-6 text-glacier-grey" />
             </div>
-            <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweller &amp; Founder</div>
+            <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweler &amp; Founder</div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Mohammad Al-Asali</h2>
             <p className="text-sm md:text-lg text-taupe leading-relaxed mb-8">
-              Mohammad is the founder and master jeweller behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
+              Mohammad is the founder and master jeweler behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
             </p>
-            <Link href="/about/master-jeweller/mohammad-al-assali" className="inline-flex items-center gap-2 text-glacier-grey font-semibold hover:gap-3 transition-all">
+            <Link href="/about/master-jeweler/mohammad-al-assali" className="inline-flex items-center gap-2 text-glacier-grey font-semibold hover:gap-3 transition-all">
               Read Mohammad’s story <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
@@ -571,7 +571,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>How We Work Together</h2>
             <p className="text-sm md:text-lg text-stone leading-relaxed mb-8">
-              Al-Asali Jewelry Studio is a Toronto-based custom jeweller, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
+              Al-Asali Jewelry Studio is a Toronto-based custom jeweler, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
             </p>
 
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm mb-6">
@@ -599,7 +599,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jewelry in Toronto — FAQ</h2>
             <p className="text-sm md:text-lg text-taupe max-w-2xl mx-auto leading-relaxed">
-              Everything you need to know about working with a Toronto custom jeweller — pricing, timelines, lab-grown diamonds, heirloom resets, and more.
+              Everything you need to know about working with a Toronto custom jeweler — pricing, timelines, lab-grown diamonds, heirloom resets, and more.
             </p>
           </motion.div>
 
