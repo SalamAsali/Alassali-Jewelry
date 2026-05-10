@@ -73,7 +73,7 @@ const Navigation = () => {
           <Link to="/" className="flex items-center">
             <img 
               src="https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/mos4tvrw_Final-W2-1.png" 
-              alt="Alassali Jewelry" 
+              alt="Alasali Jewelry" 
               className="h-20 w-auto"
               style={{ filter: 'invert(1)' }}
             />

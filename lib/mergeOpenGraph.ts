@@ -7,9 +7,9 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   images: [
     { url: `${getServerSideURL()}/opengraph-image.jpg` },
   ].filter(Boolean),
-  siteName: 'Al-Assali Jewelry',
+  siteName: 'Al-Asali Jewelry',
   locale: 'en_CA',
-  title: 'Custom Jeweller Toronto | Bespoke Engagement Rings, Chains & Grillz — Al-Assali Jewelry',
+  title: 'Custom Jeweller Toronto | Bespoke Engagement Rings, Chains & Grillz — Al-Asali Jewelry',
 }
 
 export function mergeOpenGraph(og?: Metadata['openGraph']): Metadata['openGraph'] {

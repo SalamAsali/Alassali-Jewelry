@@ -10,7 +10,7 @@ const DESCRIPTION = 'Lab-grown or natural? A working Toronto jeweller explains t
 const DATE = '2026-04-17'
 
 export const metadata: Metadata = {
-  title: 'Lab-Grown vs Natural Diamonds Toronto 2026 | Al-Assali Jewelry',
+  title: 'Lab-Grown vs Natural Diamonds Toronto 2026 | Al-Asali Jewelry',
   description: DESCRIPTION,
   alternates: { canonical: `/blog/${SLUG}` },
   openGraph: { title: TITLE, description: DESCRIPTION, type: 'article' },
@@ -145,7 +145,7 @@ export default function Page() {
         <li><strong>Pendants, earrings, right-hand rings</strong>: Lab-grown usually wins. These aren&apos;t typically resold.</li>
       </ul>
 
-      <h2>How we source at Al-Assali Jewelry</h2>
+      <h2>How we source at Al-Asali Jewelry</h2>
       <p>
         We stock both lab-grown and natural diamonds at our Toronto studio. Every natural diamond over 0.5ct ships with a GIA grading report. Every lab-grown over 0.5ct ships with an IGI or GCAL report. During your consultation we compare loose stones of both — on camera in high resolution, or in person by appointment in Toronto. Most couples change their mind at least once after seeing them side by side.
       </p>

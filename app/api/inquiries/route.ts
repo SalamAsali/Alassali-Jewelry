@@ -73,7 +73,7 @@ function confirmationHtml(firstName: string) {
           <p style="margin:0 0 16px;color:#ccc;font-size:15px;line-height:1.7">Hi ${firstName},</p>
           <p style="margin:0 0 16px;color:#ccc;font-size:15px;line-height:1.7">Thank you for reaching out to Al-Asali Custom Jewelry. We've received your inquiry and will be in touch within 1–2 business days to discuss your piece.</p>
           <p style="margin:0 0 24px;color:#ccc;font-size:15px;line-height:1.7">In the meantime, feel free to browse our <a href="https://www.alasalicustomjewelry.ca/portfolio" style="color:#b8975a">portfolio</a> for inspiration.</p>
-          <p style="margin:0;color:#ccc;font-size:15px;line-height:1.7">— Mohammad Al-Assali<br><span style="color:#666;font-size:13px">Master Jeweller & Founder, Al-Asali Custom Jewelry</span></p>
+          <p style="margin:0;color:#ccc;font-size:15px;line-height:1.7">— Mohammad Al-Asali<br><span style="color:#666;font-size:13px">Master Jeweller & Founder, Al-Asali Custom Jewelry</span></p>
         </td></tr>
         <tr><td style="padding:16px 32px 24px;border-top:1px solid #333">
           <p style="margin:0;color:#555;font-size:12px">Al-Asali Custom Jewelry · 624 Vaughan Rd, Toronto, ON · <a href="tel:+16475624340" style="color:#666">(647) 562-4340</a></p>

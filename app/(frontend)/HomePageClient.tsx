@@ -122,7 +122,7 @@ const whyAlAssali: { icon: LucideIcon; title: string; body: string }[] = [
 
 // FAQ — answers the top "custom jewellery toronto" search queries
 const homepageFaq = [
-  { q: 'Where is Al-Assali Jewelry based?', a: 'Al-Assali Jewelry Studio is a Toronto-based custom jewellery studio at 624 Vaughan Rd. We work by appointment only — virtual consultations via Zoom, phone, or message, and complimentary insured delivery across the Greater Toronto Area, with optional in-person meetings in Toronto when preferred.' },
+  { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based custom jewellery studio at 624 Vaughan Rd. We work by appointment only — virtual consultations via Zoom, phone, or message, and complimentary insured delivery across the Greater Toronto Area, with optional in-person meetings in Toronto when preferred.' },
   { q: 'What does custom jewellery cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal weight, stones, and design complexity. Custom engagement rings typically start at $2,500. Every project is quoted up front with no hidden fees.' },
   { q: 'How long does custom jewellery take?', a: 'Most pieces take 2–6 weeks: grillz 1–2 weeks, pendants 2–4 weeks, chains and earrings 2–4 weeks, rings and bracelets 3–5 weeks, engagement rings 4–6 weeks. Rush orders are available for an additional fee.' },
   { q: 'How do I start a custom jewellery project?', a: 'Book a free consultation — virtual via Zoom, phone, or message, or in-person in Toronto by appointment. We discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins.' },
@@ -318,7 +318,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 1 }} className="text-sm uppercase tracking-widest mb-6 text-stone" style={{ fontFamily: 'var(--font-body)' }}>ONLY THE FINEST</motion.p>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.0, duration: 1 }} className="text-base md:text-lg text-stone leading-relaxed mb-12 max-w-2xl">
-              Bespoke engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz — handcrafted in our Toronto studio by master jeweller Mohammad Al-Assali, by appointment.
+              Bespoke engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz — handcrafted in our Toronto studio by master jeweller Mohammad Al-Asali, by appointment.
             </motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }} className="flex flex-col sm:flex-row gap-4">
               <Link href="/portfolio" className="inline-block bg-white text-soft-black px-12 py-4 rounded-lg font-semibold text-sm uppercase tracking-wider hover:bg-glacier-grey hover:text-white transition-all duration-300 shadow-lg hover:shadow-2xl text-center" data-testid="hero-cta-primary">VIEW MY WORK</Link>
@@ -338,7 +338,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jewelry, Made in Toronto</h2>
             <p className="text-sm md:text-lg text-taupe max-w-3xl mx-auto leading-relaxed">
-              Al-Assali Jewelry is a Toronto-based bespoke jewellery studio. Master jeweller Mohammad Al-Assali designs and handcrafts every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — from first sketch to final polish, under one roof, with a lifetime craftsmanship guarantee. Choose a category to begin.
+              Al-Asali Jewelry is a Toronto-based bespoke jewellery studio. Master jeweller Mohammad Al-Asali designs and handcrafts every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — from first sketch to final polish, under one roof, with a lifetime craftsmanship guarantee. Choose a category to begin.
             </p>
           </motion.div>
 
@@ -509,7 +509,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
         <DotPattern />
         <div className="section-container relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16 max-w-3xl mx-auto">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Why Al-Assali Jewelry</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Why Al-Asali Jewelry</h2>
             <p className="text-sm md:text-lg text-stone leading-relaxed">
               We are a small, focused Toronto workshop. Every piece is crafted by a master jeweller — not a factory — and backed by a lifetime craftsmanship guarantee.
             </p>
@@ -544,9 +544,9 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
               <Hammer className="w-6 h-6 text-glacier-grey" />
             </div>
             <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweller &amp; Founder</div>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Mohammad Al-Assali</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Mohammad Al-Asali</h2>
             <p className="text-sm md:text-lg text-taupe leading-relaxed mb-8">
-              Mohammad is the founder and master jeweller behind Al-Assali Jewelry Studio. A George Brown College Jewellery Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
+              Mohammad is the founder and master jeweller behind Al-Asali Jewelry Studio. A George Brown College Jewellery Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
             </p>
             <Link href="/about/master-jeweller/mohammad-al-assali" className="inline-flex items-center gap-2 text-glacier-grey font-semibold hover:gap-3 transition-all">
               Read Mohammad’s story <ArrowRight className="w-4 h-4" />
@@ -571,7 +571,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>How We Work Together</h2>
             <p className="text-sm md:text-lg text-stone leading-relaxed mb-8">
-              Al-Assali Jewelry Studio is a Toronto-based custom jeweller, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
+              Al-Asali Jewelry Studio is a Toronto-based custom jeweller, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
             </p>
 
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm mb-6">
@@ -615,7 +615,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
               >
                 <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
                   <h3 className="text-deep-charcoal font-bold text-sm md:text-base">{item.q}</h3>
-                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-white border border-stone/40 flex items-center justify-center text-glacier-grey group-open:rotate-45 transition-transform">+</span>
+                  <span className="flex-shrink-0 w-7 h-7 rounded-full bg-glacier-grey flex items-center justify-center text-white group-open:rotate-45 transition-transform">+</span>
                 </summary>
                 <div className="px-5 pb-5 text-taupe text-sm leading-relaxed">{item.a}</div>
               </motion.details>

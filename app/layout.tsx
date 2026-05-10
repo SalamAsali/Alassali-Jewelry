@@ -12,8 +12,8 @@ import {
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
   title: {
-    default: 'Custom Jeweller Toronto | Bespoke Engagement Rings, Chains & Grillz — Al-Assali Jewelry',
-    template: '%s | Al-Assali Jewelry',
+    default: 'Custom Jeweller Toronto | Bespoke Engagement Rings, Chains & Grillz — Al-Asali Jewelry',
+    template: '%s | Al-Asali Jewelry',
   },
   description: 'Toronto\'s premier custom jeweller. Bespoke engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz — handcrafted in-house in Toronto, by appointment. 5-star rated on Google.',
   openGraph: mergeOpenGraph(),

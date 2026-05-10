@@ -2,8 +2,8 @@ import { redirect } from 'next/navigation'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Admin - Alassali Jewelry',
-  description: 'Content management for Alassali Jewelry',
+  title: 'Admin - Alasali Jewelry',
+  description: 'Content management for Alasali Jewelry',
 }
 
 type Args = {

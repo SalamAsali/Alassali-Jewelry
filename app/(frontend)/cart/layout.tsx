@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Cart | Alassali Jewelry',
-  description: 'Your shopping cart. Alassali Jewelry, Toronto.',
+  title: 'Cart | Alasali Jewelry',
+  description: 'Your shopping cart. Alasali Jewelry, Toronto.',
 }
 
 export default function CartLayout({ children }: { children: React.ReactNode }) {

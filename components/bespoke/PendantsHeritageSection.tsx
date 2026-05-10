@@ -125,7 +125,7 @@ export default function PendantsHeritageSection() {
             Arabic Calligraphy Is Our Specialty
           </h3>
           <p className="text-stone leading-relaxed">
-            Al-Assali Jewelry is one of the few custom jewellers in Toronto with deep expertise in Arabic calligraphy pendants. Master jeweller Mohammad Al-Assali personally reviews and hand-shapes every Arabic piece — ensuring authentic letter forms, balanced proportions, and faithful rendering of sacred text. Whether you want your name in script, an Ayat al-Kursi pendant, or a full verse for a loved one, we craft it with the care the language deserves.
+            Al-Asali Jewelry is one of the few custom jewellers in Toronto with deep expertise in Arabic calligraphy pendants. Master jeweller Mohammad Al-Asali personally reviews and hand-shapes every Arabic piece — ensuring authentic letter forms, balanced proportions, and faithful rendering of sacred text. Whether you want your name in script, an Ayat al-Kursi pendant, or a full verse for a loved one, we craft it with the care the language deserves.
           </p>
         </motion.div>
       </div>

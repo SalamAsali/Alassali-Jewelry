@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Plus, Minus } from 'lucide-react'
 
 export type FaqAccordionCategory = {
   category: string
@@ -41,11 +40,7 @@ export default function FaqAccordion({ data }: Props) {
                   className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-soft-beige transition-colors"
                 >
                   <span className="font-semibold text-deep-charcoal pr-4">{faq.question}</span>
-                  {expandedItems.includes(faq.id) ? (
-                    <Minus className="w-5 h-5 text-glacier-grey flex-shrink-0" />
-                  ) : (
-                    <Plus className="w-5 h-5 text-glacier-grey flex-shrink-0" />
-                  )}
+                  <span className={`flex-shrink-0 w-7 h-7 rounded-full bg-glacier-grey flex items-center justify-center text-white transition-transform ${expandedItems.includes(faq.id) ? 'rotate-45' : ''}`}>+</span>
                 </button>
                 <AnimatePresence>
                   {expandedItems.includes(faq.id) && (

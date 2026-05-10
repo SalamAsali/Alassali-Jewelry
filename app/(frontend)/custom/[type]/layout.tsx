@@ -2,39 +2,39 @@ import type { Metadata } from 'next'
 
 const pageMeta: Record<string, { title: string; description: string }> = {
   'engagement-rings': {
-    title: 'Custom Engagement Rings Toronto | Design Your Dream Ring — Al-Assali Jewelry',
+    title: 'Custom Engagement Rings Toronto | Design Your Dream Ring — Al-Asali Jewelry',
     description: 'Design a one-of-a-kind engagement ring with Toronto\'s premier custom jeweler. Ethically sourced diamonds, in-house craftsmanship, and a process as special as the ring itself.',
   },
   'rings': {
-    title: 'Custom Rings Toronto | Signet, Statement & Wedding Rings — Al-Assali Jewelry',
+    title: 'Custom Rings Toronto | Signet, Statement & Wedding Rings — Al-Asali Jewelry',
     description: 'From signet rings to wedding bands, every custom ring is handcrafted in-house in Toronto. Gold, platinum, and silver — designed around your vision.',
   },
   'pendants': {
-    title: 'Custom Pendants Toronto | Name, Photo & Diamond Pendants — Al-Assali Jewelry',
+    title: 'Custom Pendants Toronto | Name, Photo & Diamond Pendants — Al-Asali Jewelry',
     description: 'Handcrafted custom pendants in Toronto — from name pendants and photo pendants to diamond-set initials. Your story, beautifully told in gold and silver.',
   },
   'chains': {
-    title: 'Custom Chains Toronto | Cuban Link, Rope & Gold Chains — Al-Assali Jewelry',
+    title: 'Custom Chains Toronto | Cuban Link, Rope & Gold Chains — Al-Asali Jewelry',
     description: 'Custom gold and silver chains handcrafted in Toronto. Cuban links, rope chains, franco chains, and more — built to your exact specifications.',
   },
   'earrings': {
-    title: 'Custom Earrings Toronto | Diamond, Gold & Handcrafted — Al-Assali Jewelry',
+    title: 'Custom Earrings Toronto | Diamond, Gold & Handcrafted — Al-Asali Jewelry',
     description: 'Design custom earrings with Toronto\'s premier jeweler. Studs, hoops, drops, and chandelier earrings — handcrafted in gold, platinum, or silver.',
   },
   'bracelets': {
-    title: 'Custom Bracelets Toronto | Tennis, Bangle & Engraved — Al-Assali Jewelry',
+    title: 'Custom Bracelets Toronto | Tennis, Bangle & Engraved — Al-Asali Jewelry',
     description: 'Custom bracelets handcrafted in Toronto. Tennis bracelets, bangles, cuffs, and engraved pieces for men and women — designed to your exact specifications.',
   },
   'grillz': {
-    title: 'Custom Grillz Toronto | Gold & Diamond Grillz — Al-Assali Jewelry',
+    title: 'Custom Grillz Toronto | Gold & Diamond Grillz — Al-Asali Jewelry',
     description: 'Toronto\'s premier custom grillz studio. Gold, diamond, and VVS grillz — from single tooth to full sets. In-house craftsmanship, competitive prices.',
   },
   'wedding-bands': {
-    title: 'Custom Wedding Bands Toronto | Bridal, Eternity & Men\'s Bands — Al-Assali Jewelry',
+    title: 'Custom Wedding Bands Toronto | Bridal, Eternity & Men\'s Bands — Al-Asali Jewelry',
     description: 'Custom wedding bands handcrafted in Toronto. Matching bridal sets, eternity bands, men\'s wedding rings, engraved bands, and Arabic calligraphy rings — in gold, platinum, or silver.',
   },
   'general': {
-    title: 'Start Your Custom Jewellery Project — Al-Assali Jewelry',
+    title: 'Start Your Custom Jewellery Project — Al-Asali Jewelry',
     description: 'Tell us about your custom jewellery project — we’ll send back a sketch, a quote, and a timeline within 24 hours.',
   },
 }
