@@ -46,8 +46,8 @@ export default function Page() {
       datePublished={DATE}
       readingMinutes={6}
       relatedLinks={[
-        { label: 'Custom Grillz in Toronto', href: '/custom-grillz' },
-        { label: 'Custom Gold Chains in Toronto', href: '/custom-chains' },
+        { label: 'Custom Grillz in Toronto', href: '/custom-grillz-toronto' },
+        { label: 'Custom Gold Chains in Toronto', href: '/custom-chains-toronto' },
         { label: 'Meet the Master Jeweler', href: '/about/master-jeweler/mohammad-al-assali' },
       ]}
     >

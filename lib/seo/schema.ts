@@ -157,7 +157,7 @@ export type ServiceSchemaInput = {
 }
 
 export function buildServiceSchema(input: ServiceSchemaInput) {
-  const url = `${SITE_CONFIG.url}/custom-${input.slug}`
+  const url = `${SITE_CONFIG.url}/custom-${input.slug}-toronto`
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',

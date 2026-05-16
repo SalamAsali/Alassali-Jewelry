@@ -30,14 +30,14 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
 }
 
 const bespokeGrid = [
-  { name: 'Custom Engagement Rings', path: '/custom-engagement-rings', icon: Diamond },
-  { name: 'Custom Wedding Bands', path: '/custom-wedding-bands', icon: Heart },
-  { name: 'Custom Rings', path: '/custom-rings', icon: Hammer },
-  { name: 'Custom Pendants', path: '/custom-pendants', icon: Scroll },
-  { name: 'Custom Chains', path: '/custom-chains', icon: LinkIcon },
-  { name: 'Custom Earrings', path: '/custom-earrings', icon: Sparkles },
-  { name: 'Custom Bracelets', path: '/custom-bracelets', icon: Gem },
-  { name: 'Custom Grillz', path: '/custom-grillz', icon: Flame },
+  { name: 'Custom Engagement Rings', path: '/custom-engagement-rings-toronto', icon: Diamond },
+  { name: 'Custom Wedding Bands', path: '/custom-wedding-bands-toronto', icon: Heart },
+  { name: 'Custom Rings', path: '/custom-rings-toronto', icon: Hammer },
+  { name: 'Custom Pendants', path: '/custom-pendants-toronto', icon: Scroll },
+  { name: 'Custom Chains', path: '/custom-chains-toronto', icon: LinkIcon },
+  { name: 'Custom Earrings', path: '/custom-earrings-toronto', icon: Sparkles },
+  { name: 'Custom Bracelets', path: '/custom-bracelets-toronto', icon: Gem },
+  { name: 'Custom Grillz', path: '/custom-grillz-toronto', icon: Flame },
 ]
 
 export default function GtaCityPage({ params }: { params: Params }) {

@@ -44,13 +44,14 @@ const nextConfig = {
     reactCompiler: false,
   },
 
-  // Flat slug pattern: visitors hit /custom-<slug>; Next.js serves the
-  // existing /custom/<slug> route internally. The address bar shows the
-  // new URL, while the page component still reads `params.type` correctly.
+  // Flat slug pattern: visitors hit /custom-<slug>-toronto; Next.js serves
+  // the existing /custom/<slug> route internally. The address bar shows
+  // the new URL, while the page component still reads `params.type`
+  // correctly.
   async rewrites() {
     return [
       ...customSlugs.map((slug) => ({
-        source: `/custom-${slug}`,
+        source: `/custom-${slug}-toronto`,
         destination: `/custom/${slug}`,
       })),
       // /custom-form is the public-facing inquiry form URL; it's served by
@@ -59,12 +60,18 @@ const nextConfig = {
     ]
   },
 
-  // 301 the old hierarchical URLs to the new flat slugs to preserve SEO equity.
+  // 301 the old hierarchical URLs and the previous flat slugs to the new
+  // Toronto-suffixed URLs to preserve SEO equity.
   async redirects() {
     return [
       ...customSlugs.map((slug) => ({
         source: `/custom/${slug}`,
-        destination: `/custom-${slug}`,
+        destination: `/custom-${slug}-toronto`,
+        permanent: true,
+      })),
+      ...customSlugs.map((slug) => ({
+        source: `/custom-${slug}`,
+        destination: `/custom-${slug}-toronto`,
         permanent: true,
       })),
       // Old internal route for the form → the public form URL.
