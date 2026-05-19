@@ -24,7 +24,11 @@ const areaServedNodes = [
 
 const sameAs = Object.values(SITE_CONFIG.social).filter(Boolean)
 
-export function buildJewelryStoreSchema() {
+export function buildJewelryStoreSchema(liveReviews?: {
+  reviews: Array<{ authorName: string; rating: number; text: string; timestamp: number }>
+  rating: number
+  totalReviews: number
+}) {
   return {
     '@context': 'https://schema.org',
     '@type': 'JewelryStore',
@@ -65,11 +69,31 @@ export function buildJewelryStoreSchema() {
     sameAs,
     aggregateRating: {
       '@type': 'AggregateRating',
-      ratingValue: SITE_CONFIG.aggregateRating.ratingValue,
-      reviewCount: SITE_CONFIG.aggregateRating.reviewCount,
+      ratingValue: liveReviews
+        ? String(liveReviews.rating)
+        : SITE_CONFIG.aggregateRating.ratingValue,
+      reviewCount: liveReviews
+        ? String(liveReviews.totalReviews)
+        : String(SITE_CONFIG.aggregateRating.reviewCount),
       bestRating: SITE_CONFIG.aggregateRating.bestRating,
       worstRating: SITE_CONFIG.aggregateRating.worstRating,
     },
+    ...(liveReviews && liveReviews.reviews.length > 0
+      ? {
+          review: liveReviews.reviews.slice(0, 5).map((r) => ({
+            '@type': 'Review',
+            author: { '@type': 'Person', name: r.authorName },
+            datePublished: new Date(r.timestamp * 1000).toISOString().split('T')[0],
+            reviewBody: r.text,
+            reviewRating: {
+              '@type': 'Rating',
+              ratingValue: String(r.rating),
+              bestRating: '5',
+              worstRating: '1',
+            },
+          })),
+        }
+      : {}),
     knowsAbout: [
       'Custom Engagement Rings',
       'Custom Wedding Bands',

@@ -8,6 +8,7 @@ import {
   buildMasterJewelerSchema,
   buildWebsiteSchema,
 } from '@/lib/seo/schema'
+import { fetchGoogleReviews } from '@/lib/reviews/googlePlaces'
 
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
@@ -21,18 +22,22 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const reviewsData = await fetchGoogleReviews()
+
   return (
     <html lang="en">
       <body className="antialiased">
         <JsonLd
           id="site-schema"
           data={[
-            buildJewelryStoreSchema(),
+            buildJewelryStoreSchema(
+              reviewsData.source === 'live' ? reviewsData : undefined,
+            ),
             buildOrganizationSchema(),
             buildMasterJewelerSchema(),
             buildWebsiteSchema(),
