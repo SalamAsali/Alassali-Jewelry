@@ -52,7 +52,7 @@ const PLACE_ID = SITE_CONFIG.googleMapsPlaceId
 // fragments and the address must contain this substring, otherwise we refuse
 // to render the reviews. Prevents silently showing a stranger's reviews if the
 // Place ID ever gets corrupted (env var swap, copy-paste error, etc.).
-const EXPECTED_NAME_FRAGMENTS = ['al-assali', 'alassali']
+const EXPECTED_NAME_FRAGMENTS = ['al-asali', 'al-assali', 'alassali', 'alasali']
 const EXPECTED_ADDRESS_FRAGMENT = 'vaughan rd'
 
 export async function fetchGoogleReviews(): Promise<{
