@@ -66,7 +66,7 @@ export const SITE_CONFIG = {
 
   aggregateRating: {
     ratingValue: '5.0',
-    reviewCount: 24,
+    reviewCount: 38,
     bestRating: '5',
     worstRating: '1',
   },
