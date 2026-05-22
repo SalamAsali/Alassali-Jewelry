@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { getServerSideURL } from '@/lib/getURL'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import JsonLd from '@/components/seo/JsonLd'
@@ -31,6 +32,13 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://analytics.ahrefs.com/analytics.js"
+          data-key="AVNynhehvSQEh5GaujqbDg"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="antialiased">
         <JsonLd
           id="site-schema"
