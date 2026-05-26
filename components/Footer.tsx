@@ -51,9 +51,9 @@ export default function Footer(props?: FooterProps) {
             </div>
           </div>
 
-          {/* Bespoke */}
+          {/* Custom Orders */}
           <div>
-            <h3 className="text-lg font-heading font-semibold mb-4">Bespoke</h3>
+            <h3 className="text-lg font-heading font-semibold mb-4">Custom Orders</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/custom-engagement-rings" className="text-warm-gray hover:text-glacier-grey transition-colors">Engagement Rings</Link></li>
               <li><Link href="/custom-wedding-bands" className="text-warm-gray hover:text-glacier-grey transition-colors">Wedding Bands</Link></li>
@@ -78,25 +78,17 @@ export default function Footer(props?: FooterProps) {
               <li><Link href="/portfolio" className="text-warm-gray hover:text-glacier-grey transition-colors">Portfolio</Link></li>
               <li><Link href="/faq" className="text-warm-gray hover:text-glacier-grey transition-colors">FAQ</Link></li>
             </ul>
-            <h3 className="text-lg font-heading font-semibold mt-6 mb-3">Serving Toronto</h3>
-            <ul className="space-y-2 text-sm">
-              <li><Link href="/service-areas" className="text-glacier-grey hover:text-glacier-grey-light font-medium transition-colors">All service areas →</Link></li>
-              <li><Link href="/toronto/oakwood-vaughan" className="text-warm-gray hover:text-glacier-grey transition-colors">Oakwood–Vaughan</Link></li>
-              <li><Link href="/toronto/wychwood" className="text-warm-gray hover:text-glacier-grey transition-colors">Wychwood</Link></li>
-              <li><Link href="/toronto/forest-hill" className="text-warm-gray hover:text-glacier-grey transition-colors">Forest Hill</Link></li>
-              <li><Link href="/toronto/bathurst-st-clair" className="text-warm-gray hover:text-glacier-grey transition-colors">Bathurst–St Clair</Link></li>
-              <li><Link href="/toronto/yorkville" className="text-warm-gray hover:text-glacier-grey transition-colors">Yorkville</Link></li>
-              <li><Link href="/toronto/north-york" className="text-warm-gray hover:text-glacier-grey transition-colors">North York</Link></li>
-              <li><Link href="/toronto/etobicoke" className="text-warm-gray hover:text-glacier-grey transition-colors">Etobicoke</Link></li>
-              <li><Link href="/toronto/scarborough" className="text-warm-gray hover:text-glacier-grey transition-colors">Scarborough</Link></li>
-              <li className="pt-2 border-t border-charcoal mt-2"><Link href="/gta/mississauga" className="text-warm-gray hover:text-glacier-grey transition-colors">Mississauga</Link></li>
-              <li><Link href="/gta/vaughan" className="text-warm-gray hover:text-glacier-grey transition-colors">Vaughan</Link></li>
-              <li><Link href="/gta/markham" className="text-warm-gray hover:text-glacier-grey transition-colors">Markham</Link></li>
-            </ul>
           </div>
 
-          {/* Newsletter & Connect */}
+          {/* Hours, Newsletter & Connect */}
           <div>
+            <h3 className="text-lg font-heading font-semibold mb-4">Hours</h3>
+            <ul className="space-y-1.5 text-sm text-warm-gray mb-6">
+              <li className="flex justify-between"><span>Mon — Fri</span><span className="text-white">10:00 AM — 9:30 PM</span></li>
+              <li className="flex justify-between"><span>Saturday</span><span className="text-white">12:00 PM — 6:00 PM</span></li>
+              <li className="flex justify-between"><span>Sunday</span><span className="text-white">Closed</span></li>
+            </ul>
+
             <h3 className="text-lg font-heading font-semibold mb-4">Sign Up For Shop Updates</h3>
             <form className="space-y-3" onSubmit={(e) => { e.preventDefault(); alert('Thank you for subscribing!'); }}>
               <input
