@@ -105,7 +105,7 @@ const typeConfig: Record<string, { title: string; subtitle: string; styles: stri
   'chains': {
     title: 'Custom Chains',
     subtitle: 'Wearable art, crafted to your specifications',
-    styles: ['Miami Cuban', 'Rope', 'Franco', 'Figaro', 'Box Chain', 'Custom Design and/or Logo Design', 'Other'],
+    styles: ['Miami Cuban', 'Rope', 'Franco', 'Figaro', 'Box Chain', 'Tennis', 'Other'],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'pendants': {
@@ -161,7 +161,7 @@ const styleIcons: Record<string, Record<string, LucideIcon>> = {
   },
   'chains': {
     'Miami Cuban': Link, Rope: Waves, Franco: Shield,
-    Figaro: Circle, 'Box Chain': Square, 'Custom Design and/or Logo Design': Paintbrush, Other: HelpCircle,
+    Figaro: Circle, 'Box Chain': Square, Tennis: Gem, Other: HelpCircle,
   },
   'pendants': {
     Initial: Type, Name: Pen, Symbol: Star,
