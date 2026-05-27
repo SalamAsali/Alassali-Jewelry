@@ -68,13 +68,10 @@ export default function Footer(props?: FooterProps) {
 
           {/* Guides & Studio */}
           <div>
-            <h3 className="text-lg font-heading font-semibold mb-4">Guides &amp; Studio</h3>
+            <h3 className="text-lg font-heading font-semibold mb-4">Studio</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/blog/custom-engagement-ring-cost-toronto-2026" className="text-warm-gray hover:text-glacier-grey transition-colors">Engagement Ring Cost Guide</Link></li>
-              <li><Link href="/blog/grillz-price-guide-toronto-2026" className="text-warm-gray hover:text-glacier-grey transition-colors">Grillz Price Guide</Link></li>
-              <li><Link href="/blog/lab-grown-vs-natural-diamonds-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Lab vs Natural Diamonds</Link></li>
-              <li><Link href="/blog" className="text-warm-gray hover:text-glacier-grey transition-colors">All Guides</Link></li>
-              <li className="pt-2"><Link href="/about/master-jeweler/mohammad-al-assali" className="text-warm-gray hover:text-glacier-grey transition-colors">Master Jeweler</Link></li>
+              <li><Link href="/blog" className="text-warm-gray hover:text-glacier-grey transition-colors">Guides</Link></li>
+              <li><Link href="/about/master-jeweler/mohammad-al-assali" className="text-warm-gray hover:text-glacier-grey transition-colors">Master Jeweler</Link></li>
               <li><Link href="/portfolio" className="text-warm-gray hover:text-glacier-grey transition-colors">Portfolio</Link></li>
               <li><Link href="/faq" className="text-warm-gray hover:text-glacier-grey transition-colors">FAQ</Link></li>
             </ul>
@@ -84,8 +81,8 @@ export default function Footer(props?: FooterProps) {
           <div>
             <h3 className="text-lg font-heading font-semibold mb-4">Hours</h3>
             <ul className="space-y-1.5 text-sm text-warm-gray mb-6">
-              <li className="flex justify-between"><span>Mon — Fri</span><span className="text-white">10:00 AM — 9:30 PM</span></li>
-              <li className="flex justify-between"><span>Saturday</span><span className="text-white">12:00 PM — 6:00 PM</span></li>
+              <li className="flex justify-between"><span>Mon - Fri</span><span className="text-white">10:00 AM - 9:30 PM</span></li>
+              <li className="flex justify-between"><span>Saturday</span><span className="text-white">12:00 PM - 6:00 PM</span></li>
               <li className="flex justify-between"><span>Sunday</span><span className="text-white">Closed</span></li>
             </ul>
 
