@@ -314,7 +314,8 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="max-w-3xl">
             <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} className="mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
               <span className="block text-7xl md:text-8xl lg:text-9xl font-bold mb-4" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>TORONTO</span>
-              <span className="block text-4xl md:text-5xl font-light text-white">Custom Jeweler</span>
+              {' '}
+              <span className="block text-4xl md:text-5xl font-light text-white">Custom Jewelry</span>
             </motion.h1>
             <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.9, duration: 1 }} className="text-sm uppercase tracking-widest mb-6 text-stone" style={{ fontFamily: 'var(--font-body)' }}>ONLY THE FINEST</motion.p>
             <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1, duration: 0.8 }} className="flex flex-col sm:flex-row gap-4">
