@@ -112,8 +112,8 @@ export default function Footer(props?: FooterProps) {
                 </li>
                 <li className="flex items-center gap-2 text-warm-gray text-sm">
                   <Mail className="w-4 h-4 text-glacier-grey flex-shrink-0" />
-                  <a href={`mailto:${props?.email ?? DEFAULT_EMAIL}`} className="hover:text-glacier-grey transition-colors">
-                    {props?.email ?? DEFAULT_EMAIL}
+                  <a href="mailto:contact@alasalicustomjewelry.ca" className="hover:text-glacier-grey transition-colors">
+                    contact@alasalicustomjewelry.ca
                   </a>
                 </li>
                 <li className="flex items-start gap-2 text-warm-gray text-sm">

@@ -1655,8 +1655,8 @@ function GeneralHub() {
             <a href="tel:+16475624340" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
               <MessageSquare className="w-4 h-4" /> (647) 562-4340
             </a>
-            <a href="mailto:contact@alassalijewelrystudio.com" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
-              <Type className="w-4 h-4" /> contact@alassalijewelrystudio.com
+            <a href="mailto:contact@alasalicustomjewelry.ca" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
+              <Type className="w-4 h-4" /> contact@alasalicustomjewelry.ca
             </a>
           </div>
           <p className="text-stone text-xs mt-5">

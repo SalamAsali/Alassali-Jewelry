@@ -10,7 +10,7 @@ export const SITE_CONFIG = {
   defaultOgPath: '/opengraph-image.jpg',
   phone: '+1-647-562-4340',
   phoneDisplay: '(647) 562-4340',
-  email: 'contact@alassalijewelrystudio.com',
+  email: 'contact@alasalicustomjewelry.ca',
   founded: '2017',
   founder: 'Mohammad Al-Asali',
   priceRange: '$$$',
