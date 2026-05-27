@@ -8,7 +8,7 @@ const DEFAULT_LOGO = '/images/logo.png'
 const DEFAULT_TAGLINE = `Custom jeweler in Toronto since ${SITE_CONFIG.founded}. Every piece designed, cast, set, and finished in-house in Toronto.`
 const DEFAULT_PHONE = SITE_CONFIG.phoneDisplay
 const DEFAULT_EMAIL = SITE_CONFIG.email
-const DEFAULT_LOCATION = `${SITE_CONFIG.address.streetAddress}, ${SITE_CONFIG.address.addressLocality}, ${SITE_CONFIG.address.addressRegion}`
+const DEFAULT_LOCATION = '624 Vaughan Rd York, Toronto, ON M6E 2X3'
 
 // TikTok icon — lucide doesn't ship one
 function TikTokIcon({ className }: { className?: string }) {
@@ -105,20 +105,20 @@ export default function Footer(props?: FooterProps) {
               <h3 className="text-lg font-heading font-semibold mb-4">Connect</h3>
               <ul className="space-y-3">
                 <li className="flex items-center gap-2 text-warm-gray text-sm">
-                  <Phone className="w-4 h-4 text-glacier-grey" />
-                  <a href={`tel:${props?.phone ?? DEFAULT_PHONE}`} className="hover:text-glacier-grey transition-colors">
-                    {props?.phone ?? DEFAULT_PHONE}
+                  <Phone className="w-4 h-4 text-glacier-grey flex-shrink-0" />
+                  <a href="tel:+1-647-562-4340" className="hover:text-glacier-grey transition-colors">
+                    (647) 562-4340
                   </a>
                 </li>
                 <li className="flex items-center gap-2 text-warm-gray text-sm">
-                  <Mail className="w-4 h-4 text-glacier-grey" />
+                  <Mail className="w-4 h-4 text-glacier-grey flex-shrink-0" />
                   <a href={`mailto:${props?.email ?? DEFAULT_EMAIL}`} className="hover:text-glacier-grey transition-colors">
                     {props?.email ?? DEFAULT_EMAIL}
                   </a>
                 </li>
-                <li className="flex items-center gap-2 text-warm-gray text-sm">
-                  <MapPin className="w-4 h-4 text-glacier-grey" />
-                  <span>{props?.location ?? DEFAULT_LOCATION}</span>
+                <li className="flex items-start gap-2 text-warm-gray text-sm">
+                  <MapPin className="w-4 h-4 text-glacier-grey flex-shrink-0 mt-0.5" />
+                  <span>624 Vaughan Rd York, Toronto, ON M6E 2X3</span>
                 </li>
               </ul>
               <div className="flex items-center gap-4 mt-6">

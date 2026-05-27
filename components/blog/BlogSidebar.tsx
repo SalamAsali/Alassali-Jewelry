@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
@@ -20,7 +20,9 @@ type Heading = { id: string; text: string }
 export default function BlogSidebar() {
   const [headings, setHeadings] = useState<Heading[]>([])
   const [activeId, setActiveId] = useState<string>('')
+  const headingIds = useRef<string[]>([])
 
+  // Collect h2 headings from article content
   useEffect(() => {
     const article = document.querySelector('[data-blog-content]')
     if (!article) return
@@ -34,32 +36,37 @@ export default function BlogSidebar() {
       items.push({ id: h2.id, text: h2.textContent || '' })
     })
     setHeadings(items)
+    headingIds.current = items.map((h) => h.id)
+    if (items.length > 0) setActiveId(items[0].id)
   }, [])
 
+  // Scroll-spy: highlight the heading whose section is currently in view
   useEffect(() => {
     if (headings.length === 0) return
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.filter((e) => e.isIntersecting)
-        if (visible.length > 0) {
-          setActiveId(visible[0].target.id)
+    const handleScroll = () => {
+      const ids = headingIds.current
+      const scrollY = window.scrollY + 120 // offset for sticky nav
+
+      // Find the last heading that has been scrolled past
+      let current = ids[0]
+      for (const id of ids) {
+        const el = document.getElementById(id)
+        if (el && el.offsetTop <= scrollY) {
+          current = id
         }
-      },
-      { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
-    )
+      }
+      setActiveId(current)
+    }
 
-    headings.forEach(({ id }) => {
-      const el = document.getElementById(id)
-      if (el) observer.observe(el)
-    })
-
-    return () => observer.disconnect()
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [headings])
 
   return (
     <aside className="hidden lg:block w-72 xl:w-80 flex-shrink-0">
-      <div className="sticky top-24 space-y-8">
+      <div className="sticky top-24 space-y-8 max-h-[calc(100vh-8rem)] overflow-y-auto scrollbar-thin">
         {/* Table of Contents */}
         {headings.length > 0 && (
           <nav>
@@ -73,7 +80,7 @@ export default function BlogSidebar() {
                       e.preventDefault()
                       document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
                     }}
-                    className={`block pl-4 py-1 text-sm transition-colors border-l-2 -ml-px ${
+                    className={`block pl-4 py-1 text-sm transition-colors duration-200 border-l-2 -ml-px ${
                       activeId === id
                         ? 'border-glacier-grey text-white font-medium'
                         : 'border-transparent text-stone hover:text-glacier-grey'

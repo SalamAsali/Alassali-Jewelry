@@ -21,7 +21,7 @@ export const SITE_CONFIG = {
     streetAddress: '624 Vaughan Rd',
     addressLocality: 'Toronto',
     addressRegion: 'ON',
-    postalCode: 'M6E 2Y3',
+    postalCode: 'M6E 2X3',
     addressCountry: 'CA',
   },
 
