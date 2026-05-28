@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+
 import BlogLayout from '@/components/blog/BlogLayout'
 import { buildArticleSchema } from '@/lib/seo/article'
 import { buildFaqSchema, buildBreadcrumbSchema } from '@/lib/seo/schema'
@@ -8,12 +9,14 @@ const SLUG = 'lab-grown-vs-natural-diamonds-toronto'
 const TITLE = 'Lab-Grown vs Natural Diamonds in Toronto: A Jeweler\'s Honest 2026 Guide'
 const DESCRIPTION = 'Lab-grown or natural? A working Toronto jeweler explains the real differences, prices, ethics, and resale value — without sales pressure.'
 const DATE = '2026-04-17'
+const COVER = '/blog/lab-grown-vs-natural-diamonds-toronto-cover.svg'
+const COVER_ALT = 'Lab-grown vs natural diamonds Toronto 2026 head-to-head comparison — 11 attributes including price 1ct G VS1 natural $6,500 vs lab-grown $2,800, resale value, hardness Mohs 10, Al-Asali Jewelry'
 
 export const metadata: Metadata = {
   title: 'Lab-Grown vs Natural Diamonds Toronto 2026 | Al-Asali Jewelry',
   description: DESCRIPTION,
   alternates: { canonical: `/blog/${SLUG}` },
-  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article' },
+  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER] },
 }
 
 const faq = [
@@ -30,7 +33,10 @@ export default function Page() {
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: DATE,
+    imagePath: COVER,
     keywords: ['lab grown vs natural diamond Toronto', 'lab diamond Toronto', 'are lab grown diamonds real', 'lab diamond resale value'],
+    wordCount: 1250,
+    articleSection: 'Diamonds',
   })
   const breadcrumb = buildBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
@@ -45,6 +51,9 @@ export default function Page() {
       subtitle="Both are real diamonds. Here's how to choose — without the sales pitch."
       datePublished={DATE}
       readingMinutes={8}
+      category="Diamonds"
+      coverImage={COVER}
+      coverImageAlt={COVER_ALT}
       relatedLinks={[
         { label: 'Custom Engagement Rings in Toronto', href: '/custom-engagement-rings' },
         { label: 'Custom Engagement Ring Cost Guide', href: '/blog/custom-engagement-ring-cost-toronto-2026' },
@@ -99,6 +108,18 @@ export default function Page() {
         </tbody>
       </table>
 
+      <h2>Price comparison by carat</h2>
+
+      <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
+        <img
+          src="/blog/lab-grown-vs-natural-diamonds-toronto-price-comparison.svg"
+          alt="Lab-grown vs natural diamond price comparison Toronto 2026 — bar chart from 0.5ct ($1,800 lab vs $3,500 natural) to 3ct ($8,500 lab vs $32,000+ natural) in 14K gold"
+          width={1200}
+          height={600}
+          className="w-full h-auto"
+        />
+      </div>
+
       <h2>When to choose lab-grown</h2>
       <p>
         Lab-grown makes sense when:
@@ -124,6 +145,17 @@ export default function Page() {
       </ul>
 
       <h2>The resale question — worth understanding</h2>
+
+      <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
+        <img
+          src="/blog/lab-grown-vs-natural-diamonds-toronto-resale-value.svg"
+          alt="Diamond resale value comparison Toronto 2026 — natural diamond retains 50-70% of retail over decades, lab-grown dropped 70% since 2020 with limited secondary market"
+          width={1200}
+          height={600}
+          className="w-full h-auto"
+        />
+      </div>
+
       <p>
         Lab-grown diamond prices have dropped dramatically since 2020. A 1ct CVD lab-grown that sold for $5,200 in 2021 now retails for about $2,800. That&apos;s great if you&apos;re buying today, but it means if you buy a lab-grown now and try to sell or upgrade it in five years, you&apos;ll take a significant hit.
       </p>

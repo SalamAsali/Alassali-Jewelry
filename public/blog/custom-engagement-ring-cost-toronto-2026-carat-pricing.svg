@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#1A1A1A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="600" fill="url(#bg)"/>
+
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#B89778" stroke-width="0.1" opacity="0.12"/>
+  </pattern>
+  <rect width="1200" height="600" fill="url(#grid)"/>
+
+  <!-- Corner brackets -->
+  <path d="M 36 80 L 36 36 L 80 36" fill="none" stroke="#B89778" stroke-width="2.5" stroke-linecap="square"/>
+  <path d="M 1120 36 L 1164 36 L 1164 80" fill="none" stroke="#B89778" stroke-width="2.5" stroke-linecap="square"/>
+  <path d="M 36 520 L 36 564 L 80 564" fill="none" stroke="#B89778" stroke-width="2.5" stroke-linecap="square"/>
+  <path d="M 1120 564 L 1164 564 L 1164 520" fill="none" stroke="#B89778" stroke-width="2.5" stroke-linecap="square"/>
+
+  <!-- Header -->
+  <text x="600" y="88" font-family="'Cormorant Garamond', Georgia, serif" font-size="32" font-weight="700" fill="#FFFFFF" text-anchor="middle">Price by Carat Weight — Lab-Grown vs Natural</text>
+  <text x="600" y="118" font-family="Inter, sans-serif" font-size="14" fill="#8E9196" text-anchor="middle">14K Gold Solitaire · G-H, VS Clarity · Pre-HST · Toronto 2026</text>
+  <line x1="380" y1="133" x2="820" y2="133" stroke="#B89778" stroke-width="1" opacity="0.5"/>
+
+  <!-- Legend -->
+  <rect x="380" y="148" width="16" height="16" rx="3" fill="#B89778"/>
+  <text x="403" y="161" font-family="Inter, sans-serif" font-size="13" fill="#D4CFC5">Lab-Grown</text>
+  <rect x="530" y="148" width="16" height="16" rx="3" fill="#A3A7AC"/>
+  <text x="553" y="161" font-family="Inter, sans-serif" font-size="13" fill="#D4CFC5">Natural</text>
+
+  <!-- Table -->
+  <rect x="100" y="178" width="1000" height="48" rx="0" fill="#1E1614"/>
+  <rect x="100" y="178" width="1000" height="48" rx="6" fill="#1E1614"/>
+
+  <!-- Headers -->
+  <text x="200" y="208" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">CARAT WEIGHT</text>
+  <text x="430" y="208" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">LAB-GROWN</text>
+  <text x="660" y="208" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">NATURAL</text>
+  <text x="900" y="208" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">LAB SAVES YOU</text>
+
+  <!-- Col dividers -->
+  <line x1="320" y1="178" x2="320" y2="490" stroke="#B89778" stroke-width="0.5" opacity="0.2"/>
+  <line x1="550" y1="178" x2="550" y2="490" stroke="#B89778" stroke-width="0.5" opacity="0.2"/>
+  <line x1="780" y1="178" x2="780" y2="490" stroke="#B89778" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Rows -->
+  <!-- 0.5ct -->
+  <rect x="100" y="226" width="1000" height="44" fill="#0F0F0F"/>
+  <text x="200" y="254" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#D4CFC5" text-anchor="middle">0.5 ct</text>
+  <text x="430" y="254" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#B89778" text-anchor="middle">$1,800</text>
+  <text x="660" y="254" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#A3A7AC" text-anchor="middle">$3,500</text>
+  <text x="900" y="254" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#6EBF7E" text-anchor="middle">$1,700 (49%)</text>
+
+  <!-- 0.75ct -->
+  <rect x="100" y="270" width="1000" height="44" fill="#131313"/>
+  <text x="200" y="298" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#D4CFC5" text-anchor="middle">0.75 ct</text>
+  <text x="430" y="298" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#B89778" text-anchor="middle">$2,200</text>
+  <text x="660" y="298" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#A3A7AC" text-anchor="middle">$4,500</text>
+  <text x="900" y="298" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#6EBF7E" text-anchor="middle">$2,300 (51%)</text>
+
+  <!-- 1.0ct highlight -->
+  <rect x="100" y="314" width="1000" height="44" fill="#1A1410"/>
+  <rect x="100" y="314" width="4" height="44" fill="#B89778"/>
+  <text x="200" y="342" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF" text-anchor="middle">1.0 ct ★</text>
+  <text x="430" y="342" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#B89778" text-anchor="middle">$2,800</text>
+  <text x="660" y="342" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">$6,500</text>
+  <text x="900" y="342" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6EBF7E" text-anchor="middle">$3,700 (57%)</text>
+
+  <!-- 1.5ct -->
+  <rect x="100" y="358" width="1000" height="44" fill="#0F0F0F"/>
+  <text x="200" y="386" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#D4CFC5" text-anchor="middle">1.5 ct</text>
+  <text x="430" y="386" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#B89778" text-anchor="middle">$3,800</text>
+  <text x="660" y="386" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#A3A7AC" text-anchor="middle">$10,500</text>
+  <text x="900" y="386" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#6EBF7E" text-anchor="middle">$6,700 (64%)</text>
+
+  <!-- 2.0ct -->
+  <rect x="100" y="402" width="1000" height="44" fill="#131313"/>
+  <text x="200" y="430" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#D4CFC5" text-anchor="middle">2.0 ct</text>
+  <text x="430" y="430" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#B89778" text-anchor="middle">$5,200</text>
+  <text x="660" y="430" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#A3A7AC" text-anchor="middle">$16,500</text>
+  <text x="900" y="430" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#6EBF7E" text-anchor="middle">$11,300 (68%)</text>
+
+  <!-- 3.0ct -->
+  <rect x="100" y="446" width="1000" height="44" rx="0" fill="#0F0F0F"/>
+  <rect x="100" y="466" width="1000" height="24" rx="6" fill="#0F0F0F"/>
+  <text x="200" y="474" font-family="Inter, sans-serif" font-size="16" font-weight="600" fill="#D4CFC5" text-anchor="middle">3.0 ct</text>
+  <text x="430" y="474" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#B89778" text-anchor="middle">$8,500</text>
+  <text x="660" y="474" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#A3A7AC" text-anchor="middle">$32,000+</text>
+  <text x="900" y="474" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#6EBF7E" text-anchor="middle">$23,500+ (74%)</text>
+
+  <!-- Note -->
+  <text x="600" y="515" font-family="Inter, sans-serif" font-size="12" fill="#8E9196" text-anchor="middle">★ Most popular size · Lab-grown saves 40-74% depending on carat · Source: Al-Asali Jewelry Studio, Toronto 2026</text>
+
+  <!-- Insight callout -->
+  <rect x="100" y="528" width="480" height="42" rx="6" fill="#1A1410" stroke="#B89778" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="340" y="546" font-family="Inter, sans-serif" font-size="13" fill="#D4CFC5" text-anchor="middle">Lab-grown is typically</text>
+  <text x="340" y="562" font-family="Inter, sans-serif" font-size="13" fill="#D4CFC5" text-anchor="middle"><tspan font-weight="700" fill="#B89778">40–60% cheaper</tspan> at identical 4C specs</text>
+
+  <rect x="620" y="528" width="480" height="42" rx="6" fill="#1A1410" stroke="#B89778" stroke-width="0.8" stroke-opacity="0.5"/>
+  <text x="860" y="546" font-family="Inter, sans-serif" font-size="13" fill="#D4CFC5" text-anchor="middle">Natural prices are non-linear:</text>
+  <text x="860" y="562" font-family="Inter, sans-serif" font-size="13" fill="#D4CFC5" text-anchor="middle"><tspan font-weight="700" fill="#FFFFFF">2ct costs 2.5× more</tspan> than 1ct natural</text>
+
+  <!-- Footer -->
+  <rect x="0" y="570" width="1200" height="30" fill="#0D0B0A"/>
+  <line x1="0" y1="570" x2="1200" y2="570" stroke="#B89778" stroke-width="0.8" opacity="0.5"/>
+  <text x="600" y="589" font-family="Inter, sans-serif" font-size="11" fill="#8E9196" text-anchor="middle" letter-spacing="1.5">AL-ASALI CUSTOM JEWELRY  ·  alasalicustomjewelry.ca</text>
+</svg>

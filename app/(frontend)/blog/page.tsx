@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+
 import NextLink from 'next/link'
 import { ArrowRight, Calendar } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
@@ -14,6 +15,13 @@ const FALLBACK_SEO_TITLE = 'Custom Jewelry Guides & Toronto Jeweler Insights | A
 const FALLBACK_SEO_DESCRIPTION =
   "Expert guides from Toronto's bespoke jeweler: custom engagement ring costs, grillz pricing, lab-grown vs natural diamonds, and more."
 
+const CATEGORY_COLORS: Record<string, { bg: string; text: string; border: string; dot: string }> = {
+  'Engagement Rings': { bg: 'bg-[#B89778]/10', text: 'text-[#B89778]', border: 'border-[#B89778]/40', dot: 'bg-[#B89778]' },
+  'Grillz': { bg: 'bg-[#8E9196]/10', text: 'text-[#A3A7AC]', border: 'border-[#8E9196]/40', dot: 'bg-[#A3A7AC]' },
+  'Diamonds': { bg: 'bg-[#D4CFC5]/10', text: 'text-[#D4CFC5]', border: 'border-[#D4CFC5]/30', dot: 'bg-[#D4CFC5]' },
+  'Heritage': { bg: 'bg-[#8B7D6B]/10', text: 'text-[#8B7D6B]', border: 'border-[#8B7D6B]/40', dot: 'bg-[#8B7D6B]' },
+}
+
 const FALLBACK_POSTS: BlogPostSummary[] = [
   {
     id: 'custom-engagement-ring-cost-toronto-2026',
@@ -23,6 +31,8 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     date: '2026-04-17',
     readingMinutes: 7,
     tag: 'Engagement Rings',
+    coverImage: '/blog/custom-engagement-ring-cost-toronto-2026-cover.svg',
+    coverImageAlt: 'Custom engagement ring cost Toronto 2026 — pricing by style table from solitaire to toi et moi',
   },
   {
     id: 'grillz-price-guide-toronto-2026',
@@ -32,6 +42,8 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     date: '2026-04-17',
     readingMinutes: 6,
     tag: 'Grillz',
+    coverImage: '/blog/grillz-price-guide-toronto-2026-cover.svg',
+    coverImageAlt: 'Custom grillz price guide Toronto 2026 — pricing from single tooth $500 to full VVS set $14,000',
   },
   {
     id: 'lab-grown-vs-natural-diamonds-toronto',
@@ -41,6 +53,8 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     date: '2026-04-17',
     readingMinutes: 8,
     tag: 'Diamonds',
+    coverImage: '/blog/lab-grown-vs-natural-diamonds-toronto-cover.svg',
+    coverImageAlt: 'Lab-grown vs natural diamonds Toronto 2026 — 11-attribute head-to-head comparison',
   },
   {
     id: 'arabic-calligraphy-jewelry-toronto',
@@ -50,8 +64,12 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     date: '2026-04-19',
     readingMinutes: 7,
     tag: 'Heritage',
+    coverImage: '/blog/arabic-calligraphy-jewellery-toronto-cover.svg',
+    coverImageAlt: 'Arabic calligraphy jewelry Toronto 2026 — pricing guide for name pendants, Allah, Ayat al-Kursi',
   },
 ]
+
+const ALL_CATEGORIES = ['All', 'Engagement Rings', 'Grillz', 'Diamonds', 'Heritage']
 
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getBlogIndex()
@@ -68,6 +86,8 @@ export default async function BlogIndex() {
   const intro = cms?.page?.intro?.trim() || FALLBACK_INTRO
   const posts = cms && cms.posts.length > 0 ? cms.posts : FALLBACK_POSTS
 
+  const featured = posts[0]
+
   const breadcrumb = buildBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
     { name: 'Blog', url: `${SITE_CONFIG.url}/blog` },
@@ -79,57 +99,135 @@ export default async function BlogIndex() {
       <DiamondPattern className="text-white" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 py-20 md:py-28">
-        <header className="text-center mb-14 max-w-2xl mx-auto">
+        <header className="text-center mb-10 max-w-2xl mx-auto">
           <h1 className="text-4xl md:text-6xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
             {heading}
           </h1>
           <p className="text-lg text-stone leading-relaxed whitespace-pre-line">{intro}</p>
         </header>
 
-        <div className="space-y-5">
-          {posts.map((post) => (
-            <NextLink
-              key={post.slug}
-              href={`/blog/${post.slug}`}
-              className="group block bg-charcoal/50 border border-glacier-grey/20 rounded-2xl p-6 md:p-8 hover:border-glacier-grey/60 hover:bg-charcoal transition-all"
-            >
+        {/* Category filter buttons */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {ALL_CATEGORIES.map((cat) => {
+            const colors = CATEGORY_COLORS[cat]
+            if (cat === 'All') {
+              return (
+                <span key={cat} className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold border border-glacier-grey/40 text-glacier-grey-light bg-charcoal/50">
+                  All Guides
+                </span>
+              )
+            }
+            return (
+              <span key={cat} className={`inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-medium border ${colors.bg} ${colors.text} ${colors.border}`}>
+                <span className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
+                {cat}
+              </span>
+            )
+          })}
+        </div>
+
+        {/* Featured post — horizontal compact layout */}
+        {featured && (
+          <NextLink
+            href={`/blog/${featured.slug}`}
+            className="group flex flex-col md:flex-row gap-0 bg-charcoal/50 border border-glacier-grey/25 rounded-2xl overflow-hidden hover:border-glacier-grey/60 hover:bg-charcoal transition-all mb-6"
+          >
+            {(featured as any).coverImage && (
+              <div className="md:w-80 flex-shrink-0">
+                <img
+                  src={(featured as any).coverImage}
+                  alt={(featured as any).coverImageAlt ?? featured.title}
+                  width={640}
+                  height={360}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+            <div className="flex flex-col justify-center p-6 md:p-8">
               <div className="flex flex-wrap items-center gap-3 text-xs text-glacier-grey mb-3">
-                {post.tag ? (
-                  <span className="bg-glacier-grey/10 border border-glacier-grey/20 px-3 py-1 rounded-full">
-                    {post.tag}
-                  </span>
-                ) : null}
-                {post.date ? (
+                {featured.tag && (() => {
+                  const colors = CATEGORY_COLORS[featured.tag]
+                  return colors ? (
+                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium border ${colors.bg} ${colors.text} ${colors.border}`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
+                      {featured.tag}
+                    </span>
+                  ) : (
+                    <span className="bg-glacier-grey/10 border border-glacier-grey/20 px-3 py-1 rounded-full">{featured.tag}</span>
+                  )
+                })()}
+                {featured.date && (
                   <span className="inline-flex items-center gap-1.5">
                     <Calendar className="w-3.5 h-3.5" />
-                    {new Date(post.date).toLocaleDateString('en-CA', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
+                    {new Date(featured.date).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}
                   </span>
-                ) : null}
-                {post.readingMinutes ? (
-                  <>
-                    <span>·</span>
-                    <span>{post.readingMinutes} min read</span>
-                  </>
-                ) : null}
+                )}
+                {featured.readingMinutes && <><span>·</span><span>{featured.readingMinutes} min read</span></>}
+                <span className="text-xs uppercase tracking-widest border border-glacier-grey/30 px-2 py-0.5 rounded text-glacier-grey">Featured</span>
               </div>
-              <h2
-                className="text-xl md:text-2xl font-bold text-white mb-2 group-hover:text-glacier-grey-light transition-colors"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                {post.title}
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-2 group-hover:text-glacier-grey-light transition-colors" style={{ fontFamily: 'var(--font-heading)' }}>
+                {featured.title}
               </h2>
-              {post.excerpt ? (
-                <p className="text-stone text-sm leading-relaxed mb-3">{post.excerpt}</p>
-              ) : null}
+              {featured.excerpt && <p className="text-stone text-sm leading-relaxed mb-4">{featured.excerpt}</p>}
               <span className="inline-flex items-center gap-1 text-glacier-grey text-sm font-medium group-hover:gap-2 transition-all">
                 Read the guide <ArrowRight className="w-4 h-4" />
               </span>
-            </NextLink>
-          ))}
+            </div>
+          </NextLink>
+        )}
+
+        {/* Remaining posts */}
+        <div className="space-y-4">
+          {posts.slice(1).map((post) => {
+            const colors = post.tag ? CATEGORY_COLORS[post.tag] : null
+            const cover = (post as any).coverImage
+            return (
+              <NextLink
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="group flex flex-col sm:flex-row gap-0 bg-charcoal/50 border border-glacier-grey/20 rounded-2xl overflow-hidden hover:border-glacier-grey/60 hover:bg-charcoal transition-all"
+              >
+                {cover && (
+                  <div className="sm:w-56 flex-shrink-0">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={cover}
+                      alt={(post as any).coverImageAlt ?? post.title}
+                      width={448}
+                      height={252}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                )}
+                <div className="flex flex-col justify-center p-5 md:p-6">
+                  <div className="flex flex-wrap items-center gap-2.5 text-xs text-glacier-grey mb-2.5">
+                    {post.tag && colors ? (
+                      <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-medium border ${colors.bg} ${colors.text} ${colors.border}`}>
+                        <span className={`w-1.5 h-1.5 rounded-full ${colors.dot}`} />
+                        {post.tag}
+                      </span>
+                    ) : post.tag ? (
+                      <span className="bg-glacier-grey/10 border border-glacier-grey/20 px-3 py-1 rounded-full">{post.tag}</span>
+                    ) : null}
+                    {post.date && (
+                      <span className="inline-flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5" />
+                        {new Date(post.date).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}
+                      </span>
+                    )}
+                    {post.readingMinutes && <><span>·</span><span>{post.readingMinutes} min read</span></>}
+                  </div>
+                  <h2 className="text-lg md:text-xl font-bold text-white mb-1.5 group-hover:text-glacier-grey-light transition-colors" style={{ fontFamily: 'var(--font-heading)' }}>
+                    {post.title}
+                  </h2>
+                  {post.excerpt && <p className="text-stone text-sm leading-relaxed mb-3 line-clamp-2">{post.excerpt}</p>}
+                  <span className="inline-flex items-center gap-1 text-glacier-grey text-sm font-medium group-hover:gap-2 transition-all">
+                    Read the guide <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </NextLink>
+            )
+          })}
         </div>
 
         <script

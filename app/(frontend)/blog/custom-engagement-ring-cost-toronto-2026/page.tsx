@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+
 import BlogLayout from '@/components/blog/BlogLayout'
 import { buildArticleSchema } from '@/lib/seo/article'
 import { buildFaqSchema, buildBreadcrumbSchema } from '@/lib/seo/schema'
@@ -8,12 +9,14 @@ const SLUG = 'custom-engagement-ring-cost-toronto-2026'
 const TITLE = 'How Much Does a Custom Engagement Ring Cost in Toronto? (2026 Guide)'
 const DESCRIPTION = 'A real Toronto jeweler breaks down exactly what a custom engagement ring costs in 2026 — by style, metal, diamond origin, and carat weight. No generic ranges.'
 const DATE = '2026-04-17'
+const COVER = '/blog/custom-engagement-ring-cost-toronto-2026-cover.svg'
+const COVER_ALT = 'Custom engagement ring cost Toronto 2026 — pricing table by style showing solitaire from $2,800 lab-grown to $11,500 natural for toi et moi, Al-Asali Jewelry'
 
 export const metadata: Metadata = {
   title: 'Custom Engagement Ring Cost Toronto 2026 | Al-Asali Jewelry',
   description: DESCRIPTION,
   alternates: { canonical: `/blog/${SLUG}` },
-  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article' },
+  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER] },
 }
 
 const faq = [
@@ -30,7 +33,10 @@ export default function Page() {
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: DATE,
+    imagePath: COVER,
     keywords: ['custom engagement ring cost Toronto', 'how much does a custom engagement ring cost', 'engagement ring price Toronto', 'lab grown diamond price Toronto'],
+    wordCount: 1100,
+    articleSection: 'Engagement Rings',
   })
   const breadcrumb = buildBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
@@ -45,6 +51,9 @@ export default function Page() {
       subtitle="No generic ranges — real starting prices by style, metal, and diamond origin, from a working Toronto custom jeweler."
       datePublished={DATE}
       readingMinutes={7}
+      category="Engagement Rings"
+      coverImage={COVER}
+      coverImageAlt={COVER_ALT}
       relatedLinks={[
         { label: 'Custom Engagement Rings in Toronto', href: '/custom-engagement-rings' },
         { label: 'Custom Wedding Bands in Toronto', href: '/custom-wedding-bands' },
@@ -92,6 +101,17 @@ export default function Page() {
       </table>
 
       <h2>Cost by metal (solitaire, 1ct natural centre)</h2>
+
+      <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
+        <img
+          src="/blog/custom-engagement-ring-cost-toronto-2026-metal-pricing.svg"
+          alt="Custom engagement ring cost by metal Toronto 2026 — bar chart comparing 10K gold $5,800, 14K gold $6,500, 18K gold $7,500, and platinum $8,200 for a 1ct natural diamond solitaire"
+          width={1200}
+          height={600}
+          className="w-full h-auto"
+        />
+      </div>
+
       <table>
         <thead>
           <tr>
@@ -109,6 +129,17 @@ export default function Page() {
       </table>
 
       <h2>Cost by carat weight (natural, 14K solitaire)</h2>
+
+      <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
+        <img
+          src="/blog/custom-engagement-ring-cost-toronto-2026-carat-pricing.svg"
+          alt="Engagement ring price by carat weight Toronto 2026 — lab-grown vs natural diamond comparison table from 0.5ct at $1,800/$3,500 to 3ct at $8,500/$32,000+"
+          width={1200}
+          height={600}
+          className="w-full h-auto"
+        />
+      </div>
+
       <table>
         <thead>
           <tr>

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111111"/>
+      <stop offset="100%" stop-color="#1A1A1A"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="600" fill="url(#bg)"/>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#B89778" stroke-width="0.1" opacity="0.12"/>
+  </pattern>
+  <rect width="1200" height="600" fill="url(#grid)"/>
+
+  <!-- Corner brackets -->
+  <path d="M 36 80 L 36 36 L 80 36" fill="none" stroke="#B89778" stroke-width="2.5" stroke-linecap="square"/>
+  <path d="M 1120 36 L 1164 36 L 1164 80" fill="none" stroke="#B89778" stroke-width="2.5" stroke-linecap="square"/>
+  <path d="M 36 520 L 36 564 L 80 564" fill="none" stroke="#B89778" stroke-width="2.5" stroke-linecap="square"/>
+  <path d="M 1120 564 L 1164 564 L 1164 520" fill="none" stroke="#B89778" stroke-width="2.5" stroke-linecap="square"/>
+
+  <!-- Header -->
+  <text x="600" y="88" font-family="'Cormorant Garamond', Georgia, serif" font-size="32" font-weight="700" fill="#FFFFFF" text-anchor="middle">Resale Value: Natural vs Lab-Grown Diamonds</text>
+  <text x="600" y="118" font-family="Inter, sans-serif" font-size="14" fill="#8E9196" text-anchor="middle">1ct G VS1 · Starting retail $6,500 natural / $2,800 lab-grown · Toronto 2026</text>
+  <line x1="360" y1="133" x2="840" y2="133" stroke="#B89778" stroke-width="1" opacity="0.5"/>
+
+  <!-- Natural diamond side -->
+  <rect x="60" y="150" width="500" height="350" rx="8" fill="#131313" stroke="#A3A7AC" stroke-width="1.2"/>
+  <rect x="60" y="150" width="500" height="52" rx="8" fill="#1E1E1E"/>
+  <rect x="60" y="182" width="500" height="20" fill="#1E1E1E"/>
+  <text x="310" y="184" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#A3A7AC" text-anchor="middle">Natural Diamond</text>
+  <text x="310" y="202" font-family="Inter, sans-serif" font-size="12" fill="#8E9196" text-anchor="middle">Historical resale retention</text>
+
+  <!-- Natural value timeline -->
+  <!-- Retail: $6,500 -->
+  <text x="90" y="238" font-family="Inter, sans-serif" font-size="12" fill="#8E9196">At purchase</text>
+  <rect x="210" y="222" width="320" height="28" rx="4" fill="#A3A7AC" fill-opacity="0.25" stroke="#A3A7AC" stroke-width="1"/>
+  <text x="370" y="241" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">$6,500 retail (100%)</text>
+
+  <!-- After 5yr: $3,900-$4,550 (60-70%) -->
+  <text x="90" y="286" font-family="Inter, sans-serif" font-size="12" fill="#8E9196">5 years</text>
+  <rect x="210" y="270" width="230" height="28" rx="4" fill="#A3A7AC" fill-opacity="0.4" stroke="#A3A7AC" stroke-width="1"/>
+  <text x="325" y="289" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">$3,900–$4,550</text>
+  <text x="450" y="289" font-family="Inter, sans-serif" font-size="12" fill="#6EBF7E">~60–70%</text>
+
+  <!-- After 10yr: $4,000–$5,000 (65-77%) - appreciates -->
+  <text x="90" y="334" font-family="Inter, sans-serif" font-size="12" fill="#8E9196">10 years</text>
+  <rect x="210" y="318" width="255" height="28" rx="4" fill="#A3A7AC" fill-opacity="0.55" stroke="#A3A7AC" stroke-width="1.5"/>
+  <text x="337" y="337" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">$4,000–$5,000+</text>
+  <text x="475" y="337" font-family="Inter, sans-serif" font-size="12" fill="#6EBF7E">~65–77%</text>
+
+  <!-- Trend note -->
+  <text x="310" y="378" font-family="Inter, sans-serif" font-size="13" fill="#6EBF7E" text-anchor="middle">↑ Stable to appreciating over decades</text>
+
+  <!-- Verdict -->
+  <rect x="90" y="398" width="420" height="80" rx="6" fill="#1E2A1E" stroke="#6EBF7E" stroke-width="1"/>
+  <text x="300" y="428" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#6EBF7E" text-anchor="middle">Mature secondary market exists</text>
+  <text x="300" y="450" font-family="Inter, sans-serif" font-size="13" fill="#D4CFC5" text-anchor="middle">GIA-graded stones resellable via</text>
+  <text x="300" y="468" font-family="Inter, sans-serif" font-size="13" fill="#D4CFC5" text-anchor="middle">auction, jeweler trade-in, private sale</text>
+
+  <!-- Lab-grown diamond side -->
+  <rect x="640" y="150" width="500" height="350" rx="8" fill="#131313" stroke="#B89778" stroke-width="1.2"/>
+  <rect x="640" y="150" width="500" height="52" rx="8" fill="#221A10"/>
+  <rect x="640" y="182" width="500" height="20" fill="#221A10"/>
+  <text x="890" y="184" font-family="Inter, sans-serif" font-size="18" font-weight="700" fill="#B89778" text-anchor="middle">Lab-Grown Diamond</text>
+  <text x="890" y="202" font-family="Inter, sans-serif" font-size="12" fill="#8E9196" text-anchor="middle">Post-2020 price trajectory</text>
+
+  <!-- Lab value timeline -->
+  <text x="670" y="238" font-family="Inter, sans-serif" font-size="12" fill="#8E9196">2021 retail</text>
+  <rect x="790" y="222" width="320" height="28" rx="4" fill="#B89778" fill-opacity="0.25" stroke="#B89778" stroke-width="1"/>
+  <text x="950" y="241" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">~$5,200 retail (100%)</text>
+
+  <!-- 2024: dropped to ~$2,800 (-46%) -->
+  <text x="670" y="286" font-family="Inter, sans-serif" font-size="12" fill="#8E9196">2024</text>
+  <rect x="790" y="270" width="180" height="28" rx="4" fill="#B89778" fill-opacity="0.3" stroke="#B89778" stroke-width="1"/>
+  <text x="880" y="289" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF" text-anchor="middle">~$2,800</text>
+  <text x="980" y="289" font-family="Inter, sans-serif" font-size="12" fill="#E07070">-46% retail</text>
+
+  <!-- Resale: $500-1,200 (~18-23%) -->
+  <text x="670" y="334" font-family="Inter, sans-serif" font-size="12" fill="#8E9196">Resale 2026</text>
+  <rect x="790" y="318" width="90" height="28" rx="4" fill="#B89778" fill-opacity="0.15" stroke="#E07070" stroke-width="1"/>
+  <text x="835" y="337" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E07070" text-anchor="middle">~$500</text>
+  <text x="890" y="337" font-family="Inter, sans-serif" font-size="12" fill="#E07070">limited market</text>
+
+  <!-- Trend note -->
+  <text x="890" y="378" font-family="Inter, sans-serif" font-size="13" fill="#E07070" text-anchor="middle">↓ Values still declining year over year</text>
+
+  <!-- Verdict -->
+  <rect x="670" y="398" width="420" height="80" rx="6" fill="#2A1A1A" stroke="#E07070" stroke-width="1"/>
+  <text x="880" y="428" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#E07070" text-anchor="middle">Secondary market is underdeveloped</text>
+  <text x="880" y="450" font-family="Inter, sans-serif" font-size="13" fill="#D4CFC5" text-anchor="middle">Best for pieces you'll wear — not</text>
+  <text x="880" y="468" font-family="Inter, sans-serif" font-size="13" fill="#D4CFC5" text-anchor="middle">resell or pass as heirlooms</text>
+
+  <!-- Note -->
+  <text x="600" y="525" font-family="Inter, sans-serif" font-size="12" fill="#8E9196" text-anchor="middle">Lab-grown dropped ~70% in retail value since 2020 · Natural holds 50–70% over decades · Source: industry data, Al-Asali Jewelry 2026</text>
+
+  <!-- Footer -->
+  <rect x="0" y="570" width="1200" height="30" fill="#0D0B0A"/>
+  <line x1="0" y1="570" x2="1200" y2="570" stroke="#B89778" stroke-width="0.8" opacity="0.5"/>
+  <text x="600" y="589" font-family="Inter, sans-serif" font-size="11" fill="#8E9196" text-anchor="middle" letter-spacing="1.5">AL-ASALI CUSTOM JEWELRY  ·  alasalicustomjewelry.ca</text>
+</svg>

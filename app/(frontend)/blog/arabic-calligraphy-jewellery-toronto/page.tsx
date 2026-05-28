@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+
 import BlogLayout from '@/components/blog/BlogLayout'
 import { buildArticleSchema } from '@/lib/seo/article'
 import { buildFaqSchema, buildBreadcrumbSchema } from '@/lib/seo/schema'
@@ -8,12 +9,14 @@ const SLUG = 'arabic-calligraphy-jewelry-toronto'
 const TITLE = 'Arabic Calligraphy Jewelry in Toronto: A Craftsman\'s Guide'
 const DESCRIPTION = 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweler. Fonts, verses, meanings, prices, and what to ask for.'
 const DATE = '2026-04-19'
+const COVER = '/blog/arabic-calligraphy-jewellery-toronto-cover.svg'
+const COVER_ALT = 'Arabic calligraphy jewelry Toronto 2026 pricing guide — name pendants from $1,400, Allah pendant from $1,800, Ayat al-Kursi from $2,800 in 10K-14K gold, Al-Asali Jewelry'
 
 export const metadata: Metadata = {
   title: 'Arabic Calligraphy Jewelry Toronto | Al-Asali Jewelry',
   description: DESCRIPTION,
   alternates: { canonical: `/blog/${SLUG}` },
-  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article' },
+  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER] },
 }
 
 const faq = [
@@ -30,7 +33,10 @@ export default function Page() {
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: DATE,
+    imagePath: COVER,
     keywords: ['Arabic calligraphy pendant Toronto', 'Allah pendant Toronto', 'Ayat al-Kursi pendant Toronto', 'Arabic jewelry Toronto', 'custom Arabic name pendant'],
+    wordCount: 1050,
+    articleSection: 'Heritage',
   })
   const breadcrumb = buildBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
@@ -45,6 +51,9 @@ export default function Page() {
       subtitle="Arabic calligraphy is one of our specialties. Here's how we craft it — the fonts, the prices, and what makes a piece authentic."
       datePublished={DATE}
       readingMinutes={7}
+      category="Heritage"
+      coverImage={COVER}
+      coverImageAlt={COVER_ALT}
       relatedLinks={[
         { label: 'Custom Pendants in Toronto', href: '/custom-pendants' },
         { label: 'Custom Wedding Bands in Toronto', href: '/custom-wedding-bands' },
@@ -59,6 +68,17 @@ export default function Page() {
       </p>
 
       <h2>The fonts we work with</h2>
+
+      <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
+        <img
+          src="/blog/arabic-calligraphy-jewellery-toronto-script-styles.svg"
+          alt="6 Arabic calligraphy script styles for jewelry Toronto — Thuluth, Naskh, Diwani, Kufic, Ruqa'a, and Modern script with descriptions and best use cases for each"
+          width={1200}
+          height={600}
+          className="w-full h-auto"
+        />
+      </div>
+
       <p>
         Arabic calligraphy has several classical scripts, each suited to different moods and piece types:
       </p>
@@ -113,6 +133,17 @@ export default function Page() {
       </table>
 
       <h2>Our process for Arabic pieces</h2>
+
+      <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
+        <img
+          src="/blog/arabic-calligraphy-jewellery-toronto-process-steps.svg"
+          alt="Arabic calligraphy jewelry process Toronto — 5 steps: consultation, proofread, CAD design with unlimited revisions, casting and hand setting, final inspection by Mohammad Al-Asali, 4-6 week timeline"
+          width={1200}
+          height={600}
+          className="w-full h-auto"
+        />
+      </div>
+
       <ol>
         <li><strong>Consultation</strong>. We discuss the text, font, and silhouette you want. If you&apos;re unsure which font fits, we show examples side by side in loose gold samples.</li>
         <li><strong>Proofread</strong>. Every character is verified against authoritative sources — especially for Quranic text. Mistakes here can&apos;t be fixed later without recasting.</li>
