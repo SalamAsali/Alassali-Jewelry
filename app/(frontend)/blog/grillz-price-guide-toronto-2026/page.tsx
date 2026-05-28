@@ -7,10 +7,10 @@ import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 const SLUG = 'grillz-price-guide-toronto-2026'
 const TITLE = 'How Much Do Custom Grillz Cost in Toronto? (2026 Price Guide)'
-const DESCRIPTION = 'A Toronto custom jeweler\'s real 2026 pricing for gold grillz, diamond grillz, VVS grillz, and full sets. Straight numbers, no generic ranges.'
+const DESCRIPTION = 'A Toronto custom jeweler explains what drives the cost of gold grillz and diamond grillz — karat, coverage, diamond grade, and finish.'
 const DATE = '2026-04-17'
 const COVER = '/blog/grillz-price-guide-toronto-2026-cover.svg'
-const COVER_ALT = 'Custom grillz price guide Toronto 2026 — pricing table by configuration from single tooth $500 plain gold to full set $14,000 VVS diamonds, Al-Asali Jewelry'
+const COVER_ALT = 'Custom grillz price guide Toronto 2026 — what affects cost: gold karat, diamond clarity, coverage and number of teeth, Al-Asali Custom Jewelry'
 
 export const metadata: Metadata = {
   title: 'Custom Grillz Price Guide Toronto 2026 | Al-Asali Jewelry',
@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 }
 
 const faq = [
-  { q: 'What\'s the cheapest grillz I can get in Toronto?', a: 'A single-tooth plain 10K gold grillz starts at $500. With VS diamond pavé it jumps to $1,400.' },
-  { q: 'How much for a top 6 diamond grillz in Toronto?', a: 'Plain 10K gold top 6 from $2,000. Diamond-set VS from $4,500. VVS clarity from $6,500.' },
-  { q: 'How much does a full diamond grillz set cost?', a: 'A full set (top + bottom, 12 teeth) plain 10K gold starts at $4,500. Diamond-set VS from $9,500. Fully iced-out VVS sets start at $14,000.' },
-  { q: 'Why are VVS grillz more expensive than VS?', a: 'VVS diamonds have near-invisible inclusions and cost roughly 60-80% more than VS. They\'re brighter face-up but the difference is subtle to the untrained eye.' },
+  { q: 'What\'s the cheapest grillz I can get in Toronto?', a: 'A single-tooth plain 10K gold grillz is our most accessible option. The price varies with gold spot rates and any stone work — book a free consultation and we\'ll quote you directly.' },
+  { q: 'How much for a top 6 diamond grillz in Toronto?', a: 'Top 6 grillz span a wide range depending on karat, diamond clarity (VS vs VVS), and coverage style. Contact us with your specs for a custom quote.' },
+  { q: 'How much does a full diamond grillz set cost?', a: 'Full sets (top + bottom, typically 12 teeth) vary significantly based on karat, diamond grade, and whether you want full iced-out coverage or selective stone placement. Reach out for a quote.' },
+  { q: 'Why are VVS grillz more expensive than VS?', a: 'VVS diamonds have near-invisible inclusions and sparkle noticeably brighter than VS. They cost more per carat, which adds up across a full set. The visual difference is most apparent in direct light and at scale.' },
   { q: 'Is cubic zirconia ever used in grillz?', a: 'Never by us. Every stone we set is a genuine natural or lab-grown diamond, including VS and VVS clarity tiers.' },
 ]
 
@@ -35,7 +35,7 @@ export default function Page() {
     datePublished: DATE,
     imagePath: COVER,
     keywords: ['grillz price Toronto', 'how much do grillz cost Toronto', 'VVS grillz Toronto', 'gold grillz price Canada'],
-    wordCount: 950,
+    wordCount: 920,
     articleSection: 'Grillz',
   })
   const breadcrumb = buildBreadcrumbSchema([
@@ -48,7 +48,7 @@ export default function Page() {
   return (
     <BlogLayout
       title={TITLE}
-      subtitle="Real 2026 numbers for gold grillz, diamond grillz, and VVS full sets — from a working Toronto grillz studio."
+      subtitle="Gold karat, diamond grade, coverage, and finish — what actually determines what you pay."
       datePublished={DATE}
       readingMinutes={6}
       category="Grillz"
@@ -61,36 +61,15 @@ export default function Page() {
       ]}
     >
       <p>
-        Grillz pricing is one of the most confusing things to research online. Search results mix Toronto with US shops, plated knockoffs with real solid gold, and cubic zirconia with real VVS diamonds. This guide cuts through all of that with real 2026 pricing from our Toronto studio, broken down by configuration, karat, and diamond clarity.
+        Grillz pricing is one of the most confusing things to research online. Search results mix Toronto with US shops, plated knockoffs with real solid gold, and cubic zirconia with genuine diamonds. This guide cuts through all of that — explaining what actually drives the cost of custom grillz so you can have a meaningful conversation before you commit.
       </p>
 
-      <h2>Short answer: $500 to $15,000+</h2>
+      <h2>The range is wide — here&apos;s why</h2>
       <p>
-        Single-tooth grillz start at $500. A plain gold full set starts at $4,500. A full diamond VVS set starts at $14,000 and scales with carat weight and coverage. Most of our Toronto clients spend between $2,000 and $7,500 on their grillz.
+        Custom grillz prices span a wide spectrum, from a single plain gold tooth to a full iced-out VVS set. The gap isn&apos;t arbitrary — it reflects real differences in materials, coverage, and stone quality. A plain single-tooth piece and a full diamond-set VVS set are simply different products built from different materials.
       </p>
-
-      <h2>Price by teeth configuration (plain 10K gold)</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Configuration</th>
-            <th>Plain 10K Gold</th>
-            <th>Plain 14K Gold</th>
-            <th>Diamond-Set VS (14K)</th>
-            <th>Diamond-Set VVS (14K)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Single Tooth</td><td>$500</td><td>$700</td><td>$1,400</td><td>$1,900</td></tr>
-          <tr><td>Fangs (pair)</td><td>$800</td><td>$1,100</td><td>$1,400</td><td>$2,000</td></tr>
-          <tr><td>Top 6</td><td>$2,000</td><td>$2,800</td><td>$4,500</td><td>$6,500</td></tr>
-          <tr><td>Bottom 6</td><td>$2,000</td><td>$2,800</td><td>$4,500</td><td>$6,500</td></tr>
-          <tr><td>Top 8</td><td>$2,800</td><td>$3,800</td><td>$6,000</td><td>$8,500</td></tr>
-          <tr><td>Full Set (12 teeth)</td><td>$4,500</td><td>$6,000</td><td>$9,500</td><td>$14,000</td></tr>
-        </tbody>
-      </table>
       <p>
-        18K gold typically adds 15-20% over 14K, and rose or white gold costs the same as yellow for any tier. Add-on diamond dust finishes are +$300-$600 depending on coverage.
+        Four variables explain almost everything:
       </p>
 
       <h2>What actually drives the price</h2>
@@ -98,20 +77,26 @@ export default function Page() {
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
           src="/blog/grillz-price-guide-toronto-2026-price-drivers.svg"
-          alt="What drives grillz pricing Toronto 2026 — three factors: gold weight and karat per tooth (3-5g), diamond clarity tiers from SI to flawless, and coverage type open vs closed face"
+          alt="What drives grillz pricing Toronto 2026 — four factors: metal karat (10K, 14K, 18K gold), diamond clarity (VS, VVS, Flawless), coverage (single tooth to full set), and finish style (solid, open-face, iced-out)"
           width={1200}
           height={600}
           className="w-full h-auto"
         />
       </div>
 
-      <p>
-        Three variables do all the work:
-      </p>
       <ul>
-        <li><strong>Gold weight &amp; karat</strong> — each tooth uses roughly 3-5 grams of solid gold depending on thickness and coverage. Plain gold grillz are priced primarily by gram weight × karat spot price + labour.</li>
-        <li><strong>Diamond clarity</strong> — SI costs +10-15% over plain, VS +30-40%, VVS +60-80%, Flawless +120%+.</li>
-        <li><strong>Coverage</strong> — open-face vs closed-face, and how many teeth get diamond coverage.</li>
+        <li>
+          <strong>Metal karat</strong> — 10K, 14K, or 18K. Each tooth uses several grams of solid gold; higher karat means higher gold content and higher cost. Plain gold grillz are priced primarily by gram weight × karat price + craftsmanship. Rose, white, and yellow gold are roughly the same price at any tier.
+        </li>
+        <li>
+          <strong>Coverage</strong> — single tooth, fangs, top 6, top 8, or full set. More teeth covered means more gold and more stone work. The jump from top 6 to a full 12-tooth set is substantial.
+        </li>
+        <li>
+          <strong>Diamond grade</strong> — plain gold has no diamond cost. VS diamonds are excellent value and look eye-clean. VVS diamonds are near-perfect and sparkle noticeably brighter. Flawless is the pinnacle. Each tier adds meaningful cost across a full set.
+        </li>
+        <li>
+          <strong>Finish &amp; style</strong> — open-face (shows your natural tooth through the gold), closed/solid face, slab, or fully iced-out. Open-face is a popular modern aesthetic; iced-out maximises diamond surface and cost.
+        </li>
       </ul>
 
       <h2>VS vs VVS: is VVS worth it?</h2>
@@ -119,7 +104,7 @@ export default function Page() {
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
           src="/blog/grillz-price-guide-toronto-2026-vs-vs-vvs.svg"
-          alt="VS vs VVS diamonds in grillz Toronto 2026 — side-by-side comparison showing VS top 6 at $4,500 and VVS at $6,500, full set VS $9,500 vs VVS $14,000"
+          alt="VS vs VVS vs Flawless diamonds in grillz Toronto 2026 — clarity comparison showing visual sparkle difference, inclusions under magnification, and which grade suits which style of grillz"
           width={1200}
           height={600}
           className="w-full h-auto"
@@ -127,48 +112,48 @@ export default function Page() {
       </div>
 
       <p>
-        VS (Very Slightly Included) diamonds have small inclusions visible under 10x magnification but look eye-clean face-up. VVS (Very, Very Slightly Included) have inclusions so small most jewelers struggle to find them under a loupe.
+        VS (Very Slightly Included) diamonds have small inclusions visible only under 10× magnification — eye-clean face-up. VVS (Very, Very Slightly Included) have inclusions so tiny most jewelers struggle to find them under a loupe — noticeably brighter in direct light.
       </p>
       <p>
-        Face-up on a grillz set, the visual difference between VS and VVS is subtle — the VVS set will sparkle noticeably brighter in direct light, and will hold its brilliance longer over time as it resists clouding. If you&apos;re going full-set iced out, VVS is worth the premium. If you&apos;re doing a top 6 or a single tooth, VS delivers near-identical aesthetics for 30-40% less.
+        Face-up on a grillz set, VVS sparkles more and holds its brilliance longer over time. If you&apos;re going full-set iced out, VVS is worth the premium. If you&apos;re doing a top 6 or a single tooth, VS delivers near-identical aesthetics for less spend. Both are real diamonds; it comes down to how much the brilliance difference matters to you.
       </p>
 
       <h2>What about cubic zirconia?</h2>
       <p>
-        We don&apos;t use it. Ever. Every stone we set is a real natural or lab-grown diamond. CZ knockoffs are cheaper upfront ($800 for a CZ-set top 6 vs $4,500 for real VS diamonds) but they cloud within months, the plating wears through, and you can usually spot them in direct sunlight. If you see &quot;VVS grillz&quot; listed under $2,500, that&apos;s CZ or moissanite.
+        We don&apos;t use it — ever. Every stone we set is a real natural or lab-grown diamond. CZ knockoffs are cheaper upfront but they cloud within months, the plating wears through, and the difference is visible in direct sunlight. If you see &quot;VVS grillz&quot; listed at a price that seems impossibly low, that&apos;s almost certainly CZ or moissanite.
       </p>
 
       <h2>How the process works</h2>
       <ol>
-        <li><strong>Mold appointment</strong> (~20 min at our Toronto studio). We take a dental-grade silicone impression of your teeth and cast it into a stone model.</li>
-        <li><strong>Design consultation</strong>. Configuration, karat, diamond clarity, coverage, engraving, finish.</li>
-        <li><strong>Crafting</strong>. Typically 1-2 weeks for plain gold, 3-4 weeks for full diamond-set sets.</li>
-        <li><strong>Fitting</strong>. You come back in, we confirm the fit, adjust if needed.</li>
+        <li><strong>Mold appointment</strong> (~20 min at our Toronto studio). We take a dental-grade silicone impression of your teeth and cast it into a stone model — the foundation of a proper fit.</li>
+        <li><strong>Design consultation</strong>. Configuration, karat, diamond clarity, coverage, engraving, finish — we lock in every detail.</li>
+        <li><strong>Crafting</strong>. Plain gold pieces typically take 1–2 weeks; full diamond-set sets take 3–4 weeks.</li>
+        <li><strong>Fitting</strong>. You return to confirm fit and we adjust if needed before the final finish.</li>
       </ol>
       <p>
-        Total turnaround: 2-6 weeks depending on complexity.
+        Total turnaround: 2–6 weeks depending on complexity.
       </p>
 
       <h2>Are grillz safe?</h2>
       <p>
-        Custom removable grillz made from precise dental impressions are safe for short-to-medium term wear. We strongly recommend removing them before eating to protect both the grillz and your natural enamel, and brushing them separately daily. Don&apos;t sleep in them. Don&apos;t keep them in during dental appointments (easy X-ray interference).
+        Custom removable grillz made from precise dental impressions are safe for short-to-medium term wear. We recommend removing them before eating to protect both the grillz and your natural enamel, and cleaning them separately daily. Don&apos;t sleep in them.
       </p>
       <p>
-        We don&apos;t offer permanent grillz because the dental-work involved introduces long-term enamel risk. If you&apos;re set on a permanent look, we&apos;ll discuss alternatives during consultation — some clients opt for thicker gold caps that grip more firmly without permanent bonding.
+        We don&apos;t offer permanent grillz because the dental work involved introduces long-term enamel risk. If you&apos;re set on a more permanent look, we&apos;ll discuss alternatives during consultation.
       </p>
 
       <h2>Why Al-Asali Jewelry for grillz in Toronto</h2>
       <ul>
         <li>Every piece handcrafted in our Toronto studio — not mass-produced overseas</li>
         <li>Real solid gold (10K / 14K / 18K) and real diamonds only — no CZ, no moissanite, no plating</li>
-        <li>Transparent per-tooth pricing explained up front</li>
+        <li>Transparent per-tooth pricing explained up front in your consultation</li>
         <li>Precise dental-mold fit taken in person at a by-appointment session in Toronto</li>
-        <li>Specialized in both Toronto-style iced-out sets and cleaner minimalist pieces</li>
+        <li>Specialized in both iced-out sets and cleaner minimalist pieces</li>
       </ul>
 
       <h2>Book your grillz mold appointment</h2>
       <p>
-        Book by phone or through our custom inquiry form. Free consultation — we&apos;ll walk through pricing virtually, and once you&apos;re ready we book a mold session in Toronto to take the impression in person.
+        Book by phone or through our custom inquiry form. Free consultation — we&apos;ll walk through all options and pricing virtually, and once you&apos;re ready we book a mold session in Toronto to take the impression in person.
       </p>
 
       <script
