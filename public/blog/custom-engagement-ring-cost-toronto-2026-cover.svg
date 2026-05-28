@@ -2,140 +2,55 @@
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0%" stop-color="#0A0A0A"/>
-      <stop offset="100%" stop-color="#1A1A1A"/>
-    </linearGradient>
-    <linearGradient id="rg" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#B89778"/>
-      <stop offset="100%" stop-color="#C8A98A"/>
-    </linearGradient>
-    <linearGradient id="tableHeader" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#1E1614"/>
-      <stop offset="100%" stop-color="#221A14"/>
+      <stop offset="100%" stop-color="#141212"/>
     </linearGradient>
   </defs>
 
-  <!-- Background -->
   <rect width="1920" height="1080" fill="url(#bg)"/>
 
-  <!-- Subtle grid texture -->
-  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#B89778" stroke-width="0.15" opacity="0.12"/>
+  <!-- Subtle dot grid -->
+  <pattern id="dots" width="48" height="48" patternUnits="userSpaceOnUse">
+    <circle cx="24" cy="24" r="0.8" fill="#B89778" opacity="0.18"/>
   </pattern>
-  <rect width="1920" height="1080" fill="url(#grid)"/>
+  <rect width="1920" height="1080" fill="url(#dots)"/>
 
-  <!-- Corner brackets — top-left -->
-  <path d="M 60 120 L 60 60 L 120 60" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
-  <!-- top-right -->
-  <path d="M 1800 60 L 1860 60 L 1860 120" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
-  <!-- bottom-left -->
-  <path d="M 60 960 L 60 1020 L 120 1020" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
-  <!-- bottom-right -->
-  <path d="M 1800 1020 L 1860 1020 L 1860 960" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
+  <!-- Corner brackets -->
+  <path d="M 72 96 L 72 72 L 96 72" fill="none" stroke="#B89778" stroke-width="2" stroke-linecap="square"/>
+  <path d="M 1824 72 L 1848 72 L 1848 96" fill="none" stroke="#B89778" stroke-width="2" stroke-linecap="square"/>
+  <path d="M 72 984 L 72 1008 L 96 1008" fill="none" stroke="#B89778" stroke-width="2" stroke-linecap="square"/>
+  <path d="M 1824 1008 L 1848 1008 L 1848 984" fill="none" stroke="#B89778" stroke-width="2" stroke-linecap="square"/>
 
-  <!-- Category badge -->
-  <rect x="140" y="100" width="220" height="36" rx="18" fill="#B89778" fill-opacity="0.15" stroke="#B89778" stroke-width="1.2"/>
-  <text x="250" y="124" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#B89778" text-anchor="middle" letter-spacing="2">ENGAGEMENT RINGS</text>
+  <!-- Category pill -->
+  <rect x="760" y="96" width="400" height="38" rx="19" fill="none" stroke="#B89778" stroke-width="1"/>
+  <text x="960" y="121" font-family="Inter, sans-serif" font-size="12" font-weight="600" fill="#B89778" text-anchor="middle" letter-spacing="3">ENGAGEMENT RINGS  ·  TORONTO 2026</text>
 
-  <!-- Main heading area -->
-  <text x="960" y="210" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">Custom Engagement Ring</text>
-  <text x="960" y="270" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="1">Pricing Guide — Toronto 2026</text>
+  <!-- Rose gold accent line -->
+  <line x1="840" y1="200" x2="1080" y2="200" stroke="#B89778" stroke-width="1" opacity="0.5"/>
 
-  <!-- Divider line -->
-  <line x1="760" y1="300" x2="1160" y2="300" stroke="#B89778" stroke-width="1.5" opacity="0.6"/>
-  <circle cx="960" cy="300" r="4" fill="#B89778"/>
+  <!-- Main display text -->
+  <text x="960" y="380" font-family="'Cormorant Garamond', Georgia, serif" font-size="96" font-weight="300" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">Custom</text>
+  <text x="960" y="490" font-family="'Cormorant Garamond', Georgia, serif" font-size="96" font-weight="700" fill="#FFFFFF" text-anchor="middle" letter-spacing="-1">Engagement Rings</text>
+  <text x="960" y="590" font-family="'Cormorant Garamond', Georgia, serif" font-size="64" font-weight="300" fill="#B89778" text-anchor="middle" font-style="italic">handcrafted in Toronto</text>
 
-  <!-- Subtitle -->
-  <text x="960" y="336" font-family="Inter, sans-serif" font-size="18" fill="#8E9196" text-anchor="middle">Cost by style, metal, and diamond origin — real numbers from a working Toronto jeweler</text>
+  <!-- Divider -->
+  <line x1="840" y1="650" x2="1080" y2="650" stroke="#B89778" stroke-width="1" opacity="0.5"/>
 
-  <!-- Main pricing table -->
-  <!-- Table container -->
-  <rect x="220" y="375" width="1480" height="490" rx="8" fill="#111111" stroke="#B89778" stroke-width="1" stroke-opacity="0.3"/>
+  <!-- Three key concepts -->
+  <text x="480" y="760" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#8E9196" text-anchor="middle" letter-spacing="2">STYLE</text>
+  <text x="480" y="800" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" fill="#D4CFC5" text-anchor="middle">Solitaire to Toi et Moi</text>
 
-  <!-- Table header row -->
-  <rect x="220" y="375" width="1480" height="60" rx="8" fill="url(#tableHeader)"/>
-  <rect x="220" y="415" width="1480" height="20" rx="0" fill="url(#tableHeader)"/>
+  <line x1="840" y1="740" x2="840" y2="820" stroke="#B89778" stroke-width="0.8" opacity="0.4"/>
 
-  <!-- Column headers -->
-  <text x="480" y="413" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">STYLE</text>
-  <text x="830" y="413" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">LAB-GROWN (1 ct)</text>
-  <text x="1160" y="413" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">NATURAL (1 ct)</text>
-  <text x="1550" y="413" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">SAVINGS W/ LAB</text>
+  <text x="960" y="760" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#8E9196" text-anchor="middle" letter-spacing="2">STONE</text>
+  <text x="960" y="800" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" fill="#D4CFC5" text-anchor="middle">Lab-grown or Natural</text>
 
-  <!-- Col dividers -->
-  <line x1="660" y1="375" x2="660" y2="865" stroke="#B89778" stroke-width="0.5" opacity="0.25"/>
-  <line x1="1000" y1="375" x2="1000" y2="865" stroke="#B89778" stroke-width="0.5" opacity="0.25"/>
-  <line x1="1320" y1="375" x2="1320" y2="865" stroke="#B89778" stroke-width="0.5" opacity="0.25"/>
+  <line x1="1080" y1="740" x2="1080" y2="820" stroke="#B89778" stroke-width="0.8" opacity="0.4"/>
 
-  <!-- Row 1 - Solitaire -->
-  <rect x="220" y="435" width="1480" height="72" fill="#0F0F0F"/>
-  <text x="480" y="478" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#D4CFC5" text-anchor="middle">Solitaire (4- or 6-prong)</text>
-  <text x="830" y="478" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$2,800</text>
-  <text x="1160" y="478" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#D4CFC5" text-anchor="middle">$6,500</text>
-  <text x="1550" y="468" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6EBF7E" text-anchor="middle">57% less</text>
-  <text x="1550" y="488" font-family="Inter, sans-serif" font-size="14" fill="#8E9196" text-anchor="middle">save ~$3,700</text>
+  <text x="1440" y="760" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#8E9196" text-anchor="middle" letter-spacing="2">METAL</text>
+  <text x="1440" y="800" font-family="'Cormorant Garamond', Georgia, serif" font-size="28" fill="#D4CFC5" text-anchor="middle">10K · 14K · 18K · Platinum</text>
 
-  <!-- Row 2 - Halo -->
-  <rect x="220" y="507" width="1480" height="72" fill="#131313"/>
-  <text x="480" y="550" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#D4CFC5" text-anchor="middle">Halo (pavé)</text>
-  <text x="830" y="550" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$3,800</text>
-  <text x="1160" y="550" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#D4CFC5" text-anchor="middle">$7,500</text>
-  <text x="1550" y="540" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6EBF7E" text-anchor="middle">49% less</text>
-  <text x="1550" y="560" font-family="Inter, sans-serif" font-size="14" fill="#8E9196" text-anchor="middle">save ~$3,700</text>
-
-  <!-- Row 3 - Three-Stone -->
-  <rect x="220" y="579" width="1480" height="72" fill="#0F0F0F"/>
-  <text x="480" y="622" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#D4CFC5" text-anchor="middle">Three-Stone (1ct + 0.5ct ×2)</text>
-  <text x="830" y="622" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$4,500</text>
-  <text x="1160" y="622" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#D4CFC5" text-anchor="middle">$9,500</text>
-  <text x="1550" y="612" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6EBF7E" text-anchor="middle">53% less</text>
-  <text x="1550" y="632" font-family="Inter, sans-serif" font-size="14" fill="#8E9196" text-anchor="middle">save ~$5,000</text>
-
-  <!-- Row 4 - Vintage -->
-  <rect x="220" y="651" width="1480" height="72" fill="#131313"/>
-  <text x="480" y="694" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#D4CFC5" text-anchor="middle">Vintage / Art Deco</text>
-  <text x="830" y="694" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$4,200</text>
-  <text x="1160" y="694" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#D4CFC5" text-anchor="middle">$8,800</text>
-  <text x="1550" y="684" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6EBF7E" text-anchor="middle">52% less</text>
-  <text x="1550" y="704" font-family="Inter, sans-serif" font-size="14" fill="#8E9196" text-anchor="middle">save ~$4,600</text>
-
-  <!-- Row 5 - Bezel -->
-  <rect x="220" y="723" width="1480" height="72" fill="#0F0F0F"/>
-  <text x="480" y="766" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#D4CFC5" text-anchor="middle">Bezel Set</text>
-  <text x="830" y="766" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$3,200</text>
-  <text x="1160" y="766" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#D4CFC5" text-anchor="middle">$7,000</text>
-  <text x="1550" y="756" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6EBF7E" text-anchor="middle">54% less</text>
-  <text x="1550" y="776" font-family="Inter, sans-serif" font-size="14" fill="#8E9196" text-anchor="middle">save ~$3,800</text>
-
-  <!-- Row 6 - Toi et Moi -->
-  <rect x="220" y="795" width="1480" height="70" rx="0" fill="#131313"/>
-  <rect x="220" y="845" width="1480" height="20" rx="8" fill="#131313"/>
-  <text x="480" y="838" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#D4CFC5" text-anchor="middle">Toi et Moi</text>
-  <text x="830" y="838" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$5,200</text>
-  <text x="1160" y="838" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#D4CFC5" text-anchor="middle">$11,500</text>
-  <text x="1550" y="828" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#6EBF7E" text-anchor="middle">55% less</text>
-  <text x="1550" y="848" font-family="Inter, sans-serif" font-size="14" fill="#8E9196" text-anchor="middle">save ~$6,300</text>
-
-  <!-- Note -->
-  <text x="960" y="890" font-family="Inter, sans-serif" font-size="13" fill="#8E9196" text-anchor="middle">All prices in CAD, pre-HST · 14K gold setting · G-H colour, VS clarity · Source: Al-Asali Jewelry Studio, Toronto 2026</text>
-
-  <!-- Key stats row -->
-  <!-- Stat 1 -->
-  <rect x="220" y="910" width="440" height="100" rx="6" fill="#1A1A1A" stroke="#B89778" stroke-width="0.8" stroke-opacity="0.4"/>
-  <text x="440" y="952" font-family="'Cormorant Garamond', Georgia, serif" font-size="36" font-weight="700" fill="#B89778" text-anchor="middle">$1,800–$15,000+</text>
-  <text x="440" y="978" font-family="Inter, sans-serif" font-size="13" fill="#8E9196" text-anchor="middle">typical price range</text>
-
-  <!-- Stat 2 -->
-  <rect x="740" y="910" width="440" height="100" rx="6" fill="#1A1A1A" stroke="#B89778" stroke-width="0.8" stroke-opacity="0.4"/>
-  <text x="960" y="952" font-family="'Cormorant Garamond', Georgia, serif" font-size="36" font-weight="700" fill="#B89778" text-anchor="middle">4–6 weeks</text>
-  <text x="960" y="978" font-family="Inter, sans-serif" font-size="13" fill="#8E9196" text-anchor="middle">production timeline</text>
-
-  <!-- Stat 3 -->
-  <rect x="1260" y="910" width="440" height="100" rx="6" fill="#1A1A1A" stroke="#B89778" stroke-width="0.8" stroke-opacity="0.4"/>
-  <text x="1480" y="952" font-family="'Cormorant Garamond', Georgia, serif" font-size="36" font-weight="700" fill="#B89778" text-anchor="middle">60% lab-grown</text>
-  <text x="1480" y="978" font-family="Inter, sans-serif" font-size="13" fill="#8E9196" text-anchor="middle">Toronto client preference 2026</text>
-
-  <!-- Footer bar -->
-  <rect x="0" y="1040" width="1920" height="40" fill="#0D0B0A"/>
-  <line x1="0" y1="1040" x2="1920" y2="1040" stroke="#B89778" stroke-width="0.8" opacity="0.5"/>
-  <text x="960" y="1066" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#8E9196" text-anchor="middle" letter-spacing="2">AL-ASALI CUSTOM JEWELRY  ·  alasalicustomjewelry.ca  ·  TORONTO, CANADA</text>
+  <!-- Footer -->
+  <rect x="0" y="1034" width="1920" height="46" fill="#080808"/>
+  <line x1="0" y1="1034" x2="1920" y2="1034" stroke="#B89778" stroke-width="0.8" opacity="0.4"/>
+  <text x="960" y="1063" font-family="Inter, sans-serif" font-size="12" fill="#8E9196" text-anchor="middle" letter-spacing="2.5">AL-ASALI CUSTOM JEWELRY  ·  alasalicustomjewelry.ca</text>
 </svg>
