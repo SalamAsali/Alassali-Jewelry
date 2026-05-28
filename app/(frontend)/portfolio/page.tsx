@@ -67,7 +67,6 @@ const FALLBACK_ITEMS: PortfolioGridItem[] = [
   { id: 'pendants-2', name: 'Gold Script "Dima" Custom Name Necklace', category: 'Pendants', image: '/images/portfolio/pendants-dima-name-necklace.png' },
   { id: 'pendants-3', name: 'Gold Iced-Out Photo Medallion Pendants', category: 'Pendants', image: '/images/portfolio/pendants-photo-medallions.jpg' },
   { id: 'pendants-4', name: 'Gold Script "Zayden" Custom Name Necklace', category: 'Pendants', image: '/images/portfolio/pendants-zayden-name-necklace.jpg' },
-  { id: 'pendants-5', name: 'Sterling Silver "Demons" Custom Pendant', category: 'Pendants', image: '/images/portfolio/pendants-demons-custom.jpg' },
   { id: 'pendants-6', name: 'Gold Diamond-Pave "G" Initial Pendant', category: 'Pendants', image: '/images/portfolio/pendants-g-initial.jpg' },
   { id: 'rings-1', name: 'Gold Anchor Chain-Link Band Ring', category: 'Rings', image: '/images/portfolio/rings-anchor-chain-band.jpg' },
   { id: 'rings-2', name: 'Sterling Silver "SA" Monogram Signet Ring', category: 'Rings', image: '/images/portfolio/rings-sa-signet.jpg' },
