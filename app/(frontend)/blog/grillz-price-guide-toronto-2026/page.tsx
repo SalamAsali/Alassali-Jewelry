@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+
 import BlogLayout from '@/components/blog/BlogLayout'
 import { buildArticleSchema } from '@/lib/seo/article'
 import { buildFaqSchema, buildBreadcrumbSchema } from '@/lib/seo/schema'
@@ -8,12 +9,14 @@ const SLUG = 'grillz-price-guide-toronto-2026'
 const TITLE = 'How Much Do Custom Grillz Cost in Toronto? (2026 Price Guide)'
 const DESCRIPTION = 'A Toronto custom jeweler\'s real 2026 pricing for gold grillz, diamond grillz, VVS grillz, and full sets. Straight numbers, no generic ranges.'
 const DATE = '2026-04-17'
+const COVER = '/blog/grillz-price-guide-toronto-2026-cover.svg'
+const COVER_ALT = 'Custom grillz price guide Toronto 2026 — pricing table by configuration from single tooth $500 plain gold to full set $14,000 VVS diamonds, Al-Asali Jewelry'
 
 export const metadata: Metadata = {
   title: 'Custom Grillz Price Guide Toronto 2026 | Al-Asali Jewelry',
   description: DESCRIPTION,
   alternates: { canonical: `/blog/${SLUG}` },
-  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article' },
+  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER] },
 }
 
 const faq = [
@@ -30,7 +33,10 @@ export default function Page() {
     headline: TITLE,
     description: DESCRIPTION,
     datePublished: DATE,
+    imagePath: COVER,
     keywords: ['grillz price Toronto', 'how much do grillz cost Toronto', 'VVS grillz Toronto', 'gold grillz price Canada'],
+    wordCount: 950,
+    articleSection: 'Grillz',
   })
   const breadcrumb = buildBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
@@ -45,6 +51,9 @@ export default function Page() {
       subtitle="Real 2026 numbers for gold grillz, diamond grillz, and VVS full sets — from a working Toronto grillz studio."
       datePublished={DATE}
       readingMinutes={6}
+      category="Grillz"
+      coverImage={COVER}
+      coverImageAlt={COVER_ALT}
       relatedLinks={[
         { label: 'Custom Grillz in Toronto', href: '/custom-grillz' },
         { label: 'Custom Gold Chains in Toronto', href: '/custom-chains' },
@@ -85,6 +94,17 @@ export default function Page() {
       </p>
 
       <h2>What actually drives the price</h2>
+
+      <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
+        <img
+          src="/blog/grillz-price-guide-toronto-2026-price-drivers.svg"
+          alt="What drives grillz pricing Toronto 2026 — three factors: gold weight and karat per tooth (3-5g), diamond clarity tiers from SI to flawless, and coverage type open vs closed face"
+          width={1200}
+          height={600}
+          className="w-full h-auto"
+        />
+      </div>
+
       <p>
         Three variables do all the work:
       </p>
@@ -95,6 +115,17 @@ export default function Page() {
       </ul>
 
       <h2>VS vs VVS: is VVS worth it?</h2>
+
+      <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
+        <img
+          src="/blog/grillz-price-guide-toronto-2026-vs-vs-vvs.svg"
+          alt="VS vs VVS diamonds in grillz Toronto 2026 — side-by-side comparison showing VS top 6 at $4,500 and VVS at $6,500, full set VS $9,500 vs VVS $14,000"
+          width={1200}
+          height={600}
+          className="w-full h-auto"
+        />
+      </div>
+
       <p>
         VS (Very Slightly Included) diamonds have small inclusions visible under 10x magnification but look eye-clean face-up. VVS (Very, Very Slightly Included) have inclusions so small most jewelers struggle to find them under a loupe.
       </p>

@@ -6,11 +6,21 @@ import DotPattern from '@/components/DotPattern'
 import BlogSidebar from '@/components/blog/BlogSidebar'
 import { MASTER_JEWELER } from '@/lib/seo/siteConfig'
 
+const CATEGORY_COLORS: Record<string, string> = {
+  'Engagement Rings': 'bg-rose-gold/10 text-rose-gold border-rose-gold/30',
+  'Grillz': 'bg-glacier-grey/10 text-glacier-grey-light border-glacier-grey/30',
+  'Diamonds': 'bg-stone/10 text-stone border-stone/30',
+  'Heritage': 'bg-taupe/10 text-taupe border-taupe/30',
+}
+
 type Props = {
   title: string
   subtitle?: string
   datePublished: string
   readingMinutes?: number
+  category?: string
+  coverImage?: string
+  coverImageAlt?: string
   children: ReactNode
   relatedLinks?: { label: string; href: string }[]
 }
@@ -20,6 +30,9 @@ export default function BlogLayout({
   subtitle,
   datePublished,
   readingMinutes,
+  category,
+  coverImage,
+  coverImageAlt,
   children,
   relatedLinks,
 }: Props) {
@@ -28,6 +41,7 @@ export default function BlogLayout({
     month: 'long',
     day: 'numeric',
   })
+  const categoryClass = category ? (CATEGORY_COLORS[category] ?? 'bg-glacier-grey/10 text-glacier-grey border-glacier-grey/30') : null
 
   return (
     <div className="min-h-screen bg-soft-black relative overflow-hidden">
@@ -36,18 +50,30 @@ export default function BlogLayout({
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 py-20 md:py-24 flex gap-12">
         <article className="flex-1 min-w-0 max-w-3xl">
-          <header className="mb-10 border-b border-glacier-grey/20 pb-8">
+          <header className="mb-10 pb-8 border-b border-glacier-grey/20">
+            {/* Breadcrumb */}
             <div className="flex flex-wrap items-center gap-4 text-xs text-glacier-grey mb-5">
               <NextLink href="/" className="hover:text-white transition-colors">Home</NextLink>
               <span>·</span>
-              <span className="uppercase tracking-widest">Blog</span>
+              <NextLink href="/blog" className="hover:text-white transition-colors uppercase tracking-widest">Blog</NextLink>
+              {category && <><span>·</span><span className="uppercase tracking-widest">{category}</span></>}
             </div>
+
+            {/* Category badge */}
+            {category && categoryClass && (
+              <span className={`inline-block text-xs font-semibold px-3 py-1 rounded-full border mb-4 tracking-wider uppercase ${categoryClass}`}>
+                {category}
+              </span>
+            )}
+
             <h1 className="text-3xl md:text-5xl font-bold text-white mb-4 leading-tight" style={{ fontFamily: 'var(--font-heading)' }}>
               {title}
             </h1>
             {subtitle && (
               <p className="text-lg text-stone leading-relaxed mb-6">{subtitle}</p>
             )}
+
+            {/* Metadata row */}
             <div className="flex flex-wrap items-center gap-4 text-xs text-stone">
               <span className="inline-flex items-center gap-1.5">
                 <Hammer className="w-3.5 h-3.5 text-glacier-grey" />
@@ -66,6 +92,20 @@ export default function BlogLayout({
               )}
             </div>
           </header>
+
+          {/* Cover image */}
+          {coverImage && (
+            <div className="mb-10 rounded-xl overflow-hidden border border-glacier-grey/20">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={coverImage}
+                alt={coverImageAlt ?? title}
+                width={1920}
+                height={1080}
+                className="w-full h-auto"
+              />
+            </div>
+          )}
 
           <div className="prose-blog text-stone leading-relaxed space-y-6" data-blog-content>
             {children}

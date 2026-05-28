@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A0A0A"/>
+      <stop offset="100%" stop-color="#131313"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#B89778" stroke-width="0.15" opacity="0.1"/>
+  </pattern>
+  <rect width="1920" height="1080" fill="url(#grid)"/>
+
+  <!-- Corner brackets -->
+  <path d="M 60 120 L 60 60 L 120 60" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
+  <path d="M 1800 60 L 1860 60 L 1860 120" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
+  <path d="M 60 960 L 60 1020 L 120 1020" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
+  <path d="M 1800 1020 L 1860 1020 L 1860 960" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
+
+  <!-- Category badge -->
+  <rect x="140" y="100" width="160" height="36" rx="18" fill="#B89778" fill-opacity="0.15" stroke="#B89778" stroke-width="1.2"/>
+  <text x="220" y="124" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#B89778" text-anchor="middle" letter-spacing="2">DIAMONDS</text>
+
+  <!-- Main heading -->
+  <text x="960" y="208" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="700" fill="#FFFFFF" text-anchor="middle">Lab-Grown vs Natural Diamonds</text>
+  <text x="960" y="266" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="700" fill="#FFFFFF" text-anchor="middle">Head-to-Head Comparison 2026</text>
+
+  <line x1="760" y1="296" x2="1160" y2="296" stroke="#B89778" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="960" cy="296" r="4" fill="#B89778"/>
+
+  <text x="960" y="332" font-family="Inter, sans-serif" font-size="18" fill="#8E9196" text-anchor="middle">11 attributes compared — from a Toronto jeweler's honest perspective</text>
+
+  <!-- Comparison table -->
+  <rect x="140" y="355" width="1640" height="600" rx="8" fill="#111111" stroke="#B89778" stroke-width="1" stroke-opacity="0.3"/>
+
+  <!-- Header row -->
+  <rect x="140" y="355" width="1640" height="52" rx="8" fill="#1E1614"/>
+  <rect x="140" y="387" width="1640" height="20" fill="#1E1614"/>
+
+  <text x="440" y="390" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">ATTRIBUTE</text>
+  <text x="870" y="390" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">NATURAL DIAMOND</text>
+  <text x="1440" y="390" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">LAB-GROWN DIAMOND</text>
+
+  <!-- Col dividers -->
+  <line x1="680" y1="355" x2="680" y2="955" stroke="#B89778" stroke-width="0.5" opacity="0.2"/>
+  <line x1="1160" y1="355" x2="1160" y2="955" stroke="#B89778" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- 11 attribute rows -->
+  <!-- Row heights: 52px each, starting at y=407 -->
+
+  <!-- 1. Chemical composition -->
+  <rect x="140" y="407" width="1640" height="52" fill="#0F0F0F"/>
+  <text x="440" y="438" font-family="Inter, sans-serif" font-size="15" fill="#D4CFC5" text-anchor="middle">Chemical composition</text>
+  <text x="870" y="438" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#A3A7AC" text-anchor="middle">Carbon (C)</text>
+  <text x="1440" y="438" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#B89778" text-anchor="middle">Carbon (C)</text>
+  <text x="1760" y="438" font-family="Inter, sans-serif" font-size="13" fill="#6EBF7E" text-anchor="middle">✓ Identical</text>
+
+  <!-- 2. Hardness -->
+  <rect x="140" y="459" width="1640" height="52" fill="#131313"/>
+  <text x="440" y="490" font-family="Inter, sans-serif" font-size="15" fill="#D4CFC5" text-anchor="middle">Hardness (Mohs)</text>
+  <text x="870" y="490" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#A3A7AC" text-anchor="middle">10</text>
+  <text x="1440" y="490" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#B89778" text-anchor="middle">10</text>
+  <text x="1760" y="490" font-family="Inter, sans-serif" font-size="13" fill="#6EBF7E" text-anchor="middle">✓ Identical</text>
+
+  <!-- 3. Brilliance -->
+  <rect x="140" y="511" width="1640" height="52" fill="#0F0F0F"/>
+  <text x="440" y="542" font-family="Inter, sans-serif" font-size="15" fill="#D4CFC5" text-anchor="middle">Brilliance / fire</text>
+  <text x="870" y="542" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#A3A7AC" text-anchor="middle">Identical</text>
+  <text x="1440" y="542" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#B89778" text-anchor="middle">Identical</text>
+  <text x="1760" y="542" font-family="Inter, sans-serif" font-size="13" fill="#6EBF7E" text-anchor="middle">✓ Identical</text>
+
+  <!-- 4. Price 1ct -->
+  <rect x="140" y="563" width="1640" height="52" fill="#1A1410"/>
+  <rect x="140" y="563" width="4" height="52" fill="#B89778"/>
+  <text x="440" y="594" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="#FFFFFF" text-anchor="middle">Price — 1ct G VS1</text>
+  <text x="870" y="594" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#FFFFFF" text-anchor="middle">~$6,500</text>
+  <text x="1440" y="594" font-family="Inter, sans-serif" font-size="20" font-weight="700" fill="#B89778" text-anchor="middle">~$2,800</text>
+  <text x="1760" y="594" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#6EBF7E" text-anchor="middle">57% less</text>
+
+  <!-- 5. Price trend -->
+  <rect x="140" y="615" width="1640" height="52" fill="#0F0F0F"/>
+  <text x="440" y="646" font-family="Inter, sans-serif" font-size="15" fill="#D4CFC5" text-anchor="middle">Price per carat trend</text>
+  <text x="870" y="646" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#6EBF7E" text-anchor="middle">Stable / rising</text>
+  <text x="1440" y="646" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#E07070" text-anchor="middle">Falling YoY</text>
+  <text x="1760" y="646" font-family="Inter, sans-serif" font-size="13" fill="#E07070" text-anchor="middle">↓ Diverging</text>
+
+  <!-- 6. Resale value -->
+  <rect x="140" y="667" width="1640" height="52" fill="#131313"/>
+  <text x="440" y="698" font-family="Inter, sans-serif" font-size="15" fill="#D4CFC5" text-anchor="middle">Resale value</text>
+  <text x="870" y="698" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#6EBF7E" text-anchor="middle">Retains 50–70% of retail</text>
+  <text x="1440" y="698" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#E07070" text-anchor="middle">Limited secondary market</text>
+  <text x="1760" y="698" font-family="Inter, sans-serif" font-size="13" fill="#A3A7AC" text-anchor="middle">Natural wins</text>
+
+  <!-- 7. Certification -->
+  <rect x="140" y="719" width="1640" height="52" fill="#0F0F0F"/>
+  <text x="440" y="750" font-family="Inter, sans-serif" font-size="15" fill="#D4CFC5" text-anchor="middle">Certification</text>
+  <text x="870" y="750" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#A3A7AC" text-anchor="middle">GIA (standard)</text>
+  <text x="1440" y="750" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#B89778" text-anchor="middle">IGI, GCAL, GIA</text>
+  <text x="1760" y="750" font-family="Inter, sans-serif" font-size="13" fill="#6EBF7E" text-anchor="middle">Both certified</text>
+
+  <!-- 8. Ethical -->
+  <rect x="140" y="771" width="1640" height="52" fill="#131313"/>
+  <text x="440" y="802" font-family="Inter, sans-serif" font-size="15" fill="#D4CFC5" text-anchor="middle">Ethical sourcing</text>
+  <text x="870" y="802" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#A3A7AC" text-anchor="middle">KP + SCS certified</text>
+  <text x="1440" y="802" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#B89778" text-anchor="middle">Zero mining impact</text>
+  <text x="1760" y="802" font-family="Inter, sans-serif" font-size="13" fill="#6EBF7E" text-anchor="middle">Both ethical</text>
+
+  <!-- 9. Sentiment -->
+  <rect x="140" y="823" width="1640" height="52" fill="#0F0F0F"/>
+  <text x="440" y="854" font-family="Inter, sans-serif" font-size="15" fill="#D4CFC5" text-anchor="middle">Geological story</text>
+  <text x="870" y="854" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#A3A7AC" text-anchor="middle">Billions of years old</text>
+  <text x="1440" y="854" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#B89778" text-anchor="middle">Grown in weeks</text>
+  <text x="1760" y="854" font-family="Inter, sans-serif" font-size="13" fill="#A3A7AC" text-anchor="middle">Preference</text>
+
+  <!-- 10. Size for budget -->
+  <rect x="140" y="875" width="1640" height="52" fill="#131313"/>
+  <text x="440" y="906" font-family="Inter, sans-serif" font-size="15" fill="#D4CFC5" text-anchor="middle">Size for same budget</text>
+  <text x="870" y="906" font-family="Inter, sans-serif" font-size="15" font-weight="600" fill="#A3A7AC" text-anchor="middle">Smaller stone per $</text>
+  <text x="1440" y="906" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#B89778" text-anchor="middle">~2× larger for same $</text>
+  <text x="1760" y="906" font-family="Inter, sans-serif" font-size="13" fill="#B89778" text-anchor="middle">Lab wins</text>
+
+  <!-- 11. 60% stat -->
+  <rect x="140" y="927" width="1640" height="28" fill="#1A1410"/>
+  <rect x="140" y="945" width="1640" height="10" rx="4" fill="#1A1410"/>
+  <text x="440" y="947" font-family="Inter, sans-serif" font-size="14" fill="#8E9196" text-anchor="middle">Toronto client preference 2026</text>
+  <text x="870" y="947" font-family="Inter, sans-serif" font-size="14" font-weight="600" fill="#A3A7AC" text-anchor="middle">40% choose natural</text>
+  <text x="1440" y="947" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#B89778" text-anchor="middle">60% choose lab-grown</text>
+  <text x="1760" y="947" font-family="Inter, sans-serif" font-size="13" fill="#8E9196" text-anchor="middle">↑ up from 40% in 2023</text>
+
+  <!-- Footer bar -->
+  <rect x="0" y="1040" width="1920" height="40" fill="#0D0B0A"/>
+  <line x1="0" y1="1040" x2="1920" y2="1040" stroke="#B89778" stroke-width="0.8" opacity="0.5"/>
+  <text x="960" y="1066" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#8E9196" text-anchor="middle" letter-spacing="2">AL-ASALI CUSTOM JEWELRY  ·  alasalicustomjewelry.ca  ·  TORONTO, CANADA</text>
+</svg>

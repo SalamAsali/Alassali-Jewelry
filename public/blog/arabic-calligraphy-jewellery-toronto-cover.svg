@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0A0A0A"/>
+      <stop offset="100%" stop-color="#141210"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+
+  <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+    <path d="M 60 0 L 0 0 0 60" fill="none" stroke="#B89778" stroke-width="0.15" opacity="0.1"/>
+  </pattern>
+  <rect width="1920" height="1080" fill="url(#grid)"/>
+
+  <!-- Decorative arabesque-inspired pattern hints (geometric diamonds) -->
+  <polygon points="960,65 975,80 960,95 945,80" fill="none" stroke="#B89778" stroke-width="1" opacity="0.4"/>
+  <polygon points="960,60 985,80 960,100 935,80" fill="none" stroke="#B89778" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Corner brackets -->
+  <path d="M 60 120 L 60 60 L 120 60" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
+  <path d="M 1800 60 L 1860 60 L 1860 120" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
+  <path d="M 60 960 L 60 1020 L 120 1020" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
+  <path d="M 1800 1020 L 1860 1020 L 1860 960" fill="none" stroke="#B89778" stroke-width="3" stroke-linecap="square"/>
+
+  <!-- Category badge -->
+  <rect x="140" y="100" width="150" height="36" rx="18" fill="#B89778" fill-opacity="0.15" stroke="#B89778" stroke-width="1.2"/>
+  <text x="215" y="124" font-family="Inter, sans-serif" font-size="13" font-weight="600" fill="#B89778" text-anchor="middle" letter-spacing="2">HERITAGE</text>
+
+  <!-- Main heading -->
+  <text x="960" y="208" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="700" fill="#FFFFFF" text-anchor="middle">Arabic Calligraphy Jewelry</text>
+  <text x="960" y="266" font-family="'Cormorant Garamond', Georgia, serif" font-size="52" font-weight="700" fill="#FFFFFF" text-anchor="middle">Toronto 2026 — Pricing &amp; Styles</text>
+
+  <line x1="760" y1="296" x2="1160" y2="296" stroke="#B89778" stroke-width="1.5" opacity="0.6"/>
+  <circle cx="960" cy="296" r="4" fill="#B89778"/>
+
+  <text x="960" y="332" font-family="Inter, sans-serif" font-size="18" fill="#8E9196" text-anchor="middle">Names · Allah pendants · Ayat al-Kursi · Wedding engravings — handcrafted in Toronto</text>
+
+  <!-- Pricing table -->
+  <rect x="140" y="360" width="1640" height="530" rx="8" fill="#111111" stroke="#B89778" stroke-width="1" stroke-opacity="0.3"/>
+
+  <!-- Header row -->
+  <rect x="140" y="360" width="1640" height="56" rx="8" fill="#1E1614"/>
+  <rect x="140" y="396" width="1640" height="20" fill="#1E1614"/>
+
+  <text x="480" y="396" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">PIECE TYPE</text>
+  <text x="820" y="396" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">10K GOLD</text>
+  <text x="1060" y="396" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">14K GOLD</text>
+  <text x="1320" y="396" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">DIAMOND-SET (14K)</text>
+  <text x="1640" y="396" font-family="Inter, sans-serif" font-size="14" font-weight="700" fill="#B89778" text-anchor="middle" letter-spacing="1.5">BEST SCRIPT</text>
+
+  <!-- Col dividers -->
+  <line x1="650" y1="360" x2="650" y2="890" stroke="#B89778" stroke-width="0.5" opacity="0.2"/>
+  <line x1="960" y1="360" x2="960" y2="890" stroke="#B89778" stroke-width="0.5" opacity="0.2"/>
+  <line x1="1200" y1="360" x2="1200" y2="890" stroke="#B89778" stroke-width="0.5" opacity="0.2"/>
+  <line x1="1460" y1="360" x2="1460" y2="890" stroke="#B89778" stroke-width="0.5" opacity="0.2"/>
+
+  <!-- Row 1 -->
+  <rect x="140" y="416" width="1640" height="72" fill="#0F0F0F"/>
+  <text x="395" y="456" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#D4CFC5" text-anchor="middle">Arabic Name (1–3 letters)</text>
+  <text x="820" y="460" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$1,400</text>
+  <text x="1060" y="460" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$1,800</text>
+  <text x="1320" y="460" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#D4CFC5" text-anchor="middle">$2,800</text>
+  <text x="1640" y="460" font-family="Inter, sans-serif" font-size="15" fill="#B89778" text-anchor="middle">Naskh / Modern</text>
+
+  <!-- Row 2 -->
+  <rect x="140" y="488" width="1640" height="72" fill="#131313"/>
+  <text x="395" y="528" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#D4CFC5" text-anchor="middle">Arabic Name (4–6 letters)</text>
+  <text x="820" y="532" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$1,800</text>
+  <text x="1060" y="532" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$2,300</text>
+  <text x="1320" y="532" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#D4CFC5" text-anchor="middle">$3,500</text>
+  <text x="1640" y="532" font-family="Inter, sans-serif" font-size="15" fill="#B89778" text-anchor="middle">Diwani / Naskh</text>
+
+  <!-- Row 3 - Allah highlight -->
+  <rect x="140" y="560" width="1640" height="72" fill="#1A1410"/>
+  <rect x="140" y="560" width="4" height="72" fill="#B89778"/>
+  <text x="395" y="600" font-family="Inter, sans-serif" font-size="17" font-weight="700" fill="#FFFFFF" text-anchor="middle">Allah Pendant ★</text>
+  <text x="820" y="604" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$1,800</text>
+  <text x="1060" y="604" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#B89778" text-anchor="middle">$2,200</text>
+  <text x="1320" y="604" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#B89778" text-anchor="middle">$3,200</text>
+  <text x="1640" y="604" font-family="Inter, sans-serif" font-size="15" fill="#B89778" text-anchor="middle">Thuluth / Diwani</text>
+
+  <!-- Row 4 -->
+  <rect x="140" y="632" width="1640" height="72" fill="#0F0F0F"/>
+  <text x="395" y="672" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#D4CFC5" text-anchor="middle">Ayat al-Kursi Pendant</text>
+  <text x="820" y="676" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$2,800</text>
+  <text x="1060" y="676" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$3,500</text>
+  <text x="1320" y="676" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#D4CFC5" text-anchor="middle">$5,500</text>
+  <text x="1640" y="676" font-family="Inter, sans-serif" font-size="15" fill="#B89778" text-anchor="middle">Thuluth (classic)</text>
+
+  <!-- Row 5 -->
+  <rect x="140" y="704" width="1640" height="72" fill="#131313"/>
+  <text x="395" y="744" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#D4CFC5" text-anchor="middle">Handwriting Pendant</text>
+  <text x="820" y="748" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$1,800</text>
+  <text x="1060" y="748" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">$2,300</text>
+  <text x="1320" y="748" font-family="Inter, sans-serif" font-size="22" font-weight="700" fill="#D4CFC5" text-anchor="middle">$3,500</text>
+  <text x="1640" y="748" font-family="Inter, sans-serif" font-size="15" fill="#B89778" text-anchor="middle">Ruqaʿa (as-written)</text>
+
+  <!-- Row 6 -->
+  <rect x="140" y="776" width="1640" height="72" fill="#0F0F0F"/>
+  <text x="395" y="816" font-family="Inter, sans-serif" font-size="17" font-weight="600" fill="#D4CFC5" text-anchor="middle">Wedding Band Engraving</text>
+  <rect x="770" y="800" width="780" height="28" rx="14" fill="#1A1A1A" stroke="#8E9196" stroke-width="0.8"/>
+  <text x="1160" y="820" font-family="Inter, sans-serif" font-size="15" fill="#8E9196" text-anchor="middle">Included free with most custom wedding bands</text>
+  <text x="1640" y="816" font-family="Inter, sans-serif" font-size="15" fill="#B89778" text-anchor="middle">Diwani / Kufic</text>
+
+  <!-- Note -->
+  <text x="960" y="872" font-family="Inter, sans-serif" font-size="13" fill="#8E9196" text-anchor="middle">Prices in CAD, pre-HST · Mohammad Al-Asali personally verifies every Arabic character before casting · Toronto studio</text>
+
+  <!-- Stats row -->
+  <rect x="140" y="895" width="460" height="90" rx="6" fill="#1A1A1A" stroke="#B89778" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="370" y="935" font-family="'Cormorant Garamond', Georgia, serif" font-size="30" font-weight="700" fill="#B89778" text-anchor="middle">6 Script Styles</text>
+  <text x="370" y="960" font-family="Inter, sans-serif" font-size="13" fill="#8E9196" text-anchor="middle">Thuluth · Naskh · Diwani · Kufic · Ruqaʿa · Modern</text>
+
+  <rect x="730" y="895" width="460" height="90" rx="6" fill="#1A1A1A" stroke="#B89778" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="960" y="935" font-family="'Cormorant Garamond', Georgia, serif" font-size="30" font-weight="700" fill="#B89778" text-anchor="middle">4–6 Week Timeline</text>
+  <text x="960" y="960" font-family="Inter, sans-serif" font-size="13" fill="#8E9196" text-anchor="middle">From consultation to finished piece</text>
+
+  <rect x="1320" y="895" width="460" height="90" rx="6" fill="#1A1A1A" stroke="#B89778" stroke-width="0.8" stroke-opacity="0.4"/>
+  <text x="1550" y="935" font-family="'Cormorant Garamond', Georgia, serif" font-size="30" font-weight="700" fill="#B89778" text-anchor="middle">Free Proofreading</text>
+  <text x="1550" y="960" font-family="Inter, sans-serif" font-size="13" fill="#8E9196" text-anchor="middle">Every character verified before casting</text>
+
+  <!-- Footer bar -->
+  <rect x="0" y="1040" width="1920" height="40" fill="#0D0B0A"/>
+  <line x1="0" y1="1040" x2="1920" y2="1040" stroke="#B89778" stroke-width="0.8" opacity="0.5"/>
+  <text x="960" y="1066" font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#8E9196" text-anchor="middle" letter-spacing="2">AL-ASALI CUSTOM JEWELRY  ·  alasalicustomjewelry.ca  ·  TORONTO, CANADA</text>
+</svg>

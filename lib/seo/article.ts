@@ -11,13 +11,15 @@ export type ArticleInput = {
   dateModified?: string
   imagePath?: string
   keywords?: string[]
+  wordCount?: number
+  articleSection?: string
 }
 
 export function buildArticleSchema(input: ArticleInput) {
   const url = `${SITE_CONFIG.url}/blog/${input.slug}`
   return {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     '@id': `${url}#article`,
     headline: input.headline,
     description: input.description,
@@ -30,5 +32,7 @@ export function buildArticleSchema(input: ArticleInput) {
     image: `${SITE_CONFIG.url}${input.imagePath || SITE_CONFIG.defaultOgPath}`,
     keywords: input.keywords?.join(', '),
     inLanguage: 'en-CA',
+    ...(input.wordCount != null && { wordCount: input.wordCount }),
+    ...(input.articleSection && { articleSection: input.articleSection }),
   }
 }
