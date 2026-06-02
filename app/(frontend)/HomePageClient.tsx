@@ -61,7 +61,7 @@ const FALLBACK_FEATURED: GalleryItem[] = [
     id: 'cuban-chain',
     title: 'Silver Cuban Chain',
     description: 'Hand-crafted Cuban link chain in sterling silver',
-    image: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/12igjdxa_DSC_0203_Original-scaled.jpg',
+    image: '/images/portfolio/chains-silver-cuban-link.jpg',
     category: 'chains',
     featured: true,
   },
@@ -69,7 +69,7 @@ const FALLBACK_FEATURED: GalleryItem[] = [
     id: 'diamond-pendant',
     title: 'Diamond Photo Pendant',
     description: 'Custom diamond-encrusted photo pendant',
-    image: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/vmbmd1a1_image5.png',
+    image: '/images/portfolio/pendants-photo-medallions.jpg',
     category: 'pendants',
     featured: true,
   },
@@ -77,7 +77,7 @@ const FALLBACK_FEATURED: GalleryItem[] = [
     id: 'custom-ring',
     title: 'Custom Diamond Ring',
     description: 'Bespoke diamond ring, designed to order',
-    image: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/sqmmun3t_image2.png',
+    image: '/images/portfolio/engagement-oval-halo-ring.jpg',
     category: 'rings',
     featured: true,
   },
@@ -85,20 +85,20 @@ const FALLBACK_FEATURED: GalleryItem[] = [
     id: 'diamond-grillz',
     title: 'Diamond Grillz Set',
     description: 'Full custom diamond grillz set',
-    image: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/yymak1c4_image3.png',
+    image: '/images/portfolio/grillz-gold-fang-set.jpg',
     category: 'grillz',
     featured: true,
   },
 ]
 
 const MADE_IN_TORONTO_IMAGES = [
-  'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/12igjdxa_DSC_0203_Original-scaled.jpg',
-  'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/2vm3an05_DSC_2764_Original-scaled.jpg',
+  '/images/portfolio/chains-silver-cuban-link.jpg',
+  '/images/portfolio/chains-cuban-link-choker.jpg',
 ]
 
 const ACCENT_IMAGES = [
-  { src: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/sqmmun3t_image2.png', alt: 'Custom diamond ring' },
-  { src: 'https://customer-assets.emergentagent.com/job_gemini-doc-analysis/artifacts/vw4agpvw_4-pendants-on-the-rolls-Royce-scaled.jpeg', alt: 'Custom pendants on Rolls Royce' },
+  { src: '/images/portfolio/engagement-oval-halo-ring.jpg', alt: 'Custom diamond engagement ring' },
+  { src: '/images/portfolio/pendants-photo-medallions.jpg', alt: 'Custom photo pendants' },
 ]
 
 const bespokeCategories = [
