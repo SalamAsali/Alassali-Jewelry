@@ -54,7 +54,9 @@ export default function GtaCityPage({ params }: { params: Params }) {
   const placeSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    ...STORE_REF,
+    name: `${SITE_CONFIG.legalName} — ${c.name}`,
+    url: `${SITE_CONFIG.url}/gta/${c.slug}`,
+    parentOrganization: STORE_REF,
     areaServed: {
       '@type': 'City',
       name: c.name,

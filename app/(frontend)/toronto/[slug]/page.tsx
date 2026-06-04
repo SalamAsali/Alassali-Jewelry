@@ -50,11 +50,14 @@ export default function NeighbourhoodPage({ params }: { params: Params }) {
   const n = neighbourhoods[params.slug]
   if (!n) notFound()
 
-  // Build neighbourhood-specific Place schema linked to our store
+  // Neighbourhood-scoped LocalBusiness referencing the parent store via parentOrganization.
+  // Does NOT reuse STORE_REF @id to avoid conflicting @type declarations with the root JewelryStore schema.
   const placeSchema = {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    ...STORE_REF,
+    name: `${SITE_CONFIG.legalName} — ${n.name} Toronto`,
+    url: `${SITE_CONFIG.url}/toronto/${n.slug}`,
+    parentOrganization: STORE_REF,
     areaServed: {
       '@type': 'Place',
       name: `${n.name}, Toronto`,

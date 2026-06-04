@@ -5,9 +5,17 @@ export const SITE_CONFIG = {
   legalName: 'Al-Asali Custom Jewelry',
   brandName: 'Al-Asali Custom Jewelry',
   shortName: 'Al-Asali',
+  // Common alternate spellings / names people search for — used in schema alternateName.
+  alternateNames: [
+    'Al-Asali Jewelry Studio',
+    'Al-Assali Jewelry',
+    'Alasali Jewelry',
+    'Al-Asali Jewellery',
+  ],
   url: 'https://www.alasalicustomjewelry.ca',
   logoPath: '/images/logo.png',
-  defaultOgPath: '/opengraph-image.jpg',
+  // Engagement ring is the hero product image — used as default OG and schema image.
+  defaultOgPath: '/images/portfolio/engagement-oval-halo-ring.jpg',
   phone: '+1-647-562-4340',
   phoneDisplay: '(647) 562-4340',
   email: 'contact@alasalicustomjewelry.ca',
@@ -15,7 +23,7 @@ export const SITE_CONFIG = {
   founder: 'Mohammad Al-Asali',
   priceRange: '$$$',
   currenciesAccepted: 'CAD',
-  paymentAccepted: 'Cash, Credit Card, Debit Card, E-Transfer',
+  paymentAccepted: 'Cash, Credit Card, Debit Card, Interac E-Transfer',
 
   address: {
     streetAddress: '624 Vaughan Rd',
@@ -33,12 +41,10 @@ export const SITE_CONFIG = {
   googleMapsEmbedUrl: 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2884.8662181637624!2d-79.44107981534424!3d43.69254459710162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b43ebc5d39ceb%3A0xe7cb39f29dad222f!2sAl-assali%20Jewelry%20Studio!5e0!3m2!1sen!2sca!4v1776446921332!5m2!1sen!2sca',
   // Source of truth for reviews / local-pack schema. Matches the FTID
   // `0x882b43ebc5d39ceb:0xe7cb39f29dad222f` in the embed URL above.
-  // To re-verify or swap: paste into https://developers.google.com/maps/documentation/javascript/examples/places-placeid-finder
-  // and confirm the resolved name reads "Al-Asali Jewelry Studio".
-  // A runtime identity-check in lib/reviews/googlePlaces.ts will also refuse
-  // to render reviews unless the API-returned name contains "al-assali" and
-  // the address contains "Vaughan Rd".
+  // CID decimal: 16702507357223854639 → hasMap URL below.
   googleMapsPlaceId: 'ChIJ658z3OtDK4gRLyKtnfI5y-c',
+  // Stable Google Maps CID link — used in schema hasMap field.
+  googleMapsUrl: 'https://www.google.com/maps?cid=16702507357223854639',
 
   // Appointment-only studio.
   hours: [
@@ -66,10 +72,22 @@ export const SITE_CONFIG = {
 
   aggregateRating: {
     ratingValue: '5.0',
-    reviewCount: 38,
+    // Fallback used when Google Places API is unavailable. Update manually when
+    // the live count drifts more than ~5 reviews from this value.
+    reviewCount: 42,
     bestRating: '5',
     worstRating: '1',
   },
+
+  // Portfolio images used in the schema image array (schema.org recommends multiple).
+  // Keep these in sync with public/images/portfolio/.
+  schemaImages: [
+    '/images/portfolio/engagement-oval-halo-ring.jpg',
+    '/images/portfolio/chains-cuban-link-choker.jpg',
+    '/images/portfolio/grillz-gold-fang-set.jpg',
+    '/images/portfolio/pendants-photo-medallions.jpg',
+    '/images/portfolio/rings-pave-dome-duo.png',
+  ],
 
   social: {
     instagram: 'https://www.instagram.com/alassalijewelry/',
