@@ -5,7 +5,7 @@ const defaultOpenGraph: Metadata['openGraph'] = {
   type: 'website',
   description: 'Toronto\'s premier custom jeweler — bespoke engagement rings, gold chains, diamond pendants, and grillz handcrafted in-house. 5-star rated on Google.',
   images: [
-    { url: `${getServerSideURL()}/images/portfolio/engagement-oval-halo-ring.jpg` },
+    { url: `${getServerSideURL()}/opengraph-image.png` },
   ].filter(Boolean),
   siteName: 'Al-Asali Jewelry',
   locale: 'en_CA',
