@@ -13,10 +13,10 @@ const COVER = '/blog/custom-engagement-ring-cost-toronto-2026-cover.svg'
 const COVER_ALT = 'Custom engagement ring cost guide Toronto 2026 — what affects price: style, metal, diamond origin, and carat weight, Al-Asali Custom Jewelry'
 
 export const metadata: Metadata = {
-  title: 'Custom Engagement Ring Cost Toronto 2026 | Al-Asali Jewelry',
+  title: 'Custom Engagement Ring Cost Toronto 2026',
   description: DESCRIPTION,
   alternates: { canonical: `/blog/${SLUG}` },
-  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER] },
+  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER], url: `/blog/${SLUG}`, locale: 'en_CA', siteName: 'Al-Asali Jewelry' },
 }
 
 const faq = [

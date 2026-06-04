@@ -2,7 +2,7 @@ import { SITE_CONFIG, MASTER_JEWELER } from './siteConfig'
 
 const STORE_ID = `${SITE_CONFIG.url}/#jewelrystore`
 const ORG_ID = `${SITE_CONFIG.url}/#organization`
-const FOUNDER_ID = `${SITE_CONFIG.url}/about/master-jeweler/${MASTER_JEWELER.slug}#person`
+const FOUNDER_ID = `${SITE_CONFIG.url}/about/master-jeweller/${MASTER_JEWELER.slug}#person`
 
 export const STORE_REF = { '@id': STORE_ID }
 export const ORG_REF = { '@id': ORG_ID }
@@ -137,7 +137,7 @@ export function buildMasterJewelerSchema() {
     name: MASTER_JEWELER.name,
     jobTitle: MASTER_JEWELER.jobTitle,
     description: MASTER_JEWELER.bio,
-    url: `${SITE_CONFIG.url}/about/master-jeweler/${MASTER_JEWELER.slug}`,
+    url: `${SITE_CONFIG.url}/about/master-jeweller/${MASTER_JEWELER.slug}`,
     worksFor: STORE_REF,
     knowsAbout: [...MASTER_JEWELER.knowsAbout],
     alumniOf: {

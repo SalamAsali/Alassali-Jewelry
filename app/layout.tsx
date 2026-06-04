@@ -13,13 +13,12 @@ import { fetchGoogleReviews } from '@/lib/reviews/googlePlaces'
 export const metadata: Metadata = {
   metadataBase: new URL(getServerSideURL()),
   title: {
-    default: 'Custom Jeweler Toronto | Bespoke Engagement Rings, Chains & Grillz — Al-Asali Jewelry',
+    default: 'Custom Jeweler Toronto | Rings, Chains & Grillz — Al-Asali Jewelry',
     template: '%s | Al-Asali Jewelry',
   },
-  description: 'Toronto\'s premier custom jeweler. Bespoke engagement rings, wedding bands, gold chains, diamond pendants, and custom grillz — handcrafted in-house in Toronto, by appointment. 5-star rated on Google.',
+  description: 'Toronto\'s premier custom jeweler — bespoke engagement rings, gold chains, diamond pendants, and grillz handcrafted in-house. 5-star rated on Google.',
   openGraph: mergeOpenGraph(),
   twitter: { card: 'summary_large_image' },
-  alternates: { canonical: '/' },
 }
 
 export default async function RootLayout({

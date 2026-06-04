@@ -13,10 +13,10 @@ const COVER = '/blog/arabic-calligraphy-jewellery-toronto-cover.svg'
 const COVER_ALT = 'Arabic calligraphy jewelry Toronto 2026 — custom name pendants, Allah pendants, Ayat al-Kursi, and wedding band engravings in gold and diamond, Al-Asali Custom Jewelry'
 
 export const metadata: Metadata = {
-  title: 'Arabic Calligraphy Jewelry Toronto | Al-Asali Jewelry',
+  title: 'Arabic Calligraphy Jewelry Toronto',
   description: DESCRIPTION,
-  alternates: { canonical: `/blog/${SLUG}` },
-  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER] },
+  alternates: { canonical: '/blog/arabic-calligraphy-jewellery-toronto' },
+  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER], url: '/blog/arabic-calligraphy-jewellery-toronto', locale: 'en_CA', siteName: 'Al-Asali Jewelry' },
 }
 
 const faq = [

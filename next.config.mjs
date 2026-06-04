@@ -71,6 +71,17 @@ const nextConfig = {
       { source: FORM_INTERNAL, destination: FORM_PUBLIC, permanent: true },
       // First iteration of the flat URL (briefly indexable) → final URL.
       { source: FORM_LEGACY, destination: FORM_PUBLIC, permanent: true },
+      // Fix American vs British spelling inconsistencies — actual routes use the British spellings.
+      {
+        source: '/about/master-jeweler/:path*',
+        destination: '/about/master-jeweller/:path*',
+        permanent: true,
+      },
+      {
+        source: '/blog/arabic-calligraphy-jewelry-toronto',
+        destination: '/blog/arabic-calligraphy-jewellery-toronto',
+        permanent: true,
+      },
     ]
   },
 }

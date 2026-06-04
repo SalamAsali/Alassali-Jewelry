@@ -13,10 +13,10 @@ const COVER = '/blog/lab-grown-vs-natural-diamonds-toronto-cover.svg'
 const COVER_ALT = 'Lab-grown vs natural diamonds Toronto 2026 — head-to-head comparison of price, quality, resale value, ethics, and what each choice means for your piece, Al-Asali Custom Jewelry'
 
 export const metadata: Metadata = {
-  title: 'Lab-Grown vs Natural Diamonds Toronto 2026 | Al-Asali Jewelry',
+  title: 'Lab-Grown vs Natural Diamonds Toronto 2026',
   description: DESCRIPTION,
   alternates: { canonical: `/blog/${SLUG}` },
-  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER] },
+  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER], url: `/blog/${SLUG}`, locale: 'en_CA', siteName: 'Al-Asali Jewelry' },
 }
 
 const faq = [

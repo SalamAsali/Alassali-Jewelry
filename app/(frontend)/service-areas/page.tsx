@@ -12,7 +12,7 @@ import { gtaCities } from '../gta/[slug]/cities'
 
 export const metadata: Metadata = {
   title: 'Service Areas | Al-Asali Jewelry Studio Toronto',
-  description: 'Al-Asali Jewelry Studio is a Toronto-based custom jeweler serving Toronto neighbourhoods and the entire Greater Toronto Area — Mississauga, Vaughan, Markham, and more.',
+  description: 'Toronto custom jeweler serving all GTA cities and neighbourhoods — Mississauga, Vaughan, Markham, Etobicoke, Scarborough, and more. Free virtual consultations.',
   alternates: { canonical: '/service-areas' },
 }
 

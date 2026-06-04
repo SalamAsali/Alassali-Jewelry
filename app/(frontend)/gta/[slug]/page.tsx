@@ -26,6 +26,13 @@ export function generateMetadata({ params }: { params: Params }): Metadata {
     title: c.metaTitle,
     description: c.metaDescription,
     alternates: { canonical: `/gta/${c.slug}` },
+    openGraph: {
+      title: `${c.metaTitle} | Al-Asali Jewelry`,
+      description: c.metaDescription,
+      url: `/gta/${c.slug}`,
+      locale: 'en_CA',
+      siteName: 'Al-Asali Jewelry',
+    },
   }
 }
 
