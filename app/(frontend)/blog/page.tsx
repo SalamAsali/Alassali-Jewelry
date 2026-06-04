@@ -57,8 +57,8 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     coverImageAlt: 'Lab-grown vs natural diamonds Toronto 2026 — 11-attribute head-to-head comparison',
   },
   {
-    id: 'arabic-calligraphy-jewelry-toronto',
-    slug: 'arabic-calligraphy-jewelry-toronto',
+    id: 'arabic-calligraphy-jewellery-toronto',
+    slug: 'arabic-calligraphy-jewellery-toronto',
     title: "Arabic Calligraphy Jewelry in Toronto: A Craftsman's Guide",
     excerpt: 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweler. Fonts, verses, meanings, prices, and what to ask for.',
     date: '2026-04-19',

@@ -31,7 +31,7 @@ export async function generateMetadata({
   return {
     title: cms?.seoTitle?.trim() || FALLBACK_SEO_TITLE,
     description: cms?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION,
-    alternates: { canonical: `/about/master-jeweler/${slug}` },
+    alternates: { canonical: `/about/master-jeweller/${slug}` },
   }
 }
 
@@ -51,8 +51,8 @@ export default async function MasterJewelerPage({
 
   const breadcrumb = buildBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
-    { name: 'About', url: `${SITE_CONFIG.url}/about/master-jeweler/${slug}` },
-    { name, url: `${SITE_CONFIG.url}/about/master-jeweler/${slug}` },
+    { name: 'About', url: `${SITE_CONFIG.url}/about/master-jeweller/${slug}` },
+    { name, url: `${SITE_CONFIG.url}/about/master-jeweller/${slug}` },
   ])
 
   return (
