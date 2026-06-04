@@ -71,9 +71,10 @@ export default function Footer(props?: FooterProps) {
             <h3 className="text-lg font-heading font-semibold mb-4">Studio</h3>
             <ul className="space-y-2 text-sm">
               <li><Link href="/blog" className="text-warm-gray hover:text-glacier-grey transition-colors">Guides</Link></li>
-              <li><Link href="/about/master-jeweler/mohammad-al-assali" className="text-warm-gray hover:text-glacier-grey transition-colors">Master Jeweler</Link></li>
+              <li><Link href="/about/master-jeweller/mohammad-al-assali" className="text-warm-gray hover:text-glacier-grey transition-colors">Master Jeweler</Link></li>
               <li><Link href="/portfolio" className="text-warm-gray hover:text-glacier-grey transition-colors">Portfolio</Link></li>
               <li><Link href="/faq" className="text-warm-gray hover:text-glacier-grey transition-colors">FAQ</Link></li>
+              <li><Link href="/service-areas" className="text-warm-gray hover:text-glacier-grey transition-colors">Service Areas</Link></li>
             </ul>
           </div>
 
