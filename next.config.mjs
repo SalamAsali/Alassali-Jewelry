@@ -50,7 +50,7 @@ const nextConfig = {
   async rewrites() {
     return [
       ...customSlugs.map((slug) => ({
-        source: `/custom-${slug}`,
+        source: `/custom-${slug}-toronto`,
         destination: `/custom/${slug}`,
       })),
       // /custom-form is the public-facing inquiry form URL; it's served by
@@ -62,9 +62,16 @@ const nextConfig = {
   // 301 the old hierarchical URLs to the new flat slugs to preserve SEO equity.
   async redirects() {
     return [
+      // Old hierarchical routes → new flat -toronto URLs
       ...customSlugs.map((slug) => ({
         source: `/custom/${slug}`,
-        destination: `/custom-${slug}`,
+        destination: `/custom-${slug}-toronto`,
+        permanent: true,
+      })),
+      // Old flat URLs (without -toronto) → new -toronto URLs
+      ...customSlugs.map((slug) => ({
+        source: `/custom-${slug}`,
+        destination: `/custom-${slug}-toronto`,
         permanent: true,
       })),
       // Old internal route for the form → the public form URL.

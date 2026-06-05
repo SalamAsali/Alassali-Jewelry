@@ -38,7 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   const bespokePages: MetadataRoute.Sitemap = bespokeSlugs.map((slug) => ({
-    url: `${BASE}/custom-${slug}`,
+    url: `${BASE}/custom-${slug}-toronto`,
     lastModified: now,
     changeFrequency: 'weekly',
     priority: 0.9,

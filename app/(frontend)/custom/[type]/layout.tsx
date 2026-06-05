@@ -45,7 +45,7 @@ export function generateMetadata({ params }: { params: { type: string } }): Meta
   // sitemap. Noindex prevents it from competing with the homepage for
   // "custom jewelry toronto" intent.
   const isFormPage = params.type === 'general'
-  const canonicalPath = isFormPage ? '/custom-form' : `/custom-${params.type}`
+  const canonicalPath = isFormPage ? '/custom-form' : `/custom-${params.type}-toronto`
   return {
     title: meta.title,
     description: meta.description,

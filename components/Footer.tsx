@@ -55,14 +55,14 @@ export default function Footer(props?: FooterProps) {
           <div>
             <h3 className="text-lg font-heading font-semibold mb-4">Custom Orders</h3>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/custom-engagement-rings" className="text-warm-gray hover:text-glacier-grey transition-colors">Engagement Rings</Link></li>
-              <li><Link href="/custom-wedding-bands" className="text-warm-gray hover:text-glacier-grey transition-colors">Wedding Bands</Link></li>
-              <li><Link href="/custom-rings" className="text-warm-gray hover:text-glacier-grey transition-colors">Rings</Link></li>
-              <li><Link href="/custom-pendants" className="text-warm-gray hover:text-glacier-grey transition-colors">Pendants</Link></li>
-              <li><Link href="/custom-chains" className="text-warm-gray hover:text-glacier-grey transition-colors">Chains</Link></li>
-              <li><Link href="/custom-earrings" className="text-warm-gray hover:text-glacier-grey transition-colors">Earrings</Link></li>
-              <li><Link href="/custom-bracelets" className="text-warm-gray hover:text-glacier-grey transition-colors">Bracelets</Link></li>
-              <li><Link href="/custom-grillz" className="text-warm-gray hover:text-glacier-grey transition-colors">Grillz</Link></li>
+              <li><Link href="/custom-engagement-rings-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Engagement Rings</Link></li>
+              <li><Link href="/custom-wedding-bands-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Wedding Bands</Link></li>
+              <li><Link href="/custom-rings-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Rings</Link></li>
+              <li><Link href="/custom-pendants-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Pendants</Link></li>
+              <li><Link href="/custom-chains-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Chains</Link></li>
+              <li><Link href="/custom-earrings-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Earrings</Link></li>
+              <li><Link href="/custom-bracelets-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Bracelets</Link></li>
+              <li><Link href="/custom-grillz-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Grillz</Link></li>
             </ul>
           </div>
 
