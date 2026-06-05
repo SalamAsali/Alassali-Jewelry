@@ -74,7 +74,6 @@ export default function Footer(props?: FooterProps) {
               <li><Link href="/about/master-jeweller/mohammad-al-assali" className="text-warm-gray hover:text-glacier-grey transition-colors">Master Jeweler</Link></li>
               <li><Link href="/portfolio" className="text-warm-gray hover:text-glacier-grey transition-colors">Portfolio</Link></li>
               <li><Link href="/faq" className="text-warm-gray hover:text-glacier-grey transition-colors">FAQ</Link></li>
-              <li><Link href="/service-areas" className="text-warm-gray hover:text-glacier-grey transition-colors">Service Areas</Link></li>
             </ul>
           </div>
 

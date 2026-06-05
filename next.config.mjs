@@ -82,6 +82,19 @@ const nextConfig = {
         destination: '/blog/arabic-calligraphy-jewellery-toronto',
         permanent: true,
       },
+      // Removed service-area pages → homepage
+      { source: '/service-areas', destination: '/', permanent: true },
+      { source: '/toronto/oakwood-vaughan', destination: '/', permanent: true },
+      { source: '/toronto/yorkville', destination: '/', permanent: true },
+      { source: '/toronto/north-york', destination: '/', permanent: true },
+      { source: '/toronto/etobicoke', destination: '/', permanent: true },
+      { source: '/toronto/scarborough', destination: '/', permanent: true },
+      { source: '/toronto/wychwood', destination: '/', permanent: true },
+      { source: '/toronto/forest-hill', destination: '/', permanent: true },
+      { source: '/toronto/bathurst-st-clair', destination: '/', permanent: true },
+      { source: '/gta/mississauga', destination: '/', permanent: true },
+      { source: '/gta/vaughan', destination: '/', permanent: true },
+      { source: '/gta/markham', destination: '/', permanent: true },
     ]
   },
 }

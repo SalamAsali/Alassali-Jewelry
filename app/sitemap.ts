@@ -1,7 +1,5 @@
 import type { MetadataRoute } from 'next'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
-import { neighbourhoodSlugs } from './(frontend)/toronto/[slug]/neighbourhoods'
-import { gtaCitySlugs } from './(frontend)/gta/[slug]/cities'
 
 const BASE = SITE_CONFIG.url
 
@@ -36,7 +34,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
     { url: `${BASE}/catalog`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/about/master-jeweller/mohammad-al-assali`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE}/service-areas`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
   ]
 
@@ -54,19 +51,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  const torontoPages: MetadataRoute.Sitemap = neighbourhoodSlugs.map((slug) => ({
-    url: `${BASE}/toronto/${slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly',
-    priority: 0.7,
-  }))
-
-  const gtaPages: MetadataRoute.Sitemap = gtaCitySlugs.map((slug) => ({
-    url: `${BASE}/gta/${slug}`,
-    lastModified: now,
-    changeFrequency: 'monthly',
-    priority: 0.6,
-  }))
-
-  return [...staticPages, ...bespokePages, ...blogPages, ...torontoPages, ...gtaPages]
+  return [...staticPages, ...bespokePages, ...blogPages]
 }
