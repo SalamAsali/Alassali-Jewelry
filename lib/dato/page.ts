@@ -118,6 +118,9 @@ const PAGE_BY_SLUG_QUERY = /* GraphQL */ `
             }
           }
         }
+        ... on GoogleReviewsBlockRecord {
+          id heading variant
+        }
       }
     }
   }

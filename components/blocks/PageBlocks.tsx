@@ -16,6 +16,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { StructuredText } from 'react-datocms/structured-text'
 import type { PageBlock } from '@/lib/dato/page'
+import ClientLiveReviewsStrip from '@/components/reviews/ClientLiveReviewsStrip'
 
 // ---------- shared atoms ----------
 
@@ -350,6 +351,17 @@ function ImageStripBlock({ b }: { b: PageBlock }) {
   )
 }
 
+function GoogleReviewsBlock({ b }: { b: PageBlock }) {
+  return (
+    <section className="bg-charcoal/30 py-12">
+      <ClientLiveReviewsStrip
+        heading={b.heading || 'What Our Toronto Clients Say'}
+        variant={b.variant === 'light' ? 'light' : 'dark'}
+      />
+    </section>
+  )
+}
+
 function FaqListBlock({ b }: { b: PageBlock }) {
   return (
     <section className="bg-charcoal/30 py-16">
@@ -391,6 +403,7 @@ const REGISTRY: Record<string, (props: { b: PageBlock }) => React.ReactNode> = {
   CtaBannerBlockRecord: CtaBannerBlock,
   FaqEmbedBlockRecord: FaqEmbedBlock,
   FaqListBlockRecord: FaqListBlock,
+  GoogleReviewsBlockRecord: GoogleReviewsBlock,
   FormEmbedBlockRecord: FormEmbedBlock,
   TestimonialsBlockRecord: TestimonialsBlock,
   ProcessStepsBlockRecord: ProcessStepsBlock,
