@@ -110,6 +110,14 @@ const PAGE_BY_SLUG_QUERY = /* GraphQL */ `
           id heading
           images { url alt width height }
         }
+        ... on FaqListBlockRecord {
+          id heading description
+          items {
+            ... on FaqQARecord {
+              id question answer
+            }
+          }
+        }
       }
     }
   }

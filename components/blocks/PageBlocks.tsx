@@ -350,6 +350,37 @@ function ImageStripBlock({ b }: { b: PageBlock }) {
   )
 }
 
+function FaqListBlock({ b }: { b: PageBlock }) {
+  return (
+    <section className="bg-charcoal/30 py-16">
+      <div className="max-w-3xl mx-auto px-6">
+        {b.heading && <SectionHeading>{b.heading}</SectionHeading>}
+        {b.description && <SectionLead>{b.description}</SectionLead>}
+        <div className="space-y-3">
+          {(b.items || []).map((qa: any, i: number) => (
+            <details
+              key={qa.id || i}
+              className="group bg-charcoal/50 border border-glacier-grey/20 rounded-xl overflow-hidden hover:border-glacier-grey/40 transition"
+            >
+              <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
+                <h4 className="text-white font-bold text-sm md:text-base">
+                  {qa.question}
+                </h4>
+                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-glacier-grey flex items-center justify-center text-white group-open:rotate-45 transition-transform">
+                  +
+                </span>
+              </summary>
+              <div className="px-5 pb-5 text-stone text-sm leading-relaxed whitespace-pre-line">
+                {qa.answer}
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
 // ---------- router ----------
 
 const REGISTRY: Record<string, (props: { b: PageBlock }) => React.ReactNode> = {
@@ -359,6 +390,7 @@ const REGISTRY: Record<string, (props: { b: PageBlock }) => React.ReactNode> = {
   ImageTextBlockRecord: ImageTextBlock,
   CtaBannerBlockRecord: CtaBannerBlock,
   FaqEmbedBlockRecord: FaqEmbedBlock,
+  FaqListBlockRecord: FaqListBlock,
   FormEmbedBlockRecord: FormEmbedBlock,
   TestimonialsBlockRecord: TestimonialsBlock,
   ProcessStepsBlockRecord: ProcessStepsBlock,
