@@ -8,6 +8,74 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 const FROM = 'Al-Asali Jewelry <inquiries@alasalicustomjewelry.ca>'
 const NOTIFY = 'contact@alasalicustomjewelry.ca'
 
+// Inquiry model id in DatoCMS (api_key=inquiry). Set on the
+// migration-content-polish env.
+const INQUIRY_ITEM_TYPE_ID = 'R73j7-W_Rae5EXDiB0KkBQ'
+
+/**
+ * Persist a submission to DatoCMS so it appears under the Inquiry collection
+ * in the admin. Best-effort: if it fails (missing CMA token, network, schema
+ * drift) we log and move on — the Resend email path is the source of truth.
+ */
+async function saveInquiryToDato(body: Record<string, any>, sourceUrl?: string) {
+  const token = process.env.DATOCMS_CMA_TOKEN || process.env.DATOCMS_API_TOKEN
+  if (!token) {
+    console.warn('[inquiries] no DATOCMS_CMA_TOKEN — skipping Dato save')
+    return
+  }
+  const name = body.name || `${body.firstName ?? ''} ${body.lastName ?? ''}`.trim()
+  const stonePrefs = Array.isArray(body.stonePreferences)
+    ? body.stonePreferences.join(', ')
+    : body.stonePreferences
+  const inspNames = Array.isArray(body.inspirationNames)
+    ? body.inspirationNames.join(', ')
+    : body.inspirationNames
+  try {
+    const res = await fetch('https://site-api.datocms.com/items', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'X-Api-Version': '3',
+        Accept: 'application/json',
+        'Content-Type': 'application/vnd.api+json',
+      },
+      body: JSON.stringify({
+        data: {
+          type: 'item',
+          attributes: {
+            name: name || '(no name)',
+            email: body.email || '',
+            phone: body.phone || null,
+            piece_type: body.pieceType || body.type || null,
+            jewelry_category: body.jewelryCategory || null,
+            style: body.style || null,
+            budget: body.budget || null,
+            metal_type: body.metalType || null,
+            gold_color: body.goldColor || null,
+            stone_preferences: stonePrefs || null,
+            stone_shape: body.stoneShape || null,
+            diamond_type: body.diamondType || null,
+            size: body.size || null,
+            timeline: body.timeline || null,
+            notes: body.notes || null,
+            inspiration_names: inspNames || null,
+            source_url: sourceUrl || null,
+            status: 'new',
+          },
+          relationships: {
+            item_type: { data: { type: 'item_type', id: INQUIRY_ITEM_TYPE_ID } },
+          },
+        },
+      }),
+    })
+    if (!res.ok) {
+      console.warn('[inquiries] Dato save failed:', res.status, await res.text())
+    }
+  } catch (err) {
+    console.warn('[inquiries] Dato save threw:', err)
+  }
+}
+
 function row(label: string, value: string | undefined) {
   if (!value) return ''
   return `<tr><td style="padding:6px 12px;color:#999;font-size:13px;white-space:nowrap">${label}</td><td style="padding:6px 12px;color:#fff;font-size:13px">${value}</td></tr>`
@@ -100,6 +168,9 @@ export async function POST(request: NextRequest) {
     const firstName = body.firstName || name.split(' ')[0]
     const category = (body.jewelryCategory || body.type || 'Inquiry').replace(/^\w/, c => c.toUpperCase())
 
+    const sourceUrl =
+      request.headers.get('referer') || request.headers.get('origin') || undefined
+
     await Promise.all([
       resend.emails.send({
         from: FROM,
@@ -115,6 +186,8 @@ export async function POST(request: NextRequest) {
         subject: 'We received your inquiry — Al-Asali Custom Jewelry',
         html: confirmationHtml(firstName),
       }),
+      // Best-effort archive to Dato. Does not block or fail the request.
+      saveInquiryToDato(body, sourceUrl),
     ])
 
     return NextResponse.json({
