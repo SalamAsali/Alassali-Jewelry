@@ -17,6 +17,15 @@ import Link from 'next/link'
 import { StructuredText } from 'react-datocms/structured-text'
 import type { PageBlock } from '@/lib/dato/page'
 import ClientLiveReviewsStrip from '@/components/reviews/ClientLiveReviewsStrip'
+import dynamic from 'next/dynamic'
+
+// Lazy-load the heavy bespoke sections so they only ship when an embedded
+// component block actually appears on a page.
+const StoneShapeSection = dynamic(() => import('@/components/bespoke/StoneShapeSection'))
+const NaturalVsLabSection = dynamic(() => import('@/components/bespoke/NaturalVsLabSection'))
+const GrillzConfigSection = dynamic(() => import('@/components/bespoke/GrillzConfigSection'))
+const PendantsHeritageSection = dynamic(() => import('@/components/bespoke/PendantsHeritageSection'))
+const LocationSection = dynamic(() => import('@/components/bespoke/LocationSection'))
 
 // ---------- shared atoms ----------
 
@@ -351,6 +360,32 @@ function ImageStripBlock({ b }: { b: PageBlock }) {
   )
 }
 
+function EmbeddedComponentBlock({ b }: { b: PageBlock }) {
+  switch (b.component) {
+    case 'stone-shape':
+      return (
+        <StoneShapeSection heading={b.heading || 'Diamond & Stone Shapes'} />
+      )
+    case 'natural-vs-lab':
+      return <NaturalVsLabSection />
+    case 'grillz-config':
+      return <GrillzConfigSection />
+    case 'pendants-heritage':
+      return <PendantsHeritageSection />
+    case 'location':
+      return <LocationSection />
+    default:
+      if (process.env.NODE_ENV !== 'production') {
+        return (
+          <div className="bg-red-900/20 text-red-200 p-4 text-xs">
+            Unknown embedded component: {b.component}
+          </div>
+        )
+      }
+      return null
+  }
+}
+
 function GoogleReviewsBlock({ b }: { b: PageBlock }) {
   return (
     <section className="bg-charcoal/30 py-12">
@@ -404,6 +439,7 @@ const REGISTRY: Record<string, (props: { b: PageBlock }) => React.ReactNode> = {
   FaqEmbedBlockRecord: FaqEmbedBlock,
   FaqListBlockRecord: FaqListBlock,
   GoogleReviewsBlockRecord: GoogleReviewsBlock,
+  EmbeddedComponentBlockRecord: EmbeddedComponentBlock,
   FormEmbedBlockRecord: FormEmbedBlock,
   TestimonialsBlockRecord: TestimonialsBlock,
   ProcessStepsBlockRecord: ProcessStepsBlock,
