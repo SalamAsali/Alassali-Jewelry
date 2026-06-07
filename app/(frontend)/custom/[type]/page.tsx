@@ -933,6 +933,7 @@ function PortalForm() {
     notes: '',
     inspirationImages: [] as string[],
   })
+  const [uploadIds, setUploadIds] = useState<string[]>([])
   const [currentStep, setCurrentStep] = useState<StepId>('contact')
   const [submitted, setSubmitted] = useState(false)
   const [uploading, setUploading] = useState(false)
@@ -1045,8 +1046,24 @@ function PortalForm() {
     const files = Array.from(e.target.files || [])
     if (files.length === 0) return
     setUploading(true)
-    setFormData(prev => ({ ...prev, inspirationImages: [...prev.inspirationImages, ...files.map(f => f.name)] }))
-    setUploading(false)
+    try {
+      const fd = new FormData()
+      files.forEach((f) => fd.append('files', f))
+      const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
+      const res = await fetch(`${baseUrl}/api/inquiries/upload`, { method: 'POST', body: fd })
+      if (res.ok) {
+        const json = await res.json()
+        setUploadIds((prev) => [...prev, ...(json.uploadIds as string[])])
+      }
+      setFormData((prev) => ({
+        ...prev,
+        inspirationImages: [...prev.inspirationImages, ...files.map((f) => f.name)],
+      }))
+    } catch (err) {
+      console.error('Image upload error:', err)
+    } finally {
+      setUploading(false)
+    }
   }
 
   const handleSubmit = async () => {
@@ -1060,7 +1077,7 @@ function PortalForm() {
           type: formData.pieceType || 'general',
           name: `${formData.firstName} ${formData.lastName}`.trim(),
           jewelryCategory: formData.pieceType || 'general',
-          inspirationNames: formData.inspirationImages.join(', '),
+          uploadIds,
         }),
       })
       if (response.ok) setSubmitted(true)
