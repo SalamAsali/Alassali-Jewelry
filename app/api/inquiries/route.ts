@@ -3,7 +3,13 @@ import { Resend } from 'resend'
 
 export const dynamic = 'force-dynamic'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Lazy init — calling `new Resend(undefined)` at module scope throws during
+// Next.js `collecting page data` on any deploy where RESEND_API_KEY isn't set.
+let _resend: Resend | null = null
+function getResend(): Resend {
+  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY)
+  return _resend
+}
 
 const FROM = 'Al-Asali Jewelry <inquiries@alasalicustomjewelry.ca>'
 const NOTIFY = 'contact@alasalicustomjewelry.ca'
@@ -172,14 +178,14 @@ export async function POST(request: NextRequest) {
       request.headers.get('referer') || request.headers.get('origin') || undefined
 
     await Promise.all([
-      resend.emails.send({
+      getResend().emails.send({
         from: FROM,
         to: NOTIFY,
         reply_to: body.email,
         subject: `New ${category} Inquiry — ${name}`,
         html: notificationHtml({ ...body, name }),
       }),
-      resend.emails.send({
+      getResend().emails.send({
         from: FROM,
         to: body.email,
         reply_to: NOTIFY,
