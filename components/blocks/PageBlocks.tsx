@@ -174,15 +174,22 @@ function GalleryBlock({ b }: { b: PageBlock }) {
 
 function ImageTextBlock({ b }: { b: PageBlock }) {
   const right = b.side === 'right'
+  // Collapse to a single centred column when no image is provided — avoids a
+  // half-empty grid where the missing image would leave an awkward blank.
+  const hasImage = Boolean(b.image?.url)
   return (
     <section className="bg-charcoal/30 py-16">
       <div
-        className={`max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center ${
-          right ? 'md:[&>div:first-child]:order-2' : ''
-        }`}
+        className={
+          hasImage
+            ? `max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center ${
+                right ? 'md:[&>div:first-child]:order-2' : ''
+              }`
+            : 'max-w-3xl mx-auto px-6 text-center'
+        }
       >
-        <div>
-          {b.image?.url && (
+        {hasImage && (
+          <div>
             <Image
               src={b.image.url}
               alt={b.image.alt || ''}
@@ -190,8 +197,8 @@ function ImageTextBlock({ b }: { b: PageBlock }) {
               height={b.image.height || 600}
               className="w-full h-auto rounded-lg object-cover"
             />
-          )}
-        </div>
+          </div>
+        )}
         <div>
           {b.heading && (
             <h2 className="text-3xl font-bold text-white mb-4">{b.heading}</h2>
