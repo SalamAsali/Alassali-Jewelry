@@ -18,6 +18,42 @@ import { StructuredText } from 'react-datocms/structured-text'
 import type { PageBlock } from '@/lib/dato/page'
 import ClientLiveReviewsStrip from '@/components/reviews/ClientLiveReviewsStrip'
 import dynamic from 'next/dynamic'
+import {
+  Diamond, Heart, Circle, Layers, Link2, CircleDot, Gem, Flame,
+  MapPin, Shield, Star, Leaf, HandHeart, Sparkles, type LucideIcon,
+} from 'lucide-react'
+
+// Maps the icon-string fields editors store on category tiles and value
+// props to actual Lucide icon components. Add more entries as new icon
+// names are introduced.
+const ICON_MAP: Record<string, LucideIcon> = {
+  // Category tiles (match the original hardcoded component icon choices)
+  'engagement-rings': Diamond,
+  'bridal-bands': Heart,
+  'wedding-bands': Heart,
+  'rings': Circle,
+  'pendants': Layers,
+  'chains': Link2,
+  'earrings': CircleDot,
+  'bracelets': Gem,
+  'grillz': Flame,
+  // Value props
+  'map-pin': MapPin,
+  'shield': Shield,
+  'gem': Gem,
+  'star': Star,
+  'leaf': Leaf,
+  'heart-handshake': HandHeart,
+  'diamond': Diamond,
+  'sparkles': Sparkles,
+}
+
+function IconFromName({ name, className = 'w-6 h-6' }: { name?: string | null; className?: string }) {
+  if (!name) return null
+  const I = ICON_MAP[name.toLowerCase()]
+  if (!I) return null
+  return <I className={className} aria-hidden />
+}
 
 // Lazy-load the heavy bespoke sections so they only ship when an embedded
 // component block actually appears on a page.
@@ -138,15 +174,22 @@ function GalleryBlock({ b }: { b: PageBlock }) {
 
 function ImageTextBlock({ b }: { b: PageBlock }) {
   const right = b.side === 'right'
+  // Collapse to a single centred column when no image is provided — avoids a
+  // half-empty grid where the missing image would leave an awkward blank.
+  const hasImage = Boolean(b.image?.url)
   return (
     <section className="bg-charcoal/30 py-16">
       <div
-        className={`max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center ${
-          right ? 'md:[&>div:first-child]:order-2' : ''
-        }`}
+        className={
+          hasImage
+            ? `max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 items-center ${
+                right ? 'md:[&>div:first-child]:order-2' : ''
+              }`
+            : 'max-w-3xl mx-auto px-6 text-center'
+        }
       >
-        <div>
-          {b.image?.url && (
+        {hasImage && (
+          <div>
             <Image
               src={b.image.url}
               alt={b.image.alt || ''}
@@ -154,8 +197,8 @@ function ImageTextBlock({ b }: { b: PageBlock }) {
               height={b.image.height || 600}
               className="w-full h-auto rounded-lg object-cover"
             />
-          )}
-        </div>
+          </div>
+        )}
         <div>
           {b.heading && (
             <h2 className="text-3xl font-bold text-white mb-4">{b.heading}</h2>
@@ -266,17 +309,40 @@ function TestimonialsBlock({ b }: { b: PageBlock }) {
 }
 
 function ProcessStepsBlock({ b }: { b: PageBlock }) {
+  const steps = (b.steps || []) as Array<{ id?: string; label?: string; description?: string; icon?: { url?: string } | null }>
+  // If every step has the SAME icon URL, treat it as a placeholder copy-paste
+  // and ignore icons entirely. The Dato `homepage` singleton ships with the
+  // same icon.jpeg pasted onto all six steps — rendering it 6× looks like a
+  // bug. The numbered chip below is the desired fallback in that case.
+  const iconUrls = steps.map((s) => s.icon?.url).filter(Boolean)
+  const allSameIcon = iconUrls.length > 1 && new Set(iconUrls).size === 1
+  const useIcons = !allSameIcon
   return (
     <section className="bg-black py-16">
       <div className="max-w-5xl mx-auto px-6">
         {b.heading && <SectionHeading>{b.heading}</SectionHeading>}
         {b.description && <SectionLead>{b.description}</SectionLead>}
         <ol className="grid md:grid-cols-3 gap-4">
-          {(b.steps || []).map((s: any, i: number) => (
+          {steps.map((s, i) => (
             <li
               key={s.id || i}
               className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-6"
             >
+              {useIcons && s.icon?.url ? (
+                <div className="mb-3">
+                  <Image
+                    src={s.icon.url}
+                    alt=""
+                    width={32}
+                    height={32}
+                    className="w-8 h-8 object-contain"
+                  />
+                </div>
+              ) : (
+                <div className="mb-3 inline-flex items-center justify-center w-8 h-8 rounded-full bg-glacier-grey/20 border border-glacier-grey/40 text-white text-sm font-bold">
+                  {i + 1}
+                </div>
+              )}
               <div className="text-glacier-grey text-xs tracking-widest mb-2">
                 STEP {String(i + 1).padStart(2, '0')}
               </div>
@@ -302,6 +368,11 @@ function ValuePropsBlock({ b }: { b: PageBlock }) {
               key={p.id}
               className="bg-black/40 border border-glacier-grey/20 p-6 rounded-xl text-center"
             >
+              {p.icon && (
+                <div className="mb-3 flex justify-center text-glacier-grey">
+                  <IconFromName name={p.icon} className="w-7 h-7" />
+                </div>
+              )}
               <h3 className="text-white font-bold mb-2">{p.title}</h3>
               <p className="text-stone text-sm leading-relaxed">{p.description}</p>
             </div>
@@ -324,6 +395,11 @@ function CategoryGridBlock({ b }: { b: PageBlock }) {
               href={t.url}
               className="group bg-charcoal/50 border border-glacier-grey/20 p-5 rounded-xl hover:border-white/40 transition"
             >
+              {t.icon && (
+                <div className="mb-3 text-glacier-grey group-hover:text-white transition">
+                  <IconFromName name={t.icon} className="w-8 h-8" />
+                </div>
+              )}
               <h3 className="text-white font-bold text-base mb-1">{t.title}</h3>
               <p className="text-stone text-xs leading-relaxed">{t.description}</p>
             </Link>
