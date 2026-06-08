@@ -52,7 +52,7 @@ const PAGE_BY_SLUG_QUERY = /* GraphQL */ `
         }
         ... on GalleryBlockRecord {
           id heading layout
-          images { url alt width height }
+          galleryImages { url alt width height }
         }
         ... on ImageTextBlockRecord {
           id heading body side
@@ -108,7 +108,7 @@ const PAGE_BY_SLUG_QUERY = /* GraphQL */ `
         }
         ... on ImageStripBlockRecord {
           id heading
-          images { url alt width height }
+          galleryImages { url alt width height }
         }
         ... on FaqListBlockRecord {
           id heading description
