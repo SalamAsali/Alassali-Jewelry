@@ -116,7 +116,7 @@ function GalleryBlock({ b }: { b: PageBlock }) {
               : 'grid grid-cols-2 md:grid-cols-4 gap-4'
           }
         >
-          {(b.galleryImages || b.images || []).map((img: any, i: number) => (
+          {(b.images || []).map((img: any, i: number) => (
             <div
               key={i}
               className={layout === 'carousel' ? 'flex-none w-72 snap-start' : ''}
@@ -344,7 +344,7 @@ function ImageStripBlock({ b }: { b: PageBlock }) {
           </h2>
         )}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {(b.galleryImages || b.images || []).map((img: any, i: number) => (
+          {(b.images || []).map((img: any, i: number) => (
             <Image
               key={i}
               src={img.url}
