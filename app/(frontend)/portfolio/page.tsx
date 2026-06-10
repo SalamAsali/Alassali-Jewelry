@@ -89,12 +89,23 @@ export default async function PortfolioPage() {
 
   const items: PortfolioGridItem[] =
     cms && cms.items.length > 0
-      ? cms.items.map((it) => ({
-          id: it.id,
-          name: it.name,
-          category: it.category?.name ?? 'Uncategorized',
-          image: it.image?.url ?? '/images/icon-transparent.png',
-        }))
+      ? cms.items.map((it) => {
+          const primary = it.image?.url
+          const extras = (it.additionalImages ?? [])
+            .map((img) => img?.url)
+            .filter((u): u is string => Boolean(u))
+          const images = [primary, ...extras].filter(
+            (u): u is string => Boolean(u)
+          )
+          return {
+            id: it.id,
+            name: it.name,
+            category: it.category?.name ?? 'Uncategorized',
+            image: primary ?? '/images/icon-transparent.png',
+            images:
+              images.length > 0 ? images : ['/images/icon-transparent.png'],
+          }
+        })
       : FALLBACK_ITEMS
 
   const categories = ['All', ...categoryNames]
