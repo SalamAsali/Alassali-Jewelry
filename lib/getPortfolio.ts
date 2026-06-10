@@ -18,6 +18,7 @@ export type PortfolioItem = {
   order?: number | null
   category?: PortfolioCategory | null
   image?: DatoCMSImage | null
+  additionalImages?: DatoCMSImage[] | null
 }
 
 export type PortfolioData = {
@@ -49,6 +50,12 @@ const PORTFOLIO_QUERY = `
         order
       }
       image {
+        url
+        alt
+        width
+        height
+      }
+      additionalImages {
         url
         alt
         width

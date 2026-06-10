@@ -1,18 +1,157 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 export type PortfolioGridItem = {
   id: string
   name: string
   category: string
+  /** Primary image URL (kept for backward compatibility with FALLBACK_ITEMS). */
   image: string
+  /**
+   * Full ordered list of images for the card. When omitted the card falls
+   * back to `[image]`. When length > 1 the card renders as a carousel:
+   * left/right arrows + auto-rotate every 3s while the card is visible.
+   */
+  images?: string[]
 }
 
 type Props = {
   items: PortfolioGridItem[]
   categories: string[]
+}
+
+/**
+ * Single portfolio card. Visually identical to the original single-image card
+ * — same border, aspect-square, hover overlay. The only new behaviour kicks
+ * in when `images.length > 1`:
+ *   - left/right arrow buttons positioned at the vertical centre of the image
+ *   - auto-advance the active image every 3000ms while the card is intersecting
+ *     the viewport (paused otherwise, and paused for 6s after a manual nav)
+ *   - thin progress dots at the bottom of the image to show position
+ */
+function PortfolioCard({ item }: { item: PortfolioGridItem }) {
+  const images =
+    item.images && item.images.length > 0 ? item.images : [item.image]
+  const total = images.length
+  const isCarousel = total > 1
+
+  const [index, setIndex] = useState(0)
+  const [isVisible, setIsVisible] = useState(false)
+  const [pauseUntil, setPauseUntil] = useState(0)
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  // IntersectionObserver — only count as "visible" while at least 25% of the
+  // card is on screen. That keeps a row of off-screen cards from racing in
+  // the background.
+  useEffect(() => {
+    if (!isCarousel || !ref.current) return
+    const el = ref.current
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) setIsVisible(entry.isIntersecting)
+      },
+      { threshold: 0.25 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [isCarousel])
+
+  // Auto-advance every 3s while visible. Manual navigation pauses for 6s.
+  useEffect(() => {
+    if (!isCarousel || !isVisible) return
+    const tick = () => {
+      if (Date.now() < pauseUntil) return
+      setIndex((i) => (i + 1) % total)
+    }
+    const id = window.setInterval(tick, 3000)
+    return () => window.clearInterval(id)
+  }, [isCarousel, isVisible, total, pauseUntil])
+
+  const goTo = (next: number) => {
+    setIndex(((next % total) + total) % total)
+    setPauseUntil(Date.now() + 6000)
+  }
+
+  return (
+    <div ref={ref} className="group cursor-pointer">
+      <div className="relative overflow-hidden rounded-lg border-4 border-soft-black shadow-lg">
+        <div className="aspect-square overflow-hidden bg-white relative">
+          {images.map((src, i) => (
+            <img
+              key={src + i}
+              src={src}
+              alt={item.name}
+              className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
+                i === index ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              }`}
+              loading={i === 0 ? 'eager' : 'lazy'}
+            />
+          ))}
+        </div>
+
+        {/* Hover overlay with name — identical to original */}
+        <div className="absolute inset-0 bg-gradient-to-t from-soft-black/90 via-soft-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5 pointer-events-none">
+          <h3
+            className="text-lg font-semibold text-white leading-tight"
+            style={{ fontFamily: 'var(--font-heading)' }}
+          >
+            {item.name}
+          </h3>
+        </div>
+
+        {/* Carousel chrome — only when 2+ images */}
+        {isCarousel && (
+          <>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                goTo(index - 1)
+              }}
+              aria-label="Previous image"
+              className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-soft-black/70 hover:bg-soft-black text-white flex items-center justify-center text-lg leading-none transition-colors focus:outline-none focus:ring-2 focus:ring-white/60"
+            >
+              ‹
+            </button>
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                goTo(index + 1)
+              }}
+              aria-label="Next image"
+              className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-soft-black/70 hover:bg-soft-black text-white flex items-center justify-center text-lg leading-none transition-colors focus:outline-none focus:ring-2 focus:ring-white/60"
+            >
+              ›
+            </button>
+            <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex gap-1.5">
+              {images.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    goTo(i)
+                  }}
+                  aria-label={`Show image ${i + 1} of ${total}`}
+                  className={`h-1.5 rounded-full transition-all ${
+                    i === index
+                      ? 'w-6 bg-white'
+                      : 'w-1.5 bg-white/50 hover:bg-white/80'
+                  }`}
+                />
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  )
 }
 
 export default function PortfolioGrid({ items, categories }: Props) {
@@ -81,25 +220,8 @@ export default function PortfolioGrid({ items, categories }: Props) {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
-                className="group cursor-pointer"
               >
-                <div className="relative overflow-hidden rounded-lg border-4 border-soft-black shadow-lg">
-                  <div className="aspect-square overflow-hidden bg-white">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-soft-black/90 via-soft-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                    <h3
-                      className="text-lg font-semibold text-white leading-tight"
-                      style={{ fontFamily: 'var(--font-heading)' }}
-                    >
-                      {item.name}
-                    </h3>
-                  </div>
-                </div>
+                <PortfolioCard item={item} />
               </motion.div>
             ))}
           </AnimatePresence>
