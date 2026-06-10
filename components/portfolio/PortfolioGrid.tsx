@@ -3,6 +3,26 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+// DatoCMS assets are served by Imgix. Appending these params delivers a
+// browser-native modern format (AVIF/WebP), aggressive compression, and a
+// width matched to the actual card size — instead of the full ~3–10 MB
+// originals. Untouched origin URLs flow through unchanged so we don't break
+// anything served outside datocms-assets.com (fallback paths, /images/*).
+function buildImgixSrc(url: string | undefined, width: number): string | undefined {
+  if (!url || !/datocms-assets\.com/.test(url)) return url
+  const sep = url.includes('?') ? '&' : '?'
+  return `${url}${sep}auto=format,compress&fit=crop&w=${width}&q=75`
+}
+
+function buildSrcSet(url: string | undefined): string | undefined {
+  if (!url || !/datocms-assets\.com/.test(url)) return undefined
+  return [400, 600, 800, 1200].map((w) => `${buildImgixSrc(url, w)} ${w}w`).join(', ')
+}
+
+// Grid layout: full-width on mobile, 2 columns ≥640px, 3 columns ≥1024px,
+// container max-width caps at ~1280px so each card is ~400px wide on desktop.
+const CARD_SIZES = '(min-width: 1024px) 400px, (min-width: 640px) 50vw, 100vw'
+
 export type PortfolioGridItem = {
   id: string
   name: string
@@ -81,12 +101,15 @@ function PortfolioCard({ item }: { item: PortfolioGridItem }) {
           {images.map((src, i) => (
             <img
               key={src + i}
-              src={src}
+              src={buildImgixSrc(src, 800)}
+              srcSet={buildSrcSet(src)}
+              sizes={CARD_SIZES}
               alt={item.name}
+              loading="lazy"
+              decoding="async"
               className={`absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:scale-110 ${
                 i === index ? 'opacity-100' : 'opacity-0 pointer-events-none'
               }`}
-              loading={i === 0 ? 'eager' : 'lazy'}
             />
           ))}
         </div>
