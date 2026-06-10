@@ -177,8 +177,91 @@ function PortfolioCard({ item }: { item: PortfolioGridItem }) {
   )
 }
 
+// Bespoke landing pages drive most portfolio traffic. When a visitor arrives
+// from one of them (or lands on /portfolio?category=Rings directly), pre-
+// select the matching filter so they see the work they came to see without
+// hunting for it.
+const BESPOKE_SLUG_TO_CATEGORY: Record<string, string> = {
+  'engagement-rings': 'Engagement Rings',
+  'wedding-bands': 'Wedding Bands',
+  rings: 'Rings',
+  pendants: 'Pendants',
+  chains: 'Chains',
+  bracelets: 'Bracelets',
+  grillz: 'Grillz',
+  // /custom-earrings-toronto exists but the portfolio has no Earrings
+  // category yet — fall through to 'All' until one is added.
+}
+
+function resolveInitialCategory(categories: string[]): string {
+  if (typeof window === 'undefined') return 'All'
+
+  const lookup = (target: string) =>
+    categories.find((c) => c.toLowerCase() === target.toLowerCase())
+
+  // 1) Explicit query param wins — supports deep links and shareable URLs.
+  const fromQuery = new URLSearchParams(window.location.search).get('category')
+  if (fromQuery) {
+    const match = lookup(fromQuery)
+    if (match) return match
+  }
+
+  // 2) Otherwise infer from the referrer path. document.referrer is empty
+  //    when the navigation came from a different-origin link or when the
+  //    referrer policy strips it, in which case we just stay on 'All'.
+  try {
+    const ref = document.referrer
+    if (ref) {
+      const path = new URL(ref).pathname
+      const m = path.match(/^\/custom-([a-z-]+)-toronto\/?$/)
+      if (m) {
+        const target = BESPOKE_SLUG_TO_CATEGORY[m[1]]
+        if (target) {
+          const match = lookup(target)
+          if (match) return match
+        }
+      }
+    }
+  } catch {
+    /* malformed referrer URL — fall through */
+  }
+
+  return 'All'
+}
+
 export default function PortfolioGrid({ items, categories }: Props) {
+  // Always boot with 'All' so the SSR HTML matches the first client render
+  // (hydration safety). On the next tick, swap to the referrer-inferred one
+  // so visitors from a bespoke page see their category already selected.
   const [activeCategory, setActiveCategory] = useState<string>('All')
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const mobileRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const inferred = resolveInitialCategory(categories)
+    if (inferred !== 'All') setActiveCategory(inferred)
+    // run once on mount — categories list is stable through the page render
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Close the mobile dropdown when clicking outside it or pressing Escape.
+  useEffect(() => {
+    if (!mobileOpen) return
+    const onPointer = (e: MouseEvent | TouchEvent) => {
+      if (!mobileRef.current?.contains(e.target as Node)) setMobileOpen(false)
+    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileOpen(false)
+    }
+    window.addEventListener('mousedown', onPointer)
+    window.addEventListener('touchstart', onPointer)
+    window.addEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('mousedown', onPointer)
+      window.removeEventListener('touchstart', onPointer)
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [mobileOpen])
 
   const filteredItems =
     activeCategory === 'All'
@@ -189,33 +272,110 @@ export default function PortfolioGrid({ items, categories }: Props) {
     <section className="py-24 bg-white relative overflow-hidden">
       <div className="section-container relative z-10">
         <div className="mb-16 max-w-4xl mx-auto">
-          <div className="flex flex-col items-center gap-2.5 lg:hidden">
+          {/* Mobile / tablet: branded dropdown */}
+          <div
+            ref={mobileRef}
+            className="relative lg:hidden max-w-sm mx-auto"
+          >
             <button
-              onClick={() => setActiveCategory('All')}
-              className={`px-6 py-2 text-xs uppercase tracking-wider font-semibold rounded-lg transition-all duration-300 ${
-                activeCategory === 'All'
-                  ? 'bg-soft-black text-white shadow-lg'
-                  : 'bg-transparent text-charcoal border border-stone hover:bg-soft-black hover:text-white hover:border-soft-black hover:shadow-lg'
-              }`}
+              type="button"
+              onClick={() => setMobileOpen((v) => !v)}
+              aria-haspopup="listbox"
+              aria-expanded={mobileOpen}
+              className="w-full flex items-center justify-between gap-3 bg-soft-black text-white px-5 py-3.5 rounded-lg shadow-lg hover:shadow-xl transition-shadow"
             >
-              All
-            </button>
-            <div className="flex flex-wrap justify-center gap-2.5">
-              {categories.filter((c) => c !== 'All').map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setActiveCategory(cat)}
-                  className={`px-4 py-2 text-xs uppercase tracking-wider font-semibold rounded-lg transition-all duration-300 ${
-                    activeCategory === cat
-                      ? 'bg-soft-black text-white shadow-lg'
-                      : 'bg-transparent text-charcoal border border-stone hover:bg-soft-black hover:text-white hover:border-soft-black hover:shadow-lg'
-                  }`}
+              <span className="flex items-center gap-2">
+                <span
+                  className="text-[10px] tracking-[0.25em] text-stone uppercase"
+                  style={{ fontFamily: 'var(--font-heading)' }}
                 >
-                  {cat}
-                </button>
-              ))}
-            </div>
+                  Filter
+                </span>
+                <span className="text-sm uppercase tracking-wider font-semibold">
+                  {activeCategory}
+                </span>
+              </span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 16 16"
+                aria-hidden
+                className={`text-stone transition-transform duration-300 ${
+                  mobileOpen ? 'rotate-180' : ''
+                }`}
+              >
+                <path
+                  d="M3 6l5 5 5-5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </button>
+
+            <AnimatePresence>
+              {mobileOpen && (
+                <motion.ul
+                  role="listbox"
+                  aria-label="Filter by category"
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.18 }}
+                  className="absolute left-0 right-0 top-full mt-2 z-30 bg-soft-black text-white rounded-lg shadow-2xl ring-1 ring-charcoal/40 overflow-hidden"
+                >
+                  {categories.map((cat, i) => {
+                    const isActive = cat === activeCategory
+                    return (
+                      <li key={cat} role="option" aria-selected={isActive}>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setActiveCategory(cat)
+                            setMobileOpen(false)
+                          }}
+                          className={`w-full text-left px-5 py-3 text-sm uppercase tracking-wider font-semibold transition-colors ${
+                            isActive
+                              ? 'bg-charcoal text-white'
+                              : 'text-stone hover:bg-charcoal hover:text-white'
+                          } ${
+                            i !== categories.length - 1
+                              ? 'border-b border-charcoal/40'
+                              : ''
+                          }`}
+                        >
+                          <span className="flex items-center justify-between">
+                            <span>{cat}</span>
+                            {isActive && (
+                              <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 16 16"
+                                aria-hidden
+                              >
+                                <path
+                                  d="M3 8l3 3 7-7"
+                                  fill="none"
+                                  stroke="currentColor"
+                                  strokeWidth="2"
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                />
+                              </svg>
+                            )}
+                          </span>
+                        </button>
+                      </li>
+                    )
+                  })}
+                </motion.ul>
+              )}
+            </AnimatePresence>
           </div>
+
+          {/* Desktop: original button row, unchanged */}
           <div className="hidden lg:flex justify-center gap-2.5">
             {categories.map((cat) => (
               <button
