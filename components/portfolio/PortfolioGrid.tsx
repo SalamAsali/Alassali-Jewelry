@@ -193,6 +193,29 @@ const BESPOKE_SLUG_TO_CATEGORY: Record<string, string> = {
   // category yet — fall through to 'All' until one is added.
 }
 
+// Canonical order mirrors the Bespoke nav menu so filter chips read in the
+// same sequence everywhere on the site. 'All' always leads. Anything not in
+// the canonical list (future Dato categories the editor adds) falls in after
+// the known set, preserving its current order from Dato.
+const CANONICAL_CATEGORY_ORDER = [
+  'Engagement Rings',
+  'Wedding Bands',
+  'Rings',
+  'Pendants',
+  'Chains',
+  'Earrings',
+  'Bracelets',
+  'Grillz',
+]
+
+function sortCategories(categories: string[]): string[] {
+  const all = categories.filter((c) => c === 'All')
+  const known = CANONICAL_CATEGORY_ORDER.filter((c) => categories.includes(c))
+  const knownSet = new Set([...all, ...known])
+  const rest = categories.filter((c) => !knownSet.has(c))
+  return [...all, ...known, ...rest]
+}
+
 function resolveInitialCategory(categories: string[]): string {
   if (typeof window === 'undefined') return 'All'
 
@@ -229,7 +252,172 @@ function resolveInitialCategory(categories: string[]): string {
   return 'All'
 }
 
-export default function PortfolioGrid({ items, categories }: Props) {
+/**
+ * Floating pill-shaped filter that drops into view once the primary filter
+ * scrolls off the screen, and recedes when it comes back. Tap → upward-
+ * expanding panel with the full category list. Matches the brand palette
+ * (soft-black surface, white text, glacier-grey eyebrow) and mirrors the
+ * mobile dropdown's interaction model.
+ */
+function FloatingFilter({
+  categories,
+  active,
+  onChange,
+}: {
+  categories: string[]
+  active: string
+  onChange: (cat: string) => void
+}) {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    if (!open) return
+    const onPointer = (e: MouseEvent | TouchEvent) => {
+      if (!ref.current?.contains(e.target as Node)) setOpen(false)
+    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('mousedown', onPointer)
+    window.addEventListener('touchstart', onPointer)
+    window.addEventListener('keydown', onKey)
+    return () => {
+      window.removeEventListener('mousedown', onPointer)
+      window.removeEventListener('touchstart', onPointer)
+      window.removeEventListener('keydown', onKey)
+    }
+  }, [open])
+
+  return (
+    <motion.div
+      initial={{ y: 80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: 80, opacity: 0 }}
+      transition={{ duration: 0.25, ease: 'easeOut' }}
+      className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 w-[min(92vw,22rem)]"
+    >
+      <div ref={ref} className="relative">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-haspopup="listbox"
+          aria-expanded={open}
+          className="group w-full flex items-center justify-between gap-3 bg-soft-black text-white px-5 py-3.5 rounded-full shadow-2xl ring-1 ring-charcoal/40 hover:ring-glacier-grey/60 transition-all"
+        >
+          <span className="flex items-center gap-2">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              aria-hidden
+              className="text-glacier-grey-light"
+            >
+              <path
+                d="M2 3.5h12M4 8h8M6 12.5h4"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+              />
+            </svg>
+            <span
+              className="text-[10px] tracking-[0.25em] text-stone uppercase"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              Filter
+            </span>
+            <span className="text-sm uppercase tracking-wider font-semibold">
+              {active}
+            </span>
+          </span>
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 16 16"
+            aria-hidden
+            className={`text-stone transition-transform duration-300 ${
+              open ? 'rotate-0' : 'rotate-180'
+            }`}
+          >
+            <path
+              d="M3 6l5 5 5-5"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </button>
+
+        <AnimatePresence>
+          {open && (
+            <motion.ul
+              role="listbox"
+              aria-label="Filter by category"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 8 }}
+              transition={{ duration: 0.18 }}
+              className="absolute left-0 right-0 bottom-full mb-2 z-50 bg-soft-black text-white rounded-2xl shadow-2xl ring-1 ring-charcoal/40 overflow-hidden max-h-[60vh] overflow-y-auto"
+            >
+              {categories.map((cat, i) => {
+                const isActive = cat === active
+                return (
+                  <li key={cat} role="option" aria-selected={isActive}>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        onChange(cat)
+                        setOpen(false)
+                      }}
+                      className={`w-full text-left px-5 py-3 text-sm uppercase tracking-wider font-semibold transition-colors ${
+                        isActive
+                          ? 'bg-charcoal text-white'
+                          : 'text-stone hover:bg-charcoal hover:text-white'
+                      } ${
+                        i !== categories.length - 1
+                          ? 'border-b border-charcoal/40'
+                          : ''
+                      }`}
+                    >
+                      <span className="flex items-center justify-between">
+                        <span>{cat}</span>
+                        {isActive && (
+                          <svg
+                            width="14"
+                            height="14"
+                            viewBox="0 0 16 16"
+                            aria-hidden
+                          >
+                            <path
+                              d="M3 8l3 3 7-7"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="2"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        )}
+                      </span>
+                    </button>
+                  </li>
+                )
+              })}
+            </motion.ul>
+          )}
+        </AnimatePresence>
+      </div>
+    </motion.div>
+  )
+}
+
+export default function PortfolioGrid({ items, categories: rawCategories }: Props) {
+  // Sort to brand-canonical order before we use the list anywhere downstream.
+  const categories = sortCategories(rawCategories)
+
   // Always boot with 'All' so the SSR HTML matches the first client render
   // (hydration safety). On the next tick, swap to the referrer-inferred one
   // so visitors from a bespoke page see their category already selected.
@@ -237,11 +425,28 @@ export default function PortfolioGrid({ items, categories }: Props) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const mobileRef = useRef<HTMLDivElement | null>(null)
 
+  // Floating filter visibility: true once the primary filter row has scrolled
+  // out of the viewport.
+  const [floatingShown, setFloatingShown] = useState(false)
+  const primaryFilterRef = useRef<HTMLDivElement | null>(null)
+
   useEffect(() => {
     const inferred = resolveInitialCategory(categories)
     if (inferred !== 'All') setActiveCategory(inferred)
     // run once on mount — categories list is stable through the page render
     // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Toggle the floating filter when the primary filter leaves/enters the view.
+  useEffect(() => {
+    const el = primaryFilterRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => setFloatingShown(!entry.isIntersecting),
+      { threshold: 0 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
   }, [])
 
   // Close the mobile dropdown when clicking outside it or pressing Escape.
@@ -271,7 +476,10 @@ export default function PortfolioGrid({ items, categories }: Props) {
   return (
     <section className="py-6 lg:py-24 bg-white relative overflow-hidden">
       <div className="section-container relative z-10">
-        <div className="mb-6 lg:mb-16 max-w-4xl mx-auto">
+        <div
+          ref={primaryFilterRef}
+          className="mb-6 lg:mb-16 max-w-4xl mx-auto"
+        >
           {/* Mobile / tablet: branded dropdown */}
           <div
             ref={mobileRef}
@@ -410,6 +618,16 @@ export default function PortfolioGrid({ items, categories }: Props) {
           </AnimatePresence>
         </motion.div>
       </div>
+
+      <AnimatePresence>
+        {floatingShown && (
+          <FloatingFilter
+            categories={categories}
+            active={activeCategory}
+            onChange={setActiveCategory}
+          />
+        )}
+      </AnimatePresence>
     </section>
   )
 }
