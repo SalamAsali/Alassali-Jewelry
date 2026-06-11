@@ -542,6 +542,15 @@ function LandingPage({ type }: { type: string }) {
   if (!landing) return null
 
   const styles = config.styles
+
+  // Portfolio category to pre-select when the visitor follows the "View Our
+  // Work" link below. Pass it as a query param because <NextLink> is a
+  // client-side route change — document.referrer wouldn't update.
+  const portfolioCategory = type
+    .split('-')
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+    .join(' ')
+  const portfolioHref = `/portfolio?category=${encodeURIComponent(portfolioCategory)}`
   const metals = config.metals
   const icons = styleIcons[type] || {}
   const showStones = type !== 'grillz'
@@ -588,7 +597,7 @@ function LandingPage({ type }: { type: string }) {
               <NextLink href={`/custom-form?type=${type}`} className="inline-flex items-center gap-2 bg-glacier-grey text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">
                 Design Your {config.title.replace('Custom ', '')} <ArrowRight className="w-5 h-5" />
               </NextLink>
-              <NextLink href="/portfolio" className="inline-flex items-center gap-2 bg-white/10 border-2 border-white text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white hover:text-soft-black transition-all duration-300">
+              <NextLink href={portfolioHref} className="inline-flex items-center gap-2 bg-white/10 border-2 border-white text-white px-10 py-4 rounded-lg font-bold text-sm uppercase tracking-wider hover:bg-white hover:text-soft-black transition-all duration-300">
                 View Our Work
               </NextLink>
             </div>

@@ -269,9 +269,9 @@ export default function PortfolioGrid({ items, categories }: Props) {
       : items.filter((item) => item.category === activeCategory)
 
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-6 lg:py-24 bg-white relative overflow-hidden">
       <div className="section-container relative z-10">
-        <div className="mb-16 max-w-4xl mx-auto">
+        <div className="mb-6 lg:mb-16 max-w-4xl mx-auto">
           {/* Mobile / tablet: branded dropdown */}
           <div
             ref={mobileRef}
