@@ -1,0 +1,55 @@
+{
+  "_meta": {
+    "scrapedAt": "2026-06-13",
+    "source": "https://www.tecimerjewellery.com/gold-jewellery/chains.html",
+    "totalItems": 270,
+    "pagesScraped": 8,
+    "perPage": 36,
+    "loginUser": "ds_mohammad@hotmail.com (Mohammad Alassali)",
+    "facets": {
+      "color": [{ "label": "YELLOW", "count": 1 }],
+      "itemType": [
+        { "label": "Bracelets", "count": 17 },
+        { "label": "Chain", "count": 238 },
+        { "label": "Necklaces", "count": 3 }
+      ],
+      "length": [
+        { "label": "7\"", "count": 49 },
+        { "label": "7.5\"", "count": 35 },
+        { "label": "8\"", "count": 55 },
+        { "label": "8.5\"", "count": 9 },
+        { "label": "16\"", "count": 179 },
+        { "label": "17\"", "count": 2 },
+        { "label": "18\"", "count": 251 },
+        { "label": "20\"", "count": 261 },
+        { "label": "22\"", "count": 233 },
+        { "label": "24\"", "count": 231 },
+        { "label": "26\"", "count": 77 },
+        { "label": "28\"", "count": 77 },
+        { "label": "9.25\"", "count": 1 }
+      ]
+    },
+    "_note": "Catalog rows captured from listing pages. Per-variant detail (price × metal × length) is in tecimer-sample-variants.json for one product. Use scripts/scrape-tecimer-details.ts (in Part 2) to iterate all URLs and capture spConfig for every product."
+  },
+  "productListSample_page1_first12": [
+    { "url": "https://www.tecimerjewellery.com/n209-flat-beveled-curb.html", "name": "N209 FLAT BEVELED CURB", "img": "n209_2.jpg", "type": "curb", "widthMm": 4.0, "construction": "solid", "color": "yellow" },
+    { "url": "https://www.tecimerjewellery.com/n145-solid-textured-oval-link-necklace.html", "name": "N145 SOLID TEXTURED OVAL LINK NECKLACE", "img": "n145__4.jpg", "type": "oval-link", "construction": "solid", "color": "yellow" },
+    { "url": "https://www.tecimerjewellery.com/paper-clip-mini.html", "name": "PAPER CLIP MINI", "img": "paper_clip-_mini__2.jpg", "type": "paperclip", "widthMm": 1.0 },
+    { "url": "https://www.tecimerjewellery.com/n109-pink-pink-gold-solid-box-link.html", "name": "N109-PINK - PINK GOLD SOLID BOX LINK", "img": "n109-pink.jpg", "type": "box", "construction": "solid", "color": "rose" },
+    { "url": "https://www.tecimerjewellery.com/n135-pink-pink-gold-solid-diamond-cut-wheat-link.html", "name": "N135-PINK - PINK GOLD SOLID DIAMOND CUT WHEAT LINK", "type": "wheat", "widthMm": 1.2, "construction": "solid", "color": "rose", "finish": "diamond-cut" },
+    { "url": "https://www.tecimerjewellery.com/franco-pink-pink-gold-solid-franco-link.html", "name": "FRANCO-PINK - PINK GOLD SOLID FRANCO LINK", "type": "franco", "widthMm": 1.0, "construction": "solid", "color": "rose" },
+    { "url": "https://www.tecimerjewellery.com/n605-pink-pink-gold-solid-open-cable-link.html", "name": "N605-PINK - PINK GOLD SOLID OPEN CABLE LINK", "type": "cable", "widthMm": 1.5, "construction": "solid", "color": "rose", "style": "open" },
+    { "url": "https://www.tecimerjewellery.com/station-paper-clip.html", "name": "STATION PAPER CLIP", "type": "paperclip", "widthMm": 5.5, "style": "station" },
+    { "url": "https://www.tecimerjewellery.com/n821-two-tone-gold-hollow-fancy-round-link.html", "name": "N821 - TWO TONE GOLD HOLLOW FANCY ROUND LINK", "type": "round-link", "widthMm": 3.1, "construction": "hollow", "color": "two-tone", "style": "fancy" },
+    { "url": "https://www.tecimerjewellery.com/n822-two-tone-gold-hollow-fancy-round-link.html", "name": "N822 - TWO TONE GOLD HOLLOW FANCY ROUND LINK", "type": "round-link", "widthMm": 4.1, "construction": "hollow", "color": "two-tone", "style": "fancy" },
+    { "url": "https://www.tecimerjewellery.com/n823-two-tone-gold-hollow-fancy-round-link.html", "name": "N823 - TWO TONE GOLD HOLLOW FANCY ROUND LINK", "type": "round-link", "widthMm": 5.7, "construction": "hollow", "color": "two-tone" },
+    { "url": "https://www.tecimerjewellery.com/n902-two-tone-gold-station-bead-link.html", "name": "N902 - TWO TONE GOLD STATION BEAD LINK", "type": "bead", "widthMm": 1.9, "color": "two-tone", "style": "station" }
+  ],
+  "observedChainTypes": ["curb", "cuban", "rope", "box", "wheat", "franco", "cable", "paperclip", "bead", "round-link", "anchor", "singapore", "snake", "byzantine", "oval-link", "domed-cuban"],
+  "observedConstructions": ["solid", "hollow", "lightly-plated"],
+  "observedColors": ["yellow", "white", "rose (pink)", "two-tone"],
+  "observedKarats": ["10k", "14k", "18k"],
+  "observedLengths_inches": [7, 7.5, 8, 8.5, 9.25, 16, 17, 18, 20, 22, 24, 26, 28],
+  "noteOnWeight": "Tecimer does NOT display weight in additional info — only product name. Weight is implicit in the wholesale price per variant and the disclaimer 'Final price will be based on actual product weight.' Weight per inch can be back-calculated from (variant price ÷ Tecimer wholesale per gram for karat ÷ inches).",
+  "productNamingConvention": "Pattern: {SKU} {CONSTRUCTION} {FINISH} {SHAPE} {LINK} — e.g. 'N612 - YELLOW GOLD SOLID DIAMOND CUT ROPE LINK'. Width often suffixed e.g. '-4MM' on title. SKU prefix N = necklace family, V = lightly-plated variant, G = curb family. Suffix W = white gold, -PINK = rose."
+}

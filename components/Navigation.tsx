@@ -56,8 +56,27 @@ export default function Navigation(props?: NavigationProps) {
     { name: 'Grillz', path: '/custom-grillz', icon: '/images/icons/grillz.svg' },
   ]
 
+  const chainsMenu = {
+    metals: [
+      { name: 'Yellow Gold', path: '/chains/yellow-gold' },
+      { name: 'White Gold', path: '/chains/white-gold' },
+    ],
+    types: [
+      { name: 'Cuban', path: '/chains/yellow-gold/cuban' },
+      { name: 'Figaro', path: '/chains/yellow-gold/figaro' },
+      { name: 'Rope', path: '/chains/yellow-gold/rope' },
+      { name: 'Box', path: '/chains/yellow-gold/box' },
+      { name: 'Byzantine', path: '/chains/yellow-gold/byzantine' },
+      { name: 'Curb', path: '/chains/yellow-gold/curb' },
+      { name: 'Franco', path: '/chains/yellow-gold/franco' },
+      { name: 'Snake', path: '/chains/yellow-gold/snake' },
+      { name: 'Wheat', path: '/chains/yellow-gold/wheat' },
+    ],
+  }
+
   const menuItems = [
     { name: 'Bespoke', path: null, hasDropdown: true, dropdownType: 'bespoke' },
+    { name: 'Chains', path: '/chains', hasDropdown: true, dropdownType: 'chains' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'FAQ', path: '/faq' },
   ]
@@ -213,6 +232,58 @@ export default function Navigation(props?: NavigationProps) {
                         </div>
                       </motion.div>
                     )}
+
+                    {openDropdown === 'chains' && item.dropdownType === 'chains' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[500px] rounded-xl shadow-2xl border-2 border-stone p-5 z-50 bg-white"
+                        role="menu"
+                        aria-label="Gold chains menu"
+                      >
+                        {/* Metal tiles */}
+                        <div className="grid grid-cols-2 gap-3 mb-4">
+                          {chainsMenu.metals.map((metal) => (
+                            <Link
+                              key={metal.name}
+                              href={metal.path}
+                              className="group relative rounded-lg p-5 bg-soft-black border-2 border-soft-black hover:border-glacier-grey transition-all duration-300 hover:scale-105 text-center"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              <span className="text-base font-bold text-white group-hover:text-glacier-grey-light block font-heading">
+                                {metal.name}
+                              </span>
+                              <span className="text-xs text-stone mt-1 block">Shop collection →</span>
+                            </Link>
+                          ))}
+                        </div>
+                        {/* Type grid */}
+                        <p className="text-xs font-semibold text-charcoal uppercase tracking-wider mb-2 px-1">By Type</p>
+                        <div className="grid grid-cols-3 gap-2">
+                          {chainsMenu.types.map((type) => (
+                            <Link
+                              key={type.name}
+                              href={type.path}
+                              className="group rounded-lg p-2.5 bg-white border border-stone hover:border-glacier-grey transition-all duration-200 text-center"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              <span className="text-xs font-medium text-charcoal group-hover:text-glacier-grey">
+                                {type.name}
+                              </span>
+                            </Link>
+                          ))}
+                        </div>
+                        {/* View all */}
+                        <Link
+                          href="/chains"
+                          className="block mt-3 text-center text-sm font-semibold text-glacier-grey hover:text-glacier-grey-light transition-colors"
+                          onClick={() => setOpenDropdown(null)}
+                        >
+                          View All Chains →
+                        </Link>
+                      </motion.div>
+                    )}
                   </AnimatePresence>
                 </div>
               ) : (
@@ -315,6 +386,37 @@ export default function Navigation(props?: NavigationProps) {
                                 {bespoke.name}
                               </Link>
                             ))}
+                          </motion.div>
+                        )}
+                        {openDropdown === 'chains' && item.dropdownType === 'chains' && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="pl-4 space-y-2 overflow-hidden"
+                          >
+                            {chainsMenu.metals.map((metal) => (
+                              <Link
+                                key={metal.name}
+                                href={metal.path}
+                                onClick={() => { setIsMenuOpen(false); setOpenDropdown(null); }}
+                                className="block py-2 text-sm font-semibold text-glacier-grey-light hover:text-white transition-colors"
+                              >
+                                {metal.name}
+                              </Link>
+                            ))}
+                            <div className="border-t border-glacier-grey/20 pt-2 mt-2">
+                              {chainsMenu.types.map((type) => (
+                                <Link
+                                  key={type.name}
+                                  href={type.path}
+                                  onClick={() => { setIsMenuOpen(false); setOpenDropdown(null); }}
+                                  className="block py-2 text-sm text-stone hover:text-glacier-grey transition-colors"
+                                >
+                                  {type.name}
+                                </Link>
+                              ))}
+                            </div>
                           </motion.div>
                         )}
                       </AnimatePresence>

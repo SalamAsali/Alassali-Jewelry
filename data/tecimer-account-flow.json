@@ -1,0 +1,76 @@
+{
+  "_meta": {
+    "purpose": "Reverse-engineered Tecimer customer account + order architecture. Use this to mirror the same flow on alasalicustomjewelry.ca but adapted for B2C (Stripe payment instead of Purchase Order, no 'TBD' pricing).",
+    "scrapedAt": "2026-06-13",
+    "loggedInAs": "Mohammad Alassali (ds_mohammad@hotmail.com)",
+    "stack": "Magento 2 (Tecimer's commerce engine) — we are NOT migrating to Magento; we replicate the UX in our Next.js + DatoCMS stack."
+  },
+  "accountDashboardSections": {
+    "leftNav": [
+      { "label": "My Account", "url": "/customer/account/" },
+      { "label": "My Orders", "url": "/sales/order/history/" },
+      { "label": "My Downloadable Products", "url": "/downloadable/customer/products/" },
+      { "label": "My Wish List", "url": "/wishlist/" },
+      { "label": "Address Book", "url": "/customer/address/" },
+      { "label": "Account Information", "url": "/customer/account/edit/" },
+      { "label": "Stored Payment Methods", "url": "/vault/cards/listaction/" },
+      { "label": "Newsletter Subscriptions", "url": "/newsletter/manage/" }
+    ],
+    "myAccountPage": {
+      "Account Information": ["Contact Information (name + email + Edit + Change Password)", "Newsletters (subscription state)"],
+      "Address Book": ["Default Billing Address", "Default Shipping Address", "Manage Addresses link"],
+      "ComparedProducts": "Sidebar widget (skip — wholesaler feature)"
+    }
+  },
+  "ordersPage": {
+    "url": "/sales/order/history/",
+    "columns": ["Order #", "Date", "Estimated Total", "Status", "Action"],
+    "actions": ["View", "Reorder"],
+    "perPage": [10, 20, 50],
+    "ordersObserved": [
+      { "orderNo": "000014923", "date": "3/28/26", "estimatedTotal": "$857.46", "status": "Pending" },
+      { "orderNo": "000007406", "date": "1/16/25", "estimatedTotal": "$275.55", "status": "Pending" }
+    ],
+    "noteOnStatus": "Tecimer orders sit 'Pending' until staff weigh actual product and finalize price. For Al-assali B2C with Stripe, statuses should be: Pending → Confirmed → In Production / Crafting → Shipped → Delivered (or Cancelled / Refunded)."
+  },
+  "orderDetailPage": {
+    "url": "/sales/order/view/order_id/{id}/",
+    "structure": {
+      "header": ["Order # {6-digit zero-padded}", "ESTIMATED WHOLESALE PRICE banner (skip on B2C; replace with normal subtotal)", "Status badge", "Order Date", "Reorder + Print actions"],
+      "itemsTable": {
+        "columns": ["Product Name (with metal + length sub-fields)", "SKU", "Price", "Qty", "Estimated Subtotal"],
+        "exampleRow": {
+          "name": "N612 - YELLOW GOLD SOLID DIAMOND CUT ROPE LINK",
+          "options": { "Metal Type": "10k", "Length": "20\"" },
+          "sku": "N612-3",
+          "price": "$799.50",
+          "qty": 1,
+          "subtotal": "$799.50"
+        }
+      },
+      "totals": {
+        "Estimated Subtotal": "$799.50",
+        "Shipping": "To Be Determined",
+        "Taxes": "To Be Determined",
+        "Estimated Total": "To Be Determined"
+      },
+      "sidebars": {
+        "Shipping Address": ["Mohammad Alassali", "Alassali Jewelry", "5070 Oscar Peterson blvd", "Mississauga, Ontario, L5m7w3", "Canada", "T: 6475624640"],
+        "Shipping Method": "Pickup - Pick in Store",
+        "Billing Address": "(same as shipping in this case)",
+        "Payment Method": "Purchase Order — PO Number"
+      }
+    }
+  },
+  "customerProfileFields": [
+    "First Name", "Last Name", "Email", "Password",
+    "Default Billing Address (street, city, province, postal, country, phone)",
+    "Default Shipping Address (same fields)",
+    "Newsletter subscription boolean",
+    "Stored payment methods (we'll use Stripe SetupIntents instead of Magento Vault)"
+  ],
+  "checkoutFlow": {
+    "steps": ["Cart", "Shipping (address + method)", "Review & Payments", "Confirmation"],
+    "noteForAlassali": "Replace 'Purchase Order' with Stripe Checkout (we already have Resend for email, add Stripe). Allow guest checkout BUT push 'Create account to track this order' on the success page."
+  }
+}

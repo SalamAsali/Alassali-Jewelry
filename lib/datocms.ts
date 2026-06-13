@@ -392,3 +392,354 @@ export async function getPageBySlug(slug: string): Promise<PageData | null> {
 export function isDatoCMSConfigured(): boolean {
   return Boolean(process.env.DATOCMS_API_TOKEN)
 }
+
+// ============================================================================
+// Chains — GraphQL Queries
+// ============================================================================
+
+const CHAINS_QUERY = `
+  query AllChains($first: IntType, $filter: ChainModelFilter) {
+    allChains(first: $first, filter: $filter, orderBy: order_ASC) {
+      id
+      name
+      slug
+      chainType
+      widthMm
+      availableMetals
+      availableKarats
+      availableLengths
+      construction
+      weightPerInchG
+      heroImage {
+        url
+        alt
+        width
+        height
+        responsiveImage(imgixParams: { fit: crop, w: 800, h: 800 }) {
+          src
+          width
+          height
+          alt
+          base64
+        }
+      }
+      galleryImages {
+        url
+        alt
+        width
+        height
+        responsiveImage(imgixParams: { fit: crop, w: 800, h: 800 }) {
+          src
+          width
+          height
+          alt
+          base64
+        }
+      }
+      defaultKarat
+      defaultMetal
+      defaultLengthIn
+      description
+      specifications
+      seoTitle
+      seoDescription
+      featured
+      order
+      supplierSku
+      active
+    }
+  }
+`
+
+const CHAIN_BY_SLUG_QUERY = `
+  query ChainBySlug($slug: String!) {
+    chain(filter: { slug: { eq: $slug } }) {
+      id
+      name
+      slug
+      chainType
+      widthMm
+      availableMetals
+      availableKarats
+      availableLengths
+      construction
+      weightPerInchG
+      heroImage {
+        url
+        alt
+        width
+        height
+        responsiveImage(imgixParams: { fit: crop, w: 800, h: 800 }) {
+          src
+          width
+          height
+          alt
+          base64
+        }
+      }
+      galleryImages {
+        url
+        alt
+        width
+        height
+        responsiveImage(imgixParams: { fit: crop, w: 1200, h: 1200 }) {
+          src
+          width
+          height
+          alt
+          base64
+        }
+      }
+      defaultKarat
+      defaultMetal
+      defaultLengthIn
+      description
+      specifications
+      seoTitle
+      seoDescription
+      featured
+      order
+      supplierSku
+      active
+    }
+  }
+`
+
+const PRICING_CONFIG_QUERY = `
+  query PricingConfig {
+    pricingConfig {
+      markupEighteenK
+      markupFourteenK
+      markupTenK
+      makingChargePerGram
+      heavyChainSurchargePerGram
+      claspChargeCad
+      spotPriceSource
+      lastSpotTwentyfourK
+      spotUpdatedAt
+      manualOverrideActive
+    }
+  }
+`
+
+const CHAINS_LANDING_QUERY = `
+  query ChainsLanding {
+    chainsLanding {
+      heroTitle
+      heroSubtitle
+      heroImage {
+        url
+        alt
+        width
+        height
+        responsiveImage(imgixParams: { fit: crop, w: 1920, h: 800 }) {
+          src
+          width
+          height
+          alt
+          base64
+        }
+      }
+      metalPickerYellowImage {
+        url
+        alt
+        width
+        height
+        responsiveImage(imgixParams: { fit: crop, w: 800, h: 800 }) {
+          src
+          width
+          height
+          alt
+          base64
+        }
+      }
+      metalPickerWhiteImage {
+        url
+        alt
+        width
+        height
+        responsiveImage(imgixParams: { fit: crop, w: 800, h: 800 }) {
+          src
+          width
+          height
+          alt
+          base64
+        }
+      }
+      faqItems {
+        question
+        answer
+      }
+    }
+  }
+`
+
+// ============================================================================
+// Chains — Type Definitions
+// ============================================================================
+
+export type ChainType = 'cuban' | 'figaro' | 'rope' | 'box' | 'byzantine' | 'snake' | 'herringbone' | 'mariner' | 'wheat' | 'bead' | 'paperclip' | 'curb' | 'cable' | 'franco' | 'round-link' | 'anchor' | 'singapore' | 'oval-link' | 'domed-cuban'
+export type MetalColor = 'yellow-gold' | 'white-gold' | 'rose-gold' | 'two-tone'
+export type Karat = '10k' | '14k' | '18k'
+export type Construction = 'hollow' | 'semi-solid' | 'solid'
+
+export interface Chain {
+  id: string
+  name: string
+  slug: string
+  chainType: ChainType
+  widthMm: number
+  availableMetals: MetalColor[]
+  availableKarats: Karat[]
+  availableLengths: number[]
+  construction: Construction
+  weightPerInchG: number
+  heroImage: DatoCMSImage
+  galleryImages: DatoCMSImage[]
+  defaultKarat: Karat
+  defaultMetal: MetalColor
+  defaultLengthIn: number
+  description?: string
+  specifications?: string
+  seoTitle?: string
+  seoDescription?: string
+  featured: boolean
+  order: number
+  supplierSku?: string
+  active: boolean
+}
+
+export interface PricingConfig {
+  markup18k: number
+  markup14k: number
+  markup10k: number
+  makingChargePerGram: number
+  heavyChainSurchargePerGram: number
+  claspChargeCad: number
+  spotPriceSource: string
+  lastSpot24k: number
+  spotUpdatedAt: string
+  manualOverrideActive: boolean
+}
+
+export interface ChainsLandingData {
+  heroTitle?: string
+  heroSubtitle?: string
+  heroImage?: DatoCMSImage
+  metalPickerYellowImage?: DatoCMSImage
+  metalPickerWhiteImage?: DatoCMSImage
+  faqItems?: Array<{ question: string; answer: string }>
+}
+
+// ============================================================================
+// Chains — Data Fetching Functions
+// ============================================================================
+
+/**
+ * Fetch all chains with optional filters
+ */
+export async function getChains(
+  options: {
+    filter?: {
+      chainType?: ChainType
+      metal?: MetalColor
+      featured?: boolean
+      active?: boolean
+    }
+    limit?: number
+  } = {}
+): Promise<Chain[]> {
+  const { filter = {}, limit = 100 } = options
+
+  const datoFilter: Record<string, unknown> = {}
+
+  // Default to active chains only
+  if (filter.active !== undefined) {
+    datoFilter.active = { eq: filter.active }
+  } else {
+    datoFilter.active = { eq: true }
+  }
+
+  if (filter.chainType) {
+    datoFilter.chainType = { eq: filter.chainType }
+  }
+  if (filter.metal) {
+    datoFilter.availableMetals = { anyIn: [filter.metal] }
+  }
+  if (filter.featured !== undefined) {
+    datoFilter.featured = { eq: filter.featured }
+  }
+
+  try {
+    const data = await datocmsRequest<{ allChains: Chain[] }>({
+      query: CHAINS_QUERY,
+      variables: {
+        first: limit,
+        filter: Object.keys(datoFilter).length > 0 ? datoFilter : undefined,
+      },
+    })
+    return data.allChains || []
+  } catch (error) {
+    console.error('[DatoCMS] Failed to fetch chains:', error)
+    return []
+  }
+}
+
+/**
+ * Fetch a single chain by slug
+ */
+export async function getChainBySlug(slug: string): Promise<Chain | null> {
+  try {
+    const data = await datocmsRequest<{ chain: Chain | null }>({
+      query: CHAIN_BY_SLUG_QUERY,
+      variables: { slug },
+    })
+    return data.chain
+  } catch (error) {
+    console.error('[DatoCMS] Failed to fetch chain:', error)
+    return null
+  }
+}
+
+/**
+ * Fetch pricing configuration singleton
+ */
+export async function getPricingConfig(): Promise<PricingConfig | null> {
+  try {
+    const data = await datocmsRequest<{ pricingConfig: Record<string, unknown> | null }>({
+      query: PRICING_CONFIG_QUERY,
+    })
+    if (!data.pricingConfig) return null
+    const raw = data.pricingConfig
+    return {
+      markup18k: (raw.markupEighteenK as number) || 0,
+      markup14k: (raw.markupFourteenK as number) || 0,
+      markup10k: (raw.markupTenK as number) || 0,
+      makingChargePerGram: (raw.makingChargePerGram as number) || 0,
+      heavyChainSurchargePerGram: (raw.heavyChainSurchargePerGram as number) || 0,
+      claspChargeCad: (raw.claspChargeCad as number) || 0,
+      spotPriceSource: (raw.spotPriceSource as string) || '',
+      lastSpot24k: (raw.lastSpotTwentyfourK as number) || 0,
+      spotUpdatedAt: (raw.spotUpdatedAt as string) || '',
+      manualOverrideActive: (raw.manualOverrideActive as boolean) || false,
+    }
+  } catch (error) {
+    console.error('[DatoCMS] Failed to fetch pricing config:', error)
+    return null
+  }
+}
+
+/**
+ * Fetch chains landing page content
+ */
+export async function getChainsLanding(): Promise<ChainsLandingData | null> {
+  try {
+    const data = await datocmsRequest<{ chainsLanding: ChainsLandingData | null }>({
+      query: CHAINS_LANDING_QUERY,
+    })
+    return data.chainsLanding
+  } catch (error) {
+    console.error('[DatoCMS] Failed to fetch chains landing:', error)
+    return null
+  }
+}

@@ -13,7 +13,10 @@
     "migrate:all": "node scripts/migrate/01-models.mjs && node scripts/migrate/02-uploads.mjs && node scripts/migrate/03-records.mjs"
   },
   "dependencies": {
+    "@clerk/nextjs": "^7.5.2",
     "@datocms/cda-client": "^0.2.10",
+    "@notionhq/client": "^5.22.0",
+    "@stripe/stripe-js": "^9.8.0",
     "axios": "^1.13.2",
     "clsx": "^2.1.1",
     "framer-motion": "^12.23.26",
@@ -25,10 +28,12 @@
     "react-dom": "^19.2.3",
     "resend": "^6.8.0",
     "sharp": "^0.33.0",
-    "tailwind-merge": "^3.2.0"
+    "stripe": "^22.2.1",
+    "tailwind-merge": "^3.2.0",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@datocms/cma-client-node": "^3.3.16",
+    "@datocms/cma-client-node": "^3.4.5",
     "@types/node": "^22",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -37,6 +42,7 @@
     "eslint-config-next": "15.1.0",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
+    "tsx": "^4.22.4",
     "typescript": "^5"
   }
 }

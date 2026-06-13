@@ -1,0 +1,70 @@
+{
+  "_meta": {
+    "purpose": "Captures the Magento spConfig matrix for ONE Tecimer chain product so Part-2 Claude Code can reuse the same extraction script on all ~270 products. Run /scripts/scrape-tecimer-details.ts to iterate every URL in tecimer-chains-raw.json and produce the full variant matrix.",
+    "sampleProductUrl": "https://www.tecimerjewellery.com/n209-flat-beveled-curb.html",
+    "sampleProductName": "N209 FLAT BEVELED CURB-4MM",
+    "extractionRecipe": "On a logged-in product page, run: `jQuery('#product_addtocart_form').data('mage-configurable').options.spConfig` — returns the full variant matrix below.",
+    "fields": {
+      "sku": "childId -> SKU string (e.g. N209-18 = N209 4mm 18\")",
+      "attributes": "attrId -> { code: gf_metal_type | dimensions, options: [{id, label, allowedProducts}] }",
+      "index": "childId -> { attrId: optionId } — tells you what variant a childId represents",
+      "optionPrices": "childId -> { finalPrice: { amount: NNN } } — Tecimer's wholesale estimated price in CAD",
+      "salable": "childId -> boolean — in stock check"
+    }
+  },
+  "sampleSpConfig": {
+    "sku": {
+      "12008": "N209-14",
+      "12009": "N209-15",
+      "12010": "N209-16",
+      "12012": "N209-18",
+      "16206": "N209-19",
+      "16211": "N209-24"
+    },
+    "attributes": {
+      "314": {
+        "id": "314",
+        "code": "gf_metal_type",
+        "label": "Metal Type",
+        "options": [
+          { "id": "1010", "label": "10k", "allowedProducts": ["16206"] },
+          { "id": "1011", "label": "18k", "allowedProducts": ["12008", "12009", "12010", "12012", "16211"] }
+        ]
+      },
+      "381": {
+        "id": "381",
+        "code": "dimensions",
+        "label": "Length",
+        "options": [
+          { "id": "1681", "label": "8\"", "products": ["12012"] },
+          { "id": "1757", "label": "18\"", "products": ["12008"] },
+          { "id": "1714", "label": "20\"", "products": ["12009"] },
+          { "id": "1724", "label": "22\"", "products": ["12010"] },
+          { "id": "1759", "label": "26\"", "products": ["16206"] },
+          { "id": "1690", "label": "28\"", "products": ["16211"] }
+        ]
+      }
+    },
+    "index": {
+      "12008": { "314": "1011", "381": "1757" },
+      "12009": { "314": "1011", "381": "1714" },
+      "12010": { "314": "1011", "381": "1724" },
+      "12012": { "314": "1011", "381": "1681" },
+      "16206": { "314": "1010", "381": "1759" },
+      "16211": { "314": "1011", "381": "1690" }
+    },
+    "optionPrices": {
+      "12008": { "finalPrice": { "amount": 4767 } },
+      "12009": { "finalPrice": { "amount": 5292 } },
+      "12010": { "finalPrice": { "amount": 5838 } },
+      "12012": { "finalPrice": { "amount": 2163 } }
+    }
+  },
+  "decodedVariants": [
+    { "sku": "N209-18", "metal": "18k", "length_in": 8, "wholesalePriceCad": 2163, "impliedWeightG_at_138per_g_spot": 15.67, "weightPerInch": 1.96 },
+    { "sku": "N209-14", "metal": "18k", "length_in": 18, "wholesalePriceCad": 4767, "impliedWeightG": 34.54, "weightPerInch": 1.92 },
+    { "sku": "N209-15", "metal": "18k", "length_in": 20, "wholesalePriceCad": 5292, "impliedWeightG": 38.35, "weightPerInch": 1.92 },
+    { "sku": "N209-16", "metal": "18k", "length_in": 22, "wholesalePriceCad": 5838, "impliedWeightG": 42.30, "weightPerInch": 1.92 }
+  ],
+  "weightPerInchObservation": "Weight per inch is consistent within a karat (≈1.92 g/in for N209 18k Flat Beveled Curb 4mm). This means: Part-2 can store ONE `weightPerInchG` value per chain model, and length variations are pure linear scaling. Cross-check by computing wholesale spot-equivalent — if Tecimer uses ~$138/g 18k wholesale (which matches today's spot), our derived weights are reliable."
+}

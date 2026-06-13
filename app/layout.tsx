@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { ClerkProvider } from '@clerk/nextjs'
 import { getServerSideURL } from '@/lib/getURL'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import JsonLd from '@/components/seo/JsonLd'
@@ -38,18 +39,20 @@ export default async function RootLayout({
         />
       </head>
       <body className="antialiased">
-        <JsonLd
-          id="site-schema"
-          data={[
-            buildJewelryStoreSchema(
-              reviewsData.source === 'live' ? reviewsData : undefined,
-            ),
-            buildOrganizationSchema(),
-            buildMasterJewelerSchema(),
-            buildWebsiteSchema(),
-          ]}
-        />
-        {children}
+        <ClerkProvider>
+          <JsonLd
+            id="site-schema"
+            data={[
+              buildJewelryStoreSchema(
+                reviewsData.source === 'live' ? reviewsData : undefined,
+              ),
+              buildOrganizationSchema(),
+              buildMasterJewelerSchema(),
+              buildWebsiteSchema(),
+            ]}
+          />
+          {children}
+        </ClerkProvider>
       </body>
     </html>
   )

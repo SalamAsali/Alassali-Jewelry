@@ -1,0 +1,98 @@
+[
+  {
+    "supplierSku": "N209",
+    "name": "Flat Beveled Curb Chain 4mm",
+    "chainType": "curb",
+    "widthMm": 4.0,
+    "availableKarats": ["10k", "14k", "18k"],
+    "availableMetals": ["yellow-gold"],
+    "availableLengths": [8, 18, 20, 22, 26, 28],
+    "construction": "solid",
+    "weightPerInchG": 1.92,
+    "description": "Classic flat beveled curb chain in solid gold. A timeless everyday piece with clean lines and a comfortable flat profile that sits flush against the skin."
+  },
+  {
+    "supplierSku": "N612",
+    "name": "Diamond Cut Rope Chain",
+    "chainType": "rope",
+    "widthMm": 2.5,
+    "availableKarats": ["10k", "14k", "18k"],
+    "availableMetals": ["yellow-gold", "white-gold"],
+    "availableLengths": [18, 20, 22, 24],
+    "construction": "solid",
+    "weightPerInchG": 1.15,
+    "description": "Diamond-cut rope chain with brilliant light-catching facets. The twisted rope pattern creates an elegant, eye-catching texture."
+  },
+  {
+    "supplierSku": "N145",
+    "name": "Solid Textured Oval Link",
+    "chainType": "oval-link",
+    "widthMm": 3.0,
+    "availableKarats": ["10k", "14k", "18k"],
+    "availableMetals": ["yellow-gold"],
+    "availableLengths": [18, 20, 22, 24],
+    "construction": "solid",
+    "weightPerInchG": 1.4,
+    "description": "Textured oval link chain with a unique artisanal feel. Each link features delicate surface texture for added visual interest."
+  },
+  {
+    "supplierSku": "N109-PINK",
+    "name": "Solid Box Link Chain",
+    "chainType": "box",
+    "widthMm": 1.5,
+    "availableKarats": ["10k", "14k", "18k"],
+    "availableMetals": ["rose-gold", "yellow-gold", "white-gold"],
+    "availableLengths": [16, 18, 20, 22],
+    "construction": "solid",
+    "weightPerInchG": 0.65,
+    "description": "Sleek solid box link chain — clean, modern, and lightweight. Perfect for pendants or worn on its own as a delicate statement piece."
+  },
+  {
+    "supplierSku": "N135-PINK",
+    "name": "Diamond Cut Wheat Link Chain",
+    "chainType": "wheat",
+    "widthMm": 1.2,
+    "availableKarats": ["10k", "14k", "18k"],
+    "availableMetals": ["rose-gold", "yellow-gold"],
+    "availableLengths": [16, 18, 20, 22],
+    "construction": "solid",
+    "weightPerInchG": 0.55,
+    "description": "Delicate diamond-cut wheat link chain with a silky drape. The interlocking twisted links create a beautiful woven texture."
+  },
+  {
+    "supplierSku": "FRANCO-PINK",
+    "name": "Solid Franco Link Chain",
+    "chainType": "franco",
+    "widthMm": 1.0,
+    "availableKarats": ["10k", "14k", "18k"],
+    "availableMetals": ["rose-gold", "yellow-gold", "white-gold"],
+    "availableLengths": [18, 20, 22, 24],
+    "construction": "solid",
+    "weightPerInchG": 0.85,
+    "description": "Solid franco link chain — a squared V-shaped link that's incredibly strong and drapes beautifully. Italian-inspired craftsmanship."
+  },
+  {
+    "supplierSku": "N821",
+    "name": "Hollow Fancy Round Link Chain",
+    "chainType": "round-link",
+    "widthMm": 3.1,
+    "availableKarats": ["10k", "14k"],
+    "availableMetals": ["two-tone"],
+    "availableLengths": [18, 20, 22, 24],
+    "construction": "hollow",
+    "weightPerInchG": 0.9,
+    "description": "Two-tone hollow round link chain with alternating yellow and white gold links. A statement piece that combines classic elegance with modern flair."
+  },
+  {
+    "supplierSku": "PAPER-CLIP-MINI",
+    "name": "Mini Paperclip Chain",
+    "chainType": "paperclip",
+    "widthMm": 1.0,
+    "availableKarats": ["10k", "14k", "18k"],
+    "availableMetals": ["yellow-gold", "white-gold", "rose-gold"],
+    "availableLengths": [16, 18, 20, 22],
+    "construction": "solid",
+    "weightPerInchG": 0.5,
+    "description": "Trending mini paperclip chain in solid gold. Elongated oval links create a modern, minimalist look that's perfect for layering."
+  }
+]
