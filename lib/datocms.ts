@@ -649,23 +649,18 @@ export async function getChains(
     limit?: number
   } = {}
 ): Promise<Chain[]> {
-  const { filter = {}, limit = 100 } = options
+  const { filter = {}, limit = 500 } = options
 
+  // DatoCMS JSON fields don't support anyIn/eq filters via GraphQL,
+  // so we fetch all active chains and filter in JS.
   const datoFilter: Record<string, unknown> = {}
 
-  // Default to active chains only
   if (filter.active !== undefined) {
     datoFilter.active = { eq: filter.active }
   } else {
     datoFilter.active = { eq: true }
   }
 
-  if (filter.chainType) {
-    datoFilter.chainType = { eq: filter.chainType }
-  }
-  if (filter.metal) {
-    datoFilter.availableMetals = { anyIn: [filter.metal] }
-  }
   if (filter.featured !== undefined) {
     datoFilter.featured = { eq: filter.featured }
   }
@@ -678,7 +673,17 @@ export async function getChains(
         filter: Object.keys(datoFilter).length > 0 ? datoFilter : undefined,
       },
     })
-    return data.allChains || []
+    let chains = data.allChains || []
+
+    // Client-side filtering for JSON fields
+    if (filter.chainType) {
+      chains = chains.filter(c => c.chainType === filter.chainType)
+    }
+    if (filter.metal) {
+      chains = chains.filter(c => c.availableMetals?.includes(filter.metal!))
+    }
+
+    return chains.slice(0, limit)
   } catch (error) {
     console.error('[DatoCMS] Failed to fetch chains:', error)
     return []
