@@ -23,7 +23,8 @@
     "weightPerInchG": 1.92,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n209_2.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "G_EBjGKgQ5SIBVXHIxkQxA"
   },
   {
     "supplierSku": "N145",
@@ -45,7 +46,8 @@
     "weightPerInchG": 0.34,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n145__4.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "NBXBWOgyQhydb0kLJzmHwQ"
   },
   {
     "supplierSku": "PAPER",
@@ -67,7 +69,8 @@
     "weightPerInchG": 0.09,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/p/a/paper_clip-_mini__2.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "BrjGMCPMQIinoqH52TxHBg"
   },
   {
     "supplierSku": "N109-PINK",
@@ -89,7 +92,8 @@
     "weightPerInchG": 0.14,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n109-pink.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "T8_RtYi1Rsug4hgJQJ-rEg"
   },
   {
     "supplierSku": "N135-PINK",
@@ -113,7 +117,8 @@
     "weightPerInchG": 0.29,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n135-pink.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "f73F2YsyRaGKhe4qJ__z2A"
   },
   {
     "supplierSku": "FRANCO-PINK",
@@ -137,7 +142,8 @@
     "weightPerInchG": 0.27,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-pink.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "cfWKosTlRN6xfjyBBGsOMg"
   },
   {
     "supplierSku": "N605-PINK",
@@ -161,7 +167,8 @@
     "weightPerInchG": 0.22,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n605-pink.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "fR4eEDmPTV21JJQdy9P25A"
   },
   {
     "supplierSku": "STATION",
@@ -188,7 +195,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/s/c/screen_shot_2023-10-12_at_11.14.48_am.png"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "MITyrBYLQmeQ8h90noGITw",
+    "galleryImageUploadIds": [
+      "aq-yprElTAa_qufRooAwGA"
+    ]
   },
   {
     "supplierSku": "N821",
@@ -212,7 +223,8 @@
     "weightPerInchG": 0.66,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/8/n821.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "TywHZNL-R3yNwZsL5nZHfw"
   },
   {
     "supplierSku": "N822",
@@ -235,7 +247,8 @@
     "weightPerInchG": 0.83,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/8/n822.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "La6iQ8gmTzSr4ysiH0o4wQ"
   },
   {
     "supplierSku": "N823",
@@ -258,7 +271,8 @@
     "weightPerInchG": 2.06,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/8/n823.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "LfisNuIiTFSDxltC2Eha-Q"
   },
   {
     "supplierSku": "N902",
@@ -282,7 +296,8 @@
     "weightPerInchG": 0.32,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/9/n902.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "c2Hlbga-QGmaruw2CcAK-w"
   },
   {
     "supplierSku": "N904",
@@ -306,7 +321,8 @@
     "weightPerInchG": 0.22,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/9/n904.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "JQIZj8mNRiyLGH_x_J68yQ"
   },
   {
     "supplierSku": "N905",
@@ -330,7 +346,8 @@
     "weightPerInchG": 0.21,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/9/n905.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "VNdGT5FcRb6kYLnMZTxqvw"
   },
   {
     "supplierSku": "N907",
@@ -355,7 +372,8 @@
     "weightPerInchG": 0.59,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/9/n907.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Ktj5tiiBSPGbwUnxXT46eg"
   },
   {
     "supplierSku": "N910",
@@ -380,7 +398,8 @@
     "weightPerInchG": 0.54,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/9/n910.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "DAlAEWoSRpamlWVNtQqO4g"
   },
   {
     "supplierSku": "N816",
@@ -404,7 +423,8 @@
     "weightPerInchG": 1.28,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/8/n816.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "XN99iNhmToWHUU5bN3h3_Q"
   },
   {
     "supplierSku": "N819",
@@ -427,7 +447,8 @@
     "weightPerInchG": 1.44,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/8/n819.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Rx1u0GhORIm2s7RsSMnomA"
   },
   {
     "supplierSku": "N820",
@@ -450,7 +471,8 @@
     "weightPerInchG": 2.11,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/8/n820.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "a0KL8rJpThu7ihm43MXVxA"
   },
   {
     "supplierSku": "N825",
@@ -473,7 +495,8 @@
     "weightPerInchG": 0.43,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/8/n825.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "CkP0jpZLToCLRyA-tExL4g"
   },
   {
     "supplierSku": "N826",
@@ -496,7 +519,8 @@
     "weightPerInchG": 4.18,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/8/n826.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "EiEO5Tz2SzuQdmkUNeS7Wg"
   },
   {
     "supplierSku": "N1028",
@@ -521,7 +545,8 @@
     "weightPerInchG": 0.22,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1028.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "W5aQ6YlLR0aEku8BedrM4w"
   },
   {
     "supplierSku": "N1036",
@@ -547,7 +572,8 @@
     "weightPerInchG": 0.97,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n603w_1.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "YLQ5iJdVR0SI4f6HdxAf3A"
   },
   {
     "supplierSku": "N601W",
@@ -573,7 +599,8 @@
     "weightPerInchG": 0.52,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n601w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "GDOQ0UloTUKlBFXsRZC8Bw"
   },
   {
     "supplierSku": "N603W",
@@ -597,7 +624,8 @@
     "weightPerInchG": 1.84,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n603w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "fhj_MjCaRQShh1UxgfHNTw"
   },
   {
     "supplierSku": "N1029",
@@ -620,7 +648,8 @@
     "weightPerInchG": 0.32,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1029.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "RAsTgaCbQbGr3s-yYz6oXg"
   },
   {
     "supplierSku": "N1030",
@@ -643,7 +672,8 @@
     "weightPerInchG": 0.53,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1030.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Rtf4AtRpQ4O6SWRKLWYtdQ"
   },
   {
     "supplierSku": "N1043",
@@ -669,7 +699,8 @@
     "weightPerInchG": 1.14,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1043.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "N6_Hy2ogSHqfuEwM-zjSTA"
   },
   {
     "supplierSku": "N606W",
@@ -696,7 +727,8 @@
     "weightPerInchG": 0.31,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n606w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "JyyjznXFTze0hP253jbJzQ"
   },
   {
     "supplierSku": "N607W",
@@ -723,7 +755,8 @@
     "weightPerInchG": 0.61,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n607w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "QqUmp3l-SASGzzIGPE0U0Q"
   },
   {
     "supplierSku": "N608W",
@@ -750,7 +783,8 @@
     "weightPerInchG": 1.24,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n608w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "H0iSdohhQ6SjswrqLLOP0Q"
   },
   {
     "supplierSku": "N1011",
@@ -776,7 +810,8 @@
     "weightPerInchG": 0.19,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1011_2.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "cEpxaXIPRwWItQ3Adc0dzQ"
   },
   {
     "supplierSku": "N1012",
@@ -802,7 +837,8 @@
     "weightPerInchG": 0.31,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1012.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Oa8e6HLOQVKLSbEMMHmRuQ"
   },
   {
     "supplierSku": "N1023",
@@ -828,7 +864,8 @@
     "weightPerInchG": 0.29,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1023.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "bT8aPVvjT2SDgxCxRjmyQw"
   },
   {
     "supplierSku": "N1024",
@@ -853,7 +890,8 @@
     "weightPerInchG": 0.48,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1024.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "L3p9JHYIQiu-MWBrtSrCLA"
   },
   {
     "supplierSku": "N1025",
@@ -878,7 +916,8 @@
     "weightPerInchG": 0.8,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1025.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "QqzH7V6eQZmtO5zHRG_JMg"
   },
   {
     "supplierSku": "N1039",
@@ -903,7 +942,8 @@
     "weightPerInchG": 0.68,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1039.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "aGzEblNTSCy00iheL8np5w"
   },
   {
     "supplierSku": "N1014",
@@ -929,7 +969,8 @@
     "weightPerInchG": 0.16,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1014.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "WATmcpsLTp-KmbGr-8-7Xw"
   },
   {
     "supplierSku": "N119W",
@@ -953,7 +994,8 @@
     "weightPerInchG": 0.83,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n119w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "ZIqNEZ7vRpW3glwr34caDA"
   },
   {
     "supplierSku": "N120W",
@@ -975,7 +1017,8 @@
     "weightPerInchG": 1.2,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n120w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "CEFcnoqhQHqEyphu3YRUhw"
   },
   {
     "supplierSku": "N1007",
@@ -1001,7 +1044,8 @@
     "weightPerInchG": 0.19,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1007.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "R47HcjcLQ3W4GIvBm6emNw"
   },
   {
     "supplierSku": "N1008",
@@ -1027,7 +1071,8 @@
     "weightPerInchG": 0.36,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1008.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "IXqjdJxjSXmrDgY2Owz7jQ"
   },
   {
     "supplierSku": "N109W",
@@ -1051,7 +1096,8 @@
     "weightPerInchG": 0.1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n109w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "SkEocg-5QdK7tPT8UzVneQ"
   },
   {
     "supplierSku": "N513W",
@@ -1075,7 +1121,8 @@
     "weightPerInchG": 1.45,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n513w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Cn3tkxlTRiScLPDmkNP8Mw"
   },
   {
     "supplierSku": "N1013",
@@ -1101,7 +1148,8 @@
     "weightPerInchG": 0.18,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1013.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "VAYiv0x1R72tAWNo6fbvQg"
   },
   {
     "supplierSku": "N1009",
@@ -1127,7 +1175,8 @@
     "weightPerInchG": 0.22,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1009.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "L2D-MxXJQl6UDZdteixbZQ"
   },
   {
     "supplierSku": "N1010",
@@ -1153,7 +1202,8 @@
     "weightPerInchG": 0.36,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1010.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "NQagIRWETYmJq0XXfBAI7w"
   },
   {
     "supplierSku": "N101W-LT",
@@ -1177,7 +1227,8 @@
     "weightPerInchG": 0.11,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n101w-lt.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "H3GxK2XdR56mhIRHKHBLZQ"
   },
   {
     "supplierSku": "N1011-LT-DC",
@@ -1201,7 +1252,8 @@
     "weightPerInchG": 0.09,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1011-lt-dc.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "JeuaysXbRjCS-uV1zarjGQ"
   },
   {
     "supplierSku": "N1031",
@@ -1230,7 +1282,8 @@
     "weightPerInchG": 0.33,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1031.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "POEw8HdeScKEsB7Ryoiu5A"
   },
   {
     "supplierSku": "N1032",
@@ -1259,7 +1312,8 @@
     "weightPerInchG": 0.57,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1032.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Un5n-a3xSVWjtQK0HlShwg"
   },
   {
     "supplierSku": "N1033",
@@ -1288,7 +1342,8 @@
     "weightPerInchG": 0.86,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1033.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "OgvNlk87QNqv85vdsgiknA"
   },
   {
     "supplierSku": "N302W",
@@ -1315,7 +1370,8 @@
     "weightPerInchG": 0.35,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n302w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "TU9681tORJK9WP8s23gWwg"
   },
   {
     "supplierSku": "N303W",
@@ -1343,7 +1399,8 @@
     "weightPerInchG": 0.53,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n303w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "OiQD96lbTJq6c0ogcTcjPA"
   },
   {
     "supplierSku": "N304W",
@@ -1371,7 +1428,8 @@
     "weightPerInchG": 0.84,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n304w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "eBfxKqyqTHWC8iTV7yyuFQ"
   },
   {
     "supplierSku": "N305W",
@@ -1398,7 +1456,8 @@
     "weightPerInchG": 1.31,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n305w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "MQyNtVd1Rjy92Oo-bzrCqQ"
   },
   {
     "supplierSku": "N1042",
@@ -1448,7 +1507,8 @@
     "weightPerInchG": 0.28,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n311w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "KipiIEF6T9mNrZ_Yb7fn-g"
   },
   {
     "supplierSku": "N312W",
@@ -1475,7 +1535,8 @@
     "weightPerInchG": 0.44,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n312w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "LvjqO2F4Tmi-65eFQxcx4g"
   },
   {
     "supplierSku": "N313W",
@@ -1503,7 +1564,8 @@
     "weightPerInchG": 0.73,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n313w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "O6flMJrQTYGfi95YaRRTsQ"
   },
   {
     "supplierSku": "N1018",
@@ -1560,7 +1622,8 @@
     "weightPerInchG": 1.06,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1019.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "QUciAYueSp6s9DQ68T0YIg"
   },
   {
     "supplierSku": "N1020",
@@ -1588,7 +1651,8 @@
     "weightPerInchG": 1.41,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1020.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "P2ujgq8PTg6b9nVZ2fz1XA"
   },
   {
     "supplierSku": "N1021",
@@ -1643,7 +1707,8 @@
     "weightPerInchG": 0.27,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-wg.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Ev8Z3Q6fTiOqzJ1a5zM32g"
   },
   {
     "supplierSku": "Franco-WG-15",
@@ -1671,7 +1736,8 @@
     "weightPerInchG": 0.63,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-wg_1.5_1_1.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "AuWbwtpmQ4S2t3NuUZ-V8A"
   },
   {
     "supplierSku": "Franco-WG-20",
@@ -1698,7 +1764,8 @@
     "weightPerInchG": 1.2,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-wg20.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Siy86lwZTBOD3qbo81hA0Q"
   },
   {
     "supplierSku": "N201W",
@@ -1725,7 +1792,8 @@
     "weightPerInchG": 0.35,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n201w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "ZZB6tQ1sSnufg33ct5Fx_g"
   },
   {
     "supplierSku": "N202W",
@@ -1752,7 +1820,8 @@
     "weightPerInchG": 0.53,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n202w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Qpdn4xguSGGGFBbbB4bcjw"
   },
   {
     "supplierSku": "N203W",
@@ -1779,7 +1848,8 @@
     "weightPerInchG": 0.83,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n203w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "ScckkNMTRViWZzRoFNDIqw"
   },
   {
     "supplierSku": "N204W",
@@ -1806,7 +1876,8 @@
     "weightPerInchG": 1.11,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n204w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "QixDM8Y0Sly3KktC9CZfOA"
   },
   {
     "supplierSku": "N205W",
@@ -1832,7 +1903,8 @@
     "weightPerInchG": 1.58,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n205w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "VDW-X6XwRVKiALamNs42OQ"
   },
   {
     "supplierSku": "N1026",
@@ -1860,7 +1932,8 @@
     "weightPerInchG": 0.24,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1026.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "CGQwz-p5T0O4wFzbisM3Tg"
   },
   {
     "supplierSku": "N1027",
@@ -1888,7 +1961,8 @@
     "weightPerInchG": 0.55,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1027w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "PG1ydrFIT-uoDz-xoBydUQ"
   },
   {
     "supplierSku": "N137W",
@@ -1916,7 +1990,8 @@
     "weightPerInchG": 0.87,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n137w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "eKhnLTuHQVG5KdwW5hCyvA"
   },
   {
     "supplierSku": "N122W",
@@ -1942,7 +2017,8 @@
     "weightPerInchG": 0.21,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n122w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "bDeuamx9R5CT8rajCvzr0w"
   },
   {
     "supplierSku": "N122W-LT",
@@ -1965,7 +2041,8 @@
     "weightPerInchG": 0.1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n122w-lt.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "GRjeiq_6TsieZ6YkE78ORw"
   },
   {
     "supplierSku": "PO25W",
@@ -1990,7 +2067,8 @@
     "weightPerInchG": 0.12,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/p/o/po25w.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "X8-dVflaQ-2DXMgNFpDH1A"
   },
   {
     "supplierSku": "N1037",
@@ -2013,7 +2091,8 @@
     "weightPerInchG": 0.23,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1037.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "FW02bherTBCZJ_29ZYo_Ew"
   },
   {
     "supplierSku": "N412",
@@ -2040,7 +2119,8 @@
     "weightPerInchG": 0.22,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/4/n412.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "PbqgtEWgSzeUof3rzQMLnQ"
   },
   {
     "supplierSku": "N413",
@@ -2067,7 +2147,8 @@
     "weightPerInchG": 0.33,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/4/n413.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "ENgAHQ2_QOCNshc8GUc5mA"
   },
   {
     "supplierSku": "N414",
@@ -2094,7 +2175,8 @@
     "weightPerInchG": 0.43,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/4/n414.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "HNzThAKLS9OYo5u5Gzq3GQ"
   },
   {
     "supplierSku": "N601",
@@ -2123,7 +2205,8 @@
     "weightPerInchG": 0.47,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n601.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "RQQ1LJOyTwWK1CodvcXA-g"
   },
   {
     "supplierSku": "N602",
@@ -2152,7 +2235,8 @@
     "weightPerInchG": 0.9,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n602.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "RAkrH280RDeeO0pqQm41SA"
   },
   {
     "supplierSku": "N603",
@@ -2179,7 +2263,8 @@
     "weightPerInchG": 1.83,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n603.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "aVcd5xuJSV6xb7W_TCFxiA"
   },
   {
     "supplierSku": "N705",
@@ -2206,7 +2291,8 @@
     "weightPerInchG": 0.32,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n705.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Bt-Pj9P8STC2gH3crmFIzg"
   },
   {
     "supplierSku": "N706",
@@ -2233,7 +2319,8 @@
     "weightPerInchG": 0.53,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n706.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "c650Gp9rT8SyBBx6mLmbXA"
   },
   {
     "supplierSku": "N702",
@@ -2260,7 +2347,8 @@
     "weightPerInchG": 0.29,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n702_1.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "AdD4r4mYQZGX214DElH9OQ"
   },
   {
     "supplierSku": "N703",
@@ -2287,7 +2375,8 @@
     "weightPerInchG": 0.53,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n703_1.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Kd7NFPc9Ty23EhW0j7phQA"
   },
   {
     "supplierSku": "N704",
@@ -2313,7 +2402,8 @@
     "weightPerInchG": 1.19,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n704_1.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "H0yq5mdtS4Oy_jqbvz1LUA"
   },
   {
     "supplierSku": "N721",
@@ -2340,7 +2430,8 @@
     "weightPerInchG": 0.38,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n721.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "b5wA0L5_TCyu274qXH4EYQ"
   },
   {
     "supplierSku": "N722",
@@ -2367,7 +2458,8 @@
     "weightPerInchG": 0.55,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n722.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "SfwZYq5QRHW-D1TdGU9Xng"
   },
   {
     "supplierSku": "N415",
@@ -2390,7 +2482,8 @@
     "weightPerInchG": 0.32,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/4/n415.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "fg6fxsGARC-aBysJGkIRnw"
   },
   {
     "supplierSku": "N416",
@@ -2413,7 +2506,8 @@
     "weightPerInchG": 0.53,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/4/n416.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Hb8zEdWKRp2eOcePzrEnXw"
   },
   {
     "supplierSku": "N725",
@@ -2440,7 +2534,8 @@
     "weightPerInchG": 0.96,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n725.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Zq-wiYqnR_KeoaJew9IYGw"
   },
   {
     "supplierSku": "N726",
@@ -2466,7 +2561,8 @@
     "weightPerInchG": 1.15,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n726.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "MOezNRb-Q1O7iQoUmoXkOQ"
   },
   {
     "supplierSku": "N727",
@@ -2492,7 +2588,8 @@
     "weightPerInchG": 1.85,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n727.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "JHAWgCwiQdW9rOr-VBH8Jg"
   },
   {
     "supplierSku": "N606",
@@ -2519,7 +2616,8 @@
     "weightPerInchG": 0.35,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n606.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "BeQLlzfsT7yYb2U_VjczyQ"
   },
   {
     "supplierSku": "N607",
@@ -2546,7 +2644,8 @@
     "weightPerInchG": 0.6,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n607.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Rtt5G4WUROK3NiDvzbGdtg"
   },
   {
     "supplierSku": "N608",
@@ -2573,7 +2672,8 @@
     "weightPerInchG": 1.42,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n608.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "HHpWcIApQ_WwSjACs-sCGg"
   },
   {
     "supplierSku": "N609",
@@ -2598,7 +2698,8 @@
     "weightPerInchG": 2.77,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n609.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "FhDG_WD9T4uYi-uCpauyNw"
   },
   {
     "supplierSku": "N610",
@@ -2623,7 +2724,8 @@
     "weightPerInchG": 4.56,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n610.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "DK1oAolFSVKbwqoSVxrZFQ"
   },
   {
     "supplierSku": "N618",
@@ -2652,7 +2754,8 @@
     "weightPerInchG": 0.44,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n618.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "FxpieN8cRpK-NWWhuxBhlw"
   },
   {
     "supplierSku": "N619",
@@ -2681,7 +2784,8 @@
     "weightPerInchG": 0.71,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n619.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "RKMSSMYZTcCBrnH6LW7ljg"
   },
   {
     "supplierSku": "N620",
@@ -2710,7 +2814,8 @@
     "weightPerInchG": 0.93,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n620.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "YeLxGEx5RtihFnin-BX2bg"
   },
   {
     "supplierSku": "RO3004",
@@ -2734,7 +2839,8 @@
     "weightPerInchG": 0.3,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/r/o/ro3004.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "T7Dl23Y8T-iS-PGsnud_eA"
   },
   {
     "supplierSku": "V012",
@@ -2758,7 +2864,8 @@
     "weightPerInchG": 0.1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/v/0/v012.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "IVpJIls2ShidAvH-BVtc-w"
   },
   {
     "supplierSku": "V015",
@@ -2782,7 +2889,8 @@
     "weightPerInchG": 0.18,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/v/0/v015.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "bXwH5pznRzeA45ebaxOvXg"
   },
   {
     "supplierSku": "V019",
@@ -2806,7 +2914,8 @@
     "weightPerInchG": 0.27,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/v/0/v019.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "EtNTCY8YQ8WKHs_GFiL4-A"
   },
   {
     "supplierSku": "V025",
@@ -2830,7 +2939,8 @@
     "weightPerInchG": 0.39,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/v/0/v025.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "MUKJ-RDyS_C2lpCvZO-2Rw"
   },
   {
     "supplierSku": "G033",
@@ -2854,7 +2964,8 @@
     "weightPerInchG": 0.16,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/g/0/g033.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "PQSCbXOWR1CFiusX0_cYxQ"
   },
   {
     "supplierSku": "G043",
@@ -2878,7 +2989,8 @@
     "weightPerInchG": 0.23,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/g/0/g043.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "MXaWn5juTgCSlmqi1t6zfg"
   },
   {
     "supplierSku": "G048",
@@ -2902,7 +3014,8 @@
     "weightPerInchG": 0.35,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/g/0/g048.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "bGOHgvMoR5CRyZnUiJWd1g"
   },
   {
     "supplierSku": "G065",
@@ -2926,7 +3039,8 @@
     "weightPerInchG": 0.47,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/g/0/g065.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "GUCQtL6ISDaTz1bmnOQlew"
   },
   {
     "supplierSku": "G070",
@@ -2950,7 +3064,8 @@
     "weightPerInchG": 0.67,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/g/0/g070.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "FEslGtHIRdm-KfFJDwk3ZQ"
   },
   {
     "supplierSku": "G085",
@@ -2973,7 +3088,8 @@
     "weightPerInchG": 0.8,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/g/0/g085.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "dDyUoTjpS8i1vHbVLdHRPA"
   },
   {
     "supplierSku": "P025",
@@ -2997,7 +3113,8 @@
     "weightPerInchG": 0.15,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/p/0/p030_6.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Btsx5gbIQ-uC8HS_2Vk7Yg"
   },
   {
     "supplierSku": "P030",
@@ -3021,7 +3138,8 @@
     "weightPerInchG": 0.21,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/p/0/p030.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Cz4IjiXRQAercOy01i6uxg"
   },
   {
     "supplierSku": "P038",
@@ -3045,7 +3163,8 @@
     "weightPerInchG": 0.35,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/p/0/p038.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "BPRYOHeVReyNnO7JUrxqDw"
   },
   {
     "supplierSku": "N605",
@@ -3071,7 +3190,8 @@
     "weightPerInchG": 0.19,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n605.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Pbpk8VGzTnmWZb0HkQfnkg"
   },
   {
     "supplierSku": "N605-LT",
@@ -3095,7 +3215,8 @@
     "weightPerInchG": 0.09,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n605-lt.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Pu2nelm2SVKVS99sXcGmUQ"
   },
   {
     "supplierSku": "N623",
@@ -3121,7 +3242,8 @@
     "weightPerInchG": 0.3,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n623.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "flkXdnLTSZivl2IE6mr3lw"
   },
   {
     "supplierSku": "N130",
@@ -3147,7 +3269,8 @@
     "weightPerInchG": 0.29,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n130.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "X_azrTWbSEyiQVeQJxYrwA"
   },
   {
     "supplierSku": "N131",
@@ -3172,7 +3295,8 @@
     "weightPerInchG": 0.48,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n131.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "aoxLfZiKQYenbTQJ1lBWlQ"
   },
   {
     "supplierSku": "N132",
@@ -3198,7 +3322,8 @@
     "weightPerInchG": 0.57,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n132.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "NFYKJvIyR6y6bVlo1buNAA"
   },
   {
     "supplierSku": "N133",
@@ -3223,7 +3348,8 @@
     "weightPerInchG": 0.8,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n133.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "B9VnJn-nS3y-AyodCBhHow"
   },
   {
     "supplierSku": "N116",
@@ -3249,7 +3375,8 @@
     "weightPerInchG": 0.16,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n116.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "LymIrGJuSzmqR5smf1BngA"
   },
   {
     "supplierSku": "N117",
@@ -3275,7 +3402,8 @@
     "weightPerInchG": 0.25,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n117.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "YU1zCYn5RpSjx-B89Pty_w"
   },
   {
     "supplierSku": "N118",
@@ -3301,7 +3429,8 @@
     "weightPerInchG": 0.4,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n118.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "MOq0I9VDQZitC7M_UdZqig"
   },
   {
     "supplierSku": "N119",
@@ -3327,7 +3456,8 @@
     "weightPerInchG": 0.62,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n119.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "C0IH0mCBSjypFoN_SIjQAA"
   },
   {
     "supplierSku": "N120",
@@ -3352,7 +3482,8 @@
     "weightPerInchG": 0.99,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n120.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "BUeQOK1AQR6DC2dRf-fIhQ"
   },
   {
     "supplierSku": "N502",
@@ -3379,7 +3510,8 @@
     "weightPerInchG": 0.42,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n502.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "XQDe6YBwSQmVhqmAhexWFg"
   },
   {
     "supplierSku": "N503",
@@ -3406,7 +3538,8 @@
     "weightPerInchG": 0.6,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n503.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "HURo88CqRaWG8_bAhKL5CA"
   },
   {
     "supplierSku": "N504",
@@ -3432,7 +3565,8 @@
     "weightPerInchG": 0.96,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n504.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "RtbmNZS1RNyJLcnb6hCgBA"
   },
   {
     "supplierSku": "N109",
@@ -3458,7 +3592,8 @@
     "weightPerInchG": 0.1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n109.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "aqV1x7afRluF7dp_nlmMow"
   },
   {
     "supplierSku": "N110",
@@ -3486,7 +3621,8 @@
     "weightPerInchG": 0.18,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n110.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "C1v2IuetRkOVnMRooGfXTw"
   },
   {
     "supplierSku": "N111",
@@ -3514,7 +3650,8 @@
     "weightPerInchG": 0.27,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n111.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "KAHjFkJMR6Ggnqfeo1r_8w"
   },
   {
     "supplierSku": "N112",
@@ -3542,7 +3679,8 @@
     "weightPerInchG": 0.39,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n112.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "KzbOwYy-Tcq1uwofbI7rnQ"
   },
   {
     "supplierSku": "N113",
@@ -3570,7 +3708,8 @@
     "weightPerInchG": 0.48,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n113.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "IzDWTULYTzW4wL1rZ2--ew"
   },
   {
     "supplierSku": "N114",
@@ -3598,7 +3737,8 @@
     "weightPerInchG": 0.68,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n114.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Iu8GHew5QrikW1Lv0APINg"
   },
   {
     "supplierSku": "N115",
@@ -3625,7 +3765,8 @@
     "weightPerInchG": 0.83,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n115.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "cC_yc6BiTwKbHzUI9Ob9Sg"
   },
   {
     "supplierSku": "N513",
@@ -3650,7 +3791,8 @@
     "weightPerInchG": 1.26,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n513.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "HCd9228ZTK6YfEOeHRfyNQ"
   },
   {
     "supplierSku": "N514",
@@ -3675,7 +3817,8 @@
     "weightPerInchG": 1.84,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n514.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "QxMfuZxUTwexcjYTqD1Mig"
   },
   {
     "supplierSku": "N515",
@@ -3700,7 +3843,8 @@
     "weightPerInchG": 2.65,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n515.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "fhI97fZnSPeThY4aWyBE5w"
   },
   {
     "supplierSku": "N516",
@@ -3726,7 +3870,8 @@
     "weightPerInchG": 3.07,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n516.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "H3oiexNgStmj89ZBjJzgOw"
   },
   {
     "supplierSku": "N124",
@@ -3752,7 +3897,8 @@
     "weightPerInchG": 0.18,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n124.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "YKKjXbBbTrqWMnHuiT0j1w"
   },
   {
     "supplierSku": "N125",
@@ -3778,7 +3924,8 @@
     "weightPerInchG": 0.24,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n125.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "DQhM6PHlTcC_CYAOAFBjLg"
   },
   {
     "supplierSku": "N126",
@@ -3804,7 +3951,8 @@
     "weightPerInchG": 0.39,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n126.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "PZYp50j4SlGbE8Rrk7MiNw"
   },
   {
     "supplierSku": "N101",
@@ -3830,7 +3978,8 @@
     "weightPerInchG": 0.16,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n101.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "VXDgDndESZ-fC-D_ENmnVg"
   },
   {
     "supplierSku": "N101-LT",
@@ -3854,7 +4003,8 @@
     "weightPerInchG": 0.12,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n101-lt.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Hp9-KB96SYS9Cg3l0fVnKQ"
   },
   {
     "supplierSku": "N102",
@@ -3882,7 +4032,8 @@
     "weightPerInchG": 0.23,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n102.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "ZLoGbKQJSZKHiH-gFauEzg"
   },
   {
     "supplierSku": "N103",
@@ -3910,7 +4061,8 @@
     "weightPerInchG": 0.35,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n103.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "RoH3648gQfuxYLt0VdJr-Q"
   },
   {
     "supplierSku": "N104",
@@ -3938,7 +4090,8 @@
     "weightPerInchG": 0.47,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n104.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Q1GFh00BSDK7pVpuha2g_w"
   },
   {
     "supplierSku": "N105",
@@ -3966,7 +4119,8 @@
     "weightPerInchG": 0.67,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n105.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "GowWH6J9RYCSDsUcCOvKOA"
   },
   {
     "supplierSku": "N106",
@@ -3993,7 +4147,8 @@
     "weightPerInchG": 0.8,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n106.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "ZuWnDgVTQmejOFqYVCF-3g"
   },
   {
     "supplierSku": "N107",
@@ -4020,7 +4175,8 @@
     "weightPerInchG": 1.1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n107.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "XGcGTW06RMWIm4pFC0DlOQ"
   },
   {
     "supplierSku": "N108",
@@ -4047,7 +4203,8 @@
     "weightPerInchG": 1.4,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n108.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "csjfOFtURGOwr8MfV-A2Kw"
   },
   {
     "supplierSku": "N605-LT-DC",
@@ -4071,7 +4228,8 @@
     "weightPerInchG": 0.09,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n605-lt-dc.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "W8PRyZbEThqEH4ZwtaNeWQ"
   },
   {
     "supplierSku": "N611",
@@ -4100,7 +4258,8 @@
     "weightPerInchG": 0.33,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n611.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "ALRyy0NGSp6C5qcfxDkxyQ"
   },
   {
     "supplierSku": "N612",
@@ -4129,7 +4288,8 @@
     "weightPerInchG": 0.5,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n612.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "KoPkO_1iTu-Pr03Hk0p3MQ"
   },
   {
     "supplierSku": "N613",
@@ -4159,7 +4319,8 @@
     "weightPerInchG": 0.73,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n613.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "bzyTX89pTzmxkKOi0GlGtg"
   },
   {
     "supplierSku": "N614",
@@ -4188,7 +4349,8 @@
     "weightPerInchG": 1.11,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n614.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "bq0pyxCuSXCDQoKJlZYEAg"
   },
   {
     "supplierSku": "N615",
@@ -4217,7 +4379,8 @@
     "weightPerInchG": 1.47,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n615.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "UgtiNLWBRF-vPj_S5qM27Q"
   },
   {
     "supplierSku": "N616",
@@ -4245,7 +4408,8 @@
     "weightPerInchG": 2.15,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n616.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "K1mvUddrRL2NXtHYe_ud8A"
   },
   {
     "supplierSku": "N617",
@@ -4273,7 +4437,8 @@
     "weightPerInchG": 3.73,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n617.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Sc-noG4fQQKJy1huklMcCA"
   },
   {
     "supplierSku": "N216",
@@ -4301,7 +4466,8 @@
     "weightPerInchG": 1.04,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n216_new_picture__1.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "H8P6fWGERuiiF0uA5-Qing"
   },
   {
     "supplierSku": "N217",
@@ -4329,7 +4495,8 @@
     "weightPerInchG": 1.62,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n217_new_picture.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "D5wDapHrQ3iF_Kh4We9HSA"
   },
   {
     "supplierSku": "N218",
@@ -4357,7 +4524,8 @@
     "weightPerInchG": 2.81,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n218_new_picture_.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "UeInRg31TbuYjjU4n3MT_Q"
   },
   {
     "supplierSku": "N219",
@@ -4385,7 +4553,8 @@
     "weightPerInchG": 2.99,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n219_new_picrure.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Gmc94hsLRAejSXpkqfZ-Ag"
   },
   {
     "supplierSku": "N301",
@@ -4411,7 +4580,8 @@
     "weightPerInchG": 0.13,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n301.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "GfdK5By3SJe6QSNhyKlp-A"
   },
   {
     "supplierSku": "N302",
@@ -4438,7 +4608,8 @@
     "weightPerInchG": 0.34,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n302.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "FqfuKlVZQaOvsZ05dvnCrw"
   },
   {
     "supplierSku": "N303",
@@ -4465,7 +4636,8 @@
     "weightPerInchG": 0.52,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n303.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "LP0q_hvwR4OPOPfe4Ha1hg"
   },
   {
     "supplierSku": "N304",
@@ -4493,7 +4665,8 @@
     "weightPerInchG": 0.84,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n304.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "d2Asr5_8RCKd8WjexZejZA"
   },
   {
     "supplierSku": "N305",
@@ -4520,7 +4693,8 @@
     "weightPerInchG": 1.3,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n305.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "NxaixB8vSfem3tAfZn9wFg"
   },
   {
     "supplierSku": "N306",
@@ -4546,7 +4720,8 @@
     "weightPerInchG": 1.83,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n306.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "PyU48OBsQjib5cRyRueYkg"
   },
   {
     "supplierSku": "N307",
@@ -4572,7 +4747,8 @@
     "weightPerInchG": 2.56,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n307.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Eg-CzLBmTbS6Z6R6uPOW8g"
   },
   {
     "supplierSku": "N308",
@@ -4598,7 +4774,8 @@
     "weightPerInchG": 3.09,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n308.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "V1YVJ_D1TBKxSIMsecLDcg"
   },
   {
     "supplierSku": "N309",
@@ -4624,7 +4801,8 @@
     "weightPerInchG": 3.7,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n309.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "DBJxw0B2RlevToBzSVve4w"
   },
   {
     "supplierSku": "N311",
@@ -4651,7 +4829,8 @@
     "weightPerInchG": 0.28,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n311.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "FUthKNC2Txy8aTPJmj-XSQ"
   },
   {
     "supplierSku": "N312",
@@ -4678,7 +4857,8 @@
     "weightPerInchG": 0.44,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n312.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Xz4o0ebxQ-SfFnrIzmwrXg"
   },
   {
     "supplierSku": "N313",
@@ -4706,7 +4886,8 @@
     "weightPerInchG": 0.72,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n313.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "b5wA0L5_TCyu274qXH4EYQ"
   },
   {
     "supplierSku": "N315",
@@ -4732,7 +4913,8 @@
     "weightPerInchG": 1.04,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n315.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "SfwZYq5QRHW-D1TdGU9Xng"
   },
   {
     "supplierSku": "N316",
@@ -4758,7 +4940,8 @@
     "weightPerInchG": 1.73,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n316.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "SYstVyXAQ0-NkNcfVRzIqA"
   },
   {
     "supplierSku": "N317",
@@ -4784,7 +4967,8 @@
     "weightPerInchG": 2.73,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n317.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "VdCZb9E3S8iP50Jar4x-iA"
   },
   {
     "supplierSku": "N318",
@@ -4810,7 +4994,8 @@
     "weightPerInchG": 3.14,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n318.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "QP7wF1quSlCSPCkr0mkGVA"
   },
   {
     "supplierSku": "N207",
@@ -4866,7 +5051,8 @@
     "weightPerInchG": 1.05,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n208.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "C5wVWrzcToyhIjklbSbbSg"
   },
   {
     "supplierSku": "N210",
@@ -4894,7 +5080,8 @@
     "weightPerInchG": 2.39,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n210.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "akDUb20CTX2shmPrgHnPJw"
   },
   {
     "supplierSku": "N211",
@@ -4947,7 +5134,8 @@
     "weightPerInchG": 0.27,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-yg.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "H9mpkbRNTzKBpSHgGixjXw"
   },
   {
     "supplierSku": "Franco-YG-15",
@@ -4975,7 +5163,8 @@
     "weightPerInchG": 0.62,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-yg15.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Nw5dqAQLT8Ozsqqf7nXT-w"
   },
   {
     "supplierSku": "Franco-YG-20",
@@ -5003,7 +5192,8 @@
     "weightPerInchG": 1.25,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-yg20.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "FAwdOy1zS3Ksq2i3SMTWhg"
   },
   {
     "supplierSku": "N201",
@@ -5030,7 +5220,8 @@
     "weightPerInchG": 0.34,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n201.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "dAohyqStSF6hx-aBrw3HOQ"
   },
   {
     "supplierSku": "N202",
@@ -5057,7 +5248,8 @@
     "weightPerInchG": 0.52,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n202.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "fJwTeeBFQqGlVEgomXanqQ"
   },
   {
     "supplierSku": "N203",
@@ -5084,7 +5276,8 @@
     "weightPerInchG": 0.82,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n203.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "c-NXEQcPQoG_SwZGtPTh3g"
   },
   {
     "supplierSku": "N204",
@@ -5111,7 +5304,8 @@
     "weightPerInchG": 1.1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n204.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Rnbbe59QT-miITek-xY0Pg"
   },
   {
     "supplierSku": "N205",
@@ -5137,7 +5331,8 @@
     "weightPerInchG": 1.77,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n205.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "AeV216FqSqO5zbC6g6YbSQ"
   },
   {
     "supplierSku": "N206",
@@ -5163,7 +5358,8 @@
     "weightPerInchG": 2.48,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n206.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "KleSyWQbT5Cu34vhf-HYzw"
   },
   {
     "supplierSku": "N135",
@@ -5191,7 +5387,8 @@
     "weightPerInchG": 0.24,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n135.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "XBBC1yYfRM6mTp1dLcyi8Q"
   },
   {
     "supplierSku": "N136",
@@ -5219,7 +5416,8 @@
     "weightPerInchG": 0.55,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n136.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "UZJx6-GeQf-80wNuOn0CQA"
   },
   {
     "supplierSku": "N137",
@@ -5247,7 +5445,8 @@
     "weightPerInchG": 0.72,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n137.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "KWFGnrxhSxK7mFhNFtR54A"
   },
   {
     "supplierSku": "N122",
@@ -5274,7 +5473,8 @@
     "weightPerInchG": 0.21,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n122.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Xv5l6lhaS1uItahdB8LYaA"
   },
   {
     "supplierSku": "N122-LT",
@@ -5298,7 +5498,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n122-lt.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "FZsvrUe6Szy7gWRP03RleQ"
   },
   {
     "supplierSku": "N123",
@@ -5325,7 +5526,8 @@
     "weightPerInchG": 0.35,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n123.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "GOVV8kKVTbOLUP0ZS-sIuA"
   },
   {
     "supplierSku": "N135-LT",
@@ -5351,7 +5553,8 @@
     "weightPerInchG": 0.14,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n135-lt.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "FXvxQt5aSEKg7mNtEaiwzg"
   },
   {
     "supplierSku": "N220",
@@ -5378,7 +5581,8 @@
     "weightPerInchG": 0.45,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n220.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "WDr6XhoUQhyoZtVIOmvdmw"
   },
   {
     "supplierSku": "N221",
@@ -5405,7 +5609,8 @@
     "weightPerInchG": 0.27,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n221.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "FlW41KOSSkSxwbHIdkakKw"
   },
   {
     "supplierSku": "N222",
@@ -5433,7 +5638,8 @@
     "weightPerInchG": 0.83,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n222.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "HBMwUNULTFmAdZO8hTKuxg"
   },
   {
     "supplierSku": "N223",
@@ -5459,7 +5665,8 @@
     "weightPerInchG": 1.23,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n223.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "FxpSQponS7WOSB7bh27gJg"
   },
   {
     "supplierSku": "N224",
@@ -5485,7 +5692,8 @@
     "weightPerInchG": 1.79,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n224.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "ZKVwufyPSdihvaSHW1ff9g"
   },
   {
     "supplierSku": "N901",
@@ -5507,7 +5715,8 @@
     "weightPerInchG": 0.32,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/9/n901.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "K4GkcDRJTi2urwB3zlCKnQ"
   },
   {
     "supplierSku": "N903",
@@ -5529,7 +5738,8 @@
     "weightPerInchG": 0.23,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/9/n903.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "NSNTNO2zQUm9PHZE84CJGQ"
   },
   {
     "supplierSku": "N712",
@@ -5552,7 +5762,8 @@
     "weightPerInchG": 1.84,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n712_7.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "eMbXx3oZShirEq9DWAJ1vg"
   },
   {
     "supplierSku": "N711",
@@ -5575,7 +5786,8 @@
     "weightPerInchG": 1.27,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n711_8_7.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "T6saI3AjTKe8lB4CUaLgmw"
   },
   {
     "supplierSku": "N713",
@@ -5598,7 +5810,8 @@
     "weightPerInchG": 3.24,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n713_7.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "GdlxtfuMTy-K8AgNTEXulg"
   },
   {
     "supplierSku": "N1044",
@@ -5623,7 +5836,8 @@
     "weightPerInchG": 1.34,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1044_1.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "YwqjCbGSQtW1EBx548lUZw"
   },
   {
     "supplierSku": "N824",
@@ -5646,7 +5860,8 @@
     "weightPerInchG": 2.59,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/8/n824.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "CeM9ggl3S1qzO1y6kSorhw"
   },
   {
     "supplierSku": "315W",
@@ -5671,7 +5886,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/s/c/screen_shot_2023-08-31_at_2.29.55_pm.png",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Qb9y3qhnTW2lF3SCXU4iHg"
   },
   {
     "supplierSku": "N141",
@@ -5697,7 +5913,8 @@
     "weightPerInchG": 0.32,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n141_1.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "J3XFWh87SW-hLwEHpiR_TA"
   },
   {
     "supplierSku": "N142",
@@ -5725,7 +5942,8 @@
     "weightPerInchG": 0.61,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n142_3.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "A2XuwYSuS06PDRqQQSwISA"
   },
   {
     "supplierSku": "N144",
@@ -5753,7 +5971,8 @@
     "weightPerInchG": 4.32,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n144_4.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "VYZ2bUDxRO2vbZdIW38eEQ"
   },
   {
     "supplierSku": "DOMED",
@@ -5780,7 +5999,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/7/m/7mm_cuban_link.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "BSYVqslJQbCtBLBYpcFZDg"
   },
   {
     "supplierSku": "N143",
@@ -5808,7 +6028,8 @@
     "weightPerInchG": 1.66,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n143_4.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "HCFrJE5_REiheyuWmrYV8Q"
   },
   {
     "supplierSku": "N605-LIGHTPL",
@@ -5834,7 +6055,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n605-light_pl.jpeg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "CcABhP4mR0e2SVSRwkV7TQ"
   },
   {
     "supplierSku": "DOMED",
@@ -5860,7 +6082,8 @@
     "weightPerInchG": 8.53,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/1/0/10k_or_14k_yellow_solid_cuban_chain.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "QlGPH0hFT56FD0abVVT_nw"
   },
   {
     "supplierSku": "18K",
@@ -5886,7 +6109,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/p/i/pink_and_white_solid_link_necklace_full_view_.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "fuJRfjSOTSiFxllPo88e-A"
   },
   {
     "supplierSku": "TECA307-YG",
@@ -5911,7 +6135,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/t/e/teca307-brac-_web.jpg"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Yysj05JzT-ie962X11wBxg",
+    "galleryImageUploadIds": [
+      "R94MpeRGRGy4mFoDEcRqBA"
+    ]
   },
   {
     "supplierSku": "TECA311-YG",
@@ -5936,7 +6164,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/t/e/teca311-yg_4mm_.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "AcWshT3oTSadhWg7KCfRlw"
   },
   {
     "supplierSku": "TECA311-WG",
@@ -5961,7 +6190,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/t/e/teca311-wg.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "QnNTTuS8QVWPkuakCgEEzg"
   },
   {
     "supplierSku": "N1026-LT",
@@ -5987,7 +6217,8 @@
     "weightPerInchG": 0.15,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1026-lt.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "aBLpf3suTf6UV6bwi-XHXw"
   },
   {
     "supplierSku": "FRANCO-YG-36",
@@ -6013,7 +6244,8 @@
     "weightPerInchG": 1.3,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-yg-3.6_2_1.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "YPeSn1izTzG3ZUexwyTukA"
   },
   {
     "supplierSku": "FRANCO-WG-36",
@@ -6038,7 +6270,8 @@
     "weightPerInchG": 1.31,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-wg-3.6_4.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Va0zMgGZRfCBj2KedbmpFQ"
   },
   {
     "supplierSku": "FRANCO-WG-44",
@@ -6063,7 +6296,8 @@
     "weightPerInchG": 1.98,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-wg-4.4_4.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "XAC0MBmgRHqJxeaWmRyWLw"
   },
   {
     "supplierSku": "N1046",
@@ -6091,7 +6325,8 @@
     "weightPerInchG": 0.61,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1046_2.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "ZvV8Lb1oTiO82V-BtYeutw"
   },
   {
     "supplierSku": "PAPER",
@@ -6116,7 +6351,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/p/a/paper_clip_03.png",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "fh2KGjtuStKN8E6TQGP4Sg"
   },
   {
     "supplierSku": "PAPER",
@@ -6144,7 +6380,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/p/a/paperclip_02_1_1_1_1_1_1_1_1.jpg"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "A4RKv-6PQvW39Dmi5ovuiA",
+    "galleryImageUploadIds": [
+      "as7TywIxS6K0j9ug4BdyHQ"
+    ]
   },
   {
     "supplierSku": "N605-LT-PINK",
@@ -6168,7 +6408,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n605-lt-pink.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "VbfVN9BRRiKi7Fka0JG0YA"
   },
   {
     "supplierSku": "N623PINK-OPEN",
@@ -6194,7 +6435,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n605_pink_4.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "fR4eEDmPTV21JJQdy9P25A"
   },
   {
     "supplierSku": "N315W",
@@ -6220,7 +6462,8 @@
     "weightPerInchG": 1.05,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/3/n315w.jpeg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "B9LyYvofRXOFI0d58UOpCA"
   },
   {
     "supplierSku": "N1047",
@@ -6246,7 +6489,8 @@
     "weightPerInchG": 1.67,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1047_1.jpeg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "XhwaaaifSJG_eXOkjMAchA"
   },
   {
     "supplierSku": "N1048",
@@ -6272,7 +6516,8 @@
     "weightPerInchG": 3.81,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1048_1.jpeg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "TUMK4Yf3SE2PlDABh1lkSQ"
   },
   {
     "supplierSku": "N401",
@@ -6298,7 +6543,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/i/m/img_1007_1.jpeg"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Md4kl6l-TH22lsOzGHGCfA",
+    "galleryImageUploadIds": [
+      "FhDZ3YwOQe-zZb_u1Tw1Mw"
+    ]
   },
   {
     "supplierSku": "N402",
@@ -6324,7 +6573,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/i/m/img_1007_6.jpeg"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "S4hLHn8YRyu8IEE7uwW8iA",
+    "galleryImageUploadIds": [
+      "SqOsXY_8Rru0x6vp_2VAxQ"
+    ]
   },
   {
     "supplierSku": "3MM",
@@ -6350,7 +6603,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/3/m/3mm_bead_chain_3.jpeg"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "LMKut9oZTnGdITZCjF97zQ",
+    "galleryImageUploadIds": [
+      "RclPltj0SFiW2U2yTJKDLA"
+    ]
   },
   {
     "supplierSku": "3MM",
@@ -6373,7 +6630,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/i/m/image_123927839.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Xq-kqZ6CQHyjrfHowoemQw"
   },
   {
     "supplierSku": "N507",
@@ -6399,7 +6657,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n507.png",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "eFZSqXHzTYKeosIsDDwdGw"
   },
   {
     "supplierSku": "N508",
@@ -6424,7 +6683,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n508.png",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "TFP5NWsBSMuEjZVZe5IYQQ"
   },
   {
     "supplierSku": "N509",
@@ -6448,7 +6708,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n509.png",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "f5LEj8oaStS6olMtk0NQgw"
   },
   {
     "supplierSku": "N510",
@@ -6474,7 +6735,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n510.png",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "QcQ6jfQOTJqzsRcWAuxzDA"
   },
   {
     "supplierSku": "N511",
@@ -6501,7 +6763,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/static/version1771434783/frontend/Smartwave/porto_child/en_US/images/loader-1.gif"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "GY1g-8fTRSuzY3tkIbczag",
+    "galleryImageUploadIds": [
+      "UtPSWXLkSIueTemwCNdnpA"
+    ]
   },
   {
     "supplierSku": "N216W",
@@ -6531,7 +6797,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n216w_new_cropped_1_4.jpg"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "IUEUKC5cQf2RJCXcJZRM6Q",
+    "galleryImageUploadIds": [
+      "A5ogBNy3TOW8yN5vNBqEyQ"
+    ]
   },
   {
     "supplierSku": "N217W",
@@ -6561,7 +6831,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n217w_new_cropped_3.jpg"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "UtZnd1-9QL2QLrGtG1zzbQ",
+    "galleryImageUploadIds": [
+      "CqbJn_QmTyaMlSQUdmBHiQ"
+    ]
   },
   {
     "supplierSku": "N218W",
@@ -6591,7 +6865,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n218w_new_cropped_3.jpg"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "ZSJ0xl11QEeAaIWFYqV3fQ",
+    "galleryImageUploadIds": [
+      "Y8MfupgASji7B9xOyUvYVg"
+    ]
   },
   {
     "supplierSku": "N219W",
@@ -6621,7 +6899,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/2/n218w_new_cropped_1_3.jpg"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "SbvJpN8OTyG7XrAx5yQJAw",
+    "galleryImageUploadIds": [
+      "bkQXzPLtRvaxamleZUBcHg"
+    ]
   },
   {
     "supplierSku": "14K",
@@ -6645,7 +6927,8 @@
     "weightPerInchG": 1,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-wg_3.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Ev8Z3Q6fTiOqzJ1a5zM32g"
   },
   {
     "supplierSku": "N1011-LT",
@@ -6669,7 +6952,8 @@
     "weightPerInchG": 0.09,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1011-lt_8.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "aTvTj6VKSMCG4CosOd7TEw"
   },
   {
     "supplierSku": "FRANCO-YG-13",
@@ -6691,7 +6975,8 @@
     "weightPerInchG": 0.34,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-yg_1.5_1_2.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Nw5dqAQLT8Ozsqqf7nXT-w"
   },
   {
     "supplierSku": "N707",
@@ -6718,7 +7003,8 @@
     "weightPerInchG": 0.8,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/7/n706_1.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "c650Gp9rT8SyBBx6mLmbXA"
   },
   {
     "supplierSku": "N4223",
@@ -6742,7 +7028,8 @@
     "weightPerInchG": 0.7,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/4/n422_3_2.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "Uyr0v9_5TwuGD6Gj73RNdw"
   },
   {
     "supplierSku": "N422",
@@ -6764,7 +7051,8 @@
     "weightPerInchG": 1.17,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/4/n422_2.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "LWCZPo8uQ7GE1F6a_kfNqw"
   },
   {
     "supplierSku": "N424",
@@ -6786,7 +7074,8 @@
     "weightPerInchG": 2.86,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/4/n424_2.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "EIWObBXoReux6GKFpFvVow"
   },
   {
     "supplierSku": "N622",
@@ -6810,7 +7099,8 @@
     "weightPerInchG": 1.86,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n621_9.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "eaLAdbcRR8Gg2jizxGCYxQ"
   },
   {
     "supplierSku": "FRANCO-YG-44",
@@ -6835,7 +7125,8 @@
     "weightPerInchG": 1.96,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/f/r/franco-yg-4.4_4.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "PwWZCE7nRWqhROwwSlrHMA"
   },
   {
     "supplierSku": "N1045",
@@ -6861,7 +7152,8 @@
     "weightPerInchG": 0.32,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/1/n1045_2.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "fJX5KnnUSSuxXsDtYYjBwA"
   },
   {
     "supplierSku": "PAPER",
@@ -6887,7 +7179,8 @@
     "weightPerInchG": 0.27,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/p/a/papercclip_01.png",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "WbwWGC5sQRiVP2UDt3RafA"
   },
   {
     "supplierSku": "DOMED",
@@ -6912,7 +7205,8 @@
     "weightPerInchG": 6.26,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/d/o/domed_link_7.6mm-wg_3_4.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "H2P4QWB4RVOi1YwM3bj6zw"
   },
   {
     "supplierSku": "N517",
@@ -6940,7 +7234,11 @@
     "galleryImageUrls": [
       "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/5/n517_brac_new_1.png"
     ],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "C95g5oRrTgmZ0QRPKUZmGw",
+    "galleryImageUploadIds": [
+      "ZXXc4QOqQmKGc4SCHk0K6A"
+    ]
   },
   {
     "supplierSku": "N601-LT-SOLID",
@@ -6964,7 +7262,8 @@
     "weightPerInchG": 0.79,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n601_2_2.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "RQQ1LJOyTwWK1CodvcXA-g"
   },
   {
     "supplierSku": "N601-SOLID",
@@ -6988,6 +7287,7 @@
     "weightPerInchG": 1.2,
     "heroImageUrl": "https://www.tecimerjewellery.com/media/catalog/product/cache/ed02f53992bda4bad416a693fd361bc9/n/6/n601_2_4.jpg",
     "galleryImageUrls": [],
-    "description": ""
+    "description": "",
+    "heroImageUploadId": "RQQ1LJOyTwWK1CodvcXA-g"
   }
 ]

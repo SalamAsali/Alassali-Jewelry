@@ -23,7 +23,9 @@ interface ChainImportRow {
   construction: string
   weightPerInchG: number
   heroImageUrl?: string
+  heroImageUploadId?: string
   galleryImageUrls?: string[]
+  galleryImageUploadIds?: string[]
   description?: string
 }
 
@@ -79,7 +81,7 @@ async function main() {
       .replace(/[^a-z0-9]+/g, '-')
       .replace(/^-|-$/g, '')
 
-    const record = {
+    const record: Record<string, unknown> = {
       name: chain.name,
       slug,
       chain_type: chain.chainType,
@@ -97,6 +99,14 @@ async function main() {
       featured: false,
       order: 0,
       active: true,
+    }
+
+    // Add image references if upload IDs are available
+    if (chain.heroImageUploadId) {
+      record.hero_image = { upload_id: chain.heroImageUploadId }
+    }
+    if (chain.galleryImageUploadIds && chain.galleryImageUploadIds.length > 0) {
+      record.gallery_images = chain.galleryImageUploadIds.map(id => ({ upload_id: id }))
     }
 
     const existingId = existingSkus.get(chain.supplierSku)
