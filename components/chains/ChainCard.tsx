@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import type { Chain, PricingConfig } from '@/lib/datocms'
 import { computeWeight, priceForChain, formatPrice } from '@/lib/pricing'
 import type { Karat } from '@/lib/pricing'
+import { formatChainName } from '@/lib/format-chain-name'
 
 interface ChainCardProps {
   chain: Chain
@@ -72,10 +73,10 @@ export default function ChainCard({ chain, pricingConfig }: ChainCardProps) {
             {CHAIN_TYPE_LABELS[chain.chainType] || chain.chainType}
           </p>
           <h3 className="font-heading text-lg font-medium text-deep-charcoal leading-tight mb-2">
-            {chain.name}
+            {formatChainName(chain.name, chain.widthMm)}
           </h3>
-          <p className="text-sm text-charcoal">
-            {chain.widthMm}mm &middot; {chain.construction}
+          <p className="text-sm text-charcoal capitalize">
+            {chain.construction}
           </p>
           <p className="mt-2 font-heading text-xl font-semibold text-deep-charcoal">
             From {formatPrice(startingPrice)}

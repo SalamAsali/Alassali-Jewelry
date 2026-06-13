@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Chain, PricingConfig, DatoCMSImage } from '@/lib/datocms'
 import ChainVariantPicker from '@/components/chains/ChainVariantPicker'
+import { formatChainName } from '@/lib/format-chain-name'
 
 interface ChainProductDetailProps {
   chain: Chain
@@ -60,7 +61,7 @@ export default function ChainProductDetail({ chain, pricingConfig }: ChainProduc
             {(chain.defaultMetal || 'yellow-gold').replace('-', ' ')}
           </Link>
           <span>/</span>
-          <span className="text-deep-charcoal font-medium">{chain.name}</span>
+          <span className="text-deep-charcoal font-medium">{formatChainName(chain.name, chain.widthMm)}</span>
         </nav>
       </div>
 
@@ -119,7 +120,7 @@ export default function ChainProductDetail({ chain, pricingConfig }: ChainProduc
             </span>
 
             {/* Title */}
-            <h1 className="heading-hero text-deep-charcoal mb-2">{chain.name}</h1>
+            <h1 className="heading-hero text-deep-charcoal mb-2">{formatChainName(chain.name, chain.widthMm)}</h1>
 
             {/* Width */}
             <p className="text-lg text-glacier-grey mb-6">

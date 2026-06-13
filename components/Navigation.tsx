@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, User } from 'lucide-react'
 
 const DEFAULT_LOGO = '/images/logo.png'
 
@@ -301,12 +301,20 @@ export default function Navigation(props?: NavigationProps) {
           {/* Right Section */}
           <div className="flex items-center gap-4">
             <Link
+              href="/account"
+              className="hidden md:inline-flex items-center p-2 text-white hover:text-glacier-grey-light transition-colors"
+              title="My Account"
+            >
+              <User className="w-5 h-5" />
+            </Link>
+
+            <Link
               href="/custom-form"
               className="hidden md:inline-flex items-center gap-2 bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-white px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-105 transition-all duration-300"
             >
               Start Your Journey
             </Link>
-            
+
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="lg:hidden p-2 hover:bg-glacier-grey/20 rounded-lg transition-colors"

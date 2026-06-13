@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
 import type { Chain, PricingConfig, MetalColor } from '@/lib/datocms'
-import { computeWeight, priceForChain } from '@/lib/pricing'
+import { computeWeight, priceForChain, formatPrice } from '@/lib/pricing'
 import type { Karat } from '@/lib/pricing'
+import { formatChainName } from '@/lib/format-chain-name'
 import LivePrice from './LivePrice'
 import ChainAdditionalInfo from './ChainAdditionalInfo'
 
@@ -61,12 +61,37 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
     [weightG, selectedKarat, chain.widthMm, pricingConfig]
   )
 
-  const inquiryParams = new URLSearchParams({
-    model: chain.slug,
-    karat: selectedKarat,
-    metal: selectedMetal,
-    length: String(selectedLength),
-  })
+  const [isLoading, setIsLoading] = useState(false)
+
+  async function handleAddToCart() {
+    setIsLoading(true)
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chainId: chain.id,
+          name: formatChainName(chain.name, chain.widthMm),
+          slug: chain.slug,
+          karat: selectedKarat,
+          metal: selectedMetal,
+          lengthIn: selectedLength,
+          widthMm: chain.widthMm,
+          weightG,
+          priceCad: price,
+          heroImage: chain.heroImage?.url || null,
+        }),
+      })
+      const data = await res.json()
+      if (data.url) {
+        window.location.href = data.url
+      }
+    } catch (err) {
+      console.error('Checkout failed:', err)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   return (
     <div>
@@ -151,18 +176,19 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
       </div>
 
       {/* CTA */}
-      <Link
-        href={`/custom/chains?${inquiryParams.toString()}`}
-        className="inline-flex items-center justify-center w-full gap-2 bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-white px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+      <button
+        onClick={handleAddToCart}
+        disabled={isLoading}
+        className="inline-flex items-center justify-center w-full gap-2 bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-white px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-[1.02] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        Inquire About This Chain
-      </Link>
+        {isLoading ? 'Processing...' : `Add to Cart — ${formatPrice(price)}`}
+      </button>
 
       {/* Trust signals */}
       <div className="mt-4 flex items-center justify-center gap-4 text-xs text-glacier-grey">
-        <span className="trust-badge">Handcrafted in Toronto</span>
+        <span className="trust-badge">Secure Stripe Checkout</span>
         <span>&middot;</span>
-        <span className="trust-badge">Custom Orders Welcome</span>
+        <span className="trust-badge">Handcrafted in Toronto</span>
       </div>
 
       {/* Additional Info Accordion */}
