@@ -37,6 +37,20 @@ export default async function RootLayout({
           data-key="AVNynhehvSQEh5GaujqbDg"
           async
         />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-51DE9LX7GE"
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-51DE9LX7GE');
+            `,
+          }}
+        />
       </head>
       <body className="antialiased">
         <ClerkProvider>

@@ -92,60 +92,68 @@ export default function ChainGrid({
     return (
       <div className="lg:flex lg:gap-8">
         {/* Left sidebar — filters (desktop only) */}
-        <aside className="hidden lg:block lg:w-[240px] lg:flex-shrink-0">
-          <div className="sticky top-24 space-y-7">
-            <h3 className="font-heading text-lg font-medium text-deep-charcoal">Filters</h3>
-            <DesktopFilterSection
-              title="Price"
-              options={[
-                { value: 'under-500', label: 'Under $500' },
-                { value: '500-1000', label: '$500 – $1,000' },
-                { value: '1000-2500', label: '$1,000 – $2,500' },
-                { value: '2500-5000', label: '$2,500 – $5,000' },
-                { value: '5000-plus', label: '$5,000+' },
-              ]}
-              active={filters.priceRange}
-              onToggle={(v) => setFilters(f => ({ ...f, priceRange: f.priceRange === v ? null : v }))}
-            />
-            <DesktopFilterSection
-              title="Width"
-              options={[
-                { value: 'under-2', label: 'Under 2mm' },
-                { value: '2-3', label: '2 – 3mm' },
-                { value: '3-5', label: '3 – 5mm' },
-                { value: '5-plus', label: '5mm+' },
-              ]}
-              active={filters.width}
-              onToggle={(v) => setFilters(f => ({ ...f, width: f.width === v ? null : v }))}
-            />
-            <DesktopFilterSection
-              title="Karat"
-              options={[
-                { value: '10k', label: '10K' },
-                { value: '14k', label: '14K' },
-                { value: '18k', label: '18K' },
-              ]}
-              active={filters.karat}
-              onToggle={(v) => setFilters(f => ({ ...f, karat: f.karat === v ? null : v }))}
-            />
-            <DesktopFilterSection
-              title="Construction"
-              options={[
-                { value: 'solid', label: 'Solid' },
-                { value: 'hollow', label: 'Hollow' },
-                { value: 'semi-solid', label: 'Semi-Solid' },
-              ]}
-              active={filters.construction}
-              onToggle={(v) => setFilters(f => ({ ...f, construction: f.construction === v ? null : v }))}
-            />
-            {(filters.priceRange || filters.width || filters.karat || filters.construction) && (
-              <button
-                onClick={() => setFilters({ priceRange: null, width: null, karat: null, construction: null })}
-                className="text-xs text-glacier-grey hover:text-deep-charcoal transition-colors underline underline-offset-2"
-              >
-                Clear all filters
-              </button>
-            )}
+        <aside className="hidden lg:block lg:w-[220px] lg:flex-shrink-0">
+          <div className="sticky top-24">
+            <div className="rounded-xl bg-soft-black p-5 shadow-xl">
+              {/* Header */}
+              <div className="flex items-center justify-between mb-5">
+                <h3 className="font-heading text-xl font-semibold text-white">Refine</h3>
+                {(filters.priceRange || filters.width || filters.karat || filters.construction) && (
+                  <button
+                    onClick={() => setFilters({ priceRange: null, width: null, karat: null, construction: null })}
+                    className="text-[10px] uppercase tracking-wider text-glacier-grey hover:text-white transition-colors"
+                  >
+                    Reset
+                  </button>
+                )}
+              </div>
+
+              {/* Price */}
+              <FilterGroup title="Price">
+                {[
+                  { value: 'under-500', label: '<$500' },
+                  { value: '500-1000', label: '$500–1K' },
+                  { value: '1000-2500', label: '$1K–2.5K' },
+                  { value: '2500-5000', label: '$2.5K–5K' },
+                  { value: '5000-plus', label: '$5K+' },
+                ].map(r => (
+                  <FilterPill key={r.value} label={r.label} isActive={filters.priceRange === r.value} onClick={() => setFilters(f => ({ ...f, priceRange: f.priceRange === r.value ? null : r.value }))} />
+                ))}
+              </FilterGroup>
+
+              {/* Width */}
+              <FilterGroup title="Width">
+                {[
+                  { value: 'under-2', label: '<2mm' },
+                  { value: '2-3', label: '2–3mm' },
+                  { value: '3-5', label: '3–5mm' },
+                  { value: '5-plus', label: '5mm+' },
+                ].map(r => (
+                  <FilterPill key={r.value} label={r.label} isActive={filters.width === r.value} onClick={() => setFilters(f => ({ ...f, width: f.width === r.value ? null : r.value }))} />
+                ))}
+              </FilterGroup>
+
+              {/* Karat */}
+              <FilterGroup title="Karat">
+                {[
+                  { value: '10k', label: '10K' },
+                  { value: '14k', label: '14K' },
+                  { value: '18k', label: '18K' },
+                ].map(r => (
+                  <FilterPill key={r.value} label={r.label} isActive={filters.karat === r.value} onClick={() => setFilters(f => ({ ...f, karat: f.karat === r.value ? null : r.value }))} />
+                ))}
+              </FilterGroup>
+
+              {/* Construction */}
+              <FilterGroup title="Build" isLast>
+                {[
+                  { value: 'solid', label: 'Solid' },
+                  { value: 'hollow', label: 'Hollow' },
+                ].map(r => (
+                  <FilterPill key={r.value} label={r.label} isActive={filters.construction === r.value} onClick={() => setFilters(f => ({ ...f, construction: f.construction === r.value ? null : r.value }))} />
+                ))}
+              </FilterGroup>
+            </div>
           </div>
         </aside>
 
@@ -226,36 +234,29 @@ function SortDropdown({ sort, onSort }: { sort: SortOption; onSort: (s: SortOpti
   )
 }
 
-function DesktopFilterSection({
-  title,
-  options,
-  active,
-  onToggle,
-}: {
-  title: string
-  options: { value: string; label: string }[]
-  active: string | null
-  onToggle: (value: string) => void
-}) {
+function FilterGroup({ title, children, isLast }: { title: string; children: React.ReactNode; isLast?: boolean }) {
   return (
-    <div>
-      <p className="text-xs uppercase tracking-wider font-semibold text-glacier-grey mb-2.5">{title}</p>
-      <div className="space-y-1">
-        {options.map((opt) => (
-          <button
-            key={opt.value}
-            onClick={() => onToggle(opt.value)}
-            className={`w-full text-left px-3 py-2 rounded-md text-sm transition-all duration-200 ${
-              active === opt.value
-                ? 'bg-soft-black text-white font-medium'
-                : 'text-charcoal hover:bg-warm-white hover:text-deep-charcoal'
-            }`}
-          >
-            {opt.label}
-          </button>
-        ))}
+    <div className={isLast ? '' : 'mb-4 pb-4 border-b border-white/10'}>
+      <p className="text-[10px] uppercase tracking-[0.15em] font-semibold text-glacier-grey mb-2">{title}</p>
+      <div className="flex flex-wrap gap-1.5">
+        {children}
       </div>
     </div>
+  )
+}
+
+function FilterPill({ label, isActive, onClick }: { label: string; isActive: boolean; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all duration-200 ${
+        isActive
+          ? 'bg-glacier-grey text-white shadow-md shadow-glacier-grey/30'
+          : 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'
+      }`}
+    >
+      {label}
+    </button>
   )
 }
 
