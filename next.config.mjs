@@ -34,22 +34,16 @@ const nextConfig = {
   async redirects() {
     return [
       // === LOCATION PAGE REDIRECTS ===
-      // Old /custom-X → /toronto/custom-X
-      ...customSlugs.map((slug) => ({
-        source: `/custom-${slug}`,
-        destination: `/toronto/custom-${slug}`,
-        permanent: true,
-      })),
-      // Old /custom-X-toronto → /toronto/custom-X
+      // Old /custom-X-toronto → /toronto/custom-X (preserve backlink equity)
       ...customSlugs.map((slug) => ({
         source: `/custom-${slug}-toronto`,
         destination: `/toronto/custom-${slug}`,
         permanent: true,
       })),
-      // Old /custom/X → /toronto/custom-X
+      // Old flat /custom-X → general /custom/X (restore general pages)
       ...customSlugs.map((slug) => ({
-        source: `/custom/${slug}`,
-        destination: `/toronto/custom-${slug}`,
+        source: `/custom-${slug}`,
+        destination: `/custom/${slug}`,
         permanent: true,
       })),
 
