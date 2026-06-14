@@ -297,7 +297,7 @@ type StepId =
 // ---------------------------------------------------------------------------
 
 const globalWhyCards: { icon: LucideIcon; title: string; text: string }[] = [
-  { icon: MapPin, title: 'Made in Toronto', text: 'Every piece crafted entirely in-house in Toronto — no outsourcing, no middlemen.' },
+  { icon: MapPin, title: 'Made in Ontario', text: 'Every piece crafted entirely in-house in Ontario — no outsourcing, no middlemen.' },
   { icon: Diamond, title: 'Ethically Sourced', text: 'Natural and lab-grown diamonds, conflict-free sapphires, rubies, and emeralds.' },
   { icon: MessageSquare, title: 'One-on-One Design', text: 'Personal consultation from concept to CAD rendering to finished piece.' },
   { icon: ShieldCheck, title: 'Premium Materials', text: '10K-18K gold, platinum, and sterling silver with optional gemstones.' },
@@ -318,15 +318,15 @@ const landingContent: Record<string, {
   relatedPages: { name: string; path: string }[]
 }> = {
   'engagement-rings': {
-    heroH1: 'Custom Engagement Rings in Toronto',
-    heroSub: 'Design a one-of-a-kind ring as unique as your love story — handcrafted in-house by Toronto\'s finest.',
-    intro: 'At Al-Asali Jewelry, every custom engagement ring begins with your vision. Whether you dream of a classic solitaire, a vintage halo setting, or a bold modern design, our master craftspeople bring it to life entirely in-house in Toronto. Choose from ethically sourced natural and lab-grown diamonds, sapphires, rubies, and emeralds — set in platinum, 18K, or 14K gold. From the first sketch to the final presentation, your engagement ring is crafted with the care and precision your moment deserves. Couples across the GTA trust us because we don\'t outsource — every cut, setting, and polish happens under our roof.',
+    heroH1: 'Custom Engagement Rings in Ontario',
+    heroSub: 'Design a one-of-a-kind ring as unique as your love story — handcrafted in-house by Ontario\'s finest.',
+    intro: 'At Al-Asali Jewelry, every custom engagement ring begins with your vision. Whether you dream of a classic solitaire, a vintage halo setting, or a bold modern design, our master craftspeople bring it to life entirely in-house in Ontario. Choose from ethically sourced natural and lab-grown diamonds, sapphires, rubies, and emeralds — set in platinum, 18K, or 14K gold. From the first sketch to the final presentation, your engagement ring is crafted with the care and precision your moment deserves. Couples across Ontario trust us because we don\'t outsource — every cut, setting, and polish happens under our roof.',
     processNote: 'Most custom engagement rings take 4-6 weeks from design approval to completion. We start with a personal consultation to understand your vision, create detailed CAD renderings for your approval, then hand-select your stones before our master jewelers begin crafting. Rush orders are available when your timeline demands it.',
     budgetGuide: 'Custom engagement rings start at $1,000 and scale based on your choice of metal, stone type, carat weight, and design complexity. During consultation, we\'ll work within your budget to maximize brilliance — whether that means a stunning lab-grown diamond or a natural stone with exceptional cut quality.',
     stoneNote: 'Choose from natural diamonds, lab-grown diamonds, sapphires, rubies, and emeralds. We source every stone for maximum fire and brilliance, and we\'re happy to walk you through the 4Cs (cut, clarity, colour, carat) during your consultation. Lab-grown diamonds offer the same physical properties at a lower price point.',
     faq: [
-      { q: 'How long does it take to make a custom engagement ring in Toronto?', a: 'Most custom engagement rings take 4-6 weeks from design approval to completion. Rush orders can be completed in 2-3 weeks for an additional fee, and we\'ll keep you updated at every stage.' },
-      { q: 'How much does a custom engagement ring cost in Toronto?', a: 'Custom engagement rings start at $1,000 and scale with metal choice, diamond origin (lab-grown or natural), carat weight, and design complexity. Solitaires start around $1,800, halo rings around $3,500, and three-stone designs from $4,500. We quote every project up front with no hidden fees.' },
+      { q: 'How long does it take to make a custom engagement ring in Ontario?', a: 'Most custom engagement rings take 4-6 weeks from design approval to completion. Rush orders can be completed in 2-3 weeks for an additional fee, and we\'ll keep you updated at every stage.' },
+      { q: 'How much does a custom engagement ring cost in Ontario?', a: 'Custom engagement rings start at $1,000 and scale with metal choice, diamond origin (lab-grown or natural), carat weight, and design complexity. Solitaires start around $1,800, halo rings around $3,500, and three-stone designs from $4,500. We quote every project up front with no hidden fees.' },
       { q: 'Can I design my own engagement ring?', a: 'Absolutely. Bring us sketches, Pinterest boards, or just a rough idea — our designers will create detailed 3D CAD renderings for your approval before any crafting begins. You can iterate as many times as you need.' },
       { q: 'Lab-grown vs natural diamonds — which is better for an engagement ring?', a: 'Both are real diamonds with identical physical, chemical, and optical properties. Natural diamonds hold long-term resale value better, while lab-grown diamonds offer 40-60% more carat for the same budget. We help you weigh both during consultation.' },
       { q: 'Do you provide GIA certification for diamonds?', a: 'Yes — every natural diamond over 0.50ct ships with a GIA grading report. Lab-grown diamonds ship with IGI or GCAL reports. You can also request certification for smaller stones on request.' },
@@ -336,7 +336,7 @@ const landingContent: Record<string, {
       { q: 'Can I reset a family diamond into my new engagement ring?', a: 'Yes — heirloom resets are some of our most meaningful projects. We carefully remove your existing stone and design a new setting around it, preserving the sentiment while modernizing the look.' },
       { q: 'Do you offer financing for custom engagement rings?', a: 'Yes — we offer flexible payment plans and 0% financing options for qualified buyers. Ask during consultation and we\'ll walk you through what fits your timeline and budget.' },
       { q: 'Do you resize engagement rings for free?', a: 'Yes — every custom engagement ring we create includes free resizing within the first year, and free resizing for life if you have any significant finger-size change. Free cleanings and inspections for life as well.' },
-      { q: 'Where are you based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweler. We work by appointment only — free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery across Toronto and the GTA, and optional in-person meetings in Toronto at a time that works for you.' },
+      { q: 'Where are you based?', a: 'Al-Asali Jewelry Studio is an Ontario-based bespoke jeweler. We work by appointment only — free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery across Ontario, and optional in-person meetings at a time that works for you.' },
     ],
     relatedPages: [
       { name: 'Custom Rings', path: '/custom-rings' },
@@ -345,23 +345,23 @@ const landingContent: Record<string, {
     ],
   },
   'rings': {
-    heroH1: 'Custom Rings in Toronto',
-    heroSub: 'Signet rings, statement rings, wedding bands, and more — designed around your vision, handcrafted in Toronto.',
-    intro: 'From bold signet rings to elegant wedding bands and one-of-a-kind statement pieces, Al-Asali Jewelry creates custom rings that are uniquely yours. Every ring is handcrafted in-house in Toronto using the finest gold, platinum, and silver, with optional diamond and gemstone settings. Whether you have a detailed sketch or just an idea, our craftspeople will bring your ring to life with precision and care.',
+    heroH1: 'Custom Rings in Ontario',
+    heroSub: 'Signet rings, statement rings, wedding bands, and more — designed around your vision, handcrafted in Ontario.',
+    intro: 'From bold signet rings to elegant wedding bands and one-of-a-kind statement pieces, Al-Asali Jewelry creates custom rings that are uniquely yours. Every ring is handcrafted in-house in Ontario using the finest gold, platinum, and silver, with optional diamond and gemstone settings. Whether you have a detailed sketch or just an idea, our craftspeople will bring your ring to life with precision and care.',
     processNote: 'Custom rings typically take 3-5 weeks. We begin with a design consultation, create CAD renderings, and hand-select any stones before crafting begins. Whether it\'s a wedding band, a family signet ring, or a bold everyday statement piece, we treat every ring with the same level of detail.',
     budgetGuide: 'Custom rings start at $1,000 for simpler designs in 10K gold or silver, and scale with gold karat, platinum, stone settings, and design intricacy. Signet rings and wedding bands are among our most popular commissions.',
     stoneNote: 'Add diamonds (natural or lab-grown), sapphires, rubies, or emeralds to any custom ring. Stones can be flush-set, prong-set, or channel-set depending on your design and daily wear needs.',
     faq: [
-      { q: 'What types of custom rings can you make in Toronto?', a: 'Signet rings, statement rings, wedding bands, stackable rings, cocktail rings, pinky rings, mens rings, promise rings, birthstone rings, everyday essentials, and fully custom designs in any style you can imagine.' },
-      { q: 'How much does a custom ring cost in Toronto?', a: 'Custom rings start at $1,000 in 10K gold or silver for simpler designs. Signet rings start around $1,400, statement rings $1,800, and stackable sets from $2,500 for three bands. Final price depends on metal, gold weight, stone count, and engraving.' },
+      { q: 'What types of custom rings can you make in Ontario?', a: 'Signet rings, statement rings, wedding bands, stackable rings, cocktail rings, pinky rings, mens rings, promise rings, birthstone rings, everyday essentials, and fully custom designs in any style you can imagine.' },
+      { q: 'How much does a custom ring cost in Ontario?', a: 'Custom rings start at $1,000 in 10K gold or silver for simpler designs. Signet rings start around $1,400, statement rings $1,800, and stackable sets from $2,500 for three bands. Final price depends on metal, gold weight, stone count, and engraving.' },
       { q: 'Can I bring my own design for a ring?', a: 'Yes — bring sketches, reference photos, or describe your idea verbally. Our designers create detailed 3D CAD renderings for your approval before any crafting begins. Revisions are included.' },
-      { q: 'How do I determine my ring size?', a: 'We mail you a free ring sizer, or walk you through measuring with string during your virtual consultation. If you\'d prefer, we can measure your ring size in person by appointment in Toronto. Every custom ring also includes free resizing.' },
+      { q: 'How do I determine my ring size?', a: 'We mail you a free ring sizer, or walk you through measuring with string during your virtual consultation. If you\'d prefer, we can measure your ring size in person by appointment in Ontario. Every custom ring also includes free resizing.' },
       { q: 'Can you make a custom signet ring with a family crest?', a: 'Yes — family-crest signet rings are one of our favourite commissions. Send us your crest, coat of arms, monogram, or initial design and we\'ll hand-engrave it into your ring.' },
       { q: 'Can I get a matching men\'s and women\'s ring set?', a: 'Absolutely — matching couples rings and promise rings are a regular request. We design them in proportional sizes and complementary finishes (often different widths in matching metal).' },
       { q: 'What metals are available for custom rings?', a: '10K gold, 14K gold, 18K gold in yellow, white, and rose, plus platinum and sterling silver. We\'ll recommend the right choice based on your daily wear, finger size, and budget.' },
       { q: 'Do you engrave custom rings?', a: 'Yes — we engrave inside or outside the band in any font, including Arabic calligraphy, dates, names, coordinates, fingerprints, and soundwaves. Engraving is free with most custom rings.' },
       { q: 'Can you set diamonds or gemstones in a custom ring?', a: 'Yes — natural or lab-grown diamonds, sapphires, rubies, emeralds, birthstones, and any gemstone you source. Prong, bezel, channel, pavé, flush, and tension settings all available.' },
-      { q: 'How long does a custom ring take in Toronto?', a: 'Simpler rings take 3-4 weeks. Signet rings with engraving take 4-5 weeks. Diamond-set rings and complex designs take 5-6 weeks. Rush orders can be completed in 2-3 weeks for an additional fee.' },
+      { q: 'How long does a custom ring take in Ontario?', a: 'Simpler rings take 3-4 weeks. Signet rings with engraving take 4-5 weeks. Diamond-set rings and complex designs take 5-6 weeks. Rush orders can be completed in 2-3 weeks for an additional fee.' },
     ],
     relatedPages: [
       { name: 'Custom Engagement Rings', path: '/custom-engagement-rings' },
@@ -370,24 +370,24 @@ const landingContent: Record<string, {
     ],
   },
   'pendants': {
-    heroH1: 'Custom Pendants in Toronto',
+    heroH1: 'Custom Pendants in Ontario',
     heroSub: 'Name pendants, photo pendants, diamond initials, and more — your story, beautifully told in gold and silver.',
-    intro: 'Al-Asali Jewelry creates custom pendants that carry meaning. From diamond-encrusted name pendants and photo pendants to religious symbols and fully custom designs, every piece is handcrafted in-house in Toronto. Choose your metal, your stones, and your design — we\'ll create a pendant as unique as the story it tells. Our custom name chains and bubble letter pendants are among the most requested pieces in the GTA.',
+    intro: 'Al-Asali Jewelry creates custom pendants that carry meaning. From diamond-encrusted name pendants and photo pendants to religious symbols and fully custom designs, every piece is handcrafted in-house in Ontario. Choose your metal, your stones, and your design — we\'ll create a pendant as unique as the story it tells. Our custom name chains and bubble letter pendants are among the most requested pieces across Ontario.',
     processNote: 'Custom pendants take 2-4 weeks depending on complexity. Name and initial pendants are on the faster end, while photo pendants and diamond-set pieces require additional crafting time. We create a detailed mockup for your approval before beginning work.',
     budgetGuide: 'Custom pendants start at $1,000. Simple name pendants in 10K gold are the most accessible, while diamond-set photo pendants and large statement pieces sit at the higher end. We\'ll help you find the right balance of size, metal, and stone work for your budget.',
     stoneNote: 'Pendants can be set with diamonds (natural or lab-grown), sapphires, rubies, or emeralds. Popular options include diamond-encrusted initials, pave-set name pendants, and bezel-set center stones.',
     faq: [
-      { q: 'What types of custom pendants do you make in Toronto?', a: 'Name pendants, initial pendants, photo pendants, bubble letter pendants, script pendants, Old English pendants, religious symbols (Allah, Ayat al-Kursi, Bismillah, Cross, Hamsa, Om, Star of David), zodiac pendants, memorial pendants, company logos, and fully custom designs.' },
+      { q: 'What types of custom pendants do you make in Ontario?', a: 'Name pendants, initial pendants, photo pendants, bubble letter pendants, script pendants, Old English pendants, religious symbols (Allah, Ayat al-Kursi, Bismillah, Cross, Hamsa, Om, Star of David), zodiac pendants, memorial pendants, company logos, and fully custom designs.' },
       { q: 'Can you make a photo pendant?', a: 'Yes — we create custom photo pendants where your image is laser-engraved onto gold or set behind a crystal dome. You can also add a diamond halo or pavé border for extra detail.' },
-      { q: 'How much does a custom gold pendant cost in Toronto?', a: 'Custom gold pendants start around $1,000 in 10K gold, $1,500 in 14K gold, and $2,000 in 18K gold. Diamond-set pendants start from $2,500, with photo pendants from $1,800. Size, stone count, and gold weight drive final price.' },
-      { q: 'Do you make Arabic calligraphy pendants in Toronto?', a: 'Yes — Arabic calligraphy pendants are one of our signature offerings. We craft Arabic name pendants in any font (Thuluth, Naskh, Diwani, modern script), Allah pendants, Ayat al-Kursi, Bismillah, Mashallah, and fully custom Arabic calligraphy in gold, platinum, or silver.' },
+      { q: 'How much does a custom gold pendant cost in Ontario?', a: 'Custom gold pendants start around $1,000 in 10K gold, $1,500 in 14K gold, and $2,000 in 18K gold. Diamond-set pendants start from $2,500, with photo pendants from $1,800. Size, stone count, and gold weight drive final price.' },
+      { q: 'Do you make Arabic calligraphy pendants in Ontario?', a: 'Yes — Arabic calligraphy pendants are one of our signature offerings. We craft Arabic name pendants in any font (Thuluth, Naskh, Diwani, modern script), Allah pendants, Ayat al-Kursi, Bismillah, Mashallah, and fully custom Arabic calligraphy in gold, platinum, or silver.' },
       { q: 'Can you make a bubble letter pendant?', a: 'Absolutely — bubble letter pendants are one of our most popular styles. Available in 10K, 14K, or 18K gold, with or without diamond pavé, in any size and name or word you want.' },
       { q: 'What chain comes with a custom pendant?', a: 'Chains are priced separately so you can choose the perfect pairing. We can craft a matching custom chain (cuban, rope, franco, box) in the same metal, or help you choose a stock chain from our collection.' },
       { q: 'Can I add diamonds to my pendant?', a: 'Yes — we set natural or lab-grown diamonds, as well as sapphires, rubies, emeralds, and birthstones. Popular options include diamond-encrusted initials, pavé-set name pendants, and bezel-set centre stones.' },
       { q: 'Can you make a memorial pendant?', a: 'Yes — we craft memorial pendants that incorporate fingerprints, handwriting, silhouette portraits, or small keepsakes. Cremation-ash pendants can also be arranged with advance notice.' },
-      { q: 'How long does a custom pendant take in Toronto?', a: 'Simple name or initial pendants take 2-3 weeks. Diamond-set pendants and photo pendants take 3-4 weeks. Complex multi-stone pieces can take 4-6 weeks. Rush orders are available on request.' },
+      { q: 'How long does a custom pendant take in Ontario?', a: 'Simple name or initial pendants take 2-3 weeks. Diamond-set pendants and photo pendants take 3-4 weeks. Complex multi-stone pieces can take 4-6 weeks. Rush orders are available on request.' },
       { q: 'Can you make a custom logo or company pendant?', a: 'Yes — we frequently produce custom logo pendants for brands, companies, and sports teams. Send us a logo file and we\'ll translate it into a 3D CAD model for your approval before crafting.' },
-      { q: 'How do I receive my custom pendant?', a: 'We deliver finished pieces fully insured to your door anywhere in Toronto and the GTA at no extra cost, and ship securely anywhere in Canada. In-person handover by appointment in Toronto is also available.' },
+      { q: 'How do I receive my custom pendant?', a: 'We deliver finished pieces fully insured to your door anywhere across Ontario at no extra cost, and ship securely anywhere in Canada. In-person handover by appointment is also available.' },
     ],
     relatedPages: [
       { name: 'Custom Chains', path: '/custom-chains' },
@@ -396,22 +396,22 @@ const landingContent: Record<string, {
     ],
   },
   'chains': {
-    heroH1: 'Custom Chains in Toronto',
+    heroH1: 'Custom Chains in Ontario',
     heroSub: 'Cuban links, rope chains, franco chains, and more — built to your exact specifications in gold, silver, or platinum.',
-    intro: 'Al-Asali Jewelry is Toronto\'s destination for custom chains. Whether you want a heavyweight Miami Cuban link, a classic rope chain, or a sleek franco — every chain is handcrafted in-house to your exact length, width, and weight specifications. Choose from 10K, 14K, or 18K gold in yellow, white, or rose, as well as platinum and sterling silver. Our custom gold chains and name chains are among the most sought-after pieces in the GTA, built solid — never hollow.',
+    intro: 'Al-Asali Jewelry is Ontario\'s destination for custom chains. Whether you want a heavyweight Miami Cuban link, a classic rope chain, or a sleek franco — every chain is handcrafted in-house to your exact length, width, and weight specifications. Choose from 10K, 14K, or 18K gold in yellow, white, or rose, as well as platinum and sterling silver. Our custom gold chains and name chains are among the most sought-after pieces across Ontario, built solid — never hollow.',
     processNote: 'Custom chains take 2-4 weeks depending on complexity and weight. Cuban links and heavier chains require more crafting time. We weigh and measure each chain to your exact specifications before finishing.',
     budgetGuide: 'Custom chain pricing depends primarily on gold weight. A lighter 10K gold box chain starts around $1,000, while a heavy 18K Cuban link can reach $10,000+. We quote based on current gold prices, karat, and your desired dimensions.',
     stoneNote: 'Chains can incorporate diamond-set clasps, diamond-cut links, or integrated diamond settings. We can also create matching chain-and-pendant combinations.',
     faq: [
-      { q: 'What types of custom chains do you offer in Toronto?', a: 'Miami Cuban link, rope, franco, figaro, box, wheat, anchor, curb, herringbone, paperclip, byzantine, and fully custom link designs. Any style, any weight, any length.' },
-      { q: 'How much does a custom Cuban link chain cost in Toronto?', a: 'A 22" 10K gold Cuban link starts around $2,500 at 5mm width and scales with width, length, and karat. A 22" 14K Cuban at 8mm typically runs $6,000-$8,000. Solid 18K heavyweight chains at 10mm+ can reach $12,000+. We quote by exact gram weight.' },
+      { q: 'What types of custom chains do you offer in Ontario?', a: 'Miami Cuban link, rope, franco, figaro, box, wheat, anchor, curb, herringbone, paperclip, byzantine, and fully custom link designs. Any style, any weight, any length.' },
+      { q: 'How much does a custom Cuban link chain cost in Ontario?', a: 'A 22" 10K gold Cuban link starts around $2,500 at 5mm width and scales with width, length, and karat. A 22" 14K Cuban at 8mm typically runs $6,000-$8,000. Solid 18K heavyweight chains at 10mm+ can reach $12,000+. We quote by exact gram weight.' },
       { q: 'Solid gold vs hollow gold chains — what\'s the difference?', a: 'Hollow chains are lightweight and cheaper but dent, kink, and snap under everyday wear. We only make solid gold chains — they hold their shape, last a lifetime, and hold resale value. We\'ll walk you through the weight trade-offs during consultation.' },
       { q: 'How many grams is a 5mm Cuban chain?', a: 'A 22" 5mm solid Cuban chain is roughly 40-50 grams in 10K gold, 45-55 grams in 14K, and 50-60 grams in 18K. Exact weight varies slightly by link style. We weigh and measure to your spec before finishing.' },
       { q: 'What gold karats are available for chains?', a: '10K, 14K, and 18K gold in yellow, white, and rose, plus platinum and sterling silver. 14K is our most popular — a great balance of colour, durability, and price for everyday wear.' },
       { q: 'Can I customize the length and width of my chain?', a: 'Yes — every chain is made to your exact length, width, and gram weight specifications. Common lengths: 18", 20", 22", 24", 26", 28", 30". Widths from 2mm to 15mm+ depending on chain style.' },
       { q: 'Do you make chains with name plates or pendants integrated?', a: 'Yes — we can integrate custom name plates, ID bars, pendants, and diamond-set sections into any chain design. Matching chain-and-pendant sets are a signature offering.' },
       { q: 'Can you add diamonds to a chain clasp or links?', a: 'Yes — diamond-set clasps, diamond-cut facets, and fully diamond-embedded links (iced-out chains) are all available. Natural or lab-grown, any clarity tier.' },
-      { q: 'How long does a custom chain take in Toronto?', a: 'Most chains take 2-4 weeks. Lightweight chains 2-3 weeks, heavyweight Cuban or franco chains 3-4 weeks, fully iced-out chains 5-6 weeks due to setting work. Rush production is available.' },
+      { q: 'How long does a custom chain take in Ontario?', a: 'Most chains take 2-4 weeks. Lightweight chains 2-3 weeks, heavyweight Cuban or franco chains 3-4 weeks, fully iced-out chains 5-6 weeks due to setting work. Rush production is available.' },
       { q: 'Do you repair or re-solder broken chains?', a: 'Yes — we repair, re-solder, and re-plate chains (even if they weren\'t made here). We also shorten and extend existing chains to your preferred length.' },
     ],
     relatedPages: [
@@ -421,22 +421,22 @@ const landingContent: Record<string, {
     ],
   },
   'earrings': {
-    heroH1: 'Custom Earrings in Toronto',
-    heroSub: 'Diamond studs, gold hoops, drop earrings, and more — handcrafted to your design in our Toronto studio.',
-    intro: 'From elegant diamond studs to bold statement hoops, Al-Asali Jewelry designs and crafts custom earrings entirely in-house in Toronto. Choose your style, your metal, and your stones — whether you want a subtle everyday pair or a show-stopping set for a special occasion, we craft them to perfection. We also create matching earring-and-pendant sets for a cohesive look.',
+    heroH1: 'Custom Earrings in Ontario',
+    heroSub: 'Diamond studs, gold hoops, drop earrings, and more — handcrafted to your design in our Ontario studio.',
+    intro: 'From elegant diamond studs to bold statement hoops, Al-Asali Jewelry designs and crafts custom earrings entirely in-house in Ontario. Choose your style, your metal, and your stones — whether you want a subtle everyday pair or a show-stopping set for a special occasion, we craft them to perfection. We also create matching earring-and-pendant sets for a cohesive look.',
     processNote: 'Custom earrings take 2-4 weeks. Stud earrings are quicker to produce, while complex chandelier designs with multiple stone settings require more time. We create a detailed design for your approval before crafting.',
     budgetGuide: 'Custom earrings start at $1,000. Diamond stud earrings are priced based on stone size and quality, while gold hoops depend on weight and karat. We\'ll find the best combination for your budget.',
     stoneNote: 'Earrings can feature diamonds (natural or lab-grown), sapphires, rubies, and emeralds. Popular choices include diamond stud earrings, pave-set hoops, and drop earrings with colored gemstones.',
     faq: [
-      { q: 'What types of custom earrings can you make in Toronto?', a: 'Diamond studs, gold hoops, huggies, drop earrings, chandelier earrings, ear climbers, ear cuffs, threader earrings, cluster earrings, and fully custom designs — all handcrafted in our Toronto studio.' },
-      { q: 'How much do custom diamond stud earrings cost in Toronto?', a: '0.5ctw lab-grown studs start around $1,000 in 14K gold. 1ctw studs $1,500-$2,500 (lab) or $3,500-$5,000 (natural). 2ctw studs $3,000-$6,000 (lab) or $8,000-$15,000 (natural). Premium VVS clarity adds 15-25% to each tier.' },
+      { q: 'What types of custom earrings can you make in Ontario?', a: 'Diamond studs, gold hoops, huggies, drop earrings, chandelier earrings, ear climbers, ear cuffs, threader earrings, cluster earrings, and fully custom designs — all handcrafted in our Ontario studio.' },
+      { q: 'How much do custom diamond stud earrings cost in Ontario?', a: '0.5ctw lab-grown studs start around $1,000 in 14K gold. 1ctw studs $1,500-$2,500 (lab) or $3,500-$5,000 (natural). 2ctw studs $3,000-$6,000 (lab) or $8,000-$15,000 (natural). Premium VVS clarity adds 15-25% to each tier.' },
       { q: 'Lab-grown vs natural diamond studs — which should I choose?', a: 'Lab-grown studs deliver the same brilliance and hardness for roughly 50% less — ideal if you want bigger visible size. Natural diamonds hold long-term resale value and carry heirloom sentiment. Both are real diamonds; we\'ll show you loose stones of each to compare.' },
       { q: 'How much do custom gold hoops cost?', a: 'Plain 10K gold hoops start around $800, 14K from $1,100, 18K from $1,500. Diamond-set pavé hoops start from $2,500. Final price scales with diameter, width, and gold weight.' },
       { q: 'Can I design matching earrings, pendant, and ring?', a: 'Yes — matching sets are a signature offering. Design your earrings alongside a pendant, ring, or bracelet for a cohesive collection. We offer set discounts when ordered together.' },
       { q: 'Do you make huggies and small everyday earrings?', a: 'Yes — huggies, small hoops, and everyday studs are some of our most popular pieces. We make them in 10K, 14K, or 18K gold with optional diamond pavé.' },
       { q: 'What metals are available for earrings?', a: '10K, 14K, and 18K gold in yellow, white, and rose, plus platinum and sterling silver. Platinum is the most durable and hypoallergenic — ideal if you have sensitive ears.' },
       { q: 'What\'s the difference between push-back and screw-back studs?', a: 'Push-back (friction-back) is the standard — easy to wear daily. Screw-back is more secure for high-value diamonds you never want to lose. We offer both and will recommend based on stone size and how you\'ll wear them.' },
-      { q: 'How long do custom earrings take in Toronto?', a: 'Diamond studs take 2-3 weeks, plain gold hoops 2-3 weeks, pavé hoops 3-4 weeks, chandelier and complex multi-stone designs 4-5 weeks. Rush production available.' },
+      { q: 'How long do custom earrings take in Ontario?', a: 'Diamond studs take 2-3 weeks, plain gold hoops 2-3 weeks, pavé hoops 3-4 weeks, chandelier and complex multi-stone designs 4-5 weeks. Rush production available.' },
       { q: 'Can I get earrings re-plated or diamonds tightened?', a: 'Yes — free rhodium re-plating and free diamond tightening for life on every pair we create. We also service earrings from other jewelers at competitive rates.' },
     ],
     relatedPages: [
@@ -446,23 +446,23 @@ const landingContent: Record<string, {
     ],
   },
   'bracelets': {
-    heroH1: 'Custom Bracelets in Toronto',
-    heroSub: 'Tennis bracelets, bangles, cuffs, and engraved pieces for men and women — designed and crafted in Toronto.',
-    intro: 'Al-Asali Jewelry creates custom bracelets for every style and occasion. From diamond tennis bracelets and elegant bangles to bold cuffs and engraved pieces for men, every bracelet is handcrafted in-house in Toronto. Whether you want a personalized name bracelet, a custom charm bracelet, or a mens engraved bracelet in solid gold — we\'ll create a piece that fits your wrist and your vision perfectly.',
+    heroH1: 'Custom Bracelets in Ontario',
+    heroSub: 'Tennis bracelets, bangles, cuffs, and engraved pieces for men and women — designed and crafted in Ontario.',
+    intro: 'Al-Asali Jewelry creates custom bracelets for every style and occasion. From diamond tennis bracelets and elegant bangles to bold cuffs and engraved pieces for men, every bracelet is handcrafted in-house in Ontario. Whether you want a personalized name bracelet, a custom charm bracelet, or a mens engraved bracelet in solid gold — we\'ll create a piece that fits your wrist and your vision perfectly.',
     processNote: 'Custom bracelets take 3-5 weeks. Tennis bracelets with many individual stone settings require more time, while bangles and cuffs are quicker. We measure your wrist for a precise fit during consultation.',
     budgetGuide: 'Custom bracelets start at $1,000. Tennis bracelets are priced based on stone count and quality, while bangles and cuffs depend on metal weight. Engraved bracelets for men are among our most popular commissions.',
     stoneNote: 'Bracelets can feature diamonds, sapphires, and other gemstones. Tennis bracelets with round brilliant diamonds are our most popular stone-set bracelet style. We also offer diamond-accented cuffs and charm bracelets.',
     faq: [
-      { q: 'What types of custom bracelets do you make in Toronto?', a: 'Tennis bracelets, chain bracelets (Cuban, rope, franco, figaro), bangles, cuffs, charm bracelets, ID bracelets, engraved mens bracelets, byzantine bracelets, and fully custom designs for men and women.' },
-      { q: 'How much does a custom tennis bracelet cost in Toronto?', a: 'Lab-grown diamond tennis bracelets: 2ctw from $2,500, 3ctw from $3,800, 5ctw from $6,500, 7ctw from $9,500, 10ctw from $14,000. Natural diamond tennis bracelets typically cost 2.5-3x the lab-grown equivalent. All prices in 14K gold.' },
-      { q: 'Can I get an engraved bracelet for men in Toronto?', a: 'Yes — engraved men\'s bracelets are one of our most requested pieces. ID bracelets, Cuban link with name plate, Figaro with engraved bar, or solid cuffs — all with custom engraving in any font including Arabic calligraphy, dates, names, or logos.' },
-      { q: 'How do I measure my wrist for a bracelet?', a: 'Wrap a flexible tape measure snugly around your wrist just below the wrist bone, then add 0.5" (loose) or 0.25" (snug). Standard men\'s: 7.5-8.5". Standard women\'s: 6.5-7". We\'re happy to walk you through it on Zoom, or measure your wrist in person by appointment in Toronto.' },
+      { q: 'What types of custom bracelets do you make in Ontario?', a: 'Tennis bracelets, chain bracelets (Cuban, rope, franco, figaro), bangles, cuffs, charm bracelets, ID bracelets, engraved mens bracelets, byzantine bracelets, and fully custom designs for men and women.' },
+      { q: 'How much does a custom tennis bracelet cost in Ontario?', a: 'Lab-grown diamond tennis bracelets: 2ctw from $2,500, 3ctw from $3,800, 5ctw from $6,500, 7ctw from $9,500, 10ctw from $14,000. Natural diamond tennis bracelets typically cost 2.5-3x the lab-grown equivalent. All prices in 14K gold.' },
+      { q: 'Can I get an engraved bracelet for men in Ontario?', a: 'Yes — engraved men\'s bracelets are one of our most requested pieces. ID bracelets, Cuban link with name plate, Figaro with engraved bar, or solid cuffs — all with custom engraving in any font including Arabic calligraphy, dates, names, or logos.' },
+      { q: 'How do I measure my wrist for a bracelet?', a: 'Wrap a flexible tape measure snugly around your wrist just below the wrist bone, then add 0.5" (loose) or 0.25" (snug). Standard men\'s: 7.5-8.5". Standard women\'s: 6.5-7". We\'re happy to walk you through it on Zoom, or measure your wrist in person by appointment in Ontario.' },
       { q: 'What\'s the difference between a tennis bracelet and a diamond chain bracelet?', a: 'A tennis bracelet has prong-set diamonds in a continuous line, each stone visible front and side. A diamond chain bracelet has stones set into chain links. Tennis bracelets typically show more stone face-up and are the more formal style.' },
       { q: 'Do you make custom ID bracelets?', a: 'Yes — ID bracelets are a staple of our mens collection. Solid gold, platinum, or silver plates engraved with names, dates, Arabic calligraphy, or any custom design. Attached to Cuban, figaro, or rope link chains.' },
       { q: 'Can I add diamonds to a bangle or cuff?', a: 'Yes — pavé-set bangles, diamond-accent cuffs, and fully diamond-encrusted cuffs are all available. Natural or lab-grown, any clarity tier.' },
       { q: 'What metals are available for custom bracelets?', a: '10K, 14K, and 18K gold in yellow, white, and rose, plus platinum and sterling silver. 14K and 18K are our most popular for bracelets due to everyday durability.' },
       { q: 'Do you offer safety chains on tennis bracelets?', a: 'Yes — every tennis bracelet we make includes a safety chain and a double-lock box clasp as standard. Lost a stone from an older bracelet? We can repair and add safety chains to bracelets made elsewhere.' },
-      { q: 'How long does a custom bracelet take in Toronto?', a: 'Tennis bracelets 4-5 weeks due to hand-setting each stone. Bangles and cuffs 3-4 weeks. Chain bracelets 2-3 weeks. Engraved ID bracelets 3-4 weeks. Rush production available.' },
+      { q: 'How long does a custom bracelet take in Ontario?', a: 'Tennis bracelets 4-5 weeks due to hand-setting each stone. Bangles and cuffs 3-4 weeks. Chain bracelets 2-3 weeks. Engraved ID bracelets 3-4 weeks. Rush production available.' },
     ],
     relatedPages: [
       { name: 'Custom Chains', path: '/custom-chains' },
@@ -471,22 +471,22 @@ const landingContent: Record<string, {
     ],
   },
   'grillz': {
-    heroH1: 'Custom Grillz in Toronto',
-    heroSub: 'Gold grillz, diamond grillz, and VVS sets — Toronto\'s premier custom grillz studio. In-house craftsmanship, competitive prices.',
-    intro: 'Al-Asali Jewelry is Toronto\'s go-to destination for custom grillz. From single-tooth pieces to full diamond-set grillz, every set is handcrafted in-house using real gold and genuine diamonds — not plated, not CZ. We offer 10K, 14K, and 18K gold in yellow, white, and rose, with optional VVS diamond, diamond dust, and fully custom designs. Our mold process ensures a perfect fit every time, and our prices are explained upfront with no surprises. Whether you\'re looking for gold grillz, diamond grillz, or something entirely unique, we\'re the only shop in Toronto that does it all under one roof.',
-    processNote: 'Custom grillz take 1-2 weeks after your mold appointment. We take a precise dental impression, design your grillz, and handcraft them in your chosen metal and stone configuration. Mold sessions are booked by appointment in Toronto.',
+    heroH1: 'Custom Grillz in Ontario',
+    heroSub: 'Gold grillz, diamond grillz, and VVS sets — Ontario\'s premier custom grillz studio. In-house craftsmanship, competitive prices.',
+    intro: 'Al-Asali Jewelry is Ontario\'s go-to destination for custom grillz. From single-tooth pieces to full diamond-set grillz, every set is handcrafted in-house using real gold and genuine diamonds — not plated, not CZ. We offer 10K, 14K, and 18K gold in yellow, white, and rose, with optional VVS diamond, diamond dust, and fully custom designs. Our mold process ensures a perfect fit every time, and our prices are explained upfront with no surprises. Whether you\'re looking for gold grillz, diamond grillz, or something entirely unique, we\'re the only shop in Ontario that does it all under one roof.',
+    processNote: 'Custom grillz take 1-2 weeks after your mold appointment. We take a precise dental impression, design your grillz, and handcraft them in your chosen metal and stone configuration. Mold sessions are booked by appointment in Ontario.',
     budgetGuide: 'Grillz start at $500 for a single tooth in 10K gold. Top 6 or bottom 6 sets range from $2,000-$5,000 in solid gold. Full diamond-set VVS grillz start around $5,000 and scale with diamond quality and coverage.',
     stoneNote: 'We set genuine natural and lab-grown diamonds in grillz, including VVS clarity stones. Diamond dust finishes, channel-set diamonds, and fully iced-out options are all available. No cubic zirconia — ever.',
     faq: [
-      { q: 'How much do custom grillz cost in Toronto?', a: 'Single tooth grillz start at $500 in 10K gold. Top 6 or bottom 6 sets range from $2,000-$5,000 in solid gold. Full diamond-set VVS grillz start around $5,000 and scale to $15,000+ for fully iced-out sets. Every quote is broken down up front by gold weight, karat, and stone count.' },
+      { q: 'How much do custom grillz cost in Ontario?', a: 'Single tooth grillz start at $500 in 10K gold. Top 6 or bottom 6 sets range from $2,000-$5,000 in solid gold. Full diamond-set VVS grillz start around $5,000 and scale to $15,000+ for fully iced-out sets. Every quote is broken down up front by gold weight, karat, and stone count.' },
       { q: 'What types of grillz do you offer?', a: 'Full sets (top + bottom), top 6, bottom 6, top 8, bottom 8, single tooth, fangs, open-face, honeycomb, bar, diamond dust, and fully custom designs. We also create matching grillz for couples and teams.' },
       { q: 'Are your grillz removable?', a: 'Yes — every grillz we make is removable. We create a precise dental mold of your teeth for a snug, secure fit that clicks in and out without permanently altering your teeth.' },
       { q: 'Are removable grillz safe for your teeth?', a: 'Yes, when properly made. Because our grillz are custom-fit from your exact dental mold, they sit snugly without damaging enamel. We recommend removing them before eating and cleaning them with a soft brush daily.' },
       { q: 'VVS vs VS vs SI — which clarity should I pick for grillz?', a: 'VVS offers the cleanest, brightest look and is our premium tier. VS gives a near-identical visual face-up for about 20-30% less. SI stones look great in micro-pavé or dust settings. We\'ll walk through all three with loose stones during consultation.' },
-      { q: 'Do you use real diamonds in grillz?', a: 'Yes — genuine natural and lab-grown diamonds only, including VVS clarity stones. No cubic zirconia, no moissanite substitutions, ever. Every stone is hand-set by our master jeweler in Toronto.' },
+      { q: 'Do you use real diamonds in grillz?', a: 'Yes — genuine natural and lab-grown diamonds only, including VVS clarity stones. No cubic zirconia, no moissanite substitutions, ever. Every stone is hand-set by our master jeweler in Ontario.' },
       { q: 'What gold karats are available for grillz?', a: '10K, 14K, and 18K gold in yellow, white, and rose gold. 10K is the most durable and affordable. 14K is our most popular — a great balance of colour and price. 18K delivers the deepest yellow but is softer and needs gentler care.' },
-      { q: 'How long does it take to make custom grillz in Toronto?', a: 'Most custom grillz are completed in 1-2 weeks after your mold appointment. Full diamond-set VVS sets can take 3-4 weeks due to the setting work. Rush orders are available on request.' },
-      { q: 'How does the grillz mold process work?', a: 'We take a precise dental-grade silicone impression of your teeth at a by-appointment mold session in Toronto. The impression is cast into a stone model that we use to shape and fit your grillz exactly to your bite. The appointment takes about 20 minutes.' },
+      { q: 'How long does it take to make custom grillz in Ontario?', a: 'Most custom grillz are completed in 1-2 weeks after your mold appointment. Full diamond-set VVS sets can take 3-4 weeks due to the setting work. Rush orders are available on request.' },
+      { q: 'How does the grillz mold process work?', a: 'We take a precise dental-grade silicone impression of your teeth at a by-appointment mold session in Ontario. The impression is cast into a stone model that we use to shape and fit your grillz exactly to your bite. The appointment takes about 20 minutes.' },
       { q: 'Can I eat or drink with grillz in?', a: 'We recommend removing grillz before eating to protect both the grillz and your teeth. Drinking water is fine. Avoid sugary drinks with grillz in to prevent buildup along the gum line.' },
       { q: 'Do you offer permanent grillz?', a: 'We specialize in removable custom grillz because they\'re safer for your long-term oral health. If you\'re looking for semi-permanent grillz, we\'ll discuss the pros, cons, and dental considerations during consultation.' },
       { q: 'Do you make matching grillz for couples?', a: 'Yes — matching couples grillz are one of our most requested orders. We can create mirrored designs, shared stones, or complementary styles between partners.' },
@@ -498,19 +498,19 @@ const landingContent: Record<string, {
     ],
   },
   'wedding-bands': {
-    heroH1: 'Custom Wedding Bands in Toronto',
-    heroSub: 'Bands as timeless as your vow — handcrafted in Toronto to match your ring, your finish, and your story.',
-    intro: 'A wedding band is the piece you\'ll wear every single day for the rest of your life, so it deserves the same care as the engagement ring it sits beside. At Al-Asali Jewelry, every custom wedding band is designed and handcrafted in-house in Toronto — from classic comfort-fit bands and eternity rings to contour-shaped bands that nest perfectly against a halo or solitaire. Choose platinum, 18K, 14K, or 10K gold in yellow, white, or rose, with optional diamond or gemstone accents and any engraving you can imagine, including Arabic calligraphy, fingerprints, and soundwaves. We craft matching bridal sets for couples, modern men\'s bands in brushed or hammered finishes, and stackable anniversary bands — all with our lifetime craftsmanship guarantee.',
+    heroH1: 'Custom Wedding Bands in Ontario',
+    heroSub: 'Bands as timeless as your vow — handcrafted in Ontario to match your ring, your finish, and your story.',
+    intro: 'A wedding band is the piece you\'ll wear every single day for the rest of your life, so it deserves the same care as the engagement ring it sits beside. At Al-Asali Jewelry, every custom wedding band is designed and handcrafted in-house in Ontario — from classic comfort-fit bands and eternity rings to contour-shaped bands that nest perfectly against a halo or solitaire. Choose platinum, 18K, 14K, or 10K gold in yellow, white, or rose, with optional diamond or gemstone accents and any engraving you can imagine, including Arabic calligraphy, fingerprints, and soundwaves. We craft matching bridal sets for couples, modern men\'s bands in brushed or hammered finishes, and stackable anniversary bands — all with our lifetime craftsmanship guarantee.',
     processNote: 'Custom wedding bands take 3-5 weeks from design approval to completion. We start with a free consultation to understand the fit, finish, and story you want, create CAD renderings for your approval, then hand-craft each band in your chosen metal. Matching bridal sets are designed alongside the engagement ring when possible to ensure a perfect nest. Rush orders can be completed in 2-3 weeks for an additional fee.',
     budgetGuide: 'Custom wedding bands start at $900 for plain 10K gold bands and scale with karat, width, eternity stone coverage, and engraving complexity. A solid platinum comfort-fit band typically starts around $1,800, a half-eternity diamond band around $3,500, and a full diamond eternity band from $6,000. We quote every band up front with no hidden fees.',
     stoneNote: 'Bands can be set with diamonds (natural or lab-grown), sapphires, rubies, or emeralds in channel, bead, or shared-prong settings. Eternity and half-eternity bands are our most popular stone-set options, with birthstone bands a close second for anniversary pieces.',
     faq: [
-      { q: 'How much does a custom wedding band cost in Toronto?', a: 'Custom wedding bands start at $900 for plain 10K gold and scale with metal karat, width, diamond coverage, and engraving. Platinum bands start around $1,800, half-eternity diamond bands from $3,500.' },
+      { q: 'How much does a custom wedding band cost in Ontario?', a: 'Custom wedding bands start at $900 for plain 10K gold and scale with metal karat, width, diamond coverage, and engraving. Platinum bands start around $1,800, half-eternity diamond bands from $3,500.' },
       { q: 'Do you match wedding bands to engagement rings?', a: 'Yes — we specialize in contour and shaped bands that nest flush against halo, solitaire, and three-stone engagement rings. Bring in your engagement ring and we\'ll design a band to match.' },
       { q: 'What\'s the difference between comfort fit and standard fit?', a: 'Comfort-fit bands have a slightly domed interior, making them easier to slide over the knuckle and more comfortable for daily wear. Standard-fit bands have a flat interior and feel slightly more traditional.' },
       { q: 'Can you engrave Arabic calligraphy on a wedding band?', a: 'Absolutely — we engrave Arabic calligraphy, scripture, names, dates, fingerprints, soundwaves, and any custom design you envision, inside or outside the band.' },
       { q: 'Do you make men\'s wedding bands?', a: 'Yes — we craft men\'s wedding bands in widths from 4mm to 10mm with brushed, hammered, polished, or matte finishes. Popular options include tungsten-look platinum, two-tone gold, and diamond-accent bands.' },
-      { q: 'How long does a custom wedding band take in Toronto?', a: 'Most bands take 3-5 weeks from design approval. Matching bridal sets take 4-6 weeks. Rush orders can be completed in 2-3 weeks for an additional fee.' },
+      { q: 'How long does a custom wedding band take in Ontario?', a: 'Most bands take 3-5 weeks from design approval. Matching bridal sets take 4-6 weeks. Rush orders can be completed in 2-3 weeks for an additional fee.' },
       { q: 'Can I reset diamonds from a family ring into a new band?', a: 'Yes — heirloom resets are one of our most meaningful projects. We\'ll carefully remove the stones and reset them into your new custom band design.' },
       { q: 'Do you make stackable anniversary bands?', a: 'Yes — we love designing stackable sets that add a new band for every anniversary or milestone. Mix metals, karats, and stone colours for a truly personal stack.' },
       { q: 'Can you size my band precisely?', a: 'Yes — we measure your ring size during consultation at no charge, and every custom band includes free resizing for life if your size changes.' },
@@ -865,7 +865,7 @@ function LandingPage({ type }: { type: string }) {
           <div className="max-w-2xl mx-auto text-center">
             <div className="flex items-center justify-center gap-2 mb-2">
               <MapPin className="w-4 h-4 text-glacier-grey" />
-              <span className="text-stone text-sm">Proudly crafted in Toronto, serving the Greater Toronto Area</span>
+              <span className="text-stone text-sm">Proudly crafted in Ontario, serving communities across Ontario</span>
             </div>
             <div className="flex items-center justify-center gap-1">
               {[...Array(5)].map((_, i) => (
@@ -905,7 +905,7 @@ export default function CustomJewelryPage() {
 
   // /custom-form → form-only conversion utility. Hub SEO content was
   // moved to the homepage to consolidate ranking authority on a single
-  // "custom jewelry toronto" page; this URL is excluded from the sitemap.
+  // "custom jewelry ontario" page; this URL is excluded from the sitemap.
   return (
     <Suspense fallback={null}>
       <PortalForm />
@@ -1501,7 +1501,7 @@ function PortalForm() {
 
 // ---------------------------------------------------------------------------
 // GeneralHub — SEO-rich hub content rendered below the PortalForm on /custom/general
-// Targets "custom jeweler Toronto", "bespoke jewelry Toronto", "custom jewelry Toronto"
+// Targets "custom jeweler Ontario", "bespoke jewelry Ontario", "custom jewelry Ontario"
 // ---------------------------------------------------------------------------
 
 const hubBespokeCards: { name: string; path: string; icon: LucideIcon; blurb: string }[] = [
@@ -1516,24 +1516,24 @@ const hubBespokeCards: { name: string; path: string; icon: LucideIcon; blurb: st
 ]
 
 const hubProcessSteps = [
-  { icon: MessageSquare, title: 'Consultation', body: 'Free virtual consultation via Zoom, phone, or message — or in-person in Toronto by appointment. We discuss your vision, budget, and timeline.' },
+  { icon: MessageSquare, title: 'Consultation', body: 'Free virtual consultation via Zoom, phone, or message — or in-person by appointment. We discuss your vision, budget, and timeline.' },
   { icon: Pen, title: 'Design & CAD', body: 'Our designers produce detailed sketches and 3D CAD renderings for your approval before crafting begins.' },
   { icon: Diamond, title: 'Stone & Metal Selection', body: 'Hand-pick GIA-graded natural or lab-grown diamonds, coloured gems, and your choice of gold, platinum, or silver.' },
-  { icon: Wrench, title: 'In-House Crafting', body: 'Every piece is cast, set, and finished entirely in our Toronto workshop by master jeweler Mohammad Al-Asali — no outsourcing.' },
+  { icon: Wrench, title: 'In-House Crafting', body: 'Every piece is cast, set, and finished entirely in our Ontario workshop by master jeweler Mohammad Al-Asali — no outsourcing.' },
   { icon: Gem, title: 'Presentation', body: 'Your finished piece is inspected, photographed, and presented in luxury packaging with a lifetime craftsmanship guarantee.' },
 ]
 
 const hubFaq = [
-  { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweler. We operate by appointment only — virtual consultations, secure insured delivery across the GTA, and optional in-person meetings in Toronto when preferred.' },
-  { q: 'Do I need an appointment to visit the Toronto studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we\'ll confirm a time that works for you.' },
-  { q: 'What areas around Toronto do you serve?', a: 'Our studio is in Toronto, and we regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, and Milton.' },
-  { q: 'How do I start a custom jewelry project?', a: 'Book a free consultation — virtual via Zoom, phone, or message, or in-person in Toronto by appointment. We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
-  { q: 'How much does custom jewelry cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal, stones, and design complexity. We quote every project up front with no hidden fees.' },
+  { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is an Ontario-based bespoke jeweler. We operate by appointment only — virtual consultations, secure insured delivery across Ontario, and optional in-person meetings when preferred.' },
+  { q: 'Do I need an appointment to visit the Ontario studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we\'ll confirm a time that works for you.' },
+  { q: 'What areas in Ontario do you serve?', a: 'Our studio is in Ontario, and we regularly work with clients from communities across Ontario including Toronto, Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, and Milton.' },
+  { q: 'How do I start a custom jewelry project?', a: 'Book a free consultation — virtual via Zoom, phone, or message, or in-person by appointment. We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
+  { q: 'How much does custom jewelry cost in Ontario?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal, stones, and design complexity. We quote every project up front with no hidden fees.' },
   { q: 'Do you offer lab-grown diamonds?', a: 'Yes — we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value.' },
   { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We\'ll carefully remove the stones from your existing piece and set them into your new custom design.' },
   { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweler is fluent in the art of Arabic calligraphy casting.' },
   { q: 'What is the typical timeline for custom jewelry?', a: 'Most pieces take 2-6 weeks: grillz 1-2 weeks, pendants 2-4 weeks, chains and earrings 2-4 weeks, rings and bracelets 3-5 weeks, engagement rings 4-6 weeks. Rush orders are available.' },
-  { q: 'Do you ship outside of Toronto?', a: 'Yes — we ship securely across the GTA and anywhere in Canada. Finished pieces are always fully insured in transit.' },
+  { q: 'Do you ship across Ontario?', a: 'Yes — we ship securely across Ontario and anywhere in Canada. Finished pieces are always fully insured in transit.' },
 ]
 
 function GeneralHub() {
@@ -1554,10 +1554,10 @@ function GeneralHub() {
         <header className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 mb-5">
             <Sparkles className="w-4 h-4 text-glacier-grey" />
-            <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">Toronto&apos;s Custom Jewelry Studio</span>
+            <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">Ontario&apos;s Custom Jewelry Studio</span>
           </div>
           <h2 className="text-3xl md:text-5xl font-bold text-white mb-5" style={{ fontFamily: 'var(--font-heading)' }}>
-            Toronto&apos;s Premier Custom Jeweler
+            Ontario&apos;s Premier Custom Jeweler
           </h2>
           <p className="text-stone leading-relaxed text-base md:text-lg">
             Al-Asali Jewelry is a Toronto-based bespoke jewelry studio, working by appointment. Master jeweler Mohammad Al-Asali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.

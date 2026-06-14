@@ -14,10 +14,10 @@ export const LOCATIONS: LocationData[] = [
   {
     slug: 'toronto',
     name: 'Toronto',
-    address: '5070 Oscar Peterson Blvd',
-    city: 'Mississauga',
+    address: '624 Vaughan Rd York',
+    city: 'Toronto',
     province: 'ON',
-    postalCode: 'L5M 7W3',
+    postalCode: 'M6E 2X3',
     phone: '(647) 562-4640',
     isMain: true,
     neighborhoods: [

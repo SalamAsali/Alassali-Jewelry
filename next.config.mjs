@@ -3,11 +3,14 @@ const customSlugs = [
   'wedding-bands',
   'rings',
   'pendants',
-  'chains',
   'earrings',
   'bracelets',
   'grillz',
 ]
+
+// "chains" conflicts with the /chains collection route, so custom chains uses /chains-custom
+const CHAINS_CUSTOM_PUBLIC = '/chains-custom'
+const CHAINS_CUSTOM_INTERNAL = '/custom/chains'
 
 const FORM_PUBLIC = '/custom-form'
 const FORM_INTERNAL = '/custom/general'
@@ -27,25 +30,47 @@ const nextConfig = {
 
   async rewrites() {
     return [
+      // Clean URLs → internal /custom/[type] routes
+      ...customSlugs.map((slug) => ({
+        source: `/${slug}`,
+        destination: `/custom/${slug}`,
+      })),
+      // /chains-custom → /custom/chains (avoid conflict with /chains collection)
+      { source: CHAINS_CUSTOM_PUBLIC, destination: CHAINS_CUSTOM_INTERNAL },
+      // /custom-form → /custom/general
       { source: FORM_PUBLIC, destination: FORM_INTERNAL },
     ]
   },
 
   async redirects() {
     return [
-      // === LOCATION PAGE REDIRECTS ===
-      // Old /custom-X-toronto → /toronto/custom-X (preserve backlink equity)
+      // === CLEAN URL REDIRECTS ===
+      // /custom/X → /X (remove /custom prefix from URLs)
+      ...customSlugs.map((slug) => ({
+        source: `/custom/${slug}`,
+        destination: `/${slug}`,
+        permanent: true,
+      })),
+      // /custom/chains → /chains-custom
+      { source: '/custom/chains', destination: CHAINS_CUSTOM_PUBLIC, permanent: true },
+
+      // === OLD FLAT URLs → clean URLs ===
+      ...customSlugs.map((slug) => ({
+        source: `/custom-${slug}`,
+        destination: `/${slug}`,
+        permanent: true,
+      })),
+      // /custom-chains → /chains-custom
+      { source: '/custom-chains', destination: CHAINS_CUSTOM_PUBLIC, permanent: true },
+
+      // === TORONTO LOCATION REDIRECTS ===
+      // /custom-X-toronto → /toronto/custom-X
       ...customSlugs.map((slug) => ({
         source: `/custom-${slug}-toronto`,
         destination: `/toronto/custom-${slug}`,
         permanent: true,
       })),
-      // Old flat /custom-X → general /custom/X (restore general pages)
-      ...customSlugs.map((slug) => ({
-        source: `/custom-${slug}`,
-        destination: `/custom/${slug}`,
-        permanent: true,
-      })),
+      { source: '/custom-chains-toronto', destination: '/toronto/custom-chains', permanent: true },
 
       // === FORM REDIRECTS ===
       { source: FORM_INTERNAL, destination: FORM_PUBLIC, permanent: true },
