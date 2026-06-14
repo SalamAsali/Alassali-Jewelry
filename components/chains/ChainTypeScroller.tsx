@@ -85,16 +85,15 @@ export default function ChainTypeScroller({ basePath, activeType, typeCounts }: 
         {/* "All" tile */}
         <Link
           href={basePath}
-          className={`flex-shrink-0 relative w-[140px] sm:w-[180px] h-[110px] sm:h-[140px] rounded-lg overflow-hidden transition-all duration-300 group ${
+          className={`flex-shrink-0 relative w-[100px] sm:w-[120px] h-[70px] sm:h-[80px] rounded-lg overflow-hidden transition-all duration-300 group ${
             isAllActive
               ? 'border-2 border-glacier-grey shadow-lg'
-              : 'border-2 border-soft-black/60 hover:border-glacier-grey hover:shadow-md'
+              : 'border border-soft-black/40 hover:border-glacier-grey hover:shadow-md'
           }`}
         >
           <div className="absolute inset-0 bg-deep-charcoal" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-          <div className="relative h-full flex flex-col items-center justify-center px-3 text-center">
-            <span className="font-heading text-2xl sm:text-3xl font-semibold text-white group-hover:text-stone transition-colors">
+          <div className="relative h-full flex items-center justify-center px-2">
+            <span className="font-heading text-xl sm:text-2xl font-semibold text-white group-hover:text-stone transition-colors">
               All
             </span>
           </div>
@@ -108,10 +107,10 @@ export default function ChainTypeScroller({ basePath, activeType, typeCounts }: 
             <Link
               key={type.slug}
               href={`${basePath}/${type.slug}`}
-              className={`flex-shrink-0 relative w-[140px] sm:w-[180px] h-[110px] sm:h-[140px] rounded-lg overflow-hidden transition-all duration-300 group ${
+              className={`flex-shrink-0 relative w-[100px] sm:w-[120px] h-[70px] sm:h-[80px] rounded-lg overflow-hidden transition-all duration-300 group ${
                 isActive
                   ? 'border-2 border-glacier-grey shadow-lg'
-                  : 'border-2 border-soft-black/60 hover:border-glacier-grey hover:shadow-md'
+                  : 'border border-soft-black/40 hover:border-glacier-grey hover:shadow-md'
               }`}
             >
               {/* Background pattern */}
@@ -121,15 +120,14 @@ export default function ChainTypeScroller({ basePath, activeType, typeCounts }: 
                   style={CHAIN_PATTERNS[type.slug] || {}}
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
               {/* Content */}
-              <div className="relative h-full flex flex-col items-center justify-center px-3 text-center">
-                <span className="font-heading text-xl sm:text-2xl font-semibold text-white group-hover:text-stone transition-colors leading-tight">
+              <div className="relative h-full flex flex-col items-center justify-center px-2 text-center">
+                <span className="font-heading text-lg sm:text-xl font-semibold text-white group-hover:text-stone transition-colors leading-tight">
                   {type.label}
                 </span>
                 {count !== undefined && count > 0 && (
-                  <span className="mt-1.5 text-[10px] sm:text-xs text-white/60 font-medium">
-                    {count} chain{count !== 1 ? 's' : ''}
+                  <span className="text-[9px] sm:text-[10px] text-white/50 font-medium mt-0.5">
+                    {count}
                   </span>
                 )}
               </div>
