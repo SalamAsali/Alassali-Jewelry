@@ -22,6 +22,39 @@ const METAL_LABELS: Record<string, string> = {
   'two-tone': 'Two-Tone',
 }
 
+const CHAIN_TYPE_LABELS: Record<string, string> = {
+  cuban: 'Cuban',
+  figaro: 'Figaro',
+  rope: 'Rope',
+  box: 'Box',
+  byzantine: 'Byzantine',
+  snake: 'Snake',
+  herringbone: 'Herringbone',
+  mariner: 'Mariner',
+  curb: 'Curb',
+  wheat: 'Wheat',
+  franco: 'Franco',
+  cable: 'Cable',
+  bead: 'Bead',
+  paperclip: 'Paperclip',
+  'round-link': 'Round Link',
+  anchor: 'Anchor',
+  singapore: 'Singapore',
+  'oval-link': 'Oval Link',
+  'domed-cuban': 'Domed Cuban',
+}
+
+const LENGTH_GUIDE = [
+  { length: '16"', fit: 'Choker', description: 'Sits snugly around the neck. Best for women or layering.' },
+  { length: '18"', fit: 'Collarbone', description: 'Rests at the collarbone. The most popular length for women.' },
+  { length: '20"', fit: 'Below Collarbone', description: 'Falls just below the collarbone. Classic unisex length.' },
+  { length: '22"', fit: 'Above Chest', description: 'Sits above the chest. Popular for men and layering.' },
+  { length: '24"', fit: 'Mid-Chest', description: 'Falls at mid-chest. The most popular length for men.' },
+  { length: '26"', fit: 'Below Chest', description: 'Falls below the chest. Bold statement length.' },
+  { length: '28"', fit: 'Sternum', description: 'Reaches the sternum. For a longer, layered look.' },
+  { length: '30"', fit: 'Long', description: 'Falls well below the chest. Statement piece.' },
+]
+
 interface AccordionItemProps {
   title: string
   children: React.ReactNode
@@ -73,13 +106,23 @@ export default function ChainAdditionalInfo({
   selectedLength,
   weightG,
 }: ChainAdditionalInfoProps) {
+  const typeLabel = CHAIN_TYPE_LABELS[chain.chainType] || chain.chainType
+
   return (
     <div className="border-t border-stone/50 mt-8 pt-2">
-      <AccordionItem title="Specifications" defaultOpen>
+      {/* Description — open by default */}
+      {chain.description && (
+        <AccordionItem title="Description" defaultOpen>
+          <p>{chain.description}</p>
+        </AccordionItem>
+      )}
+
+      {/* Specifications */}
+      <AccordionItem title="Specifications" defaultOpen={!chain.description}>
         <div className="grid grid-cols-2 gap-3">
           <div>
             <p className="text-xs uppercase tracking-wider text-glacier-grey mb-0.5">Chain Type</p>
-            <p className="font-medium text-deep-charcoal capitalize">{chain.chainType.replace('-', ' ')}</p>
+            <p className="font-medium text-deep-charcoal">{typeLabel}</p>
           </div>
           <div>
             <p className="text-xs uppercase tracking-wider text-glacier-grey mb-0.5">Width</p>
@@ -109,36 +152,82 @@ export default function ChainAdditionalInfo({
             <p className="text-xs uppercase tracking-wider text-glacier-grey mb-0.5">Construction</p>
             <p className="font-medium text-deep-charcoal capitalize">{chain.construction}</p>
           </div>
+          <div>
+            <p className="text-xs uppercase tracking-wider text-glacier-grey mb-0.5">Clasp Type</p>
+            <p className="font-medium text-deep-charcoal">Lobster Claw</p>
+          </div>
         </div>
       </AccordionItem>
 
-      {chain.description && (
-        <AccordionItem title="Description">
-          <p>{chain.description}</p>
-        </AccordionItem>
-      )}
-
-      {chain.specifications && (
-        <AccordionItem title="Additional Details">
-          <p>{chain.specifications}</p>
-        </AccordionItem>
-      )}
-
-      <AccordionItem title="Construction">
-        <p>
-          This chain features <strong className="text-deep-charcoal">{chain.construction}</strong> construction.
-          {chain.construction === 'solid' && (
-            <> Solid gold chains are the most durable and valuable option, made entirely of gold with no hollow core. They offer superior weight and longevity.</>
-          )}
-          {chain.construction === 'semi-solid' && (
-            <> Semi-solid chains strike a balance between durability and weight, offering excellent value with a substantial feel.</>
-          )}
-          {chain.construction === 'hollow' && (
-            <> Hollow chains are lightweight and comfortable for everyday wear, offering an elegant look at an accessible price point.</>
-          )}
-        </p>
+      {/* Length Guide */}
+      <AccordionItem title="Length Guide">
+        <div className="space-y-0">
+          <div className="grid grid-cols-[60px_100px_1fr] gap-2 text-xs uppercase tracking-wider text-glacier-grey font-semibold pb-2 border-b border-stone/30">
+            <span>Length</span>
+            <span>Fit</span>
+            <span>Description</span>
+          </div>
+          {LENGTH_GUIDE.map((row) => {
+            const isSelected = row.length === `${selectedLength}"`
+            return (
+              <div
+                key={row.length}
+                className={`grid grid-cols-[60px_100px_1fr] gap-2 py-2 border-b border-stone/20 last:border-b-0 ${
+                  isSelected ? 'bg-warm-white -mx-2 px-2 rounded' : ''
+                }`}
+              >
+                <span className={`font-medium ${isSelected ? 'text-deep-charcoal' : 'text-charcoal'}`}>
+                  {row.length}
+                </span>
+                <span className={`font-medium ${isSelected ? 'text-deep-charcoal' : 'text-charcoal'}`}>
+                  {row.fit}
+                </span>
+                <span className="text-glacier-grey">{row.description}</span>
+              </div>
+            )
+          })}
+        </div>
       </AccordionItem>
 
+      {/* FAQ */}
+      <AccordionItem title="FAQ">
+        <div className="space-y-4">
+          <div>
+            <p className="font-medium text-deep-charcoal mb-1">
+              Is this chain {chain.construction === 'solid' ? 'solid gold' : chain.construction}?
+            </p>
+            <p className="text-glacier-grey">
+              {chain.construction === 'solid' && (
+                <>Yes, this chain is made of solid gold with no hollow core. Solid gold chains are the most durable and valuable option, offering superior weight and longevity.</>
+              )}
+              {chain.construction === 'semi-solid' && (
+                <>This chain is semi-solid construction, striking a balance between durability and weight. It offers excellent value with a substantial feel.</>
+              )}
+              {chain.construction === 'hollow' && (
+                <>This chain uses hollow construction, making it lightweight and comfortable for everyday wear. It offers an elegant look at an accessible price point.</>
+              )}
+            </p>
+          </div>
+          <div>
+            <p className="font-medium text-deep-charcoal mb-1">
+              Can I shower or swim with this chain?
+            </p>
+            <p className="text-glacier-grey">
+              We recommend removing your chain before swimming, showering, or exercising. While gold is naturally resistant to tarnish, exposure to chlorine, salt water, and chemicals can dull the finish over time.
+            </p>
+          </div>
+          <div>
+            <p className="font-medium text-deep-charcoal mb-1">
+              How do I know which length is right for me?
+            </p>
+            <p className="text-glacier-grey">
+              Use a flexible measuring tape or string around your neck to find your ideal fit. For men, 22-24&quot; is most popular. For women, 16-20&quot; is typical. Check our Length Guide above for a detailed breakdown.
+            </p>
+          </div>
+        </div>
+      </AccordionItem>
+
+      {/* Care Instructions */}
       <AccordionItem title="Care Instructions">
         <ul className="space-y-2 list-disc pl-4">
           <li>Store in a soft pouch or jewelry box when not wearing</li>

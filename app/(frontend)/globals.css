@@ -137,6 +137,15 @@
     text-wrap: balance;
   }
 
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
   .gradient-hero {
     background: linear-gradient(180deg, #FFFFF0 0%, #F5F5F0 50%, #E8E3D9 100%);
   }

@@ -46,6 +46,7 @@ export default function ChainProductDetail({ chain, pricingConfig, relatedChains
   const selectedImage = allImages[selectedImageIdx] || allImages[0]
 
   const typeLabel = CHAIN_TYPE_LABELS[chain.chainType] || chain.chainType
+  const metalSlug = chain.defaultMetal || 'yellow-gold'
 
   return (
     <div>
@@ -53,14 +54,21 @@ export default function ChainProductDetail({ chain, pricingConfig, relatedChains
       <div className="section-container py-4">
         <nav className="flex items-center gap-2 text-sm text-glacier-grey">
           <Link href="/chains" className="hover:text-deep-charcoal transition-colors">
-            Chains
+            All
           </Link>
           <span>/</span>
           <Link
-            href={`/chains/${chain.defaultMetal || 'yellow-gold'}`}
-            className="hover:text-deep-charcoal transition-colors capitalize"
+            href={`/chains/${metalSlug}`}
+            className="hover:text-deep-charcoal transition-colors"
           >
-            {(chain.defaultMetal || 'yellow-gold').replace('-', ' ')}
+            Gold Chains
+          </Link>
+          <span>/</span>
+          <Link
+            href={`/chains/${metalSlug}/${chain.chainType}`}
+            className="hover:text-deep-charcoal transition-colors"
+          >
+            {typeLabel}
           </Link>
           <span>/</span>
           <span className="text-deep-charcoal font-medium">{formatChainName(chain.name, chain.widthMm)}</span>
@@ -116,15 +124,18 @@ export default function ChainProductDetail({ chain, pricingConfig, relatedChains
 
           {/* Right — Product Info & Variant Picker */}
           <div className="pt-2">
-            {/* Type badge */}
-            <span className="inline-block px-3 py-1 rounded-full bg-warm-white border border-stone text-xs uppercase tracking-wider font-semibold text-glacier-grey mb-3">
+            {/* Category tag — links to type collection */}
+            <Link
+              href={`/chains/${metalSlug}/${chain.chainType}`}
+              className="inline-block px-3 py-1 rounded-full bg-warm-white border border-stone text-xs uppercase tracking-wider font-semibold text-glacier-grey mb-3 hover:border-glacier-grey hover:text-deep-charcoal transition-colors"
+            >
               {typeLabel}
-            </span>
+            </Link>
 
             {/* Title */}
             <h1 className="heading-hero text-deep-charcoal mb-2">{formatChainName(chain.name, chain.widthMm)}</h1>
 
-            {/* Width */}
+            {/* Width & Construction */}
             <p className="text-lg text-glacier-grey mb-6">
               {chain.widthMm}mm &middot;{' '}
               <span className="capitalize">{chain.construction}</span>

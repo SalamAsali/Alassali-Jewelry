@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { getChains, getPricingConfig } from '@/lib/datocms'
 import type { MetalColor, ChainType } from '@/lib/datocms'
 import ChainGrid from '@/components/chains/ChainGrid'
+import ChainTypeScroller from '@/components/chains/ChainTypeScroller'
 
 const VALID_METALS: MetalColor[] = ['yellow-gold', 'white-gold', 'rose-gold', 'two-tone']
 
@@ -73,10 +74,17 @@ export default async function ChainTypePage({ params }: ChainTypePageProps) {
   const metalLabel = METAL_LABELS[metal]
   const typeLabel = CHAIN_TYPE_LABELS[chainType]
 
-  const [chains, pricingConfig] = await Promise.all([
+  const [allMetalChains, chains, pricingConfig] = await Promise.all([
+    getChains({ filter: { metal: metalColor } }),
     getChains({ filter: { metal: metalColor, chainType: chainTypeValue } }),
     getPricingConfig(),
   ])
+
+  // Count chains per type for scroller
+  const typeCounts: Record<string, number> = {}
+  for (const chain of allMetalChains) {
+    typeCounts[chain.chainType] = (typeCounts[chain.chainType] || 0) + 1
+  }
 
   return (
     <div>
@@ -86,7 +94,7 @@ export default async function ChainTypePage({ params }: ChainTypePageProps) {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-glacier-grey mb-6">
             <Link href="/chains" className="hover:text-deep-charcoal transition-colors">
-              Chains
+              All
             </Link>
             <span>/</span>
             <Link
@@ -109,41 +117,35 @@ export default async function ChainTypePage({ params }: ChainTypePageProps) {
         </div>
       </section>
 
-      {/* Active Filter Pills */}
-      <section className="py-6 border-b border-stone/30">
+      {/* Chain Type Scroller */}
+      <section className="py-6 sm:py-8 border-b border-stone/30">
         <div className="section-container">
-          <div className="flex flex-wrap items-center gap-2">
-            {/* Metal pill */}
-            <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wide bg-soft-black text-white">
-              {metalLabel}
-            </span>
+          <ChainTypeScroller
+            basePath={`/chains/${metal}`}
+            activeType={chainType}
+            typeCounts={typeCounts}
+          />
+        </div>
+      </section>
 
-            {/* Chain type pill with X to clear */}
-            <Link
-              href={`/chains/${metal}`}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wide bg-soft-black text-white hover:bg-charcoal transition-colors group"
-              title={`Clear ${typeLabel} filter`}
-            >
-              {typeLabel}
-              <svg
-                className="w-3.5 h-3.5 text-white/60 group-hover:text-white transition-colors"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2.5}
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </Link>
+      {/* BNPL Banner */}
+      <section className="py-4 sm:py-5">
+        <div className="section-container">
+          <div className="bg-warm-white border border-stone rounded-lg p-3 text-center text-sm text-charcoal">
+            Buy Now, Pay Later — Split your purchase into 4 interest-free payments
           </div>
         </div>
       </section>
 
       {/* Grid */}
-      <section className="py-12 sm:py-16">
+      <section className="py-8 sm:py-12">
         <div className="section-container">
           {chains.length > 0 && pricingConfig ? (
-            <ChainGrid chains={chains} pricingConfig={pricingConfig} />
+            <ChainGrid
+              chains={chains}
+              pricingConfig={pricingConfig}
+              showFilters
+            />
           ) : (
             <div className="text-center py-20">
               <p className="text-xl font-heading text-deep-charcoal mb-2">

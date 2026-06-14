@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { ShoppingBag } from 'lucide-react'
 import type { Chain, PricingConfig } from '@/lib/datocms'
 import { computeWeight, priceForChain, formatPrice } from '@/lib/pricing'
 import type { Karat } from '@/lib/pricing'
@@ -12,26 +13,10 @@ interface ChainCardProps {
   pricingConfig: PricingConfig
 }
 
-const CHAIN_TYPE_LABELS: Record<string, string> = {
-  cuban: 'Cuban',
-  figaro: 'Figaro',
-  rope: 'Rope',
-  box: 'Box',
-  byzantine: 'Byzantine',
-  snake: 'Snake',
-  herringbone: 'Herringbone',
-  mariner: 'Mariner',
-  curb: 'Curb',
-  wheat: 'Wheat',
-  franco: 'Franco',
-  cable: 'Cable',
-  bead: 'Bead',
-  paperclip: 'Paperclip',
-  'round-link': 'Round Link',
-  anchor: 'Anchor',
-  singapore: 'Singapore',
-  'oval-link': 'Oval Link',
-  'domed-cuban': 'Domed Cuban',
+const KARAT_LABELS: Record<string, string> = {
+  '10k': '10K',
+  '14k': '14K',
+  '18k': '18K',
 }
 
 export default function ChainCard({ chain, pricingConfig }: ChainCardProps) {
@@ -53,7 +38,7 @@ export default function ChainCard({ chain, pricingConfig }: ChainCardProps) {
   return (
     <Link href={`/chain/${chain.slug}`}>
       <motion.div
-        whileHover={{ scale: 1.05 }}
+        whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.3 }}
         className="rounded-lg border-2 border-soft-black hover:border-glacier-grey bg-white overflow-hidden cursor-pointer group"
       >
@@ -65,20 +50,43 @@ export default function ChainCard({ chain, pricingConfig }: ChainCardProps) {
             className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             loading="lazy"
           />
+          {/* Quick Add overlay on hover */}
+          <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+            <div className="flex items-center justify-center gap-2 bg-soft-black/90 backdrop-blur-sm text-white py-3 text-sm font-medium uppercase tracking-wide">
+              <ShoppingBag className="w-4 h-4" />
+              Quick View
+            </div>
+          </div>
         </div>
 
         {/* Info */}
         <div className="p-4">
-          <p className="text-xs uppercase tracking-wider text-glacier-grey font-semibold mb-1">
-            {CHAIN_TYPE_LABELS[chain.chainType] || chain.chainType}
-          </p>
+          {/* Name */}
           <h3 className="font-heading text-lg font-medium text-deep-charcoal leading-tight mb-2">
             {formatChainName(chain.name, chain.widthMm)}
           </h3>
-          <p className="text-sm text-charcoal capitalize">
+
+          {/* Karat badges */}
+          <div className="flex items-center gap-1.5 mb-2">
+            {chain.availableKarats.map((k, i) => (
+              <span key={k}>
+                <span className="text-xs font-semibold text-glacier-grey">
+                  {KARAT_LABELS[k] || k}
+                </span>
+                {i < chain.availableKarats.length - 1 && (
+                  <span className="text-glacier-grey/50 ml-1.5">&middot;</span>
+                )}
+              </span>
+            ))}
+          </div>
+
+          {/* Construction tag */}
+          <p className="text-xs text-glacier-grey capitalize mb-3">
             {chain.construction}
           </p>
-          <p className="mt-2 font-heading text-xl font-semibold text-deep-charcoal">
+
+          {/* Price */}
+          <p className="font-heading text-xl font-semibold text-deep-charcoal">
             From {formatPrice(startingPrice)}
           </p>
         </div>

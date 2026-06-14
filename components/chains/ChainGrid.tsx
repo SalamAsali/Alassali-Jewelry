@@ -5,11 +5,13 @@ import type { Chain, PricingConfig } from '@/lib/datocms'
 import { computeWeight, priceForChain } from '@/lib/pricing'
 import type { Karat } from '@/lib/pricing'
 import ChainCard from './ChainCard'
+import ChainFilters, { chainMatchesFilters, type FilterState } from './ChainFilters'
 
 interface ChainGridProps {
   chains: Chain[]
   pricingConfig: PricingConfig
   showSort?: boolean
+  showFilters?: boolean
   columns?: 3 | 4
 }
 
@@ -62,12 +64,29 @@ export default function ChainGrid({
   chains,
   pricingConfig,
   showSort = true,
+  showFilters = false,
   columns = 3,
 }: ChainGridProps) {
   const [sort, setSort] = useState<SortOption>('featured')
+  const [filters, setFilters] = useState<FilterState>({
+    priceRange: null,
+    width: null,
+    karat: null,
+    construction: null,
+  })
 
-  const sortedChains = useMemo(() => {
-    const arr = [...chains]
+  const filteredAndSorted = useMemo(() => {
+    let arr = [...chains]
+
+    // Apply filters if enabled
+    if (showFilters) {
+      arr = arr.filter((chain) => {
+        const price = getStartingPrice(chain, pricingConfig)
+        return chainMatchesFilters(chain, price, filters)
+      })
+    }
+
+    // Sort
     switch (sort) {
       case 'best-selling':
         return arr.sort((a, b) => {
@@ -89,7 +108,7 @@ export default function ChainGrid({
       default:
         return arr
     }
-  }, [chains, sort, pricingConfig])
+  }, [chains, sort, pricingConfig, filters, showFilters])
 
   const gridCols =
     columns === 4
@@ -98,10 +117,21 @@ export default function ChainGrid({
 
   return (
     <div>
+      {/* Filters */}
+      {showFilters && (
+        <div className="mb-6">
+          <ChainFilters
+            filters={filters}
+            onChange={setFilters}
+            resultCount={filteredAndSorted.length}
+          />
+        </div>
+      )}
+
       {/* Toolbar: count + sort */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
         <p className="text-sm text-glacier-grey">
-          Showing {sortedChains.length} chain{sortedChains.length !== 1 ? 's' : ''}
+          Showing {filteredAndSorted.length} chain{filteredAndSorted.length !== 1 ? 's' : ''}
         </p>
 
         {showSort && (
@@ -132,11 +162,22 @@ export default function ChainGrid({
       </div>
 
       {/* Grid */}
-      <div className={`grid ${gridCols} gap-6`}>
-        {sortedChains.map((chain) => (
-          <ChainCard key={chain.id} chain={chain} pricingConfig={pricingConfig} />
-        ))}
-      </div>
+      {filteredAndSorted.length > 0 ? (
+        <div className={`grid ${gridCols} gap-6`}>
+          {filteredAndSorted.map((chain) => (
+            <ChainCard key={chain.id} chain={chain} pricingConfig={pricingConfig} />
+          ))}
+        </div>
+      ) : (
+        <div className="text-center py-16">
+          <p className="text-lg font-heading text-deep-charcoal mb-2">
+            No chains match your filters
+          </p>
+          <p className="text-sm text-glacier-grey">
+            Try adjusting your filters to see more results.
+          </p>
+        </div>
+      )}
     </div>
   )
 }

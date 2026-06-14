@@ -2,8 +2,9 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getChains, getPricingConfig } from '@/lib/datocms'
-import type { MetalColor, ChainType } from '@/lib/datocms'
+import type { MetalColor } from '@/lib/datocms'
 import ChainGrid from '@/components/chains/ChainGrid'
+import ChainTypeScroller from '@/components/chains/ChainTypeScroller'
 
 const VALID_METALS: MetalColor[] = ['yellow-gold', 'white-gold', 'rose-gold', 'two-tone']
 
@@ -13,21 +14,6 @@ const METAL_LABELS: Record<string, string> = {
   'rose-gold': 'Rose Gold',
   'two-tone': 'Two-Tone',
 }
-
-const CHAIN_TYPES: { slug: ChainType; label: string }[] = [
-  { slug: 'cuban', label: 'Cuban' },
-  { slug: 'figaro', label: 'Figaro' },
-  { slug: 'rope', label: 'Rope' },
-  { slug: 'box', label: 'Box' },
-  { slug: 'byzantine', label: 'Byzantine' },
-  { slug: 'snake', label: 'Snake' },
-  { slug: 'herringbone', label: 'Herringbone' },
-  { slug: 'mariner', label: 'Mariner' },
-  { slug: 'curb', label: 'Curb' },
-  { slug: 'wheat', label: 'Wheat' },
-  { slug: 'franco', label: 'Franco' },
-  { slug: 'cable', label: 'Cable' },
-]
 
 type MetalPageProps = {
   params: Promise<{ metal: string }>
@@ -58,6 +44,12 @@ export default async function MetalPage({ params }: MetalPageProps) {
     getPricingConfig(),
   ])
 
+  // Count chains per type
+  const typeCounts: Record<string, number> = {}
+  for (const chain of chains) {
+    typeCounts[chain.chainType] = (typeCounts[chain.chainType] || 0) + 1
+  }
+
   return (
     <div>
       {/* Hero */}
@@ -66,7 +58,7 @@ export default async function MetalPage({ params }: MetalPageProps) {
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-glacier-grey mb-6">
             <Link href="/chains" className="hover:text-deep-charcoal transition-colors">
-              Chains
+              All
             </Link>
             <span>/</span>
             <span className="text-deep-charcoal font-medium">{metalLabel}</span>
@@ -82,43 +74,35 @@ export default async function MetalPage({ params }: MetalPageProps) {
         </div>
       </section>
 
-      {/* Active Filter Pills */}
-      <section className="py-6 border-b border-stone/30">
+      {/* Chain Type Scroller */}
+      <section className="py-6 sm:py-8 border-b border-stone/30">
         <div className="section-container">
-          <div className="flex flex-wrap items-center gap-2">
-            {/* Active metal pill */}
-            <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wide bg-soft-black text-white">
-              {metalLabel}
-            </span>
+          <ChainTypeScroller
+            basePath={`/chains/${metal}`}
+            activeType={null}
+            typeCounts={typeCounts}
+          />
+        </div>
+      </section>
 
-            {/* Divider */}
-            <span className="w-px h-6 bg-stone/50 mx-1" />
-
-            {/* Type filter links */}
-            <Link
-              href={`/chains/${metal}`}
-              className="px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wide bg-soft-black text-white"
-            >
-              All Types
-            </Link>
-            {CHAIN_TYPES.map((type) => (
-              <Link
-                key={type.slug}
-                href={`/chains/${metal}/${type.slug}`}
-                className="px-4 py-2 rounded-lg text-sm font-medium uppercase tracking-wide bg-warm-white text-charcoal border border-stone hover:border-glacier-grey transition-all duration-300"
-              >
-                {type.label}
-              </Link>
-            ))}
+      {/* BNPL Banner */}
+      <section className="py-4 sm:py-5">
+        <div className="section-container">
+          <div className="bg-warm-white border border-stone rounded-lg p-3 text-center text-sm text-charcoal">
+            Buy Now, Pay Later — Split your purchase into 4 interest-free payments
           </div>
         </div>
       </section>
 
       {/* Grid */}
-      <section className="py-12 sm:py-16">
+      <section className="py-8 sm:py-12">
         <div className="section-container">
           {chains.length > 0 && pricingConfig ? (
-            <ChainGrid chains={chains} pricingConfig={pricingConfig} />
+            <ChainGrid
+              chains={chains}
+              pricingConfig={pricingConfig}
+              showFilters
+            />
           ) : (
             <div className="text-center py-20">
               <p className="text-xl font-heading text-deep-charcoal mb-2">

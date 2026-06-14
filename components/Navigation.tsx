@@ -260,22 +260,6 @@ export default function Navigation(props?: NavigationProps) {
                             </Link>
                           ))}
                         </div>
-                        {/* Type grid */}
-                        <p className="text-xs font-semibold text-charcoal uppercase tracking-wider mb-2 px-1">By Type</p>
-                        <div className="grid grid-cols-3 gap-2">
-                          {chainsMenu.types.map((type) => (
-                            <Link
-                              key={type.name}
-                              href={type.path}
-                              className="group rounded-lg p-2.5 bg-white border border-stone hover:border-glacier-grey transition-all duration-200 text-center"
-                              onClick={() => setOpenDropdown(null)}
-                            >
-                              <span className="text-xs font-medium text-charcoal group-hover:text-glacier-grey">
-                                {type.name}
-                              </span>
-                            </Link>
-                          ))}
-                        </div>
                         {/* View all */}
                         <Link
                           href="/chains"
@@ -428,18 +412,13 @@ export default function Navigation(props?: NavigationProps) {
                                 {metal.name}
                               </Link>
                             ))}
-                            <div className="border-t border-glacier-grey/20 pt-2 mt-2">
-                              {chainsMenu.types.map((type) => (
-                                <Link
-                                  key={type.name}
-                                  href={type.path}
-                                  onClick={() => { setIsMenuOpen(false); setOpenDropdown(null); }}
-                                  className="block py-2 text-sm text-stone hover:text-glacier-grey transition-colors"
-                                >
-                                  {type.name}
-                                </Link>
-                              ))}
-                            </div>
+                            <Link
+                              href="/chains"
+                              onClick={() => { setIsMenuOpen(false); setOpenDropdown(null); }}
+                              className="block py-2 text-sm text-glacier-grey hover:text-white transition-colors mt-1"
+                            >
+                              View All Chains →
+                            </Link>
                           </motion.div>
                         )}
                       </AnimatePresence>
