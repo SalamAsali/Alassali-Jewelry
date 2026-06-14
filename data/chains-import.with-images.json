@@ -3,7 +3,7 @@
     "supplierSku": "N209",
     "name": "N209 FLAT BEVELED CURB",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 5.6,
     "availableKarats": [
       "10k",
       "18k"
@@ -30,7 +30,7 @@
     "supplierSku": "N145",
     "name": "N145 SOLID TEXTURED OVAL LINK NECKLACE",
     "chainType": "oval-link",
-    "widthMm": 2,
+    "widthMm": 9.5,
     "availableKarats": [
       "14k"
     ],
@@ -53,7 +53,7 @@
     "supplierSku": "PAPER",
     "name": "PAPER CLIP MINI",
     "chainType": "paperclip",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "14k"
     ],
@@ -99,7 +99,7 @@
     "supplierSku": "N135-PINK",
     "name": "N135-PINK - PINK GOLD SOLID DIAMOND CUT WHEAT LINK",
     "chainType": "wheat",
-    "widthMm": 2,
+    "widthMm": 1.2,
     "availableKarats": [
       "14k"
     ],
@@ -124,7 +124,7 @@
     "supplierSku": "FRANCO-PINK",
     "name": "FRANCO-PINK - PINK GOLD SOLID FRANCO LINK",
     "chainType": "franco",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "14k"
     ],
@@ -149,7 +149,7 @@
     "supplierSku": "N605-PINK",
     "name": "N605-PINK - PINK GOLD SOLID OPEN CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 1.5,
     "availableKarats": [
       "14k"
     ],
@@ -174,7 +174,7 @@
     "supplierSku": "STATION",
     "name": "STATION PAPER CLIP",
     "chainType": "paperclip",
-    "widthMm": 2,
+    "widthMm": 5.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -205,7 +205,7 @@
     "supplierSku": "N821",
     "name": "N821 - TWO TONE GOLD HOLLOW FANCY ROUND LINK",
     "chainType": "round-link",
-    "widthMm": 2,
+    "widthMm": 3.1,
     "availableKarats": [
       "18k"
     ],
@@ -230,7 +230,7 @@
     "supplierSku": "N822",
     "name": "N822 - TWO TONE GOLD HOLLOW FANCY ROUND LINK",
     "chainType": "round-link",
-    "widthMm": 2,
+    "widthMm": 4.1,
     "availableKarats": [
       "18k"
     ],
@@ -254,7 +254,7 @@
     "supplierSku": "N823",
     "name": "N823 - TWO TONE GOLD HOLLOW FANCY ROUND LINK",
     "chainType": "round-link",
-    "widthMm": 2,
+    "widthMm": 5.7,
     "availableKarats": [
       "18k"
     ],
@@ -278,7 +278,7 @@
     "supplierSku": "N902",
     "name": "N902 - TWO TONE GOLD STATION BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 1.9,
     "availableKarats": [
       "14k"
     ],
@@ -303,7 +303,7 @@
     "supplierSku": "N904",
     "name": "N904 - TWO TONE GOLD STATION BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 1.9,
     "availableKarats": [
       "14k"
     ],
@@ -328,7 +328,7 @@
     "supplierSku": "N905",
     "name": "N905 - TWO TONE GOLD STATION BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 1.9,
     "availableKarats": [
       "14k"
     ],
@@ -353,7 +353,7 @@
     "supplierSku": "N907",
     "name": "N907 - TWO TONE GOLD STATION BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 2.7,
     "availableKarats": [
       "14k"
     ],
@@ -379,7 +379,7 @@
     "supplierSku": "N910",
     "name": "N910 - TWO TONE GOLD STATION BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 2.7,
     "availableKarats": [
       "14k"
     ],
@@ -405,7 +405,7 @@
     "supplierSku": "N816",
     "name": "N816 - TWO TONE SOLID FLAT FANCY LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3.7,
     "availableKarats": [
       "18k"
     ],
@@ -430,7 +430,7 @@
     "supplierSku": "N819",
     "name": "N819 - TWO TONE SOLID FLAT FANCY LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 4.5,
     "availableKarats": [
       "18k"
     ],
@@ -454,7 +454,7 @@
     "supplierSku": "N820",
     "name": "N820 - TWO TONE SOLID FLAT FANCY LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 5.1,
     "availableKarats": [
       "18k"
     ],
@@ -478,7 +478,7 @@
     "supplierSku": "N825",
     "name": "N825 - TWO TONE SOLID FLAT FANCY LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.9,
     "availableKarats": [
       "14k"
     ],
@@ -502,7 +502,7 @@
     "supplierSku": "N826",
     "name": "N826 - TWO TONE SOLID FLAT FANCY LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 8.4,
     "availableKarats": [
       "14k"
     ],
@@ -526,7 +526,7 @@
     "supplierSku": "N1028",
     "name": "N1028 - WHITE GOLD BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 1.2,
     "availableKarats": [
       "14k",
       "18k"
@@ -552,7 +552,7 @@
     "supplierSku": "N1036",
     "name": "N1036 - WHITE GOLD HOLLOW BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 3.6,
     "availableKarats": [
       "14k",
       "18k"
@@ -579,7 +579,7 @@
     "supplierSku": "N601W",
     "name": "N601W - WHITE GOLD HOLLOW BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 2.5,
     "availableKarats": [
       "14k",
       "18k"
@@ -631,7 +631,7 @@
     "supplierSku": "N1029",
     "name": "N1029 - WHITE GOLD HOLLOW POPCORN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.8,
     "availableKarats": [
       "14k",
       "18k"
@@ -655,7 +655,7 @@
     "supplierSku": "N1030",
     "name": "N1030 - WHITE GOLD HOLLOW POPCORN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.8,
     "availableKarats": [
       "14k",
       "18k"
@@ -679,7 +679,7 @@
     "supplierSku": "N1043",
     "name": "N1043 - WHITE GOLD HOLLOW PUFFED ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 5,
     "availableKarats": [
       "14k",
       "18k"
@@ -706,7 +706,7 @@
     "supplierSku": "N606W",
     "name": "N606W - WHITE GOLD HOLLOW ROLO LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.9,
     "availableKarats": [
       "10k",
       "14k",
@@ -734,7 +734,7 @@
     "supplierSku": "N607W",
     "name": "N607W - WHITE GOLD HOLLOW ROLO LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -762,7 +762,7 @@
     "supplierSku": "N608W",
     "name": "N608W - WHITE GOLD HOLLOW ROLO LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 5.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -790,7 +790,7 @@
     "supplierSku": "N1011",
     "name": "N1011",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -844,7 +844,7 @@
     "supplierSku": "N1023",
     "name": "N1023 - WHITE GOLD ROUND SNAKE LINK",
     "chainType": "snake",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "10k",
       "14k",
@@ -871,7 +871,7 @@
     "supplierSku": "N1024",
     "name": "N1024 - WHITE GOLD ROUND SNAKE LINK",
     "chainType": "snake",
-    "widthMm": 2,
+    "widthMm": 1.2,
     "availableKarats": [
       "14k",
       "18k"
@@ -897,7 +897,7 @@
     "supplierSku": "N1025",
     "name": "N1025 - WHITE GOLD ROUND SNAKE LINK",
     "chainType": "snake",
-    "widthMm": 2,
+    "widthMm": 1.6,
     "availableKarats": [
       "14k",
       "18k"
@@ -923,7 +923,7 @@
     "supplierSku": "N1039",
     "name": "N1039 - WHITE GOLD ROUND SNAKE LINK",
     "chainType": "snake",
-    "widthMm": 2,
+    "widthMm": 1.4,
     "availableKarats": [
       "14k",
       "18k"
@@ -949,7 +949,7 @@
     "supplierSku": "N1014",
     "name": "N1014 - WHITE GOLD SOLID ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 1.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -1024,7 +1024,7 @@
     "supplierSku": "N1007",
     "name": "N1007 - WHITE GOLD SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 0.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -1051,7 +1051,7 @@
     "supplierSku": "N1008",
     "name": "N1008 - WHITE GOLD SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -1078,7 +1078,7 @@
     "supplierSku": "N109W",
     "name": "N109W - WHITE GOLD SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 0.6,
     "availableKarats": [
       "10k",
       "14k",
@@ -1128,7 +1128,7 @@
     "supplierSku": "N1013",
     "name": "N1013 - WHITE GOLD SOLID CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 1.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -1155,7 +1155,7 @@
     "supplierSku": "N1009",
     "name": "N1009 - WHITE GOLD SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -1182,7 +1182,7 @@
     "supplierSku": "N1010",
     "name": "N1010 - WHITE GOLD SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -1209,7 +1209,7 @@
     "supplierSku": "N101W-LT",
     "name": "N101W-LT - WHITE GOLD SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "10k",
       "14k",
@@ -1234,7 +1234,7 @@
     "supplierSku": "N1011-LT-DC",
     "name": "N1011-LT-DC - WHITE GOLD SOLID DIAMOND CUT OPEN CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "10k",
       "14k",
@@ -1259,7 +1259,7 @@
     "supplierSku": "N1031",
     "name": "N1031 - WHITE GOLD SOLID DIAMOND CUT ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -1289,7 +1289,7 @@
     "supplierSku": "N1032",
     "name": "N1032 - WHITE GOLD SOLID DIAMOND CUT ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 1.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -1319,7 +1319,7 @@
     "supplierSku": "N1033",
     "name": "N1033 - WHITE GOLD SOLID DIAMOND CUT ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 2.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -1349,7 +1349,7 @@
     "supplierSku": "N302W",
     "name": "N302W - WHITE GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 2.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -1377,7 +1377,7 @@
     "supplierSku": "N303W",
     "name": "N303W - WHITE GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 3.1,
     "availableKarats": [
       "10k",
       "14k",
@@ -1406,7 +1406,7 @@
     "supplierSku": "N304W",
     "name": "N304W - WHITE GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 3.9,
     "availableKarats": [
       "10k",
       "14k",
@@ -1435,7 +1435,7 @@
     "supplierSku": "N305W",
     "name": "N305W - WHITE GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 5.1,
     "availableKarats": [
       "10k",
       "14k",
@@ -1514,7 +1514,7 @@
     "supplierSku": "N312W",
     "name": "N312W - WHITE GOLD SOLID FLAT ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 2.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -1542,7 +1542,7 @@
     "supplierSku": "N313W",
     "name": "N313W - WHITE GOLD SOLID FLAT ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 2.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -1571,7 +1571,7 @@
     "supplierSku": "N1018",
     "name": "N1018 - WHITE GOLD SOLID FLAT BEVELED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -1599,7 +1599,7 @@
     "supplierSku": "N1019",
     "name": "N1019 - WHITE GOLD SOLID FLAT BEVELED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -1629,7 +1629,7 @@
     "supplierSku": "N1020",
     "name": "N1020 - WHITE GOLD SOLID FLAT BEVELED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 4,
     "availableKarats": [
       "10k",
       "14k",
@@ -1658,7 +1658,7 @@
     "supplierSku": "N1021",
     "name": "N1021 - WHITE GOLD SOLID FLAT BEVELED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 5.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -1685,7 +1685,7 @@
     "supplierSku": "Franco-WG",
     "name": "Franco-WG - WHITE GOLD SOLID FRANCO LINK",
     "chainType": "franco",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "10k",
       "14k",
@@ -1714,7 +1714,7 @@
     "supplierSku": "Franco-WG-15",
     "name": "Franco-WG-1.5",
     "chainType": "franco",
-    "widthMm": 2,
+    "widthMm": 1.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -1771,7 +1771,7 @@
     "supplierSku": "N201W",
     "name": "N201W - WHITE GOLD SOLID OPEN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -1799,7 +1799,7 @@
     "supplierSku": "N202W",
     "name": "N202W - WHITE GOLD SOLID OPEN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3,
     "availableKarats": [
       "10k",
       "14k",
@@ -1827,7 +1827,7 @@
     "supplierSku": "N203W",
     "name": "N203W - WHITE GOLD SOLID OPEN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -1855,7 +1855,7 @@
     "supplierSku": "N204W",
     "name": "N204W - WHITE GOLD SOLID OPEN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 4.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -1883,7 +1883,7 @@
     "supplierSku": "N205W",
     "name": "N205W - WHITE GOLD SOLID OPEN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 5.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -1910,7 +1910,7 @@
     "supplierSku": "N1026",
     "name": "N1026 - WHITE GOLD SOLID ROUND WHEAT LINK",
     "chainType": "wheat",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -1939,7 +1939,7 @@
     "supplierSku": "N1027",
     "name": "N1027 - WHITE GOLD SOLID ROUND WHEAT LINK",
     "chainType": "wheat",
-    "widthMm": 2,
+    "widthMm": 1.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -1968,7 +1968,7 @@
     "supplierSku": "N137W",
     "name": "N137W - WHITE GOLD SOLID ROUND WHEAT LINK",
     "chainType": "wheat",
-    "widthMm": 2,
+    "widthMm": 2.2,
     "availableKarats": [
       "10k",
       "14k",
@@ -1997,7 +1997,7 @@
     "supplierSku": "N122W",
     "name": "N122W - WHITE GOLD SOLID SINGAPORE LINK",
     "chainType": "singapore",
-    "widthMm": 2,
+    "widthMm": 1.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -2024,7 +2024,7 @@
     "supplierSku": "N122W-LT",
     "name": "N122W-LT - WHITE GOLD SOLID SINGAPORE LINK",
     "chainType": "singapore",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k",
       "14k"
@@ -2048,7 +2048,7 @@
     "supplierSku": "PO25W",
     "name": "PO25W - WHITE GOLD SOLID SINGAPORE LINK",
     "chainType": "singapore",
-    "widthMm": 2,
+    "widthMm": 1.4,
     "availableKarats": [
       "10k",
       "14k"
@@ -2074,7 +2074,7 @@
     "supplierSku": "N1037",
     "name": "N1037 - WHITE GOLD STATION BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 1.2,
     "availableKarats": [
       "14k",
       "18k"
@@ -2098,7 +2098,7 @@
     "supplierSku": "N412",
     "name": "N412 - YELLOW GOLD BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 1.2,
     "availableKarats": [
       "14k",
       "18k"
@@ -2126,7 +2126,7 @@
     "supplierSku": "N413",
     "name": "N413 - YELLOW GOLD BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 1.5,
     "availableKarats": [
       "14k",
       "18k"
@@ -2154,7 +2154,7 @@
     "supplierSku": "N414",
     "name": "N414 - YELLOW GOLD BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 1.8,
     "availableKarats": [
       "14k",
       "18k"
@@ -2182,7 +2182,7 @@
     "supplierSku": "N601",
     "name": "N601 - YELLOW GOLD HOLLOW BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 2.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -2212,7 +2212,7 @@
     "supplierSku": "N602",
     "name": "N602 - YELLOW GOLD HOLLOW BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 3.6,
     "availableKarats": [
       "10k",
       "14k",
@@ -2242,7 +2242,7 @@
     "supplierSku": "N603",
     "name": "N603 - YELLOW GOLD CHAIN HOLLOW BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 5,
     "availableKarats": [
       "14k",
       "18k"
@@ -2270,7 +2270,7 @@
     "supplierSku": "N705",
     "name": "N705 - YELLOW GOLD HOLLOW CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3,
     "availableKarats": [
       "10k",
       "14k",
@@ -2298,7 +2298,7 @@
     "supplierSku": "N706",
     "name": "N706 - YELLOW GOLD HOLLOW CURB",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 4,
     "availableKarats": [
       "10k",
       "14k",
@@ -2326,7 +2326,7 @@
     "supplierSku": "N702",
     "name": "N702 - YELLOW GOLD HOLLOW FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 3.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -2354,7 +2354,7 @@
     "supplierSku": "N703",
     "name": "N703 - YELLOW GOLD HOLLOW FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 3.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -2382,7 +2382,7 @@
     "supplierSku": "N704",
     "name": "N704 - YELLOW GOLD HOLLOW FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 5.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -2409,7 +2409,7 @@
     "supplierSku": "N721",
     "name": "N721 - YELLOW GOLD HOLLOW FLAT ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 3,
     "availableKarats": [
       "10k",
       "14k",
@@ -2437,7 +2437,7 @@
     "supplierSku": "N722",
     "name": "N722 - YELLOW GOLD HOLLOW FLAT ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 3.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -2465,7 +2465,7 @@
     "supplierSku": "N415",
     "name": "N415 - YELLOW GOLD HOLLOW POPCORN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.8,
     "availableKarats": [
       "14k",
       "18k"
@@ -2489,7 +2489,7 @@
     "supplierSku": "N416",
     "name": "N416 - YELLOW GOLD HOLLOW POPCORN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.8,
     "availableKarats": [
       "14k",
       "18k"
@@ -2513,7 +2513,7 @@
     "supplierSku": "N725",
     "name": "N725 - YELLOW GOLD HOLLOW PUFFED ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 5,
     "availableKarats": [
       "10k",
       "14k",
@@ -2541,7 +2541,7 @@
     "supplierSku": "N726",
     "name": "N726 - YELLOW GOLD HOLLOW PUFFED ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 7.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -2568,7 +2568,7 @@
     "supplierSku": "N727",
     "name": "N727 - YELLOW GOLD HOLLOW PUFFED ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 11,
     "availableKarats": [
       "10k",
       "14k",
@@ -2595,7 +2595,7 @@
     "supplierSku": "N606",
     "name": "N606 - YELLOW GOLD HOLLOW ROLO LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.9,
     "availableKarats": [
       "10k",
       "14k",
@@ -2623,7 +2623,7 @@
     "supplierSku": "N607",
     "name": "N607 - YELLOW GOLD HOLLOW ROLO LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -2651,7 +2651,7 @@
     "supplierSku": "N608",
     "name": "N608 - YELLOW GOLD HOLLOW ROLO LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 5.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -2679,7 +2679,7 @@
     "supplierSku": "N609",
     "name": "N609 - YELLOW GOLD HOLLOW ROLO LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 7.7,
     "availableKarats": [
       "14k",
       "18k"
@@ -2705,7 +2705,7 @@
     "supplierSku": "N610",
     "name": "N610 - YELLOW GOLD HOLLOW ROLO LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 11,
     "availableKarats": [
       "14k",
       "18k"
@@ -2731,7 +2731,7 @@
     "supplierSku": "N618",
     "name": "N618 - YELLOW GOLD HOLLOW ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 3,
     "availableKarats": [
       "10k",
       "14k",
@@ -2761,7 +2761,7 @@
     "supplierSku": "N619",
     "name": "N619 - YELLOW GOLD HOLLOW ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 4,
     "availableKarats": [
       "10k",
       "14k",
@@ -2791,7 +2791,7 @@
     "supplierSku": "N620",
     "name": "N620 - YELLOW GOLD HOLLOW ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 5,
     "availableKarats": [
       "10k",
       "14k",
@@ -2821,7 +2821,7 @@
     "supplierSku": "RO3004",
     "name": "RO3004 - YELLOW GOLD LIGHTLY PLATED LOOSE ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 6,
     "availableKarats": [
       "10k"
     ],
@@ -2871,7 +2871,7 @@
     "supplierSku": "V015",
     "name": "V015 - YELLOW GOLD LIGHTLY PLATED SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 0.6,
     "availableKarats": [
       "10k"
     ],
@@ -2896,7 +2896,7 @@
     "supplierSku": "V019",
     "name": "V019 - YELLOW GOLD LIGHTLY PLATED SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 0.8,
     "availableKarats": [
       "10k"
     ],
@@ -2921,7 +2921,7 @@
     "supplierSku": "V025",
     "name": "V025 - YELLOW GOLD LIGHTLY PLATED SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "10k"
     ],
@@ -2946,7 +2946,7 @@
     "supplierSku": "G033",
     "name": "G033 - YELLOW GOLD LIGHTLY PLATED SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k"
     ],
@@ -2971,7 +2971,7 @@
     "supplierSku": "G043",
     "name": "G043 - YELLOW GOLD LIGHTLY PLATED SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.2,
     "availableKarats": [
       "10k"
     ],
@@ -2996,7 +2996,7 @@
     "supplierSku": "G048",
     "name": "G048 - YELLOW GOLD LIGHTLY PLATED SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.4,
     "availableKarats": [
       "10k"
     ],
@@ -3021,7 +3021,7 @@
     "supplierSku": "G065",
     "name": "G065 - YELLOW GOLD LIGHTLY PLATED SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.8,
     "availableKarats": [
       "10k"
     ],
@@ -3071,7 +3071,7 @@
     "supplierSku": "G085",
     "name": "G085 - YELLOW GOLD LIGHTLY PLATED SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.5,
     "availableKarats": [
       "10k"
     ],
@@ -3095,7 +3095,7 @@
     "supplierSku": "P025",
     "name": "P025 - YELLOW GOLD LIGHTLY PLATED SOLID SINGAPORE LINK",
     "chainType": "singapore",
-    "widthMm": 2,
+    "widthMm": 2.7,
     "availableKarats": [
       "10k"
     ],
@@ -3120,7 +3120,7 @@
     "supplierSku": "P030",
     "name": "P030 - YELLOW GOLD LIGHTLY PLATED SOLID SINGAPORE LINK",
     "chainType": "singapore",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k"
     ],
@@ -3145,7 +3145,7 @@
     "supplierSku": "P038",
     "name": "P038 - YELLOW GOLD LIGHTLY PLATED SOLID SINGAPORE LINK",
     "chainType": "singapore",
-    "widthMm": 2,
+    "widthMm": 1.7,
     "availableKarats": [
       "10k"
     ],
@@ -3170,7 +3170,7 @@
     "supplierSku": "N605",
     "name": "N605 - YELLOW GOLD OPEN CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 2.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -3197,7 +3197,7 @@
     "supplierSku": "N605-LT",
     "name": "N605-LT - YELLOW GOLD OPEN CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 1.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -3222,7 +3222,7 @@
     "supplierSku": "N623",
     "name": "N623 - YELLOW GOLD OPEN CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "10k",
       "14k",
@@ -3276,7 +3276,7 @@
     "supplierSku": "N131",
     "name": "N131 - YELLOW GOLD ROUND SNAKE LINK",
     "chainType": "snake",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "14k",
       "18k"
@@ -3302,7 +3302,7 @@
     "supplierSku": "N132",
     "name": "N132 - YELLOW GOLD ROUND SNAKE LINK",
     "chainType": "snake",
-    "widthMm": 2,
+    "widthMm": 1.2,
     "availableKarats": [
       "10k",
       "14k",
@@ -3329,7 +3329,7 @@
     "supplierSku": "N133",
     "name": "N133 - YELLOW GOLD ROUND SNAKE LINK",
     "chainType": "snake",
-    "widthMm": 2,
+    "widthMm": 1.4,
     "availableKarats": [
       "14k",
       "18k"
@@ -3355,7 +3355,7 @@
     "supplierSku": "N116",
     "name": "N116 - YELLOW GOLD SOLID ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 1.6,
     "availableKarats": [
       "10k",
       "14k",
@@ -3382,7 +3382,7 @@
     "supplierSku": "N117",
     "name": "N117 - YELLOW GOLD SOLID ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 1.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -3409,7 +3409,7 @@
     "supplierSku": "N118",
     "name": "N118 - YELLOW GOLD SOLID ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 1.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -3436,7 +3436,7 @@
     "supplierSku": "N119",
     "name": "N119 - YELLOW GOLD SOLID ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 2.2,
     "availableKarats": [
       "10k",
       "14k",
@@ -3463,7 +3463,7 @@
     "supplierSku": "N120",
     "name": "N120 - YELLOW GOLD SOLID ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 2.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -3489,7 +3489,7 @@
     "supplierSku": "N502",
     "name": "N502 - YELLOW GOLD SOLID BISMARK LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -3517,7 +3517,7 @@
     "supplierSku": "N503",
     "name": "N503 - YELLOW GOLD SOLID BISMARK LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.6,
     "availableKarats": [
       "10k",
       "14k",
@@ -3572,7 +3572,7 @@
     "supplierSku": "N109",
     "name": "N109 - YELLOW GOLD SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 3.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -3599,7 +3599,7 @@
     "supplierSku": "N110",
     "name": "N110 - YELLOW GOLD SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 0.6,
     "availableKarats": [
       "10k",
       "14k",
@@ -3628,7 +3628,7 @@
     "supplierSku": "N111",
     "name": "N111 - YELLOW GOLD SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 0.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -3657,7 +3657,7 @@
     "supplierSku": "N112",
     "name": "N112 - YELLOW GOLD SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "10k",
       "14k",
@@ -3686,7 +3686,7 @@
     "supplierSku": "N113",
     "name": "N113 - YELLOW GOLD SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -3715,7 +3715,7 @@
     "supplierSku": "N114",
     "name": "N114 - YELLOW GOLD SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 1.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -3744,7 +3744,7 @@
     "supplierSku": "N115",
     "name": "N115 - YELLOW GOLD SOLID BOX LINK",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 1.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -3772,7 +3772,7 @@
     "supplierSku": "N513",
     "name": "N513 - YELLOW GOLD SOLID BYZANTINE LINK",
     "chainType": "byzantine",
-    "widthMm": 2,
+    "widthMm": 1.9,
     "availableKarats": [
       "14k",
       "18k"
@@ -3824,7 +3824,7 @@
     "supplierSku": "N515",
     "name": "N515 - YELLOW GOLD SOLID BYZANTINE LINK",
     "chainType": "byzantine",
-    "widthMm": 2,
+    "widthMm": 2.4,
     "availableKarats": [
       "14k",
       "18k"
@@ -3850,7 +3850,7 @@
     "supplierSku": "N516",
     "name": "N516 - YELLOW GOLD SOLID BYZANTINE LINK",
     "chainType": "byzantine",
-    "widthMm": 2,
+    "widthMm": 2.9,
     "availableKarats": [
       "14k",
       "18k"
@@ -3877,7 +3877,7 @@
     "supplierSku": "N124",
     "name": "N124 - YELLOW GOLD SOLID CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 3.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -3904,7 +3904,7 @@
     "supplierSku": "N125",
     "name": "N125 - YELLOW GOLD SOLID CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 1.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -3958,7 +3958,7 @@
     "supplierSku": "N101",
     "name": "N101 - YELLOW GOLD SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -3985,7 +3985,7 @@
     "supplierSku": "N101-LT",
     "name": "N101-LT - YELLOW GOLD SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.2,
     "availableKarats": [
       "10k",
       "14k",
@@ -4010,7 +4010,7 @@
     "supplierSku": "N102",
     "name": "N102 - YELLOW GOLD SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "10k",
       "14k",
@@ -4039,7 +4039,7 @@
     "supplierSku": "N103",
     "name": "N103 - YELLOW GOLD SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -4068,7 +4068,7 @@
     "supplierSku": "N104",
     "name": "N104 - YELLOW GOLD SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -4126,7 +4126,7 @@
     "supplierSku": "N106",
     "name": "N106 - YELLOW GOLD SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -4154,7 +4154,7 @@
     "supplierSku": "N107",
     "name": "N107 - YELLOW GOLD SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -4182,7 +4182,7 @@
     "supplierSku": "N108",
     "name": "N108 - YELLOW GOLD SOLID CURB LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -4210,7 +4210,7 @@
     "supplierSku": "N605-LT-DC",
     "name": "N605-LT-DC - YELLOW GOLD SOLID DIAMOND CUT OPEN CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 3.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -4235,7 +4235,7 @@
     "supplierSku": "N611",
     "name": "N611 - YELLOW GOLD SOLID DIAMOND CUT ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "10k",
       "14k",
@@ -4265,7 +4265,7 @@
     "supplierSku": "N612",
     "name": "N612 - YELLOW GOLD SOLID DIAMOND CUT ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -4295,7 +4295,7 @@
     "supplierSku": "N613",
     "name": "N613 - YELLOW GOLD SOLID DIAMOND CUT ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 1.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -4326,7 +4326,7 @@
     "supplierSku": "N614",
     "name": "N614 - YELLOW GOLD SOLID DIAMOND CUT ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 2.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -4356,7 +4356,7 @@
     "supplierSku": "N615",
     "name": "N615 - YELLOW GOLD SOLID DIAMOND CUT ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 2.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -4386,7 +4386,7 @@
     "supplierSku": "N616",
     "name": "N616 - YELLOW GOLD SOLID DIAMOND CUT ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 3.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -4415,7 +4415,7 @@
     "supplierSku": "N617",
     "name": "N617 - YELLOW GOLD SOLID DIAMOND CUT ROPE LINK",
     "chainType": "rope",
-    "widthMm": 2,
+    "widthMm": 3.9,
     "availableKarats": [
       "10k",
       "14k",
@@ -4444,7 +4444,7 @@
     "supplierSku": "N216",
     "name": "N216 - YELLOW GOLD SOLID DOMED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 5,
     "availableKarats": [
       "10k",
       "14k",
@@ -4473,7 +4473,7 @@
     "supplierSku": "N217",
     "name": "N217 - YELLOW GOLD SOLID DOMED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -4502,7 +4502,7 @@
     "supplierSku": "N218",
     "name": "N218 - YELLOW GOLD SOLID DOMED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 4.2,
     "availableKarats": [
       "10k",
       "14k",
@@ -4531,7 +4531,7 @@
     "supplierSku": "N219",
     "name": "N219 - YELLOW GOLD SOLID DOMED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 5.1,
     "availableKarats": [
       "10k",
       "14k",
@@ -4560,7 +4560,7 @@
     "supplierSku": "N301",
     "name": "N301 - YELLOW GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 5.6,
     "availableKarats": [
       "10k",
       "14k",
@@ -4587,7 +4587,7 @@
     "supplierSku": "N302",
     "name": "N302 - YELLOW GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 1.2,
     "availableKarats": [
       "10k",
       "14k",
@@ -4615,7 +4615,7 @@
     "supplierSku": "N303",
     "name": "N303 - YELLOW GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 2.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -4643,7 +4643,7 @@
     "supplierSku": "N304",
     "name": "N304 - YELLOW GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 3.1,
     "availableKarats": [
       "10k",
       "14k",
@@ -4672,7 +4672,7 @@
     "supplierSku": "N305",
     "name": "N305 - YELLOW GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 3.9,
     "availableKarats": [
       "10k",
       "14k",
@@ -4700,7 +4700,7 @@
     "supplierSku": "N306",
     "name": "N306 - YELLOW GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 5.1,
     "availableKarats": [
       "10k",
       "14k",
@@ -4727,7 +4727,7 @@
     "supplierSku": "N307",
     "name": "N307 - YELLOW GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 5.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -4754,7 +4754,7 @@
     "supplierSku": "N308",
     "name": "N308 - YELLOW GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 7.1,
     "availableKarats": [
       "10k",
       "14k",
@@ -4781,7 +4781,7 @@
     "supplierSku": "N309",
     "name": "N309 - YELLOW GOLD SOLID FIGARO LINK",
     "chainType": "figaro",
-    "widthMm": 2,
+    "widthMm": 7.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -4808,7 +4808,7 @@
     "supplierSku": "N311",
     "name": "N311 - YELLOW GOLD SOLID FLAT ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 8.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -4864,7 +4864,7 @@
     "supplierSku": "N313",
     "name": "N313 - YELLOW GOLD SOLID FLAT ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 2.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -4893,7 +4893,7 @@
     "supplierSku": "N315",
     "name": "N315 - YELLOW GOLD SOLID FLAT ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 2.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -4920,7 +4920,7 @@
     "supplierSku": "N316",
     "name": "N316 - YELLOW GOLD SOLID FLAT ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 3.6,
     "availableKarats": [
       "10k",
       "14k",
@@ -4947,7 +4947,7 @@
     "supplierSku": "N317",
     "name": "N317 - YELLOW GOLD SOLID FLAT ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 4.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -4974,7 +4974,7 @@
     "supplierSku": "N318",
     "name": "N318 - YELLOW GOLD SOLID FLAT ANCHOR LINK",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 7,
     "availableKarats": [
       "10k",
       "14k",
@@ -5001,7 +5001,7 @@
     "supplierSku": "N207",
     "name": "N207 - YELLOW GOLD SOLID FLAT BEVELED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 7.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -5029,7 +5029,7 @@
     "supplierSku": "N208",
     "name": "N208 - YELLOW GOLD SOLID FLAT BEVELED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -5058,7 +5058,7 @@
     "supplierSku": "N210",
     "name": "N210 - YELLOW GOLD SOLID FLAT BEVELED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -5087,7 +5087,7 @@
     "supplierSku": "N211",
     "name": "N211 - YELLOW GOLD SOLID FLAT BEVELED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 5.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -5112,7 +5112,7 @@
     "supplierSku": "Franco-YG",
     "name": "Franco-YG - YELLOW GOLD SOLID FRANCO LINK",
     "chainType": "franco",
-    "widthMm": 2,
+    "widthMm": 6,
     "availableKarats": [
       "10k",
       "14k",
@@ -5141,7 +5141,7 @@
     "supplierSku": "Franco-YG-15",
     "name": "Franco-YG-1.5 - YELLOW GOLD SOLID FRANCO LINK",
     "chainType": "franco",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "10k",
       "14k",
@@ -5227,7 +5227,7 @@
     "supplierSku": "N202",
     "name": "N202 - YELLOW GOLD SOLID OPEN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -5255,7 +5255,7 @@
     "supplierSku": "N203",
     "name": "N203 - YELLOW GOLD SOLID OPEN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3,
     "availableKarats": [
       "10k",
       "14k",
@@ -5311,7 +5311,7 @@
     "supplierSku": "N205",
     "name": "N205 - YELLOW GOLD SOLID OPEN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 4.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -5338,7 +5338,7 @@
     "supplierSku": "N206",
     "name": "N206 - YELLOW GOLD SOLID OPEN LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 5.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -5365,7 +5365,7 @@
     "supplierSku": "N135",
     "name": "N135 - YELLOW GOLD SOLID ROUND WHEAT LINK",
     "chainType": "wheat",
-    "widthMm": 2,
+    "widthMm": 7.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -5394,7 +5394,7 @@
     "supplierSku": "N136",
     "name": "N136 - YELLOW GOLD SOLID ROUND WHEAT LINK",
     "chainType": "wheat",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -5423,7 +5423,7 @@
     "supplierSku": "N137",
     "name": "N137 - YELLOW GOLD SOLID ROUND WHEAT LINK",
     "chainType": "wheat",
-    "widthMm": 2,
+    "widthMm": 1.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -5452,7 +5452,7 @@
     "supplierSku": "N122",
     "name": "N122 - YELLOW GOLD SOLID SINGAPORE LINK",
     "chainType": "singapore",
-    "widthMm": 2,
+    "widthMm": 2.2,
     "availableKarats": [
       "10k",
       "14k",
@@ -5480,7 +5480,7 @@
     "supplierSku": "N122-LT",
     "name": "N122-LT - YELLOW GOLD SOLID SINGAPORE LINK",
     "chainType": "singapore",
-    "widthMm": 2,
+    "widthMm": 1.7,
     "availableKarats": [
       "10k",
       "14k",
@@ -5505,7 +5505,7 @@
     "supplierSku": "N123",
     "name": "N123 - YELLOW GOLD SOLID SINGAPORE LINK",
     "chainType": "singapore",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -5533,7 +5533,7 @@
     "supplierSku": "N135-LT",
     "name": "N135-LT - YELLOW GOLD SOLID SQUARE WHEAT LINK",
     "chainType": "wheat",
-    "widthMm": 2,
+    "widthMm": 2.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -5560,7 +5560,7 @@
     "supplierSku": "N220",
     "name": "N220 - YELLOW GOLD SOLID SQUARED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 0.8,
     "availableKarats": [
       "10k",
       "14k",
@@ -5588,7 +5588,7 @@
     "supplierSku": "N221",
     "name": "N221 - YELLOW GOLD SOLID SQUARED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -5616,7 +5616,7 @@
     "supplierSku": "N222",
     "name": "N222 - YELLOW GOLD SOLID SQUARED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 2.6,
     "availableKarats": [
       "10k",
       "14k",
@@ -5645,7 +5645,7 @@
     "supplierSku": "N223",
     "name": "N223 - YELLOW GOLD SOLID SQUARED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -5672,7 +5672,7 @@
     "supplierSku": "N224",
     "name": "N224 - YELLOW GOLD SOLID SQUARED LINK",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 4.1,
     "availableKarats": [
       "10k",
       "14k",
@@ -5699,7 +5699,7 @@
     "supplierSku": "N901",
     "name": "N901 - YELLOW GOLD STATION BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 5,
     "availableKarats": [
       "14k"
     ],
@@ -5722,7 +5722,7 @@
     "supplierSku": "N903",
     "name": "N903 - YELLOW GOLD STATION BEAD LINK",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 1.9,
     "availableKarats": [
       "14k"
     ],
@@ -5745,7 +5745,7 @@
     "supplierSku": "N712",
     "name": "N712 - YELLOW GOLD SADUZA",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.2,
     "availableKarats": [
       "14k",
       "18k"
@@ -5769,7 +5769,7 @@
     "supplierSku": "N711",
     "name": "N711 - YELLOW GOLD SADUZA",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 9,
     "availableKarats": [
       "14k",
       "18k"
@@ -5793,7 +5793,7 @@
     "supplierSku": "N713",
     "name": "N713 - YELLOW GOLD SADUZA",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 7,
     "availableKarats": [
       "14k",
       "18k"
@@ -5817,7 +5817,7 @@
     "supplierSku": "N1044",
     "name": "N1044",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 12.5,
     "availableKarats": [
       "14k",
       "18k"
@@ -5843,7 +5843,7 @@
     "supplierSku": "N824",
     "name": "N824 TWO TONE SOLID ROUND LINK",
     "chainType": "round-link",
-    "widthMm": 2,
+    "widthMm": 7.4,
     "availableKarats": [
       "14k"
     ],
@@ -5867,7 +5867,7 @@
     "supplierSku": "315W",
     "name": "315W",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3,
     "availableKarats": [
       "10k",
       "14k",
@@ -5893,7 +5893,7 @@
     "supplierSku": "N141",
     "name": "N141 YELLOW GOLD OVAL CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 3.6,
     "availableKarats": [
       "10k",
       "14k",
@@ -5920,7 +5920,7 @@
     "supplierSku": "N142",
     "name": "N142 YELLOW GOLD OVAL CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 1.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -6006,7 +6006,7 @@
     "supplierSku": "N143",
     "name": "N143 OVAL CABLE",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 7.6,
     "availableKarats": [
       "10k",
       "14k",
@@ -6035,7 +6035,7 @@
     "supplierSku": "N605-LIGHTPL",
     "name": "N605-LIGHT/PL",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 3.2,
     "availableKarats": [
       "10k",
       "14k",
@@ -6089,7 +6089,7 @@
     "supplierSku": "18K",
     "name": "18K PINK & WHITE SOLID CHAIN",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 9.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -6116,7 +6116,7 @@
     "supplierSku": "TECA307-YG",
     "name": "TECA307-YG HOLLOW OVAL TEXTURED STATION PAPER CLIP",
     "chainType": "paperclip",
-    "widthMm": 2,
+    "widthMm": 7.5,
     "availableKarats": [
       "10k",
       "14k",
@@ -6197,7 +6197,7 @@
     "supplierSku": "N1026-LT",
     "name": "N1026-LT - WHITE GOLD SOLID ROUND WHEAT LINK",
     "chainType": "wheat",
-    "widthMm": 2,
+    "widthMm": 4,
     "availableKarats": [
       "10k",
       "14k",
@@ -6224,7 +6224,7 @@
     "supplierSku": "FRANCO-YG-36",
     "name": "FRANCO-YG-3.6 - YELLOW GOLD HOLLOW FRANCO LINK",
     "chainType": "franco",
-    "widthMm": 2,
+    "widthMm": 0.8,
     "availableKarats": [
       "14k"
     ],
@@ -6251,7 +6251,7 @@
     "supplierSku": "FRANCO-WG-36",
     "name": "FRANCO-WG-3.6 - WHITE GOLD HOLLOW FRANCO LINK",
     "chainType": "franco",
-    "widthMm": 2,
+    "widthMm": 3.6,
     "availableKarats": [
       "14k"
     ],
@@ -6277,7 +6277,7 @@
     "supplierSku": "FRANCO-WG-44",
     "name": "FRANCO-WG-4.4 - WHITE GOLD HOLLOW FRANCO LINK",
     "chainType": "franco",
-    "widthMm": 2,
+    "widthMm": 3.6,
     "availableKarats": [
       "14k"
     ],
@@ -6303,7 +6303,7 @@
     "supplierSku": "N1046",
     "name": "N1046 WHITE GOLD OVAL CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 4.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -6358,7 +6358,7 @@
     "supplierSku": "PAPER",
     "name": "PAPER CLIP 02",
     "chainType": "paperclip",
-    "widthMm": 2,
+    "widthMm": 4.3,
     "availableKarats": [
       "10k",
       "14k"
@@ -6390,7 +6390,7 @@
     "supplierSku": "N605-LT-PINK",
     "name": "N605-LT-PINK OPEN CABLE",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 3,
     "availableKarats": [
       "10k",
       "14k",
@@ -6415,7 +6415,7 @@
     "supplierSku": "N623PINK-OPEN",
     "name": "N623PINK-OPEN CABLE",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 1,
     "availableKarats": [
       "10k",
       "14k",
@@ -6442,7 +6442,7 @@
     "supplierSku": "N315W",
     "name": "N315W WHITE GOLD SOLID FLAT ANCHOR",
     "chainType": "anchor",
-    "widthMm": 2,
+    "widthMm": 3.6,
     "availableKarats": [
       "10k",
       "14k",
@@ -6469,7 +6469,7 @@
     "supplierSku": "N1047",
     "name": "N1047 WHITE GOLD OVAL CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 3.6,
     "availableKarats": [
       "10k",
       "14k"
@@ -6496,7 +6496,7 @@
     "supplierSku": "N1048",
     "name": "N1048 WHITE GOLD OVAL CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 3.2,
     "availableKarats": [
       "10k",
       "14k"
@@ -6523,7 +6523,7 @@
     "supplierSku": "N401",
     "name": "N401 ROUNDED BEAD CHAIN",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 5,
     "availableKarats": [
       "10k",
       "14k",
@@ -6553,7 +6553,7 @@
     "supplierSku": "N402",
     "name": "N402 ROUNDED BEAD CHAIN",
     "chainType": "bead",
-    "widthMm": 2,
+    "widthMm": 1.9,
     "availableKarats": [
       "10k",
       "14k",
@@ -6934,7 +6934,7 @@
     "supplierSku": "N1011-LT",
     "name": "N1011-LT",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -6959,7 +6959,7 @@
     "supplierSku": "FRANCO-YG-13",
     "name": "FRANCO-YG-1.3",
     "chainType": "franco",
-    "widthMm": 2,
+    "widthMm": 1.4,
     "availableKarats": [
       "14k"
     ],
@@ -6982,7 +6982,7 @@
     "supplierSku": "N707",
     "name": "N707 - YELLOW GOLD HOLLOW CURB",
     "chainType": "curb",
-    "widthMm": 2,
+    "widthMm": 1.3,
     "availableKarats": [
       "10k",
       "14k",
@@ -7106,7 +7106,7 @@
     "supplierSku": "FRANCO-YG-44",
     "name": "FRANCO-YG-4.4 - YELLOW GOLD HOLLOW FRANCO LINK",
     "chainType": "franco",
-    "widthMm": 2,
+    "widthMm": 8,
     "availableKarats": [
       "14k"
     ],
@@ -7132,7 +7132,7 @@
     "supplierSku": "N1045",
     "name": "N1045 WHITE GOLD OVAL CABLE LINK",
     "chainType": "cable",
-    "widthMm": 2,
+    "widthMm": 4.4,
     "availableKarats": [
       "10k",
       "14k",
@@ -7159,7 +7159,7 @@
     "supplierSku": "PAPER",
     "name": "PAPER CLIP 01",
     "chainType": "paperclip",
-    "widthMm": 2,
+    "widthMm": 1.4,
     "availableKarats": [
       "10k",
       "14k"
@@ -7244,7 +7244,7 @@
     "supplierSku": "N601-LT-SOLID",
     "name": "N601-LT-SOLID YG ROUNDED BOX CHAIN",
     "chainType": "box",
-    "widthMm": 2,
+    "widthMm": 4,
     "availableKarats": [
       "14k"
     ],
