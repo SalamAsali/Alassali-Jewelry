@@ -54,8 +54,11 @@ export async function generateMetadata({ params }: ChainTypePageProps): Promise<
   const typeLabel = CHAIN_TYPE_LABELS[chainType]
   if (!metalLabel || !typeLabel) return {}
   return {
-    title: `${typeLabel} ${metalLabel} Chains | Alasali Jewelry`,
-    description: `Browse our ${typeLabel.toLowerCase()} ${metalLabel.toLowerCase()} chain collection. Handcrafted in Toronto with exceptional quality.`,
+    title: `${typeLabel} ${metalLabel} Chains | Al-Assali Custom Jewelry`,
+    description: `Shop ${typeLabel.toLowerCase()} chains in ${metalLabel.toLowerCase()}. Available in 10K, 14K & 18K. Handcrafted in Toronto with premium craftsmanship.`,
+    alternates: {
+      canonical: `https://www.alasalicustomjewelry.ca/chains/${metal}/${chainType}`,
+    },
   }
 }
 
@@ -86,8 +89,25 @@ export default async function ChainTypePage({ params }: ChainTypePageProps) {
     typeCounts[chain.chainType] = (typeCounts[chain.chainType] || 0) + 1
   }
 
+  // ItemList JSON-LD schema
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${typeLabel} ${metalLabel} Chains`,
+    numberOfItems: chains.length,
+    itemListElement: chains.slice(0, 10).map((chain, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `https://www.alasalicustomjewelry.ca/chain/${chain.slug}`,
+    })),
+  }
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       {/* Hero */}
       <section className="py-16 sm:py-20 gradient-hero">
         <div className="section-container">

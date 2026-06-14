@@ -24,8 +24,11 @@ export async function generateMetadata({ params }: MetalPageProps): Promise<Meta
   const label = METAL_LABELS[metal]
   if (!label) return {}
   return {
-    title: `${label} Chains | Alasali Jewelry`,
-    description: `Browse our ${label.toLowerCase()} chain collection. Handcrafted in Toronto in a variety of styles, karats, and lengths.`,
+    title: `${label} Gold Chains | Al-Assali Custom Jewelry`,
+    description: `Shop our collection of ${label.toLowerCase()} gold chains. Cuban, Rope, Franco, Figaro & more. Handcrafted in Toronto. 10K, 14K & 18K solid gold.`,
+    alternates: {
+      canonical: `https://www.alasalicustomjewelry.ca/chains/${metal}`,
+    },
   }
 }
 
@@ -50,8 +53,25 @@ export default async function MetalPage({ params }: MetalPageProps) {
     typeCounts[chain.chainType] = (typeCounts[chain.chainType] || 0) + 1
   }
 
+  // ItemList JSON-LD schema
+  const itemListJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: `${metalLabel} Gold Chains`,
+    numberOfItems: chains.length,
+    itemListElement: chains.slice(0, 10).map((chain, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      url: `https://www.alasalicustomjewelry.ca/chain/${chain.slug}`,
+    })),
+  }
+
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+      />
       {/* Hero */}
       <section className="py-16 sm:py-20 gradient-hero">
         <div className="section-container">

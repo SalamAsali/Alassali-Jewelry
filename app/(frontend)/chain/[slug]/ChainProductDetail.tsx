@@ -47,6 +47,7 @@ export default function ChainProductDetail({ chain, pricingConfig, relatedChains
 
   const typeLabel = CHAIN_TYPE_LABELS[chain.chainType] || chain.chainType
   const metalSlug = chain.defaultMetal || 'yellow-gold'
+  const descriptiveAlt = `${formatChainName(chain.name, chain.widthMm)} - ${(chain.defaultKarat || '14k').toUpperCase()} ${chain.construction} gold chain`
 
   return (
     <div>
@@ -87,7 +88,7 @@ export default function ChainProductDetail({ chain, pricingConfig, relatedChains
                   <motion.img
                     key={selectedImageIdx}
                     src={getImageSrc(selectedImage)}
-                    alt={selectedImage.alt || chain.name}
+                    alt={selectedImage.alt || descriptiveAlt}
                     className="w-full h-full object-cover"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -112,7 +113,7 @@ export default function ChainProductDetail({ chain, pricingConfig, relatedChains
                     >
                       <img
                         src={getImageSrc(img)}
-                        alt={img.alt || `${chain.name} view ${idx + 1}`}
+                        alt={img.alt || `${formatChainName(chain.name, chain.widthMm)} - view ${idx + 1}`}
                         className="w-full h-full object-cover"
                       />
                     </button>
