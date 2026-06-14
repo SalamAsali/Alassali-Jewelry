@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getChains, getPricingConfig } from '@/lib/datocms'
 import type { MetalColor, ChainType } from '@/lib/datocms'
-import ChainCard from '@/components/chains/ChainCard'
+import ChainGrid from '@/components/chains/ChainGrid'
 
 const VALID_METALS: MetalColor[] = ['yellow-gold', 'white-gold', 'rose-gold', 'two-tone']
 
@@ -109,21 +109,32 @@ export default async function ChainTypePage({ params }: ChainTypePageProps) {
         </div>
       </section>
 
-      {/* Filter bar showing current metal and type */}
+      {/* Active Filter Pills */}
       <section className="py-6 border-b border-stone/30">
         <div className="section-container">
           <div className="flex flex-wrap items-center gap-2">
+            {/* Metal pill */}
+            <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wide bg-soft-black text-white">
+              {metalLabel}
+            </span>
+
+            {/* Chain type pill with X to clear */}
             <Link
               href={`/chains/${metal}`}
-              className="px-4 py-2 rounded-lg text-sm font-medium uppercase tracking-wide bg-warm-white text-charcoal border border-stone hover:border-glacier-grey transition-all duration-300"
-            >
-              All Types
-            </Link>
-            <span
-              className="px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wide bg-soft-black text-white"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wide bg-soft-black text-white hover:bg-charcoal transition-colors group"
+              title={`Clear ${typeLabel} filter`}
             >
               {typeLabel}
-            </span>
+              <svg
+                className="w-3.5 h-3.5 text-white/60 group-hover:text-white transition-colors"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.5}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </Link>
           </div>
         </div>
       </section>
@@ -132,20 +143,7 @@ export default async function ChainTypePage({ params }: ChainTypePageProps) {
       <section className="py-12 sm:py-16">
         <div className="section-container">
           {chains.length > 0 && pricingConfig ? (
-            <>
-              <p className="text-sm text-glacier-grey mb-6">
-                {chains.length} chain{chains.length !== 1 ? 's' : ''} found
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {chains.map((chain) => (
-                  <ChainCard
-                    key={chain.id}
-                    chain={chain}
-                    pricingConfig={pricingConfig}
-                  />
-                ))}
-              </div>
-            </>
+            <ChainGrid chains={chains} pricingConfig={pricingConfig} />
           ) : (
             <div className="text-center py-20">
               <p className="text-xl font-heading text-deep-charcoal mb-2">

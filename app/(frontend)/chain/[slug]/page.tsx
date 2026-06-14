@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getChainBySlug, getPricingConfig } from '@/lib/datocms'
+import { getChainBySlug, getChains, getPricingConfig } from '@/lib/datocms'
 import ChainProductDetail from './ChainProductDetail'
 
 type ChainDetailPageProps = {
@@ -31,9 +31,30 @@ export default async function ChainDetailPage({ params }: ChainDetailPageProps) 
     notFound()
   }
 
+  // Fetch related chains: same chainType first, then same metal to fill up to 4
+  const [sameTypeChains, sameMetalChains] = await Promise.all([
+    getChains({ filter: { chainType: chain.chainType }, limit: 5 }),
+    getChains({ filter: { metal: chain.defaultMetal }, limit: 8 }),
+  ])
+
+  // Exclude current chain, pick up to 4
+  const relatedByType = sameTypeChains.filter((c) => c.id !== chain.id)
+  const relatedChains = relatedByType.slice(0, 4)
+
+  // If fewer than 4 from same type, fill from same metal
+  if (relatedChains.length < 4) {
+    const existingIds = new Set([chain.id, ...relatedChains.map((c) => c.id)])
+    const metalFill = sameMetalChains.filter((c) => !existingIds.has(c.id))
+    relatedChains.push(...metalFill.slice(0, 4 - relatedChains.length))
+  }
+
   return (
     <div>
-      <ChainProductDetail chain={chain} pricingConfig={pricingConfig} />
+      <ChainProductDetail
+        chain={chain}
+        pricingConfig={pricingConfig}
+        relatedChains={relatedChains}
+      />
     </div>
   )
 }

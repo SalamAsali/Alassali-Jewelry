@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getChains, getPricingConfig } from '@/lib/datocms'
 import type { MetalColor, ChainType } from '@/lib/datocms'
-import ChainCard from '@/components/chains/ChainCard'
+import ChainGrid from '@/components/chains/ChainGrid'
 
 const VALID_METALS: MetalColor[] = ['yellow-gold', 'white-gold', 'rose-gold', 'two-tone']
 
@@ -82,10 +82,19 @@ export default async function MetalPage({ params }: MetalPageProps) {
         </div>
       </section>
 
-      {/* Filter Chips */}
+      {/* Active Filter Pills */}
       <section className="py-6 border-b border-stone/30">
         <div className="section-container">
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap items-center gap-2">
+            {/* Active metal pill */}
+            <span className="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wide bg-soft-black text-white">
+              {metalLabel}
+            </span>
+
+            {/* Divider */}
+            <span className="w-px h-6 bg-stone/50 mx-1" />
+
+            {/* Type filter links */}
             <Link
               href={`/chains/${metal}`}
               className="px-4 py-2 rounded-lg text-sm font-bold uppercase tracking-wide bg-soft-black text-white"
@@ -109,20 +118,7 @@ export default async function MetalPage({ params }: MetalPageProps) {
       <section className="py-12 sm:py-16">
         <div className="section-container">
           {chains.length > 0 && pricingConfig ? (
-            <>
-              <p className="text-sm text-glacier-grey mb-6">
-                {chains.length} chain{chains.length !== 1 ? 's' : ''} found
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {chains.map((chain) => (
-                  <ChainCard
-                    key={chain.id}
-                    chain={chain}
-                    pricingConfig={pricingConfig}
-                  />
-                ))}
-              </div>
-            </>
+            <ChainGrid chains={chains} pricingConfig={pricingConfig} />
           ) : (
             <div className="text-center py-20">
               <p className="text-xl font-heading text-deep-charcoal mb-2">

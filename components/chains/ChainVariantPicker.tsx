@@ -65,6 +65,35 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
 
   const { addItem } = useCart()
   const [justAdded, setJustAdded] = useState(false)
+  const [isBuyingNow, setIsBuyingNow] = useState(false)
+
+  async function handleBuyNow() {
+    setIsBuyingNow(true)
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          chainId: chain.id,
+          name: formatChainName(chain.name, chain.widthMm),
+          slug: chain.slug,
+          karat: selectedKarat,
+          metal: selectedMetal,
+          lengthIn: selectedLength,
+          widthMm: chain.widthMm,
+          weightG,
+          priceCad: price,
+          heroImage: chain.heroImage?.url || null,
+        }),
+      })
+      const data = await res.json()
+      if (data.url) window.location.href = data.url
+    } catch (err) {
+      console.error('Buy now failed:', err)
+    } finally {
+      setIsBuyingNow(false)
+    }
+  }
 
   function handleAddToCart() {
     addItem({
@@ -165,21 +194,31 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
         </div>
       </div>
 
-      {/* CTA */}
-      <button
-        onClick={handleAddToCart}
-        className={`inline-flex items-center justify-center w-full gap-2 px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-[1.02] transition-all duration-300 ${
-          justAdded
-            ? 'bg-green-600 text-white'
-            : 'bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-white'
-        }`}
-      >
-        {justAdded ? (
-          <><Check className="w-5 h-5" /> Added to Cart</>
-        ) : (
-          <><ShoppingBag className="w-5 h-5" /> Add to Cart — {formatPrice(price)}</>
-        )}
-      </button>
+      {/* CTAs */}
+      <div className="space-y-3">
+        <button
+          onClick={handleAddToCart}
+          className={`inline-flex items-center justify-center w-full gap-2 px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-[1.02] transition-all duration-300 ${
+            justAdded
+              ? 'bg-green-600 text-white'
+              : 'bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-white'
+          }`}
+        >
+          {justAdded ? (
+            <><Check className="w-5 h-5" /> Added to Cart</>
+          ) : (
+            <><ShoppingBag className="w-5 h-5" /> Add to Cart — {formatPrice(price)}</>
+          )}
+        </button>
+
+        <button
+          onClick={handleBuyNow}
+          disabled={isBuyingNow}
+          className="inline-flex items-center justify-center w-full gap-2 px-8 py-3.5 rounded-lg font-bold text-sm uppercase tracking-wide border-2 border-soft-black text-deep-charcoal hover:bg-soft-black hover:text-white transition-all duration-300 disabled:opacity-50"
+        >
+          {isBuyingNow ? 'Redirecting...' : 'Buy Now'}
+        </button>
+      </div>
 
       {/* Trust signals */}
       <div className="mt-4 flex items-center justify-center gap-4 text-xs text-glacier-grey">

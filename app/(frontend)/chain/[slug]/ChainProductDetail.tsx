@@ -5,11 +5,13 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { Chain, PricingConfig, DatoCMSImage } from '@/lib/datocms'
 import ChainVariantPicker from '@/components/chains/ChainVariantPicker'
+import ChainCard from '@/components/chains/ChainCard'
 import { formatChainName } from '@/lib/format-chain-name'
 
 interface ChainProductDetailProps {
   chain: Chain
   pricingConfig: PricingConfig
+  relatedChains?: Chain[]
 }
 
 const CHAIN_TYPE_LABELS: Record<string, string> = {
@@ -38,7 +40,7 @@ function getImageSrc(img: DatoCMSImage): string {
   return img.responsiveImage?.src || img.url || '/images/placeholder-chain.jpg'
 }
 
-export default function ChainProductDetail({ chain, pricingConfig }: ChainProductDetailProps) {
+export default function ChainProductDetail({ chain, pricingConfig, relatedChains }: ChainProductDetailProps) {
   const allImages = [chain.heroImage, ...(chain.galleryImages || [])].filter(Boolean) as DatoCMSImage[]
   const [selectedImageIdx, setSelectedImageIdx] = useState(0)
   const selectedImage = allImages[selectedImageIdx] || allImages[0]
@@ -133,6 +135,29 @@ export default function ChainProductDetail({ chain, pricingConfig }: ChainProduc
           </div>
         </div>
       </div>
+
+      {/* You May Also Like */}
+      {relatedChains && relatedChains.length > 0 && (
+        <section className="py-16 sm:py-20 border-t border-stone/30">
+          <div className="section-container">
+            <h2 className="heading-section text-deep-charcoal text-center mb-3">
+              You May Also Like
+            </h2>
+            <p className="text-center text-glacier-grey mb-10 max-w-lg mx-auto">
+              Similar chains you might be interested in
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {relatedChains.map((relatedChain) => (
+                <ChainCard
+                  key={relatedChain.id}
+                  chain={relatedChain}
+                  pricingConfig={pricingConfig}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
     </div>
   )
 }
