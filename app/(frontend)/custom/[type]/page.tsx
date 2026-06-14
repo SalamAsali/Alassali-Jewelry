@@ -1560,7 +1560,7 @@ function GeneralHub() {
             Ontario&apos;s Premier Custom Jeweler
           </h2>
           <p className="text-stone leading-relaxed text-base md:text-lg">
-            Al-Asali Jewelry is a Toronto-based bespoke jewelry studio, working by appointment. Master jeweler Mohammad Al-Asali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
+            Al-Asali Jewelry is an Ontario-based bespoke jewelry studio, working by appointment. Master jeweler Mohammad Al-Asali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
           </p>
         </header>
 
@@ -1618,14 +1618,14 @@ function GeneralHub() {
             Why Al-Asali Jewelry
           </h3>
           <p className="text-stone text-center mb-10 max-w-2xl mx-auto text-sm">
-            We are a small, focused Toronto workshop. Every piece is crafted by a master jeweler — not a factory — and backed by a lifetime craftsmanship guarantee.
+            We are a small, focused Ontario workshop. Every piece is crafted by a master jeweler — not a factory — and backed by a lifetime craftsmanship guarantee.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: MapPin, title: 'Made in Toronto', body: 'Designed, cast, set, and finished entirely in-house in our Toronto studio.' },
+              { icon: MapPin, title: 'Made in Ontario', body: 'Designed, cast, set, and finished entirely in-house in our Ontario studio.' },
               { icon: ShieldCheck, title: 'Lifetime Guarantee', body: 'Free polishing, rhodium re-plating, and resizing for life on every piece.' },
               { icon: Diamond, title: 'GIA-Graded Diamonds', body: 'Conflict-free natural and lab-grown diamonds, graded to GIA standards.' },
-              { icon: Star, title: '5.0 on Google', body: '5-star rated by clients across the Greater Toronto Area.' },
+              { icon: Star, title: '5.0 on Google', body: '5-star rated by clients across Ontario.' },
             ].map(({ icon: Icon, title, body }) => (
               <div key={title} className="text-center">
                 <div className="w-12 h-12 rounded-full bg-glacier-grey/20 border border-glacier-grey/40 flex items-center justify-center mx-auto mb-3">
@@ -1648,7 +1648,7 @@ function GeneralHub() {
             Mohammad Al-Asali
           </h3>
           <p className="text-stone leading-relaxed text-sm md:text-base">
-            Mohammad is the founder and master jeweler behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
+            Mohammad is the founder and master jeweler behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across Ontario. Every piece that leaves our Ontario studio has been personally inspected and finished by Mohammad.
           </p>
         </div>
 
@@ -1658,7 +1658,7 @@ function GeneralHub() {
             How We Work Together
           </h3>
           <p className="text-stone leading-relaxed text-sm mb-6">
-            Al-Asali Jewelry Studio is a Toronto-based bespoke jeweler, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
+            Al-Asali Jewelry Studio is an Ontario-based bespoke jeweler, serving clients across Ontario by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings whenever you prefer.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <a href="tel:+16475624340" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
@@ -1669,7 +1669,7 @@ function GeneralHub() {
             </a>
           </div>
           <p className="text-stone text-xs mt-5">
-            Serving Toronto, Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, Milton, and the wider GTA.
+            Serving Toronto, Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, Milton, and communities across Ontario.
           </p>
         </div>
 
