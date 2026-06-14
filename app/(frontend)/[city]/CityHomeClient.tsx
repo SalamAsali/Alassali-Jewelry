@@ -18,7 +18,17 @@ import type { GoogleReview } from '@/lib/reviews/googlePlaces'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { buildFaqSchema, buildBreadcrumbSchema } from '@/lib/seo/schema'
 
-type HomePageClientProps = {
+type CityProp = {
+  name: string
+  slug: string
+  address: string
+  fullAddress: string
+  phone: string
+  neighborhoods: string[]
+}
+
+type CityHomeClientProps = {
+  city: CityProp
   liveReviews?: GoogleReview[]
   liveRating?: number
   liveReviewCount?: number
@@ -47,14 +57,16 @@ const processIconMap: Record<string, LucideIcon> = {
   'Presentation': Gift,
 }
 
-const FALLBACK_PROCESS: ProcessStep[] = [
-  { icon: '', label: 'Consultation', description: 'We start with a personal conversation to understand your vision, style preferences, and the story behind your piece.' },
-  { icon: '', label: 'Sketch', description: 'Our designers create detailed sketches and CAD renderings, refining until every detail matches your dream.' },
-  { icon: '', label: 'Material Selection', description: 'Hand-pick from the finest metals and ethically sourced gemstones — diamonds, sapphires, rubies, and more.' },
-  { icon: '', label: 'Design', description: 'Your approved design is finalized with precise CAD models, ready for our master craftspeople.' },
-  { icon: '', label: 'In-House Manufacture', description: 'Every piece is crafted entirely in-house in Ontario using traditional techniques and modern precision.' },
-  { icon: '', label: 'Presentation', description: 'Your finished piece is presented in luxury packaging — a moment as special as the jewelry itself.' },
-]
+function getFallbackProcess(cityName: string): ProcessStep[] {
+  return [
+    { icon: '', label: 'Consultation', description: 'We start with a personal conversation to understand your vision, style preferences, and the story behind your piece.' },
+    { icon: '', label: 'Sketch', description: 'Our designers create detailed sketches and CAD renderings, refining until every detail matches your dream.' },
+    { icon: '', label: 'Material Selection', description: 'Hand-pick from the finest metals and ethically sourced gemstones — diamonds, sapphires, rubies, and more.' },
+    { icon: '', label: 'Design', description: 'Your approved design is finalized with precise CAD models, ready for our master craftspeople.' },
+    { icon: '', label: 'In-House Manufacture', description: `Every piece is crafted entirely in-house in ${cityName} using traditional techniques and modern precision.` },
+    { icon: '', label: 'Presentation', description: 'Your finished piece is presented in luxury packaging — a moment as special as the jewelry itself.' },
+  ]
+}
 
 const FALLBACK_FEATURED: GalleryItem[] = [
   {
@@ -101,40 +113,44 @@ const ACCENT_IMAGES = [
   { src: '/images/portfolio/pendants-photo-medallions.jpg', alt: 'Custom photo pendants' },
 ]
 
-const bespokeCategories = [
-  { name: 'Engagement Rings', path: '/custom/engagement-rings', icon: '/images/icons/engagement-rings.svg', blurb: 'Solitaire, halo, vintage, three-stone — designed around your love story.' },
-  { name: 'Wedding Bands', path: '/custom/wedding-bands', icon: '/images/icons/bridal-bands.svg', blurb: 'Matching bridal sets, eternity bands, men’s bands, and engraved pieces.' },
-  { name: 'Rings', path: '/custom/rings', icon: '/images/icons/rings.svg', blurb: 'Signet, statement, stackable, everyday — gold, platinum, or silver.' },
-  { name: 'Pendants', path: '/custom/pendants', icon: '/images/icons/pendants.svg', blurb: 'Name pendants, photo pendants, religious symbols, Arabic calligraphy.' },
-  { name: 'Chains', path: '/custom/chains', icon: '/images/icons/chains.svg', blurb: 'Miami Cuban, rope, franco, figaro — solid gold, never hollow.' },
-  { name: 'Earrings', path: '/custom/earrings', icon: '/images/icons/earrings.svg', blurb: 'Studs, hoops, drops, chandeliers — diamond and gold.' },
-  { name: 'Bracelets', path: '/custom/bracelets', icon: '/images/icons/bracelets.svg', blurb: 'Tennis bracelets, bangles, cuffs, engraved men’s ID bracelets.' },
-  { name: 'Grillz', path: '/custom/grillz', icon: '/images/icons/grillz.svg', blurb: 'Gold and VVS diamond grillz — single tooth to full sets.' },
-]
+function getBespokeCategories(citySlug: string) {
+  return [
+    { name: 'Engagement Rings', path: `/${citySlug}/custom-engagement-rings`, icon: '/images/icons/engagement-rings.svg', blurb: 'Solitaire, halo, vintage, three-stone — designed around your love story.' },
+    { name: 'Wedding Bands', path: `/${citySlug}/custom-wedding-bands`, icon: '/images/icons/bridal-bands.svg', blurb: 'Matching bridal sets, eternity bands, men\'s bands, and engraved pieces.' },
+    { name: 'Rings', path: `/${citySlug}/custom-rings`, icon: '/images/icons/rings.svg', blurb: 'Signet, statement, stackable, everyday — gold, platinum, or silver.' },
+    { name: 'Pendants', path: `/${citySlug}/custom-pendants`, icon: '/images/icons/pendants.svg', blurb: 'Name pendants, photo pendants, religious symbols, Arabic calligraphy.' },
+    { name: 'Chains', path: `/${citySlug}/custom-chains`, icon: '/images/icons/chains.svg', blurb: 'Miami Cuban, rope, franco, figaro — solid gold, never hollow.' },
+    { name: 'Earrings', path: `/${citySlug}/custom-earrings`, icon: '/images/icons/earrings.svg', blurb: 'Studs, hoops, drops, chandeliers — diamond and gold.' },
+    { name: 'Bracelets', path: `/${citySlug}/custom-bracelets`, icon: '/images/icons/bracelets.svg', blurb: 'Tennis bracelets, bangles, cuffs, engraved men\'s ID bracelets.' },
+    { name: 'Grillz', path: `/${citySlug}/custom-grillz`, icon: '/images/icons/grillz.svg', blurb: 'Gold and VVS diamond grillz — single tooth to full sets.' },
+  ]
+}
 
-// SEO trust pillars — the four reasons clients pick a custom jeweler in Toronto
-const whyAlAssali: { icon: LucideIcon; title: string; body: string }[] = [
-  { icon: MapPin, title: 'Made in Ontario', body: 'Designed, cast, set, and finished entirely in-house in our Ontario studio — no outsourcing.' },
-  { icon: ShieldCheck, title: 'Lifetime Guarantee', body: 'Free polishing, rhodium re-plating, and resizing for life on every piece we craft.' },
-  { icon: Diamond, title: 'GIA-Graded Diamonds', body: 'Conflict-free natural and lab-grown diamonds, graded to GIA standards.' },
-  { icon: Star, title: '5.0 on Google', body: '5-star rated by clients across Ontario.' },
-]
+function getWhyAlAssali(cityName: string): { icon: LucideIcon; title: string; body: string }[] {
+  return [
+    { icon: MapPin, title: `Made in ${cityName}`, body: `Designed, cast, set, and finished entirely in-house in our ${cityName} studio — no outsourcing.` },
+    { icon: ShieldCheck, title: 'Lifetime Guarantee', body: 'Free polishing, rhodium re-plating, and resizing for life on every piece we craft.' },
+    { icon: Diamond, title: 'GIA-Graded Diamonds', body: 'Conflict-free natural and lab-grown diamonds, graded to GIA standards.' },
+    { icon: Star, title: '5.0 on Google', body: `5-star rated by clients across ${cityName} and the surrounding area.` },
+  ]
+}
 
-// FAQ — answers the top "custom jewelry toronto" search queries
-const homepageFaq = [
-  { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based custom jewelry studio at 624 Vaughan Rd. We work by appointment only — virtual consultations via Zoom, phone, or message, and complimentary insured delivery across the Greater Toronto Area, with optional in-person meetings in Toronto when preferred.' },
-  { q: 'What does custom jewelry cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal weight, stones, and design complexity. Custom engagement rings typically start at $2,500. Every project is quoted up front with no hidden fees.' },
-  { q: 'How long does custom jewelry take?', a: 'Most pieces take 2–6 weeks: grillz 1–2 weeks, pendants 2–4 weeks, chains and earrings 2–4 weeks, rings and bracelets 3–5 weeks, engagement rings 4–6 weeks. Rush orders are available for an additional fee.' },
-  { q: 'How do I start a custom jewelry project?', a: 'Book a free consultation — virtual via Zoom, phone, or message, or in-person in Toronto by appointment. We discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins.' },
-  { q: 'Do you offer lab-grown diamonds?', a: 'Yes — we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value, both fully GIA-graded.' },
-  { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We carefully remove the stones from your existing piece and set them into your new custom design while preserving every detail you want to keep.' },
-  { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweler is fluent in the art of Arabic calligraphy casting.' },
-  { q: 'What areas around Toronto do you serve?', a: 'Our studio is in Toronto, and we regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, Milton, and Richmond Hill.' },
-  { q: 'Do I need an appointment to visit the studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we’ll confirm a time that works for you.' },
-  { q: 'Do you ship outside of Toronto?', a: 'Yes — we ship securely across the GTA and anywhere in Canada. Finished pieces are always fully insured in transit.' },
-]
+function getCityFaq(cityName: string) {
+  return [
+    { q: `Where is Al-Asali Jewelry based in ${cityName}?`, a: `Al-Asali Jewelry Studio serves ${cityName} clients by appointment — virtual consultations via Zoom, phone, or message, and complimentary insured delivery across ${cityName} and the surrounding area, with optional in-person meetings when preferred.` },
+    { q: `What does custom jewelry cost in ${cityName}?`, a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal weight, stones, and design complexity. Custom engagement rings typically start at $2,500. Every project is quoted up front with no hidden fees.' },
+    { q: 'How long does custom jewelry take?', a: 'Most pieces take 2\u20136 weeks: grillz 1\u20132 weeks, pendants 2\u20134 weeks, chains and earrings 2\u20134 weeks, rings and bracelets 3\u20135 weeks, engagement rings 4\u20136 weeks. Rush orders are available for an additional fee.' },
+    { q: 'How do I start a custom jewelry project?', a: `Book a free consultation — virtual via Zoom, phone, or message, or in-person in ${cityName} by appointment. We discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins.` },
+    { q: 'Do you offer lab-grown diamonds?', a: 'Yes — we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value, both fully GIA-graded.' },
+    { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We carefully remove the stones from your existing piece and set them into your new custom design while preserving every detail you want to keep.' },
+    { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweler is fluent in the art of Arabic calligraphy casting.' },
+    { q: `What areas around ${cityName} do you serve?`, a: `Our studio serves ${cityName} and the surrounding areas. We regularly work with clients from across the region and offer complimentary insured delivery.` },
+    { q: 'Do I need an appointment to visit the studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we\u2019ll confirm a time that works for you.' },
+    { q: `Do you deliver to ${cityName}?`, a: `Yes — we offer complimentary insured delivery to ${cityName} and ship securely anywhere in Canada. Finished pieces are always fully insured in transit.` },
+  ]
+}
 
-export default function HomePageClient({ liveReviews, liveRating, liveReviewCount }: HomePageClientProps = {}) {
+export default function CityHomeClient({ city, liveReviews, liveRating, liveReviewCount }: CityHomeClientProps) {
   const [featuredItems, setFeaturedItems] = useState<GalleryItem[]>([])
   const [processSteps, setProcessSteps] = useState<ProcessStep[]>([])
   const [torontoImages, setTorontoImages] = useState<string[]>(MADE_IN_TORONTO_IMAGES)
@@ -142,6 +158,11 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
   const [processProgress, setProcessProgress] = useState(0)
   const processRef = useRef<HTMLDivElement>(null)
   const stepRefs = useRef<(HTMLDivElement | null)[]>([])
+
+  const bespokeCategories = getBespokeCategories(city.slug)
+  const whyAlAssali = getWhyAlAssali(city.name)
+  const cityFaq = getCityFaq(city.name)
+  const fallbackProcess = getFallbackProcess(city.name)
 
   useEffect(() => {
     fetchFeaturedItems()
@@ -236,7 +257,13 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
   const displayedItems = featuredItems.length > 0 ? featuredItems : FALLBACK_FEATURED
   const img1 = torontoImages[0]
   const img2 = torontoImages[1]
-  const steps = processSteps.length ? processSteps : FALLBACK_PROCESS
+  const steps = processSteps.length ? processSteps : fallbackProcess
+
+  // Split city name for the "MADE IN [CITY]" typographic section
+  // Last letter gets the image overlay treatment, rest is gradient text
+  const cityUpper = city.name.toUpperCase()
+  const madeInPrefix = cityUpper.slice(0, -1)
+  const madeInLastLetter = cityUpper.slice(-1)
 
   return (
     <div className="overflow-hidden bg-white">
@@ -313,7 +340,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
         <div className="section-container relative z-10">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.8 }} className="max-w-3xl">
             <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5, duration: 1 }} className="mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
-              <span className="block text-7xl md:text-8xl lg:text-9xl font-bold mb-4" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{"CANADA'S"}</span>
+              <span className="block text-7xl md:text-8xl lg:text-9xl font-bold mb-4" style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{cityUpper}</span>
               {' '}
               <span className="block text-4xl md:text-5xl font-light text-white">Custom Jewelry</span>
             </motion.h1>
@@ -332,11 +359,11 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <div className="inline-flex items-center gap-2 mb-5">
               <Sparkles className="w-4 h-4 text-glacier-grey" />
-              <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">{"Ontario’s Premier Custom Jewelry Studio"}</span>
+              <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">{city.name}&apos;s Premier Custom Jewelry Studio</span>
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jewelry, Made in Canada</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jewelry, Made in {city.name}</h2>
             <p className="text-sm md:text-lg text-taupe max-w-3xl mx-auto leading-relaxed">
-              Al-Asali Jewelry is an Ontario-based bespoke jewelry studio. Master jeweler Mohammad Al-Asali designs and handcrafts every custom engagement ring, wedding band, diamond pendant, gold chain, grillz, and more — all entirely in-house — from first sketch to final polish, under one roof, with a lifetime craftsmanship guarantee. Choose a category to begin.
+              Al-Asali Jewelry is a {city.name}-based bespoke jewelry studio. Master jeweler Mohammad Al-Asali designs and handcrafts every custom engagement ring, wedding band, diamond pendant, gold chain, grillz, and more — all entirely in-house — from first sketch to final polish, under one roof, with a lifetime craftsmanship guarantee. Choose a category to begin.
             </p>
           </motion.div>
 
@@ -372,17 +399,17 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
         </div>
       </section>
 
-      {/* ===== MADE IN TORONTO ===== */}
-      <section className="relative bg-soft-black text-white py-24 overflow-hidden" aria-labelledby="made-in-toronto-heading">
+      {/* ===== MADE IN [CITY] ===== */}
+      <section className="relative bg-soft-black text-white py-24 overflow-hidden" aria-labelledby="made-in-city-heading">
         <DotPattern />
         <div className="section-container relative z-10">
           <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="relative">
             {/* Mobile layout — visible, semantic heading for the section */}
             <div className="block lg:hidden text-center py-12">
-              <h2 id="made-in-toronto-heading" className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 text-white" style={{ fontFamily: 'var(--font-heading)' }}>MADE IN<span className="sr-only"> </span><br />CANADA</h2>
+              <h2 id="made-in-city-heading" className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 text-white" style={{ fontFamily: 'var(--font-heading)' }}>MADE IN<span className="sr-only"> </span><br />{cityUpper}</h2>
               <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
-                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt="Silver Cuban chain crafted in Toronto" className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
-                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom chain design crafted in Toronto" className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
+                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt={`Silver Cuban chain crafted in ${city.name}`} className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
+                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt={`Custom chain design crafted in ${city.name}`} className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
               </div>
               <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto mt-6">
                 {ACCENT_IMAGES.map((accent, i) => (
@@ -413,7 +440,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
               <div className="flex items-center justify-center mb-8">
                 <div className="relative inline-block">
                   <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30" style={{ fontFamily: 'var(--font-heading)' }}>M</div>
-                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt="Silver Cuban chain - Toronto craftsmanship" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-48 xl:w-40 xl:h-56 2xl:w-48 2xl:h-64 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
+                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt={`Silver Cuban chain - ${city.name} craftsmanship`} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-48 xl:w-40 xl:h-56 2xl:w-48 2xl:h-64 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
                 </div>
                 <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>ADE</div>
               </div>
@@ -421,10 +448,10 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
                 <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>IN</div>
               </div>
               <div className="flex items-center justify-center relative">
-                <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>CANAD</div>
+                <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>{madeInPrefix}</div>
                 <div className="relative inline-block">
-                  <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30" style={{ fontFamily: 'var(--font-heading)' }}>A</div>
-                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom gold chain - Canadian artistry" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-48 xl:w-40 xl:h-56 2xl:w-48 2xl:h-64 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
+                  <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30" style={{ fontFamily: 'var(--font-heading)' }}>{madeInLastLetter}</div>
+                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt={`Custom gold chain - ${city.name} artistry`} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-48 xl:w-40 xl:h-56 2xl:w-48 2xl:h-64 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
                 </div>
               </div>
             </div>
@@ -509,7 +536,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Why Al-Asali Jewelry</h2>
             <p className="text-sm md:text-lg text-stone leading-relaxed">
-              We are a small, focused Ontario workshop. Every piece is crafted by a master jeweler — not a factory — and backed by a lifetime craftsmanship guarantee.
+              We are a small, focused {city.name} workshop. Every piece is crafted by a master jeweler — not a factory — and backed by a lifetime craftsmanship guarantee.
             </p>
           </motion.div>
 
@@ -544,10 +571,10 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweler &amp; Founder</div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Mohammad Al-Asali</h2>
             <p className="text-sm md:text-lg text-taupe leading-relaxed mb-8">
-              Mohammad is the founder and master jeweler behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across Ontario. Every piece that leaves our studio has been personally inspected and finished by Mohammad.
+              Mohammad is the founder and master jeweler behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across {city.name}. Every piece that leaves our {city.name} studio has been personally inspected and finished by Mohammad.
             </p>
             <Link href="/about/master-jeweler/mohammad-al-assali" className="inline-flex items-center gap-2 text-glacier-grey font-semibold hover:gap-3 transition-all">
-              Read Mohammad’s story <ArrowRight className="w-4 h-4" />
+              Read Mohammad&apos;s story <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>
         </div>
@@ -559,7 +586,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
         rating={liveRating}
         totalReviews={liveReviewCount}
         variant="light"
-        heading="What Our Clients Say"
+        heading={`What Our ${city.name} Clients Say`}
       />
 
       {/* ===== HOW WE WORK / LOCATION (black) ===== */}
@@ -569,12 +596,12 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>How We Work Together</h2>
             <p className="text-sm md:text-lg text-stone leading-relaxed mb-8">
-              Al-Asali Jewelry Studio is an Ontario-based custom jeweler, serving clients across the province by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
+              Al-Asali Jewelry Studio is a {city.name}-based custom jeweler, serving clients across {city.name} and the surrounding area by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in {city.name} whenever you prefer.
             </p>
 
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm mb-6">
-              <a href={`tel:${SITE_CONFIG.phone}`} className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light transition-colors">
-                <Phone className="w-4 h-4" /> {SITE_CONFIG.phoneDisplay}
+              <a href={`tel:${city.phone.replace(/[^+\d]/g, '')}`} className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light transition-colors">
+                <Phone className="w-4 h-4" /> {city.phone}
               </a>
               <a href={`mailto:${SITE_CONFIG.email}`} className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light transition-colors">
                 <Mail className="w-4 h-4" /> {SITE_CONFIG.email}
@@ -585,8 +612,16 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             </div>
 
             <p className="text-stone text-xs leading-relaxed max-w-2xl mx-auto">
-              Serving Toronto, Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, Milton, Richmond Hill, and the wider Greater Toronto Area.
+              {city.fullAddress}
             </p>
+
+            {city.neighborhoods.length > 0 && (
+              <div className="mt-6">
+                <p className="text-stone text-xs leading-relaxed max-w-2xl mx-auto">
+                  Serving {city.neighborhoods.join(', ')}, and surrounding communities.
+                </p>
+              </div>
+            )}
           </motion.div>
         </div>
       </section>
@@ -595,14 +630,14 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
       <section className="bg-white py-24" data-testid="faq-section">
         <div className="section-container max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jewelry in Ontario — FAQ</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jewelry in {city.name} — FAQ</h2>
             <p className="text-sm md:text-lg text-taupe max-w-2xl mx-auto leading-relaxed">
-              Everything you need to know about working with an Ontario custom jeweler — pricing, timelines, lab-grown diamonds, heirloom resets, and more.
+              Everything you need to know about working with a {city.name} custom jeweler — pricing, timelines, lab-grown diamonds, heirloom resets, and more.
             </p>
           </motion.div>
 
           <div className="space-y-3">
-            {homepageFaq.map((item, i) => (
+            {cityFaq.map((item, i) => (
               <motion.details
                 key={i}
                 initial={{ opacity: 0, y: 10 }}
@@ -627,21 +662,22 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
         <DotPattern />
         <div className="section-container text-center relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ fontFamily: 'var(--font-heading)' }}>Start Your Custom Jewelry Design<br /><span className="text-glacier-grey">in Ontario</span></h2>
-            <p className="text-base md:text-lg text-stone mb-8 max-w-2xl mx-auto">Free consultation. No obligation. Tell us what you have in mind and we’ll send back a sketch, a quote, and a timeline.</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white" style={{ fontFamily: 'var(--font-heading)' }}>Start Your Custom Jewelry Design<br /><span className="text-glacier-grey">in {city.name}</span></h2>
+            <p className="text-base md:text-lg text-stone mb-8 max-w-2xl mx-auto">Free consultation. No obligation. Tell us what you have in mind and we&apos;ll send back a sketch, a quote, and a timeline.</p>
             <Link href="/custom-form" className="inline-block bg-glacier-grey text-white px-12 py-4 rounded-lg font-bold hover:bg-glacier-grey-light transition-all duration-300 shadow-xl hover:shadow-2xl">START YOUR JOURNEY TODAY</Link>
           </motion.div>
         </div>
       </section>
 
-      {/* ===== SCHEMA: FAQPage + BreadcrumbList for the homepage ===== */}
+      {/* ===== SCHEMA: FAQPage + BreadcrumbList for the city page ===== */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([
-            buildFaqSchema(homepageFaq),
+            buildFaqSchema(cityFaq),
             buildBreadcrumbSchema([
               { name: 'Home', url: SITE_CONFIG.url },
+              { name: city.name, url: `${SITE_CONFIG.url}/${city.slug}` },
             ]),
           ]),
         }}
