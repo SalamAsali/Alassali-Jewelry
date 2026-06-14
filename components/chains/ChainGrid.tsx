@@ -92,41 +92,36 @@ export default function ChainGrid({
     return (
       <div className="lg:flex lg:gap-8">
         {/* Left sidebar — filters (desktop only) */}
-        <aside className="hidden lg:block lg:w-[220px] lg:flex-shrink-0">
+        <aside className="hidden lg:block lg:w-[260px] lg:flex-shrink-0">
           <div className="sticky top-24">
-            <div className="rounded-xl bg-soft-black p-5 shadow-xl">
+            <div className="rounded-xl bg-soft-black p-6 shadow-xl">
               {/* Header */}
-              <div className="flex items-center justify-between mb-5">
-                <h3 className="font-heading text-xl font-semibold text-white">Refine</h3>
+              <div className="flex items-center justify-between mb-6">
+                <h3 className="font-heading text-2xl font-semibold text-white">Filter</h3>
                 {(filters.priceRange || filters.width || filters.karat || filters.construction) && (
                   <button
                     onClick={() => setFilters({ priceRange: null, width: null, karat: null, construction: null })}
-                    className="text-[10px] uppercase tracking-wider text-glacier-grey hover:text-white transition-colors"
+                    className="text-xs text-glacier-grey hover:text-white transition-colors underline underline-offset-2"
                   >
                     Reset
                   </button>
                 )}
               </div>
 
-              {/* Price */}
-              <FilterGroup title="Price">
-                {[
-                  { value: 'under-500', label: '<$500' },
-                  { value: '500-1000', label: '$500–1K' },
-                  { value: '1000-2500', label: '$1K–2.5K' },
-                  { value: '2500-5000', label: '$2.5K–5K' },
-                  { value: '5000-plus', label: '$5K+' },
-                ].map(r => (
-                  <FilterPill key={r.value} label={r.label} isActive={filters.priceRange === r.value} onClick={() => setFilters(f => ({ ...f, priceRange: f.priceRange === r.value ? null : r.value }))} />
-                ))}
+              {/* Budget Slider */}
+              <FilterGroup title="Budget">
+                <BudgetSlider
+                  value={filters.priceRange}
+                  onChange={(v) => setFilters(f => ({ ...f, priceRange: v }))}
+                />
               </FilterGroup>
 
               {/* Width */}
               <FilterGroup title="Width">
                 {[
-                  { value: 'under-2', label: '<2mm' },
-                  { value: '2-3', label: '2–3mm' },
-                  { value: '3-5', label: '3–5mm' },
+                  { value: 'under-2', label: 'Under 2mm' },
+                  { value: '2-3', label: '2 – 3mm' },
+                  { value: '3-5', label: '3 – 5mm' },
                   { value: '5-plus', label: '5mm+' },
                 ].map(r => (
                   <FilterPill key={r.value} label={r.label} isActive={filters.width === r.value} onClick={() => setFilters(f => ({ ...f, width: f.width === r.value ? null : r.value }))} />
@@ -136,18 +131,18 @@ export default function ChainGrid({
               {/* Karat */}
               <FilterGroup title="Karat">
                 {[
-                  { value: '10k', label: '10K' },
-                  { value: '14k', label: '14K' },
-                  { value: '18k', label: '18K' },
+                  { value: '10k', label: '10K Gold' },
+                  { value: '14k', label: '14K Gold' },
+                  { value: '18k', label: '18K Gold' },
                 ].map(r => (
                   <FilterPill key={r.value} label={r.label} isActive={filters.karat === r.value} onClick={() => setFilters(f => ({ ...f, karat: f.karat === r.value ? null : r.value }))} />
                 ))}
               </FilterGroup>
 
               {/* Construction */}
-              <FilterGroup title="Build" isLast>
+              <FilterGroup title="Construction" isLast>
                 {[
-                  { value: 'solid', label: 'Solid' },
+                  { value: 'solid', label: 'Solid Gold' },
                   { value: 'hollow', label: 'Hollow' },
                 ].map(r => (
                   <FilterPill key={r.value} label={r.label} isActive={filters.construction === r.value} onClick={() => setFilters(f => ({ ...f, construction: f.construction === r.value ? null : r.value }))} />
@@ -257,6 +252,56 @@ function FilterPill({ label, isActive, onClick }: { label: string; isActive: boo
     >
       {label}
     </button>
+  )
+}
+
+const BUDGET_STOPS = [
+  { value: 'under-500', max: 500, label: '$500' },
+  { value: '500-1000', max: 1000, label: '$1K' },
+  { value: '1000-2500', max: 2500, label: '$2.5K' },
+  { value: '2500-5000', max: 5000, label: '$5K' },
+  { value: '5000-plus', max: 99999, label: '$10K+' },
+]
+
+function BudgetSlider({ value, onChange }: { value: string | null; onChange: (v: string | null) => void }) {
+  const activeIdx = value ? BUDGET_STOPS.findIndex(s => s.value === value) : -1
+  const sliderValue = activeIdx >= 0 ? activeIdx : BUDGET_STOPS.length - 1
+  const displayLabel = activeIdx >= 0 ? `Up to ${BUDGET_STOPS[activeIdx].label}` : 'Any budget'
+
+  return (
+    <div className="w-full">
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-sm font-medium text-white">{displayLabel}</span>
+        {value && (
+          <button onClick={() => onChange(null)} className="text-[10px] text-glacier-grey hover:text-white transition-colors">
+            Any
+          </button>
+        )}
+      </div>
+      <input
+        type="range"
+        min={0}
+        max={BUDGET_STOPS.length - 1}
+        step={1}
+        value={sliderValue}
+        onChange={(e) => {
+          const idx = parseInt(e.target.value)
+          if (idx >= BUDGET_STOPS.length - 1) {
+            onChange(null)
+          } else {
+            onChange(BUDGET_STOPS[idx].value)
+          }
+        }}
+        className="w-full h-2 rounded-full appearance-none cursor-pointer bg-white/10 accent-glacier-grey [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:w-5 [&::-webkit-slider-thumb]:h-5 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-glacier-grey [&::-webkit-slider-thumb]:shadow-lg [&::-webkit-slider-thumb]:shadow-glacier-grey/40 [&::-webkit-slider-thumb]:cursor-pointer [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-white"
+      />
+      <div className="flex justify-between mt-1.5">
+        {BUDGET_STOPS.map((stop, i) => (
+          <span key={stop.value} className={`text-[9px] ${i === sliderValue ? 'text-white font-semibold' : 'text-white/30'}`}>
+            {stop.label}
+          </span>
+        ))}
+      </div>
+    </div>
   )
 }
 

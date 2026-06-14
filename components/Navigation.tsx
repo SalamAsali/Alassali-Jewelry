@@ -78,7 +78,7 @@ export default function Navigation(props?: NavigationProps) {
 
   const menuItems = [
     { name: 'Bespoke', path: null, hasDropdown: true, dropdownType: 'bespoke' },
-    { name: 'Chains', path: '/chains', hasDropdown: true, dropdownType: 'chains' },
+    { name: 'Chains', path: '/chains/yellow-gold', hasDropdown: true, dropdownType: 'chains' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'FAQ', path: '/faq' },
   ]
@@ -260,14 +260,6 @@ export default function Navigation(props?: NavigationProps) {
                             </Link>
                           ))}
                         </div>
-                        {/* View all */}
-                        <Link
-                          href="/chains"
-                          className="block mt-3 text-center text-sm font-semibold text-glacier-grey hover:text-glacier-grey-light transition-colors"
-                          onClick={() => setOpenDropdown(null)}
-                        >
-                          View All Chains →
-                        </Link>
                       </motion.div>
                     )}
                   </AnimatePresence>
@@ -412,13 +404,6 @@ export default function Navigation(props?: NavigationProps) {
                                 {metal.name}
                               </Link>
                             ))}
-                            <Link
-                              href="/chains"
-                              onClick={() => { setIsMenuOpen(false); setOpenDropdown(null); }}
-                              className="block py-2 text-sm text-glacier-grey hover:text-white transition-colors mt-1"
-                            >
-                              View All Chains →
-                            </Link>
                           </motion.div>
                         )}
                       </AnimatePresence>
