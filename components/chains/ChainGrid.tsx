@@ -90,9 +90,9 @@ export default function ChainGrid({
   // Desktop: sidebar layout when filters are enabled
   if (showFilters) {
     return (
-      <div className="flex gap-8">
+      <div className="lg:flex lg:gap-8">
         {/* Left sidebar — filters (desktop only) */}
-        <aside className="hidden lg:block w-[240px] flex-shrink-0">
+        <aside className="hidden lg:block lg:w-[240px] lg:flex-shrink-0">
           <div className="sticky top-24 space-y-7">
             <h3 className="font-heading text-lg font-medium text-deep-charcoal">Filters</h3>
             <DesktopFilterSection
@@ -149,22 +149,23 @@ export default function ChainGrid({
           </div>
         </aside>
 
-        {/* Mobile filter button */}
-        <div className="lg:hidden mb-4">
-          <ChainFilters
-            filters={filters}
-            onChange={setFilters}
-            resultCount={filteredAndSorted.length}
-          />
-        </div>
-
         {/* Main content */}
         <div className="flex-1 min-w-0">
           {/* Toolbar */}
-          <div className="flex items-center justify-between mb-6">
-            <p className="text-sm text-glacier-grey">
-              {filteredAndSorted.length} chain{filteredAndSorted.length !== 1 ? 's' : ''}
-            </p>
+          <div className="flex items-center justify-between gap-3 mb-6">
+            <div className="flex items-center gap-3">
+              {/* Mobile filter button */}
+              <div className="lg:hidden">
+                <ChainFilters
+                  filters={filters}
+                  onChange={setFilters}
+                  resultCount={filteredAndSorted.length}
+                />
+              </div>
+              <p className="text-sm text-glacier-grey">
+                {filteredAndSorted.length} chain{filteredAndSorted.length !== 1 ? 's' : ''}
+              </p>
+            </div>
             {showSort && <SortDropdown sort={sort} onSort={setSort} />}
           </div>
 
