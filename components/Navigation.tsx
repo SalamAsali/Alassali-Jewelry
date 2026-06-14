@@ -4,7 +4,8 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, User } from 'lucide-react'
+import { Menu, X, User, ShoppingBag } from 'lucide-react'
+import { useCart } from '@/lib/cart'
 
 const DEFAULT_LOGO = '/images/logo.png'
 
@@ -18,6 +19,7 @@ export default function Navigation(props?: NavigationProps) {
   const pathname = usePathname()
   const router = useRouter()
   const logo = props?.logoUrl ?? DEFAULT_LOGO
+  const { itemCount, setIsOpen: setCartOpen } = useCart()
 
   const productMegaMenu = {
     mainCategories: [
@@ -307,6 +309,19 @@ export default function Navigation(props?: NavigationProps) {
             >
               <User className="w-5 h-5" />
             </Link>
+
+            <button
+              onClick={() => setCartOpen(true)}
+              className="hidden md:inline-flex items-center p-2 text-white hover:text-glacier-grey-light transition-colors relative"
+              title="Cart"
+            >
+              <ShoppingBag className="w-5 h-5" />
+              {itemCount > 0 && (
+                <span className="absolute -top-1 -right-1 w-5 h-5 bg-glacier-grey text-white text-[10px] font-bold rounded-full flex items-center justify-center">
+                  {itemCount > 9 ? '9+' : itemCount}
+                </span>
+              )}
+            </button>
 
             <Link
               href="/custom-form"

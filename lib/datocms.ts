@@ -566,10 +566,7 @@ const CHAINS_LANDING_QUERY = `
           base64
         }
       }
-      faqItems {
-        question
-        answer
-      }
+      faqItems
     }
   }
 `
