@@ -76,9 +76,15 @@ export default function Navigation(props?: NavigationProps) {
     ],
   }
 
+  const locationsMenu = [
+    { name: 'Toronto', path: '/toronto', address: '5070 Oscar Peterson Blvd, Mississauga' },
+    { name: 'Oakville', path: '/oakville', address: '3158 Sixth Line, Oakville' },
+  ]
+
   const menuItems = [
     { name: 'Customs', path: null, hasDropdown: true, dropdownType: 'bespoke' },
     { name: 'Chains', path: '/chains/yellow-gold', hasDropdown: true, dropdownType: 'chains' },
+    { name: 'Locations', path: null, hasDropdown: true, dropdownType: 'locations' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'FAQ', path: '/faq' },
   ]
@@ -262,6 +268,41 @@ export default function Navigation(props?: NavigationProps) {
                         </div>
                       </motion.div>
                     )}
+
+                    {openDropdown === 'locations' && item.dropdownType === 'locations' && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -10 }}
+                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[340px] rounded-xl shadow-2xl border-2 border-stone p-5 z-50 bg-white"
+                        role="menu"
+                        aria-label="Locations menu"
+                      >
+                        <div className="space-y-3">
+                          {locationsMenu.map((loc) => (
+                            <Link
+                              key={loc.name}
+                              href={loc.path}
+                              className="group flex items-start gap-3 rounded-lg p-3 hover:bg-warm-white transition-all duration-200"
+                              onClick={() => setOpenDropdown(null)}
+                            >
+                              <div className="w-8 h-8 rounded-full bg-soft-black flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-glacier-grey transition-colors">
+                                <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                                </svg>
+                              </div>
+                              <div>
+                                <span className="text-sm font-bold text-deep-charcoal group-hover:text-glacier-grey block">
+                                  {loc.name}
+                                </span>
+                                <span className="text-xs text-glacier-grey">{loc.address}</span>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      </motion.div>
+                    )}
                   </AnimatePresence>
                 </div>
               ) : (
@@ -402,6 +443,26 @@ export default function Navigation(props?: NavigationProps) {
                                 className="block py-2 text-sm font-semibold text-glacier-grey-light hover:text-white transition-colors"
                               >
                                 {metal.name}
+                              </Link>
+                            ))}
+                          </motion.div>
+                        )}
+                        {openDropdown === 'locations' && item.dropdownType === 'locations' && (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: 'auto', opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            className="pl-4 space-y-2 overflow-hidden"
+                          >
+                            {locationsMenu.map((loc) => (
+                              <Link
+                                key={loc.name}
+                                href={loc.path}
+                                onClick={() => { setIsMenuOpen(false); setOpenDropdown(null); }}
+                                className="block py-2 text-sm text-stone hover:text-glacier-grey transition-colors"
+                              >
+                                <span className="font-semibold text-glacier-grey-light">{loc.name}</span>
+                                <span className="block text-xs text-stone/70 mt-0.5">{loc.address}</span>
                               </Link>
                             ))}
                           </motion.div>
