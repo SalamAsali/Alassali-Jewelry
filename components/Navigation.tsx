@@ -48,14 +48,14 @@ export default function Navigation(props?: NavigationProps) {
   }
 
   const bespokeMenu = [
-    { name: 'Engagement Rings', path: '/custom-engagement-rings', icon: '/images/icons/engagement-rings.svg' },
-    { name: 'Wedding Bands', path: '/custom-wedding-bands', icon: '/images/icons/bridal-bands.svg' },
-    { name: 'Rings', path: '/custom-rings', icon: '/images/icons/rings.svg' },
-    { name: 'Pendants', path: '/custom-pendants', icon: '/images/icons/pendants.svg' },
-    { name: 'Chains', path: '/custom-chains', icon: '/images/icons/chains.svg' },
-    { name: 'Earrings', path: '/custom-earrings', icon: '/images/icons/earrings.svg' },
-    { name: 'Bracelets', path: '/custom-bracelets', icon: '/images/icons/bracelets.svg' },
-    { name: 'Grillz', path: '/custom-grillz', icon: '/images/icons/grillz.svg' },
+    { name: 'Engagement Rings', path: '/toronto/custom-engagement-rings', icon: '/images/icons/engagement-rings.svg' },
+    { name: 'Wedding Bands', path: '/toronto/custom-wedding-bands', icon: '/images/icons/bridal-bands.svg' },
+    { name: 'Rings', path: '/toronto/custom-rings', icon: '/images/icons/rings.svg' },
+    { name: 'Pendants', path: '/toronto/custom-pendants', icon: '/images/icons/pendants.svg' },
+    { name: 'Chains', path: '/toronto/custom-chains', icon: '/images/icons/chains.svg' },
+    { name: 'Earrings', path: '/toronto/custom-earrings', icon: '/images/icons/earrings.svg' },
+    { name: 'Bracelets', path: '/toronto/custom-bracelets', icon: '/images/icons/bracelets.svg' },
+    { name: 'Grillz', path: '/toronto/custom-grillz', icon: '/images/icons/grillz.svg' },
   ]
 
   const chainsMenu = {
@@ -77,7 +77,7 @@ export default function Navigation(props?: NavigationProps) {
   }
 
   const menuItems = [
-    { name: 'Bespoke', path: null, hasDropdown: true, dropdownType: 'bespoke' },
+    { name: 'Customs', path: null, hasDropdown: true, dropdownType: 'bespoke' },
     { name: 'Chains', path: '/chains/yellow-gold', hasDropdown: true, dropdownType: 'chains' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'FAQ', path: '/faq' },
