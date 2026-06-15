@@ -1,79 +1,33 @@
-import { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
+import type { Metadata } from 'next'
 import { LOCATIONS, getLocation, getFullAddress } from '@/lib/locations'
-import { SITE_CONFIG } from '@/lib/seo/siteConfig'
-import { fetchGoogleReviews } from '@/lib/reviews/googlePlaces'
-import CityHomeClient from './CityHomeClient'
 
-/* ------------------------------------------------------------------ */
-/*  Static params                                                     */
-/* ------------------------------------------------------------------ */
+type Props = { params: Promise<{ city: string }> }
 
-export function generateStaticParams() {
-  return LOCATIONS.map((loc) => ({ city: loc.slug }))
+export async function generateStaticParams() {
+  return LOCATIONS.map(l => ({ city: l.slug }))
 }
 
-/* ------------------------------------------------------------------ */
-/*  Metadata                                                          */
-/* ------------------------------------------------------------------ */
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ city: string }>
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { city } = await params
-  const location = getLocation(city)
-  if (!location) return {}
-
-  const title = `Custom Jeweler in ${location.name} | Al-Assali Custom Jewelry`
-  const description = `${location.name}'s premier custom jeweler. Handcrafted engagement rings, gold chains, grillz & more. 10K, 14K, 18K gold. Book your free consultation.`
-
+  const loc = getLocation(city)
+  if (!loc || loc.slug === 'toronto') return {}
   return {
-    title,
-    description,
-    alternates: {
-      canonical: `https://www.alasalicustomjewelry.ca/${city}`,
-    },
-    openGraph: {
-      title,
-      description,
-      url: `${SITE_CONFIG.url}/${city}`,
-      siteName: SITE_CONFIG.brandName,
-      type: 'website',
-    },
+    title: `Custom Jeweler in ${loc.name} | Al-Assali Custom Jewelry`,
+    description: `${loc.name}'s premier custom jeweler. Handcrafted engagement rings, gold chains, grillz & more. 10K, 14K, 18K gold. Book your free consultation.`,
+    alternates: { canonical: `https://www.alasalicustomjewelry.ca/${city}` },
   }
 }
 
-/* ------------------------------------------------------------------ */
-/*  Page component                                                    */
-/* ------------------------------------------------------------------ */
-
-export default async function CityPage({
-  params,
-}: {
-  params: Promise<{ city: string }>
-}) {
+export default async function CityPage({ params }: Props) {
   const { city } = await params
   const loc = getLocation(city)
   if (!loc) notFound()
 
-  const { reviews, rating, totalReviews, source } = await fetchGoogleReviews()
-  const liveReviews = source === 'live' && reviews.length > 0 ? reviews : undefined
+  // Toronto → homepage (homepage IS the Toronto page)
+  if (loc.slug === 'toronto') redirect('/')
 
-  return (
-    <CityHomeClient
-      city={{
-        name: loc.name,
-        slug: loc.slug,
-        address: loc.address,
-        fullAddress: getFullAddress(loc),
-        phone: loc.phone,
-        neighborhoods: loc.neighborhoods,
-      }}
-      liveReviews={liveReviews}
-      liveRating={rating}
-      liveReviewCount={totalReviews}
-    />
-  )
+  // Oakville and other cities get their own page
+  // For now redirect to /locations until dedicated city pages are built
+  redirect('/locations')
 }

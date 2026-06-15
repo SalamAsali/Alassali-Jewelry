@@ -1,82 +1,84 @@
+// Bespoke category slugs — keep in sync with app/sitemap.ts and the
+// dynamic route at app/(frontend)/custom/[type]/page.tsx
 const customSlugs = [
   'engagement-rings',
   'wedding-bands',
   'rings',
   'pendants',
+  'chains',
   'earrings',
   'bracelets',
   'grillz',
 ]
 
-// "chains" conflicts with the /chains collection route, so custom chains uses /chains-custom
-const CHAINS_CUSTOM_PUBLIC = '/chains-custom'
-const CHAINS_CUSTOM_INTERNAL = '/custom/chains'
-
+// The conversion form is the only page where the public slug diverges from
+// the file-system route segment. Internally the route is /custom/general
+// (and the form's pieceType state defaults to 'general'); externally the
+// page lives at /custom-form, which reads better as a form-only utility.
 const FORM_PUBLIC = '/custom-form'
 const FORM_INTERNAL = '/custom/general'
-const FORM_LEGACY = '/custom-general'
+const FORM_LEGACY = '/custom-general' // first iteration of the flat URL
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+    // Allow DatoCMS image CDN
     remotePatterns: [
-      { protocol: 'https', hostname: 'www.datocms-assets.com' },
-      { protocol: 'https', hostname: '*.datocms-assets.com' },
+      {
+        protocol: 'https',
+        hostname: 'www.datocms-assets.com',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.datocms-assets.com',
+      },
     ],
   },
-  eslint: { ignoreDuringBuilds: true },
-  typescript: { ignoreBuildErrors: true },
-  experimental: { reactCompiler: false },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  experimental: {
+    reactCompiler: false,
+  },
 
+  // Flat slug pattern: visitors hit /custom-<slug>; Next.js serves the
+  // existing /custom/<slug> route internally. The address bar shows the
+  // new URL, while the page component still reads `params.type` correctly.
   async rewrites() {
     return [
-      // Clean URLs → internal /custom/[type] routes
       ...customSlugs.map((slug) => ({
-        source: `/${slug}`,
+        source: `/custom-${slug}-toronto`,
         destination: `/custom/${slug}`,
       })),
-      // /chains-custom → /custom/chains (avoid conflict with /chains collection)
-      { source: CHAINS_CUSTOM_PUBLIC, destination: CHAINS_CUSTOM_INTERNAL },
-      // /custom-form → /custom/general
+      // /custom-form is the public-facing inquiry form URL; it's served by
+      // the existing /custom/general route file.
       { source: FORM_PUBLIC, destination: FORM_INTERNAL },
     ]
   },
 
+  // 301 the old hierarchical URLs to the new flat slugs to preserve SEO equity.
   async redirects() {
     return [
-      // === CLEAN URL REDIRECTS ===
-      // /custom/X → /X (remove /custom prefix from URLs)
+      // Old hierarchical routes → new flat -toronto URLs
       ...customSlugs.map((slug) => ({
         source: `/custom/${slug}`,
-        destination: `/${slug}`,
+        destination: `/custom-${slug}-toronto`,
         permanent: true,
       })),
-      // /custom/chains → /chains-custom
-      { source: '/custom/chains', destination: CHAINS_CUSTOM_PUBLIC, permanent: true },
-
-      // === OLD FLAT URLs → clean URLs ===
+      // Old flat URLs (without -toronto) → new -toronto URLs
       ...customSlugs.map((slug) => ({
         source: `/custom-${slug}`,
-        destination: `/${slug}`,
+        destination: `/custom-${slug}-toronto`,
         permanent: true,
       })),
-      // /custom-chains → /chains-custom
-      { source: '/custom-chains', destination: CHAINS_CUSTOM_PUBLIC, permanent: true },
-
-      // === TORONTO LOCATION REDIRECTS ===
-      // /custom-X-toronto → /toronto/custom-X
-      ...customSlugs.map((slug) => ({
-        source: `/custom-${slug}-toronto`,
-        destination: `/toronto/custom-${slug}`,
-        permanent: true,
-      })),
-      { source: '/custom-chains-toronto', destination: '/toronto/custom-chains', permanent: true },
-
-      // === FORM REDIRECTS ===
+      // Old internal route for the form → the public form URL.
       { source: FORM_INTERNAL, destination: FORM_PUBLIC, permanent: true },
+      // First iteration of the flat URL (briefly indexable) → final URL.
       { source: FORM_LEGACY, destination: FORM_PUBLIC, permanent: true },
-
-      // === SPELLING FIXES ===
+      // Fix American vs British spelling inconsistencies — actual routes use the British spellings.
       {
         source: '/about/master-jeweler/:path*',
         destination: '/about/master-jeweller/:path*',
@@ -87,20 +89,19 @@ const nextConfig = {
         destination: '/blog/arabic-calligraphy-jewellery-toronto',
         permanent: true,
       },
-
-      // === OLD SERVICE AREA PAGES ===
+      // Removed service-area pages → homepage
       { source: '/service-areas', destination: '/', permanent: true },
-      { source: '/toronto/oakwood-vaughan', destination: '/toronto', permanent: true },
-      { source: '/toronto/yorkville', destination: '/toronto', permanent: true },
-      { source: '/toronto/north-york', destination: '/toronto', permanent: true },
-      { source: '/toronto/etobicoke', destination: '/toronto', permanent: true },
-      { source: '/toronto/scarborough', destination: '/toronto', permanent: true },
-      { source: '/toronto/wychwood', destination: '/toronto', permanent: true },
-      { source: '/toronto/forest-hill', destination: '/toronto', permanent: true },
-      { source: '/toronto/bathurst-st-clair', destination: '/toronto', permanent: true },
-      { source: '/gta/mississauga', destination: '/toronto', permanent: true },
-      { source: '/gta/vaughan', destination: '/toronto', permanent: true },
-      { source: '/gta/markham', destination: '/toronto', permanent: true },
+      { source: '/toronto/oakwood-vaughan', destination: '/', permanent: true },
+      { source: '/toronto/yorkville', destination: '/', permanent: true },
+      { source: '/toronto/north-york', destination: '/', permanent: true },
+      { source: '/toronto/etobicoke', destination: '/', permanent: true },
+      { source: '/toronto/scarborough', destination: '/', permanent: true },
+      { source: '/toronto/wychwood', destination: '/', permanent: true },
+      { source: '/toronto/forest-hill', destination: '/', permanent: true },
+      { source: '/toronto/bathurst-st-clair', destination: '/', permanent: true },
+      { source: '/gta/mississauga', destination: '/', permanent: true },
+      { source: '/gta/vaughan', destination: '/', permanent: true },
+      { source: '/gta/markham', destination: '/', permanent: true },
     ]
   },
 }

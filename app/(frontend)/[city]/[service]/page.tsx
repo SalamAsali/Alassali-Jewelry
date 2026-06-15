@@ -1,32 +1,38 @@
-'use client'
+import { notFound, redirect } from 'next/navigation'
+import type { Metadata } from 'next'
+import { LOCATIONS, SERVICES, getLocation, getService } from '@/lib/locations'
 
-import { useParams } from 'next/navigation'
-import { ServicePageContent } from '@/components/bespoke/ServicePageContent'
-import { getLocation } from '@/lib/locations'
+type Props = { params: Promise<{ city: string; service: string }> }
 
-export const dynamic = 'force-dynamic'
-
-export default function CityServicePage() {
-  const params = useParams()
-  const citySlug = params?.city as string
-  const service = params?.service as string
-
-  // Extract the type from "custom-engagement-rings" → "engagement-rings"
-  const type = service.replace(/^custom-/, '')
-
-  const loc = getLocation(citySlug)
-  if (!loc) return null
-
-  return (
-    <ServicePageContent
-      type={type}
-      city={{
-        name: loc.name,
-        slug: loc.slug,
-        address: `${loc.address}, ${loc.city}, ${loc.province} ${loc.postalCode}`,
-        phone: loc.phone,
-        neighborhoods: loc.neighborhoods,
-      }}
-    />
+export async function generateStaticParams() {
+  return LOCATIONS.flatMap((loc) =>
+    SERVICES.map((svc) => ({ city: loc.slug, service: svc.slug }))
   )
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { city, service } = await params
+  const loc = getLocation(city)
+  const svc = getService(service)
+  if (!loc || !svc) return {}
+  return {
+    title: `${svc.name} in ${loc.name} | Al-Assali Custom Jewelry`,
+    description: `${svc.name} handcrafted in ${loc.name}, Ontario. Premium 10K, 14K & 18K gold. Book your free consultation today.`,
+    alternates: { canonical: `https://www.alasalicustomjewelry.ca/${city}/${service}` },
+  }
+}
+
+export default async function CityServicePage({ params }: Props) {
+  const { city, service } = await params
+  const loc = getLocation(city)
+  const svc = getService(service)
+  if (!loc || !svc) notFound()
+
+  // Toronto service pages redirect to the main service pages
+  if (loc.slug === 'toronto') {
+    redirect(`/custom-${svc.formType}-toronto`)
+  }
+
+  // Oakville service pages redirect to main for now
+  redirect(`/custom-${svc.formType}-toronto`)
 }

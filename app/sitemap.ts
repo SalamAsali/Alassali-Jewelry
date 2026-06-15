@@ -3,10 +3,6 @@ import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 const BASE = SITE_CONFIG.url
 
-// Bespoke category landing pages. The inquiry form (public URL /custom-form,
-// internal route /custom/general) is intentionally excluded — its hub
-// content moved to the homepage; the form is noindex and shouldn't compete
-// with the home page for "custom jewelry toronto" intent.
 const bespokeSlugs = [
   'engagement-rings',
   'wedding-bands',
@@ -25,6 +21,8 @@ const blogSlugs = [
   'arabic-calligraphy-jewellery-toronto',
 ]
 
+const chainMetals = ['yellow-gold', 'white-gold', 'rose-gold', 'two-tone']
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()
 
@@ -32,11 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/`, lastModified: now, changeFrequency: 'weekly', priority: 1.0 },
     { url: `${BASE}/portfolio`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${BASE}/faq`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${BASE}/catalog`, lastModified: now, changeFrequency: 'weekly', priority: 0.8 },
+    { url: `${BASE}/locations`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/about/master-jeweller/mohammad-al-assali`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${BASE}/blog`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
   ]
 
+  // Bespoke service pages (Toronto-targeted)
   const bespokePages: MetadataRoute.Sitemap = bespokeSlugs.map((slug) => ({
     url: `${BASE}/custom-${slug}-toronto`,
     lastModified: now,
@@ -44,6 +43,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
+  // Gold chains collection pages
+  const chainPages: MetadataRoute.Sitemap = [
+    { url: `${BASE}/chains`, lastModified: now, changeFrequency: 'daily', priority: 0.8 },
+    ...chainMetals.map((metal) => ({
+      url: `${BASE}/chains/${metal}`,
+      lastModified: now,
+      changeFrequency: 'daily' as const,
+      priority: 0.8,
+    })),
+  ]
+
+  // Blog pages
   const blogPages: MetadataRoute.Sitemap = blogSlugs.map((slug) => ({
     url: `${BASE}/blog/${slug}`,
     lastModified: now,
@@ -51,5 +62,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...bespokePages, ...blogPages]
+  // Oakville location page
+  const locationPages: MetadataRoute.Sitemap = [
+    { url: `${BASE}/oakville`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
+  ]
+
+  return [...staticPages, ...bespokePages, ...chainPages, ...blogPages, ...locationPages]
 }
