@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { MapPin, Phone, Clock, Star, Navigation, ArrowRight } from 'lucide-react'
+import { MapPin, Phone, Clock, CalendarClock, Navigation, ArrowRight } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Our Locations | Al-Assali Custom Jewelry',
@@ -33,8 +33,8 @@ const locations = [
     city: 'Oakville, ON L6M 4J9',
     phone: '(647) 562-4340',
     hours: [
-      { days: 'Monday – Friday', time: '10:00 AM – 6:00 PM' },
-      { days: 'Saturday', time: '10:00 AM – 4:00 PM' },
+      { days: 'Monday – Friday', time: '11:00 AM – 7:00 PM' },
+      { days: 'Saturday', time: '11:00 AM – 5:00 PM' },
       { days: 'Sunday', time: 'Closed' },
     ],
     hoursNote: 'By appointment only',
@@ -80,13 +80,30 @@ export default function LocationsPage() {
 
                 {/* Info */}
                 <div className="p-6 sm:p-8">
-                  <div className="flex items-center justify-between mb-5">
+                  <div className="mb-5">
                     <h2 className="font-heading text-2xl sm:text-3xl font-semibold text-deep-charcoal">{loc.name}</h2>
-                    {loc.isMain && (
-                      <span className="px-3 py-1 rounded-full bg-glacier-grey/10 border border-glacier-grey/30 text-xs font-semibold text-glacier-grey uppercase tracking-wider">
-                        Main Studio
-                      </span>
-                    )}
+                  </div>
+
+                  {/* By Appointment Only — most important detail */}
+                  <div className="mb-6 rounded-xl bg-glacier-grey/10 border-2 border-glacier-grey/40 p-4 sm:p-5">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-glacier-grey/15 flex items-center justify-center flex-shrink-0">
+                          <CalendarClock className="w-5 h-5 text-glacier-grey" />
+                        </div>
+                        <div>
+                          <p className="font-heading text-base sm:text-lg font-bold text-deep-charcoal uppercase tracking-wide leading-tight">By Appointment Only</p>
+                          <p className="text-xs text-charcoal/70">Call ahead to book your private visit</p>
+                        </div>
+                      </div>
+                      <a
+                        href={`tel:${loc.phone.replace(/[^0-9+]/g, '')}`}
+                        className="sm:ml-auto inline-flex items-center justify-center gap-2 bg-glacier-grey text-white px-5 py-3 rounded-lg font-bold text-sm whitespace-nowrap hover:bg-glacier-grey-light hover:shadow-lg transition-all duration-300"
+                      >
+                        <Phone className="w-4 h-4" />
+                        {loc.phone}
+                      </a>
+                    </div>
                   </div>
 
                   <div className="space-y-4 mb-6">
@@ -99,34 +116,17 @@ export default function LocationsPage() {
                       </div>
                     </div>
 
-                    {/* Phone */}
-                    <div className="flex items-center gap-3">
-                      <Phone className="w-5 h-5 text-glacier-grey flex-shrink-0" />
-                      <a href={`tel:${loc.phone.replace(/[^0-9+]/g, '')}`} className="text-sm font-medium text-deep-charcoal hover:text-glacier-grey transition-colors">
-                        {loc.phone}
-                      </a>
-                    </div>
-
                     {/* Hours */}
                     <div className="flex items-start gap-3">
                       <Clock className="w-5 h-5 text-glacier-grey flex-shrink-0 mt-0.5" />
-                      <div>
+                      <div className="w-full">
                         {loc.hours.map((h) => (
                           <div key={h.days} className="flex justify-between gap-4 text-sm">
                             <span className="text-deep-charcoal font-medium">{h.days}</span>
                             <span className={h.time === 'Closed' ? 'text-glacier-grey italic' : 'text-charcoal'}>{h.time}</span>
                           </div>
                         ))}
-                        <p className="text-xs text-glacier-grey mt-1 italic">{loc.hoursNote}</p>
                       </div>
-                    </div>
-
-                    {/* Google Rating */}
-                    <div className="flex items-center gap-3">
-                      <Star className="w-5 h-5 text-glacier-grey flex-shrink-0" />
-                      <p className="text-sm text-deep-charcoal">
-                        <span className="font-semibold">{loc.rating}</span> on Google &middot; {loc.reviews} reviews
-                      </p>
                     </div>
                   </div>
 

@@ -2,9 +2,19 @@ import { notFound, redirect } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { LOCATIONS, SERVICES, getLocation, getFullAddress } from '@/lib/locations'
-import { MapPin, Phone, Clock, Star, ArrowRight, Gem, Shield, Diamond, Award } from 'lucide-react'
+import { MapPin, Phone, Clock, CalendarClock, ArrowRight, Gem, Shield, Diamond, Award, Video, Hammer } from 'lucide-react'
+import DotPattern from '@/components/DotPattern'
+import DiamondPattern from '@/components/DiamondPattern'
+import FloatingDiamonds from '@/components/FloatingDiamonds'
 
 type Props = { params: Promise<{ city: string }> }
+
+// Studio hours — shared across both meeting locations.
+const HOURS = [
+  { days: 'Monday – Friday', time: '11:00 AM – 7:00 PM' },
+  { days: 'Saturday', time: '11:00 AM – 5:00 PM' },
+  { days: 'Sunday', time: 'Closed' },
+]
 
 export async function generateStaticParams() {
   return LOCATIONS.map(l => ({ city: l.slug }))
@@ -16,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!loc || loc.slug === 'toronto') return {}
   return {
     title: `Custom Jeweler in ${loc.name} | Al-Assali Custom Jewelry`,
-    description: `${loc.name}'s premier custom jeweler. Handcrafted engagement rings, gold chains, grillz & more. 10K, 14K, 18K gold. Book your free consultation.`,
+    description: `Serving ${loc.name} by appointment & virtually. Custom engagement rings, gold chains, grillz & more — handcrafted in-house in Toronto. 10K, 14K, 18K gold. Book your free consultation.`,
     alternates: { canonical: `https://www.alasalicustomjewelry.ca/${city}` },
   }
 }
@@ -32,14 +42,27 @@ export default async function CityPage({ params }: Props) {
   // Oakville (and future cities) get a landing page
   return (
     <div>
-      {/* Hero */}
-      <section className="relative bg-soft-black py-20 sm:py-28 overflow-hidden">
+      {/* Hero — signature floating-diamond backdrop */}
+      <section className="relative min-h-[80vh] flex items-center bg-soft-black text-white overflow-hidden py-24 sm:py-28">
+        <DotPattern />
+        <DiamondPattern className="text-white" />
+        <FloatingDiamonds />
+
         <div className="section-container relative z-10 text-center">
-          <h1 className="heading-hero text-white mb-6">
-            Custom Jeweler in {loc.name}
+          <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-stone mb-5">
+            By Appointment &amp; Virtual · Crafted in Toronto
+          </p>
+          <h1 className="mb-6" style={{ fontFamily: 'var(--font-heading)' }}>
+            <span
+              className="block text-6xl md:text-7xl lg:text-8xl font-bold mb-3"
+              style={{ background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}
+            >
+              {loc.name.toUpperCase()}
+            </span>
+            <span className="block text-3xl md:text-4xl font-light text-white">Custom Jewelry</span>
           </h1>
-          <p className="text-lg sm:text-xl text-stone max-w-2xl mx-auto leading-relaxed mb-10">
-            Handcrafted engagement rings, gold chains, diamond pendants, and custom grillz — now serving {loc.name} and surrounding areas.
+          <p className="text-base sm:text-lg text-stone max-w-2xl mx-auto leading-relaxed mb-10">
+            Engagement rings, wedding bands, gold chains, pendants, and grillz — designed with you in {loc.name}, meeting in person by appointment or fully online, and handcrafted in-house at our Toronto studio.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -61,19 +84,65 @@ export default async function CityPage({ params }: Props) {
 
       {/* Location Info */}
       <section className="py-6 bg-warm-white border-b border-stone/30">
-        <div className="section-container flex flex-col sm:flex-row items-center justify-center gap-6 text-sm">
+        <div className="section-container flex flex-col sm:flex-row items-center justify-center gap-x-8 gap-y-3 text-sm">
           <div className="flex items-center gap-2 text-charcoal">
             <MapPin className="w-4 h-4 text-glacier-grey" />
             <span>{getFullAddress(loc)}</span>
           </div>
-          <div className="flex items-center gap-2 text-charcoal">
-            <Clock className="w-4 h-4 text-glacier-grey" />
+          <div className="flex items-center gap-2 font-semibold text-deep-charcoal">
+            <CalendarClock className="w-4 h-4 text-glacier-grey" />
             <span>By appointment only</span>
           </div>
-          <a href={`tel:${loc.phone.replace(/[^0-9+]/g, '')}`} className="flex items-center gap-2 text-glacier-grey hover:text-deep-charcoal transition-colors font-semibold">
+          <a href={`tel:${loc.phone.replace(/[^0-9+]/g, '')}`} className="inline-flex items-center gap-2 bg-glacier-grey text-white px-4 py-2 rounded-lg font-bold hover:bg-glacier-grey-light transition-colors">
             <Phone className="w-4 h-4" />
             {loc.phone}
           </a>
+        </div>
+      </section>
+
+      {/* How we work — virtual-first + by-appointment meeting space */}
+      <section className="py-16 sm:py-20 bg-white">
+        <div className="section-container">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <h2 className="heading-section text-deep-charcoal mb-4">
+              How We Work With {loc.name} Clients
+            </h2>
+            <p className="text-charcoal leading-relaxed">
+              Most of our clients design with us virtually — share your ideas, references, and budget from anywhere, and we guide you through every step. Prefer to meet face-to-face? Book our {loc.name} studio for a private, by-appointment consultation. Every piece is then made entirely in-house at our Toronto workshop.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              { icon: Video, title: 'Design Virtually', desc: `Consult from anywhere in ${loc.name} over video, email, or text — share references and approve designs online.` },
+              { icon: CalendarClock, title: 'Meet by Appointment', desc: `Prefer in person? Reserve a private session at our ${loc.name} location. Visits are by appointment only.` },
+              { icon: Hammer, title: 'Handcrafted in Toronto', desc: 'Cast, set, and finished entirely in-house at our Toronto studio — no outsourcing, ever.' },
+            ].map((step) => (
+              <div key={step.title} className="rounded-xl border-2 border-soft-black p-6 text-center">
+                <div className="w-12 h-12 rounded-full bg-glacier-grey/10 border border-glacier-grey/30 flex items-center justify-center mx-auto mb-4">
+                  <step.icon className="w-6 h-6 text-glacier-grey" />
+                </div>
+                <h3 className="font-heading text-lg font-semibold text-deep-charcoal mb-2">{step.title}</h3>
+                <p className="text-sm text-charcoal leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Hours */}
+          <div className="mt-12 max-w-md mx-auto rounded-xl bg-warm-white border border-stone/40 p-6">
+            <div className="flex items-center gap-2 justify-center mb-4">
+              <Clock className="w-5 h-5 text-glacier-grey" />
+              <h3 className="font-heading text-lg font-semibold text-deep-charcoal">Studio Hours</h3>
+            </div>
+            <div className="space-y-1.5">
+              {HOURS.map((h) => (
+                <div key={h.days} className="flex justify-between gap-4 text-sm">
+                  <span className="text-deep-charcoal font-medium">{h.days}</span>
+                  <span className={h.time === 'Closed' ? 'text-glacier-grey italic' : 'text-charcoal'}>{h.time}</span>
+                </div>
+              ))}
+            </div>
+            <p className="text-xs text-glacier-grey mt-4 text-center italic">By appointment only — please call ahead to book.</p>
+          </div>
         </div>
       </section>
 
@@ -175,6 +244,12 @@ export default async function CityPage({ params }: Props) {
               addressCountry: 'CA',
             },
             telephone: loc.phone,
+            openingHoursSpecification: HOURS.filter(h => h.time !== 'Closed').map(h => ({
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: h.days,
+              opens: h.time.split(' – ')[0],
+              closes: h.time.split(' – ')[1],
+            })),
             url: `https://www.alasalicustomjewelry.ca/${city}`,
           }),
         }}
