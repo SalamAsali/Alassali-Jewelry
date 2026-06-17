@@ -96,7 +96,7 @@ export default function Navigation(props?: NavigationProps) {
           <Link href="/" className="flex items-center">
             <img
               src={logo}
-              alt="Alasali Jewelry"
+              alt="Al-Asali Jewelry"
               className="h-14 md:h-20 lg:h-24 w-auto"
             />
           </Link>

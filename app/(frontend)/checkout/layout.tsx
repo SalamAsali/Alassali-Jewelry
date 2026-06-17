@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Checkout | Alasali Jewelry',
-  description: 'Complete your purchase. Alasali Jewelry, Toronto.',
+  title: 'Checkout',
+  description: 'Complete your purchase. Al-Asali Jewelry, Toronto.',
 }
 
 export default function CheckoutLayout({ children }: { children: React.ReactNode }) {

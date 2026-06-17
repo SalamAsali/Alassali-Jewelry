@@ -1,22 +1,29 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MapPin, Phone, Clock, CalendarClock, Navigation, ArrowRight } from 'lucide-react'
+import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
+
+const TITLE = 'Our Locations — Toronto & Oakville Studios'
+const DESCRIPTION =
+  'Visit Al-Asali Custom Jewelry at our Toronto and Oakville studios. Custom engagement rings, gold chains, grillz & more. Book your free consultation.'
 
 export const metadata: Metadata = {
-  title: 'Our Locations | Al-Assali Custom Jewelry',
-  description: 'Visit Al-Assali Custom Jewelry at our Toronto and Oakville studios. Custom engagement rings, gold chains, grillz & more. Book your free consultation.',
+  title: TITLE,
+  description: DESCRIPTION,
   alternates: { canonical: 'https://www.alasalicustomjewelry.ca/locations' },
+  openGraph: mergeOpenGraph({ title: `${TITLE} | Al-Asali Jewelry`, description: DESCRIPTION, url: '/locations' }),
 }
 
 const locations = [
   {
     name: 'Toronto',
-    address: '624 Vaughan Rd York',
+    address: '624 Vaughan Rd',
     city: 'Toronto, ON M6E 2X3',
     phone: '(647) 562-4340',
+    phoneSchema: '+1-647-562-4340',
     hours: [
-      { days: 'Monday – Friday', time: '11:00 AM – 7:00 PM' },
-      { days: 'Saturday', time: '11:00 AM – 5:00 PM' },
+      { days: 'Monday – Friday', time: '11:00 AM – 7:00 PM', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '11:00', closes: '19:00' },
+      { days: 'Saturday', time: '11:00 AM – 5:00 PM', dayOfWeek: 'Saturday', opens: '11:00', closes: '17:00' },
       { days: 'Sunday', time: 'Closed' },
     ],
     hoursNote: 'By appointment only',
@@ -32,9 +39,10 @@ const locations = [
     address: '3158 Sixth Line',
     city: 'Oakville, ON L6M 4J9',
     phone: '(647) 562-4340',
+    phoneSchema: '+1-647-562-4340',
     hours: [
-      { days: 'Monday – Friday', time: '11:00 AM – 7:00 PM' },
-      { days: 'Saturday', time: '11:00 AM – 5:00 PM' },
+      { days: 'Monday – Friday', time: '11:00 AM – 7:00 PM', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '11:00', closes: '19:00' },
+      { days: 'Saturday', time: '11:00 AM – 5:00 PM', dayOfWeek: 'Saturday', opens: '11:00', closes: '17:00' },
       { days: 'Sunday', time: 'Closed' },
     ],
     hoursNote: 'By appointment only',
@@ -74,7 +82,7 @@ export default function LocationsPage() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title={`${loc.name} studio location — Al-Assali Custom Jewelry`}
+                    title={`${loc.name} studio location — Al-Asali Custom Jewelry`}
                   />
                 </div>
 
@@ -163,7 +171,7 @@ export default function LocationsPage() {
           __html: JSON.stringify(locations.map(loc => ({
             '@context': 'https://schema.org',
             '@type': 'JewelryStore',
-            name: `Al-Assali Custom Jewelry — ${loc.name}`,
+            name: `Al-Asali Custom Jewelry — ${loc.name}`,
             address: {
               '@type': 'PostalAddress',
               streetAddress: loc.address,
@@ -171,12 +179,12 @@ export default function LocationsPage() {
               addressRegion: 'ON',
               addressCountry: 'CA',
             },
-            telephone: loc.phone,
-            openingHoursSpecification: loc.hours.filter(h => h.time !== 'Closed').map(h => ({
+            telephone: loc.phoneSchema,
+            openingHoursSpecification: loc.hours.filter(h => h.opens && h.closes).map(h => ({
               '@type': 'OpeningHoursSpecification',
-              dayOfWeek: h.days,
-              opens: h.time.split(' – ')[0],
-              closes: h.time.split(' – ')[1],
+              dayOfWeek: h.dayOfWeek,
+              opens: h.opens,
+              closes: h.closes,
             })),
             url: `https://www.alasalicustomjewelry.ca${loc.cta.href}`,
             ...(loc.isMain ? {

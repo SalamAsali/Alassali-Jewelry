@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 
 const pageMeta: Record<string, { title: string; description: string }> = {
   'engagement-rings': {
@@ -47,9 +48,16 @@ export function generateMetadata({ params }: { params: { type: string } }): Meta
   const isFormPage = params.type === 'general'
   const canonicalPath = isFormPage ? '/custom-form' : `/custom-${params.type}-toronto`
   return {
-    title: meta.title,
+    // `absolute` prevents the root layout's "%s | Al-Asali Jewelry" template
+    // from appending a second brand suffix to titles that already end in one.
+    title: { absolute: meta.title },
     description: meta.description,
     alternates: { canonical: canonicalPath },
+    openGraph: mergeOpenGraph({
+      title: meta.title,
+      description: meta.description,
+      url: canonicalPath,
+    }),
     ...(isFormPage ? { robots: { index: false, follow: true } } : {}),
   }
 }

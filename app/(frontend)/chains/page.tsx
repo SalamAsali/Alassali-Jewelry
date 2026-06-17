@@ -5,7 +5,7 @@ import ChainGrid from '@/components/chains/ChainGrid'
 import ChainTypeScroller from '@/components/chains/ChainTypeScroller'
 
 export const metadata: Metadata = {
-  title: 'Gold Chains Collection | Alasali Jewelry',
+  title: 'Gold Chains Collection — Cuban, Figaro & Rope',
   description:
     'Explore our handcrafted gold chain collection. Cuban, Figaro, Rope, and more in Yellow Gold and White Gold. Made in Toronto.',
 }

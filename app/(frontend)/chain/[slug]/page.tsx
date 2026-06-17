@@ -47,7 +47,7 @@ export async function generateMetadata({ params }: ChainDetailPageProps): Promis
     : 'Two-Tone'
 
   return {
-    title: chain.seoTitle || `${formattedName} - ${metalLabel} ${chain.widthMm}mm | Al-Assali Jewelry`,
+    title: chain.seoTitle || `${formattedName} - ${metalLabel} ${chain.widthMm}mm`,
     description:
       chain.seoDescription ||
       `${formattedName}. Available in ${karats}. ${chain.construction.charAt(0).toUpperCase() + chain.construction.slice(1)} gold chain, ${chain.widthMm}mm width. Handcrafted in Toronto.`,
@@ -143,7 +143,7 @@ export default async function ChainDetailPage({ params }: ChainDetailPageProps) 
       sku: chain.supplierSku || chain.slug,
       brand: {
         '@type': 'Brand',
-        name: 'Al-Assali Jewelry',
+        name: 'Al-Asali Jewelry',
       },
       offers: {
         '@type': 'AggregateOffer',
@@ -156,7 +156,7 @@ export default async function ChainDetailPage({ params }: ChainDetailPageProps) 
         priceValidUntil: priceValidUntil,
         seller: {
           '@type': 'Organization',
-          name: 'Al-Assali Custom Jewelry',
+          name: 'Al-Asali Custom Jewelry',
         },
       },
       material: 'Gold',

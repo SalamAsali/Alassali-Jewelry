@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const svc = getService(service)
   if (!loc || !svc) return {}
   return {
-    title: `${svc.name} in ${loc.name} | Al-Assali Custom Jewelry`,
+    title: `${svc.name} in ${loc.name}`,
     description: `${svc.name} handcrafted in ${loc.name}, Ontario. Premium 10K, 14K & 18K gold. Book your free consultation today.`,
     alternates: { canonical: `https://www.alasalicustomjewelry.ca/${city}/${service}` },
   }

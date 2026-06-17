@@ -571,7 +571,7 @@ function LandingPage({ type }: { type: string }) {
 
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
-    { name: config.title, url: `${SITE_CONFIG.url}/custom-${type}` },
+    { name: config.title, url: `${SITE_CONFIG.url}/custom-${type}-toronto` },
   ])
 
   const faqSchema = buildFaqSchema(landing.faq)

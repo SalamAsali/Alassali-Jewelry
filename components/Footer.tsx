@@ -38,7 +38,7 @@ export default function Footer(props?: FooterProps) {
             <Link href="/" className="flex items-center gap-3 mb-4">
               <img
                 src={logo}
-                alt="Alasali Jewelry"
+                alt="Al-Asali Jewelry"
                 className="h-14 md:h-20 lg:h-24 w-auto"
               />
             </Link>
@@ -138,7 +138,7 @@ export default function Footer(props?: FooterProps) {
 
         {/* Bottom */}
         <div className="mt-12 pt-8 border-t border-charcoal text-center text-warm-gray text-sm">
-          <p>&copy; {new Date().getFullYear()} Alasali Jewelry. Crafted with precision in Toronto.</p>
+          <p>&copy; {new Date().getFullYear()} Al-Asali Jewelry. Crafted with precision in Toronto.</p>
         </div>
       </div>
     </footer>

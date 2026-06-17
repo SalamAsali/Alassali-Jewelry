@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: ChainTypePageProps): Promise<
   const typeLabel = CHAIN_TYPE_LABELS[chainType]
   if (!metalLabel || !typeLabel) return {}
   return {
-    title: `${typeLabel} ${metalLabel} Chains | Al-Assali Custom Jewelry`,
+    title: `${typeLabel} ${metalLabel} Chains`,
     description: `Shop ${typeLabel.toLowerCase()} chains in ${metalLabel.toLowerCase()}. Available in 10K, 14K & 18K. Handcrafted in Toronto with premium craftsmanship.`,
     alternates: {
       canonical: `https://www.alasalicustomjewelry.ca/chains/${metal}/${chainType}`,

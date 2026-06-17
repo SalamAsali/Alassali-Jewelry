@@ -25,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const loc = getLocation(city)
   if (!loc || loc.slug === 'toronto') return {}
   return {
-    title: `Custom Jeweler in ${loc.name} | Al-Assali Custom Jewelry`,
+    title: `Custom Jeweler in ${loc.name}`,
     description: `Serving ${loc.name} by appointment & virtually. Custom engagement rings, gold chains, grillz & more — handcrafted in-house in Toronto. 10K, 14K, 18K gold. Book your free consultation.`,
     alternates: { canonical: `https://www.alasalicustomjewelry.ca/${city}` },
   }
@@ -150,7 +150,7 @@ export default async function CityPage({ params }: Props) {
       <section className="py-16 sm:py-20">
         <div className="section-container">
           <h2 className="heading-section text-deep-charcoal text-center mb-12">
-            Why Choose Al-Assali in {loc.name}
+            Why Choose Al-Asali in {loc.name}
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -234,7 +234,7 @@ export default async function CityPage({ params }: Props) {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'JewelryStore',
-            name: `Al-Assali Custom Jewelry — ${loc.name}`,
+            name: `Al-Asali Custom Jewelry — ${loc.name}`,
             address: {
               '@type': 'PostalAddress',
               streetAddress: loc.address,
