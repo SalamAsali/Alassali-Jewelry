@@ -2,6 +2,8 @@ import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 import FaqAccordion, { FaqAccordionCategory } from '@/components/faq/FaqAccordion'
 import { getFaq } from '@/lib/getFaq'
+import JsonLd from '@/components/seo/JsonLd'
+import { buildFaqSchema } from '@/lib/seo/schema'
 
 export const dynamic = 'force-dynamic'
 
@@ -68,8 +70,16 @@ export default async function FAQPage() {
   const cmsGrouped = cms ? groupFaq(cms.categories, cms.items) : []
   const data = cmsGrouped.length > 0 ? cmsGrouped : FALLBACK_DATA
 
+  // Flatten the rendered Q&As into FAQPage structured data so this page —
+  // the natural landing spot for "alasali jewelry faq" searches — is finally
+  // eligible for FAQ rich results and AI-answer citations.
+  const faqSchema = buildFaqSchema(
+    data.flatMap((cat) => cat.questions.map((q) => ({ q: q.question, a: q.answer }))),
+  )
+
   return (
     <>
+      <JsonLd id="faq-schema" data={faqSchema} />
       <div className="relative bg-soft-black text-white py-24 overflow-hidden">
         <DotPattern />
         <DiamondPattern className="text-white" />

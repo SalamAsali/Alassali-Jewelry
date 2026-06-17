@@ -57,7 +57,7 @@ export default function Page() {
       relatedLinks={[
         { label: 'Custom Pendants in Toronto', href: '/custom-pendants' },
         { label: 'Custom Wedding Bands in Toronto', href: '/custom-wedding-bands' },
-        { label: 'Meet the Master Jeweler', href: '/about/master-jeweler/mohammad-al-assali' },
+        { label: 'Meet the Master Jeweler', href: '/about/master-jeweller/mohammad-al-assali' },
       ]}
     >
       <p>

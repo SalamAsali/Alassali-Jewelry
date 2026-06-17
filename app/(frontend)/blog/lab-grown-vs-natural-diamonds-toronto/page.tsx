@@ -57,7 +57,7 @@ export default function Page() {
       relatedLinks={[
         { label: 'Custom Engagement Rings in Toronto', href: '/custom-engagement-rings' },
         { label: 'Custom Engagement Ring Cost Guide', href: '/blog/custom-engagement-ring-cost-toronto-2026' },
-        { label: 'Meet the Master Jeweler', href: '/about/master-jeweler/mohammad-al-assali' },
+        { label: 'Meet the Master Jeweler', href: '/about/master-jeweller/mohammad-al-assali' },
       ]}
     >
       <p>

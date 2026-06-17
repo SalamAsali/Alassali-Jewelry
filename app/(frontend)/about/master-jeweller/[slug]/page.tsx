@@ -8,6 +8,7 @@ import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 import { SITE_CONFIG, MASTER_JEWELER } from '@/lib/seo/siteConfig'
 import { buildBreadcrumbSchema } from '@/lib/seo/schema'
+import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { getMasterJeweler } from '@/lib/getMasterJeweler'
 
 const FALLBACK_TITLE = 'Master Jeweler & Founder'
@@ -28,10 +29,18 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params
   const cms = await getMasterJeweler(slug)
+  const seoTitle = cms?.seoTitle?.trim() || FALLBACK_SEO_TITLE
+  const seoDescription = cms?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION
   return {
-    title: cms?.seoTitle?.trim() || FALLBACK_SEO_TITLE,
-    description: cms?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION,
+    // `absolute` avoids doubling the brand suffix already present in the title.
+    title: { absolute: seoTitle },
+    description: seoDescription,
     alternates: { canonical: `/about/master-jeweller/${slug}` },
+    openGraph: mergeOpenGraph({
+      title: seoTitle,
+      description: seoDescription,
+      url: `/about/master-jeweller/${slug}`,
+    }),
   }
 }
 

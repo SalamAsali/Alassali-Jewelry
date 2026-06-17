@@ -102,14 +102,14 @@ const ACCENT_IMAGES = [
 ]
 
 const bespokeCategories = [
-  { name: 'Engagement Rings', path: '/custom-engagement-rings', icon: '/images/icons/engagement-rings.svg', blurb: 'Solitaire, halo, vintage, three-stone — designed around your love story.' },
-  { name: 'Wedding Bands', path: '/custom-wedding-bands', icon: '/images/icons/bridal-bands.svg', blurb: 'Matching bridal sets, eternity bands, men’s bands, and engraved pieces.' },
-  { name: 'Rings', path: '/custom-rings', icon: '/images/icons/rings.svg', blurb: 'Signet, statement, stackable, everyday — gold, platinum, or silver.' },
-  { name: 'Pendants', path: '/custom-pendants', icon: '/images/icons/pendants.svg', blurb: 'Name pendants, photo pendants, religious symbols, Arabic calligraphy.' },
-  { name: 'Chains', path: '/custom-chains', icon: '/images/icons/chains.svg', blurb: 'Miami Cuban, rope, franco, figaro — solid gold, never hollow.' },
-  { name: 'Earrings', path: '/custom-earrings', icon: '/images/icons/earrings.svg', blurb: 'Studs, hoops, drops, chandeliers — diamond and gold.' },
-  { name: 'Bracelets', path: '/custom-bracelets', icon: '/images/icons/bracelets.svg', blurb: 'Tennis bracelets, bangles, cuffs, engraved men’s ID bracelets.' },
-  { name: 'Grillz', path: '/custom-grillz', icon: '/images/icons/grillz.svg', blurb: 'Gold and VVS diamond grillz — single tooth to full sets.' },
+  { name: 'Engagement Rings', path: '/custom-engagement-rings-toronto', icon: '/images/icons/engagement-rings.svg', blurb: 'Solitaire, halo, vintage, three-stone — designed around your love story.' },
+  { name: 'Wedding Bands', path: '/custom-wedding-bands-toronto', icon: '/images/icons/bridal-bands.svg', blurb: 'Matching bridal sets, eternity bands, men’s bands, and engraved pieces.' },
+  { name: 'Rings', path: '/custom-rings-toronto', icon: '/images/icons/rings.svg', blurb: 'Signet, statement, stackable, everyday — gold, platinum, or silver.' },
+  { name: 'Pendants', path: '/custom-pendants-toronto', icon: '/images/icons/pendants.svg', blurb: 'Name pendants, photo pendants, religious symbols, Arabic calligraphy.' },
+  { name: 'Chains', path: '/custom-chains-toronto', icon: '/images/icons/chains.svg', blurb: 'Miami Cuban, rope, franco, figaro — solid gold, never hollow.' },
+  { name: 'Earrings', path: '/custom-earrings-toronto', icon: '/images/icons/earrings.svg', blurb: 'Studs, hoops, drops, chandeliers — diamond and gold.' },
+  { name: 'Bracelets', path: '/custom-bracelets-toronto', icon: '/images/icons/bracelets.svg', blurb: 'Tennis bracelets, bangles, cuffs, engraved men’s ID bracelets.' },
+  { name: 'Grillz', path: '/custom-grillz-toronto', icon: '/images/icons/grillz.svg', blurb: 'Gold and VVS diamond grillz — single tooth to full sets.' },
 ]
 
 // SEO trust pillars — the four reasons clients pick a custom jeweler in Toronto
@@ -546,7 +546,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             <p className="text-sm md:text-lg text-taupe leading-relaxed mb-8">
               Mohammad is the founder and master jeweler behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
             </p>
-            <Link href="/about/master-jeweler/mohammad-al-assali" className="inline-flex items-center gap-2 text-glacier-grey font-semibold hover:gap-3 transition-all">
+            <Link href="/about/master-jeweller/mohammad-al-assali" className="inline-flex items-center gap-2 text-glacier-grey font-semibold hover:gap-3 transition-all">
               Read Mohammad’s story <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>

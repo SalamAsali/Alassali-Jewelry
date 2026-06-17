@@ -3,11 +3,17 @@ import { getChainsLanding, getChains, getPricingConfig } from '@/lib/datocms'
 import MetalPicker from '@/components/chains/MetalPicker'
 import ChainGrid from '@/components/chains/ChainGrid'
 import ChainTypeScroller from '@/components/chains/ChainTypeScroller'
+import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
+
+const TITLE = 'Gold Chains Collection — Cuban, Figaro & Rope'
+const DESCRIPTION =
+  'Explore our handcrafted gold chain collection. Cuban, Figaro, Rope, and more in Yellow Gold and White Gold. Made in Toronto.'
 
 export const metadata: Metadata = {
-  title: 'Gold Chains Collection | Alasali Jewelry',
-  description:
-    'Explore our handcrafted gold chain collection. Cuban, Figaro, Rope, and more in Yellow Gold and White Gold. Made in Toronto.',
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: '/chains' },
+  openGraph: mergeOpenGraph({ title: `${TITLE} | Al-Asali Jewelry`, description: DESCRIPTION, url: '/chains' }),
 }
 
 export default async function ChainsPage() {
