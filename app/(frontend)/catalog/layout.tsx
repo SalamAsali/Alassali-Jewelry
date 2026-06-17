@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   openGraph: mergeOpenGraph({
     title: 'Catalog — Fine & Custom Jewelry | Al-Asali Jewelry',
     description: 'Discover our curated selection of fine jewelry. Engagement rings, grillz, chains, pendants, and more.',
+    url: '/catalog',
   }),
 }
 

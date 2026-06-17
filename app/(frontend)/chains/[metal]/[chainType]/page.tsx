@@ -5,6 +5,7 @@ import { getChains, getPricingConfig } from '@/lib/datocms'
 import type { MetalColor, ChainType } from '@/lib/datocms'
 import ChainGrid from '@/components/chains/ChainGrid'
 import ChainTypeScroller from '@/components/chains/ChainTypeScroller'
+import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 
 const VALID_METALS: MetalColor[] = ['yellow-gold', 'white-gold', 'rose-gold', 'two-tone']
 
@@ -59,6 +60,11 @@ export async function generateMetadata({ params }: ChainTypePageProps): Promise<
     alternates: {
       canonical: `https://www.alasalicustomjewelry.ca/chains/${metal}/${chainType}`,
     },
+    openGraph: mergeOpenGraph({
+      title: `${typeLabel} ${metalLabel} Chains | Al-Asali Jewelry`,
+      description: `Shop ${typeLabel.toLowerCase()} chains in ${metalLabel.toLowerCase()}. Available in 10K, 14K & 18K. Handcrafted in Toronto.`,
+      url: `/chains/${metal}/${chainType}`,
+    }),
   }
 }
 

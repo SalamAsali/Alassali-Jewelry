@@ -4,6 +4,7 @@ import { getChainBySlug, getChains, getPricingConfig } from '@/lib/datocms'
 import { formatChainName } from '@/lib/format-chain-name'
 import { computeWeight, priceForChain } from '@/lib/pricing'
 import type { Karat } from '@/lib/pricing'
+import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import ChainProductDetail from './ChainProductDetail'
 
 const SITE_URL = 'https://www.alasalicustomjewelry.ca'
@@ -40,20 +41,26 @@ export async function generateMetadata({ params }: ChainDetailPageProps): Promis
   if (!chain) return {}
 
   const formattedName = formatChainName(chain.name, chain.widthMm)
-  const karats = chain.availableKarats.map((k) => k.toUpperCase()).join(', ')
+  const karats = (Array.isArray(chain.availableKarats) ? chain.availableKarats : [])
+    .map((k) => k.toUpperCase())
+    .join(', ')
+  const construction = chain.construction || 'gold'
   const metalLabel = chain.defaultMetal === 'yellow-gold' ? 'Yellow Gold'
     : chain.defaultMetal === 'white-gold' ? 'White Gold'
     : chain.defaultMetal === 'rose-gold' ? 'Rose Gold'
     : 'Two-Tone'
 
+  const title = chain.seoTitle || `${formattedName} - ${metalLabel} ${chain.widthMm}mm`
+  const description =
+    chain.seoDescription ||
+    `${formattedName}.${karats ? ` Available in ${karats}.` : ''} ${construction.charAt(0).toUpperCase() + construction.slice(1)} gold chain, ${chain.widthMm}mm width. Handcrafted in Toronto.`
+  const canonical = `${SITE_URL}/chain/${slug}`
+
   return {
-    title: chain.seoTitle || `${formattedName} - ${metalLabel} ${chain.widthMm}mm`,
-    description:
-      chain.seoDescription ||
-      `${formattedName}. Available in ${karats}. ${chain.construction.charAt(0).toUpperCase() + chain.construction.slice(1)} gold chain, ${chain.widthMm}mm width. Handcrafted in Toronto.`,
-    alternates: {
-      canonical: `${SITE_URL}/chain/${slug}`,
-    },
+    title,
+    description,
+    alternates: { canonical },
+    openGraph: mergeOpenGraph({ title: `${title} | Al-Asali Jewelry`, description, url: canonical }),
   }
 }
 
@@ -92,39 +99,42 @@ export default async function ChainDetailPage({ params }: ChainDetailPageProps) 
   const typeLabel = CHAIN_TYPE_LABELS[chain.chainType] || chain.chainType
   const metalSlug = chain.defaultMetal || 'yellow-gold'
 
-  // Compute low price (lowest karat, shortest length) and high price (highest karat, longest length)
+  // Compute low price (lowest karat, shortest length) and high price (highest karat, longest length).
+  // Some DatoCMS records have null/empty karat or length arrays — guard against
+  // them so a thin record renders as a working page instead of throwing a 500.
   const karatOrder: Karat[] = ['10k', '14k', '18k']
-  const sortedKarats = chain.availableKarats.slice().sort(
+  const sortedKarats = (Array.isArray(chain.availableKarats) ? chain.availableKarats.slice() : []).sort(
     (a, b) => karatOrder.indexOf(a) - karatOrder.indexOf(b)
   )
-  const sortedLengths = chain.availableLengths.slice().sort((a, b) => a - b)
+  const sortedLengths = (Array.isArray(chain.availableLengths) ? chain.availableLengths.slice() : []).sort(
+    (a, b) => a - b
+  )
+  const weightPerInch = typeof chain.weightPerInchG === 'number' ? chain.weightPerInchG : 0
 
   const lowestKarat = sortedKarats[0]
   const highestKarat = sortedKarats[sortedKarats.length - 1]
   const shortestLength = sortedLengths[0]
   const longestLength = sortedLengths[sortedLengths.length - 1]
 
-  const lowWeight = computeWeight(chain.widthMm, chain.weightPerInchG, shortestLength)
-  const highWeight = computeWeight(chain.widthMm, chain.weightPerInchG, longestLength)
+  // Only emit AggregateOffer when we have enough data to price the chain.
+  const hasPricing =
+    sortedKarats.length > 0 && sortedLengths.length > 0 && weightPerInch > 0
 
-  const lowPrice = priceForChain({
-    weightG: lowWeight,
-    karat: lowestKarat,
-    widthMm: chain.widthMm,
-    config: pricingConfig,
-  })
-  const highPrice = priceForChain({
-    weightG: highWeight,
-    karat: highestKarat,
-    widthMm: chain.widthMm,
-    config: pricingConfig,
-  })
+  const lowWeight = computeWeight(chain.widthMm, weightPerInch, shortestLength ?? 0)
+  const highWeight = computeWeight(chain.widthMm, weightPerInch, longestLength ?? 0)
 
-  const offerCount = chain.availableKarats.length * chain.availableLengths.length
+  const lowPrice = hasPricing
+    ? priceForChain({ weightG: lowWeight, karat: lowestKarat, widthMm: chain.widthMm, config: pricingConfig })
+    : 0
+  const highPrice = hasPricing
+    ? priceForChain({ weightG: highWeight, karat: highestKarat, widthMm: chain.widthMm, config: pricingConfig })
+    : 0
+
+  const offerCount = sortedKarats.length * sortedLengths.length
 
   // Default weight for schema
-  const defaultLength = chain.defaultLengthIn || shortestLength
-  const defaultWeight = computeWeight(chain.widthMm, chain.weightPerInchG, defaultLength)
+  const defaultLength = chain.defaultLengthIn || shortestLength || 0
+  const defaultWeight = computeWeight(chain.widthMm, weightPerInch, defaultLength)
 
   // Price valid until tomorrow
   const tomorrow = new Date()
@@ -138,33 +148,39 @@ export default async function ChainDetailPage({ params }: ChainDetailPageProps) 
       name: formattedName,
       description:
         chain.description ||
-        `${formattedName}. ${chain.construction.charAt(0).toUpperCase() + chain.construction.slice(1)} gold chain, ${chain.widthMm}mm width. Handcrafted in Toronto.`,
+        `${formattedName}. ${(chain.construction || 'gold').charAt(0).toUpperCase() + (chain.construction || 'gold').slice(1)} gold chain, ${chain.widthMm}mm width. Handcrafted in Toronto.`,
       image: heroImageUrl,
       sku: chain.supplierSku || chain.slug,
       brand: {
         '@type': 'Brand',
         name: 'Al-Asali Jewelry',
       },
-      offers: {
-        '@type': 'AggregateOffer',
-        priceCurrency: 'CAD',
-        lowPrice: lowPrice,
-        highPrice: highPrice,
-        offerCount: offerCount,
-        availability: 'https://schema.org/InStock',
-        url: `${SITE_URL}/chain/${chain.slug}`,
-        priceValidUntil: priceValidUntil,
-        seller: {
-          '@type': 'Organization',
-          name: 'Al-Asali Custom Jewelry',
-        },
-      },
       material: 'Gold',
-      weight: {
-        '@type': 'QuantitativeValue',
-        value: Math.round(defaultWeight * 100) / 100,
-        unitCode: 'GRM',
-      },
+      // Offer + weight only when pricing data is complete, so we never emit
+      // NaN prices (which fail Schema.org validation) for thin records.
+      ...(hasPricing
+        ? {
+            offers: {
+              '@type': 'AggregateOffer',
+              priceCurrency: 'CAD',
+              lowPrice: lowPrice,
+              highPrice: highPrice,
+              offerCount: offerCount,
+              availability: 'https://schema.org/InStock',
+              url: `${SITE_URL}/chain/${chain.slug}`,
+              priceValidUntil: priceValidUntil,
+              seller: {
+                '@type': 'Organization',
+                name: 'Al-Asali Custom Jewelry',
+              },
+            },
+            weight: {
+              '@type': 'QuantitativeValue',
+              value: Math.round(defaultWeight * 100) / 100,
+              unitCode: 'GRM',
+            },
+          }
+        : {}),
     },
     {
       '@context': 'https://schema.org',

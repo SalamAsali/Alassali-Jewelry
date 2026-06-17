@@ -339,9 +339,9 @@ const landingContent: Record<string, {
       { q: 'Where are you based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweler. We work by appointment only — free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery across Toronto and the GTA, and optional in-person meetings in Toronto at a time that works for you.' },
     ],
     relatedPages: [
-      { name: 'Custom Rings', path: '/custom-rings' },
-      { name: 'Custom Pendants', path: '/custom-pendants' },
-      { name: 'Custom Bracelets', path: '/custom-bracelets' },
+      { name: 'Custom Rings', path: '/custom-rings-toronto' },
+      { name: 'Custom Pendants', path: '/custom-pendants-toronto' },
+      { name: 'Custom Bracelets', path: '/custom-bracelets-toronto' },
     ],
   },
   'rings': {
@@ -364,9 +364,9 @@ const landingContent: Record<string, {
       { q: 'How long does a custom ring take in Toronto?', a: 'Simpler rings take 3-4 weeks. Signet rings with engraving take 4-5 weeks. Diamond-set rings and complex designs take 5-6 weeks. Rush orders can be completed in 2-3 weeks for an additional fee.' },
     ],
     relatedPages: [
-      { name: 'Custom Engagement Rings', path: '/custom-engagement-rings' },
-      { name: 'Custom Chains', path: '/custom-chains' },
-      { name: 'Custom Bracelets', path: '/custom-bracelets' },
+      { name: 'Custom Engagement Rings', path: '/custom-engagement-rings-toronto' },
+      { name: 'Custom Chains', path: '/custom-chains-toronto' },
+      { name: 'Custom Bracelets', path: '/custom-bracelets-toronto' },
     ],
   },
   'pendants': {
@@ -390,9 +390,9 @@ const landingContent: Record<string, {
       { q: 'How do I receive my custom pendant?', a: 'We deliver finished pieces fully insured to your door anywhere in Toronto and the GTA at no extra cost, and ship securely anywhere in Canada. In-person handover by appointment in Toronto is also available.' },
     ],
     relatedPages: [
-      { name: 'Custom Chains', path: '/custom-chains' },
-      { name: 'Custom Rings', path: '/custom-rings' },
-      { name: 'Custom Earrings', path: '/custom-earrings' },
+      { name: 'Custom Chains', path: '/custom-chains-toronto' },
+      { name: 'Custom Rings', path: '/custom-rings-toronto' },
+      { name: 'Custom Earrings', path: '/custom-earrings-toronto' },
     ],
   },
   'chains': {
@@ -415,9 +415,9 @@ const landingContent: Record<string, {
       { q: 'Do you repair or re-solder broken chains?', a: 'Yes — we repair, re-solder, and re-plate chains (even if they weren\'t made here). We also shorten and extend existing chains to your preferred length.' },
     ],
     relatedPages: [
-      { name: 'Custom Pendants', path: '/custom-pendants' },
-      { name: 'Custom Bracelets', path: '/custom-bracelets' },
-      { name: 'Custom Grillz', path: '/custom-grillz' },
+      { name: 'Custom Pendants', path: '/custom-pendants-toronto' },
+      { name: 'Custom Bracelets', path: '/custom-bracelets-toronto' },
+      { name: 'Custom Grillz', path: '/custom-grillz-toronto' },
     ],
   },
   'earrings': {
@@ -440,9 +440,9 @@ const landingContent: Record<string, {
       { q: 'Can I get earrings re-plated or diamonds tightened?', a: 'Yes — free rhodium re-plating and free diamond tightening for life on every pair we create. We also service earrings from other jewelers at competitive rates.' },
     ],
     relatedPages: [
-      { name: 'Custom Pendants', path: '/custom-pendants' },
-      { name: 'Custom Rings', path: '/custom-rings' },
-      { name: 'Custom Bracelets', path: '/custom-bracelets' },
+      { name: 'Custom Pendants', path: '/custom-pendants-toronto' },
+      { name: 'Custom Rings', path: '/custom-rings-toronto' },
+      { name: 'Custom Bracelets', path: '/custom-bracelets-toronto' },
     ],
   },
   'bracelets': {
@@ -465,9 +465,9 @@ const landingContent: Record<string, {
       { q: 'How long does a custom bracelet take in Toronto?', a: 'Tennis bracelets 4-5 weeks due to hand-setting each stone. Bangles and cuffs 3-4 weeks. Chain bracelets 2-3 weeks. Engraved ID bracelets 3-4 weeks. Rush production available.' },
     ],
     relatedPages: [
-      { name: 'Custom Chains', path: '/custom-chains' },
-      { name: 'Custom Rings', path: '/custom-rings' },
-      { name: 'Custom Pendants', path: '/custom-pendants' },
+      { name: 'Custom Chains', path: '/custom-chains-toronto' },
+      { name: 'Custom Rings', path: '/custom-rings-toronto' },
+      { name: 'Custom Pendants', path: '/custom-pendants-toronto' },
     ],
   },
   'grillz': {
@@ -492,9 +492,9 @@ const landingContent: Record<string, {
       { q: 'Do you make matching grillz for couples?', a: 'Yes — matching couples grillz are one of our most requested orders. We can create mirrored designs, shared stones, or complementary styles between partners.' },
     ],
     relatedPages: [
-      { name: 'Custom Chains', path: '/custom-chains' },
-      { name: 'Custom Pendants', path: '/custom-pendants' },
-      { name: 'Custom Rings', path: '/custom-rings' },
+      { name: 'Custom Chains', path: '/custom-chains-toronto' },
+      { name: 'Custom Pendants', path: '/custom-pendants-toronto' },
+      { name: 'Custom Rings', path: '/custom-rings-toronto' },
     ],
   },
   'wedding-bands': {
@@ -516,9 +516,9 @@ const landingContent: Record<string, {
       { q: 'Can you size my band precisely?', a: 'Yes — we measure your ring size during consultation at no charge, and every custom band includes free resizing for life if your size changes.' },
     ],
     relatedPages: [
-      { name: 'Custom Engagement Rings', path: '/custom-engagement-rings' },
-      { name: 'Custom Rings', path: '/custom-rings' },
-      { name: 'Custom Pendants', path: '/custom-pendants' },
+      { name: 'Custom Engagement Rings', path: '/custom-engagement-rings-toronto' },
+      { name: 'Custom Rings', path: '/custom-rings-toronto' },
+      { name: 'Custom Pendants', path: '/custom-pendants-toronto' },
     ],
   },
 }
@@ -1147,9 +1147,9 @@ function PortalForm() {
       <div className="relative z-10 text-center pt-5 pb-3 px-4 shrink-0">
         <div className="inline-flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-glacier-grey" />
-          <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">
-            {config ? config.title : 'Start Your Journey'}
-          </span>
+          <h1 className="text-xs uppercase tracking-widest text-glacier-grey font-medium m-0">
+            {config ? `Start Your ${config.title} Project` : 'Start Your Custom Jewelry Project'}
+          </h1>
         </div>
       </div>
 
@@ -1505,14 +1505,14 @@ function PortalForm() {
 // ---------------------------------------------------------------------------
 
 const hubBespokeCards: { name: string; path: string; icon: LucideIcon; blurb: string }[] = [
-  { name: 'Custom Engagement Rings', path: '/custom-engagement-rings', icon: Diamond, blurb: 'Solitaire, halo, vintage, three-stone — designed around your love story.' },
-  { name: 'Custom Wedding Bands', path: '/custom-wedding-bands', icon: Heart, blurb: 'Matching bridal sets, eternity bands, men\'s bands, and engraved pieces.' },
-  { name: 'Custom Rings', path: '/custom-rings', icon: Circle, blurb: 'Signet, statement, stackable, everyday — in gold, platinum, or silver.' },
-  { name: 'Custom Pendants', path: '/custom-pendants', icon: Layers, blurb: 'Name pendants, photo pendants, religious symbols, Arabic calligraphy.' },
-  { name: 'Custom Chains', path: '/custom-chains', icon: Link, blurb: 'Miami Cuban, rope, franco, figaro — solid gold, never hollow.' },
-  { name: 'Custom Earrings', path: '/custom-earrings', icon: CircleDot, blurb: 'Studs, hoops, drops, chandeliers — diamond and gold.' },
-  { name: 'Custom Bracelets', path: '/custom-bracelets', icon: Gem, blurb: 'Tennis bracelets, bangles, cuffs, engraved men\'s ID bracelets.' },
-  { name: 'Custom Grillz', path: '/custom-grillz', icon: Flame, blurb: 'Gold and VVS diamond grillz — single tooth to full sets.' },
+  { name: 'Custom Engagement Rings', path: '/custom-engagement-rings-toronto', icon: Diamond, blurb: 'Solitaire, halo, vintage, three-stone — designed around your love story.' },
+  { name: 'Custom Wedding Bands', path: '/custom-wedding-bands-toronto', icon: Heart, blurb: 'Matching bridal sets, eternity bands, men\'s bands, and engraved pieces.' },
+  { name: 'Custom Rings', path: '/custom-rings-toronto', icon: Circle, blurb: 'Signet, statement, stackable, everyday — in gold, platinum, or silver.' },
+  { name: 'Custom Pendants', path: '/custom-pendants-toronto', icon: Layers, blurb: 'Name pendants, photo pendants, religious symbols, Arabic calligraphy.' },
+  { name: 'Custom Chains', path: '/custom-chains-toronto', icon: Link, blurb: 'Miami Cuban, rope, franco, figaro — solid gold, never hollow.' },
+  { name: 'Custom Earrings', path: '/custom-earrings-toronto', icon: CircleDot, blurb: 'Studs, hoops, drops, chandeliers — diamond and gold.' },
+  { name: 'Custom Bracelets', path: '/custom-bracelets-toronto', icon: Gem, blurb: 'Tennis bracelets, bangles, cuffs, engraved men\'s ID bracelets.' },
+  { name: 'Custom Grillz', path: '/custom-grillz-toronto', icon: Flame, blurb: 'Gold and VVS diamond grillz — single tooth to full sets.' },
 ]
 
 const hubProcessSteps = [

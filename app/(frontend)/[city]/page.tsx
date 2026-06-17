@@ -6,6 +6,7 @@ import { MapPin, Phone, Clock, CalendarClock, ArrowRight, Gem, Shield, Diamond, 
 import DotPattern from '@/components/DotPattern'
 import DiamondPattern from '@/components/DiamondPattern'
 import FloatingDiamonds from '@/components/FloatingDiamonds'
+import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 
 type Props = { params: Promise<{ city: string }> }
 
@@ -28,6 +29,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `Custom Jeweler in ${loc.name}`,
     description: `Serving ${loc.name} by appointment & virtually. Custom engagement rings, gold chains, grillz & more — handcrafted in-house in Toronto. 10K, 14K, 18K gold. Book your free consultation.`,
     alternates: { canonical: `https://www.alasalicustomjewelry.ca/${city}` },
+    openGraph: mergeOpenGraph({
+      title: `Custom Jeweler in ${loc.name} | Al-Asali Jewelry`,
+      description: `Serving ${loc.name} by appointment & virtually. Custom engagement rings, gold chains, grillz & more — handcrafted in-house in Toronto.`,
+      url: `/${city}`,
+    }),
   }
 }
 
