@@ -3,7 +3,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDown } from 'lucide-react'
-import type { Chain, MetalColor } from '@/lib/datocms'
+import type { Chain, MetalColor } from '@/lib/sanity'
 import type { Karat } from '@/lib/pricing'
 import { KARAT_PURITY } from '@/lib/pricing'
 

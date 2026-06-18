@@ -3,20 +3,21 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-// DatoCMS assets are served by Imgix. Appending these params delivers a
-// browser-native modern format (AVIF/WebP), aggressive compression, and a
-// width matched to the actual card size — instead of the full ~3–10 MB
-// originals. Untouched origin URLs flow through unchanged so we don't break
-// anything served outside datocms-assets.com (fallback paths, /images/*).
-function buildImgixSrc(url: string | undefined, width: number): string | undefined {
-  if (!url || !/datocms-assets\.com/.test(url)) return url
-  const sep = url.includes('?') ? '&' : '?'
-  return `${url}${sep}auto=format,compress&fit=crop&w=${width}&q=75`
+// Sanity images are served via cdn.sanity.io. Appending width/format params
+// delivers optimised modern format (WebP), compression, and a width matched
+// to the actual card size. Non-Sanity URLs flow through unchanged.
+function buildSanitySrc(url: string | undefined, width: number): string | undefined {
+  if (!url) return url
+  if (/cdn\.sanity\.io/.test(url)) {
+    const sep = url.includes('?') ? '&' : '?'
+    return `${url}${sep}w=${width}&auto=format&q=75`
+  }
+  return url
 }
 
 function buildSrcSet(url: string | undefined): string | undefined {
-  if (!url || !/datocms-assets\.com/.test(url)) return undefined
-  return [400, 600, 800, 1200].map((w) => `${buildImgixSrc(url, w)} ${w}w`).join(', ')
+  if (!url || !/cdn\.sanity\.io/.test(url)) return undefined
+  return [400, 600, 800, 1200].map((w) => `${buildSanitySrc(url, w)} ${w}w`).join(', ')
 }
 
 // Grid layout: full-width on mobile, 2 columns ≥640px, 3 columns ≥1024px,
@@ -101,7 +102,7 @@ function PortfolioCard({ item }: { item: PortfolioGridItem }) {
           {images.map((src, i) => (
             <img
               key={src + i}
-              src={buildImgixSrc(src, 800)}
+              src={buildSanitySrc(src, 800)}
               srcSet={buildSrcSet(src)}
               sizes={CARD_SIZES}
               alt={item.name}

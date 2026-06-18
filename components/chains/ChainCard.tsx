@@ -3,7 +3,8 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { ShoppingBag } from 'lucide-react'
-import type { Chain, PricingConfig } from '@/lib/datocms'
+import type { Chain, PricingConfig } from '@/lib/sanity'
+import { getSanityImageUrl } from '@/lib/sanity'
 import { computeWeight, priceForChain, formatPrice } from '@/lib/pricing'
 import type { Karat } from '@/lib/pricing'
 import { formatChainName } from '@/lib/format-chain-name'
@@ -32,11 +33,11 @@ export default function ChainCard({ chain, pricingConfig }: ChainCardProps) {
   })
 
   const heroSrc =
-    chain.heroImage?.responsiveImage?.src || chain.heroImage?.url || '/images/placeholder-chain.jpg'
+    getSanityImageUrl(chain.heroImage, 800) || '/images/placeholder-chain.jpg'
   const heroAlt = chain.heroImage?.alt || `${formatChainName(chain.name, chain.widthMm)} - ${(chain.defaultKarat || '14k').toUpperCase()} ${chain.construction} gold chain`
 
   return (
-    <Link href={`/chain/${chain.slug}`}>
+    <Link href={`/chain/${chain.slug?.current ?? ''}`}>
       <motion.div
         whileHover={{ scale: 1.03 }}
         transition={{ duration: 0.3 }}

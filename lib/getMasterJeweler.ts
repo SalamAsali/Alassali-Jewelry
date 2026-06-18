@@ -1,4 +1,4 @@
-import { datocmsRequest, isDatoCMSConfigured } from './datocms'
+import { getMasterJeweller } from './sanity'
 
 export type MasterJewelerData = {
   slug: string
@@ -10,32 +10,19 @@ export type MasterJewelerData = {
   seoDescription?: string | null
 }
 
-const MASTER_JEWELER_QUERY = `
-  query MasterJeweler($slug: String!) {
-    masterJeweler(filter: { slug: { eq: $slug } }) {
-      slug
-      name
-      title
-      tagline
-      bio
-      seoTitle
-      seoDescription
-    }
-  }
-`
-
-type MasterJewelerQueryResult = {
-  masterJeweler: MasterJewelerData | null
-}
-
-export async function getMasterJeweler(slug: string): Promise<MasterJewelerData | null> {
-  if (!isDatoCMSConfigured()) return null
+export async function getMasterJeweler(_slug: string): Promise<MasterJewelerData | null> {
   try {
-    const data = await datocmsRequest<MasterJewelerQueryResult>({
-      query: MASTER_JEWELER_QUERY,
-      variables: { slug },
-    })
-    return data.masterJeweler
+    const data = await getMasterJeweller()
+    if (!data) return null
+    return {
+      slug: data.slug?.current ?? _slug,
+      name: data.name,
+      title: data.title,
+      tagline: data.tagline,
+      bio: data.bio,
+      seoTitle: data.seoTitle,
+      seoDescription: data.seoDescription,
+    }
   } catch {
     return null
   }

@@ -3,7 +3,8 @@
 import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { ShoppingBag, Check, Truck } from 'lucide-react'
-import type { Chain, PricingConfig, MetalColor } from '@/lib/datocms'
+import type { Chain, PricingConfig, MetalColor } from '@/lib/sanity'
+import { getSanityImageUrl } from '@/lib/sanity'
 import { computeWeight, priceForChain, formatPrice } from '@/lib/pricing'
 import type { Karat } from '@/lib/pricing'
 import { formatChainName } from '@/lib/format-chain-name'
@@ -75,16 +76,16 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          chainId: chain.id,
+          chainId: chain._id,
           name: formatChainName(chain.name, chain.widthMm),
-          slug: chain.slug,
+          slug: chain.slug?.current ?? '',
           karat: selectedKarat,
           metal: selectedMetal,
           lengthIn: selectedLength,
           widthMm: chain.widthMm,
           weightG,
           priceCad: price,
-          heroImage: chain.heroImage?.url || null,
+          heroImage: getSanityImageUrl(chain.heroImage, 400) || null,
         }),
       })
       const data = await res.json()
@@ -98,8 +99,8 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
 
   function handleAddToCart() {
     addItem({
-      chainId: chain.id,
-      slug: chain.slug,
+      chainId: chain._id,
+      slug: chain.slug?.current ?? '',
       name: formatChainName(chain.name, chain.widthMm),
       karat: selectedKarat,
       metal: selectedMetal,
@@ -107,7 +108,7 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
       widthMm: chain.widthMm,
       weightG,
       priceCad: price,
-      image: chain.heroImage?.url || null,
+      image: getSanityImageUrl(chain.heroImage, 400) || null,
     })
     setJustAdded(true)
     setTimeout(() => setJustAdded(false), 2000)

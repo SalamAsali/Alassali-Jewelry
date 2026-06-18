@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getPages, getPageBySlug, isDatoCMSConfigured } from '@/lib/datocms'
+import { getPages, getPageBySlug, isSanityConfigured } from '@/lib/sanity'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET(request: NextRequest) {
   try {
-    // Check if DatoCMS is configured
-    if (!isDatoCMSConfigured()) {
-      console.warn('[Pages API] DatoCMS not configured')
+    // Check if Sanity is configured
+    if (!isSanityConfigured()) {
+      console.warn('[Pages API] Sanity not configured')
       return NextResponse.json([])
     }
 
@@ -29,10 +29,8 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Page not found' }, { status: 404 })
     }
 
-    // Get all pages
-    const pages = await getPages({
-      published: published === 'true' ? true : undefined,
-    })
+    // Get all pages (Sanity publishes by default; no published filter needed)
+    const pages = await getPages()
 
     return NextResponse.json(pages)
   } catch (error) {

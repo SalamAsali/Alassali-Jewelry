@@ -1,4 +1,4 @@
-import { datocmsRequest, isDatoCMSConfigured } from './datocms'
+import { getBlogIndex as sanityGetBlogIndex, getBlogPosts, type BlogPost } from './sanity'
 
 export type BlogIndexMeta = {
   heading?: string | null
@@ -15,6 +15,7 @@ export type BlogPostSummary = {
   date?: string | null
   readingMinutes?: number | null
   tag?: string | null
+  [key: string]: unknown
 }
 
 export type BlogData = {
@@ -22,38 +23,27 @@ export type BlogData = {
   posts: BlogPostSummary[]
 }
 
-const BLOG_INDEX_QUERY = `
-  query BlogIndex {
-    blogIndex {
-      heading
-      intro
-      seoTitle
-      seoDescription
-    }
-    allBlogPosts(orderBy: date_DESC, first: 100) {
-      id
-      slug
-      title
-      excerpt
-      date
-      readingMinutes
-      tag
-    }
+function mapPost(post: BlogPost): BlogPostSummary {
+  return {
+    id: post._id,
+    slug: post.slug?.current ?? '',
+    title: post.title,
+    excerpt: post.excerpt,
+    date: post.date,
+    readingMinutes: post.readingMinutes,
+    tag: post.tag,
   }
-`
-
-type BlogIndexQueryResult = {
-  blogIndex: BlogIndexMeta | null
-  allBlogPosts: BlogPostSummary[]
 }
 
 export async function getBlogIndex(): Promise<BlogData | null> {
-  if (!isDatoCMSConfigured()) return null
   try {
-    const data = await datocmsRequest<BlogIndexQueryResult>({ query: BLOG_INDEX_QUERY })
+    const [page, posts] = await Promise.all([
+      sanityGetBlogIndex(),
+      getBlogPosts(),
+    ])
     return {
-      page: data.blogIndex,
-      posts: data.allBlogPosts ?? [],
+      page: page ?? null,
+      posts: (posts ?? []).map(mapPost),
     }
   } catch {
     return null

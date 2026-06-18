@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getChains } from '@/lib/datocms'
-import type { ChainType, MetalColor } from '@/lib/datocms'
+import { getChains } from '@/lib/sanity'
+import type { ChainType, MetalColor } from '@/lib/sanity'
 
 export const revalidate = 60
 
@@ -12,12 +12,10 @@ export async function GET(request: NextRequest) {
   const limit = searchParams.get('limit')
 
   const chains = await getChains({
-    filter: {
-      ...(chainType && { chainType }),
-      ...(metal && { metal }),
-      ...(featured === 'true' && { featured: true }),
-      active: true,
-    },
+    ...(chainType && { chainType }),
+    ...(metal && { metal }),
+    ...(featured === 'true' && { featured: true }),
+    active: true,
     limit: limit ? parseInt(limit, 10) : 100,
   })
 

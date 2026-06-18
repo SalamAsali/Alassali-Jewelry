@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getGalleryItemById, isDatoCMSConfigured } from '@/lib/datocms'
+import { getGalleryItemById, isSanityConfigured } from '@/lib/sanity'
 import { getImageUrl } from '@/lib/getImageUrl'
 import { getServerSideURL } from '@/lib/getURL'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
@@ -9,7 +9,7 @@ type Props = { children: React.ReactNode; params: Promise<{ id: string }> }
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = await params
   
-  if (!isDatoCMSConfigured()) {
+  if (!isSanityConfigured()) {
     return {}
   }
 

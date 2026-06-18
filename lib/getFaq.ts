@@ -1,4 +1,10 @@
-import { datocmsRequest, isDatoCMSConfigured } from './datocms'
+import {
+  getFaqPage,
+  getFaqCategories as sanityGetFaqCategories,
+  getFaqItems as sanityGetFaqItems,
+  type FaqCategory as SanityFaqCategory,
+  type FaqItem as SanityFaqItem,
+} from './sanity'
 
 export type FaqPageMeta = {
   heading?: string | null
@@ -25,45 +31,31 @@ export type FaqData = {
   items: FaqItem[]
 }
 
-const FAQ_QUERY = `
-  query Faq {
-    faqPage {
-      heading
-      intro
-    }
-    allFaqCategories(orderBy: order_ASC, first: 100) {
-      id
-      name
-      order
-    }
-    allFaqItems(orderBy: order_ASC, first: 300) {
-      id
-      question
-      answer
-      order
-      category {
-        id
-        name
-        order
-      }
-    }
-  }
-`
+function mapCategory(cat: SanityFaqCategory): FaqCategory {
+  return { id: cat._id, name: cat.name, order: cat.order }
+}
 
-type FaqQueryResult = {
-  faqPage: FaqPageMeta | null
-  allFaqCategories: FaqCategory[]
-  allFaqItems: FaqItem[]
+function mapItem(item: SanityFaqItem): FaqItem {
+  return {
+    id: item._id,
+    question: item.question,
+    answer: item.answer,
+    order: item.order,
+    category: item.category ? { id: item.category._id, name: item.category.name } : null,
+  }
 }
 
 export async function getFaq(): Promise<FaqData | null> {
-  if (!isDatoCMSConfigured()) return null
   try {
-    const data = await datocmsRequest<FaqQueryResult>({ query: FAQ_QUERY })
+    const [page, categories, items] = await Promise.all([
+      getFaqPage(),
+      sanityGetFaqCategories(),
+      sanityGetFaqItems(),
+    ])
     return {
-      page: data.faqPage,
-      categories: data.allFaqCategories ?? [],
-      items: data.allFaqItems ?? [],
+      page: page ?? null,
+      categories: (categories ?? []).map(mapCategory),
+      items: (items ?? []).map(mapItem),
     }
   } catch {
     return null

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getChainBySlug } from '@/lib/datocms'
+import { getChainBySlug } from '@/lib/sanity'
 
 export const revalidate = 60
 

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
-import { getChainBySlug, getChains, getPricingConfig } from '@/lib/datocms'
+import { getChainBySlug, getChains, getPricingConfig, getSanityImageUrl } from '@/lib/sanity'
 import { formatChainName } from '@/lib/format-chain-name'
 import { computeWeight, priceForChain } from '@/lib/pricing'
 import type { Karat } from '@/lib/pricing'
@@ -78,29 +78,29 @@ export default async function ChainDetailPage({ params }: ChainDetailPageProps) 
 
   // Fetch related chains: same chainType first, then same metal to fill up to 4
   const [sameTypeChains, sameMetalChains] = await Promise.all([
-    getChains({ filter: { chainType: chain.chainType }, limit: 5 }),
-    getChains({ filter: { metal: chain.defaultMetal }, limit: 8 }),
+    getChains({ chainType: chain.chainType, limit: 5 }),
+    getChains({ metal: chain.defaultMetal, limit: 8 }),
   ])
 
   // Exclude current chain, pick up to 4
-  const relatedByType = sameTypeChains.filter((c) => c.id !== chain.id)
+  const relatedByType = sameTypeChains.filter((c) => c._id !== chain._id)
   const relatedChains = relatedByType.slice(0, 4)
 
   // If fewer than 4 from same type, fill from same metal
   if (relatedChains.length < 4) {
-    const existingIds = new Set([chain.id, ...relatedChains.map((c) => c.id)])
-    const metalFill = sameMetalChains.filter((c) => !existingIds.has(c.id))
+    const existingIds = new Set([chain._id, ...relatedChains.map((c) => c._id)])
+    const metalFill = sameMetalChains.filter((c) => !existingIds.has(c._id))
     relatedChains.push(...metalFill.slice(0, 4 - relatedChains.length))
   }
 
   // --- JSON-LD Schema ---
   const formattedName = formatChainName(chain.name, chain.widthMm)
-  const heroImageUrl = chain.heroImage?.responsiveImage?.src || chain.heroImage?.url || ''
+  const heroImageUrl = getSanityImageUrl(chain.heroImage, 1200) || ''
   const typeLabel = CHAIN_TYPE_LABELS[chain.chainType] || chain.chainType
   const metalSlug = chain.defaultMetal || 'yellow-gold'
 
   // Compute low price (lowest karat, shortest length) and high price (highest karat, longest length).
-  // Some DatoCMS records have null/empty karat or length arrays — guard against
+  // Some Sanity records have null/empty karat or length arrays — guard against
   // them so a thin record renders as a working page instead of throwing a 500.
   const karatOrder: Karat[] = ['10k', '14k', '18k']
   const sortedKarats = (Array.isArray(chain.availableKarats) ? chain.availableKarats.slice() : []).sort(
@@ -150,7 +150,7 @@ export default async function ChainDetailPage({ params }: ChainDetailPageProps) 
         chain.description ||
         `${formattedName}. ${(chain.construction || 'gold').charAt(0).toUpperCase() + (chain.construction || 'gold').slice(1)} gold chain, ${chain.widthMm}mm width. Handcrafted in Toronto.`,
       image: heroImageUrl,
-      sku: chain.supplierSku || chain.slug,
+      sku: chain.supplierSku || chain.slug?.current || slug,
       brand: {
         '@type': 'Brand',
         name: 'Al-Asali Jewelry',
@@ -167,7 +167,7 @@ export default async function ChainDetailPage({ params }: ChainDetailPageProps) 
               highPrice: highPrice,
               offerCount: offerCount,
               availability: 'https://schema.org/InStock',
-              url: `${SITE_URL}/chain/${chain.slug}`,
+              url: `${SITE_URL}/chain/${chain.slug?.current ?? slug}`,
               priceValidUntil: priceValidUntil,
               seller: {
                 '@type': 'Organization',

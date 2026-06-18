@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getChains, getPricingConfig } from '@/lib/datocms'
-import type { MetalColor, ChainType } from '@/lib/datocms'
+import { getChains, getPricingConfig } from '@/lib/sanity'
+import type { MetalColor, ChainType } from '@/lib/sanity'
 import ChainGrid from '@/components/chains/ChainGrid'
 import ChainTypeScroller from '@/components/chains/ChainTypeScroller'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
@@ -84,8 +84,8 @@ export default async function ChainTypePage({ params }: ChainTypePageProps) {
   const typeLabel = CHAIN_TYPE_LABELS[chainType]
 
   const [allMetalChains, chains, pricingConfig] = await Promise.all([
-    getChains({ filter: { metal: metalColor } }),
-    getChains({ filter: { metal: metalColor, chainType: chainTypeValue } }),
+    getChains({ metal: metalColor }),
+    getChains({ metal: metalColor, chainType: chainTypeValue }),
     getPricingConfig(),
   ])
 
@@ -104,7 +104,7 @@ export default async function ChainTypePage({ params }: ChainTypePageProps) {
     itemListElement: chains.slice(0, 10).map((chain, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `https://www.alasalicustomjewelry.ca/chain/${chain.slug}`,
+      url: `https://www.alasalicustomjewelry.ca/chain/${chain.slug?.current ?? ''}`,
     })),
   }
 

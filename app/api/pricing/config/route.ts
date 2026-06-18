@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import { getPricingConfig } from '@/lib/datocms'
+import { getPricingConfig } from '@/lib/sanity'
 
 export const revalidate = 60
 

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getChains, getPricingConfig } from '@/lib/datocms'
-import type { MetalColor } from '@/lib/datocms'
+import { getChains, getPricingConfig } from '@/lib/sanity'
+import type { MetalColor } from '@/lib/sanity'
 import ChainGrid from '@/components/chains/ChainGrid'
 import ChainTypeScroller from '@/components/chains/ChainTypeScroller'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
@@ -49,7 +49,7 @@ export default async function MetalPage({ params }: MetalPageProps) {
   const metalLabel = METAL_LABELS[metal]
 
   const [chains, pricingConfig] = await Promise.all([
-    getChains({ filter: { metal: metalColor } }),
+    getChains({ metal: metalColor }),
     getPricingConfig(),
   ])
 
@@ -68,7 +68,7 @@ export default async function MetalPage({ params }: MetalPageProps) {
     itemListElement: chains.slice(0, 10).map((chain, i) => ({
       '@type': 'ListItem',
       position: i + 1,
-      url: `https://www.alasalicustomjewelry.ca/chain/${chain.slug}`,
+      url: `https://www.alasalicustomjewelry.ca/chain/${chain.slug?.current ?? ''}`,
     })),
   }
 

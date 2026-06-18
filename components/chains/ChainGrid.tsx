@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useMemo } from 'react'
-import type { Chain, PricingConfig } from '@/lib/datocms'
+import type { Chain, PricingConfig } from '@/lib/sanity'
 import { computeWeight, priceForChain } from '@/lib/pricing'
 import type { Karat } from '@/lib/pricing'
 import ChainCard from './ChainCard'
@@ -176,7 +176,7 @@ export default function ChainGrid({
           {filteredAndSorted.length > 0 ? (
             <div className={`grid ${gridCols} gap-5`}>
               {filteredAndSorted.map((chain) => (
-                <ChainCard key={chain.id} chain={chain} pricingConfig={pricingConfig} />
+                <ChainCard key={chain._id} chain={chain} pricingConfig={pricingConfig} />
               ))}
             </div>
           ) : (
@@ -200,7 +200,7 @@ export default function ChainGrid({
       {filteredAndSorted.length > 0 ? (
         <div className={`grid ${columns === 4 ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' : gridCols} gap-5`}>
           {filteredAndSorted.map((chain) => (
-            <ChainCard key={chain.id} chain={chain} pricingConfig={pricingConfig} />
+            <ChainCard key={chain._id} chain={chain} pricingConfig={pricingConfig} />
           ))}
         </div>
       ) : (

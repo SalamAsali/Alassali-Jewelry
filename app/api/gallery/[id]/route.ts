@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getGalleryItemById, isDatoCMSConfigured } from '@/lib/datocms'
+import { getGalleryItemById, isSanityConfigured } from '@/lib/sanity'
 
 export const dynamic = 'force-dynamic'
 
@@ -8,8 +8,8 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    // Check if DatoCMS is configured
-    if (!isDatoCMSConfigured()) {
+    // Check if Sanity is configured
+    if (!isSanityConfigured()) {
       return NextResponse.json({ error: 'CMS not configured' }, { status: 503 })
     }
 
@@ -23,7 +23,7 @@ export async function GET(
 
     // Transform the data to match frontend expectations
     const transformed = {
-      id: item.id,
+      id: item._id,
       title: item.title,
       description: item.description,
       image: item.image,

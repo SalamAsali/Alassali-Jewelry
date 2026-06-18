@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import type { Chain, PricingConfig, DatoCMSImage } from '@/lib/datocms'
+import type { Chain, PricingConfig, SanityImage } from '@/lib/sanity'
+import { getSanityImageUrl } from '@/lib/sanity'
 import ChainVariantPicker from '@/components/chains/ChainVariantPicker'
 import ChainCard from '@/components/chains/ChainCard'
 import { formatChainName } from '@/lib/format-chain-name'
@@ -36,12 +37,12 @@ const CHAIN_TYPE_LABELS: Record<string, string> = {
   'domed-cuban': 'Domed Cuban',
 }
 
-function getImageSrc(img: DatoCMSImage): string {
-  return img.responsiveImage?.src || img.url || '/images/placeholder-chain.jpg'
+function getImageSrc(img: SanityImage): string {
+  return getSanityImageUrl(img, 1200) || '/images/placeholder-chain.jpg'
 }
 
 export default function ChainProductDetail({ chain, pricingConfig, relatedChains }: ChainProductDetailProps) {
-  const allImages = [chain.heroImage, ...(chain.galleryImages || [])].filter(Boolean) as DatoCMSImage[]
+  const allImages = [chain.heroImage, ...(chain.galleryImages || [])].filter(Boolean) as SanityImage[]
   const [selectedImageIdx, setSelectedImageIdx] = useState(0)
   const selectedImage = allImages[selectedImageIdx] || allImages[0]
 
@@ -161,7 +162,7 @@ export default function ChainProductDetail({ chain, pricingConfig, relatedChains
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {relatedChains.map((relatedChain) => (
                 <ChainCard
-                  key={relatedChain.id}
+                  key={relatedChain._id}
                   chain={relatedChain}
                   pricingConfig={pricingConfig}
                 />

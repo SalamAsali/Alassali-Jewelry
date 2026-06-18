@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { getChainsLanding, getChains, getPricingConfig } from '@/lib/datocms'
+import { getChainsLanding, getChains, getPricingConfig } from '@/lib/sanity'
 import MetalPicker from '@/components/chains/MetalPicker'
 import ChainGrid from '@/components/chains/ChainGrid'
 import ChainTypeScroller from '@/components/chains/ChainTypeScroller'
@@ -20,7 +20,7 @@ export default async function ChainsPage() {
   const [landing, allChains, featuredChains, pricingConfig] = await Promise.all([
     getChainsLanding(),
     getChains(),
-    getChains({ filter: { featured: true }, limit: 8 }),
+    getChains({ featured: true, limit: 8 }),
     getPricingConfig(),
   ])
 

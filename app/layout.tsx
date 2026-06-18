@@ -33,9 +33,9 @@ export default async function RootLayout({
     <html lang="en">
       <head>
         {/* Warm up the image CDN connection — portfolio/product images are
-            served from DatoCMS and this shaves ~150ms off the first request. */}
-        <link rel="preconnect" href="https://www.datocms-assets.com" crossOrigin="" />
-        <link rel="dns-prefetch" href="https://www.datocms-assets.com" />
+            served from Sanity and this shaves ~150ms off the first request. */}
+        <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://cdn.sanity.io" />
         <script
           src="https://analytics.ahrefs.com/analytics.js"
           data-key="AVNynhehvSQEh5GaujqbDg"

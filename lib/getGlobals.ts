@@ -1,12 +1,19 @@
-import { datocmsRequest, isDatoCMSConfigured, DatoCMSImage } from './datocms'
+import {
+  getHeader as sanityGetHeader,
+  getFooter as sanityGetFooter,
+  getSanityImageUrl,
+  type HeaderData as SanityHeaderData,
+  type FooterData as SanityFooterData,
+  type SanityImage,
+} from './sanity'
 
 export type HeaderData = {
-  logo?: DatoCMSImage | null
+  logo?: { url?: string; alt?: string } | null
   navItems?: Array<{ label: string; url: string }>
 }
 
 export type FooterData = {
-  logo?: DatoCMSImage | null
+  logo?: { url?: string; alt?: string } | null
   tagline?: string | null
   navItems?: Array<{ label: string; url: string }>
   phone?: string | null
@@ -14,59 +21,36 @@ export type FooterData = {
   location?: string | null
 }
 
-const HEADER_QUERY = `
-  query Header {
-    header {
-      logo {
-        url
-        alt
-      }
-      navItems {
-        label
-        url
-      }
-    }
-  }
-`
-
-const FOOTER_QUERY = `
-  query Footer {
-    footer {
-      logo {
-        url
-        alt
-      }
-      tagline
-      navItems {
-        label
-        url
-      }
-      phone
-      email
-      location
-    }
-  }
-`
+function mapLogo(img: SanityImage | undefined | null): { url?: string; alt?: string } | null {
+  if (!img?.asset) return null
+  return { url: getSanityImageUrl(img, 300), alt: img.alt }
+}
 
 export async function getHeader(): Promise<HeaderData | null> {
-  if (!isDatoCMSConfigured()) return null
   try {
-    const data = await datocmsRequest<{ header: HeaderData | null }>({
-      query: HEADER_QUERY,
-    })
-    return data.header
+    const data = await sanityGetHeader()
+    if (!data) return null
+    return {
+      logo: mapLogo(data.logo),
+      navItems: data.navItems,
+    }
   } catch {
     return null
   }
 }
 
 export async function getFooter(): Promise<FooterData | null> {
-  if (!isDatoCMSConfigured()) return null
   try {
-    const data = await datocmsRequest<{ footer: FooterData | null }>({
-      query: FOOTER_QUERY,
-    })
-    return data.footer
+    const data = await sanityGetFooter()
+    if (!data) return null
+    return {
+      logo: mapLogo(data.logo),
+      tagline: data.tagline,
+      navItems: data.navItems,
+      phone: data.phone,
+      email: data.email,
+      location: data.location,
+    }
   } catch {
     return null
   }

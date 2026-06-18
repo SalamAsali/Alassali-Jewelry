@@ -1,13 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getGalleryItems, isDatoCMSConfigured } from '@/lib/datocms'
+import { getGalleryItems, isSanityConfigured, getSanityImageUrl } from '@/lib/sanity'
 
 export const dynamic = 'force-dynamic'
 
 export async function GET(request: NextRequest) {
   try {
-    // Check if DatoCMS is configured
-    if (!isDatoCMSConfigured()) {
-      console.warn('[Gallery API] DatoCMS not configured, returning empty array')
+    // Check if Sanity is configured
+    if (!isSanityConfigured()) {
+      console.warn('[Gallery API] Sanity not configured, returning empty array')
       return NextResponse.json([])
     }
 
@@ -15,19 +15,15 @@ export async function GET(request: NextRequest) {
     const featured = searchParams.get('featured')
     const category = searchParams.get('category')
 
-    const filter: { featured?: boolean; category?: string } = {}
-    if (featured === 'true') {
-      filter.featured = true
-    }
-    if (category) {
-      filter.category = category
-    }
-
-    const items = await getGalleryItems({ filter, limit: 100 })
+    const items = await getGalleryItems({
+      ...(featured === 'true' && { featured: true }),
+      ...(category && { category }),
+      limit: 100,
+    })
 
     // Transform the data to match frontend expectations
     const transformedItems = items.map((item) => ({
-      id: item.id,
+      id: item._id,
       title: item.title,
       description: item.description,
       image: item.image,

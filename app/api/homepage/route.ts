@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { getHomepage, isDatoCMSConfigured } from '@/lib/datocms'
+import { getHomepage, isSanityConfigured } from '@/lib/sanity'
 
 export const dynamic = 'force-dynamic'
 
@@ -16,9 +16,9 @@ const DEFAULT_HOMEPAGE = {
 
 export async function GET(request: NextRequest) {
   try {
-    // Check if DatoCMS is configured
-    if (!isDatoCMSConfigured()) {
-      console.warn('[Homepage API] DatoCMS not configured, returning defaults')
+    // Check if Sanity is configured
+    if (!isSanityConfigured()) {
+      console.warn('[Homepage API] Sanity not configured, returning defaults')
       return NextResponse.json(DEFAULT_HOMEPAGE)
     }
 
