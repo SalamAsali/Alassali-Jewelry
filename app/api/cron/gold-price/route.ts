@@ -1,9 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache'
 import { fetchGoldSpotPrice } from '@/lib/gold-price'
-import { buildClient } from '@datocms/cma-client-node'
+import { createClient } from '@sanity/client'
 
 export const dynamic = 'force-dynamic'
+
+const sanityWriteClient = createClient({
+  projectId: 'oh0jn4tt',
+  dataset: 'production',
+  apiVersion: '2024-01-01',
+  token: process.env.SANITY_API_WRITE_TOKEN,
+  useCdn: false,
+})
 
 export async function GET(request: NextRequest) {
   // Verify cron secret
@@ -15,16 +23,18 @@ export async function GET(request: NextRequest) {
   try {
     const spot = await fetchGoldSpotPrice()
 
-    const client = buildClient({ apiToken: process.env.DATOCMS_CMA_TOKEN! })
-    const records = await client.items.list({
-      filter: { type: 'pricing_config' },
-    })
+    const config = await sanityWriteClient.fetch(
+      `*[_type == "pricingConfig"][0]{ _id }`
+    )
 
-    if (records.length > 0) {
-      await client.items.update(records[0].id, {
-        last_spot_twentyfour_k: spot.priceGram24kCad,
-        spot_updated_at: spot.fetchedAt.toISOString(),
-      })
+    if (config?._id) {
+      await sanityWriteClient
+        .patch(config._id)
+        .set({
+          lastSpotTwentyfourK: spot.priceGram24kCad,
+          spotUpdatedAt: spot.fetchedAt.toISOString(),
+        })
+        .commit()
     }
 
     revalidatePath('/chains', 'layout')

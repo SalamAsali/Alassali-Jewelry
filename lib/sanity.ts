@@ -128,6 +128,11 @@ export interface PricingConfig {
   lastSpotTwentyfourK: number
   spotUpdatedAt: string
   manualOverrideActive: boolean
+  // Mapped short names for lib/pricing.ts compatibility
+  markup18k: number
+  markup14k: number
+  markup10k: number
+  lastSpot24k: number
 }
 
 export interface ChainsLandingData {
@@ -322,7 +327,25 @@ export async function getChainBySlug(slug: string): Promise<Chain | null> {
 }
 
 export async function getPricingConfig(): Promise<PricingConfig | null> {
-  return sanityClient.fetch(`*[_type == "pricingConfig"][0]`)
+  const raw = await sanityClient.fetch(`*[_type == "pricingConfig"][0]`)
+  if (!raw) return null
+  return {
+    markupEighteenK: raw.markupEighteenK ?? 0,
+    markupFourteenK: raw.markupFourteenK ?? 0,
+    markupTenK: raw.markupTenK ?? 0,
+    makingChargePerGram: raw.makingChargePerGram ?? 0,
+    heavyChainSurchargePerGram: raw.heavyChainSurchargePerGram ?? 0,
+    claspChargeCad: raw.claspChargeCad ?? 0,
+    spotPriceSource: raw.spotPriceSource ?? '',
+    lastSpotTwentyfourK: raw.lastSpotTwentyfourK ?? 0,
+    spotUpdatedAt: raw.spotUpdatedAt ?? '',
+    manualOverrideActive: raw.manualOverrideActive ?? false,
+    // Mapped names for lib/pricing.ts compatibility
+    markup18k: raw.markupEighteenK ?? 0,
+    markup14k: raw.markupFourteenK ?? 0,
+    markup10k: raw.markupTenK ?? 0,
+    lastSpot24k: raw.lastSpotTwentyfourK ?? 0,
+  }
 }
 
 export async function getChainsLanding(): Promise<ChainsLandingData | null> {
