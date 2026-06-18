@@ -46,6 +46,7 @@ function notificationHtml(body: Record<string, string>) {
             ${row('Inspiration Files', body.inspirationNames)}
           </table>
           ${body.notes ? `<div style="margin-top:20px;padding:16px;background:#111;border-radius:6px;border-left:3px solid #b8975a"><p style="margin:0 0 4px;color:#999;font-size:11px;text-transform:uppercase;letter-spacing:1px">Notes</p><p style="margin:0;color:#fff;font-size:14px;line-height:1.6">${body.notes}</p></div>` : ''}
+          ${body.inspirationImageUrls?.length ? `<div style="margin-top:20px"><p style="margin:0 0 12px;color:#999;font-size:11px;text-transform:uppercase;letter-spacing:1px">Inspiration Images</p><div style="display:flex;flex-wrap:wrap;gap:8px">${body.inspirationImageUrls.map((img: {url: string; filename: string}) => `<div style="margin-bottom:8px"><img src="${img.url}" alt="${img.filename}" style="max-width:280px;height:auto;border-radius:6px;border:1px solid #333" /><p style="margin:4px 0 0;color:#666;font-size:11px">${img.filename}</p></div>`).join('')}</div></div>` : ''}
         </td></tr>
         <tr><td style="padding:16px 32px 24px;border-top:1px solid #333">
           <p style="margin:0;color:#666;font-size:12px">Reply directly to this email to respond to ${name}.</p>

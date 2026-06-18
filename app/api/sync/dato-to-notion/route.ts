@@ -1,74 +1,74 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { upsertChainToNotion, upsertOrderToNotion, upsertCustomerToNotion } from '@/lib/notion'
 
+/**
+ * Sanity webhook → Notion sync
+ * Set up a Sanity webhook at https://www.sanity.io/manage/project/oh0jn4tt/api/webhooks
+ * pointing to this endpoint with the SANITY_WEBHOOK_SECRET header
+ */
 export async function POST(request: NextRequest) {
-  // Verify webhook secret
-  const secret = request.headers.get('x-dato-webhook-secret') || request.headers.get('authorization')
-  if (secret !== process.env.DATO_WEBHOOK_SECRET && secret !== `Bearer ${process.env.DATO_WEBHOOK_SECRET}`) {
+  const secret = request.headers.get('x-sanity-webhook-secret') || request.headers.get('authorization')
+  if (secret !== process.env.SANITY_WEBHOOK_SECRET && secret !== `Bearer ${process.env.SANITY_WEBHOOK_SECRET}`) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
   }
 
   try {
     const body = await request.json()
-    const { event_type, entity } = body
+    const doc = body
 
-    if (!entity) {
-      return NextResponse.json({ skipped: true, reason: 'No entity in payload' })
+    if (!doc?._type) {
+      return NextResponse.json({ skipped: true, reason: 'No document type' })
     }
 
-    const modelApiKey = entity.relationships?.item_type?.data?.attributes?.api_key
-      || body.related_entities?.[0]?.attributes?.api_key
-      || ''
-
-    switch (modelApiKey) {
+    switch (doc._type) {
       case 'chain':
         await upsertChainToNotion({
-          datoItemId: entity.id,
-          name: entity.attributes?.name || '',
-          chainType: entity.attributes?.chain_type || '',
-          widthMm: entity.attributes?.width_mm || 0,
-          construction: entity.attributes?.construction || '',
-          availableKarats: entity.attributes?.available_karats || [],
-          availableMetals: entity.attributes?.available_metals || [],
-          active: entity.attributes?.active ?? true,
-          supplierSku: entity.attributes?.supplier_sku,
+          datoItemId: doc._id,
+          name: doc.name || '',
+          chainType: doc.chainType || '',
+          widthMm: doc.widthMm || 0,
+          construction: doc.construction || '',
+          availableKarats: doc.availableKarats || [],
+          availableMetals: doc.availableMetals || [],
+          active: doc.active ?? true,
+          supplierSku: doc.supplierSku,
         })
         break
 
       case 'order':
         await upsertOrderToNotion({
-          datoItemId: entity.id,
-          orderNo: entity.attributes?.order_no || '',
+          datoItemId: doc._id,
+          orderNo: doc.orderNo || '',
           customerName: '',
-          status: entity.attributes?.status || 'pending',
-          totalCad: entity.attributes?.total_cad || 0,
-          itemsCount: entity.attributes?.items?.length || 0,
-          createdAt: entity.attributes?.created_at || new Date().toISOString(),
-          shippingMethod: entity.attributes?.shipping_method,
-          trackingNumber: entity.attributes?.tracking_number,
-          stripePiId: entity.attributes?.stripe_pi_id,
+          status: doc.status || 'pending',
+          totalCad: doc.totalCad || 0,
+          itemsCount: doc.items?.length || 0,
+          createdAt: doc._createdAt || new Date().toISOString(),
+          shippingMethod: doc.shippingMethod,
+          trackingNumber: doc.trackingNumber,
+          stripePiId: doc.stripePiId,
         })
         break
 
       case 'customer':
         await upsertCustomerToNotion({
-          datoItemId: entity.id,
-          firstName: entity.attributes?.first_name || '',
-          lastName: entity.attributes?.last_name || '',
-          email: entity.attributes?.email || '',
-          phone: entity.attributes?.phone,
-          stripeCustomerId: entity.attributes?.stripe_customer_id,
-          marketingOptIn: entity.attributes?.marketing_opt_in,
+          datoItemId: doc._id,
+          firstName: doc.firstName || '',
+          lastName: doc.lastName || '',
+          email: doc.email || '',
+          phone: doc.phone,
+          stripeCustomerId: doc.stripeCustomerId,
+          marketingOptIn: doc.marketingOptIn,
         })
         break
 
       default:
-        console.log(`[dato-to-notion] Skipping unknown model: ${modelApiKey}`)
+        console.log(`[sanity-to-notion] Skipping type: ${doc._type}`)
     }
 
-    return NextResponse.json({ success: true, model: modelApiKey })
+    return NextResponse.json({ success: true, type: doc._type })
   } catch (error) {
-    console.error('[dato-to-notion] Sync failed:', error)
+    console.error('[sanity-to-notion] Sync failed:', error)
     return NextResponse.json({ error: 'Sync failed', details: String(error) }, { status: 500 })
   }
 }

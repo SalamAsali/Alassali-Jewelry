@@ -941,6 +941,7 @@ function PortalForm() {
     timeline: '',
     notes: '',
     inspirationImages: [] as string[],
+    inspirationImageUrls: [] as { url: string; filename: string }[],
   })
   const [currentStep, setCurrentStep] = useState<StepId>('contact')
   const [submitted, setSubmitted] = useState(false)
@@ -1054,7 +1055,27 @@ function PortalForm() {
     const files = Array.from(e.target.files || [])
     if (files.length === 0) return
     setUploading(true)
-    setFormData(prev => ({ ...prev, inspirationImages: [...prev.inspirationImages, ...files.map(f => f.name)] }))
+
+    try {
+      const fd = new FormData()
+      files.forEach(f => fd.append('files', f))
+
+      const res = await fetch('/api/inquiries/upload', { method: 'POST', body: fd })
+      const data = await res.json()
+
+      if (data.success && data.images) {
+        setFormData(prev => ({
+          ...prev,
+          inspirationImages: [...prev.inspirationImages, ...data.images.map((img: { filename: string }) => img.filename)],
+          inspirationImageUrls: [...prev.inspirationImageUrls, ...data.images],
+        }))
+      } else {
+        setFormData(prev => ({ ...prev, inspirationImages: [...prev.inspirationImages, ...files.map(f => f.name)] }))
+      }
+    } catch {
+      setFormData(prev => ({ ...prev, inspirationImages: [...prev.inspirationImages, ...files.map(f => f.name)] }))
+    }
+
     setUploading(false)
   }
 
@@ -1070,6 +1091,7 @@ function PortalForm() {
           name: `${formData.firstName} ${formData.lastName}`.trim(),
           jewelryCategory: formData.pieceType || 'general',
           inspirationNames: formData.inspirationImages.join(', '),
+          inspirationImageUrls: formData.inspirationImageUrls,
         }),
       })
       if (response.ok) setSubmitted(true)

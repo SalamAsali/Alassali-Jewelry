@@ -1,9 +1,13 @@
-import { buildClient } from '@datocms/cma-client-node'
+import { createClient } from '@sanity/client'
 import { upsertOrderToNotion, upsertCustomerToNotion } from '@/lib/notion'
 
-function getDatoClient() {
-  return buildClient({ apiToken: process.env.DATOCMS_CMA_TOKEN! })
-}
+const sanityWriteClient = createClient({
+  projectId: 'oh0jn4tt',
+  dataset: 'production',
+  apiVersion: '2024-01-01',
+  token: process.env.SANITY_API_WRITE_TOKEN,
+  useCdn: false,
+})
 
 function generateOrderNumber(): string {
   const seq = Date.now().toString().slice(-9).padStart(9, '0')
@@ -42,43 +46,34 @@ interface CreateOrderInput {
 }
 
 export async function createOrderFromStripeEvent(input: CreateOrderInput) {
-  const client = getDatoClient()
-
   // 1. Find or create customer
-  const existingCustomers = await client.items.list({
-    filter: {
-      type: 'customer',
-      fields: { email: { eq: input.customerEmail } },
-    },
-  })
+  const existingCustomers = await sanityWriteClient.fetch(
+    `*[_type == "customer" && email == $email]{ _id }`,
+    { email: input.customerEmail }
+  )
 
   let customerId: string
   if (existingCustomers.length > 0) {
-    customerId = existingCustomers[0].id
+    customerId = existingCustomers[0]._id
   } else {
-    const models = await client.itemTypes.list()
-    const customerModel = models.find((m) => m.api_key === 'customer')
-    if (!customerModel) throw new Error('Customer model not found in DatoCMS')
-
-    const newCustomer = await client.items.create({
-      item_type: { type: 'item_type', id: customerModel.id },
-      first_name: input.customerFirstName,
-      last_name: input.customerLastName,
+    const newCustomer = await sanityWriteClient.create({
+      _type: 'customer',
+      firstName: input.customerFirstName,
+      lastName: input.customerLastName,
       email: input.customerEmail,
       phone: input.customerPhone || '',
-      shipping_address: JSON.stringify(input.shippingAddress),
-      billing_address: JSON.stringify(input.billingAddress),
-      stripe_customer_id: input.stripeCustomerId || '',
-      marketing_opt_in: false,
-      first_seen_at: new Date().toISOString(),
-      lifetime_value_cad: input.totalCad,
+      shippingAddress: { _type: 'address', ...input.shippingAddress },
+      billingAddress: { _type: 'address', ...input.billingAddress },
+      stripeCustomerId: input.stripeCustomerId || '',
+      marketingOptIn: false,
+      firstSeenAt: new Date().toISOString(),
+      lifetimeValueCad: input.totalCad,
       tags: ['New'],
     })
-    customerId = newCustomer.id
+    customerId = newCustomer._id
 
-    // Sync to Notion
     await upsertCustomerToNotion({
-      datoItemId: newCustomer.id,
+      datoItemId: newCustomer._id,
       firstName: input.customerFirstName,
       lastName: input.customerLastName,
       email: input.customerEmail,
@@ -90,31 +85,34 @@ export async function createOrderFromStripeEvent(input: CreateOrderInput) {
 
   // 2. Create order
   const orderNo = generateOrderNumber()
-  const models = await client.itemTypes.list()
-  const orderModel = models.find((m) => m.api_key === 'order')
-  if (!orderModel) throw new Error('Order model not found in DatoCMS')
-
-  const order = await client.items.create({
-    item_type: { type: 'item_type', id: orderModel.id },
-    order_no: orderNo,
-    customer: customerId,
-    status: 'confirmed',
-    items: JSON.stringify(input.items),
-    subtotal_cad: input.subtotalCad,
-    tax_cad: input.taxCad,
-    shipping_cad: input.shippingCad,
-    total_cad: input.totalCad,
-    shipping_address: JSON.stringify(input.shippingAddress),
-    billing_address: JSON.stringify(input.billingAddress),
-    stripe_pi_id: input.stripePiId,
-    stripe_charge_id: input.stripeChargeId || '',
-    shipping_method: input.shippingMethod,
-    created_at: new Date().toISOString(),
+  const order = await sanityWriteClient.create({
+    _type: 'order',
+    orderNo,
+    customer: { _type: 'reference', _ref: customerId },
+    items: input.items.map((item, i) => ({
+      _type: 'orderItem',
+      _key: `item${i}`,
+      name: item.name,
+      quantity: item.qty,
+      unitPrice: item.unitPriceCad,
+      karat: item.karat,
+      metal: item.metal,
+      length: item.lengthIn,
+    })),
+    subtotalCad: input.subtotalCad,
+    taxCad: input.taxCad,
+    shippingCad: input.shippingCad,
+    totalCad: input.totalCad,
+    shippingAddress: { _type: 'address', ...input.shippingAddress },
+    billingAddress: { _type: 'address', ...input.billingAddress },
+    stripePiId: input.stripePiId,
+    stripeChargeId: input.stripeChargeId || '',
+    shippingMethod: input.shippingMethod,
   })
 
   // 3. Sync to Notion (fire-and-forget)
   upsertOrderToNotion({
-    datoItemId: order.id,
+    datoItemId: order._id,
     orderNo,
     customerName: `${input.customerFirstName} ${input.customerLastName}`,
     status: 'Confirmed',
@@ -126,41 +124,25 @@ export async function createOrderFromStripeEvent(input: CreateOrderInput) {
     itemsJson: JSON.stringify(input.items),
   }).catch((err) => console.error('[orders] Notion order sync failed:', err))
 
-  return { orderNo, orderId: order.id, customerId }
+  return { orderNo, orderId: order._id, customerId }
 }
 
 export async function getOrdersByCustomerEmail(email: string) {
-  const client = getDatoClient()
-
-  const customers = await client.items.list({
-    filter: {
-      type: 'customer',
-      fields: { email: { eq: email } },
-    },
-  })
-
+  const customers = await sanityWriteClient.fetch(
+    `*[_type == "customer" && email == $email]{ _id }`,
+    { email }
+  )
   if (customers.length === 0) return []
 
-  const orders = await client.items.list({
-    filter: {
-      type: 'order',
-      fields: { customer: { eq: customers[0].id } },
-    },
-    order_by: 'created_at_DESC',
-  })
-
-  return orders
+  return sanityWriteClient.fetch(
+    `*[_type == "order" && customer._ref == $customerId] | order(_createdAt desc)`,
+    { customerId: customers[0]._id }
+  )
 }
 
 export async function getOrderByNumber(orderNo: string) {
-  const client = getDatoClient()
-
-  const orders = await client.items.list({
-    filter: {
-      type: 'order',
-      fields: { order_no: { eq: orderNo } },
-    },
-  })
-
-  return orders[0] || null
+  return sanityWriteClient.fetch(
+    `*[_type == "order" && orderNo == $orderNo][0]`,
+    { orderNo }
+  )
 }
