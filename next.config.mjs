@@ -22,15 +22,10 @@ const FORM_LEGACY = '/custom-general' // first iteration of the flat URL
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    // Allow DatoCMS image CDN
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'www.datocms-assets.com',
-      },
-      {
-        protocol: 'https',
-        hostname: '*.datocms-assets.com',
+        hostname: 'cdn.sanity.io',
       },
     ],
   },

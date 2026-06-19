@@ -1,23 +1,42 @@
 /**
  * Sanity Client Library
- * Replaces DatoCMS - provides functions to fetch content from Sanity
  */
 
-import { createClient } from '@sanity/client'
+import { createClient } from 'next-sanity'
 import imageUrlBuilder from '@sanity/image-url'
-import type { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import type { SanityImageSource } from '@sanity/image-url'
 
 export const sanityClient = createClient({
   projectId: 'oh0jn4tt',
   dataset: 'production',
   apiVersion: '2024-01-01',
-  useCdn: process.env.NODE_ENV === 'production',
+  useCdn: true,
 })
 
 const builder = imageUrlBuilder(sanityClient)
 
 export function urlFor(source: SanityImageSource) {
   return builder.image(source)
+}
+
+/**
+ * Tag-aware fetch wrapper for on-demand revalidation.
+ * Every query specifies which document types it depends on; the
+ * /api/revalidate webhook handler calls revalidateTag(<type>) to
+ * purge matching caches when content changes in Sanity.
+ */
+export async function sanityFetch<T>({
+  query,
+  params = {},
+  tags = [],
+}: {
+  query: string
+  params?: Record<string, unknown>
+  tags?: string[]
+}): Promise<T> {
+  return sanityClient.fetch<T>(query, params, {
+    next: { tags },
+  })
 }
 
 // ============================================================================
@@ -207,7 +226,7 @@ export interface MasterJewellerData {
 
 const imageFields = `{
   _type,
-  asset->{_id, url, metadata {dimensions}},
+  asset->{_id, url, metadata {dimensions, lqip}},
   alt,
   hotspot,
   crop
@@ -218,24 +237,26 @@ const imageFields = `{
 // ============================================================================
 
 export async function getPortfolioCategories(): Promise<PortfolioCategory[]> {
-  return sanityClient.fetch(
-    `*[_type == "portfolioCategory"] | order(order asc) { _id, name, slug, order }`
-  )
+  return sanityFetch({
+    query: `*[_type == "portfolioCategory"] | order(order asc) { _id, name, slug, order }`,
+    tags: ['portfolioCategory'],
+  })
 }
 
 export async function getPortfolioItems(options?: { category?: string }): Promise<PortfolioItem[]> {
   const filter = options?.category
     ? `*[_type == "portfolioItem" && category->slug.current == $category]`
     : `*[_type == "portfolioItem"]`
-  return sanityClient.fetch(
-    `${filter} | order(order asc) {
+  return sanityFetch({
+    query: `${filter} | order(order asc) {
       _id, name, slug, order,
       image ${imageFields},
       additionalImages[] ${imageFields},
       category->{ _id, name, slug, order }
     }`,
-    options?.category ? { category: options.category } : {}
-  )
+    params: options?.category ? { category: options.category } : {},
+    tags: ['portfolioItem', 'portfolioCategory'],
+  })
 }
 
 export async function getGalleryItems(options?: { featured?: boolean; category?: string; limit?: number }): Promise<GalleryItem[]> {
@@ -244,28 +265,30 @@ export async function getGalleryItems(options?: { featured?: boolean; category?:
   if (options?.category) conditions.push(`category == $category`)
   const filter = conditions.join(' && ')
   const limit = options?.limit ? `[0...${options.limit}]` : ''
-  return sanityClient.fetch(
-    `*[${filter}] | order(order asc) ${limit} {
+  return sanityFetch({
+    query: `*[${filter}] | order(order asc) ${limit} {
       _id, title, description, category, featured, order,
       image ${imageFields}
     }`,
-    options?.category ? { category: options.category } : {}
-  )
+    params: options?.category ? { category: options.category } : {},
+    tags: ['gallery'],
+  })
 }
 
 export async function getGalleryItemById(id: string): Promise<GalleryItem | null> {
-  return sanityClient.fetch(
-    `*[_type == "gallery" && _id == $id][0] {
+  return sanityFetch({
+    query: `*[_type == "gallery" && _id == $id][0] {
       _id, title, description, category, featured, order,
       image ${imageFields}
     }`,
-    { id }
-  )
+    params: { id },
+    tags: ['gallery'],
+  })
 }
 
 export async function getHomepage(): Promise<HomepageData | null> {
-  return sanityClient.fetch(
-    `*[_type == "homepage"][0] {
+  return sanityFetch({
+    query: `*[_type == "homepage"][0] {
       _id, title, heroTitle, heroSubtitle,
       heroImage ${imageFields},
       featuredItems[]->{
@@ -275,8 +298,9 @@ export async function getHomepage(): Promise<HomepageData | null> {
       testimonials[] { name, text, rating },
       processSteps[] { label, description, icon ${imageFields} },
       madeInTorontoImages[] ${imageFields}
-    }`
-  )
+    }`,
+    tags: ['homepage', 'gallery', 'global'],
+  })
 }
 
 export async function getChains(options?: { chainType?: ChainType; metal?: MetalColor; featured?: boolean; active?: boolean; limit?: number }): Promise<Chain[]> {
@@ -290,8 +314,8 @@ export async function getChains(options?: { chainType?: ChainType; metal?: Metal
   const filter = conditions.join(' && ')
   const limit = options?.limit ? `[0...${options.limit}]` : '[0...500]'
 
-  return sanityClient.fetch(
-    `*[${filter}] | order(order asc) ${limit} {
+  return sanityFetch({
+    query: `*[${filter}] | order(order asc) ${limit} {
       _id, name, slug, chainType, widthMm,
       availableMetals, availableKarats, availableLengths,
       construction, weightPerInchG,
@@ -302,16 +326,17 @@ export async function getChains(options?: { chainType?: ChainType; metal?: Metal
       seoTitle, seoDescription,
       featured, order, supplierSku, active
     }`,
-    {
+    params: {
       ...(options?.chainType ? { chainType: options.chainType } : {}),
       ...(options?.metal ? { metal: options.metal } : {}),
-    }
-  )
+    },
+    tags: ['chain', 'pricingConfig'],
+  })
 }
 
 export async function getChainBySlug(slug: string): Promise<Chain | null> {
-  return sanityClient.fetch(
-    `*[_type == "chain" && slug.current == $slug][0] {
+  return sanityFetch({
+    query: `*[_type == "chain" && slug.current == $slug][0] {
       _id, name, slug, chainType, widthMm,
       availableMetals, availableKarats, availableLengths,
       construction, weightPerInchG,
@@ -322,105 +347,128 @@ export async function getChainBySlug(slug: string): Promise<Chain | null> {
       seoTitle, seoDescription,
       featured, order, supplierSku, active
     }`,
-    { slug }
-  )
+    params: { slug },
+    tags: ['chain'],
+  })
 }
 
 export async function getPricingConfig(): Promise<PricingConfig | null> {
-  const raw = await sanityClient.fetch(`*[_type == "pricingConfig"][0]`)
+  const raw = await sanityFetch<Record<string, unknown> | null>({
+    query: `*[_type == "pricingConfig"][0]`,
+    tags: ['pricingConfig', 'global'],
+  })
   if (!raw) return null
   return {
-    markupEighteenK: raw.markupEighteenK ?? 0,
-    markupFourteenK: raw.markupFourteenK ?? 0,
-    markupTenK: raw.markupTenK ?? 0,
-    makingChargePerGram: raw.makingChargePerGram ?? 0,
-    heavyChainSurchargePerGram: raw.heavyChainSurchargePerGram ?? 0,
-    claspChargeCad: raw.claspChargeCad ?? 0,
-    spotPriceSource: raw.spotPriceSource ?? '',
-    lastSpotTwentyfourK: raw.lastSpotTwentyfourK ?? 0,
-    spotUpdatedAt: raw.spotUpdatedAt ?? '',
-    manualOverrideActive: raw.manualOverrideActive ?? false,
-    // Mapped names for lib/pricing.ts compatibility
-    markup18k: raw.markupEighteenK ?? 0,
-    markup14k: raw.markupFourteenK ?? 0,
-    markup10k: raw.markupTenK ?? 0,
-    lastSpot24k: raw.lastSpotTwentyfourK ?? 0,
+    markupEighteenK: (raw.markupEighteenK as number) ?? 0,
+    markupFourteenK: (raw.markupFourteenK as number) ?? 0,
+    markupTenK: (raw.markupTenK as number) ?? 0,
+    makingChargePerGram: (raw.makingChargePerGram as number) ?? 0,
+    heavyChainSurchargePerGram: (raw.heavyChainSurchargePerGram as number) ?? 0,
+    claspChargeCad: (raw.claspChargeCad as number) ?? 0,
+    spotPriceSource: (raw.spotPriceSource as string) ?? '',
+    lastSpotTwentyfourK: (raw.lastSpotTwentyfourK as number) ?? 0,
+    spotUpdatedAt: (raw.spotUpdatedAt as string) ?? '',
+    manualOverrideActive: (raw.manualOverrideActive as boolean) ?? false,
+    markup18k: (raw.markupEighteenK as number) ?? 0,
+    markup14k: (raw.markupFourteenK as number) ?? 0,
+    markup10k: (raw.markupTenK as number) ?? 0,
+    lastSpot24k: (raw.lastSpotTwentyfourK as number) ?? 0,
   }
 }
 
 export async function getChainsLanding(): Promise<ChainsLandingData | null> {
-  return sanityClient.fetch(
-    `*[_type == "chainsLanding"][0] {
+  return sanityFetch({
+    query: `*[_type == "chainsLanding"][0] {
       heroTitle, heroSubtitle,
       heroImage ${imageFields},
       metalPickerYellowImage ${imageFields},
       metalPickerWhiteImage ${imageFields},
       faqItems[] { question, answer }
-    }`
-  )
+    }`,
+    tags: ['chainsLanding', 'global'],
+  })
 }
 
 export async function getBlogPosts(): Promise<BlogPost[]> {
-  return sanityClient.fetch(
-    `*[_type == "blogPost"] | order(date desc) { _id, title, slug, date, tag, excerpt, readingMinutes }`
-  )
+  return sanityFetch({
+    query: `*[_type == "blogPost"] | order(date desc) { _id, title, slug, date, tag, excerpt, readingMinutes }`,
+    tags: ['blogPost'],
+  })
 }
 
 export async function getBlogIndex() {
-  return sanityClient.fetch(`*[_type == "blogIndex"][0] { heading, intro, seoTitle, seoDescription }`)
+  return sanityFetch({
+    query: `*[_type == "blogIndex"][0] { heading, intro, seoTitle, seoDescription }`,
+    tags: ['blogIndex', 'global'],
+  })
 }
 
 export async function getFaqCategories(): Promise<FaqCategory[]> {
-  return sanityClient.fetch(`*[_type == "faqCategory"] | order(order asc) { _id, name, order }`)
+  return sanityFetch({
+    query: `*[_type == "faqCategory"] | order(order asc) { _id, name, order }`,
+    tags: ['faqCategory'],
+  })
 }
 
 export async function getFaqItems(categoryId?: string): Promise<FaqItem[]> {
   const filter = categoryId
     ? `*[_type == "faqItem" && category._ref == $categoryId]`
     : `*[_type == "faqItem"]`
-  return sanityClient.fetch(
-    `${filter} | order(order asc) { _id, question, answer, category->{ _id, name }, order }`,
-    categoryId ? { categoryId } : {}
-  )
+  return sanityFetch({
+    query: `${filter} | order(order asc) { _id, question, answer, category->{ _id, name }, order }`,
+    params: categoryId ? { categoryId } : {},
+    tags: ['faqItem', 'faqCategory'],
+  })
 }
 
 export async function getPages(): Promise<PageData[]> {
-  return sanityClient.fetch(
-    `*[_type == "page"] { _id, title, slug, hideFromNavigation, seo, contentBlocks }`
-  )
+  return sanityFetch({
+    query: `*[_type == "page"] { _id, title, slug, hideFromNavigation, seo, contentBlocks }`,
+    tags: ['page'],
+  })
 }
 
 export async function getPageBySlug(slug: string): Promise<PageData | null> {
-  return sanityClient.fetch(
-    `*[_type == "page" && slug.current == $slug][0] { _id, title, slug, hideFromNavigation, seo, contentBlocks }`,
-    { slug }
-  )
+  return sanityFetch({
+    query: `*[_type == "page" && slug.current == $slug][0] { _id, title, slug, hideFromNavigation, seo, contentBlocks }`,
+    params: { slug },
+    tags: ['page'],
+  })
 }
 
 export async function getHeader(): Promise<HeaderData | null> {
-  return sanityClient.fetch(
-    `*[_type == "header"][0] { logo ${imageFields}, navItems[] { label, url } }`
-  )
+  return sanityFetch({
+    query: `*[_type == "header"][0] { logo ${imageFields}, navItems[] { label, url } }`,
+    tags: ['header', 'global'],
+  })
 }
 
 export async function getFooter(): Promise<FooterData | null> {
-  return sanityClient.fetch(
-    `*[_type == "footer"][0] { logo ${imageFields}, tagline, email, phone, location, navItems[] { label, url } }`
-  )
+  return sanityFetch({
+    query: `*[_type == "footer"][0] { logo ${imageFields}, tagline, email, phone, location, navItems[] { label, url } }`,
+    tags: ['footer', 'global'],
+  })
 }
 
 export async function getMasterJeweller(): Promise<MasterJewellerData | null> {
-  return sanityClient.fetch(
-    `*[_type == "masterJeweller"][0] { name, title, slug, tagline, bio, seoTitle, seoDescription }`
-  )
+  return sanityFetch({
+    query: `*[_type == "masterJeweller"][0] { name, title, slug, tagline, bio, seoTitle, seoDescription }`,
+    tags: ['masterJeweller', 'global'],
+  })
 }
 
 export async function getPortfolioPage() {
-  return sanityClient.fetch(`*[_type == "portfolioPage"][0] { heading, intro }`)
+  return sanityFetch({
+    query: `*[_type == "portfolioPage"][0] { heading, intro }`,
+    tags: ['portfolioPage', 'global'],
+  })
 }
 
 export async function getFaqPage() {
-  return sanityClient.fetch(`*[_type == "faqPage"][0] { heading, intro }`)
+  return sanityFetch({
+    query: `*[_type == "faqPage"][0] { heading, intro }`,
+    tags: ['faqPage', 'global'],
+  })
 }
 
 /**

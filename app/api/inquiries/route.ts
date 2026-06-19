@@ -1,9 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { createClient } from '@sanity/client'
 
 export const dynamic = 'force-dynamic'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
+
+const sanityWriteClient = process.env.SANITY_API_WRITE_TOKEN
+  ? createClient({
+      projectId: 'oh0jn4tt',
+      dataset: 'production',
+      apiVersion: '2024-01-01',
+      token: process.env.SANITY_API_WRITE_TOKEN,
+      useCdn: false,
+    })
+  : null
 
 const FROM = 'Al-Asali Jewelry <inquiries@alasalicustomjewelry.ca>'
 const NOTIFY = 'contact@alasalicustomjewelry.ca'
@@ -117,6 +128,35 @@ export async function POST(request: NextRequest) {
         html: confirmationHtml(firstName),
       }),
     ])
+
+    // Store inquiry in Sanity for CRM tracking (fire-and-forget)
+    if (sanityWriteClient) {
+      sanityWriteClient
+        .create({
+          _type: 'inquiry',
+          name,
+          email: body.email,
+          phone: body.phone || '',
+          jewelryCategory: body.jewelryCategory || body.type || '',
+          pieceType: body.pieceType || '',
+          metalType: body.metalType || '',
+          goldColor: body.goldColor || '',
+          diamondType: body.diamondType || '',
+          stoneShape: body.stoneShape || '',
+          stonePreferences: Array.isArray(body.stonePreferences)
+            ? body.stonePreferences.join(', ')
+            : body.stonePreferences || '',
+          style: body.style || '',
+          size: body.size || '',
+          budget: body.budget || '',
+          timeline: body.timeline || '',
+          notes: body.notes || '',
+          inspirationNames: body.inspirationNames || '',
+          sourceUrl: body.sourceUrl || '',
+          status: 'New',
+        })
+        .catch((err: unknown) => console.error('[inquiry] Sanity save failed:', err))
+    }
 
     return NextResponse.json({
       success: true,
