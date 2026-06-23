@@ -9,7 +9,7 @@ const SLUG = 'custom-engagement-ring-cost-toronto-2026'
 const TITLE = 'How Much Does a Custom Engagement Ring Cost in Toronto? (2026 Guide)'
 const DESCRIPTION = 'A working Toronto jeweler breaks down what goes into the cost of a custom engagement ring — by style, metal, diamond origin, and carat weight.'
 const DATE = '2026-04-17'
-const COVER = '/blog/custom-engagement-ring-cost-toronto-2026-cover.svg'
+const COVER = '/blog/custom-engagement-ring-cost-toronto-2026-cover.png'
 const COVER_ALT = 'Custom engagement ring cost guide Toronto 2026 — what affects price: style, metal, diamond origin, and carat weight, Al-Asali Custom Jewelry'
 
 export const metadata: Metadata = {
@@ -98,7 +98,7 @@ export default function Page() {
 
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
-          src="/blog/custom-engagement-ring-cost-toronto-2026-metal-pricing.svg"
+          src="/blog/custom-engagement-ring-cost-toronto-2026-metal-pricing.png"
           alt="Custom engagement ring metal guide Toronto 2026 — comparing 10K, 14K, 18K gold and platinum: durability, colour, purity, and what each metal is best suited for"
           width={1200}
           height={600}
@@ -123,7 +123,7 @@ export default function Page() {
 
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
-          src="/blog/custom-engagement-ring-cost-toronto-2026-carat-pricing.svg"
+          src="/blog/custom-engagement-ring-cost-toronto-2026-carat-pricing.png"
           alt="Lab-grown vs natural diamond comparison for engagement rings Toronto 2026 — identical 4Cs, lab-grown saves roughly 40–70% depending on carat size, natural holds resale value over decades"
           width={1200}
           height={600}

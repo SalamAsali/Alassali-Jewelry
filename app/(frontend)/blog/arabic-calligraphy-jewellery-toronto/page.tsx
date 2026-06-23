@@ -9,7 +9,7 @@ const SLUG = 'arabic-calligraphy-jewelry-toronto'
 const TITLE = 'Arabic Calligraphy Jewelry in Toronto: A Craftsman\'s Guide'
 const DESCRIPTION = 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweler. Fonts, verses, meanings, and what to ask for when you commission a piece.'
 const DATE = '2026-04-19'
-const COVER = '/blog/arabic-calligraphy-jewellery-toronto-cover.svg'
+const COVER = '/blog/arabic-calligraphy-jewellery-toronto-cover.png'
 const COVER_ALT = 'Arabic calligraphy jewelry Toronto 2026 — custom name pendants, Allah pendants, Ayat al-Kursi, and wedding band engravings in gold and diamond, Al-Asali Custom Jewelry'
 
 export const metadata: Metadata = {
@@ -71,7 +71,7 @@ export default function Page() {
 
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
-          src="/blog/arabic-calligraphy-jewellery-toronto-script-styles.svg"
+          src="/blog/arabic-calligraphy-jewellery-toronto-script-styles.png"
           alt="Arabic calligraphy script styles for jewelry Toronto — Naskh (clear, readable, everyday), Thuluth (bold, majestic, statement pieces), Ruq'ah (compact, modern), and Diwani (fluid, ornamental) with descriptions and best use cases"
           width={1200}
           height={600}
@@ -135,7 +135,7 @@ export default function Page() {
 
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
-          src="/blog/arabic-calligraphy-jewellery-toronto-process-steps.svg"
+          src="/blog/arabic-calligraphy-jewellery-toronto-process-steps.png"
           alt="Arabic calligraphy jewelry making process Toronto — 5 steps: free consultation, proofread every character, CAD design with unlimited revisions, casting and hand-setting in Toronto studio, final inspection by Mohammad Al-Asali before shipping"
           width={1200}
           height={600}

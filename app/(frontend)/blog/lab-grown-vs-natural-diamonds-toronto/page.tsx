@@ -9,7 +9,7 @@ const SLUG = 'lab-grown-vs-natural-diamonds-toronto'
 const TITLE = 'Lab-Grown vs Natural Diamonds in Toronto: A Jeweler\'s Honest 2026 Guide'
 const DESCRIPTION = 'Lab-grown or natural? A working Toronto jeweler explains the real differences — price, ethics, resale value, and quality — without the sales pressure.'
 const DATE = '2026-04-17'
-const COVER = '/blog/lab-grown-vs-natural-diamonds-toronto-cover.svg'
+const COVER = '/blog/lab-grown-vs-natural-diamonds-toronto-cover.png'
 const COVER_ALT = 'Lab-grown vs natural diamonds Toronto 2026 — head-to-head comparison of price, quality, resale value, ethics, and what each choice means for your piece, Al-Asali Custom Jewelry'
 
 export const metadata: Metadata = {
@@ -112,7 +112,7 @@ export default function Page() {
 
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
-          src="/blog/lab-grown-vs-natural-diamonds-toronto-price-comparison.svg"
+          src="/blog/lab-grown-vs-natural-diamonds-toronto-price-comparison.png"
           alt="Lab-grown vs natural diamond price comparison Toronto 2026 — proportional bars showing lab-grown saves roughly 40–70% depending on carat size, with savings growing at larger carats"
           width={1200}
           height={600}
@@ -155,7 +155,7 @@ export default function Page() {
 
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
-          src="/blog/lab-grown-vs-natural-diamonds-toronto-resale-value.svg"
+          src="/blog/lab-grown-vs-natural-diamonds-toronto-resale-value.png"
           alt="Diamond resale value comparison Toronto 2026 — natural diamond holds value over decades with established secondary market, lab-grown retail prices have declined significantly since 2020 with limited resale market"
           width={1200}
           height={600}

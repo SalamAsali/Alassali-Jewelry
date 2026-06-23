@@ -9,7 +9,7 @@ const SLUG = 'grillz-price-guide-toronto-2026'
 const TITLE = 'How Much Do Custom Grillz Cost in Toronto? (2026 Price Guide)'
 const DESCRIPTION = 'A Toronto custom jeweler explains what drives the cost of gold grillz and diamond grillz — karat, coverage, diamond grade, and finish.'
 const DATE = '2026-04-17'
-const COVER = '/blog/grillz-price-guide-toronto-2026-cover.svg'
+const COVER = '/blog/grillz-price-guide-toronto-2026-cover.png'
 const COVER_ALT = 'Custom grillz price guide Toronto 2026 — what affects cost: gold karat, diamond clarity, coverage and number of teeth, Al-Asali Custom Jewelry'
 
 export const metadata: Metadata = {
@@ -76,7 +76,7 @@ export default function Page() {
 
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
-          src="/blog/grillz-price-guide-toronto-2026-price-drivers.svg"
+          src="/blog/grillz-price-guide-toronto-2026-price-drivers.png"
           alt="What drives grillz pricing Toronto 2026 — four factors: metal karat (10K, 14K, 18K gold), diamond clarity (VS, VVS, Flawless), coverage (single tooth to full set), and finish style (solid, open-face, iced-out)"
           width={1200}
           height={600}
@@ -103,7 +103,7 @@ export default function Page() {
 
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
-          src="/blog/grillz-price-guide-toronto-2026-vs-vs-vvs.svg"
+          src="/blog/grillz-price-guide-toronto-2026-vs-vs-vvs.png"
           alt="VS vs VVS vs Flawless diamonds in grillz Toronto 2026 — clarity comparison showing visual sparkle difference, inclusions under magnification, and which grade suits which style of grillz"
           width={1200}
           height={600}
