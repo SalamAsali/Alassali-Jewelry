@@ -31,7 +31,7 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     date: '2026-04-17',
     readingMinutes: 7,
     tag: 'Engagement Rings',
-    coverImage: '/blog/custom-engagement-ring-cost-toronto-2026-cover.svg',
+    coverImage: '/blog/custom-engagement-ring-cost-toronto-2026-cover.png',
     coverImageAlt: 'Custom engagement ring cost Toronto 2026 — pricing by style table from solitaire to toi et moi',
   },
   {
@@ -42,7 +42,7 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     date: '2026-04-17',
     readingMinutes: 6,
     tag: 'Grillz',
-    coverImage: '/blog/grillz-price-guide-toronto-2026-cover.svg',
+    coverImage: '/blog/grillz-price-guide-toronto-2026-cover.png',
     coverImageAlt: 'Custom grillz price guide Toronto 2026 — pricing from single tooth $500 to full VVS set $14,000',
   },
   {
@@ -53,7 +53,7 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     date: '2026-04-17',
     readingMinutes: 8,
     tag: 'Diamonds',
-    coverImage: '/blog/lab-grown-vs-natural-diamonds-toronto-cover.svg',
+    coverImage: '/blog/lab-grown-vs-natural-diamonds-toronto-cover.png',
     coverImageAlt: 'Lab-grown vs natural diamonds Toronto 2026 — 11-attribute head-to-head comparison',
   },
   {
@@ -64,7 +64,7 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     date: '2026-04-19',
     readingMinutes: 7,
     tag: 'Heritage',
-    coverImage: '/blog/arabic-calligraphy-jewellery-toronto-cover.svg',
+    coverImage: '/blog/arabic-calligraphy-jewelry-toronto-cover.png',
     coverImageAlt: 'Arabic calligraphy jewelry Toronto 2026 — pricing guide for name pendants, Allah, Ayat al-Kursi',
   },
 ]
