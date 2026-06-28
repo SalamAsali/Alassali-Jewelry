@@ -6,7 +6,7 @@ type ImageLike =
       url?: string
       filename?: string
       responsiveImage?: { src?: string; base64?: string }
-      asset?: { url?: string }
+      asset?: { url?: string; [key: string]: unknown }
     }
   | null
   | undefined
