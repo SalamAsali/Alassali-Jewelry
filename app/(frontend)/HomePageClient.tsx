@@ -385,7 +385,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
               <h2 id="made-in-toronto-heading" className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 text-white" style={{ fontFamily: 'var(--font-heading)' }}>MADE IN<span className="sr-only"> </span><br />TORONTO</h2>
               <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
                 <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt="Silver Cuban chain crafted in Toronto" className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
-                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom chain design crafted in Toronto" className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50 rotate-90" />
+                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom chain design crafted in Toronto" className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50 -rotate-90" />
               </div>
               <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto mt-6">
                 {ACCENT_IMAGES.map((accent, i) => (
@@ -395,14 +395,14 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             </div>
 
             {/* Desktop layout */}
-            <div className="hidden lg:block relative">
+            <div className="hidden lg:block relative px-12 pb-36">
               <motion.img
                 initial={{ opacity: 0, x: 60 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 src={ACCENT_IMAGES[0].src}
                 alt={ACCENT_IMAGES[0].alt}
-                className="absolute -right-4 top-8 w-48 xl:w-60 aspect-square object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/40 z-20"
+                className="absolute -right-4 top-8 w-40 xl:w-48 aspect-square object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/40 z-20"
               />
               <motion.img
                 initial={{ opacity: 0, x: -60 }}
@@ -410,13 +410,13 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
                 viewport={{ once: true }}
                 src={ACCENT_IMAGES[1].src}
                 alt={ACCENT_IMAGES[1].alt}
-                className="absolute -left-4 bottom-8 w-52 xl:w-64 aspect-[4/3] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/40 z-20"
+                className="absolute -left-4 bottom-8 w-44 xl:w-52 aspect-[4/3] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/40 z-20"
               />
 
               <div className="flex items-center justify-center mb-8">
                 <div className="relative inline-block">
                   <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30" style={{ fontFamily: 'var(--font-heading)' }}>M</div>
-                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt="Silver Cuban chain - Toronto craftsmanship" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-44 h-64 xl:w-56 xl:h-80 2xl:w-64 2xl:h-96 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
+                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt="Silver Cuban chain - Toronto craftsmanship" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 xl:w-56 xl:h-72 2xl:w-64 2xl:h-80 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
                 </div>
                 <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>ADE</div>
               </div>
@@ -427,7 +427,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
                 <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>TORONT</div>
                 <div className="relative inline-block">
                   <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30" style={{ fontFamily: 'var(--font-heading)' }}>O</div>
-                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom gold chain - Toronto artistry" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-90 w-44 h-64 xl:w-56 xl:h-80 2xl:w-64 2xl:h-96 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
+                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom gold chain - Toronto artistry" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 -rotate-90 w-48 h-64 xl:w-56 xl:h-72 2xl:w-64 2xl:h-80 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
                 </div>
               </div>
             </div>
