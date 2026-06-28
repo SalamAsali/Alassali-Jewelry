@@ -213,15 +213,18 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
       if (res.ok) {
         const data = await res.json()
         if (data.processSteps?.length) {
-          setProcessSteps(data.processSteps.map((s: any) => ({
-            label: s.label,
-            description: s.description,
-            icon: s.icon ?? null,
-          })))
+          const mapped = data.processSteps
+            .map((s: any) => ({
+              label: s.label ?? s.title ?? '',
+              description: s.description ?? s.text ?? '',
+              icon: s.icon ?? null,
+            }))
+            .filter((s: ProcessStep) => s.label || s.description)
+          if (mapped.length) setProcessSteps(mapped)
         }
         if (data.madeInTorontoImages?.length) {
           const cmsImages = data.madeInTorontoImages.map(
-            (i: { image?: unknown }) => getImageUrl(i?.image as any)
+            (i: unknown) => getImageUrl(i as any)
           ).filter((url: string) => url && !url.includes('placeholder'))
           if (cmsImages.length >= 2) {
             setTorontoImages(cmsImages)
@@ -382,7 +385,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
               <h2 id="made-in-toronto-heading" className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 text-white" style={{ fontFamily: 'var(--font-heading)' }}>MADE IN<span className="sr-only"> </span><br />TORONTO</h2>
               <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
                 <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt="Silver Cuban chain crafted in Toronto" className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
-                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom chain design crafted in Toronto" className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
+                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom chain design crafted in Toronto" className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50 rotate-45" />
               </div>
               <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto mt-6">
                 {ACCENT_IMAGES.map((accent, i) => (
@@ -424,7 +427,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
                 <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>TORONT</div>
                 <div className="relative inline-block">
                   <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30" style={{ fontFamily: 'var(--font-heading)' }}>O</div>
-                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom gold chain - Toronto artistry" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-48 xl:w-40 xl:h-56 2xl:w-48 2xl:h-64 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
+                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom gold chain - Toronto artistry" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rotate-45 w-32 h-48 xl:w-40 xl:h-56 2xl:w-48 2xl:h-64 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
                 </div>
               </div>
             </div>

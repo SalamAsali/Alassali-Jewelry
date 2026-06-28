@@ -6,6 +6,7 @@ type ImageLike =
       url?: string
       filename?: string
       responsiveImage?: { src?: string; base64?: string }
+      asset?: { url?: string }
     }
   | null
   | undefined
@@ -15,6 +16,10 @@ export function getImageUrl(image: ImageLike): string {
   if (!image || typeof image !== 'object') return PLACEHOLDER
 
   if (image.url) return image.url
+
+  // Sanity image shape: { asset: { url } } (projected via the imageFields GROQ fragment)
+  const sanityImg = image as { asset?: { url?: string } }
+  if (sanityImg.asset?.url) return sanityImg.asset.url
 
   const datoImg = image as { responsiveImage?: { src?: string } }
   if (datoImg.responsiveImage?.src) return datoImg.responsiveImage.src
