@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { stripe } from '@/lib/stripe'
 import { z } from 'zod'
+import { getChainBySlug, getPricingConfig } from '@/lib/sanity'
+import { computeWeight, priceForChain } from '@/lib/pricing'
+import type { Karat } from '@/lib/pricing'
 
 const ItemSchema = z.object({
   chainId: z.string(),
@@ -29,26 +32,48 @@ export async function POST(request: NextRequest) {
 
     const items = 'items' in parsed ? parsed.items : [parsed]
 
-    const line_items = items.map(item => ({
-      price_data: {
-        currency: 'cad' as const,
-        unit_amount: Math.round(item.priceCad * 100),
-        product_data: {
-          name: item.name,
-          description: `${item.karat.toUpperCase()} ${item.metal.replace(/-/g, ' ')} · ${item.lengthIn}" · ${item.weightG.toFixed(1)}g · ${item.widthMm}mm`,
-          ...(item.heroImage ? { images: [item.heroImage] } : {}),
-          metadata: {
-            chainId: item.chainId,
-            slug: item.slug,
-            karat: item.karat,
-            metal: item.metal,
-            lengthIn: String(item.lengthIn),
-            widthMm: String(item.widthMm),
-            weightG: String(item.weightG),
+    // Fetch pricing config once for server-side price verification
+    const pricingConfig = await getPricingConfig()
+    if (!pricingConfig) {
+      return NextResponse.json({ error: 'Pricing unavailable' }, { status: 503 })
+    }
+
+    const line_items = await Promise.all(items.map(async (item) => {
+      // Server-side price calculation — never trust client-supplied priceCad
+      const chain = await getChainBySlug(item.slug)
+      if (!chain) {
+        throw new Error(`Chain not found: ${item.slug}`)
+      }
+
+      const weightG = computeWeight(chain.widthMm, chain.weightPerInchG, item.lengthIn)
+      const serverPrice = priceForChain({
+        weightG,
+        karat: item.karat as Karat,
+        widthMm: chain.widthMm,
+        config: pricingConfig,
+      })
+
+      return {
+        price_data: {
+          currency: 'cad' as const,
+          unit_amount: Math.round(serverPrice * 100),
+          product_data: {
+            name: item.name,
+            description: `${item.karat.toUpperCase()} ${item.metal.replace(/-/g, ' ')} · ${item.lengthIn}" · ${weightG.toFixed(1)}g · ${chain.widthMm}mm`,
+            ...(item.heroImage ? { images: [item.heroImage] } : {}),
+            metadata: {
+              chainId: item.chainId,
+              slug: item.slug,
+              karat: item.karat,
+              metal: item.metal,
+              lengthIn: String(item.lengthIn),
+              widthMm: String(chain.widthMm),
+              weightG: String(weightG),
+            },
           },
         },
-      },
-      quantity: item.quantity || 1,
+        quantity: item.quantity || 1,
+      }
     }))
 
     const firstSlug = items[0]?.slug || 'chains'

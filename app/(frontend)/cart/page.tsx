@@ -118,10 +118,6 @@ export default function CartPage() {
                     <span>Shipping</span>
                     <span className="text-glacier-grey">Calculated at checkout</span>
                   </div>
-                  <div className="flex justify-between text-sm text-charcoal">
-                    <span>Tax (HST)</span>
-                    <span className="text-glacier-grey">Calculated at checkout</span>
-                  </div>
                   <div className="border-t border-stone pt-3 flex justify-between">
                     <span className="font-heading text-lg font-semibold text-deep-charcoal">Total</span>
                     <span className="font-heading text-xl font-bold text-deep-charcoal">{formatPrice(subtotal)}</span>

@@ -61,8 +61,8 @@ export const FAQ_CATEGORIES = [
 ]
 
 export const FAQ_ITEMS = [
-  { category: 'Payment', question: 'What form of payments are accepted?', answer: 'We accept all major credit cards (Visa, Mastercard, American Express), wire transfers, and cryptocurrencies (Bitcoin, USDC). For custom orders over $10,000, we offer flexible payment plans.', order: 10 },
-  { category: 'Payment', question: 'Am I able to split up payments?', answer: 'Yes! For custom orders, we offer flexible payment plans. A deposit is required to begin production, with the balance due before shipping. Contact us to discuss payment arrangements that work for you.', order: 20 },
+  { category: 'Payment', question: 'What form of payments are accepted?', answer: 'We accept all major credit cards (Visa, Mastercard, American Express), wire transfers, and cryptocurrencies (Bitcoin, USDC).', order: 10 },
+  { category: 'Payment', question: 'Am I able to split up payments?', answer: 'For custom orders, a deposit is required to begin production, with the balance due before shipping. Contact us to discuss payment arrangements that work for you.', order: 20 },
   { category: 'Payment', question: 'What is the minimum deposit for a custom?', answer: 'The minimum deposit for custom jewelry is $500 CAD. This deposit is applied toward your final price and secures your spot in our production queue. The deposit is non-refundable once production begins.', order: 30 },
   { category: 'Payment', question: 'Are deposits refundable?', answer: 'Deposits are refundable before production begins. Once we start creating your custom piece, the deposit becomes non-refundable as materials have been sourced and labor committed.', order: 40 },
   { category: 'Shipping', question: 'Can I track my shipments?', answer: 'Yes! Once your order ships, you will receive a tracking number via email. All shipments are fully insured and require an adult signature (21+) upon delivery.', order: 50 },

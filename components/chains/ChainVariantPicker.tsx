@@ -114,8 +114,6 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
     setTimeout(() => setJustAdded(false), 2000)
   }
 
-  const bnplPayment = formatPrice(price / 4)
-
   return (
     <div>
       {/* Price */}
@@ -233,14 +231,6 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
         >
           {isBuyingNow ? 'Redirecting...' : 'Buy Now'}
         </button>
-      </div>
-
-      {/* BNPL message */}
-      <div className="mt-4 p-3 bg-warm-white border border-stone rounded-lg text-center">
-        <p className="text-sm text-charcoal">
-          Buy Now, Pay Later — 4 interest-free payments of{' '}
-          <span className="font-semibold text-deep-charcoal">{bnplPayment}</span>
-        </p>
       </div>
 
       {/* Shipping info */}

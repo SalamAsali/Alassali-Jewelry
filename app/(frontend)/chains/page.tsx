@@ -60,15 +60,6 @@ export default async function ChainsPage() {
         </div>
       </section>
 
-      {/* BNPL Banner */}
-      <section className="py-4 sm:py-5">
-        <div className="section-container">
-          <div className="bg-warm-white border border-stone rounded-lg p-3 text-center text-sm text-charcoal">
-            Buy Now, Pay Later — Split your purchase into 4 interest-free payments
-          </div>
-        </div>
-      </section>
-
       {/* Metal Picker */}
       <section className="py-16 sm:py-20">
         <div className="section-container">

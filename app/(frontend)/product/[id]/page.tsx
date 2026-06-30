@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import { motion } from 'framer-motion'
-import { ShoppingCart, Sparkles, Check, ArrowLeft } from 'lucide-react'
+import { MessageCircle, Sparkles, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import { getImageUrl } from '@/lib/getImageUrl'
 
@@ -24,7 +24,6 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null)
   const [loading, setLoading] = useState(true)
   const [selectedImage, setSelectedImage] = useState(0)
-  const [showSuccess, setShowSuccess] = useState(false)
   const [images, setImages] = useState<string[]>([])
 
   useEffect(() => {
@@ -49,17 +48,6 @@ export default function ProductDetailPage() {
     } finally {
       setLoading(false)
     }
-  }
-
-  const handleAddToCart = () => {
-    if (!product) return
-    const existingCart = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('cart') || '[]') : []
-    const existingItem = existingCart.find((item: any) => item.id === product.id)
-    if (existingItem) existingItem.quantity += 1
-    else existingCart.push({ id: product.id, title: product.title, price: 0, quantity: 1, image: getImageUrl(product.image) })
-    if (typeof window !== 'undefined') localStorage.setItem('cart', JSON.stringify(existingCart))
-    setShowSuccess(true)
-    setTimeout(() => setShowSuccess(false), 3000)
   }
 
   if (loading) {
@@ -115,18 +103,12 @@ export default function ProductDetailPage() {
               </div>
             )}
             <div className="flex items-center gap-4 pt-6 border-t border-stone">
-              <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={handleAddToCart} className="flex-1 bg-glacier-grey text-white px-8 py-4 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all flex items-center justify-center gap-2">
-                <ShoppingCart className="w-5 h-5" /> Add to Cart
-              </motion.button>
-              <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="p-4 border-2 border-deep-charcoal rounded-lg hover:bg-deep-charcoal hover:text-white transition-all">
-                <Sparkles className="w-5 h-5" />
-              </motion.button>
+              <Link href="/custom-form" className="flex-1">
+                <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="w-full bg-glacier-grey text-white px-8 py-4 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all flex items-center justify-center gap-2">
+                  <MessageCircle className="w-5 h-5" /> Inquire About This Piece
+                </motion.button>
+              </Link>
             </div>
-            {showSuccess && (
-              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg flex items-center gap-2">
-                <Check className="w-5 h-5" /><span>Added to cart!</span>
-              </motion.div>
-            )}
             <div className="pt-6 space-y-4 border-t border-stone">
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-soft-beige flex items-center justify-center flex-shrink-0">

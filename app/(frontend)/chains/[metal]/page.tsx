@@ -111,15 +111,6 @@ export default async function MetalPage({ params }: MetalPageProps) {
         </div>
       </section>
 
-      {/* BNPL Banner */}
-      <section className="py-4 sm:py-5">
-        <div className="section-container">
-          <div className="bg-warm-white border border-stone rounded-lg p-3 text-center text-sm text-charcoal">
-            Buy Now, Pay Later — Split your purchase into 4 interest-free payments
-          </div>
-        </div>
-      </section>
-
       {/* Grid */}
       <section className="py-8 sm:py-12">
         <div className="section-container">

@@ -1,14 +1,21 @@
 'use client'
 
+import { useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { CheckCircle2 } from 'lucide-react'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
+import { useCart } from '@/lib/cart'
 
 export const dynamic = 'force-dynamic'
 
 export default function CheckoutSuccessPage() {
+  const { clearCart } = useCart()
+
+  useEffect(() => {
+    clearCart()
+  }, [clearCart])
   return (
     <div className="min-h-screen bg-soft-black relative overflow-hidden flex items-center justify-center">
       <DotPattern />

@@ -28,19 +28,27 @@ export async function POST(request: NextRequest) {
     const session = event.data.object
 
     try {
-      const lineItems = await stripe.checkout.sessions.listLineItems(session.id)
+      const lineItems = await stripe.checkout.sessions.listLineItems(session.id, {
+        expand: ['data.price.product'],
+      })
 
-      const items = lineItems.data.map((item) => ({
-        sku: item.price?.id || '',
-        name: item.description || '',
-        metal: '',
-        karat: '',
-        lengthIn: 0,
-        weightG: 0,
-        unitPriceCad: (item.amount_total || 0) / 100,
-        qty: item.quantity || 1,
-        lineSubtotal: (item.amount_total || 0) / 100,
-      }))
+      const items = lineItems.data.map((item) => {
+        const product = item.price?.product
+        const metadata = (typeof product === 'object' && product !== null && 'metadata' in product)
+          ? (product as { metadata: Record<string, string> }).metadata
+          : {}
+        return {
+          sku: item.price?.id || '',
+          name: item.description || '',
+          metal: metadata.metal || '',
+          karat: metadata.karat || '',
+          lengthIn: Number(metadata.lengthIn) || 0,
+          weightG: Number(metadata.weightG) || 0,
+          unitPriceCad: (item.amount_total || 0) / 100,
+          qty: item.quantity || 1,
+          lineSubtotal: (item.amount_total || 0) / 100,
+        }
+      })
 
       const result = await createOrderFromStripeEvent({
         customerEmail: session.customer_details?.email || '',
