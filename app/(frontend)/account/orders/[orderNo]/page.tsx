@@ -149,7 +149,7 @@ export default async function OrderDetailPage({
         </div>
       )}
 
-      {/* Totals + Address */}
+      {/* Shipping + Tracking */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {shippingAddress.line1 && (
           <div>
@@ -171,34 +171,6 @@ export default async function OrderDetailPage({
             <p className="text-sm font-medium text-glacier-grey">{order.trackingNumber}</p>
           </div>
         )}
-
-        <div className="rounded-lg bg-warm-white p-6">
-          <h3 className="heading-subsection text-deep-charcoal mb-4">Order Summary</h3>
-          <div className="space-y-2 text-sm">
-            {order.subtotalCad > 0 && (
-              <div className="flex justify-between">
-                <span className="text-taupe">Subtotal</span>
-                <span className="font-medium">${order.subtotalCad?.toFixed(2)}</span>
-              </div>
-            )}
-            {order.shippingCad > 0 && (
-              <div className="flex justify-between">
-                <span className="text-taupe">Shipping</span>
-                <span className="font-medium">${order.shippingCad?.toFixed(2)}</span>
-              </div>
-            )}
-            {order.taxCad > 0 && (
-              <div className="flex justify-between">
-                <span className="text-taupe">Tax</span>
-                <span className="font-medium">${order.taxCad?.toFixed(2)}</span>
-              </div>
-            )}
-            <div className="flex justify-between border-t border-stone pt-2 mt-2">
-              <span className="font-semibold text-deep-charcoal">Total</span>
-              <span className="font-bold text-lg">{order.totalCad ? `$${order.totalCad.toFixed(2)}` : 'TBD'}</span>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   )

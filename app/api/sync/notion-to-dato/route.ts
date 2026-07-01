@@ -56,17 +56,13 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    const isOrder = databaseId === process.env.NOTION_ORDERS_DB_ID
+    // Extract order number from title property
+    const orderNo =
+      properties['Order']?.title?.[0]?.plain_text ||
+      properties['Order']?.title?.[0]?.text?.content ||
+      properties['title']?.title?.[0]?.plain_text
 
-    if (isOrder) {
-      // Extract order number from title property
-      const orderNo =
-        properties['Order']?.title?.[0]?.plain_text ||
-        properties['Order']?.title?.[0]?.text?.content ||
-        properties['title']?.title?.[0]?.plain_text
-      if (!orderNo) {
-        return NextResponse.json({ skipped: true, reason: 'No order number found' })
-      }
+    if (orderNo) {
 
       const sanityOrder = await sanityWriteClient.fetch(
         `*[_type == "order" && orderNo == $orderNo][0]{ _id }`,
@@ -123,7 +119,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ success: true, order: orderNo, updates })
     }
 
-    return NextResponse.json({ skipped: true, reason: 'Not an order database' })
+    return NextResponse.json({ skipped: true, reason: 'No order number found in payload' })
   } catch (error) {
     console.error('[notion-to-sanity] Sync failed:', error)
     return NextResponse.json({ error: 'Sync failed', details: String(error) }, { status: 500 })
