@@ -163,18 +163,12 @@ export async function POST(request: NextRequest) {
         .catch((err: unknown) => console.error('[inquiry] Sanity save failed:', err))
     }
 
-    // Create customer + order in Notion at "Initial Inquiry" stage
-    const notionSync = async () => {
+    // Create customer + order in both Sanity and Notion at "Initial Inquiry" stage
+    const crmSync = async () => {
       try {
-        const customerPageId = await findOrCreateCustomer({
-          name,
-          email: body.email,
-          phone: body.phone || undefined,
-        })
-
         const orderNo = await getNextOrderNumber()
 
-        // Build inquiry details for the order notes
+        // Build inquiry details for notes
         const details = [
           category !== 'Inquiry' ? `Type: ${category}` : '',
           body.style ? `Style: ${body.style}` : '',
@@ -186,7 +180,48 @@ export async function POST(request: NextRequest) {
           body.notes ? `Notes: ${body.notes}` : '',
         ].filter(Boolean).join(' | ')
 
-        // Map jewelry category to Products multi-select
+        // 1. Find or create customer in Sanity
+        let customerId: string | undefined
+        if (sanityWriteClient) {
+          const existing = await sanityWriteClient.fetch(
+            `*[_type == "customer" && email == $email]{ _id }`,
+            { email: body.email }
+          )
+          if (existing.length > 0) {
+            customerId = existing[0]._id
+          } else {
+            const nameParts = name.split(' ')
+            const newCustomer = await sanityWriteClient.create({
+              _type: 'customer',
+              firstName: nameParts[0] || '',
+              lastName: nameParts.slice(1).join(' ') || '',
+              email: body.email,
+              phone: body.phone || '',
+              marketingOptIn: false,
+              firstSeenAt: new Date().toISOString(),
+              tags: ['New'],
+            })
+            customerId = newCustomer._id
+          }
+
+          // 2. Create order in Sanity so it shows on account dashboard
+          await sanityWriteClient.create({
+            _type: 'order',
+            orderNo,
+            status: 'initial_inquiry',
+            customer: customerId ? { _type: 'reference', _ref: customerId } : undefined,
+            totalCad: 0,
+            items: [],
+          })
+        }
+
+        // 3. Find or create customer in Notion + create linked order
+        const customerPageId = await findOrCreateCustomer({
+          name,
+          email: body.email,
+          phone: body.phone || undefined,
+        })
+
         const productMap: Record<string, string> = {
           'engagement-rings': 'Engagement Ring',
           'wedding-bands': 'Wedding Band',
@@ -203,12 +238,12 @@ export async function POST(request: NextRequest) {
           products: product ? [product] : undefined,
         })
 
-        console.log(`[inquiry] Notion order created: ${orderNo} for ${name}`)
+        console.log(`[inquiry] Order created: ${orderNo} for ${name} (Sanity + Notion)`)
       } catch (err) {
-        console.error('[inquiry] Notion sync failed:', err)
+        console.error('[inquiry] CRM sync failed:', err)
       }
     }
-    notionSync()
+    crmSync()
 
     return NextResponse.json({
       success: true,
