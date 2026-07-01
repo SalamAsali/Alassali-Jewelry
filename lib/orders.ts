@@ -1,5 +1,9 @@
 import { createClient } from '@sanity/client'
-import { upsertOrderToNotion, upsertCustomerToNotion } from '@/lib/notion'
+import {
+  findOrCreateCustomer,
+  getNextOrderNumber,
+  createOrderInNotion,
+} from '@/lib/notion'
 
 const sanityWriteClient = createClient({
   projectId: 'oh0jn4tt',
@@ -8,11 +12,6 @@ const sanityWriteClient = createClient({
   token: process.env.SANITY_API_WRITE_TOKEN,
   useCdn: false,
 })
-
-function generateOrderNumber(): string {
-  const seq = Date.now().toString().slice(-9).padStart(9, '0')
-  return `AL-${seq}`
-}
 
 interface LineItem {
   chainId?: string
@@ -46,7 +45,9 @@ interface CreateOrderInput {
 }
 
 export async function createOrderFromStripeEvent(input: CreateOrderInput) {
-  // 1. Find or create customer
+  const customerName = `${input.customerFirstName} ${input.customerLastName}`.trim()
+
+  // 1. Find or create customer in Sanity
   const existingCustomers = await sanityWriteClient.fetch(
     `*[_type == "customer" && email == $email]{ _id }`,
     { email: input.customerEmail }
@@ -71,23 +72,16 @@ export async function createOrderFromStripeEvent(input: CreateOrderInput) {
       tags: ['New'],
     })
     customerId = newCustomer._id
-
-    await upsertCustomerToNotion({
-      datoItemId: newCustomer._id,
-      firstName: input.customerFirstName,
-      lastName: input.customerLastName,
-      email: input.customerEmail,
-      phone: input.customerPhone,
-      stripeCustomerId: input.stripeCustomerId,
-      marketingOptIn: false,
-    }).catch((err) => console.error('[orders] Notion customer sync failed:', err))
   }
 
-  // 2. Create order
-  const orderNo = generateOrderNumber()
+  // 2. Generate order number from Notion's alternating sequences
+  const orderNo = await getNextOrderNumber()
+
+  // 3. Create order in Sanity
   const order = await sanityWriteClient.create({
     _type: 'order',
     orderNo,
+    status: 'payment_made',
     customer: { _type: 'reference', _ref: customerId },
     items: input.items.map((item, i) => ({
       _type: 'orderItem',
@@ -110,18 +104,28 @@ export async function createOrderFromStripeEvent(input: CreateOrderInput) {
     shippingMethod: input.shippingMethod,
   })
 
-  // 3. Sync to Notion (fire-and-forget)
-  upsertOrderToNotion({
-    datoItemId: order._id,
+  // 4. Find or create customer in Notion, then create the order linked to them
+  const notionCustomerId = await findOrCreateCustomer({
+    name: customerName,
+    email: input.customerEmail,
+    phone: input.customerPhone,
+    address: input.shippingAddress
+      ? `${input.shippingAddress.line1 || ''}, ${input.shippingAddress.city || ''}, ${input.shippingAddress.province || ''} ${input.shippingAddress.postal || ''}`
+      : undefined,
+  }).catch((err) => {
+    console.error('[orders] Notion customer sync failed:', err)
+    return null
+  })
+
+  const itemNames = input.items.map((i) => i.name).join(', ')
+
+  await createOrderInNotion({
     orderNo,
-    customerName: `${input.customerFirstName} ${input.customerLastName}`,
-    status: 'Confirmed',
+    customerPageId: notionCustomerId,
+    stage: 'Payment Made',
     totalCad: input.totalCad,
-    itemsCount: input.items.length,
-    createdAt: new Date().toISOString(),
-    shippingMethod: input.shippingMethod,
-    stripePiId: input.stripePiId,
-    itemsJson: JSON.stringify(input.items),
+    notes: itemNames,
+    paymentType: 'Credit Card',
   }).catch((err) => console.error('[orders] Notion order sync failed:', err))
 
   return { orderNo, orderId: order._id, customerId }

@@ -1,6 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { createClient } from '@sanity/client'
+import {
+  findOrCreateCustomer,
+  getNextOrderNumber,
+  createOrderInNotion,
+} from '@/lib/notion'
 
 export const dynamic = 'force-dynamic'
 
@@ -157,6 +162,53 @@ export async function POST(request: NextRequest) {
         })
         .catch((err: unknown) => console.error('[inquiry] Sanity save failed:', err))
     }
+
+    // Create customer + order in Notion at "Initial Inquiry" stage
+    const notionSync = async () => {
+      try {
+        const customerPageId = await findOrCreateCustomer({
+          name,
+          email: body.email,
+          phone: body.phone || undefined,
+        })
+
+        const orderNo = await getNextOrderNumber()
+
+        // Build inquiry details for the order notes
+        const details = [
+          category !== 'Inquiry' ? `Type: ${category}` : '',
+          body.style ? `Style: ${body.style}` : '',
+          body.metalType ? `Metal: ${body.metalType}` : '',
+          body.goldColor ? `Gold: ${body.goldColor}` : '',
+          body.budget ? `Budget: ${body.budget}` : '',
+          body.timeline ? `Timeline: ${body.timeline}` : '',
+          body.size ? `Size: ${body.size}` : '',
+          body.notes ? `Notes: ${body.notes}` : '',
+        ].filter(Boolean).join(' | ')
+
+        // Map jewelry category to Products multi-select
+        const productMap: Record<string, string> = {
+          'engagement-rings': 'Engagement Ring',
+          'wedding-bands': 'Wedding Band',
+          pendants: 'Pendant',
+          earrings: 'earrings',
+        }
+        const product = productMap[body.jewelryCategory || body.type || '']
+
+        await createOrderInNotion({
+          orderNo,
+          customerPageId,
+          stage: 'Initial Inquiry',
+          notes: details,
+          products: product ? [product] : undefined,
+        })
+
+        console.log(`[inquiry] Notion order created: ${orderNo} for ${name}`)
+      } catch (err) {
+        console.error('[inquiry] Notion sync failed:', err)
+      }
+    }
+    notionSync()
 
     return NextResponse.json({
       success: true,

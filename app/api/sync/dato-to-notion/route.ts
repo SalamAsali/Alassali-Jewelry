@@ -1,5 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { upsertChainToNotion, upsertOrderToNotion, upsertCustomerToNotion } from '@/lib/notion'
+import {
+  upsertChainToNotion,
+  findOrCreateCustomer,
+  findOrderByNumber,
+  updateOrderStageByNumber,
+  SANITY_TO_NOTION_STAGE,
+} from '@/lib/notion'
 
 /**
  * Sanity webhook → Notion sync
@@ -36,30 +42,24 @@ export async function POST(request: NextRequest) {
         break
 
       case 'order':
-        await upsertOrderToNotion({
-          datoItemId: doc._id,
-          orderNo: doc.orderNo || '',
-          customerName: '',
-          status: doc.status || 'pending',
-          totalCad: doc.totalCad || 0,
-          itemsCount: doc.items?.length || 0,
-          createdAt: doc._createdAt || new Date().toISOString(),
-          shippingMethod: doc.shippingMethod,
-          trackingNumber: doc.trackingNumber,
-          stripePiId: doc.stripePiId,
-        })
+        // Sync status changes from Sanity to Notion
+        if (doc.orderNo && doc.status) {
+          const notionStage = SANITY_TO_NOTION_STAGE[doc.status]
+          if (notionStage) {
+            await updateOrderStageByNumber(doc.orderNo, notionStage)
+          }
+        }
         break
 
       case 'customer':
-        await upsertCustomerToNotion({
-          datoItemId: doc._id,
-          firstName: doc.firstName || '',
-          lastName: doc.lastName || '',
-          email: doc.email || '',
-          phone: doc.phone,
-          stripeCustomerId: doc.stripeCustomerId,
-          marketingOptIn: doc.marketingOptIn,
-        })
+        // Find or create in Notion by email (dedup)
+        if (doc.email) {
+          await findOrCreateCustomer({
+            name: `${doc.firstName || ''} ${doc.lastName || ''}`.trim() || doc.email,
+            email: doc.email,
+            phone: doc.phone,
+          })
+        }
         break
 
       default:
