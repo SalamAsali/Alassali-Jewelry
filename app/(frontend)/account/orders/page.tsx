@@ -44,25 +44,25 @@ export default async function OrdersPage() {
               </tr>
             </thead>
             <tbody>
-              {orders.map((order) => (
-                <tr key={order.id} className="border-b border-stone hover:bg-warm-white transition-colors">
+              {orders.map((order: any) => (
+                <tr key={order._id} className="border-b border-stone hover:bg-warm-white transition-colors">
                   <td className="py-4 px-4 font-medium text-deep-charcoal">
-                    {(order.order_no as string) || order.id}
+                    {order.orderNo || order._id}
                   </td>
                   <td className="py-4 px-4 text-sm text-taupe">
-                    {order.created_at
-                      ? new Date(order.created_at as string).toLocaleDateString('en-CA')
+                    {order._createdAt
+                      ? new Date(order._createdAt).toLocaleDateString('en-CA')
                       : '—'}
                   </td>
                   <td className="py-4 px-4 font-medium text-deep-charcoal">
-                    ${(order.total_cad as number)?.toFixed(2) || '—'}
+                    {order.totalCad ? `$${order.totalCad.toFixed(2)}` : '—'}
                   </td>
                   <td className="py-4 px-4">
-                    <StatusBadge status={(order.status as string) || 'pending'} />
+                    <StatusBadge status={order.status || 'initial_inquiry'} />
                   </td>
                   <td className="py-4 px-4 text-right">
                     <Link
-                      href={`/account/orders/${order.order_no || order.id}`}
+                      href={`/account/orders/${encodeURIComponent(order.orderNo || order._id)}`}
                       className="text-sm font-semibold text-glacier-grey hover:text-glacier-grey-light transition-colors"
                     >
                       View →
