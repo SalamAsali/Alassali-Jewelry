@@ -42,6 +42,20 @@ export const NOTION_TO_SANITY_STATUS: Record<string, string> = {
   '3. Finalize & manufacture': 'in_progress',
 }
 
+// Map our stage names to what actually exists in Notion's status property.
+// Once the new options are added in Notion UI, this can be simplified to identity.
+const STAGE_TO_NOTION_STATUS: Record<OrderStage, string> = {
+  'Initial Inquiry': '1. Initial inquiry',
+  'Payment Made': '2. Send deposit for design',
+  'In Progress': '3. Finalize & manufacture',
+  'Shipped': '3. Finalize & manufacture', // no Shipped option yet, use closest
+  'Completed': 'Completed',
+}
+
+function resolveNotionStatus(stage: OrderStage): string {
+  return STAGE_TO_NOTION_STATUS[stage] || stage
+}
+
 // ---------------------------------------------------------------------------
 // Helpers — v5.22 uses dataSources.query instead of databases.query
 // ---------------------------------------------------------------------------
@@ -184,7 +198,7 @@ export async function createOrderInNotion(order: {
 
   const properties: Record<string, any> = {
     Order: { title: [{ text: { content: order.orderNo } }] },
-    Stage: { status: { name: order.stage } },
+    Stage: { status: { name: resolveNotionStatus(order.stage) } },
   }
 
   if (order.customerPageId) {
@@ -225,7 +239,7 @@ export async function updateOrderStageByNumber(
 
   await notion.pages.update({
     page_id: pageId,
-    properties: { Stage: { status: { name: stage } } } as any,
+    properties: { Stage: { status: { name: resolveNotionStatus(stage) } } } as any,
   })
 }
 
