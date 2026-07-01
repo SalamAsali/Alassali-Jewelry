@@ -39,6 +39,83 @@ export default async function OrderDetailPage({
         <StatusBadge status={order.status || 'initial_inquiry'} />
       </div>
 
+      {/* Inquiry details (for custom orders at inquiry stage) */}
+      {order.inquiryDetails && (
+        <div className="rounded-lg border-2 border-soft-black overflow-hidden mb-8">
+          <div className="bg-soft-black px-6 py-3">
+            <h3 className="text-xs uppercase tracking-wider font-semibold text-glacier-grey-light">Inquiry Details</h3>
+          </div>
+          <div className="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+            {order.inquiryDetails.jewelryCategory && (
+              <div>
+                <span className="text-taupe block text-xs uppercase tracking-wide mb-1">Type</span>
+                <span className="text-deep-charcoal font-medium">{order.inquiryDetails.jewelryCategory}</span>
+              </div>
+            )}
+            {order.inquiryDetails.style && (
+              <div>
+                <span className="text-taupe block text-xs uppercase tracking-wide mb-1">Style</span>
+                <span className="text-deep-charcoal font-medium">{order.inquiryDetails.style}</span>
+              </div>
+            )}
+            {order.inquiryDetails.metalType && (
+              <div>
+                <span className="text-taupe block text-xs uppercase tracking-wide mb-1">Metal</span>
+                <span className="text-deep-charcoal font-medium">{order.inquiryDetails.metalType}</span>
+              </div>
+            )}
+            {order.inquiryDetails.goldColor && (
+              <div>
+                <span className="text-taupe block text-xs uppercase tracking-wide mb-1">Gold Color</span>
+                <span className="text-deep-charcoal font-medium">{order.inquiryDetails.goldColor}</span>
+              </div>
+            )}
+            {order.inquiryDetails.stonePreferences && (
+              <div>
+                <span className="text-taupe block text-xs uppercase tracking-wide mb-1">Stones</span>
+                <span className="text-deep-charcoal font-medium">{order.inquiryDetails.stonePreferences}</span>
+              </div>
+            )}
+            {order.inquiryDetails.diamondType && (
+              <div>
+                <span className="text-taupe block text-xs uppercase tracking-wide mb-1">Diamond Type</span>
+                <span className="text-deep-charcoal font-medium">{order.inquiryDetails.diamondType}</span>
+              </div>
+            )}
+            {order.inquiryDetails.stoneShape && (
+              <div>
+                <span className="text-taupe block text-xs uppercase tracking-wide mb-1">Stone Shape</span>
+                <span className="text-deep-charcoal font-medium">{order.inquiryDetails.stoneShape}</span>
+              </div>
+            )}
+            {order.inquiryDetails.size && (
+              <div>
+                <span className="text-taupe block text-xs uppercase tracking-wide mb-1">Size</span>
+                <span className="text-deep-charcoal font-medium">{order.inquiryDetails.size}</span>
+              </div>
+            )}
+            {order.inquiryDetails.budget && (
+              <div>
+                <span className="text-taupe block text-xs uppercase tracking-wide mb-1">Budget</span>
+                <span className="text-deep-charcoal font-medium">{order.inquiryDetails.budget}</span>
+              </div>
+            )}
+            {order.inquiryDetails.timeline && (
+              <div>
+                <span className="text-taupe block text-xs uppercase tracking-wide mb-1">Timeline</span>
+                <span className="text-deep-charcoal font-medium">{order.inquiryDetails.timeline}</span>
+              </div>
+            )}
+            {order.inquiryDetails.notes && (
+              <div className="sm:col-span-2">
+                <span className="text-taupe block text-xs uppercase tracking-wide mb-1">Notes</span>
+                <span className="text-deep-charcoal font-medium">{order.inquiryDetails.notes}</span>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
       {/* Items table */}
       {items.length > 0 && (
         <div className="rounded-lg border-2 border-soft-black overflow-hidden mb-8">

@@ -212,6 +212,22 @@ export async function POST(request: NextRequest) {
             customer: customerId ? { _type: 'reference', _ref: customerId } : undefined,
             totalCad: 0,
             items: [],
+            inquiryDetails: {
+              _type: 'inquiryDetails',
+              jewelryCategory: category,
+              style: body.style || '',
+              metalType: body.metalType || '',
+              goldColor: body.goldColor || '',
+              budget: body.budget || '',
+              timeline: body.timeline || '',
+              size: body.size || '',
+              notes: body.notes || '',
+              stonePreferences: Array.isArray(body.stonePreferences)
+                ? body.stonePreferences.join(', ')
+                : body.stonePreferences || '',
+              diamondType: body.diamondType || '',
+              stoneShape: body.stoneShape || '',
+            },
           })
         }
 
