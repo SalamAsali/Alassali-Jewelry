@@ -10,7 +10,9 @@
     "migrate:models": "node scripts/migrate/01-models.mjs",
     "migrate:uploads": "node scripts/migrate/02-uploads.mjs",
     "migrate:records": "node scripts/migrate/03-records.mjs",
-    "migrate:all": "node scripts/migrate/01-models.mjs && node scripts/migrate/02-uploads.mjs && node scripts/migrate/03-records.mjs"
+    "migrate:all": "node scripts/migrate/01-models.mjs && node scripts/migrate/02-uploads.mjs && node scripts/migrate/03-records.mjs",
+    "portfolio:audit": "node scripts/portfolio-tools.mjs audit",
+    "portfolio:remove-first-image": "node scripts/portfolio-tools.mjs remove-first-image"
   },
   "dependencies": {
     "@clerk/nextjs": "^7.5.2",
