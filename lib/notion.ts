@@ -36,7 +36,10 @@ export const NOTION_TO_SANITY_STATUS: Record<string, string> = {
   'In Progress': 'in_progress',
   'Shipped': 'shipped',
   'Completed': 'completed',
-  // legacy Notion stages
+  // case variations + legacy Notion stages
+  'Initial inquiry': 'initial_inquiry',
+  'Payment made': 'payment_made',
+  'In progress': 'in_progress',
   '1. Initial inquiry': 'initial_inquiry',
   '2. Send deposit for design': 'payment_made',
   '3. Finalize & manufacture': 'in_progress',

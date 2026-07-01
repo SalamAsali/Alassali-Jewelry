@@ -78,7 +78,11 @@ export async function POST(request: NextRequest) {
         properties['Stage']?.status?.name ||
         properties['Stage']?.status?.option?.name
       if (stageName) {
+        // Try exact match first, then case-insensitive
         const sanityStatus = NOTION_TO_SANITY_STATUS[stageName]
+          || Object.entries(NOTION_TO_SANITY_STATUS).find(
+            ([key]) => key.toLowerCase() === stageName.toLowerCase()
+          )?.[1]
         if (sanityStatus) {
           updates.status = sanityStatus
         }
