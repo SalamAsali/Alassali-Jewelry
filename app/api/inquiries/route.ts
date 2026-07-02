@@ -272,7 +272,7 @@ export async function POST(request: NextRequest) {
         console.error('[inquiry] CRM sync failed:', err)
       }
     }
-    crmSync()
+    await crmSync()
 
     return NextResponse.json({
       success: true,
