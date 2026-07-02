@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { createClient } from '@sanity/client'
+import { currentUser } from '@clerk/nextjs/server'
 import {
   findOrCreateCustomer,
   getNextOrderNumber,
@@ -115,7 +116,19 @@ export async function POST(request: NextRequest) {
 
     const name = body.name || `${body.firstName ?? ''} ${body.lastName ?? ''}`.trim()
     const firstName = body.firstName || name.split(' ')[0]
-    const category = (body.jewelryCategory || body.type || 'Inquiry').replace(/^\w/, c => c.toUpperCase())
+    const category = (body.jewelryCategory || body.type || 'Inquiry').replace(/^\w/, (c: string) => c.toUpperCase())
+
+    // If the user is logged in, use their account email for CRM linking
+    // so the order shows up on their dashboard regardless of form email
+    let crmEmail = body.email
+    try {
+      const user = await currentUser()
+      if (user?.emailAddresses?.[0]?.emailAddress) {
+        crmEmail = user.emailAddresses[0].emailAddress
+      }
+    } catch {
+      // Not logged in — use form email
+    }
 
     await Promise.all([
       resend.emails.send({
@@ -180,12 +193,12 @@ export async function POST(request: NextRequest) {
           body.notes ? `Notes: ${body.notes}` : '',
         ].filter(Boolean).join(' | ')
 
-        // 1. Find or create customer in Sanity
+        // 1. Find or create customer in Sanity (use logged-in email if available)
         let customerId: string | undefined
         if (sanityWriteClient) {
           const existing = await sanityWriteClient.fetch(
             `*[_type == "customer" && email == $email]{ _id }`,
-            { email: body.email }
+            { email: crmEmail }
           )
           if (existing.length > 0) {
             customerId = existing[0]._id
@@ -195,7 +208,7 @@ export async function POST(request: NextRequest) {
               _type: 'customer',
               firstName: nameParts[0] || '',
               lastName: nameParts.slice(1).join(' ') || '',
-              email: body.email,
+              email: crmEmail,
               phone: body.phone || '',
               marketingOptIn: false,
               firstSeenAt: new Date().toISOString(),
@@ -234,7 +247,7 @@ export async function POST(request: NextRequest) {
         // 3. Find or create customer in Notion + create linked order
         const customerPageId = await findOrCreateCustomer({
           name,
-          email: body.email,
+          email: crmEmail,
           phone: body.phone || undefined,
         })
 

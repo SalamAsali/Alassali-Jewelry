@@ -38,7 +38,6 @@ export default async function OrdersPage() {
               <tr className="border-b-2 border-soft-black">
                 <th className="text-left py-3 px-4 text-xs uppercase tracking-wider font-semibold text-charcoal">Order #</th>
                 <th className="text-left py-3 px-4 text-xs uppercase tracking-wider font-semibold text-charcoal">Date</th>
-                <th className="text-left py-3 px-4 text-xs uppercase tracking-wider font-semibold text-charcoal">Total</th>
                 <th className="text-left py-3 px-4 text-xs uppercase tracking-wider font-semibold text-charcoal">Status</th>
                 <th className="text-right py-3 px-4 text-xs uppercase tracking-wider font-semibold text-charcoal">Action</th>
               </tr>
@@ -53,9 +52,6 @@ export default async function OrdersPage() {
                     {order._createdAt
                       ? new Date(order._createdAt).toLocaleDateString('en-CA')
                       : '—'}
-                  </td>
-                  <td className="py-4 px-4 font-medium text-deep-charcoal">
-                    {order.totalCad ? `$${order.totalCad.toFixed(2)}` : '—'}
                   </td>
                   <td className="py-4 px-4">
                     <StatusBadge status={order.status || 'initial_inquiry'} />
