@@ -1,7 +1,8 @@
 import { auth, currentUser } from '@clerk/nextjs/server'
 import { redirect } from 'next/navigation'
 import Link from 'next/link'
-import { Package, MapPin, User, LogOut } from 'lucide-react'
+import { Package, MapPin, User } from 'lucide-react'
+import SignOutButton from '@/components/account/SignOutButton'
 
 export default async function AccountDashboard() {
   const { userId } = await auth()
@@ -11,7 +12,10 @@ export default async function AccountDashboard() {
 
   return (
     <div className="section-container py-16">
-      <h1 className="heading-section text-deep-charcoal mb-2">My Account</h1>
+      <div className="flex items-center justify-between mb-2">
+        <h1 className="heading-section text-deep-charcoal">My Account</h1>
+        <SignOutButton />
+      </div>
       <p className="text-taupe mb-10">
         Welcome back, {user?.firstName || 'there'}.
       </p>
