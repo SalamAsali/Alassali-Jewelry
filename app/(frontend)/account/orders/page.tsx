@@ -25,10 +25,10 @@ export default async function OrdersPage() {
         <div className="text-center py-20 rounded-lg border-2 border-stone">
           <p className="text-taupe text-lg mb-4">No orders yet</p>
           <Link
-            href="/chains"
+            href="/custom-form"
             className="inline-flex items-center gap-2 bg-gradient-to-r from-glacier-grey to-glacier-grey-light text-white px-8 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-105 transition-all duration-300"
           >
-            Browse Chains
+            Start Your Journey
           </Link>
         </div>
       ) : (

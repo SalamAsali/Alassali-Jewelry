@@ -2,15 +2,14 @@
 
 import { useState, useMemo } from 'react'
 import { motion } from 'framer-motion'
-import { ShoppingBag, Check, Truck } from 'lucide-react'
+import { MessageCircle, Truck } from 'lucide-react'
 import type { Chain, PricingConfig, MetalColor } from '@/lib/sanity'
-import { getSanityImageUrl } from '@/lib/sanity'
 import { computeWeight, priceForChain, formatPrice } from '@/lib/pricing'
 import type { Karat } from '@/lib/pricing'
 import { formatChainName } from '@/lib/format-chain-name'
-import { useCart } from '@/lib/cart'
 import LivePrice from './LivePrice'
 import ChainAdditionalInfo from './ChainAdditionalInfo'
+import InquiryModal from './InquiryModal'
 
 interface ChainVariantPickerProps {
   chain: Chain
@@ -48,6 +47,7 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
   const [selectedKarat, setSelectedKarat] = useState<Karat>(
     chain.defaultKarat || chain.availableKarats[0]
   )
+  const [isInquiryOpen, setIsInquiryOpen] = useState(false)
 
   const weightG = useMemo(
     () => computeWeight(chain.widthMm, chain.weightPerInchG, selectedLength),
@@ -65,55 +65,6 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
     [weightG, selectedKarat, chain.widthMm, pricingConfig]
   )
 
-  const { addItem } = useCart()
-  const [justAdded, setJustAdded] = useState(false)
-  const [isBuyingNow, setIsBuyingNow] = useState(false)
-
-  async function handleBuyNow() {
-    setIsBuyingNow(true)
-    try {
-      const res = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          chainId: chain._id,
-          name: formatChainName(chain.name, chain.widthMm),
-          slug: chain.slug?.current ?? '',
-          karat: selectedKarat,
-          metal: selectedMetal,
-          lengthIn: selectedLength,
-          widthMm: chain.widthMm,
-          weightG,
-          priceCad: price,
-          heroImage: getSanityImageUrl(chain.heroImage, 400) || null,
-        }),
-      })
-      const data = await res.json()
-      if (data.url) window.location.href = data.url
-    } catch (err) {
-      console.error('Buy now failed:', err)
-    } finally {
-      setIsBuyingNow(false)
-    }
-  }
-
-  function handleAddToCart() {
-    addItem({
-      chainId: chain._id,
-      slug: chain.slug?.current ?? '',
-      name: formatChainName(chain.name, chain.widthMm),
-      karat: selectedKarat,
-      metal: selectedMetal,
-      lengthIn: selectedLength,
-      widthMm: chain.widthMm,
-      weightG,
-      priceCad: price,
-      image: getSanityImageUrl(chain.heroImage, 400) || null,
-    })
-    setJustAdded(true)
-    setTimeout(() => setJustAdded(false), 2000)
-  }
-
   return (
     <div>
       {/* Price */}
@@ -121,11 +72,11 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
         <LivePrice price={price} />
       </div>
 
-      {/* In Stock badge */}
+      {/* Available badge */}
       <div className="mb-5">
         <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-50 text-green-700 text-xs font-medium border border-green-200">
           <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-          In Stock
+          Available
         </span>
       </div>
 
@@ -207,29 +158,13 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
         Estimated weight: {weightG.toFixed(2)}g
       </motion.div>
 
-      {/* CTAs */}
+      {/* Inquire CTA */}
       <div className="space-y-3">
         <button
-          onClick={handleAddToCart}
-          className={`inline-flex items-center justify-center w-full gap-2 px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-wide hover:shadow-xl hover:scale-[1.02] transition-all duration-300 ${
-            justAdded
-              ? 'bg-green-600 text-white'
-              : 'bg-soft-black text-white hover:bg-charcoal'
-          }`}
+          onClick={() => setIsInquiryOpen(true)}
+          className="inline-flex items-center justify-center w-full gap-2 px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-wide bg-soft-black text-white hover:bg-charcoal hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
         >
-          {justAdded ? (
-            <><Check className="w-5 h-5" /> Added to Cart</>
-          ) : (
-            <><ShoppingBag className="w-5 h-5" /> Add to Cart — {formatPrice(price)}</>
-          )}
-        </button>
-
-        <button
-          onClick={handleBuyNow}
-          disabled={isBuyingNow}
-          className="inline-flex items-center justify-center w-full gap-2 px-8 py-3.5 rounded-lg font-bold text-sm uppercase tracking-wide border-2 border-soft-black text-deep-charcoal hover:bg-soft-black hover:text-white transition-all duration-300 disabled:opacity-50"
-        >
-          {isBuyingNow ? 'Redirecting...' : 'Buy Now'}
+          <MessageCircle className="w-5 h-5" /> Inquire — {formatPrice(price)}
         </button>
       </div>
 
@@ -243,9 +178,9 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
 
       {/* Trust signals */}
       <div className="mt-3 flex items-center justify-center gap-4 text-xs text-glacier-grey">
-        <span className="trust-badge">Secure Stripe Checkout</span>
-        <span>&middot;</span>
         <span className="trust-badge">Handcrafted in Toronto</span>
+        <span>&middot;</span>
+        <span className="trust-badge">In-House Manufacturing</span>
       </div>
 
       {/* Additional Info Accordion */}
@@ -255,6 +190,23 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
         selectedMetal={selectedMetal}
         selectedLength={selectedLength}
         weightG={weightG}
+      />
+
+      {/* Inquiry Modal */}
+      <InquiryModal
+        isOpen={isInquiryOpen}
+        onClose={() => setIsInquiryOpen(false)}
+        chain={{
+          chainName: formatChainName(chain.name, chain.widthMm),
+          karat: selectedKarat,
+          metal: selectedMetal,
+          lengthIn: selectedLength,
+          widthMm: chain.widthMm,
+          weightG,
+          priceCad: price,
+          slug: chain.slug?.current ?? '',
+          chainId: chain._id,
+        }}
       />
     </div>
   )

@@ -4,8 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Menu, X, User, ShoppingBag } from 'lucide-react'
-import { useCart } from '@/lib/cart'
+import { Menu, X, User } from 'lucide-react'
 
 const DEFAULT_LOGO = '/images/logo.png'
 
@@ -19,33 +18,6 @@ export default function Navigation(props?: NavigationProps) {
   const pathname = usePathname()
   const router = useRouter()
   const logo = props?.logoUrl ?? DEFAULT_LOGO
-  const { itemCount, setIsOpen: setCartOpen } = useCart()
-
-  const productMegaMenu = {
-    mainCategories: [
-      { name: 'The Icons', path: '/catalog?featured=true' },
-      { name: 'New In', path: '/catalog' },
-      { name: 'Engagement Rings', path: '/catalog?category=engagement-rings' },
-      { name: 'Grillz', path: '/catalog?category=grillz' },
-      { name: 'Chains', path: '/catalog?category=chains' },
-      { name: 'Pendants', path: '/catalog?category=pendants' },
-    ],
-    extraCategories: [
-      { name: 'Bracelets', path: '/catalog?category=bracelets' },
-      { name: 'Earrings', path: '/catalog?category=earrings' },
-      { name: 'Rings', path: '/catalog?category=rings' },
-    ],
-    featuredCategories: [
-      {
-        name: 'Diamonds',
-        path: '/catalog?inventory_type=natural',
-        subcategories: [
-          { name: 'Natural', path: '/catalog?inventory_type=natural' },
-          { name: 'Lab-Grown', path: '/catalog?inventory_type=lab-grown' },
-        ]
-      },
-    ],
-  }
 
   const bespokeMenu = [
     { name: 'Engagement Rings', path: '/custom-engagement-rings-toronto', icon: '/images/icons/engagement-rings.svg' },
@@ -128,77 +100,8 @@ export default function Navigation(props?: NavigationProps) {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                     </motion.svg>
                   </button>
-                  
-                  <AnimatePresence>
-                    {openDropdown === 'products' && item.dropdownType === 'products' && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
-                        className="absolute top-full left-1/2 transform -translate-x-1/2 mt-4 w-[650px] rounded-xl shadow-2xl border-2 border-stone p-5 z-50 bg-white"
-                        role="menu"
-                        aria-label="Products menu"
-                      >
-                        <div className="grid grid-cols-6 gap-3">
-                          {productMegaMenu.mainCategories.map((category, idx) => (
-                            <Link
-                              key={category.name}
-                              href={category.path}
-                              className={`${idx < 2 ? 'col-span-3' : 'col-span-2'} group relative rounded-lg p-4 bg-white border-2 border-soft-black hover:border-glacier-grey transition-all duration-300 hover:scale-105`}
-                              onClick={() => setOpenDropdown(null)}
-                            >
-                              <div className="absolute inset-0 bg-glacier-grey/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
-                              <div className="relative z-10 text-center">
-                                <span className="text-sm font-bold text-soft-black group-hover:text-glacier-grey block">
-                                  {category.name}
-                                </span>
-                              </div>
-                            </Link>
-                          ))}
-                          {productMegaMenu.extraCategories.map((category) => (
-                            <Link
-                              key={category.name}
-                              href={category.path}
-                              className="col-span-2 group relative rounded-lg p-3 bg-white border-2 border-charcoal hover:border-glacier-grey transition-all duration-300 hover:scale-105"
-                              onClick={() => setOpenDropdown(null)}
-                            >
-                              <div className="absolute inset-0 bg-glacier-grey/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg" />
-                              <div className="relative z-10 text-center">
-                                <span className="text-xs font-bold text-charcoal group-hover:text-glacier-grey">
-                                  {category.name}
-                                </span>
-                              </div>
-                            </Link>
-                          ))}
-                        </div>
-                        <div className="grid grid-cols-2 gap-3 mt-3">
-                          {productMegaMenu.featuredCategories.map((featured) => (
-                            <div
-                              key={featured.name}
-                              className="group relative rounded-lg p-4 bg-white border-2 border-soft-black hover:border-glacier-grey transition-all duration-300 hover:scale-105 cursor-pointer"
-                              onClick={() => { router.push(featured.path); setOpenDropdown(null); }}
-                            >
-                              <h3 className="text-base font-bold text-soft-black group-hover:text-glacier-grey mb-2">
-                                {featured.name}
-                              </h3>
-                              <div className="space-y-1">
-                                {featured.subcategories.map((sub) => (
-                                  <Link
-                                    key={sub.name}
-                                    href={sub.path}
-                                    className="block text-xs text-charcoal hover:text-glacier-grey pl-2 border-l-2 border-transparent hover:border-glacier-grey"
-                                    onClick={(e) => { e.stopPropagation(); setOpenDropdown(null); }}
-                                  >
-                                    {sub.name}
-                                  </Link>
-                                ))}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
 
+                  <AnimatePresence>
                     {openDropdown === 'bespoke' && item.dropdownType === 'bespoke' && (
                       <motion.div
                         initial={{ opacity: 0, y: -10 }}
@@ -257,7 +160,7 @@ export default function Navigation(props?: NavigationProps) {
                               <span className="text-base font-bold text-white group-hover:text-glacier-grey-light block font-heading">
                                 {metal.name}
                               </span>
-                              <span className="text-xs text-stone mt-1 block">Shop collection →</span>
+                              <span className="text-xs text-stone mt-1 block">View collection &rarr;</span>
                             </Link>
                           ))}
                         </div>
@@ -286,19 +189,6 @@ export default function Navigation(props?: NavigationProps) {
             >
               <User className="w-5 h-5" />
             </Link>
-
-            <button
-              onClick={() => setCartOpen(true)}
-              className="hidden md:inline-flex items-center p-2 text-white hover:text-glacier-grey-light transition-colors relative"
-              title="Cart"
-            >
-              <ShoppingBag className="w-5 h-5" />
-              {itemCount > 0 && (
-                <span className="absolute -top-1 -right-1 w-5 h-5 bg-glacier-grey text-white text-[10px] font-bold rounded-full flex items-center justify-center">
-                  {itemCount > 9 ? '9+' : itemCount}
-                </span>
-              )}
-            </button>
 
             <Link
               href="/custom-form"
@@ -350,25 +240,6 @@ export default function Navigation(props?: NavigationProps) {
                         </motion.svg>
                       </button>
                       <AnimatePresence>
-                        {openDropdown === 'products' && item.dropdownType === 'products' && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: 'auto', opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            className="pl-4 space-y-2 overflow-hidden"
-                          >
-                            {productMegaMenu.mainCategories.map((category) => (
-                              <Link
-                                key={category.name}
-                                href={category.path}
-                                onClick={() => { setIsMenuOpen(false); setOpenDropdown(null); }}
-                                className="block py-2 text-sm text-stone hover:text-glacier-grey transition-colors"
-                              >
-                                {category.name}
-                              </Link>
-                            ))}
-                          </motion.div>
-                        )}
                         {openDropdown === 'bespoke' && item.dropdownType === 'bespoke' && (
                           <motion.div
                             initial={{ height: 0, opacity: 0 }}

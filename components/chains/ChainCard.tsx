@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ShoppingBag } from 'lucide-react'
+import { Eye } from 'lucide-react'
 import type { Chain, PricingConfig } from '@/lib/sanity'
 import { getSanityImageUrl } from '@/lib/sanity'
 import { computeWeight, priceForChain, formatPrice } from '@/lib/pricing'
@@ -54,8 +54,8 @@ export default function ChainCard({ chain, pricingConfig }: ChainCardProps) {
           {/* Quick Add overlay on hover */}
           <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
             <div className="flex items-center justify-center gap-2 bg-soft-black/90 backdrop-blur-sm text-white py-3 text-sm font-medium uppercase tracking-wide">
-              <ShoppingBag className="w-4 h-4" />
-              Quick View
+              <Eye className="w-4 h-4" />
+              View Details
             </div>
           </div>
         </div>

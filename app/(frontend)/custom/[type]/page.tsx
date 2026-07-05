@@ -1141,7 +1141,7 @@ function PortalForm() {
           <p className="text-stone mb-10 max-w-xl mx-auto text-sm">Our master craftspeople will review your request and contact you within 24-48 hours to begin bringing your vision to life.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button onClick={() => router.push('/')} className="bg-white/10 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-soft-black transition-all">Return Home</button>
-            <button onClick={() => router.push('/catalog')} className="bg-glacier-grey text-white px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">Browse Collection</button>
+            <button onClick={() => router.push('/portfolio')} className="bg-glacier-grey text-white px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">View Portfolio</button>
           </div>
         </motion.div>
       </div>
