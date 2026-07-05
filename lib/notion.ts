@@ -118,15 +118,41 @@ export async function findOrCreateCustomer(customer: {
 const SEQ_A_PREFIX = '0199'
 const SEQ_B_PREFIX = '8703'
 
+/**
+ * Extract the sequence + counter from an order title.
+ *
+ * Tolerant on purpose: manual entries typed by hand may not match the exact
+ * "Job #01990006" shape the website generates. We strip everything down to its
+ * digits so titles like "0199 0006", "8703-0034", "#01990006", or even a bare
+ * "01990006" are still recognized and counted. This is what lets a manually
+ * added order feed back into the sequence instead of being silently skipped
+ * (which would cause the website to reuse that number).
+ */
 function parseOrderNumber(title: string): { prefix: string; seq: number } | null {
-  const match = title.match(/Job #(\d{4})(\d{4})/)
-  if (!match) return null
-  return { prefix: match[1], seq: parseInt(match[2], 10) }
+  const digits = (title.match(/\d/g) || []).join('')
+  if (!digits) return null
+
+  // A valid order number is a known 4-digit sequence prefix followed by a
+  // 4-digit counter. Find whichever sequence this title belongs to.
+  for (const prefix of [SEQ_A_PREFIX, SEQ_B_PREFIX]) {
+    const idx = digits.indexOf(prefix)
+    if (idx === -1) continue
+    const counter = digits.slice(idx + prefix.length, idx + prefix.length + 4)
+    if (!counter) continue
+    const seq = parseInt(counter, 10)
+    if (!Number.isNaN(seq)) return { prefix, seq }
+  }
+  return null
 }
 
 /**
  * Query all orders from Notion, find the highest number in each sequence,
  * and return the next one from whichever sequence was used less recently.
+ *
+ * The Notion "Jewelry Orders" database is the single source of truth for order
+ * numbers. This reads it live every time, so orders added by hand in Notion are
+ * picked up automatically and continue the rotation — the website never keeps
+ * its own separate count that could drift from what's actually in Notion.
  */
 export async function getNextOrderNumber(): Promise<string> {
   const dsId = process.env.NOTION_ORDERS_DATA_SOURCE_ID
@@ -140,6 +166,7 @@ export async function getNextOrderNumber(): Promise<string> {
   let maxA = 0
   let maxB = 0
   let lastUsed: 'A' | 'B' | null = null
+  const taken = new Set<string>()
 
   for (const page of result.results) {
     if (!('properties' in page)) continue
@@ -148,6 +175,8 @@ export async function getNextOrderNumber(): Promise<string> {
     const title = titleProp.title?.[0]?.plain_text || ''
     const parsed = parseOrderNumber(title)
     if (!parsed) continue
+
+    taken.add(`${parsed.prefix}${parsed.seq.toString().padStart(4, '0')}`)
 
     if (parsed.prefix === SEQ_A_PREFIX) {
       if (parsed.seq > maxA) maxA = parsed.seq
@@ -158,14 +187,18 @@ export async function getNextOrderNumber(): Promise<string> {
     }
   }
 
-  // Pick the sequence that was NOT used most recently
-  if (lastUsed === 'A' || lastUsed === null) {
-    const next = maxB + 1
-    return `Job #${SEQ_B_PREFIX}${next.toString().padStart(4, '0')}`
-  } else {
-    const next = maxA + 1
-    return `Job #${SEQ_A_PREFIX}${next.toString().padStart(4, '0')}`
+  // Alternate: use whichever sequence was NOT used by the most recent order.
+  const useSeqB = lastUsed === 'A' || lastUsed === null
+  const prefix = useSeqB ? SEQ_B_PREFIX : SEQ_A_PREFIX
+  let next = (useSeqB ? maxB : maxA) + 1
+
+  // Belt-and-suspenders: never hand out a number that already exists, even if a
+  // manual entry left an odd gap or two inquiries arrive at the same instant.
+  while (taken.has(`${prefix}${next.toString().padStart(4, '0')}`)) {
+    next++
   }
+
+  return `Job #${prefix}${next.toString().padStart(4, '0')}`
 }
 
 // ---------------------------------------------------------------------------
