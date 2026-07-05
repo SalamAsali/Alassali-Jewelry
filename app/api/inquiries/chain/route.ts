@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
+import { createClient } from '@sanity/client'
 import { currentUser } from '@clerk/nextjs/server'
 import {
   findOrCreateCustomer,
@@ -7,6 +8,16 @@ import {
   getNextOrderNumber,
   createOrderInNotion,
 } from '@/lib/notion'
+
+const sanityWriteClient = process.env.SANITY_API_WRITE_TOKEN
+  ? createClient({
+      projectId: 'oh0jn4tt',
+      dataset: 'production',
+      apiVersion: '2024-01-01',
+      token: process.env.SANITY_API_WRITE_TOKEN,
+      useCdn: false,
+    })
+  : null
 
 export const dynamic = 'force-dynamic'
 
@@ -163,6 +174,54 @@ export async function POST(request: NextRequest) {
       notes: details,
       products: ['Chain'],
     })
+
+    // Create order in Sanity so it shows on account dashboard
+    if (sanityWriteClient) {
+      try {
+        // Find or create customer in Sanity
+        const existing = await sanityWriteClient.fetch(
+          `*[_type == "customer" && email == $email]{ _id }`,
+          { email: crmEmail || email }
+        )
+        let sanityCustomerId: string | undefined
+        if (existing.length > 0) {
+          sanityCustomerId = existing[0]._id
+        } else {
+          const nameParts = name.split(' ')
+          const newCustomer = await sanityWriteClient.create({
+            _type: 'customer',
+            firstName: nameParts[0] || '',
+            lastName: nameParts.slice(1).join(' ') || '',
+            email: crmEmail || email,
+            phone: phone || '',
+            marketingOptIn: false,
+            firstSeenAt: new Date().toISOString(),
+            tags: ['New'],
+          })
+          sanityCustomerId = newCustomer._id
+        }
+
+        await sanityWriteClient.create({
+          _type: 'order',
+          orderNo,
+          status: 'initial_inquiry',
+          customer: sanityCustomerId ? { _type: 'reference', _ref: sanityCustomerId } : undefined,
+          totalCad: 0,
+          items: [],
+          inquiryDetails: {
+            _type: 'inquiryDetails',
+            jewelryCategory: 'Chain',
+            style: body.chainName || '',
+            metalType: metalLabel,
+            goldColor: metalLabel,
+            size: `${body.lengthIn}"`,
+            notes: details,
+          },
+        })
+      } catch (err) {
+        console.error('[chain-inquiry] Sanity order creation failed:', err)
+      }
+    }
 
     // Send emails (fire-and-forget, don't block response)
     const emailPromises: Promise<unknown>[] = []
