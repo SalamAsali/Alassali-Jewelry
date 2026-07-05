@@ -10,6 +10,7 @@ export default function LoginPage() {
           elements: {
             rootBox: 'w-full max-w-md',
             card: 'rounded-lg border-2 border-soft-black shadow-xl',
+            footer: 'hidden',
           },
         }}
         redirectUrl="/account"
