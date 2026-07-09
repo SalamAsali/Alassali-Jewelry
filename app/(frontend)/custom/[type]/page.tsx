@@ -945,6 +945,7 @@ function PortalForm() {
   })
   const [currentStep, setCurrentStep] = useState<StepId>('contact')
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [direction, setDirection] = useState<1 | -1>(1)
 
@@ -1080,6 +1081,8 @@ function PortalForm() {
   }
 
   const handleSubmit = async () => {
+    if (isSubmitting) return
+    setIsSubmitting(true)
     try {
       const baseUrl = typeof window !== 'undefined' ? window.location.origin : ''
       const response = await fetch(`${baseUrl}/api/inquiries`, {
@@ -1097,6 +1100,7 @@ function PortalForm() {
       if (response.ok) setSubmitted(true)
       else alert('Error submitting inquiry. Please try again.')
     } catch (error) {
+      setIsSubmitting(false)
       console.error('Error submitting inquiry:', error)
       alert('Error submitting inquiry. Please try again.')
     }
@@ -1503,8 +1507,8 @@ function PortalForm() {
           ) : <div />}
 
           {currentStep === 'review' ? (
-            <button type="button" onClick={handleSubmit} className="px-8 py-2.5 rounded-lg bg-glacier-grey text-white hover:bg-glacier-grey-light transition-all font-semibold shadow-lg hover:shadow-xl text-sm">
-              Submit Request
+            <button type="button" onClick={handleSubmit} disabled={isSubmitting} className="px-8 py-2.5 rounded-lg bg-glacier-grey text-white hover:bg-glacier-grey-light transition-all font-semibold shadow-lg hover:shadow-xl text-sm disabled:opacity-50 disabled:cursor-not-allowed">
+              {isSubmitting ? 'Submitting...' : 'Submit Request'}
             </button>
           ) : needsManualNext ? (
             <button type="button" onClick={goNext} className="flex items-center gap-2 px-6 py-2.5 rounded-lg bg-glacier-grey text-white hover:bg-glacier-grey-light transition-all font-semibold shadow-lg hover:shadow-xl text-sm">
