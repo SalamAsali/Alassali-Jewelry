@@ -38,8 +38,8 @@ const locations = [
     name: 'Oakville',
     address: '3158 Sixth Line',
     city: 'Oakville, ON L6M 4J9',
-    phone: '(647) 562-4340',
-    phoneSchema: '+1-647-562-4340',
+    phone: '(289) 430-0393',
+    phoneSchema: '+1-289-430-0393',
     hours: [
       { days: 'Monday – Friday', time: '11:00 AM – 7:00 PM', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '11:00', closes: '19:00' },
       { days: 'Saturday', time: '11:00 AM – 5:00 PM', dayOfWeek: 'Saturday', opens: '11:00', closes: '17:00' },

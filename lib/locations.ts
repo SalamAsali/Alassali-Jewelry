@@ -37,7 +37,7 @@ export const LOCATIONS: LocationData[] = [
     city: 'Oakville',
     province: 'ON',
     postalCode: 'L6M 4J9',
-    phone: '(647) 562-4640',
+    phone: '(289) 430-0393',
     isMain: false,
     neighborhoods: [
       'Bronte', 'Downtown Oakville', 'Glen Abbey', 'Clearview',
