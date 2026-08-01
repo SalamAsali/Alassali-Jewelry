@@ -549,7 +549,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             <p className="text-sm md:text-lg text-taupe leading-relaxed mb-8">
               Mohammad is the founder and master jeweler behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
             </p>
-            <Link href="/about/master-jeweller/mohammad-al-assali" className="inline-flex items-center gap-2 text-glacier-grey font-semibold hover:gap-3 transition-all">
+            <Link href="/about/master-jeweler/mohammad-al-assali" className="inline-flex items-center gap-2 text-glacier-grey font-semibold hover:gap-3 transition-all">
               Read Mohammad’s story <ArrowRight className="w-4 h-4" />
             </Link>
           </motion.div>

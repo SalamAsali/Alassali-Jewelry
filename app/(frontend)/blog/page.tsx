@@ -58,8 +58,8 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     coverImageAlt: 'Lab-grown vs natural diamonds Toronto 2026 — 11-attribute head-to-head comparison',
   },
   {
-    id: 'arabic-calligraphy-jewellery-toronto',
-    slug: 'arabic-calligraphy-jewellery-toronto',
+    id: 'arabic-calligraphy-jewelry-toronto',
+    slug: 'arabic-calligraphy-jewelry-toronto',
     title: "Arabic Calligraphy Jewelry in Toronto: A Craftsman's Guide",
     excerpt: 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweler. Fonts, verses, meanings, prices, and what to ask for.',
     date: '2026-04-19',
@@ -72,14 +72,17 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
 
 const ALL_CATEGORIES = ['All', 'Engagement Rings', 'Grillz', 'Diamonds', 'Heritage']
 
-// Sanity CMS stores the brand as "Al-Assali" (double-s) in some fields.
-// Normalize to the correct single-s spelling used everywhere else.
-const fixBrand = (s: string) => s.replace(/Al-Assali/g, 'Al-Asali')
+// Sanity CMS stores British spellings and "Al-Assali" (double-s).
+// Normalize to American spelling and correct brand name.
+const fixCms = (s: string) =>
+  s.replace(/Al-Assali/g, 'Al-Asali')
+   .replace(/Jewellery/g, 'Jewelry')
+   .replace(/Jeweller(?!s)/g, 'Jeweler')
 
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getBlogIndex()
-  const title = fixBrand(cms?.page?.seoTitle?.trim() || FALLBACK_SEO_TITLE)
-  const description = fixBrand(cms?.page?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION)
+  const title = fixCms(cms?.page?.seoTitle?.trim() || FALLBACK_SEO_TITLE)
+  const description = fixCms(cms?.page?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION)
   return {
     title: { absolute: title },
     description,

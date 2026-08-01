@@ -2,7 +2,7 @@
 //   app/(frontend)/portfolio/page.tsx
 //   app/(frontend)/faq/page.tsx
 //   app/(frontend)/blog/page.tsx
-//   app/(frontend)/about/master-jeweller/[slug]/page.tsx
+//   app/(frontend)/about/master-jeweler/[slug]/page.tsx
 
 export const PORTFOLIO_PAGE = {
   heading: 'PORTFOLIO',
@@ -77,19 +77,19 @@ export const FAQ_ITEMS = [
 ]
 
 export const BLOG_INDEX = {
-  heading: 'Jewellery Guides',
+  heading: 'Jewelry Guides',
   intro:
-    'Straight answers on pricing, craftsmanship, and how to shop for custom jewellery in Toronto — from our master jeweller.',
-  seo_title: 'Custom Jewellery Guides & Toronto Jeweller Insights | Al-Assali Jewelry',
+    'Straight answers on pricing, craftsmanship, and how to shop for custom jewelry in Toronto — from our master jeweler.',
+  seo_title: 'Custom Jewelry Guides & Toronto Jeweler Insights | Al-Asali Jewelry',
   seo_description:
-    "Expert guides from Toronto's bespoke jeweller: custom engagement ring costs, grillz pricing, lab-grown vs natural diamonds, and more.",
+    "Expert guides from Toronto's bespoke jeweler: custom engagement ring costs, grillz pricing, lab-grown vs natural diamonds, and more.",
 }
 
 export const BLOG_POSTS = [
   {
     slug: 'custom-engagement-ring-cost-toronto-2026',
     title: 'How Much Does a Custom Engagement Ring Cost in Toronto? (2026 Guide)',
-    excerpt: 'No generic ranges — real starting prices by style, metal, and diamond origin, from a working Toronto custom jeweller.',
+    excerpt: 'No generic ranges — real starting prices by style, metal, and diamond origin, from a working Toronto custom jeweler.',
     date: '2026-04-17',
     reading_minutes: 7,
     tag: 'Engagement Rings',
@@ -104,16 +104,16 @@ export const BLOG_POSTS = [
   },
   {
     slug: 'lab-grown-vs-natural-diamonds-toronto',
-    title: "Lab-Grown vs Natural Diamonds in Toronto: A Jeweller's Honest 2026 Guide",
+    title: "Lab-Grown vs Natural Diamonds in Toronto: A Jeweler's Honest 2026 Guide",
     excerpt: "Both are real diamonds. Here's how to choose — without the sales pitch.",
     date: '2026-04-17',
     reading_minutes: 8,
     tag: 'Diamonds',
   },
   {
-    slug: 'arabic-calligraphy-jewellery-toronto',
-    title: "Arabic Calligraphy Jewellery in Toronto: A Craftsman's Guide",
-    excerpt: 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweller. Fonts, verses, meanings, prices, and what to ask for.',
+    slug: 'arabic-calligraphy-jewelry-toronto',
+    title: "Arabic Calligraphy Jewelry in Toronto: A Craftsman's Guide",
+    excerpt: 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweler. Fonts, verses, meanings, prices, and what to ask for.',
     date: '2026-04-19',
     reading_minutes: 7,
     tag: 'Heritage',
@@ -121,24 +121,24 @@ export const BLOG_POSTS = [
 ]
 
 export const MASTER_JEWELLER_BIO_PARAGRAPHS = [
-  'Mohammad Al-Assali is the founder and master jeweller behind Al-Assali Jewelry Studio in Toronto. A graduate of the George Brown College Jewellery Arts Program and a working goldsmith since 2017, Mohammad has personally designed and handcrafted hundreds of bespoke engagement rings, wedding bands, diamond pendants, gold chains, tennis bracelets, and custom grillz for clients across the Greater Toronto Area.',
-  'What began as a sole-proprietor commission practice at the end of 2020 has grown into a full Toronto bespoke studio — still operating with the same principle Mohammad started with: every piece is designed, cast, set, and finished in-house. No outsourcing, no middlemen, no shortcuts. If Al-Assali Jewelry made it, Mohammad inspected it.',
-  'Mohammad has built a reputation for deep expertise in Arabic calligraphy jewellery — a specialty few Toronto jewellers can authentically execute. From Allah pendants and Ayat al-Kursi pendants to custom Arabic name rings and engraved wedding bands, his work has been carried by clients in Toronto, Mississauga, Vaughan, Markham, and beyond.',
+  'Mohammad Al-Asali is the founder and master jeweler behind Al-Asali Jewelry Studio in Toronto. A graduate of the George Brown College Jewelry Arts Program and a working goldsmith since 2017, Mohammad has personally designed and handcrafted hundreds of bespoke engagement rings, wedding bands, diamond pendants, gold chains, tennis bracelets, and custom grillz for clients across the Greater Toronto Area.',
+  'What began as a sole-proprietor commission practice at the end of 2020 has grown into a full Toronto bespoke studio — still operating with the same principle Mohammad started with: every piece is designed, cast, set, and finished in-house. No outsourcing, no middlemen, no shortcuts. If Al-Asali Jewelry made it, Mohammad inspected it.',
+  'Mohammad has built a reputation for deep expertise in Arabic calligraphy jewelry — a specialty few Toronto jewelers can authentically execute. From Allah pendants and Ayat al-Kursi pendants to custom Arabic name rings and engraved wedding bands, his work has been carried by clients in Toronto, Mississauga, Vaughan, Markham, and beyond.',
 ]
 
 export const MASTER_JEWELLER = {
   slug: 'mohammad-al-assali',
-  name: 'Mohammad Al-Assali',
-  title: 'Master Jeweller & Founder',
-  tagline: "Toronto's bespoke jeweller behind every piece that leaves Al-Assali Jewelry Studio.",
+  name: 'Mohammad Al-Asali',
+  title: 'Master Jeweler & Founder',
+  tagline: "Toronto's bespoke jeweler behind every piece that leaves Al-Asali Jewelry Studio.",
   bio: MASTER_JEWELLER_BIO_PARAGRAPHS.join('\n\n'),
-  seo_title: 'Mohammad Al-Assali — Master Jeweller & Founder | Al-Assali Jewelry Toronto',
+  seo_title: 'Mohammad Al-Asali — Master Jeweler & Founder | Al-Asali Jewelry Toronto',
   seo_description:
-    'Meet Mohammad Al-Assali — master jeweller and founder of Al-Assali Jewelry Studio in Toronto. George Brown College Jewellery Arts graduate, practicing since 2017.',
+    'Meet Mohammad Al-Asali — master jeweler and founder of Al-Asali Jewelry Studio in Toronto. George Brown College Jewelry Arts graduate, practicing since 2017.',
 }
 
 export const FOOTER = {
-  tagline: 'Toronto bespoke jeweller. Every piece designed, cast, set, and finished in-house.',
+  tagline: 'Toronto bespoke jeweler. Every piece designed, cast, set, and finished in-house.',
   phone: '',
   email: '',
   location: 'Toronto, ON',

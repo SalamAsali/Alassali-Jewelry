@@ -10,6 +10,13 @@ export type MasterJewelerData = {
   seoDescription?: string | null
 }
 
+// Sanity CMS stores British spellings and "Al-Assali" (double-s).
+// Normalize to American spelling and correct brand name.
+const fix = (s: string | null | undefined) =>
+  s?.replace(/Al-Assali/g, 'Al-Asali')
+    .replace(/Jewellery/g, 'Jewelry')
+    .replace(/Jeweller/g, 'Jeweler') ?? null
+
 export async function getMasterJeweler(_slug: string): Promise<MasterJewelerData | null> {
   try {
     const data = await getMasterJeweller()
@@ -17,11 +24,11 @@ export async function getMasterJeweler(_slug: string): Promise<MasterJewelerData
     return {
       slug: data.slug?.current ?? _slug,
       name: data.name,
-      title: data.title,
-      tagline: data.tagline,
-      bio: data.bio,
-      seoTitle: data.seoTitle,
-      seoDescription: data.seoDescription,
+      title: fix(data.title),
+      tagline: fix(data.tagline),
+      bio: fix(data.bio),
+      seoTitle: fix(data.seoTitle),
+      seoDescription: fix(data.seoDescription),
     }
   } catch {
     return null
