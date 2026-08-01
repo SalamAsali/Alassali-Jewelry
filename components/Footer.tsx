@@ -81,8 +81,8 @@ export default function Footer(props?: FooterProps) {
           <div>
             <h3 className="text-lg font-heading font-semibold mb-4">Hours</h3>
             <ul className="space-y-1.5 text-sm text-warm-gray mb-6">
-              <li className="flex justify-between"><span>Mon - Fri</span><span className="text-white">10:00 AM - 9:30 PM</span></li>
-              <li className="flex justify-between"><span>Saturday</span><span className="text-white">12:00 PM - 6:00 PM</span></li>
+              <li className="flex justify-between"><span>Mon - Fri</span><span className="text-white">11:00 AM - 7:00 PM</span></li>
+              <li className="flex justify-between"><span>Saturday</span><span className="text-white">11:00 AM - 5:00 PM</span></li>
               <li className="flex justify-between"><span>Sunday</span><span className="text-white">Closed</span></li>
             </ul>
 
@@ -122,13 +122,13 @@ export default function Footer(props?: FooterProps) {
                 </li>
               </ul>
               <div className="flex items-center gap-4 mt-6">
-                <a href={SITE_CONFIG.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-warm-gray hover:text-glacier-grey transition-colors">
+                <a href={SITE_CONFIG.social.instagram} target="_blank" rel="nofollow noopener noreferrer" aria-label="Instagram" className="text-warm-gray hover:text-glacier-grey transition-colors">
                   <Instagram className="w-5 h-5" />
                 </a>
-                <a href={SITE_CONFIG.social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-warm-gray hover:text-glacier-grey transition-colors">
+                <a href={SITE_CONFIG.social.tiktok} target="_blank" rel="nofollow noopener noreferrer" aria-label="TikTok" className="text-warm-gray hover:text-glacier-grey transition-colors">
                   <TikTokIcon className="w-5 h-5" />
                 </a>
-                <a href={SITE_CONFIG.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-warm-gray hover:text-glacier-grey transition-colors">
+                <a href={SITE_CONFIG.social.facebook} target="_blank" rel="nofollow noopener noreferrer" aria-label="Facebook" className="text-warm-gray hover:text-glacier-grey transition-colors">
                   <Facebook className="w-5 h-5" />
                 </a>
               </div>

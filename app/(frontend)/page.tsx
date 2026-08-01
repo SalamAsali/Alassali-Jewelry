@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import HomePageClient from './HomePageClient'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
+import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { fetchGoogleReviews } from '@/lib/reviews/googlePlaces'
 
 export const dynamic = 'force-dynamic'
@@ -8,7 +9,7 @@ export const dynamic = 'force-dynamic'
 // Self-referential canonical + og:url for the highest-priority URL. Title and
 // description are inherited from the root layout's metadata defaults.
 export const metadata: Metadata = {
-  alternates: { canonical: '/' },
+  alternates: { canonical: `${SITE_CONFIG.url}/` },
   openGraph: mergeOpenGraph({ url: '/' }),
 }
 

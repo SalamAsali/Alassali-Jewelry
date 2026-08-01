@@ -2,6 +2,9 @@ import Image from 'next/image'
 import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 import PortfolioGrid, { PortfolioGridItem } from '@/components/portfolio/PortfolioGrid'
+import JsonLd from '@/components/seo/JsonLd'
+import { buildBreadcrumbSchema } from '@/lib/seo/schema'
+import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { getPortfolio } from '@/lib/getPortfolio'
 
 const floatingDiamonds = [
@@ -110,8 +113,14 @@ export default async function PortfolioPage() {
 
   const categories = ['All', ...categoryNames]
 
+  const breadcrumb = buildBreadcrumbSchema([
+    { name: 'Home', url: SITE_CONFIG.url },
+    { name: 'Portfolio', url: `${SITE_CONFIG.url}/portfolio` },
+  ])
+
   return (
     <>
+      <JsonLd id="portfolio-breadcrumb" data={breadcrumb} />
       <section className="relative min-h-[60vh] flex items-center bg-soft-black text-white overflow-hidden">
         <DotPattern />
         <DiamondPattern className="text-white" />

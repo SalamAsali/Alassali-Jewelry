@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
+import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 const pageMeta: Record<string, { title: string; description: string }> = {
   'engagement-rings': {
@@ -52,7 +53,7 @@ export function generateMetadata({ params }: { params: { type: string } }): Meta
     // from appending a second brand suffix to titles that already end in one.
     title: { absolute: meta.title },
     description: meta.description,
-    alternates: { canonical: canonicalPath },
+    alternates: { canonical: `${SITE_CONFIG.url}${canonicalPath}` },
     openGraph: mergeOpenGraph({
       title: meta.title,
       description: meta.description,

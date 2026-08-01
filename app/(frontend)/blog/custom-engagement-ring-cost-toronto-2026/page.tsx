@@ -15,8 +15,8 @@ const COVER_ALT = 'Custom engagement ring cost guide Toronto 2026 — what affec
 export const metadata: Metadata = {
   title: 'Custom Engagement Ring Cost Toronto 2026',
   description: DESCRIPTION,
-  alternates: { canonical: `/blog/${SLUG}` },
-  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER], url: `/blog/${SLUG}`, locale: 'en_CA', siteName: 'Al-Asali Jewelry' },
+  alternates: { canonical: `${SITE_CONFIG.url}/blog/${SLUG}` },
+  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER], url: `${SITE_CONFIG.url}/blog/${SLUG}`, locale: 'en_CA', siteName: 'Al-Asali Jewelry' },
 }
 
 const faq = [

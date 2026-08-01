@@ -3,7 +3,8 @@ import DotPattern from '@/components/DotPattern'
 import FaqAccordion, { FaqAccordionCategory } from '@/components/faq/FaqAccordion'
 import { getFaq } from '@/lib/getFaq'
 import JsonLd from '@/components/seo/JsonLd'
-import { buildFaqSchema } from '@/lib/seo/schema'
+import { buildFaqSchema, buildBreadcrumbSchema } from '@/lib/seo/schema'
+import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 export const dynamic = 'force-dynamic'
 
@@ -79,7 +80,13 @@ export default async function FAQPage() {
 
   return (
     <>
-      <JsonLd id="faq-schema" data={faqSchema} />
+      <JsonLd id="faq-schema" data={[
+        faqSchema,
+        buildBreadcrumbSchema([
+          { name: 'Home', url: SITE_CONFIG.url },
+          { name: 'FAQ', url: `${SITE_CONFIG.url}/faq` },
+        ]),
+      ]} />
       <div className="relative bg-soft-black text-white py-24 overflow-hidden">
         <DotPattern />
         <DiamondPattern className="text-white" />

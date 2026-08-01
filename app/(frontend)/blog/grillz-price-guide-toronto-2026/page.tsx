@@ -15,8 +15,8 @@ const COVER_ALT = 'Custom grillz price guide Toronto 2026 — what affects cost:
 export const metadata: Metadata = {
   title: 'Custom Grillz Price Guide Toronto 2026',
   description: DESCRIPTION,
-  alternates: { canonical: `/blog/${SLUG}` },
-  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER], url: `/blog/${SLUG}`, locale: 'en_CA', siteName: 'Al-Asali Jewelry' },
+  alternates: { canonical: `${SITE_CONFIG.url}/blog/${SLUG}` },
+  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER], url: `${SITE_CONFIG.url}/blog/${SLUG}`, locale: 'en_CA', siteName: 'Al-Asali Jewelry' },
 }
 
 const faq = [

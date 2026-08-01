@@ -5,7 +5,7 @@ import { buildArticleSchema } from '@/lib/seo/article'
 import { buildFaqSchema, buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
-const SLUG = 'arabic-calligraphy-jewelry-toronto'
+const SLUG = 'arabic-calligraphy-jewellery-toronto'
 const TITLE = 'Arabic Calligraphy Jewelry in Toronto: A Craftsman\'s Guide'
 const DESCRIPTION = 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweler. Fonts, verses, meanings, and what to ask for when you commission a piece.'
 const DATE = '2026-04-19'
@@ -15,8 +15,8 @@ const COVER_ALT = 'Arabic calligraphy jewelry Toronto 2026 — custom name penda
 export const metadata: Metadata = {
   title: 'Arabic Calligraphy Jewelry Toronto',
   description: DESCRIPTION,
-  alternates: { canonical: '/blog/arabic-calligraphy-jewellery-toronto' },
-  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER], url: '/blog/arabic-calligraphy-jewellery-toronto', locale: 'en_CA', siteName: 'Al-Asali Jewelry' },
+  alternates: { canonical: `${SITE_CONFIG.url}/blog/arabic-calligraphy-jewellery-toronto` },
+  openGraph: { title: TITLE, description: DESCRIPTION, type: 'article', images: [COVER], url: `${SITE_CONFIG.url}/blog/arabic-calligraphy-jewellery-toronto`, locale: 'en_CA', siteName: 'Al-Asali Jewelry' },
 }
 
 const faq = [

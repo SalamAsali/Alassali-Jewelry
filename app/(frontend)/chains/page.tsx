@@ -3,6 +3,9 @@ import { getChainsLanding, getChains, getPricingConfig } from '@/lib/sanity'
 import MetalPicker from '@/components/chains/MetalPicker'
 import ChainGrid from '@/components/chains/ChainGrid'
 import ChainTypeScroller from '@/components/chains/ChainTypeScroller'
+import JsonLd from '@/components/seo/JsonLd'
+import { buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
+import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 
 const TITLE = 'Gold Chains Collection — Cuban, Figaro & Rope'
@@ -12,7 +15,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: '/chains' },
+  alternates: { canonical: `${SITE_CONFIG.url}/chains` },
   openGraph: mergeOpenGraph({ title: `${TITLE} | Al-Asali Jewelry`, description: DESCRIPTION, url: '/chains' }),
 }
 
@@ -35,8 +38,19 @@ export default async function ChainsPage() {
     landing?.heroSubtitle ||
     'Handcrafted gold chains in a variety of styles, karats, and lengths. Made in Toronto with exceptional craftsmanship.'
 
+  const breadcrumb = buildBreadcrumbSchema([
+    { name: 'Home', url: SITE_CONFIG.url },
+    { name: 'Gold Chains', url: `${SITE_CONFIG.url}/chains` },
+  ])
+
+  const faqItems = landing?.faqItems
+  const chainsFaqSchema = faqItems && faqItems.length > 0
+    ? buildFaqSchema(faqItems.map((f: { question: string; answer: string }) => ({ q: f.question, a: f.answer })))
+    : null
+
   return (
     <div>
+      <JsonLd id="chains-schema" data={[breadcrumb, ...(chainsFaqSchema ? [chainsFaqSchema] : [])]} />
       {/* Hero */}
       <section className="relative py-20 sm:py-28 gradient-hero">
         <div className="section-container text-center">

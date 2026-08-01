@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
+import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 const TITLE = 'FAQ — Custom Jewelry Process, Pricing & Care'
 const DESCRIPTION =
@@ -8,7 +9,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: '/faq' },
+  alternates: { canonical: `${SITE_CONFIG.url}/faq` },
   openGraph: mergeOpenGraph({ title: `${TITLE} | Al-Asali Jewelry`, description: DESCRIPTION, url: '/faq' }),
 }
 

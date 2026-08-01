@@ -6,6 +6,7 @@ import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 import { buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
+import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { getBlogIndex, BlogPostSummary } from '@/lib/getBlog'
 
 const FALLBACK_HEADING = 'Jewelry Guides'
@@ -73,10 +74,13 @@ const ALL_CATEGORIES = ['All', 'Engagement Rings', 'Grillz', 'Diamonds', 'Herita
 
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getBlogIndex()
+  const title = cms?.page?.seoTitle?.trim() || FALLBACK_SEO_TITLE
+  const description = cms?.page?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION
   return {
-    title: cms?.page?.seoTitle?.trim() || FALLBACK_SEO_TITLE,
-    description: cms?.page?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION,
-    alternates: { canonical: '/blog' },
+    title: { absolute: title },
+    description,
+    alternates: { canonical: `${SITE_CONFIG.url}/blog` },
+    openGraph: mergeOpenGraph({ title, description, url: '/blog' }),
   }
 }
 

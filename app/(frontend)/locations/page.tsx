@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MapPin, Phone, Clock, CalendarClock, Navigation, ArrowRight } from 'lucide-react'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
+import { buildBreadcrumbSchema } from '@/lib/seo/schema'
+import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 const TITLE = 'Our Locations — Toronto & Oakville Studios'
 const DESCRIPTION =
@@ -10,7 +12,7 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: 'https://www.alasalicustomjewelry.ca/locations' },
+  alternates: { canonical: `${SITE_CONFIG.url}/locations` },
   openGraph: mergeOpenGraph({ title: `${TITLE} | Al-Asali Jewelry`, description: DESCRIPTION, url: '/locations' }),
 }
 
@@ -150,7 +152,7 @@ export default function LocationsPage() {
                     <a
                       href={loc.mapUrl}
                       target="_blank"
-                      rel="noopener noreferrer"
+                      rel="nofollow noopener noreferrer"
                       className="inline-flex items-center justify-center gap-2 border-2 border-soft-black text-deep-charcoal px-6 py-3 rounded-lg font-bold text-sm uppercase tracking-wide hover:bg-soft-black hover:text-white transition-all duration-300"
                     >
                       <Navigation className="w-4 h-4" />
@@ -168,33 +170,39 @@ export default function LocationsPage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(locations.map(loc => ({
-            '@context': 'https://schema.org',
-            '@type': 'JewelryStore',
-            name: `Al-Asali Custom Jewelry — ${loc.name}`,
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: loc.address,
-              addressLocality: loc.name,
-              addressRegion: 'ON',
-              addressCountry: 'CA',
-            },
-            telephone: loc.phoneSchema,
-            openingHoursSpecification: loc.hours.filter(h => h.opens && h.closes).map(h => ({
-              '@type': 'OpeningHoursSpecification',
-              dayOfWeek: h.dayOfWeek,
-              opens: h.opens,
-              closes: h.closes,
-            })),
-            url: `https://www.alasalicustomjewelry.ca${loc.cta.href}`,
-            ...(loc.isMain ? {
-              aggregateRating: {
-                '@type': 'AggregateRating',
-                ratingValue: loc.rating,
-                reviewCount: 42,
+          __html: JSON.stringify([
+            ...locations.map(loc => ({
+              '@context': 'https://schema.org',
+              '@type': 'JewelryStore',
+              name: `Al-Asali Custom Jewelry — ${loc.name}`,
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: loc.address,
+                addressLocality: loc.name,
+                addressRegion: 'ON',
+                addressCountry: 'CA',
               },
-            } : {}),
-          }))),
+              telephone: loc.phoneSchema,
+              openingHoursSpecification: loc.hours.filter(h => h.opens && h.closes).map(h => ({
+                '@type': 'OpeningHoursSpecification',
+                dayOfWeek: h.dayOfWeek,
+                opens: h.opens,
+                closes: h.closes,
+              })),
+              url: `${SITE_CONFIG.url}${loc.cta.href}`,
+              ...(loc.isMain ? {
+                aggregateRating: {
+                  '@type': 'AggregateRating',
+                  ratingValue: loc.rating,
+                  reviewCount: Number(SITE_CONFIG.aggregateRating.reviewCount),
+                },
+              } : {}),
+            })),
+            buildBreadcrumbSchema([
+              { name: 'Home', url: SITE_CONFIG.url },
+              { name: 'Locations', url: `${SITE_CONFIG.url}/locations` },
+            ]),
+          ]),
         }}
       />
     </div>

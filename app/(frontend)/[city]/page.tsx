@@ -7,6 +7,8 @@ import DotPattern from '@/components/DotPattern'
 import DiamondPattern from '@/components/DiamondPattern'
 import FloatingDiamonds from '@/components/FloatingDiamonds'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
+import { buildBreadcrumbSchema } from '@/lib/seo/schema'
+import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 type Props = { params: Promise<{ city: string }> }
 
@@ -237,27 +239,41 @@ export default async function CityPage({ params }: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'JewelryStore',
-            name: `Al-Asali Custom Jewelry — ${loc.name}`,
-            address: {
-              '@type': 'PostalAddress',
-              streetAddress: loc.address,
-              addressLocality: loc.city,
-              addressRegion: loc.province,
-              postalCode: loc.postalCode,
-              addressCountry: 'CA',
+          __html: JSON.stringify([
+            {
+              '@context': 'https://schema.org',
+              '@type': 'JewelryStore',
+              name: `Al-Asali Custom Jewelry — ${loc.name}`,
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: loc.address,
+                addressLocality: loc.city,
+                addressRegion: loc.province,
+                postalCode: loc.postalCode,
+                addressCountry: 'CA',
+              },
+              telephone: loc.phone,
+              openingHoursSpecification: [
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                  opens: '11:00',
+                  closes: '19:00',
+                },
+                {
+                  '@type': 'OpeningHoursSpecification',
+                  dayOfWeek: 'Saturday',
+                  opens: '11:00',
+                  closes: '17:00',
+                },
+              ],
+              url: `${SITE_CONFIG.url}/${city}`,
             },
-            telephone: loc.phone,
-            openingHoursSpecification: HOURS.filter(h => h.time !== 'Closed').map(h => ({
-              '@type': 'OpeningHoursSpecification',
-              dayOfWeek: h.days,
-              opens: h.time.split(' – ')[0],
-              closes: h.time.split(' – ')[1],
-            })),
-            url: `https://www.alasalicustomjewelry.ca/${city}`,
-          }),
+            buildBreadcrumbSchema([
+              { name: 'Home', url: SITE_CONFIG.url },
+              { name: loc.name, url: `${SITE_CONFIG.url}/${city}` },
+            ]),
+          ]),
         }}
       />
     </div>

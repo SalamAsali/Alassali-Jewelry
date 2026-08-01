@@ -20,6 +20,13 @@ export const metadata: Metadata = {
   description: 'Toronto\'s premier custom jeweler — bespoke engagement rings, gold chains, diamond pendants, and grillz handcrafted in-house. 5-star rated on Google.',
   openGraph: mergeOpenGraph(),
   twitter: { card: 'summary_large_image' },
+  robots: {
+    index: true,
+    follow: true,
+    'max-snippet': -1,
+    'max-image-preview': 'large',
+    'max-video-preview': -1,
+  },
 }
 
 export default async function RootLayout({

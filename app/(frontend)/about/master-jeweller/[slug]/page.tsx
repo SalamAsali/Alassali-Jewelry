@@ -35,7 +35,7 @@ export async function generateMetadata({
     // `absolute` avoids doubling the brand suffix already present in the title.
     title: { absolute: seoTitle },
     description: seoDescription,
-    alternates: { canonical: `/about/master-jeweller/${slug}` },
+    alternates: { canonical: `${SITE_CONFIG.url}/about/master-jeweller/${slug}` },
     openGraph: mergeOpenGraph({
       title: seoTitle,
       description: seoDescription,
@@ -60,7 +60,6 @@ export default async function MasterJewelerPage({
 
   const breadcrumb = buildBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
-    { name: 'About', url: `${SITE_CONFIG.url}/about/master-jeweller/${slug}` },
     { name, url: `${SITE_CONFIG.url}/about/master-jeweller/${slug}` },
   ])
 

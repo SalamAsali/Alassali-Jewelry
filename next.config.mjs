@@ -21,6 +21,7 @@ const FORM_LEGACY = '/custom-general' // first iteration of the flat URL
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  trailingSlash: false,
   images: {
     remotePatterns: [
       {
