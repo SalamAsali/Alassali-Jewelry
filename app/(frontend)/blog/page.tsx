@@ -72,10 +72,14 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
 
 const ALL_CATEGORIES = ['All', 'Engagement Rings', 'Grillz', 'Diamonds', 'Heritage']
 
+// Sanity CMS stores the brand as "Al-Assali" (double-s) in some fields.
+// Normalize to the correct single-s spelling used everywhere else.
+const fixBrand = (s: string) => s.replace(/Al-Assali/g, 'Al-Asali')
+
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getBlogIndex()
-  const title = cms?.page?.seoTitle?.trim() || FALLBACK_SEO_TITLE
-  const description = cms?.page?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION
+  const title = fixBrand(cms?.page?.seoTitle?.trim() || FALLBACK_SEO_TITLE)
+  const description = fixBrand(cms?.page?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION)
   return {
     title: { absolute: title },
     description,
