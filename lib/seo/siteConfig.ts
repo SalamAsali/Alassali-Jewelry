@@ -74,7 +74,7 @@ export const SITE_CONFIG = {
     ratingValue: '5.0',
     // Fallback used when Google Places API is unavailable. Update manually when
     // the live count drifts more than ~5 reviews from this value.
-    reviewCount: 42,
+    reviewCount: 59,
     bestRating: '5',
     worstRating: '1',
   },
@@ -136,15 +136,15 @@ export const OAKVILLE_LOCATION = {
   phoneDisplay: '(289) 430-0393',
   gbpLocationId: '8871105368633290545',
   address: {
-    streetAddress: '3158 Sixth Line',
+    streetAddress: '3148 Sixth Line',
     addressLocality: 'Oakville',
     addressRegion: 'ON',
     postalCode: 'L6M 4J9',
     addressCountry: 'CA',
   },
   geo: {
-    latitude: 43.4823709,
-    longitude: -79.7335759,
+    latitude: 43.4826334,
+    longitude: -79.7343358,
   },
   nearbyCities: ['Burlington', 'Milton', 'Mississauga'],
 
@@ -153,6 +153,7 @@ export const OAKVILLE_LOCATION = {
   // Oakville", 3148 Sixth Line, website /oakville.
   googleMapsPlaceId: 'ChIJbR2E1bxDK4gROV4DwCmmMNI',
   googleMapsUrl: 'https://maps.google.com/?cid=15145788245092294201',
+  googleBusinessUrl: 'https://maps.google.com/?cid=15145788245092294201',
   // Street name used to verify the Places response really is this listing.
   expectedAddressFragment: 'sixth line',
   // Fallback only — live counts come from the Places API.

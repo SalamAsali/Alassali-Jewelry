@@ -46,6 +46,7 @@ export default function ClientLiveReviewsStrip({ heading, variant = 'dark', city
 
   return (
     <ReviewsScroller
+      city={city}
       reviews={hasLive ? data?.reviews : undefined}
       rating={hasLive ? data?.rating : undefined}
       totalReviews={data?.totalReviews}

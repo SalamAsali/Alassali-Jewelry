@@ -33,7 +33,7 @@ export const LOCATIONS: LocationData[] = [
   {
     slug: 'oakville',
     name: 'Oakville',
-    address: '3158 Sixth Line',
+    address: '3148 Sixth Line',
     city: 'Oakville',
     province: 'ON',
     postalCode: 'L6M 4J9',
