@@ -1,11 +1,21 @@
-import { SITE_CONFIG, MASTER_JEWELER } from './siteConfig'
+import { SITE_CONFIG, MASTER_JEWELER, OAKVILLE_LOCATION } from './siteConfig'
+import type { City } from '@/lib/locations'
 
 const STORE_ID = `${SITE_CONFIG.url}/#jewelrystore`
 const ORG_ID = `${SITE_CONFIG.url}/#organization`
 const FOUNDER_ID = `${SITE_CONFIG.url}/about/master-jeweler/${MASTER_JEWELER.slug}#person`
 
+/** Oakville is a distinct physical location and gets its own store node. */
+const OAKVILLE_STORE_ID = `${SITE_CONFIG.url}/oakville#jewelrystore`
+
 export const STORE_REF = { '@id': STORE_ID }
 export const ORG_REF = { '@id': ORG_ID }
+export const OAKVILLE_STORE_REF = { '@id': OAKVILLE_STORE_ID }
+
+/** Resolve the store node a page's content should attribute itself to. */
+export function storeRefFor(city: City) {
+  return city === 'oakville' ? OAKVILLE_STORE_REF : STORE_REF
+}
 
 const addressNode = {
   '@type': 'PostalAddress',
@@ -108,6 +118,75 @@ export function buildJewelryStoreSchema(liveReviews?: {
   }
 }
 
+const oakvilleAreaServedNodes = [
+  { '@type': 'City', name: 'Oakville' },
+  ...OAKVILLE_LOCATION.nearbyCities.map((name) => ({ '@type': 'City' as const, name })),
+  { '@type': 'AdministrativeArea', name: 'Halton Region' },
+  { '@type': 'AdministrativeArea', name: 'Greater Toronto Area' },
+]
+
+/** Area served for a given city, so Service nodes lead with the right geography. */
+export function areaServedFor(city: City) {
+  return city === 'oakville' ? oakvilleAreaServedNodes : areaServedNodes
+}
+
+/**
+ * The Oakville branch as its own JewelryStore node.
+ *
+ * Deliberately carries NO aggregateRating: the 5.0/42 on the main node comes
+ * from the Toronto Google Business Profile, and asserting those reviews for a
+ * different physical location would be fabricated review data. Add one here
+ * only when Oakville's own GBP reviews are wired up.
+ */
+export function buildOakvilleStoreSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'JewelryStore',
+    '@id': OAKVILLE_STORE_ID,
+    name: `${SITE_CONFIG.legalName} — Oakville`,
+    url: `${SITE_CONFIG.url}/oakville`,
+    branchOf: ORG_REF,
+    parentOrganization: ORG_REF,
+    image: SITE_CONFIG.schemaImages.map((p) => `${SITE_CONFIG.url}${p}`),
+    logo: `${SITE_CONFIG.url}${SITE_CONFIG.logoPath}`,
+    telephone: OAKVILLE_LOCATION.phone,
+    email: SITE_CONFIG.email,
+    priceRange: SITE_CONFIG.priceRange,
+    currenciesAccepted: SITE_CONFIG.currenciesAccepted,
+    paymentAccepted: SITE_CONFIG.paymentAccepted,
+    founder: { '@id': FOUNDER_ID },
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: OAKVILLE_LOCATION.address.streetAddress,
+      addressLocality: OAKVILLE_LOCATION.address.addressLocality,
+      addressRegion: OAKVILLE_LOCATION.address.addressRegion,
+      postalCode: OAKVILLE_LOCATION.address.postalCode,
+      addressCountry: OAKVILLE_LOCATION.address.addressCountry,
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: OAKVILLE_LOCATION.geo.latitude,
+      longitude: OAKVILLE_LOCATION.geo.longitude,
+    },
+    areaServed: oakvilleAreaServedNodes,
+    openingHoursSpecification: [
+      ...SITE_CONFIG.hours.map((h) => ({
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: h.dayOfWeek,
+        opens: h.opens,
+        closes: h.closes,
+      })),
+      ...SITE_CONFIG.closedDays.map((day) => ({
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: day,
+        opens: '00:00',
+        closes: '00:00',
+      })),
+    ],
+    sameAs,
+  }
+}
+
 export function buildOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
@@ -172,6 +251,8 @@ export function buildWebsiteSchema() {
 // ---------------------------------------------------------------------------
 
 export type ServiceSchemaInput = {
+  /** Defaults to Toronto; drives the canonical URL, provider, and areaServed. */
+  city?: City
   slug: string
   serviceType: string
   name: string
@@ -182,7 +263,8 @@ export type ServiceSchemaInput = {
 }
 
 export function buildServiceSchema(input: ServiceSchemaInput) {
-  const url = `${SITE_CONFIG.url}/custom-${input.slug}-toronto`
+  const city: City = input.city ?? 'toronto'
+  const url = `${SITE_CONFIG.url}/custom-${input.slug}-${city}`
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -191,8 +273,8 @@ export function buildServiceSchema(input: ServiceSchemaInput) {
     name: input.name,
     description: input.description,
     url,
-    provider: STORE_REF,
-    areaServed: areaServedNodes,
+    provider: storeRefFor(city),
+    areaServed: areaServedFor(city),
     offers: {
       '@type': 'Offer',
       priceCurrency: SITE_CONFIG.currenciesAccepted,

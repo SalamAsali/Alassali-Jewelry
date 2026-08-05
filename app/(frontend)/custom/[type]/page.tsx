@@ -25,7 +25,7 @@ import GrillzConfigSection from '@/components/bespoke/GrillzConfigSection'
 import PendantsHeritageSection from '@/components/bespoke/PendantsHeritageSection'
 import ClientLiveReviewsStrip from '@/components/reviews/ClientLiveReviewsStrip'
 import LocationSection from '@/components/bespoke/LocationSection'
-import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
+import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema, buildOakvilleStoreSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { parseTypeSegment, bespokePath, type City } from '@/lib/locations'
 
@@ -821,7 +821,8 @@ function LandingPage({ type, city }: { type: string; city: City }) {
   const pricing = servicePricing[type]
   const serviceSchema = pricing
     ? buildServiceSchema({
-        slug: city === 'toronto' ? type : `${type}-${city}`,
+        slug: type,
+        city,
         serviceType: pricing.serviceType,
         name: landing.heroH1,
         description: landing.heroSub,
@@ -837,6 +838,10 @@ function LandingPage({ type, city }: { type: string; city: City }) {
   ])
 
   const faqSchema = buildFaqSchema(landing.faq)
+
+  // The root layout only emits the Toronto store node. Oakville pages need
+  // their own branch node present so `provider` on the Service resolves.
+  const branchStoreSchema = city === 'oakville' ? buildOakvilleStoreSchema() : null
 
   return (
     <div className="min-h-screen bg-soft-black relative overflow-hidden" data-testid="custom-landing">
@@ -1168,7 +1173,7 @@ function LandingPage({ type, city }: { type: string; city: City }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(
-            [serviceSchema, breadcrumbSchema, faqSchema].filter(Boolean),
+            [branchStoreSchema, serviceSchema, breadcrumbSchema, faqSchema].filter(Boolean),
           ),
         }}
       />

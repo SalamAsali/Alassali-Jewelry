@@ -123,3 +123,28 @@ export const MASTER_JEWELER = {
 
 export type SiteConfig = typeof SITE_CONFIG
 export type MasterJeweler = typeof MASTER_JEWELER
+
+/**
+ * Oakville branch. Address and phone match lib/locations.ts (the source used
+ * for the visible page content) so schema and on-page NAP agree. Coordinates
+ * geocoded from the street address; the GBP location id is recorded so the
+ * two can be reconciled when the Oakville profile's own review data is wired
+ * into schema.
+ */
+export const OAKVILLE_LOCATION = {
+  phone: '+1-289-430-0393',
+  phoneDisplay: '(289) 430-0393',
+  gbpLocationId: '8871105368633290545',
+  address: {
+    streetAddress: '3158 Sixth Line',
+    addressLocality: 'Oakville',
+    addressRegion: 'ON',
+    postalCode: 'L6M 4J9',
+    addressCountry: 'CA',
+  },
+  geo: {
+    latitude: 43.4823709,
+    longitude: -79.7335759,
+  },
+  nearbyCities: ['Burlington', 'Milton', 'Mississauga'],
+} as const
