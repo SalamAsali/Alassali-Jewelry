@@ -2,8 +2,25 @@
 
 import { motion } from 'framer-motion'
 import { Video, Truck, Calendar } from 'lucide-react'
+import type { City } from '@/lib/locations'
 
-export default function LocationSection() {
+const COPY: Record<City, { intro: string; delivery: string; apptHeading: string; appt: string }> = {
+  toronto: {
+    intro: 'A Toronto-based custom studio serving clients across the GTA by appointment. Most of the process happens virtually, with secure insured delivery when your piece is ready, plus in-person meetings in Toronto whenever you\u2019d like one.',
+    delivery: 'Finished pieces are delivered fully insured to your door anywhere in Toronto and the Greater Toronto area. No pickup required.',
+    apptHeading: 'By appointment in Toronto',
+    appt: 'Prefer to meet face-to-face? We arrange private in-person appointments in Toronto at a time and location that works for you.',
+  },
+  oakville: {
+    intro: 'A custom studio working with Oakville clients by appointment or entirely online. Most of the process happens virtually, with secure insured delivery once your piece is ready. If you\u2019d rather meet in person, we\u2019re happy to set that up at our Oakville studio too.',
+    delivery: 'Finished pieces are delivered fully insured to your door anywhere in Oakville and the rest of the Greater Toronto Area. No pickup required.',
+    apptHeading: 'By appointment in Oakville',
+    appt: 'Prefer to meet face-to-face? We arrange private in-person appointments in Oakville at a time and location that works for you.',
+  },
+}
+
+export default function LocationSection({ city = 'toronto' }: { city?: City }) {
+  const copy = COPY[city] ?? COPY.toronto
   return (
     <section className="py-20 px-4 border-t border-glacier-grey/10">
       <div className="max-w-6xl mx-auto">
@@ -17,7 +34,7 @@ export default function LocationSection() {
             How We Work Together
           </h2>
           <p className="text-stone max-w-2xl mx-auto">
-            A Toronto-based bespoke studio serving clients across the GTA by appointment. Most of the process happens virtually, with secure insured delivery when your piece is ready — and in-person meetings in Toronto whenever you prefer.
+            {copy.intro}
           </p>
         </motion.div>
 
@@ -51,7 +68,7 @@ export default function LocationSection() {
               Complimentary across the GTA
             </h3>
             <p className="text-stone text-sm leading-relaxed">
-              Finished pieces are delivered fully insured to your door anywhere in Toronto and the Greater Toronto Area — no pickup required.
+              {copy.delivery}
             </p>
           </motion.div>
 
@@ -65,10 +82,10 @@ export default function LocationSection() {
             <Calendar className="w-6 h-6 text-glacier-grey mb-4" />
             <div className="text-xs uppercase tracking-wide text-glacier-grey mb-2">In-Person by Request</div>
             <h3 className="text-white text-lg font-semibold mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
-              By appointment in Toronto
+              {copy.apptHeading}
             </h3>
             <p className="text-stone text-sm leading-relaxed">
-              Prefer to meet face-to-face? We arrange private in-person appointments in Toronto at a time and location that works for you.
+              {copy.appt}
             </p>
           </motion.div>
         </div>

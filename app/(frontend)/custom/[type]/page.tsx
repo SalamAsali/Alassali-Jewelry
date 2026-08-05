@@ -27,6 +27,7 @@ import ClientLiveReviewsStrip from '@/components/reviews/ClientLiveReviewsStrip'
 import LocationSection from '@/components/bespoke/LocationSection'
 import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
+import { parseTypeSegment, bespokePath, type City } from '@/lib/locations'
 
 // ---------------------------------------------------------------------------
 // Floating diamond icons (matches homepage hero)
@@ -661,6 +662,115 @@ const landingContent: Record<string, {
   },
 }
 
+// ---------------------------------------------------------------------------
+// Oakville variants
+//
+// Oakville pages reuse the Toronto page wholesale and override only the copy
+// that genuinely differs. Anything not listed here is inherited verbatim —
+// deliberately, because the studio and all fabrication are in Toronto, so most
+// answers are already accurate for an Oakville client. The overrides below are
+// exactly the lines the client review notes called out.
+//
+// FAQ handling: questions get a generic Toronto→Oakville swap (every swapped
+// question has a city-neutral answer). Only answers that name a meeting or
+// delivery location are overridden, keyed by their original Toronto question.
+// ---------------------------------------------------------------------------
+
+type LandingEntry = (typeof landingContent)[string]
+
+const oakvilleContent: Record<string, Partial<LandingEntry> & { faqAnswers?: Record<string, string> }> = {
+  'engagement-rings': {
+    heroH1: 'Custom Engagement Rings in Oakville',
+    heroSub: 'Design a ring that\'s entirely yours, with an Oakville jeweler who handcrafts every piece in-house.',
+    intro: 'At Al-Asali Jewelry, every custom engagement ring begins with your vision. Whether you dream of a classic solitaire, a vintage halo setting, or a bold modern design, our master jeweler brings it to life entirely in-house. Choose from ethically sourced natural and lab-grown diamonds, sapphires, rubies, and emeralds, set in platinum, 18K, or 14K gold. This is a piece you\'ll wear for the rest of your life, and we treat it that way from the first sketch to the final polish. Our Oakville clients work with us because nothing gets outsourced: every cut, setting, and polish happens under our roof.',
+    faqAnswers: {
+      'Where are you based?': 'Al-Asali Jewelry Studio is a custom jeweler serving Oakville by appointment. We offer virtual consultations via Zoom, phone, or message, complimentary secure insured delivery in Oakville and across the GTA, and optional in-person meetings at our Oakville studio at a time that works for you.',
+    },
+  },
+  'rings': {
+    heroH1: 'Custom Rings in Oakville',
+    heroSub: 'Signet rings, statement rings, wedding bands, and more, designed with clients in Oakville and handcrafted in-house.',
+    intro: 'From bold signet rings to elegant wedding bands and one-of-a-kind statement pieces, Al-Asali Jewelry creates custom rings for Oakville clients, each one uniquely theirs. Every ring is handcrafted in-house using gold, platinum, or silver, with optional diamond and gemstone settings. Whether you bring a detailed sketch or just an idea, our master jeweler will bring your ring to life with precision and care.',
+    processNote: 'Custom rings typically take 3-5 weeks. We begin with a design consultation, in Oakville or online, create CAD renderings, and hand-select any stones before crafting begins. Whether it\'s a wedding band, a family signet ring, or a bold everyday statement piece, we treat every ring with the same level of detail.',
+  },
+  'wedding-bands': {
+    heroH1: 'Custom Wedding Bands in Oakville',
+    heroSub: 'Designed with Oakville clients, handcrafted in-house to match your ring exactly, in a band built to last as long as your vow.',
+    intro: 'A wedding band is the piece you\'ll wear every day for the rest of your life, so it deserves the same care as the engagement ring it sits beside. For our Oakville clients, every custom wedding band is designed and handcrafted in-house, from classic comfort-fit bands and eternity rings to contour-shaped bands that nest perfectly against a halo or solitaire. Choose platinum, 18K, 14K, or 10K gold in yellow, white, or rose, with optional diamond or gemstone accents and any engraving you can imagine, including Arabic calligraphy, fingerprints, soundwaves and more. We also craft matching bridal sets for couples, modern men\'s bands in brushed or hammered finishes, and stackable anniversary bands, all backed by our lifetime craftsmanship guarantee.',
+    processNote: 'Custom wedding bands take 3-5 weeks from design approval to completion. We start with a free consultation, in Oakville or online, to understand the fit, finish, and story you want, then create CAD renderings for your approval before hand-crafting each band at our Toronto workshop. Matching bridal sets are designed alongside the engagement ring when possible, to ensure a perfect nest. Rush orders can be completed in 2-3 weeks for an additional fee.',
+  },
+  'pendants': {
+    heroH1: 'Custom Pendants in Oakville',
+    heroSub: 'Name pendants, photo pendants, diamond initials, and more, designed with Oakville clients and handcrafted in-house.',
+    intro: 'Al-Asali Jewelry creates custom pendants that carry meaning. From diamond-encrusted name pendants and photo pendants to religious symbols and fully custom designs, every piece is handcrafted in-house for our Oakville clients. Choose your metal, stones, and design. We\'ll build the piece around exactly what you pick. Our custom name chains and bubble letter pendants are among the most requested pieces in the GTA, Oakville included.',
+    processNote: 'Custom pendants take 2-4 weeks depending on complexity. Name and initial pendants are on the faster end, while photo pendants and diamond-set pieces require additional crafting time. We create a detailed mockup for your approval before beginning work, whether your consultation happens in Oakville or online.',
+    faqAnswers: {
+      'How do I receive my custom pendant?': 'We deliver finished pieces fully insured to your door anywhere in Oakville and the rest of the GTA at no extra cost, and ship securely anywhere in Canada. In-person handover by appointment in Oakville is also available.',
+    },
+  },
+  'chains': {
+    heroH1: 'Custom Chains in Oakville',
+    heroSub: 'Cuban links, rope chains, franco chains, and more, built to your exact specifications in gold, silver, or platinum.',
+    intro: 'Al-Asali Jewelry is Oakville\'s destination for custom chains. Whether you want a heavyweight Miami Cuban link, a classic rope chain, or a sleek franco, every chain is handcrafted in-house to your exact length, width, and weight specifications. Choose from 10K, 14K, or 18K gold in yellow, white, or rose, as well as platinum and sterling silver. Every chain we make is solid gold, with no hollow links, full stop, which is the biggest difference between a chain that lasts and one that doesn\'t. Our custom gold chains and name chains are among the most sought-after pieces in Oakville and the rest of the GTA.',
+    processNote: 'Custom chains for Oakville clients take 2-4 weeks depending on complexity and weight. Cuban links and heavier chains require more crafting time. We weigh and measure each chain to your exact specifications before finishing.',
+  },
+  'earrings': {
+    heroH1: 'Custom Earrings in Oakville',
+    heroSub: 'Diamond studs, gold hoops, drop earrings, and more, designed with Oakville clients and handcrafted in-house.',
+    intro: 'From elegant diamond studs to bold statement hoops, Al-Asali Jewelry designs and crafts custom earrings for Oakville clients entirely in-house. Choose your style, metal, and stone preferences, whether you\'re after a subtle everyday pair or a show-stopping set for a special occasion, and we\'ll craft them to perfection. We also create matching earring-and-pendant sets for a cohesive look.',
+    processNote: 'Custom earrings for Oakville clients take 2-4 weeks. Stud earrings are quicker to produce, while complex chandelier designs with multiple stone settings require more time. We create a detailed design for your approval before crafting.',
+    faqAnswers: {
+      'What types of custom earrings can you make in Toronto?': 'We offer diamond studs, gold hoops, huggies, drop earrings, chandelier earrings, ear climbers, ear cuffs, threader earrings, cluster earrings, and fully custom designs. All custom earrings for Oakville clients are handcrafted in-house.',
+    },
+  },
+  'bracelets': {
+    heroH1: 'Custom Bracelets in Oakville',
+    heroSub: 'Tennis bracelets, bangles, cuffs, and engraved pieces for men and women, designed with Oakville clients and handcrafted in-house.',
+    intro: 'Al-Asali Jewelry creates custom bracelets for every style and occasion. From diamond tennis bracelets and elegant bangles to bold cuffs and engraved pieces for men, every bracelet is handcrafted in-house for our Oakville clients. Whether you want a personalized name bracelet, a custom charm bracelet, or a men\'s engraved bracelet in solid gold, we\'ll build it to fit your wrist and your vision exactly.',
+    processNote: 'Custom bracelets for Oakville clients take 3-5 weeks. Tennis bracelets with many individual stone settings require more time, while bangles and cuffs are quicker. We measure your wrist for a precise fit during consultation.',
+    faqAnswers: {
+      'How do I measure my wrist for a bracelet?': 'Wrap a flexible tape measure snugly around your wrist just below the wrist bone, then add 0.5" (loose) or 0.25" (snug). Standard men\'s: 7.5-8.5". Standard women\'s: 6.5-7". We\'re happy to walk you through it on Zoom, or measure your wrist in person by appointment in Oakville.',
+    },
+  },
+  'grillz': {
+    heroH1: 'Custom Grillz in Oakville',
+    heroSub: 'Gold grillz, diamond grillz, and VVS sets, handcrafted in-house for Oakville clients with competitive and transparent pricing.',
+    // The Toronto intro closes on "the only shop in Toronto that does it all
+    // under one roof". That claim is dropped here rather than relocated —
+    // the shop is in Toronto, so it cannot be made about Oakville.
+    intro: 'Al-Asali Jewelry is Oakville\'s go-to destination for custom grillz. From single-tooth pieces to full diamond-set grillz, every set is handcrafted in-house using real gold and genuine diamonds, never plated, never CZ. Most clients come in knowing exactly what they want, from the metal down to the stone size. Others just say "surprise me" and we take it from there. We offer 10K, 14K, and 18K gold in yellow, white, and rose, with optional VVS diamond, diamond dust, and fully custom designs. Our mold process ensures a perfect fit every time, and our prices are explained upfront with no surprises.',
+    // processNote intentionally inherited: mold sessions genuinely happen at
+    // the Toronto studio, which the review notes asked us to be accurate about.
+  },
+}
+
+/** Build the content for a page, applying Oakville overrides when relevant. */
+function resolveLanding(type: string, city: City): LandingEntry | null {
+  const base = landingContent[type]
+  if (!base) return null
+  if (city !== 'oakville') return base
+
+  const o = oakvilleContent[type]
+  if (!o) return base
+
+  const { faqAnswers, ...fields } = o
+  return {
+    ...base,
+    ...fields,
+    faq: base.faq.map(({ q, a }) => ({
+      q: q.replace(/\bToronto\b/g, 'Oakville'),
+      a: faqAnswers?.[q] ?? a,
+    })),
+    relatedPages: base.relatedPages.map(({ name, path }) => ({
+      name,
+      path: path.replace(/-toronto$/, '-oakville'),
+    })),
+    crossLink: base.crossLink?.map((part) =>
+      typeof part === 'string' ? part : { ...part, path: part.path.replace(/-toronto$/, '-oakville') }
+    ),
+  }
+}
+
 const servicePricing: Record<string, { minPrice: number; maxPrice?: number; serviceType: string }> = {
   'engagement-rings': { minPrice: 1000, maxPrice: 50000, serviceType: 'Custom Engagement Ring Design' },
   'rings': { minPrice: 1000, maxPrice: 25000, serviceType: 'Custom Ring Design' },
@@ -672,12 +782,26 @@ const servicePricing: Record<string, { minPrice: number; maxPrice?: number; serv
   'grillz': { minPrice: 500, maxPrice: 25000, serviceType: 'Custom Grillz Design' },
 }
 
-function LandingPage({ type }: { type: string }) {
+function LandingPage({ type, city }: { type: string; city: City }) {
   const config = typeConfig[type]
   if (!config) return null
 
-  const landing = landingContent[type]
+  const landing = resolveLanding(type, city)
   if (!landing) return null
+
+  const cityName = city === 'oakville' ? 'Oakville' : 'Toronto'
+
+  // Oakville reframes the consultation card around its own clients. "Made in
+  // Toronto" deliberately stays as-is on every page — that is where the work
+  // actually happens, and the review notes asked us to keep it accurate.
+  const whyCards =
+    city === 'oakville'
+      ? globalWhyCards.map((c) =>
+          c.title === 'One-on-One Design'
+            ? { ...c, text: 'Private consultations for Oakville clients from concept to CAD rendering to finished piece.' }
+            : c
+        )
+      : globalWhyCards
 
   const styles = config.styles
 
@@ -697,7 +821,7 @@ function LandingPage({ type }: { type: string }) {
   const pricing = servicePricing[type]
   const serviceSchema = pricing
     ? buildServiceSchema({
-        slug: type,
+        slug: city === 'toronto' ? type : `${type}-${city}`,
         serviceType: pricing.serviceType,
         name: landing.heroH1,
         description: landing.heroSub,
@@ -709,7 +833,7 @@ function LandingPage({ type }: { type: string }) {
 
   const breadcrumbSchema = buildBreadcrumbSchema([
     { name: 'Home', url: SITE_CONFIG.url },
-    { name: config.title, url: `${SITE_CONFIG.url}/custom-${type}-toronto` },
+    { name: `${config.title} ${cityName}`, url: `${SITE_CONFIG.url}${bespokePath(type, city)}` },
   ])
 
   const faqSchema = buildFaqSchema(landing.faq)
@@ -749,7 +873,7 @@ function LandingPage({ type }: { type: string }) {
               Why Choose Al-Asali
             </motion.h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {globalWhyCards.map((card, i) => {
+              {whyCards.map((card, i) => {
                 const CardIcon = card.icon
                 return (
                   <motion.div key={card.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-6 text-center hover:border-glacier-grey/40 transition-all">
@@ -896,7 +1020,7 @@ function LandingPage({ type }: { type: string }) {
         {type === 'grillz' && <GrillzConfigSection />}
 
         {/* ===== PENDANTS: Arabic calligraphy + religious + logo showcase ===== */}
-        {type === 'pendants' && <PendantsHeritageSection />}
+        {type === 'pendants' && <PendantsHeritageSection city={city} />}
 
         {/* ===== BUDGET GUIDE ===== */}
         <section className="py-20 px-4 border-t border-glacier-grey/10">
@@ -968,7 +1092,7 @@ function LandingPage({ type }: { type: string }) {
         <ClientLiveReviewsStrip />
 
         {/* ===== LOCATION with embedded Google Map ===== */}
-        <LocationSection />
+        <LocationSection city={city} />
 
         {/* ===== FAQ (Schema eligible) ===== */}
         <section className="py-20 px-4 border-t border-glacier-grey/10">
@@ -1058,11 +1182,12 @@ function LandingPage({ type }: { type: string }) {
 
 export default function CustomJewelryPage() {
   const params = useParams()
-  const urlType = (params?.type as string) || 'general'
+  const segment = (params?.type as string) || 'general'
+  const { type: urlType, city } = parseTypeSegment(segment)
 
   // Specific type → landing page (no form)
   if (urlType !== 'general' && urlType in typeConfig) {
-    return <LandingPage type={urlType} />
+    return <LandingPage type={urlType} city={city} />
   }
 
   // /custom-form → form-only conversion utility. Hub SEO content was

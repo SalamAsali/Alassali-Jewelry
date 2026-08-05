@@ -1,7 +1,5 @@
-import { notFound, redirect } from 'next/navigation'
-import type { Metadata } from 'next'
-import { LOCATIONS, SERVICES, getLocation, getService } from '@/lib/locations'
-import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
+import { notFound, redirect, permanentRedirect } from 'next/navigation'
+import { LOCATIONS, SERVICES, getLocation, getService, GEO_CITIES } from '@/lib/locations'
 
 type Props = { params: Promise<{ city: string; service: string }> }
 
@@ -11,34 +9,23 @@ export async function generateStaticParams() {
   )
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { city, service } = await params
-  const loc = getLocation(city)
-  const svc = getService(service)
-  if (!loc || !svc) return {}
-  return {
-    title: `${svc.name} in ${loc.name}`,
-    description: `${svc.name} handcrafted in ${loc.name}, Ontario. Premium 10K, 14K & 18K gold. Book your free consultation today.`,
-    alternates: { canonical: `https://www.alasalicustomjewelry.ca/${city}/${service}` },
-    openGraph: mergeOpenGraph({
-      title: `${svc.name} in ${loc.name} | Al-Asali Jewelry`,
-      description: `${svc.name} handcrafted in ${loc.name}, Ontario. Premium 10K, 14K & 18K gold.`,
-      url: `/${city}/${service}`,
-    }),
-  }
-}
-
+/**
+ * Legacy hierarchical URLs (/oakville/custom-rings). Every city that has its
+ * own bespoke landing page now 301s to the flat geo URL that ranks for it;
+ * anything else falls back to the Toronto page.
+ *
+ * No generateMetadata here on purpose — these paths only ever redirect, so
+ * emitting indexable metadata for them would compete with the real pages.
+ */
 export default async function CityServicePage({ params }: Props) {
   const { city, service } = await params
   const loc = getLocation(city)
   const svc = getService(service)
   if (!loc || !svc) notFound()
 
-  // Toronto service pages redirect to the main service pages
-  if (loc.slug === 'toronto') {
-    redirect(`/custom-${svc.formType}-toronto`)
+  if ((GEO_CITIES as readonly string[]).includes(loc.slug)) {
+    permanentRedirect(`/custom-${svc.formType}-${loc.slug}`)
   }
 
-  // Oakville service pages redirect to main for now
   redirect(`/custom-${svc.formType}-toronto`)
 }
