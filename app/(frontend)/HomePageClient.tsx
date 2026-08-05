@@ -50,10 +50,10 @@ const processIconMap: Record<string, LucideIcon> = {
 const FALLBACK_PROCESS: ProcessStep[] = [
   { icon: '', label: 'Consultation', description: 'We start with a personal conversation to understand your vision, style preferences, and the story behind your piece.' },
   { icon: '', label: 'Sketch', description: 'Our designers create detailed sketches and CAD renderings, refining until every detail matches your dream.' },
-  { icon: '', label: 'Material Selection', description: 'Hand-pick from the finest metals and ethically sourced gemstones — diamonds, sapphires, rubies, and more.' },
+  { icon: '', label: 'Material Selection', description: 'Hand-pick from the finest metals and ethically sourced gemstones, including diamonds, sapphires, rubies, and more.' },
   { icon: '', label: 'Design', description: 'Your approved design is finalized with precise CAD models, ready for our master craftspeople.' },
   { icon: '', label: 'In-House Manufacture', description: 'Every piece is crafted entirely in-house in Toronto using traditional techniques and modern precision.' },
-  { icon: '', label: 'Presentation', description: 'Your finished piece is presented in luxury packaging — a moment as special as the jewelry itself.' },
+  { icon: '', label: 'Presentation', description: 'Your finished piece is presented in luxury packaging, making the reveal as special as the jewelry itself.' },
 ]
 
 const FALLBACK_FEATURED: GalleryItem[] = [
@@ -102,14 +102,14 @@ const ACCENT_IMAGES = [
 ]
 
 const bespokeCategories = [
-  { name: 'Engagement Rings', path: '/custom-engagement-rings-toronto', icon: '/images/icons/engagement-rings.svg', blurb: 'Solitaire, halo, vintage, three-stone — designed around your love story.' },
-  { name: 'Wedding Bands', path: '/custom-wedding-bands-toronto', icon: '/images/icons/bridal-bands.svg', blurb: 'Matching bridal sets, eternity bands, men’s bands, and engraved pieces.' },
-  { name: 'Rings', path: '/custom-rings-toronto', icon: '/images/icons/rings.svg', blurb: 'Signet, statement, stackable, everyday — gold, platinum, or silver.' },
-  { name: 'Pendants', path: '/custom-pendants-toronto', icon: '/images/icons/pendants.svg', blurb: 'Name pendants, photo pendants, religious symbols, Arabic calligraphy.' },
-  { name: 'Chains', path: '/custom-chains-toronto', icon: '/images/icons/chains.svg', blurb: 'Miami Cuban, rope, franco, figaro — solid gold, never hollow.' },
-  { name: 'Earrings', path: '/custom-earrings-toronto', icon: '/images/icons/earrings.svg', blurb: 'Studs, hoops, drops, chandeliers — diamond and gold.' },
-  { name: 'Bracelets', path: '/custom-bracelets-toronto', icon: '/images/icons/bracelets.svg', blurb: 'Tennis bracelets, bangles, cuffs, engraved men’s ID bracelets.' },
-  { name: 'Grillz', path: '/custom-grillz-toronto', icon: '/images/icons/grillz.svg', blurb: 'Gold and VVS diamond grillz — single tooth to full sets.' },
+  { name: 'Engagement Rings', path: '/custom-engagement-rings-toronto', icon: '/images/icons/engagement-rings.svg', blurb: 'Whether you\u2019re drawn to a classic solitaire, a halo setting, something vintage-inspired, or a three-stone design, every ring is built around the two of you.' },
+  { name: 'Wedding Bands', path: '/custom-wedding-bands-toronto', icon: '/images/icons/bridal-bands.svg', blurb: 'Matching bridal sets, eternity bands, men’s bands, or a fully engraved piece, each one designed to sit right alongside your ring.' },
+  { name: 'Rings', path: '/custom-rings-toronto', icon: '/images/icons/rings.svg', blurb: 'From a signet ring to a statement piece, a stackable set, or something for everyday wear, if you can picture it in gold, platinum, or silver, we can cast it.' },
+  { name: 'Pendants', path: '/custom-pendants-toronto', icon: '/images/icons/pendants.svg', blurb: 'From a name pendant to a photo piece, a religious symbol, or Arabic calligraphy, every pendant carries something personal.' },
+  { name: 'Chains', path: '/custom-chains-toronto', icon: '/images/icons/chains.svg', blurb: 'Whether it\u2019s a Miami Cuban, a rope chain, a franco, or figaro, everything we make is solid gold, never hollow.' },
+  { name: 'Earrings', path: '/custom-earrings-toronto', icon: '/images/icons/earrings.svg', blurb: 'Studs for every day, hoops and drops for more movement, or chandeliers for a big night out, all made in diamond and gold.' },
+  { name: 'Bracelets', path: '/custom-bracelets-toronto', icon: '/images/icons/bracelets.svg', blurb: 'Tennis bracelets, bangles, cuffs, or an engraved ID bracelet for him, built to fit exactly how you\u2019ll wear it.' },
+  { name: 'Grillz', path: '/custom-grillz-toronto', icon: '/images/icons/grillz.svg', blurb: 'From a single tooth to a full set, we work in real gold and VVS diamonds, never CZ.' },
 ]
 
 // SEO trust pillars — the four reasons clients pick a custom jeweler in Toronto
@@ -125,13 +125,13 @@ const homepageFaq = [
   { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based custom jewelry studio at 624 Vaughan Rd. We work by appointment only — virtual consultations via Zoom, phone, or message, and complimentary insured delivery across the Greater Toronto Area, with optional in-person meetings in Toronto when preferred.' },
   { q: 'What does custom jewelry cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal weight, stones, and design complexity. Custom engagement rings typically start at $2,500. Every project is quoted up front with no hidden fees.' },
   { q: 'How long does custom jewelry take?', a: 'Most pieces take 2–6 weeks: grillz 1–2 weeks, pendants 2–4 weeks, chains and earrings 2–4 weeks, rings and bracelets 3–5 weeks, engagement rings 4–6 weeks. Rush orders are available for an additional fee.' },
-  { q: 'How do I start a custom jewelry project?', a: 'Book a free consultation — virtual via Zoom, phone, or message, or in-person in Toronto by appointment. We discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins.' },
-  { q: 'Do you offer lab-grown diamonds?', a: 'Yes — we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value, both fully GIA-graded.' },
+  { q: 'How do I start a custom jewelry project?', a: 'Book a free virtual consultation via Zoom, phone, or message, or an in-person consultation in Toronto by appointment. We discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins.' },
+  { q: 'Do you offer lab-grown diamonds?', a: 'Yes, we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value, both fully GIA-graded.' },
   { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We carefully remove the stones from your existing piece and set them into your new custom design while preserving every detail you want to keep.' },
-  { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweler is fluent in the art of Arabic calligraphy casting.' },
+  { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes, Arabic calligraphy pendants and engravings are something we do often, from Allah and Ayat al-Kursi pendants to Bismillah pendants and engraved Arabic wedding bands.' },
   { q: 'What areas around Toronto do you serve?', a: 'Our studio is in Toronto, and we regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, Milton, and Richmond Hill.' },
-  { q: 'Do I need an appointment to visit the studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we’ll confirm a time that works for you.' },
-  { q: 'Do you ship outside of Toronto?', a: 'Yes — we ship securely across the GTA and anywhere in Canada. Finished pieces are always fully insured in transit.' },
+  { q: 'Do I need an appointment to visit the studio?', a: 'Yes, we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we’ll confirm a time that works.' },
+  { q: 'Do you ship outside of Toronto?', a: 'We ship securely across the GTA and anywhere in Canada, with every finished piece fully insured in transit.' },
 ]
 
 export default function HomePageClient({ liveReviews, liveRating, liveReviewCount }: HomePageClientProps = {}) {
@@ -339,7 +339,13 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jewelry, Made in Toronto</h2>
             <p className="text-sm md:text-lg text-taupe max-w-3xl mx-auto leading-relaxed">
-              Al-Asali Jewelry is a Toronto-based bespoke jewelry studio. Master jeweler Mohammad Al-Asali designs and handcrafts every custom engagement ring, wedding band, diamond pendant, gold chain, grillz, and more — all entirely in-house — from first sketch to final polish, under one roof, with a lifetime craftsmanship guarantee. Choose a category to begin.
+              Al-Asali Jewelry is a Toronto-based custom jeweler. Master jeweler Mohammad Al-Asali designs and handcrafts every{' '}
+              <Link href="/custom-engagement-rings-toronto" className="underline underline-offset-4 hover:text-deep-charcoal transition-colors">engagement ring</Link>,{' '}
+              <Link href="/custom-wedding-bands-toronto" className="underline underline-offset-4 hover:text-deep-charcoal transition-colors">wedding band</Link>,{' '}
+              <Link href="/custom-pendants-toronto" className="underline underline-offset-4 hover:text-deep-charcoal transition-colors">diamond pendant</Link>,{' '}
+              <Link href="/custom-chains-toronto" className="underline underline-offset-4 hover:text-deep-charcoal transition-colors">gold chain</Link>, and{' '}
+              <Link href="/custom-grillz-toronto" className="underline underline-offset-4 hover:text-deep-charcoal transition-colors">grillz</Link>{' '}
+              piece himself, from first sketch to final polish, backed by a lifetime craftsmanship guarantee. Choose a category to begin.
             </p>
           </motion.div>
 
@@ -440,7 +446,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
         <div className="section-container">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Our Process</h2>
-            <p className="text-sm md:text-lg text-taupe max-w-3xl mx-auto leading-relaxed">From first conversation to final reveal — every step crafted with care.</p>
+            <p className="text-sm md:text-lg text-taupe max-w-3xl mx-auto leading-relaxed">From first conversation to final reveal, every step is crafted with care.</p>
           </motion.div>
 
           <div ref={processRef} className="relative max-w-3xl mx-auto">
@@ -512,7 +518,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Why Al-Asali Jewelry</h2>
             <p className="text-sm md:text-lg text-stone leading-relaxed">
-              We are a small, focused Toronto workshop. Every piece is crafted by a master jeweler — not a factory — and backed by a lifetime craftsmanship guarantee.
+              We are a small, focused Toronto workshop. Every piece is crafted by a master jeweler, not a factory, and backed by a lifetime craftsmanship guarantee. Mohammad checks every stone under the loupe himself before it&rsquo;s set, slower than sending it out, but the only way he&rsquo;ll put his name on a piece.
             </p>
           </motion.div>
 
@@ -572,7 +578,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-5xl font-bold text-white mb-6" style={{ fontFamily: 'var(--font-heading)' }}>How We Work Together</h2>
             <p className="text-sm md:text-lg text-stone leading-relaxed mb-8">
-              Al-Asali Jewelry Studio is a Toronto-based custom jeweler, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
+              Al-Asali Jewelry Studio is a Toronto-based custom jeweler, serving clients across the GTA by appointment. We offer free virtual consultations by Zoom, phone, or message, complimentary insured delivery of your finished piece, and in-person meetings in Toronto whenever you prefer.
             </p>
 
             <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-sm mb-6">
@@ -600,7 +606,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jewelry in Toronto — FAQ</h2>
             <p className="text-sm md:text-lg text-taupe max-w-2xl mx-auto leading-relaxed">
-              Everything you need to know about working with a Toronto custom jeweler — pricing, timelines, lab-grown diamonds, heirloom resets, and more.
+              From pricing and timelines to lab-grown diamonds and heirloom resets, here&rsquo;s everything you need to know about working with a Toronto custom jeweler.
             </p>
           </motion.div>
 

@@ -8,21 +8,21 @@ const subTypes = [
     name: 'Arabic Calligraphy Pendants',
     keyword: 'Arabic calligraphy pendant Toronto',
     icon: Scroll,
-    desc: 'Custom Arabic name pendants, phrases, and verses hand-crafted in Thuluth, Naskh, Diwani, or modern calligraphic fonts. Our master jeweler specializes in translating Arabic calligraphy into flowing gold and platinum pieces — each carefully proofread before CAD rendering.',
+    desc: 'Custom Arabic name pendants, phrases, and verses hand-crafted in Thuluth, Naskh, Diwani, or modern calligraphic fonts, with every piece carefully proofread before CAD rendering. Our master jeweler specializes in translating Arabic calligraphy into flowing gold and platinum pieces.',
     examples: ['Arabic name pendants', 'Mashallah pendants', 'Inshallah pendants', 'Custom Arabic quotes', 'Bismillah pendants'],
   },
   {
     name: 'Islamic Religious Pendants',
     keyword: 'Allah pendant Toronto',
     icon: Star,
-    desc: 'Handcrafted Allah pendants, Ayat al-Kursi pendants, and Bismillah pendants — available in traditional calligraphy or contemporary interpretations. Diamond-set and plain gold options in 10K, 14K, and 18K.',
+    desc: 'Handcrafted Allah pendants, Ayat al-Kursi pendants, and Bismillah pendants, available in traditional calligraphy or contemporary interpretations. Diamond-set and plain gold options in 10K, 14K, and 18K.',
     examples: ['Allah pendants', 'Ayat al-Kursi pendants', 'Bismillah pendants', '99 Names of Allah', 'Kaaba pendants', 'Arabic prayer pendants'],
   },
   {
     name: 'Bubble Letter Pendants',
     keyword: 'bubble letter pendant Toronto',
     icon: Type,
-    desc: 'Our signature bubble-letter name pendants in any font, any size, any word. Available plain polished or fully iced out with diamond pavé. Up to 6 letters standard — longer names on request.',
+    desc: 'Our signature bubble-letter name pendants, made with any font, size, or word you want. Available plain polished or fully iced out with diamond pavé. Up to 6 letters standard, with longer names on request.',
     examples: ['Name bubble letters', 'Script bubble letters', 'Old English letters', 'Gothic letters', 'Diamond-set bubble letters'],
   },
   {
@@ -43,7 +43,7 @@ const subTypes = [
     name: 'Religious Symbol Pendants',
     keyword: 'religious pendant Toronto',
     icon: Sparkles,
-    desc: 'Custom religious symbol pendants across traditions — crosses, hamsas, Stars of David, Om symbols, ankhs, and zodiacs — each crafted in your preferred style, size, and stone configuration.',
+    desc: 'Custom religious symbol pendants across traditions, from crosses and hamsas to Stars of David, Om symbols, ankhs, and zodiacs, each crafted in your preferred style, size, and stone configuration.',
     examples: ['Cross pendants', 'Hamsa pendants', 'Star of David pendants', 'Om pendants', 'Ankh pendants', 'Zodiac pendants', 'Evil eye pendants'],
   },
   {
@@ -76,7 +76,7 @@ export default function PendantsHeritageSection() {
             Every Pendant Style We Craft
           </h2>
           <p className="text-stone max-w-2xl mx-auto">
-            From Arabic calligraphy and religious symbols to bubble letters, photo pendants, and custom logos — here&apos;s every style of pendant we&apos;ve perfected at our Toronto studio.
+            From Arabic calligraphy and religious symbols to bubble letters, photo pendants, and custom logos, here&apos;s every style of pendant we&apos;ve perfected at our Toronto studio.
           </p>
         </motion.div>
 
@@ -125,7 +125,7 @@ export default function PendantsHeritageSection() {
             Arabic Calligraphy Is Our Specialty
           </h3>
           <p className="text-stone leading-relaxed">
-            Al-Asali Jewelry is one of the few custom jewelers in Toronto with deep expertise in Arabic calligraphy pendants. Master jeweler Mohammad Al-Asali personally reviews and hand-shapes every Arabic piece — ensuring authentic letter forms, balanced proportions, and faithful rendering of sacred text. Whether you want your name in script, an Ayat al-Kursi pendant, or a full verse for a loved one, we craft it with the care the language deserves.
+            Al-Asali Jewelry is one of the few custom jewelers in Toronto with deep expertise in Arabic calligraphy pendants. Master jeweler Mohammad Al-Asali personally reviews and hand-shapes every Arabic piece, down to the letter forms and proportions, to make sure sacred text is rendered faithfully. Whether you want your name in script, an Ayat al-Kursi pendant, or a full verse for a loved one, we craft it with the care the language deserves.
           </p>
         </motion.div>
       </div>
