@@ -6,13 +6,13 @@ import type { City } from '@/lib/locations'
 
 const COPY: Record<City, { intro: string; delivery: string; apptHeading: string; appt: string }> = {
   toronto: {
-    intro: 'A Toronto-based custom studio serving clients across the GTA by appointment. Most of the process happens virtually, with secure insured delivery when your piece is ready, plus in-person meetings in Toronto whenever you\u2019d like one.',
+    intro: 'A Toronto-based custom studio serving clients across the GTA by appointment. Most of the process happens virtually, with secure insured delivery when your piece is ready, plus in-person meetings in Toronto whenever you’d like one.',
     delivery: 'Finished pieces are delivered fully insured to your door anywhere in Toronto and the Greater Toronto area. No pickup required.',
     apptHeading: 'By appointment in Toronto',
     appt: 'Prefer to meet face-to-face? We arrange private in-person appointments in Toronto at a time and location that works for you.',
   },
   oakville: {
-    intro: 'A custom studio working with Oakville clients by appointment or entirely online. Most of the process happens virtually, with secure insured delivery once your piece is ready. If you\u2019d rather meet in person, we\u2019re happy to set that up at our Oakville studio too.',
+    intro: 'A custom studio working with Oakville clients by appointment or entirely online. Most of the process happens virtually, with secure insured delivery once your piece is ready. If you’d rather meet in person, we’re happy to set that up at our Oakville studio too.',
     delivery: 'Finished pieces are delivered fully insured to your door anywhere in Oakville and the rest of the Greater Toronto Area. No pickup required.',
     apptHeading: 'By appointment in Oakville',
     appt: 'Prefer to meet face-to-face? We arrange private in-person appointments in Oakville at a time and location that works for you.',

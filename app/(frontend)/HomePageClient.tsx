@@ -102,13 +102,13 @@ const ACCENT_IMAGES = [
 ]
 
 const bespokeCategories = [
-  { name: 'Engagement Rings', path: '/custom-engagement-rings-toronto', icon: '/images/icons/engagement-rings.svg', blurb: 'Whether you\u2019re drawn to a classic solitaire, a halo setting, something vintage-inspired, or a three-stone design, every ring is built around the two of you.' },
+  { name: 'Engagement Rings', path: '/custom-engagement-rings-toronto', icon: '/images/icons/engagement-rings.svg', blurb: 'Whether you’re drawn to a classic solitaire, a halo setting, something vintage-inspired, or a three-stone design, every ring is built around the two of you.' },
   { name: 'Wedding Bands', path: '/custom-wedding-bands-toronto', icon: '/images/icons/bridal-bands.svg', blurb: 'Matching bridal sets, eternity bands, men’s bands, or a fully engraved piece, each one designed to sit right alongside your ring.' },
   { name: 'Rings', path: '/custom-rings-toronto', icon: '/images/icons/rings.svg', blurb: 'From a signet ring to a statement piece, a stackable set, or something for everyday wear, if you can picture it in gold, platinum, or silver, we can cast it.' },
   { name: 'Pendants', path: '/custom-pendants-toronto', icon: '/images/icons/pendants.svg', blurb: 'From a name pendant to a photo piece, a religious symbol, or Arabic calligraphy, every pendant carries something personal.' },
-  { name: 'Chains', path: '/custom-chains-toronto', icon: '/images/icons/chains.svg', blurb: 'Whether it\u2019s a Miami Cuban, a rope chain, a franco, or figaro, everything we make is solid gold, never hollow.' },
+  { name: 'Chains', path: '/custom-chains-toronto', icon: '/images/icons/chains.svg', blurb: 'Whether it’s a Miami Cuban, a rope chain, a franco, or figaro, everything we make is solid gold, never hollow.' },
   { name: 'Earrings', path: '/custom-earrings-toronto', icon: '/images/icons/earrings.svg', blurb: 'Studs for every day, hoops and drops for more movement, or chandeliers for a big night out, all made in diamond and gold.' },
-  { name: 'Bracelets', path: '/custom-bracelets-toronto', icon: '/images/icons/bracelets.svg', blurb: 'Tennis bracelets, bangles, cuffs, or an engraved ID bracelet for him, built to fit exactly how you\u2019ll wear it.' },
+  { name: 'Bracelets', path: '/custom-bracelets-toronto', icon: '/images/icons/bracelets.svg', blurb: 'Tennis bracelets, bangles, cuffs, or an engraved ID bracelet for him, built to fit exactly how you’ll wear it.' },
   { name: 'Grillz', path: '/custom-grillz-toronto', icon: '/images/icons/grillz.svg', blurb: 'From a single tooth to a full set, we work in real gold and VVS diamonds, never CZ.' },
 ]
 

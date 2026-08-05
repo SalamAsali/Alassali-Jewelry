@@ -78,8 +78,8 @@ export default function PendantsHeritageSection({ city = 'toronto' }: { city?: C
           </h2>
           <p className="text-stone max-w-2xl mx-auto">
             {city === 'oakville'
-              ? 'From Arabic calligraphy and religious symbols to bubble letters, photo pendants, and custom logos, here\u2019s every style of pendant we craft for our Oakville clients.'
-              : 'From Arabic calligraphy and religious symbols to bubble letters, photo pendants, and custom logos, here\u2019s every style of pendant we\u2019ve perfected at our Toronto studio.'}
+              ? 'From Arabic calligraphy and religious symbols to bubble letters, photo pendants, and custom logos, here’s every style of pendant we craft for our Oakville clients.'
+              : 'From Arabic calligraphy and religious symbols to bubble letters, photo pendants, and custom logos, here’s every style of pendant we’ve perfected at our Toronto studio.'}
           </p>
         </motion.div>
 

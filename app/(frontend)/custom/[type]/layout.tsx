@@ -6,35 +6,35 @@ import { parseTypeSegment, bespokePath } from '@/lib/locations'
 const pageMeta: Record<string, { title: string; description: string }> = {
   'engagement-rings': {
     title: 'Custom Engagement Rings Toronto — Al-Asali Jewelry',
-    description: 'Design a one-of-a-kind engagement ring with Toronto\'s premier custom jeweler. Ethically sourced diamonds, in-house craftsmanship, and a process as special as the ring itself.',
+    description: 'Design a custom engagement ring with Toronto\'s premier custom jeweler. Ethically sourced diamonds, in-house craftsmanship, and a process as special as the ring itself.',
   },
   'rings': {
     title: 'Custom Rings Toronto — Al-Asali Jewelry',
-    description: 'From signet rings to wedding bands, every custom ring is handcrafted in-house in Toronto. Gold, platinum, and silver — designed around your vision.',
+    description: 'From signet rings to wedding bands, every custom ring is handcrafted in-house in Toronto using gold, platinum, or silver, designed entirely around your vision.',
   },
   'pendants': {
     title: 'Custom Pendants Toronto — Al-Asali Jewelry',
-    description: 'Handcrafted custom pendants in Toronto — from name pendants and photo pendants to diamond-set initials. Your story, beautifully told in gold and silver.',
+    description: 'Handcrafted custom pendants in Toronto, from name pendants and photo pendants to diamond-set initials, all handcrafted in gold and silver.',
   },
   'chains': {
     title: 'Custom Chains Toronto — Al-Asali Jewelry',
-    description: 'Custom gold and silver chains handcrafted in Toronto. Cuban links, rope chains, franco chains, and more — built to your exact specifications.',
+    description: 'Custom gold and silver chains handcrafted in Toronto. Cuban links, rope chains, franco chains, and more, built to your exact specifications.',
   },
   'earrings': {
     title: 'Custom Earrings Toronto — Al-Asali Jewelry',
-    description: 'Design custom earrings with Toronto\'s premier jeweler. Studs, hoops, drops, and chandelier earrings — handcrafted in gold, platinum, or silver.',
+    description: 'Design custom earrings with Toronto\'s premier jeweler. Studs, hoops, drops, and chandelier earrings, handcrafted in gold, platinum, or silver.',
   },
   'bracelets': {
     title: 'Custom Bracelets Toronto — Al-Asali Jewelry',
-    description: 'Custom bracelets handcrafted in Toronto. Tennis bracelets, bangles, cuffs, and engraved pieces for men and women — designed to your exact specifications.',
+    description: 'Custom bracelets handcrafted in Toronto. Tennis bracelets, bangles, cuffs, and engraved pieces for men and women, designed to your exact specifications.',
   },
   'grillz': {
     title: 'Custom Grillz Toronto — Al-Asali Jewelry',
-    description: 'Toronto\'s premier custom grillz studio. Gold, diamond, and VVS grillz — from single tooth to full sets. In-house craftsmanship, competitive prices.',
+    description: 'Gold, diamond, and VVS grillz, from single tooth to full sets, handcrafted in-house by Toronto\'s premier custom grillz studio.',
   },
   'wedding-bands': {
     title: 'Custom Wedding Bands Toronto — Al-Asali Jewelry',
-    description: 'Custom wedding bands handcrafted in Toronto. Matching bridal sets, eternity bands, men\'s wedding rings, engraved bands, and Arabic calligraphy rings — in gold, platinum, or silver.',
+    description: 'Custom wedding bands handcrafted in Toronto: matching bridal sets, eternity bands, men\'s wedding rings, engraved bands, and Arabic calligraphy rings, in gold, platinum, or silver.',
   },
   'general': {
     title: 'Start Your Custom Jewelry Project — Al-Asali Jewelry',
@@ -47,7 +47,7 @@ const pageMeta: Record<string, { title: string; description: string }> = {
 const oakvilleMeta: Record<string, { title: string; description: string }> = {
   'engagement-rings': {
     title: 'Custom Engagement Rings Oakville — Al-Asali Jewelry',
-    description: 'Design a custom engagement ring with Oakville\u2019s premier custom jeweler. Ethically sourced diamonds, in-house craftsmanship, and a process built around Oakville clients.',
+    description: 'Design a custom engagement ring with Oakville’s premier custom jeweler. Ethically sourced diamonds, in-house craftsmanship, and a process built around Oakville clients.',
   },
   'rings': {
     title: 'Custom Rings Oakville — Al-Asali Jewelry',
@@ -63,7 +63,7 @@ const oakvilleMeta: Record<string, { title: string; description: string }> = {
   },
   'earrings': {
     title: 'Custom Earrings Oakville — Al-Asali Jewelry',
-    description: 'Design custom earrings with Oakville\u2019s premier jeweler. Studs, hoops, drops, and chandelier earrings, handcrafted in gold, platinum, or silver.',
+    description: 'Design custom earrings with Oakville’s premier jeweler. Studs, hoops, drops, and chandelier earrings, handcrafted in gold, platinum, or silver.',
   },
   'bracelets': {
     title: 'Custom Bracelets Oakville — Al-Asali Jewelry',
@@ -75,7 +75,7 @@ const oakvilleMeta: Record<string, { title: string; description: string }> = {
   },
   'wedding-bands': {
     title: 'Custom Wedding Bands Oakville — Al-Asali Jewelry',
-    description: 'Custom wedding bands handcrafted for Oakville clients: matching bridal sets, eternity bands, men\u2019s wedding rings, engraved bands, and Arabic calligraphy rings, in gold, platinum, or silver.',
+    description: 'Custom wedding bands handcrafted for Oakville clients: matching bridal sets, eternity bands, men’s wedding rings, engraved bands, and Arabic calligraphy rings, in gold, platinum, or silver.',
   },
 }
 
