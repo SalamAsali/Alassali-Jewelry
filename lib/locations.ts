@@ -18,7 +18,7 @@ export const LOCATIONS: LocationData[] = [
     city: 'Toronto',
     province: 'ON',
     postalCode: 'M6E 2X3',
-    phone: '(647) 562-4640',
+    phone: '(647) 562-4340',
     isMain: true,
     neighborhoods: [
       'Downtown Toronto', 'Yorkville', 'Forest Hill', 'North York',
