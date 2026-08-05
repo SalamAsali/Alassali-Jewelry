@@ -133,12 +133,15 @@ export function areaServedFor(city: City) {
 /**
  * The Oakville branch as its own JewelryStore node.
  *
- * Deliberately carries NO aggregateRating: the 5.0/42 on the main node comes
- * from the Toronto Google Business Profile, and asserting those reviews for a
- * different physical location would be fabricated review data. Add one here
- * only when Oakville's own GBP reviews are wired up.
+ * aggregateRating is only emitted when Oakville's OWN Google Business Profile
+ * data is passed in. It is never inherited from the Toronto node — those are a
+ * different listing's reviews, and asserting them here would be fabricated
+ * review markup.
  */
-export function buildOakvilleStoreSchema() {
+export function buildOakvilleStoreSchema(liveReviews?: {
+  rating: number
+  totalReviews: number
+}) {
   return {
     '@context': 'https://schema.org',
     '@type': 'JewelryStore',
@@ -168,6 +171,7 @@ export function buildOakvilleStoreSchema() {
       latitude: OAKVILLE_LOCATION.geo.latitude,
       longitude: OAKVILLE_LOCATION.geo.longitude,
     },
+    hasMap: OAKVILLE_LOCATION.googleMapsUrl,
     areaServed: oakvilleAreaServedNodes,
     openingHoursSpecification: [
       ...SITE_CONFIG.hours.map((h) => ({
@@ -184,6 +188,17 @@ export function buildOakvilleStoreSchema() {
       })),
     ],
     sameAs,
+    ...(liveReviews && liveReviews.totalReviews > 0
+      ? {
+          aggregateRating: {
+            '@type': 'AggregateRating',
+            ratingValue: String(liveReviews.rating),
+            reviewCount: String(liveReviews.totalReviews),
+            bestRating: SITE_CONFIG.aggregateRating.bestRating,
+            worstRating: SITE_CONFIG.aggregateRating.worstRating,
+          },
+        }
+      : {}),
   }
 }
 

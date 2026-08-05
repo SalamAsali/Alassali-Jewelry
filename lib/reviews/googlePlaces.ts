@@ -16,7 +16,8 @@
 //     callers decide what to render in the fallback case (e.g. placeholder quotes).
 //   - Zero client-side network calls — never exposes the API key.
 
-import { SITE_CONFIG } from '@/lib/seo/siteConfig'
+import { SITE_CONFIG, OAKVILLE_LOCATION } from '@/lib/seo/siteConfig'
+import type { City } from '@/lib/locations'
 
 export type GoogleReview = {
   authorName: string
@@ -46,27 +47,44 @@ type PlacesDetailsResponse = {
   error_message?: string
 }
 
-const PLACE_ID = SITE_CONFIG.googleMapsPlaceId
 
 // Verification anchors — the Places API response must match one of these name
 // fragments and the address must contain this substring, otherwise we refuse
 // to render the reviews. Prevents silently showing a stranger's reviews if the
 // Place ID ever gets corrupted (env var swap, copy-paste error, etc.).
 const EXPECTED_NAME_FRAGMENTS = ['al-asali', 'al-assali', 'alassali', 'alasali']
-const EXPECTED_ADDRESS_FRAGMENT = 'vaughan rd'
 
-export async function fetchGoogleReviews(): Promise<{
+// Each location is a separate Google Business Profile with its own reviews.
+// The address fragment is the identity anchor for that specific listing, so a
+// swapped Place ID can never surface one location's reviews on the other's page.
+const PLACE_BY_CITY: Record<City, { placeId: string; addressFragment: string; fallback: { ratingValue: string; reviewCount: number } }> = {
+  toronto: {
+    placeId: SITE_CONFIG.googleMapsPlaceId,
+    addressFragment: 'vaughan rd',
+    fallback: SITE_CONFIG.aggregateRating,
+  },
+  oakville: {
+    placeId: OAKVILLE_LOCATION.googleMapsPlaceId,
+    addressFragment: OAKVILLE_LOCATION.expectedAddressFragment,
+    fallback: OAKVILLE_LOCATION.aggregateRating,
+  },
+}
+
+export async function fetchGoogleReviews(city: City = 'toronto'): Promise<{
   reviews: GoogleReview[]
   rating: number
   totalReviews: number
   source: 'live' | 'fallback'
 }> {
+  const place = PLACE_BY_CITY[city] ?? PLACE_BY_CITY.toronto
+  const PLACE_ID = place.placeId
+  const EXPECTED_ADDRESS_FRAGMENT = place.addressFragment
   const apiKey = process.env.GOOGLE_PLACES_API_KEY
   if (!apiKey) {
     return {
       reviews: [],
-      rating: Number(SITE_CONFIG.aggregateRating.ratingValue),
-      totalReviews: SITE_CONFIG.aggregateRating.reviewCount,
+      rating: Number(place.fallback.ratingValue),
+      totalReviews: place.fallback.reviewCount,
       source: 'fallback',
     }
   }
@@ -107,8 +125,8 @@ export async function fetchGoogleReviews(): Promise<{
       )
       return {
         reviews: [],
-        rating: Number(SITE_CONFIG.aggregateRating.ratingValue),
-        totalReviews: SITE_CONFIG.aggregateRating.reviewCount,
+        rating: Number(place.fallback.ratingValue),
+        totalReviews: place.fallback.reviewCount,
         source: 'fallback',
       }
     }
@@ -124,16 +142,16 @@ export async function fetchGoogleReviews(): Promise<{
 
     return {
       reviews,
-      rating: data.result.rating ?? Number(SITE_CONFIG.aggregateRating.ratingValue),
-      totalReviews: data.result.user_ratings_total ?? SITE_CONFIG.aggregateRating.reviewCount,
+      rating: data.result.rating ?? Number(place.fallback.ratingValue),
+      totalReviews: data.result.user_ratings_total ?? place.fallback.reviewCount,
       source: 'live',
     }
   } catch (err) {
     console.error('[googlePlaces] Failed to fetch reviews', err)
     return {
       reviews: [],
-      rating: Number(SITE_CONFIG.aggregateRating.ratingValue),
-      totalReviews: SITE_CONFIG.aggregateRating.reviewCount,
+      rating: Number(place.fallback.ratingValue),
+      totalReviews: place.fallback.reviewCount,
       source: 'fallback',
     }
   }

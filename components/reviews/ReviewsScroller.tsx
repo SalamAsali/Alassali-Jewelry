@@ -3,8 +3,9 @@
 import { useRef, useState, useEffect, useCallback } from 'react'
 import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
 import { motion } from 'framer-motion'
-import { SITE_CONFIG } from '@/lib/seo/siteConfig'
+import { SITE_CONFIG, OAKVILLE_LOCATION } from '@/lib/seo/siteConfig'
 import type { GoogleReview } from '@/lib/reviews/googlePlaces'
+import type { City } from '@/lib/locations'
 
 const FALLBACK_REVIEWS: GoogleReview[] = [
   {
@@ -31,6 +32,8 @@ const FALLBACK_REVIEWS: GoogleReview[] = [
 ]
 
 type Props = {
+  /** Which location this strip represents. Governs fallback + profile link. */
+  city?: City
   reviews?: GoogleReview[]
   rating?: number
   totalReviews?: number
@@ -39,6 +42,7 @@ type Props = {
 }
 
 export default function ReviewsScroller({
+  city = 'toronto',
   reviews,
   rating,
   totalReviews,
@@ -49,7 +53,14 @@ export default function ReviewsScroller({
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
 
-  const displayReviews = reviews && reviews.length > 0 ? reviews : FALLBACK_REVIEWS
+  // FALLBACK_REVIEWS are named Toronto customers. Never show them on another
+  // location's page — an empty strip is correct there, a borrowed one is not.
+  const displayReviews =
+    reviews && reviews.length > 0 ? reviews : city === 'toronto' ? FALLBACK_REVIEWS : []
+
+  const profileUrl =
+    city === 'oakville' ? OAKVILLE_LOCATION.googleBusinessUrl : SITE_CONFIG.social.googleBusiness
+
   const displayRating = rating ?? 5.0
   const displayTotal = totalReviews ?? SITE_CONFIG.aggregateRating.reviewCount
 
@@ -99,6 +110,11 @@ export default function ReviewsScroller({
     : 'bg-charcoal border border-glacier-grey/40 text-white hover:bg-charcoal/80'
 
   const fadeFrom = isLight ? 'from-white' : 'from-soft-black'
+
+
+  // Nothing truthful to show for this location yet — an empty strip is
+  // correct here; borrowing another location's reviews is not.
+  if (displayReviews.length === 0) return null
 
   return (
     <section className={sectionClass}>
@@ -211,7 +227,7 @@ export default function ReviewsScroller({
 
         <div className="text-center mt-8">
           <a
-            href={SITE_CONFIG.social.googleBusiness}
+            href={profileUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center gap-2 text-sm font-medium transition-colors ${
