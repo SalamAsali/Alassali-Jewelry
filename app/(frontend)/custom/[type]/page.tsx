@@ -298,7 +298,7 @@ type StepId =
 // ---------------------------------------------------------------------------
 
 const globalWhyCards: { icon: LucideIcon; title: string; text: string }[] = [
-  { icon: MapPin, title: 'Made in Toronto', text: 'Every piece crafted entirely in-house in Toronto — no outsourcing, no middlemen.' },
+  { icon: MapPin, title: 'Made in Toronto', text: 'Every piece is crafted entirely in-house in Toronto. No outsourcing and no middlemen.' },
   { icon: Diamond, title: 'Ethically Sourced', text: 'Natural and lab-grown diamonds, conflict-free sapphires, rubies, and emeralds.' },
   { icon: MessageSquare, title: 'One-on-One Design', text: 'Personal consultation from concept to CAD rendering to finished piece.' },
   { icon: ShieldCheck, title: 'Premium Materials', text: '10K-18K gold, platinum, and sterling silver with optional gemstones.' },
@@ -332,7 +332,7 @@ const landingContent: Record<string, {
     heroSub: 'Design a one-of-a-kind ring as unique as your love story — handcrafted in-house by Toronto\'s finest.',
     intro: 'At Al-Asali Jewelry, every custom engagement ring begins with your vision. Whether you dream of a classic solitaire, a vintage halo setting, or a bold modern design, our master jeweler brings it to life entirely in-house in Toronto. Choose from ethically sourced natural and lab-grown diamonds, sapphires, rubies, and emeralds, set in platinum, 18K, or 14K gold. This is a piece you\'ll wear for the rest of your life, and we treat it that way from the first sketch to the final polish. Couples across the GTA work with us because nothing gets outsourced: every cut, setting, and polish happens under our roof.',
     processNote: 'Most custom engagement rings take 4-6 weeks from design approval to completion. We start with a personal consultation to understand your vision, create detailed CAD renderings for your approval, then hand-select your stones before our master jewelers begin crafting. Rush orders are available when your timeline demands it.',
-    budgetGuide: 'Custom engagement rings start at $1,000 and scale based on your choice of metal, stone type, carat weight, and design complexity. During consultation, we\'ll work within your budget to maximize brilliance — whether that means a stunning lab-grown diamond or a natural stone with exceptional cut quality.',
+    budgetGuide: 'Custom engagement rings start at $1,000 and scale based on your choice of metal, stone type, carat weight, and design complexity. During consultation, we\'ll work within your budget to maximize brilliance, whether that means a stunning lab-grown diamond or a natural stone with exceptional cut quality.',
     stoneNote: 'Choose from natural diamonds, lab-grown diamonds, sapphires, rubies, and emeralds. We source every stone for maximum fire and brilliance, and we\'re happy to walk you through the 4Cs (cut, clarity, colour, carat) during your consultation. Lab-grown diamonds offer the same physical properties at a lower price point.',
     faq: [
       { q: 'How long does it take to make a custom engagement ring in Toronto?', a: 'Most custom engagement rings take 4-6 weeks from design approval to completion. Rush orders can be completed in 2-3 weeks for an additional fee, and we\'ll keep you updated at every stage.' },
@@ -932,7 +932,7 @@ function LandingPage({ type, city }: { type: string; city: City }) {
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
                 Premium Metals
               </h2>
-              <p className="text-stone">Crafted with the finest materials — choose your metal during consultation</p>
+              <p className="text-stone">Crafted with the finest materials. Choose your metal during consultation.</p>
             </motion.div>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 mb-10">
               {metals.map((metal, i) => (
@@ -1089,7 +1089,7 @@ function LandingPage({ type, city }: { type: string; city: City }) {
         </section>
 
         {/* ===== TESTIMONIALS (live Google reviews) ===== */}
-        <ClientLiveReviewsStrip />
+        <ClientLiveReviewsStrip heading={`What Our ${cityName} Clients Say`} />
 
         {/* ===== LOCATION with embedded Google Map ===== */}
         <LocationSection city={city} />

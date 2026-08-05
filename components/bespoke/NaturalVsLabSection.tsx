@@ -39,7 +39,7 @@ export default function NaturalVsLabSection() {
             Natural vs Lab-Grown Diamonds
           </h2>
           <p className="text-stone max-w-2xl mx-auto">
-            Both are real diamonds — same carbon, same brilliance, same hardness. The right choice depends on your goals. Here\u2019s how they compare side by side.
+            Natural and lab-grown diamonds share the same carbon structure, brilliance, and hardness. The difference comes down to origin, price, and what matters most to you, and here&rsquo;s a side-by-side comparison.
           </p>
         </motion.div>
 
