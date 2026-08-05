@@ -1094,7 +1094,7 @@ function LandingPage({ type, city }: { type: string; city: City }) {
         </section>
 
         {/* ===== TESTIMONIALS (live Google reviews) ===== */}
-        <ClientLiveReviewsStrip heading={`What Our ${cityName} Clients Say`} />
+        <ClientLiveReviewsStrip city={city} heading={`What Our ${cityName} Clients Say`} />
 
         {/* ===== LOCATION with embedded Google Map ===== */}
         <LocationSection city={city} />

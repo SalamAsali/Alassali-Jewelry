@@ -147,4 +147,14 @@ export const OAKVILLE_LOCATION = {
     longitude: -79.7335759,
   },
   nearbyCities: ['Burlington', 'Milton', 'Mississauga'],
+
+  // Oakville's own Google Business Profile — a separate listing from Toronto's,
+  // with its own reviews. Confirmed via Places API: "Al-asali Custom Jewelry
+  // Oakville", 3148 Sixth Line, website /oakville.
+  googleMapsPlaceId: 'ChIJbR2E1bxDK4gROV4DwCmmMNI',
+  googleMapsUrl: 'https://maps.google.com/?cid=15145788245092294201',
+  // Street name used to verify the Places response really is this listing.
+  expectedAddressFragment: 'sixth line',
+  // Fallback only — live counts come from the Places API.
+  aggregateRating: { ratingValue: '5.0', reviewCount: 1 },
 } as const

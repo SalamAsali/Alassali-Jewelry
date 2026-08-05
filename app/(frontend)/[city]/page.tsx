@@ -8,6 +8,7 @@ import DiamondPattern from '@/components/DiamondPattern'
 import FloatingDiamonds from '@/components/FloatingDiamonds'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { buildBreadcrumbSchema, buildOakvilleStoreSchema } from '@/lib/seo/schema'
+import { fetchGoogleReviews } from '@/lib/reviews/googlePlaces'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 type Props = { params: Promise<{ city: string }> }
@@ -46,6 +47,10 @@ export default async function CityPage({ params }: Props) {
 
   // Toronto → homepage
   if (loc.slug === 'toronto') redirect('/')
+
+  // This location's own Google reviews, so the schema rating below describes
+  // Oakville rather than inheriting Toronto's.
+  const oakvilleReviews = await fetchGoogleReviews('oakville')
 
   // Oakville (and future cities) get a landing page
   return (
@@ -246,7 +251,7 @@ export default async function CityPage({ params }: Props) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify([
-            buildOakvilleStoreSchema(),
+            buildOakvilleStoreSchema(oakvilleReviews),
             buildBreadcrumbSchema([
               { name: 'Home', url: SITE_CONFIG.url },
               { name: loc.name, url: `${SITE_CONFIG.url}/${city}` },
