@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
+import { parseTypeSegment, bespokePath } from '@/lib/locations'
 
 const pageMeta: Record<string, { title: string; description: string }> = {
   'engagement-rings': {
@@ -41,13 +42,55 @@ const pageMeta: Record<string, { title: string; description: string }> = {
   },
 }
 
-export function generateMetadata({ params }: { params: { type: string } }): Metadata {
-  const meta = pageMeta[params.type] || pageMeta['general']
+// Oakville titles and descriptions, from the client-approved geo copy. Each
+// page is its own canonical URL targeting "<service> Oakville" intent.
+const oakvilleMeta: Record<string, { title: string; description: string }> = {
+  'engagement-rings': {
+    title: 'Custom Engagement Rings Oakville — Al-Asali Jewelry',
+    description: 'Design a custom engagement ring with Oakville\u2019s premier custom jeweler. Ethically sourced diamonds, in-house craftsmanship, and a process built around Oakville clients.',
+  },
+  'rings': {
+    title: 'Custom Rings Oakville — Al-Asali Jewelry',
+    description: 'From signet rings to wedding bands, every custom ring is handcrafted in-house for Oakville clients using gold, platinum, or silver, designed entirely around your vision.',
+  },
+  'pendants': {
+    title: 'Custom Pendants Oakville — Al-Asali Jewelry',
+    description: 'Handcrafted custom pendants in Oakville, from name pendants and photo pendants to diamond-set initials, all handcrafted in gold and silver.',
+  },
+  'chains': {
+    title: 'Custom Chains Oakville — Al-Asali Jewelry',
+    description: 'Custom gold and silver chains handcrafted for Oakville clients. Cuban links, rope chains, franco chains, and more, built to your exact specifications.',
+  },
+  'earrings': {
+    title: 'Custom Earrings Oakville — Al-Asali Jewelry',
+    description: 'Design custom earrings with Oakville\u2019s premier jeweler. Studs, hoops, drops, and chandelier earrings, handcrafted in gold, platinum, or silver.',
+  },
+  'bracelets': {
+    title: 'Custom Bracelets Oakville — Al-Asali Jewelry',
+    description: 'Custom bracelets handcrafted for Oakville clients. Tennis bracelets, bangles, cuffs, and engraved pieces for men and women, designed to your exact specifications.',
+  },
+  'grillz': {
+    title: 'Custom Grillz Oakville — Al-Asali Jewelry',
+    description: 'Gold, diamond, and VVS grillz, from single tooth to full sets, handcrafted in-house with premier craftsmanship, serving Oakville.',
+  },
+  'wedding-bands': {
+    title: 'Custom Wedding Bands Oakville — Al-Asali Jewelry',
+    description: 'Custom wedding bands handcrafted for Oakville clients: matching bridal sets, eternity bands, men\u2019s wedding rings, engraved bands, and Arabic calligraphy rings, in gold, platinum, or silver.',
+  },
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {
+  const { type: segment } = await params
+  const { type, city } = parseTypeSegment(segment)
+  const meta =
+    (city === 'oakville' ? oakvilleMeta[type] : pageMeta[type]) ||
+    pageMeta[type] ||
+    pageMeta['general']
   // /custom-form is a form-only conversion utility excluded from the
   // sitemap. Noindex prevents it from competing with the homepage for
   // "custom jewelry toronto" intent.
-  const isFormPage = params.type === 'general'
-  const canonicalPath = isFormPage ? '/custom-form' : `/custom-${params.type}-toronto`
+  const isFormPage = type === 'general'
+  const canonicalPath = isFormPage ? '/custom-form' : bespokePath(type, city)
   return {
     // `absolute` prevents the root layout's "%s | Al-Asali Jewelry" template
     // from appending a second brand suffix to titles that already end in one.

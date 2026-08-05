@@ -11,6 +11,10 @@ const customSlugs = [
   'grillz',
 ]
 
+// Cities with their own bespoke landing pages, beyond the default Toronto.
+// Keep in sync with GEO_CITIES in lib/locations.ts and app/sitemap.ts.
+const geoCities = ['oakville']
+
 // The conversion form is the only page where the public slug diverges from
 // the file-system route segment. Internally the route is /custom/general
 // (and the form's pieceType state defaults to 'general'); externally the
@@ -49,6 +53,15 @@ const nextConfig = {
         source: `/custom-${slug}-toronto`,
         destination: `/custom/${slug}`,
       })),
+      // Geo variants. The city rides along on the [type] segment (no bespoke
+      // slug ends in a city name, so parseTypeSegment can split it back out),
+      // which keeps every city on the one landing page component.
+      ...geoCities.flatMap((city) =>
+        customSlugs.map((slug) => ({
+          source: `/custom-${slug}-${city}`,
+          destination: `/custom/${slug}-${city}`,
+        }))
+      ),
       // /custom-form is the public-facing inquiry form URL; it's served by
       // the existing /custom/general route file.
       { source: FORM_PUBLIC, destination: FORM_INTERNAL },
@@ -70,6 +83,14 @@ const nextConfig = {
         destination: `/custom-${slug}-toronto`,
         permanent: true,
       })),
+      // Hierarchical geo routes → the flat geo URLs they now have pages for.
+      ...geoCities.flatMap((city) =>
+        customSlugs.map((slug) => ({
+          source: `/${city}/custom-${slug}`,
+          destination: `/custom-${slug}-${city}`,
+          permanent: true,
+        }))
+      ),
       // Old internal route for the form → the public form URL.
       { source: FORM_INTERNAL, destination: FORM_PUBLIC, permanent: true },
       // First iteration of the flat URL (briefly indexable) → final URL.

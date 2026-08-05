@@ -71,3 +71,31 @@ export function getService(slug: string) {
 export function getFullAddress(loc: LocationData): string {
   return `${loc.address}, ${loc.city}, ${loc.province} ${loc.postalCode}`
 }
+
+/**
+ * Cities that get their own bespoke landing pages. Toronto is the default and
+ * has no suffix internally; other cities are encoded as a `-<city>` suffix on
+ * the `[type]` route segment (e.g. /custom/rings-oakville), which next.config
+ * rewrites from the public /custom-rings-oakville URL.
+ */
+export const GEO_CITIES = ['oakville'] as const
+export type City = 'toronto' | (typeof GEO_CITIES)[number]
+
+/**
+ * Split a `[type]` route segment into its piece type and city. No bespoke
+ * slug ends in a city name, so the suffix is unambiguous.
+ */
+export function parseTypeSegment(segment: string): { type: string; city: City } {
+  for (const city of GEO_CITIES) {
+    const suffix = `-${city}`
+    if (segment.endsWith(suffix)) {
+      return { type: segment.slice(0, -suffix.length), city }
+    }
+  }
+  return { type: segment, city: 'toronto' }
+}
+
+/** Public URL for a bespoke page, e.g. ('rings','oakville') → /custom-rings-oakville */
+export function bespokePath(type: string, city: City): string {
+  return `/custom-${type}-${city}`
+}

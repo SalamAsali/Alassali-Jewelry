@@ -43,6 +43,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }))
 
+  // Bespoke service pages (Oakville-targeted geo variants)
+  const oakvillePages: MetadataRoute.Sitemap = bespokeSlugs.map((slug) => ({
+    url: `${BASE}/custom-${slug}-oakville`,
+    lastModified: now,
+    changeFrequency: 'weekly',
+    priority: 0.8,
+  }))
+
   // Gold chains collection pages
   const chainPages: MetadataRoute.Sitemap = [
     { url: `${BASE}/chains`, lastModified: now, changeFrequency: 'daily', priority: 0.8 },
@@ -67,5 +75,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/oakville`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
   ]
 
-  return [...staticPages, ...bespokePages, ...chainPages, ...blogPages, ...locationPages]
+  return [...staticPages, ...bespokePages, ...oakvillePages, ...chainPages, ...blogPages, ...locationPages]
 }

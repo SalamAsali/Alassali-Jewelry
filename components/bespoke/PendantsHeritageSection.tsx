@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import type { City } from '@/lib/locations'
 import { Scroll, Star, Sparkles, Pen, Type, Camera, HeartCrack, Paintbrush } from 'lucide-react'
 
 const subTypes = [
@@ -62,7 +63,7 @@ const subTypes = [
   },
 ]
 
-export default function PendantsHeritageSection() {
+export default function PendantsHeritageSection({ city = 'toronto' }: { city?: City }) {
   return (
     <section className="py-20 px-4 border-t border-glacier-grey/10">
       <div className="max-w-6xl mx-auto">
@@ -76,7 +77,9 @@ export default function PendantsHeritageSection() {
             Every Pendant Style We Craft
           </h2>
           <p className="text-stone max-w-2xl mx-auto">
-            From Arabic calligraphy and religious symbols to bubble letters, photo pendants, and custom logos, here&apos;s every style of pendant we&apos;ve perfected at our Toronto studio.
+            {city === 'oakville'
+              ? 'From Arabic calligraphy and religious symbols to bubble letters, photo pendants, and custom logos, here\u2019s every style of pendant we craft for our Oakville clients.'
+              : 'From Arabic calligraphy and religious symbols to bubble letters, photo pendants, and custom logos, here\u2019s every style of pendant we\u2019ve perfected at our Toronto studio.'}
           </p>
         </motion.div>
 

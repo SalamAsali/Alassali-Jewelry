@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!loc || loc.slug === 'toronto') return {}
   return {
     title: `Custom Jeweler in ${loc.name}`,
-    description: `Serving ${loc.name} by appointment & virtually. Custom engagement rings, gold chains, grillz & more — handcrafted in-house in Toronto. 10K, 14K, 18K gold. Book your free consultation.`,
+    description: `Custom jeweler in ${loc.name} for engagement rings, wedding bands, gold chains, pendants, and grillz. Meet by appointment or virtually, handcrafted in-house in Toronto. 10K, 14K, 18K gold, GIA diamonds. Book a free consultation.`,
     alternates: { canonical: `https://www.alasalicustomjewelry.ca/${city}` },
     openGraph: mergeOpenGraph({
       title: `Custom Jeweler in ${loc.name} | Al-Asali Jewelry`,
@@ -70,7 +70,13 @@ export default async function CityPage({ params }: Props) {
             <span className="block text-3xl md:text-4xl font-light text-white">Custom Jewelry</span>
           </h1>
           <p className="text-base sm:text-lg text-stone max-w-2xl mx-auto leading-relaxed mb-10">
-            Engagement rings, wedding bands, gold chains, pendants, and grillz — designed with you in {loc.name}, meeting in person by appointment or fully online, and handcrafted in-house at our Toronto studio.
+            In our Toronto studio, we handcraft{' '}
+            <Link href={`/custom-engagement-rings-${loc.slug}`} className="underline underline-offset-4 hover:text-white transition-colors">engagement rings</Link>,{' '}
+            <Link href={`/custom-wedding-bands-${loc.slug}`} className="underline underline-offset-4 hover:text-white transition-colors">wedding bands</Link>,{' '}
+            <Link href={`/custom-chains-${loc.slug}`} className="underline underline-offset-4 hover:text-white transition-colors">gold chains</Link>,{' '}
+            <Link href={`/custom-pendants-${loc.slug}`} className="underline underline-offset-4 hover:text-white transition-colors">pendants</Link>, and{' '}
+            <Link href={`/custom-grillz-${loc.slug}`} className="underline underline-offset-4 hover:text-white transition-colors">grillz</Link>{' '}
+            designed with you in {loc.name}. Meet our custom jeweler in {loc.name} by appointment, or work with us fully online.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -116,14 +122,14 @@ export default async function CityPage({ params }: Props) {
               How We Work With {loc.name} Clients
             </h2>
             <p className="text-charcoal leading-relaxed">
-              Most of our clients design with us virtually — share your ideas, references, and budget from anywhere, and we guide you through every step. Prefer to meet face-to-face? Book our {loc.name} studio for a private, by-appointment consultation. Every piece is then made entirely in-house at our Toronto workshop.
+              Most {loc.name} clients design their custom jewelry with us virtually: send over your ideas, references, and budget, and we&rsquo;ll walk you through every step. If you&rsquo;d prefer to sit down together, our {loc.name} studio is open for private, by-appointment consultations. Every custom piece is then made entirely in-house at our Toronto workshop.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             {[
-              { icon: Video, title: 'Design Virtually', desc: `Consult from anywhere in ${loc.name} over video, email, or text — share references and approve designs online.` },
+              { icon: Video, title: 'Design Virtually', desc: `Consult and send references over video, email, or text from anywhere in ${loc.name}, and approve every detail online.` },
               { icon: CalendarClock, title: 'Meet by Appointment', desc: `Prefer in person? Reserve a private session at our ${loc.name} location. Visits are by appointment only.` },
-              { icon: Hammer, title: 'Handcrafted in Toronto', desc: 'Cast, set, and finished entirely in-house at our Toronto studio — no outsourcing, ever.' },
+              { icon: Hammer, title: 'Handcrafted in Toronto', desc: 'Cast, set, and finished entirely in-house at our Toronto workshop. Nothing gets outsourced.' },
             ].map((step) => (
               <div key={step.title} className="rounded-xl border-2 border-soft-black p-6 text-center">
                 <div className="w-12 h-12 rounded-full bg-glacier-grey/10 border border-glacier-grey/30 flex items-center justify-center mx-auto mb-4">
@@ -165,7 +171,7 @@ export default async function CityPage({ params }: Props) {
               { icon: Gem, title: 'Certified Materials', desc: '10K, 14K & 18K gold. Natural and lab-grown diamonds, ethically sourced.' },
               { icon: Shield, title: 'Lifetime Guarantee', desc: 'Free polishing, rhodium re-plating, and resizing for life on every piece.' },
               { icon: Diamond, title: 'GIA-Graded Diamonds', desc: 'Conflict-free diamonds graded to GIA standards. Full certification included.' },
-              { icon: Award, title: 'Master Craftsmanship', desc: 'Every piece handcrafted in-house by master jeweler Mohammad Al-Asali.' },
+              { icon: Award, title: 'Master Craftsmanship', desc: 'Every custom piece is handcrafted in-house by master jeweler Mohammad Al-Asali.' },
             ].map((card) => (
               <div key={card.title} className="rounded-lg border-2 border-soft-black p-6 text-center">
                 <div className="w-12 h-12 rounded-full bg-glacier-grey/10 border border-glacier-grey/30 flex items-center justify-center mx-auto mb-4">
@@ -190,7 +196,7 @@ export default async function CityPage({ params }: Props) {
             {SERVICES.map((svc) => (
               <Link
                 key={svc.slug}
-                href={`/custom-${svc.formType}-toronto`}
+                href={`/custom-${svc.formType}-${loc.slug}`}
                 className="group rounded-lg border border-glacier-grey/20 hover:border-glacier-grey/60 p-5 text-center transition-all duration-300 hover:bg-charcoal/30"
               >
                 <h3 className="font-heading text-base font-medium text-white group-hover:text-glacier-grey-light transition-colors mb-1">{svc.name}</h3>
