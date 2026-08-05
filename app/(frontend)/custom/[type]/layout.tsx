@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { parseTypeSegment, bespokePath } from '@/lib/locations'
+import { getBespokeLanding } from '@/lib/bespoke/getBespoke'
 
 const pageMeta: Record<string, { title: string; description: string }> = {
   'engagement-rings': {
@@ -82,10 +83,17 @@ const oakvilleMeta: Record<string, { title: string; description: string }> = {
 export async function generateMetadata({ params }: { params: Promise<{ type: string }> }): Promise<Metadata> {
   const { type: segment } = await params
   const { type, city } = parseTypeSegment(segment)
-  const meta =
+  const builtIn =
     (city === 'oakville' ? oakvilleMeta[type] : pageMeta[type]) ||
     pageMeta[type] ||
     pageMeta['general']
+
+  // CMS overrides the built-in title/description when set; blank falls back.
+  const { seo } = await getBespokeLanding(type, city)
+  const meta = {
+    title: seo.title || builtIn.title,
+    description: seo.description || builtIn.description,
+  }
   // /custom-form is a form-only conversion utility excluded from the
   // sitemap. Noindex prevents it from competing with the homepage for
   // "custom jewelry toronto" intent.
