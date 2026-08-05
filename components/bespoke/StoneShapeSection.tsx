@@ -30,7 +30,18 @@ const shapes: Shape[] = [
   { name: 'Other', icon: HelpCircle, blurb: 'Old mine, rose cut, hexagon, kite, shield, or fully custom shapes — bring us anything and we\'ll source or cut it.', keywords: 'custom diamond shape Toronto' },
 ]
 
-export default function StoneShapeSection({ heading = 'Diamond & Stone Shapes' }: { heading?: string }) {
+export default function StoneShapeSection({
+  heading = 'Diamond & Stone Shapes',
+  blurbs,
+}: {
+  heading?: string
+  /**
+   * Per-page overrides keyed by shape name. Each bespoke page describes the same
+   * shapes in terms of how they actually behave in that piece, so the section
+   * doesn't read identically across every service page.
+   */
+  blurbs?: Record<string, string>
+}) {
   return (
     <section className="py-20 px-4 border-t border-glacier-grey/10">
       <div className="max-w-6xl mx-auto">
@@ -44,7 +55,7 @@ export default function StoneShapeSection({ heading = 'Diamond & Stone Shapes' }
             {heading}
           </h2>
           <p className="text-stone max-w-2xl mx-auto">
-            Every diamond and gemstone shape we source and set — each with distinct visual traits, price per carat, and styling strengths.
+            Every diamond and gemstone shape we source and set. Each one has its own visual character, price per carat, and styling strengths.
           </p>
         </motion.div>
 
@@ -66,7 +77,7 @@ export default function StoneShapeSection({ heading = 'Diamond & Stone Shapes' }
                   </div>
                   <h3 className="text-white font-bold text-sm">{shape.name}</h3>
                 </div>
-                <p className="text-stone text-xs leading-relaxed">{shape.blurb}</p>
+                <p className="text-stone text-xs leading-relaxed">{blurbs?.[shape.name] ?? shape.blurb}</p>
               </motion.article>
             )
           })}

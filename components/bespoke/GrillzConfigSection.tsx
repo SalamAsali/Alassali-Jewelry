@@ -4,15 +4,15 @@ import { motion } from 'framer-motion'
 import { Square, ChevronUp, ChevronDown, LayoutGrid, Flame, Circle, Diamond, Sparkles, Gem } from 'lucide-react'
 
 const teethConfigs = [
-  { name: 'Single Tooth', icon: Square, desc: 'One tooth, usually a canine or front tooth. Most accessible entry point — starts at $500 in plain 10K gold or $1,400 with VS diamond pavé.', keywords: 'single tooth grillz Toronto' },
+  { name: 'Single Tooth', icon: Square, desc: 'One tooth, usually a canine or front tooth. The most accessible entry point, starting at $500 in plain 10K gold or $1,400 with VS diamond pavé.', keywords: 'single tooth grillz Toronto' },
   { name: 'Top 6', icon: ChevronUp, desc: 'Six top teeth (canine to canine). Our most popular set. Plain 10K from $2,000, diamond-set VS from $4,500, VVS from $6,500.', keywords: 'top 6 grillz Toronto' },
   { name: 'Bottom 6', icon: ChevronDown, desc: 'Six bottom teeth. Subtle from the front but striking when you smile. Plain 10K from $2,000, diamond-set VS from $4,500.', keywords: 'bottom 6 grillz Toronto' },
   { name: 'Top 8 / Bottom 8', icon: LayoutGrid, desc: 'Extended 8-tooth coverage for a wider smile line. Plain 10K from $2,800, diamond-set VS from $6,000.', keywords: 'top 8 grillz Toronto' },
   { name: 'Full Set', icon: LayoutGrid, desc: 'Top + bottom = 12 teeth. The statement piece. Plain 10K from $4,500, diamond-set VS from $9,500, full VVS from $14,000+.', keywords: 'full set grillz Toronto' },
   { name: 'Fangs', icon: Flame, desc: 'Canine teeth only (pair). Bold, iconic, and budget-friendly. Plain 10K from $800, diamond-set from $1,400.', keywords: 'fangs grillz Toronto' },
-  { name: 'Open-Face', icon: Circle, desc: 'Outline-only grillz with no metal covering the tooth surface — visible enamel through the centre. Plain 10K from $1,400 per 4 teeth.', keywords: 'open face grillz Toronto' },
+  { name: 'Open-Face', icon: Circle, desc: 'Outline-only grillz with no metal covering the tooth surface, so the enamel shows through the centre. Plain 10K starts at $1,400 per 4 teeth.', keywords: 'open face grillz Toronto' },
   { name: 'Honeycomb / Bar', icon: Gem, desc: 'Geometric lattice designs set with diamonds. From $1,800 for bar top 6, from $5,500 diamond-set.', keywords: 'honeycomb grillz Toronto' },
-  { name: 'Diamond Dust', icon: Sparkles, desc: 'Textured finish with micro-set diamonds across the surface — subtle sparkle, not full pavé. Add $300-$600 to any config.', keywords: 'diamond dust grillz Toronto' },
+  { name: 'Diamond Dust', icon: Sparkles, desc: 'A textured finish with micro-set diamonds across the surface, for subtle sparkle rather than full pavé. Add $300-$600 to any configuration.', keywords: 'diamond dust grillz Toronto' },
 ]
 
 const clarityLadder = [
@@ -20,8 +20,8 @@ const clarityLadder = [
   { name: 'Cubic Zirconia', range: 'We do not use', note: 'We never substitute CZ for real diamonds. Every stone is genuine.', modifier: 'Not offered' },
   { name: 'SI (Slightly Included)', range: 'Entry diamond', note: 'Eye-clean from most angles. Great for dust finishes and micro-pavé. 10-15% premium over plain.', modifier: '+10–15%' },
   { name: 'VS (Very Slightly Included)', range: 'Mid-premium', note: 'Clean face-up, strong brilliance. Our most popular clarity tier for full pavé grillz.', modifier: '+30–40% over plain' },
-  { name: 'VVS (Very Very Slightly Included)', range: 'Premium tier', note: 'Inclusions invisible without 10x magnification. Maximum fire — the "VVS grillz Toronto" tier.', modifier: '+60–80% over plain' },
-  { name: 'Flawless (FL/IF)', range: 'Ultra-premium', note: 'No inclusions under 10x magnification. Rare — available on request.', modifier: '+120%+ over plain' },
+  { name: 'VVS (Very Very Slightly Included)', range: 'Premium tier', note: 'Inclusions invisible without 10x magnification. Maximum fire, our top-requested "VVS grillz Toronto" tier.', modifier: '+60–80% over plain' },
+  { name: 'Flawless (FL/IF)', range: 'Ultra-premium', note: 'No inclusions under 10x magnification, our rarest tier, available on request.', modifier: '+120%+ over plain' },
 ]
 
 export default function GrillzConfigSection() {
@@ -83,7 +83,7 @@ export default function GrillzConfigSection() {
               Diamond Clarity Ladder
             </h2>
             <p className="text-stone max-w-2xl mx-auto">
-              How diamond clarity affects your grillz price and look. We never use cubic zirconia or substitute materials — every stone is real.
+              How diamond clarity affects your grillz price and look. We never use cubic zirconia or substitute materials. Every stone is real.
             </p>
           </motion.div>
 
