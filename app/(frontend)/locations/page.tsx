@@ -5,7 +5,7 @@ import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
-const TITLE = 'Our Locations — Toronto & Oakville Studios'
+const TITLE = 'Locations — Toronto & Oakville Studios'
 const DESCRIPTION =
   'Visit Al-Asali Custom Jewelry at our Toronto and Oakville studios. Custom engagement rings, gold chains, grillz & more. Book your free consultation.'
 
