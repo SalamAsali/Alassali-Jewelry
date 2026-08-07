@@ -633,7 +633,7 @@ function LandingPage({ type, city, landing }: { type: string; city: City; landin
         <ClientLiveReviewsStrip city={city} heading={`What Our ${cityName} Clients Say`} />
 
         {/* ===== LOCATION with embedded Google Map ===== */}
-        <LocationSection city={city} />
+        <LocationSection city={city} type={type} />
 
         {/* ===== FAQ (Schema eligible) ===== */}
         <section className="py-20 px-4 border-t border-glacier-grey/10">
