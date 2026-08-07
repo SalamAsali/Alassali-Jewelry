@@ -290,7 +290,7 @@ export const landingContent: Record<string, {
   },
   'grillz': {
     heroH1: 'Custom Grillz in Toronto',
-    heroSub: 'Gold grillz, diamond grillz, and VVS sets — Toronto\'s premier custom grillz studio. In-house craftsmanship, competitive prices.',
+    heroSub: 'Gold grillz, diamond grillz, and VVS sets, handcrafted in-house in Toronto with competitive and transparent pricing.',
     intro: 'Al-Asali Jewelry is Toronto\'s go-to destination for custom grillz. From single-tooth pieces to full diamond-set grillz, every set is handcrafted in-house using real gold and genuine diamonds, never plated, never CZ. Most clients come in knowing exactly what they want, from the metal down to the stone size. Others just say "surprise me" and we take it from there. We offer 10K, 14K, and 18K gold in yellow, white, and rose, with optional VVS diamond, diamond dust, and fully custom designs. Our mold process ensures a perfect fit every time, and our prices are explained upfront with no surprises. Whether you\'re looking for gold grillz, diamond grillz, or something entirely unique, we\'re the only shop in Toronto that does it all under one roof.',
     processNote: 'Custom grillz take 1-2 weeks after your mold appointment. We take a precise dental impression, design your grillz, and handcraft them in your chosen metal and stone configuration. Mold sessions are booked by appointment in Toronto.',
     budgetGuide: 'Grillz start at $500 for a single tooth in 10K gold. Top 6 or bottom 6 sets range from $2,000-$5,000 in solid gold. Full diamond-set VVS grillz start around $5,000 and scale with diamond quality and coverage.',
