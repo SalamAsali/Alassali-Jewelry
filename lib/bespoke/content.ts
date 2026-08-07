@@ -200,7 +200,7 @@ export const landingContent: Record<string, {
   },
   'earrings': {
     heroH1: 'Custom Earrings in Toronto',
-    heroSub: 'Diamond studs, gold hoops, drop earrings, and more — handcrafted to your design in our Toronto studio.',
+    heroSub: 'Diamond studs, gold hoops, drop earrings, and more, handcrafted to your design in our Toronto studio.',
     intro: 'From elegant diamond studs to bold statement hoops, Al-Asali Jewelry designs and crafts custom earrings entirely in-house in Toronto. Choose your style, metal, and stone preferences, whether you\'re after a subtle everyday pair or a show-stopping set for a special occasion, and we\'ll craft them to perfection. We also create matching earring-and-pendant sets for a cohesive look.',
     processNote: 'Custom earrings in Toronto take 2-4 weeks. Stud earrings are quicker to produce, while complex chandelier designs with multiple stone settings require more time. We create a detailed design for your approval before crafting.',
     budgetGuide: 'Custom earrings start at $1,000. Diamond stud earrings are priced based on stone size and quality, while gold hoops depend on weight and karat. We\'ll find the best combination for your budget.',
