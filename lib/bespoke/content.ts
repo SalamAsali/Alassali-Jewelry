@@ -245,7 +245,7 @@ export const landingContent: Record<string, {
   },
   'bracelets': {
     heroH1: 'Custom Bracelets in Toronto',
-    heroSub: 'Tennis bracelets, bangles, cuffs, and engraved pieces for men and women — designed and crafted in Toronto.',
+    heroSub: 'Tennis bracelets, bangles, cuffs, and engraved pieces for men and women, designed and crafted in Toronto.',
     intro: 'Al-Asali Jewelry creates custom bracelets for every style and occasion. From diamond tennis bracelets and elegant bangles to bold cuffs and engraved pieces for men, every bracelet is handcrafted in-house in Toronto. Whether you want a personalized name bracelet, a custom charm bracelet, or a men\'s engraved bracelet in solid gold, we\'ll build it to fit your wrist and your vision exactly.',
     processNote: 'Custom bracelets in Toronto take 3-5 weeks. Tennis bracelets with many individual stone settings require more time, while bangles and cuffs are quicker. We measure your wrist for a precise fit during consultation.',
     budgetGuide: 'Custom bracelets start at $1,000. Tennis bracelets are priced based on stone count and quality, while bangles and cuffs depend on metal weight. Engraved bracelets for men are among our most popular commissions.',
