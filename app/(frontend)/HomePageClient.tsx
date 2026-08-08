@@ -604,7 +604,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
       <section className="bg-white py-24" data-testid="faq-section">
         <div className="section-container max-w-4xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jewelry in Toronto — FAQ</h2>
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Custom Jewelry in Toronto FAQs</h2>
             <p className="text-sm md:text-lg text-taupe max-w-2xl mx-auto leading-relaxed">
               From pricing and timelines to lab-grown diamonds and heirloom resets, here&rsquo;s everything you need to know about working with a Toronto custom jeweler.
             </p>
