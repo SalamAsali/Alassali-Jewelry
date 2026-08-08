@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: `https://www.alasalicustomjewelry.ca/${city}` },
     openGraph: mergeOpenGraph({
       title: `Custom Jeweler in ${loc.name} | Al-Asali Jewelry`,
-      description: `Serving ${loc.name} by appointment & virtually. Custom engagement rings, gold chains, grillz & more — handcrafted in-house in Toronto.`,
+      description: `Serving ${loc.name} by appointment & virtually. Custom engagement rings, gold chains, grillz & more, handcrafted in-house in Toronto.`,
       url: `/${city}`,
     }),
   }
@@ -160,7 +160,7 @@ export default async function CityPage({ params }: Props) {
                 </div>
               ))}
             </div>
-            <p className="text-xs text-glacier-grey mt-4 text-center italic">By appointment only — please call ahead to book.</p>
+            <p className="text-xs text-glacier-grey mt-4 text-center italic">By appointment only. Please call ahead to book.</p>
           </div>
         </div>
       </section>

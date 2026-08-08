@@ -121,7 +121,7 @@ export async function fetchGoogleReviews(city: City = 'toronto'): Promise<{
     const addressMatches = address.includes(EXPECTED_ADDRESS_FRAGMENT)
     if (!nameMatches || !addressMatches) {
       console.error(
-        `[googlePlaces] Identity check FAILED — Place ID ${PLACE_ID} resolved to "${data.result.name}" at "${data.result.formatted_address}". Expected name to include one of [${EXPECTED_NAME_FRAGMENTS.join(', ')}] and address to include "${EXPECTED_ADDRESS_FRAGMENT}". Refusing to render these reviews.`,
+        `[googlePlaces] Identity check FAILED: Place ID ${PLACE_ID} resolved to "${data.result.name}" at "${data.result.formatted_address}". Expected name to include one of [${EXPECTED_NAME_FRAGMENTS.join(', ')}] and address to include "${EXPECTED_ADDRESS_FRAGMENT}". Refusing to render these reviews.`,
       )
       return {
         reviews: [],

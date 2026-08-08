@@ -15,12 +15,12 @@ type Testimonial = {
 
 const placeholderTestimonials: Record<string, Testimonial[]> = {
   'engagement-rings': [
-    { name: 'Sara', neighbourhood: 'Mississauga', piece: 'Oval halo engagement ring', quote: 'Mohammad walked me through every shape and stone option before my partner proposed. The final ring is exactly what I pictured — down to the milgrain detailing.' },
+    { name: 'Sara', neighbourhood: 'Mississauga', piece: 'Oval halo engagement ring', quote: 'Mohammad walked me through every shape and stone option before my partner proposed. The final ring is exactly what I pictured, down to the milgrain detailing.' },
     { name: 'James', neighbourhood: 'North York', piece: 'Three-stone engagement ring', quote: 'Reset my grandmother\'s diamond into a custom three-stone design. Incredible craftsmanship and genuine care for the heirloom meaning.' },
     { name: 'Priya', neighbourhood: 'Etobicoke', piece: 'Emerald cut solitaire', quote: 'Got three quotes across Toronto. Al-Asali came in the most transparent and delivered a stunner. Ring still gets compliments a year later.' },
   ],
   'wedding-bands': [
-    { name: 'Hassan', neighbourhood: 'Vaughan', piece: 'Matching Arabic calligraphy bands', quote: 'Mohammad engraved our names in Arabic inside matching platinum bands. The calligraphy is flawless — every stroke correct.' },
+    { name: 'Hassan', neighbourhood: 'Vaughan', piece: 'Matching Arabic calligraphy bands', quote: 'Mohammad engraved our names in Arabic inside matching platinum bands. The calligraphy is flawless, every stroke correct.' },
     { name: 'Lauren', neighbourhood: 'Oakville', piece: 'Half-eternity diamond band', quote: 'My engagement ring was from a different jeweler but the contour band from Al-Asali fits flush like they were made together.' },
   ],
   'rings': [
@@ -28,12 +28,12 @@ const placeholderTestimonials: Record<string, Testimonial[]> = {
     { name: 'Amira', neighbourhood: 'Brampton', piece: 'Stackable birthstone set', quote: 'Three custom stackable bands for my 30th. Mohammad suggested the stone combination and it turned out better than I could have imagined.' },
   ],
   'pendants': [
-    { name: 'Yusuf', neighbourhood: 'Mississauga', piece: 'Ayat al-Kursi pendant', quote: 'The calligraphy is perfect — verified by my uncle who knows Arabic script deeply. Beautifully executed in 18K yellow gold.' },
+    { name: 'Yusuf', neighbourhood: 'Mississauga', piece: 'Ayat al-Kursi pendant', quote: 'The calligraphy is perfect, verified by my uncle who knows Arabic script deeply. Beautifully executed in 18K yellow gold.' },
     { name: 'Natalie', neighbourhood: 'Toronto', piece: 'Photo memorial pendant', quote: 'After losing my dad, I wanted something to hold him close. The photo pendant is stunning and the process was compassionate.' },
     { name: 'Marcus', neighbourhood: 'Scarborough', piece: 'Diamond bubble letter', quote: 'Iced-out bubble letter pendant came out cleaner than any of my other pieces. VS diamonds, flawless setting.' },
   ],
   'chains': [
-    { name: 'Darren', neighbourhood: 'Etobicoke', piece: '8mm 14K Cuban link, 22"', quote: 'Heavyweight solid Cuban. You can feel the weight — nothing hollow about it. Best chain I own.' },
+    { name: 'Darren', neighbourhood: 'Etobicoke', piece: '8mm 14K Cuban link, 22"', quote: 'Heavyweight solid Cuban. You can feel the weight, nothing hollow about it. Best chain I own.' },
     { name: 'Jay', neighbourhood: 'North York', piece: 'Iced-out Cuban chain', quote: 'VS diamonds across every link. Took a bit longer than a plain chain but worth every minute of the wait.' },
   ],
   'earrings': [
@@ -41,11 +41,11 @@ const placeholderTestimonials: Record<string, Testimonial[]> = {
     { name: 'Rania', neighbourhood: 'Vaughan', piece: 'Pavé diamond huggies', quote: 'Everyday huggies that I haven\'t taken off in months. Comfortable, secure, and they catch the light perfectly.' },
   ],
   'bracelets': [
-    { name: 'Olivia', neighbourhood: 'Mississauga', piece: '3ctw lab tennis bracelet', quote: 'Safety chain and double-lock clasp — I\'ve worn this daily for 6 months with zero issues. Sparkles from every angle.' },
+    { name: 'Olivia', neighbourhood: 'Mississauga', piece: '3ctw lab tennis bracelet', quote: 'Safety chain and double-lock clasp, and I\'ve worn this daily for 6 months with zero issues. Sparkles from every angle.' },
     { name: 'Amir', neighbourhood: 'Brampton', piece: 'Engraved men\'s ID bracelet', quote: 'Solid 14K ID bracelet engraved with my kids\' names in Arabic. Exactly what I wanted. Mohammad nailed the font.' },
   ],
   'grillz': [
-    { name: 'Tyrone', neighbourhood: 'Toronto', piece: 'VVS top 6 grillz', quote: 'Been to other grillz shops — none this clean. The VVS diamonds hit different. Fit is perfect on the first try.' },
+    { name: 'Tyrone', neighbourhood: 'Toronto', piece: 'VVS top 6 grillz', quote: 'Been to other grillz shops, none this clean. The VVS diamonds hit different. Fit is perfect on the first try.' },
     { name: 'Chris', neighbourhood: 'Scarborough', piece: '14K fangs', quote: 'Plain gold fangs, custom mold. Snap on and off like they\'re meant to be there. Real gold, real craftsmanship.' },
     { name: 'Sanaa', neighbourhood: 'North York', piece: 'Matching couples grillz', quote: 'Got matching single-tooth grillz for our anniversary. Mohammad made the experience fun and the pieces are immaculate.' },
   ],

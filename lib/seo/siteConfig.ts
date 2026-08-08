@@ -104,10 +104,10 @@ export const MASTER_JEWELER = {
   jobTitle: 'Master Jeweler & Founder',
   slug: 'mohammad-al-assali',
   credentials: [
-    'George Brown College — Jewelry Arts Program (Diploma)',
+    'George Brown College, Jewelry Arts Program (Diploma)',
   ],
   practicingSince: '2017',
-  bio: 'Mohammad Al-Asali is the founder and master jeweler behind Al-Asali Jewelry Studio in Toronto. A George Brown College Jewelry Arts Program graduate practicing since 2017, Mohammad has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area — every piece finished in-house with no outsourcing.',
+  bio: 'Mohammad Al-Asali is the founder and master jeweler behind Al-Asali Jewelry Studio in Toronto. A George Brown College Jewelry Arts Program graduate practicing since 2017, Mohammad has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece is finished in-house with no outsourcing.',
   knowsAbout: [
     'Bespoke Engagement Ring Design',
     'Diamond Grading (4Cs)',

@@ -146,7 +146,7 @@ export function buildOakvilleStoreSchema(liveReviews?: {
     '@context': 'https://schema.org',
     '@type': 'JewelryStore',
     '@id': OAKVILLE_STORE_ID,
-    name: `${SITE_CONFIG.legalName} — Oakville`,
+    name: `${SITE_CONFIG.legalName} (Oakville)`,
     url: `${SITE_CONFIG.url}/oakville`,
     branchOf: ORG_REF,
     parentOrganization: ORG_REF,

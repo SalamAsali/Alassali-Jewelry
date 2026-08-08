@@ -83,7 +83,7 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
       {/* Metal Color Picker — Circle swatches */}
       <div className="mb-5">
         <label className="text-xs uppercase tracking-wider font-semibold text-glacier-grey mb-2 block">
-          Color — {METAL_LABELS[selectedMetal] || selectedMetal}
+          Color: {METAL_LABELS[selectedMetal] || selectedMetal}
         </label>
         <div className="flex gap-3">
           {chain.availableMetals.map((metal) => {
@@ -164,7 +164,7 @@ export default function ChainVariantPicker({ chain, pricingConfig }: ChainVarian
           onClick={() => setIsInquiryOpen(true)}
           className="inline-flex items-center justify-center w-full gap-2 px-8 py-4 rounded-lg font-bold text-sm uppercase tracking-wide bg-soft-black text-white hover:bg-charcoal hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
         >
-          <MessageCircle className="w-5 h-5" /> Inquire — {formatPrice(price)}
+          <MessageCircle className="w-5 h-5" /> Inquire · {formatPrice(price)}
         </button>
       </div>
 

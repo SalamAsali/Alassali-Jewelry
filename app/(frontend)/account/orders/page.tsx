@@ -51,7 +51,7 @@ export default async function OrdersPage() {
                   <td className="py-4 px-4 text-sm text-taupe">
                     {order._createdAt
                       ? new Date(order._createdAt).toLocaleDateString('en-CA')
-                      : '—'}
+                      : '-'}
                   </td>
                   <td className="py-4 px-4">
                     <StatusBadge status={order.status || 'initial_inquiry'} />

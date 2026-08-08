@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
-const TITLE = 'FAQ — Custom Jewelry Process, Pricing & Care'
+const TITLE = 'FAQ | Custom Jewelry Process, Pricing & Care'
 const DESCRIPTION =
-  'Frequently asked questions about custom jewelry — payments, shipping, custom orders, care, and warranty. Al-Asali Jewelry, Toronto.'
+  'Frequently asked questions about custom jewelry: payments, shipping, custom orders, care, and warranty. Al-Asali Jewelry, Toronto.'
 
 export const metadata: Metadata = {
   title: TITLE,
