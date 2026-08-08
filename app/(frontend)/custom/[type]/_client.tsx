@@ -91,51 +91,64 @@ const pieceTypeOptions: { value: string; label: string; icon: LucideIcon; subtit
 // Config per piece type
 // ---------------------------------------------------------------------------
 
-const typeConfig: Record<string, { title: string; subtitle: string; styles: string[]; metals: string[] }> = {
+// `seoNoun` is the singular service phrase used in the two section headings
+// that carry the keyword (Styles and FAQs). Singular reads naturally in a
+// heading ("Custom Engagement Ring Styles"), where the plural page title does
+// not. Deliberately excludes the city: the H1 already carries "in <city>", and
+// repeating it down the page is the heading-stuffing pattern we avoid.
+const typeConfig: Record<string, { title: string; subtitle: string; seoNoun?: string; styles: string[]; metals: string[] }> = {
   'engagement-rings': {
     title: 'Custom Engagement Rings',
+    seoNoun: 'Custom Engagement Ring',
     subtitle: 'Begin your forever with a ring as unique as your love story',
     styles: ['Classic', 'Modern', 'Vintage', 'Art Deco', 'Halo', 'Solitaire', 'Bridal', 'Other'],
     metals: ['Platinum', '18K Gold', '14K Gold', '10K Gold', 'Silver', 'Other'],
   },
   'grillz': {
     title: 'Custom Grillz',
+    seoNoun: 'Custom Grillz',
     subtitle: 'Bold statements crafted in precious metal',
     styles: ['Full Set', 'Top 6', 'Bottom 6', 'Single Tooth', 'Fangs', 'Other'],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'chains': {
     title: 'Custom Chains',
+    seoNoun: 'Custom Chain',
     subtitle: 'Wearable art, crafted to your specifications',
     styles: ['Miami Cuban', 'Rope', 'Franco', 'Figaro', 'Box Chain', 'Tennis', 'Other'],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'pendants': {
     title: 'Custom Pendants',
+    seoNoun: 'Custom Pendant',
     subtitle: 'Your story, beautifully told',
     styles: ['Initial', 'Name', 'Symbol', 'Religious', 'Custom Design and/or Logo Design', 'Other'],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'rings': {
     title: 'Custom Rings',
+    seoNoun: 'Custom Ring',
     subtitle: 'Unique rings designed just for you',
     styles: ['Statement', 'Band', 'Signet', 'Stackable', 'Custom Design and/or Logo Design', 'Everyday/Essentials', 'Other'],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'earrings': {
     title: 'Custom Earrings',
+    seoNoun: 'Custom Earring',
     subtitle: 'Elegant earrings crafted to perfection',
     styles: ['Studs', 'Hoops', 'Drops', 'Chandeliers', 'Custom Design and/or Logo Design', 'Other'],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'bracelets': {
     title: 'Custom Bracelets',
+    seoNoun: 'Custom Bracelet',
     subtitle: 'Exquisite bracelets tailored to your style',
     styles: ['Tennis', 'Chain', 'Bangle', 'Cuff', 'Custom Design and/or Logo Design', 'Other'],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
   'wedding-bands': {
     title: 'Custom Wedding Bands',
+    seoNoun: 'Custom Wedding Band',
     subtitle: 'Bands as timeless as your vow — handcrafted to match your ring',
     styles: ['Classic Band', 'Comfort Fit', 'Eternity', 'Half-Eternity', 'Men\'s Band', 'Engraved', 'Contour / Shaped', 'Stackable', 'Other'],
     metals: ['Platinum', '18K Gold', '14K Gold', '10K Gold', 'Silver', 'Other'],
@@ -446,7 +459,7 @@ function LandingPage({ type, city, landing }: { type: string; city: City; landin
             <div className="max-w-5xl mx-auto">
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-heading)' }}>
-                  Available Styles
+                  {config.seoNoun ? `${config.seoNoun} Styles` : 'Available Styles'}
                 </h2>
                 <p className="text-stone">Select the style that speaks to you during your consultation</p>
               </motion.div>
@@ -639,7 +652,7 @@ function LandingPage({ type, city, landing }: { type: string; city: City; landin
         <section className="py-20 px-4 border-t border-glacier-grey/10">
           <div className="max-w-3xl mx-auto">
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-3xl md:text-4xl font-bold text-white text-center mb-12" style={{ fontFamily: 'var(--font-heading)' }}>
-              Frequently Asked Questions
+              {config.seoNoun ? `${config.seoNoun} FAQs` : 'Frequently Asked Questions'}
             </motion.h2>
             <div className="space-y-3">
               {landing.faq.map((item, i) => (
