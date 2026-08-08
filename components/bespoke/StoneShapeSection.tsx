@@ -15,19 +15,19 @@ type Shape = {
 }
 
 const shapes: Shape[] = [
-  { name: 'Round Brilliant', icon: Circle, blurb: 'The most popular shape. 58 facets deliver maximum fire and sparkle — the benchmark for engagement rings and diamond studs.', keywords: 'round brilliant diamond Toronto' },
+  { name: 'Round Brilliant', icon: Circle, blurb: 'The most popular shape. 58 facets deliver maximum fire and sparkle, the benchmark for engagement rings and diamond studs.', keywords: 'round brilliant diamond Toronto' },
   { name: 'Princess', icon: Square, blurb: 'A modern square cut with sharp corners and brilliant facets. Second most popular for engagement rings.', keywords: 'princess cut diamond Toronto' },
   { name: 'Oval', icon: CircleDot, blurb: 'Elongates the finger and looks larger per carat than a round. A top-trending shape for engagement rings.', keywords: 'oval diamond engagement ring Toronto' },
-  { name: 'Emerald', icon: Hexagon, blurb: 'A rectangular step-cut with clean lines — understated, elegant, and distinctly vintage Art Deco.', keywords: 'emerald cut diamond Toronto' },
-  { name: 'Cushion', icon: Shield, blurb: 'A square or rectangular cut with rounded corners. Warm, vintage, and timeless — often paired with halos.', keywords: 'cushion cut diamond Toronto' },
+  { name: 'Emerald', icon: Hexagon, blurb: 'A rectangular step-cut with clean lines: understated, elegant, and distinctly vintage Art Deco.', keywords: 'emerald cut diamond Toronto' },
+  { name: 'Cushion', icon: Shield, blurb: 'A square or rectangular cut with rounded corners. Warm, vintage, and timeless, often paired with halos.', keywords: 'cushion cut diamond Toronto' },
   { name: 'Pear', icon: Droplet, blurb: 'A teardrop shape that blends round brilliance with oval elongation. Flattering and distinctive.', keywords: 'pear shaped diamond Toronto' },
   { name: 'Marquise', icon: Diamond, blurb: 'A football-shaped cut with pointed ends. Makes fingers appear longer and stones look larger per carat.', keywords: 'marquise diamond Toronto' },
   { name: 'Radiant', icon: Sun, blurb: 'A rectangular cut with cropped corners and brilliant faceting. Combines the shape of emerald with the fire of round.', keywords: 'radiant cut diamond Toronto' },
   { name: 'Asscher', icon: Layers, blurb: 'A square step-cut with cropped corners. Deeper than emerald, with a hall-of-mirrors visual effect.', keywords: 'asscher cut diamond Toronto' },
   { name: 'Heart', icon: Heart, blurb: 'The ultimate romantic shape. Best in 1.0ct+ sizes where the silhouette reads clearly.', keywords: 'heart shaped diamond Toronto' },
-  { name: 'Trillion', icon: Flame, blurb: 'A bold triangular cut — often used as side stones in three-stone rings or as striking solitaires.', keywords: 'trillion cut diamond Toronto' },
+  { name: 'Trillion', icon: Flame, blurb: 'A bold triangular cut, often used as side stones in three-stone rings or as striking solitaires.', keywords: 'trillion cut diamond Toronto' },
   { name: 'Baguette', icon: MinusCircle, blurb: 'A slim rectangular step-cut. Classic as side stones in three-stone and channel-set engagement rings.', keywords: 'baguette diamond Toronto' },
-  { name: 'Other', icon: HelpCircle, blurb: 'Old mine, rose cut, hexagon, kite, shield, or fully custom shapes — bring us anything and we\'ll source or cut it.', keywords: 'custom diamond shape Toronto' },
+  { name: 'Other', icon: HelpCircle, blurb: 'Old mine, rose cut, hexagon, kite, shield, or fully custom shapes: bring us anything and we\'ll source or cut it.', keywords: 'custom diamond shape Toronto' },
 ]
 
 export default function StoneShapeSection({

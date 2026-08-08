@@ -8,7 +8,7 @@ import { buildBreadcrumbSchema, buildFaqSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 
-const TITLE = 'Gold Chains Collection — Cuban, Figaro & Rope'
+const TITLE = 'Gold Chains Collection | Cuban, Figaro & Rope'
 const DESCRIPTION =
   'Explore our handcrafted gold chain collection. Cuban, Figaro, Rope, and more in Yellow Gold and White Gold. Made in Toronto.'
 

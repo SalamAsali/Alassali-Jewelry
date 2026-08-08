@@ -5,7 +5,7 @@ import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
-const TITLE = 'Our Locations — Toronto & Oakville Studios'
+const TITLE = 'Our Locations | Toronto & Oakville Studios'
 const DESCRIPTION =
   'Visit Al-Asali Custom Jewelry at our Toronto and Oakville studios. Custom engagement rings, gold chains, grillz & more. Book your free consultation.'
 
@@ -84,7 +84,7 @@ export default function LocationsPage() {
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title={`${loc.name} studio location — Al-Asali Custom Jewelry`}
+                    title={`${loc.name} studio location | Al-Asali Custom Jewelry`}
                   />
                 </div>
 
@@ -174,7 +174,7 @@ export default function LocationsPage() {
             ...locations.map(loc => ({
               '@context': 'https://schema.org',
               '@type': 'JewelryStore',
-              name: `Al-Asali Custom Jewelry — ${loc.name}`,
+              name: `Al-Asali Custom Jewelry (${loc.name})`,
               address: {
                 '@type': 'PostalAddress',
                 streetAddress: loc.address,

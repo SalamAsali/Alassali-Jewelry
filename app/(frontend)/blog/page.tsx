@@ -11,7 +11,7 @@ import { getBlogIndex, BlogPostSummary } from '@/lib/getBlog'
 
 const FALLBACK_HEADING = 'Jewelry Guides'
 const FALLBACK_INTRO =
-  'Straight answers on pricing, craftsmanship, and how to shop for custom jewelry in Toronto — from our master jeweler.'
+  'Straight answers on pricing, craftsmanship, and how to shop for custom jewelry in Toronto, from our master jeweler.'
 const FALLBACK_SEO_TITLE = 'Custom Jewelry Guides & Toronto Jeweler Insights | Al-Asali Jewelry'
 const FALLBACK_SEO_DESCRIPTION =
   "Expert guides from Toronto's bespoke jeweler: custom engagement ring costs, grillz pricing, lab-grown vs natural diamonds, and more."
@@ -28,45 +28,45 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
     id: 'custom-engagement-ring-cost-toronto-2026',
     slug: 'custom-engagement-ring-cost-toronto-2026',
     title: 'How Much Does a Custom Engagement Ring Cost in Toronto? (2026 Guide)',
-    excerpt: 'No generic ranges — real starting prices by style, metal, and diamond origin, from a working Toronto custom jeweler.',
+    excerpt: 'No generic ranges: real starting prices by style, metal, and diamond origin, from a working Toronto custom jeweler.',
     date: '2026-04-17',
     readingMinutes: 7,
     tag: 'Engagement Rings',
     coverImage: '/blog/custom-engagement-ring-cost-toronto-2026-cover.png',
-    coverImageAlt: 'Custom engagement ring cost Toronto 2026 — pricing by style table from solitaire to toi et moi',
+    coverImageAlt: 'Custom engagement ring cost Toronto 2026: pricing by style table from solitaire to toi et moi',
   },
   {
     id: 'grillz-price-guide-toronto-2026',
     slug: 'grillz-price-guide-toronto-2026',
     title: 'How Much Do Custom Grillz Cost in Toronto? (2026 Price Guide)',
-    excerpt: 'Real 2026 numbers for gold grillz, diamond grillz, and VVS full sets — from a working Toronto grillz studio.',
+    excerpt: 'Real 2026 numbers for gold grillz, diamond grillz, and VVS full sets, from a working Toronto grillz studio.',
     date: '2026-04-17',
     readingMinutes: 6,
     tag: 'Grillz',
     coverImage: '/blog/grillz-price-guide-toronto-2026-cover.png',
-    coverImageAlt: 'Custom grillz price guide Toronto 2026 — pricing from single tooth $500 to full VVS set $14,000',
+    coverImageAlt: 'Custom grillz price guide Toronto 2026: pricing from single tooth $500 to full VVS set $14,000',
   },
   {
     id: 'lab-grown-vs-natural-diamonds-toronto',
     slug: 'lab-grown-vs-natural-diamonds-toronto',
     title: "Lab-Grown vs Natural Diamonds in Toronto: A Jeweler's Honest 2026 Guide",
-    excerpt: "Both are real diamonds. Here's how to choose — without the sales pitch.",
+    excerpt: "Both are real diamonds. Here's how to choose, without the sales pitch.",
     date: '2026-04-17',
     readingMinutes: 8,
     tag: 'Diamonds',
     coverImage: '/blog/lab-grown-vs-natural-diamonds-toronto-cover.png',
-    coverImageAlt: 'Lab-grown vs natural diamonds Toronto 2026 — 11-attribute head-to-head comparison',
+    coverImageAlt: 'Lab-grown vs natural diamonds Toronto 2026: 11-attribute head-to-head comparison',
   },
   {
     id: 'arabic-calligraphy-jewelry-toronto',
     slug: 'arabic-calligraphy-jewelry-toronto',
     title: "Arabic Calligraphy Jewelry in Toronto: A Craftsman's Guide",
-    excerpt: 'Arabic calligraphy pendants, rings, and engravings — explained by a Toronto custom jeweler. Fonts, verses, meanings, prices, and what to ask for.',
+    excerpt: 'Arabic calligraphy pendants, rings, and engravings, explained by a Toronto custom jeweler. Fonts, verses, meanings, prices, and what to ask for.',
     date: '2026-04-19',
     readingMinutes: 7,
     tag: 'Heritage',
     coverImage: '/blog/arabic-calligraphy-jewelry-toronto-cover.png',
-    coverImageAlt: 'Arabic calligraphy jewelry Toronto 2026 — pricing guide for name pendants, Allah, Ayat al-Kursi',
+    coverImageAlt: 'Arabic calligraphy jewelry Toronto 2026: pricing guide for name pendants, Allah, Ayat al-Kursi',
   },
 ]
 

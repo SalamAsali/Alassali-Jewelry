@@ -7,10 +7,10 @@ import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 
 const SLUG = 'lab-grown-vs-natural-diamonds-toronto'
 const TITLE = 'Lab-Grown vs Natural Diamonds in Toronto: A Jeweler\'s Honest 2026 Guide'
-const DESCRIPTION = 'Lab-grown or natural? A working Toronto jeweler explains the real differences — price, ethics, resale value, and quality — without the sales pressure.'
+const DESCRIPTION = 'Lab-grown or natural? A working Toronto jeweler explains the real differences: price, ethics, resale value, and quality, without the sales pressure.'
 const DATE = '2026-04-17'
 const COVER = '/blog/lab-grown-vs-natural-diamonds-toronto-cover.png'
-const COVER_ALT = 'Lab-grown vs natural diamonds Toronto 2026 — head-to-head comparison of price, quality, resale value, ethics, and what each choice means for your piece, Al-Asali Custom Jewelry'
+const COVER_ALT = 'Lab-grown vs natural diamonds Toronto 2026: head-to-head comparison of price, quality, resale value, ethics, and what each choice means for your piece, Al-Asali Custom Jewelry'
 
 export const metadata: Metadata = {
   title: 'Lab-Grown vs Natural Diamonds Toronto 2026',
@@ -21,10 +21,10 @@ export const metadata: Metadata = {
 
 const faq = [
   { q: 'Are lab-grown diamonds real diamonds?', a: 'Yes. Lab-grown diamonds are chemically, physically, and optically identical to mined diamonds. Only highly specialized gemmological equipment can tell them apart.' },
-  { q: 'Which is cheaper for the same carat size?', a: 'Lab-grown is typically 40–60% cheaper than natural at the same 4C specs. The savings grow significantly as you move up in carat weight — contact us for a side-by-side quote on your specific stone.' },
+  { q: 'Which is cheaper for the same carat size?', a: 'Lab-grown is typically 40–60% cheaper than natural at the same 4C specs. The savings grow significantly as you move up in carat weight. Contact us for a side-by-side quote on your specific stone.' },
   { q: 'Do lab-grown diamonds hold value?', a: 'Not as well as natural. The resale market for lab-grown is limited and retail prices have dropped substantially since 2020. Natural diamonds hold their value better over decades.' },
   { q: 'Are lab-grown diamonds more ethical than natural?', a: 'Neither is automatically more ethical. Lab-grown has zero mining impact but uses significant electricity. Our natural diamonds are Kimberley Process and SCS-certified conflict-free.' },
-  { q: 'Can you tell lab-grown from natural by looking?', a: 'No — not with the naked eye, a jeweler\'s loupe, or most handheld testers. Professional gemmological equipment is needed to detect the difference.' },
+  { q: 'Can you tell lab-grown from natural by looking?', a: 'No, not with the naked eye, a jeweler\'s loupe, or most handheld testers. Professional gemmological equipment is needed to detect the difference.' },
 ]
 
 export default function Page() {
@@ -48,7 +48,7 @@ export default function Page() {
   return (
     <BlogLayout
       title={TITLE}
-      subtitle="Both are real diamonds. Here's how to choose — without the sales pitch."
+      subtitle="Both are real diamonds. Here's how to choose, without the sales pitch."
       datePublished={DATE}
       readingMinutes={8}
       category="Diamonds"
@@ -64,13 +64,13 @@ export default function Page() {
         Lab-grown diamonds went from &quot;what are those?&quot; to 60% of our engagement ring orders in under five years. Every week a couple walks into our Toronto studio asking the same question: lab or natural?
       </p>
       <p>
-        There is no universally right answer. This guide gives you the real differences and helps you pick based on what actually matters to you — not what a jeweler is trying to sell.
+        There is no universally right answer. This guide gives you the real differences and helps you pick based on what actually matters to you, not what a jeweler is trying to sell.
       </p>
 
       <h2>The short version</h2>
       <ul>
-        <li><strong>Same properties.</strong> Both are real diamonds — same carbon lattice, same hardness (Mohs 10), same brilliance, same fire.</li>
-        <li><strong>Price.</strong> Lab-grown costs significantly less at identical 4C specs — typically 40–60% less, with savings growing at higher carats.</li>
+        <li><strong>Same properties.</strong> Both are real diamonds: same carbon lattice, same hardness (Mohs 10), same brilliance, same fire.</li>
+        <li><strong>Price.</strong> Lab-grown costs significantly less at identical 4C specs, typically 40–60% less, with savings growing at higher carats.</li>
         <li><strong>Resale.</strong> Natural holds value over decades. Lab-grown values have dropped substantially since 2020 and the secondary market is still developing.</li>
         <li><strong>Ethics.</strong> Lab-grown has zero mining impact but uses energy. Certified natural (Kimberley Process + SCS) is conflict-free.</li>
         <li><strong>Sentiment.</strong> Natural formed over billions of years underground. Lab-grown grew in a controlled environment in weeks.</li>
@@ -81,11 +81,11 @@ export default function Page() {
         Lab-grown diamonds are real diamonds produced in laboratory conditions that replicate the heat and pressure that form natural diamonds underground. Two methods are used today:
       </p>
       <ul>
-        <li><strong>HPHT (High Pressure High Temperature)</strong> — mimics deep-earth conditions; used for smaller and coloured diamonds.</li>
-        <li><strong>CVD (Chemical Vapour Deposition)</strong> — grows diamonds layer by layer from carbon-rich gas; the dominant method for colourless gem-quality stones.</li>
+        <li><strong>HPHT (High Pressure High Temperature):</strong> mimics deep-earth conditions; used for smaller and coloured diamonds.</li>
+        <li><strong>CVD (Chemical Vapour Deposition):</strong> grows diamonds layer by layer from carbon-rich gas; the dominant method for colourless gem-quality stones.</li>
       </ul>
       <p>
-        Both produce 100% real diamonds. The GIA, IGI, and GCAL all certify lab-grown diamonds — with reports that look nearly identical to natural diamond reports.
+        Both produce 100% real diamonds. The GIA, IGI, and GCAL all certify lab-grown diamonds, with reports that look nearly identical to natural diamond reports.
       </p>
 
       <h2>Head-to-head comparison</h2>
@@ -108,12 +108,12 @@ export default function Page() {
         </tbody>
       </table>
 
-      <h2>The price difference — and why it matters</h2>
+      <h2>The price difference, and why it matters</h2>
 
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
           src="/blog/lab-grown-vs-natural-diamonds-toronto-price-comparison.png"
-          alt="Lab-grown vs natural diamond price comparison Toronto 2026 — proportional bars showing lab-grown saves roughly 40–70% depending on carat size, with savings growing at larger carats"
+          alt="Lab-grown vs natural diamond price comparison Toronto 2026: proportional bars showing lab-grown saves roughly 40–70% depending on carat size, with savings growing at larger carats"
           width={1200}
           height={600}
           className="w-full h-auto"
@@ -121,10 +121,10 @@ export default function Page() {
       </div>
 
       <p>
-        The price gap between lab-grown and natural is substantial — and it grows with carat size. At smaller carats the savings are meaningful; at 2ct and above, lab-grown can be a fraction of what you&apos;d pay for natural at the same 4Cs.
+        The price gap between lab-grown and natural is substantial, and it grows with carat size. At smaller carats the savings are meaningful; at 2ct and above, lab-grown can be a fraction of what you&apos;d pay for natural at the same 4Cs.
       </p>
       <p>
-        This means a lab-grown diamond allows you to buy a significantly larger, higher-clarity stone for the same budget — or to allocate more toward the setting, metal, or other aspects of the piece.
+        This means a lab-grown diamond allows you to buy a significantly larger, higher-clarity stone for the same budget, or to allocate more toward the setting, metal, or other aspects of the piece.
       </p>
 
       <h2>When to choose lab-grown</h2>
@@ -144,19 +144,19 @@ export default function Page() {
         Natural makes sense when:
       </p>
       <ul>
-        <li>Long-term resale value matters — for heirloom engagement rings especially</li>
-        <li>You care about the geological story — formed deep underground over billions of years</li>
+        <li>Long-term resale value matters, for heirloom engagement rings especially</li>
+        <li>You care about the geological story, formed deep underground over billions of years</li>
         <li>You want the piece to hold its value through economic cycles</li>
         <li>You&apos;re resetting a family stone into a new piece</li>
         <li>Classic engagement-ring symbolism matters to you</li>
       </ul>
 
-      <h2>The resale question — worth understanding</h2>
+      <h2>The resale question, worth understanding</h2>
 
       <div className="my-8 rounded-xl overflow-hidden border border-glacier-grey/20 not-prose">
         <img
           src="/blog/lab-grown-vs-natural-diamonds-toronto-resale-value.png"
-          alt="Diamond resale value comparison Toronto 2026 — natural diamond holds value over decades with established secondary market, lab-grown retail prices have declined significantly since 2020 with limited resale market"
+          alt="Diamond resale value comparison Toronto 2026: natural diamond holds value over decades with established secondary market, lab-grown retail prices have declined significantly since 2020 with limited resale market"
           width={1200}
           height={600}
           className="w-full h-auto"
@@ -164,7 +164,7 @@ export default function Page() {
       </div>
 
       <p>
-        Lab-grown diamond prices have dropped dramatically since 2020. That&apos;s great if you&apos;re buying today — you get more stone for your money than ever before. But it also means if you buy a lab-grown now and try to sell or upgrade it in several years, the resale market is limited and you&apos;ll take a significant hit.
+        Lab-grown diamond prices have dropped dramatically since 2020. That&apos;s great if you&apos;re buying today, since you get more stone for your money than ever before. But it also means if you buy a lab-grown now and try to sell or upgrade it in several years, the resale market is limited and you&apos;ll take a significant hit.
       </p>
       <p>
         Natural diamonds have a limited but real secondary market. They lose some value when sold retail-to-secondhand (as any luxury item does), but that depreciation has been relatively stable over decades and the GIA-grading system underpins a genuine buyer market. Lab-grown doesn&apos;t yet have a mature secondary market at all.
@@ -176,19 +176,19 @@ export default function Page() {
       <h2>What we recommend at our Toronto studio</h2>
       <ul>
         <li><strong>Engagement rings</strong>: Natural if heirloom value matters most; lab-grown if bigger-for-budget is the priority.</li>
-        <li><strong>Tennis bracelets, studs, anniversary bands</strong>: Lab-grown almost always — significantly more stone for the same spend.</li>
+        <li><strong>Tennis bracelets, studs, anniversary bands</strong>: Lab-grown almost always, for significantly more stone at the same spend.</li>
         <li><strong>Grillz</strong>: Either works. Most clients pick lab-grown for value; some choose natural for status.</li>
-        <li><strong>Pendants, earrings, right-hand rings</strong>: Lab-grown usually wins — these aren&apos;t typically resold.</li>
+        <li><strong>Pendants, earrings, right-hand rings</strong>: Lab-grown usually wins, since these aren&apos;t typically resold.</li>
       </ul>
 
       <h2>How we source at Al-Asali Jewelry</h2>
       <p>
-        We stock both lab-grown and natural diamonds at our Toronto studio. Every natural diamond over 0.5ct ships with a GIA grading report. Every lab-grown over 0.5ct ships with an IGI or GCAL report. During your consultation we compare loose stones of both categories — on camera in high resolution, or in person by appointment. Most couples change their mind at least once after seeing them side by side.
+        We stock both lab-grown and natural diamonds at our Toronto studio. Every natural diamond over 0.5ct ships with a GIA grading report. Every lab-grown over 0.5ct ships with an IGI or GCAL report. During your consultation we compare loose stones of both categories, on camera in high resolution, or in person by appointment. Most couples change their mind at least once after seeing them side by side.
       </p>
 
       <h2>Book a consultation</h2>
       <p>
-        No pressure, no sales script. Book a free virtual consultation — or come meet us in Toronto by appointment. We&apos;ll walk through the trade-offs that matter to you, pull loose stones in both categories, and help you choose with eyes open.
+        No pressure, no sales script. Book a free virtual consultation, or come meet us in Toronto by appointment. We&apos;ll walk through the trade-offs that matter to you, pull loose stones in both categories, and help you choose with eyes open.
       </p>
 
       <script

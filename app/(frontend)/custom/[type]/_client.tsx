@@ -84,7 +84,7 @@ const pieceTypeOptions: { value: string; label: string; icon: LucideIcon; subtit
   { value: 'earrings', label: 'Earrings', icon: CircleDot, subtitle: 'Studs, hoops, drops & more' },
   { value: 'bracelets', label: 'Bracelet', icon: Gem, subtitle: 'Tennis, bangle, cuff & more' },
   { value: 'grillz', label: 'Grillz', icon: Flame, subtitle: 'Bold precious metal statements' },
-  { value: 'other', label: 'Other', icon: HelpCircle, subtitle: 'Something unique — tell us more' },
+  { value: 'other', label: 'Other', icon: HelpCircle, subtitle: 'Something unique, tell us more' },
 ]
 
 // ---------------------------------------------------------------------------
@@ -149,13 +149,13 @@ const typeConfig: Record<string, { title: string; subtitle: string; seoNoun?: st
   'wedding-bands': {
     title: 'Custom Wedding Bands',
     seoNoun: 'Custom Wedding Band',
-    subtitle: 'Bands as timeless as your vow — handcrafted to match your ring',
+    subtitle: 'Bands as timeless as your vow, handcrafted to match your ring',
     styles: ['Classic Band', 'Comfort Fit', 'Eternity', 'Half-Eternity', 'Men\'s Band', 'Engraved', 'Contour / Shaped', 'Stackable', 'Other'],
     metals: ['Platinum', '18K Gold', '14K Gold', '10K Gold', 'Silver', 'Other'],
   },
   'other': {
     title: 'Custom Piece',
-    subtitle: 'Tell us about your dream piece — we\'ll bring it to life',
+    subtitle: 'Tell us about your dream piece, and we\'ll bring it to life',
     styles: [],
     metals: ['10K Gold', '14K Gold', '18K Gold', 'Platinum', 'Silver', 'Other'],
   },
@@ -1266,7 +1266,7 @@ function PortalForm() {
                   <input type="text" name="size" value={formData.size} onChange={handleInputChange} className={inputClass} placeholder={activeSizeConfig.placeholder} />
                 </div>
                 <div className="p-4 bg-white/5 rounded-xl border border-glacier-grey/10">
-                  <p className="text-stone text-sm">Not sure of your size? Don&apos;t worry — we can help during your consultation.</p>
+                  <p className="text-stone text-sm">Not sure of your size? Don&apos;t worry, we can help during your consultation.</p>
                 </div>
               </motion.div>
             )}
@@ -1377,35 +1377,35 @@ function PortalForm() {
 // ---------------------------------------------------------------------------
 
 const hubBespokeCards: { name: string; path: string; icon: LucideIcon; blurb: string }[] = [
-  { name: 'Custom Engagement Rings', path: '/custom-engagement-rings-toronto', icon: Diamond, blurb: 'Solitaire, halo, vintage, three-stone — designed around your love story.' },
+  { name: 'Custom Engagement Rings', path: '/custom-engagement-rings-toronto', icon: Diamond, blurb: 'Solitaire, halo, vintage, three-stone, designed around your love story.' },
   { name: 'Custom Wedding Bands', path: '/custom-wedding-bands-toronto', icon: Heart, blurb: 'Matching bridal sets, eternity bands, men\'s bands, and engraved pieces.' },
-  { name: 'Custom Rings', path: '/custom-rings-toronto', icon: Circle, blurb: 'Signet, statement, stackable, everyday — in gold, platinum, or silver.' },
+  { name: 'Custom Rings', path: '/custom-rings-toronto', icon: Circle, blurb: 'Signet, statement, stackable, everyday, in gold, platinum, or silver.' },
   { name: 'Custom Pendants', path: '/custom-pendants-toronto', icon: Layers, blurb: 'Name pendants, photo pendants, religious symbols, Arabic calligraphy.' },
-  { name: 'Custom Chains', path: '/custom-chains-toronto', icon: Link, blurb: 'Miami Cuban, rope, franco, figaro — solid gold, never hollow.' },
-  { name: 'Custom Earrings', path: '/custom-earrings-toronto', icon: CircleDot, blurb: 'Studs, hoops, drops, chandeliers — diamond and gold.' },
+  { name: 'Custom Chains', path: '/custom-chains-toronto', icon: Link, blurb: 'Miami Cuban, rope, franco, figaro: solid gold, never hollow.' },
+  { name: 'Custom Earrings', path: '/custom-earrings-toronto', icon: CircleDot, blurb: 'Studs, hoops, drops, chandeliers, in diamond and gold.' },
   { name: 'Custom Bracelets', path: '/custom-bracelets-toronto', icon: Gem, blurb: 'Tennis bracelets, bangles, cuffs, engraved men\'s ID bracelets.' },
-  { name: 'Custom Grillz', path: '/custom-grillz-toronto', icon: Flame, blurb: 'Gold and VVS diamond grillz — single tooth to full sets.' },
+  { name: 'Custom Grillz', path: '/custom-grillz-toronto', icon: Flame, blurb: 'Gold and VVS diamond grillz, single tooth to full sets.' },
 ]
 
 const hubProcessSteps = [
-  { icon: MessageSquare, title: 'Consultation', body: 'Free virtual consultation via Zoom, phone, or message — or in-person in Toronto by appointment. We discuss your vision, budget, and timeline.' },
+  { icon: MessageSquare, title: 'Consultation', body: 'Free virtual consultation via Zoom, phone, or message, or in-person in Toronto by appointment. We discuss your vision, budget, and timeline.' },
   { icon: Pen, title: 'Design & CAD', body: 'Our designers produce detailed sketches and 3D CAD renderings for your approval before crafting begins.' },
   { icon: Diamond, title: 'Stone & Metal Selection', body: 'Hand-pick GIA-graded natural or lab-grown diamonds, coloured gems, and your choice of gold, platinum, or silver.' },
-  { icon: Wrench, title: 'In-House Crafting', body: 'Every piece is cast, set, and finished entirely in our Toronto workshop by master jeweler Mohammad Al-Asali — no outsourcing.' },
+  { icon: Wrench, title: 'In-House Crafting', body: 'Every piece is cast, set, and finished entirely in our Toronto workshop by master jeweler Mohammad Al-Asali, with no outsourcing.' },
   { icon: Gem, title: 'Presentation', body: 'Your finished piece is inspected, photographed, and presented in luxury packaging with a lifetime craftsmanship guarantee.' },
 ]
 
 const hubFaq = [
-  { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweler. We operate by appointment only — virtual consultations, secure insured delivery across the GTA, and optional in-person meetings in Toronto when preferred.' },
-  { q: 'Do I need an appointment to visit the Toronto studio?', a: 'Yes — we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we\'ll confirm a time that works for you.' },
+  { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based bespoke jeweler. We operate by appointment only, offering virtual consultations, secure insured delivery across the GTA, and optional in-person meetings in Toronto when preferred.' },
+  { q: 'Do I need an appointment to visit the Toronto studio?', a: 'Yes, we work by appointment only. Book a free consultation by phone, email, or through our custom inquiry form and we\'ll confirm a time that works for you.' },
   { q: 'What areas around Toronto do you serve?', a: 'Our studio is in Toronto, and we regularly work with clients from across the Greater Toronto Area including Mississauga, Etobicoke, North York, Scarborough, Vaughan, Markham, Oakville, Burlington, Brampton, and Milton.' },
-  { q: 'How do I start a custom jewelry project?', a: 'Book a free consultation — virtual via Zoom, phone, or message, or in-person in Toronto by appointment. We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
+  { q: 'How do I start a custom jewelry project?', a: 'Book a free consultation, virtual via Zoom, phone, or message, or in-person in Toronto by appointment. We\'ll discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins. Most projects take 2-6 weeks from design approval.' },
   { q: 'How much does custom jewelry cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal, stones, and design complexity. We quote every project up front with no hidden fees.' },
-  { q: 'Do you offer lab-grown diamonds?', a: 'Yes — we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value.' },
+  { q: 'Do you offer lab-grown diamonds?', a: 'Yes, we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value.' },
   { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We\'ll carefully remove the stones from your existing piece and set them into your new custom design.' },
-  { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes — we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweler is fluent in the art of Arabic calligraphy casting.' },
+  { q: 'Do you offer Arabic calligraphy jewelry?', a: 'Yes, we specialize in Arabic calligraphy pendants, Allah pendants, Ayat al-Kursi pendants, Bismillah pendants, and engraved Arabic wedding bands. Our master jeweler is fluent in the art of Arabic calligraphy casting.' },
   { q: 'What is the typical timeline for custom jewelry?', a: 'Most pieces take 2-6 weeks: grillz 1-2 weeks, pendants 2-4 weeks, chains and earrings 2-4 weeks, rings and bracelets 3-5 weeks, engagement rings 4-6 weeks. Rush orders are available.' },
-  { q: 'Do you ship outside of Toronto?', a: 'Yes — we ship securely across the GTA and anywhere in Canada. Finished pieces are always fully insured in transit.' },
+  { q: 'Do you ship outside of Toronto?', a: 'Yes, we ship securely across the GTA and anywhere in Canada. Finished pieces are always fully insured in transit.' },
 ]
 
 function GeneralHub() {
@@ -1432,7 +1432,7 @@ function GeneralHub() {
             Toronto&apos;s Premier Custom Jeweler
           </h2>
           <p className="text-stone leading-relaxed text-base md:text-lg">
-            Al-Asali Jewelry is a Toronto-based bespoke jewelry studio, working by appointment. Master jeweler Mohammad Al-Asali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house — no outsourcing, no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
+            Al-Asali Jewelry is a Toronto-based bespoke jewelry studio, working by appointment. Master jeweler Mohammad Al-Asali and our team design and handcraft every custom engagement ring, wedding band, diamond pendant, gold chain, and grillz set entirely in-house, with no outsourcing and no middlemen. From the first consultation to the final polish, every piece is crafted under one roof with a lifetime craftsmanship guarantee.
           </p>
         </header>
 
@@ -1490,7 +1490,7 @@ function GeneralHub() {
             Why Al-Asali Jewelry
           </h3>
           <p className="text-stone text-center mb-10 max-w-2xl mx-auto text-sm">
-            We are a small, focused Toronto workshop. Every piece is crafted by a master jeweler — not a factory — and backed by a lifetime craftsmanship guarantee.
+            We are a small, focused Toronto workshop. Every piece is crafted by a master jeweler, not a factory, and backed by a lifetime craftsmanship guarantee.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -1530,7 +1530,7 @@ function GeneralHub() {
             How We Work Together
           </h3>
           <p className="text-stone leading-relaxed text-sm mb-6">
-            Al-Asali Jewelry Studio is a Toronto-based bespoke jeweler, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces — and in-person meetings in Toronto whenever you prefer.
+            Al-Asali Jewelry Studio is a Toronto-based bespoke jeweler, serving clients across the GTA by appointment. Free virtual consultations via Zoom, phone, or message, complimentary secure insured delivery of finished pieces, and in-person meetings in Toronto whenever you prefer.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm">
             <a href="tel:+16475624340" className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">

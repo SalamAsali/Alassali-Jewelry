@@ -94,7 +94,7 @@ function confirmationHtml(firstName: string, orderNo: string, chainName: string)
           <p style="margin:0 0 16px;color:#ccc;font-size:15px;line-height:1.7">Thank you for your interest in the <strong style="color:#fff">${chainName}</strong>. Your inquiry <strong style="color:#b8975a">${orderNo}</strong> has been received.</p>
           <p style="margin:0 0 16px;color:#ccc;font-size:15px;line-height:1.7">Our team will review the details and reach out within 1-2 business days to discuss next steps.</p>
           <p style="margin:0 0 24px;color:#ccc;font-size:15px;line-height:1.7">In the meantime, feel free to browse our <a href="https://www.alasalicustomjewelry.ca/portfolio" style="color:#b8975a">portfolio</a> for inspiration.</p>
-          <p style="margin:0;color:#ccc;font-size:15px;line-height:1.7">— Mohammad Al-Asali<br><span style="color:#666;font-size:13px">Master Jeweler & Founder, Al-Asali Custom Jewelry</span></p>
+          <p style="margin:0;color:#ccc;font-size:15px;line-height:1.7">Mohammad Al-Asali<br><span style="color:#666;font-size:13px">Master Jeweler & Founder, Al-Asali Custom Jewelry</span></p>
         </td></tr>
         <tr><td style="padding:16px 32px 24px;border-top:1px solid #333">
           <p style="margin:0;color:#555;font-size:12px">Al-Asali Custom Jewelry · 624 Vaughan Rd, Toronto, ON · <a href="tel:+16475624340" style="color:#666">(647) 562-4340</a></p>
@@ -232,7 +232,7 @@ export async function POST(request: NextRequest) {
           from: FROM,
           to: email,
           reply_to: NOTIFY,
-          subject: `We received your inquiry — ${orderNo}`,
+          subject: `We received your inquiry: ${orderNo}`,
           html: confirmationHtml(body.firstName, orderNo, body.chainName),
         })
       )
@@ -243,7 +243,7 @@ export async function POST(request: NextRequest) {
         from: FROM,
         to: NOTIFY,
         reply_to: email || undefined,
-        subject: `Chain Inquiry: ${body.chainName} — ${name} — ${orderNo}`,
+        subject: `Chain Inquiry: ${body.chainName} | ${name} | ${orderNo}`,
         html: notificationHtml({
           name,
           email,

@@ -15,12 +15,12 @@ const FALLBACK_TITLE = 'Master Jeweler & Founder'
 const FALLBACK_TAGLINE = "Toronto's bespoke jeweler behind every piece that leaves Al-Asali Jewelry Studio."
 const FALLBACK_BIO = [
   'Mohammad Al-Asali is the founder and master jeweler behind Al-Asali Jewelry Studio in Toronto. A graduate of the George Brown College Jewelry Arts Program and a working goldsmith since 2017, Mohammad has personally designed and handcrafted hundreds of bespoke engagement rings, wedding bands, diamond pendants, gold chains, tennis bracelets, and custom grillz for clients across the Greater Toronto Area.',
-  'What began as a sole-proprietor commission practice at the end of 2020 has grown into a full Toronto bespoke studio — still operating with the same principle Mohammad started with: every piece is designed, cast, set, and finished in-house. No outsourcing, no middlemen, no shortcuts. If Al-Asali Jewelry made it, Mohammad inspected it.',
-  'Mohammad has built a reputation for deep expertise in Arabic calligraphy jewelry — a specialty few Toronto jewelers can authentically execute. From Allah pendants and Ayat al-Kursi pendants to custom Arabic name rings and engraved wedding bands, his work has been carried by clients in Toronto, Mississauga, Vaughan, Markham, and beyond.',
+  'What began as a sole-proprietor commission practice at the end of 2020 has grown into a full Toronto bespoke studio, still operating with the same principle Mohammad started with: every piece is designed, cast, set, and finished in-house. No outsourcing, no middlemen, no shortcuts. If Al-Asali Jewelry made it, Mohammad inspected it.',
+  'Mohammad has built a reputation for deep expertise in Arabic calligraphy jewelry, a specialty few Toronto jewelers can authentically execute. From Allah pendants and Ayat al-Kursi pendants to custom Arabic name rings and engraved wedding bands, his work has been carried by clients in Toronto, Mississauga, Vaughan, Markham, and beyond.',
 ].join('\n\n')
-const FALLBACK_SEO_TITLE = 'Mohammad Al-Asali — Master Jeweler & Founder | Al-Asali Jewelry Toronto'
+const FALLBACK_SEO_TITLE = 'Mohammad Al-Asali | Master Jeweler & Founder | Al-Asali Jewelry Toronto'
 const FALLBACK_SEO_DESCRIPTION =
-  'Meet Mohammad Al-Asali — master jeweler and founder of Al-Asali Jewelry Studio in Toronto. George Brown College Jewelry Arts graduate, practicing since 2017.'
+  'Meet Mohammad Al-Asali, master jeweler and founder of Al-Asali Jewelry Studio in Toronto. George Brown College Jewelry Arts graduate, practicing since 2017.'
 
 export async function generateMetadata({
   params,
@@ -99,7 +99,7 @@ export default async function MasterJewelerPage({
               <li>
                 <span className="text-white font-medium">George Brown College</span>
                 <br />
-                Jewelry Arts Program — Diploma
+                Jewelry Arts Program, Diploma
               </li>
             </ul>
           </div>
@@ -110,7 +110,7 @@ export default async function MasterJewelerPage({
             </h2>
             <ul className="space-y-2 text-stone text-sm">
               <li><span className="text-white font-medium">Practicing since 2017</span></li>
-              <li><span className="text-white font-medium">Al-Asali Jewelry Studio</span> — Founder &amp; Master Jeweler (Toronto, 2020–present)</li>
+              <li><span className="text-white font-medium">Al-Asali Jewelry Studio</span>, Founder &amp; Master Jeweler (Toronto, 2020–present)</li>
               <li>Hundreds of bespoke pieces handcrafted for GTA clients</li>
             </ul>
           </div>
@@ -123,11 +123,11 @@ export default async function MasterJewelerPage({
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { icon: Diamond, title: 'Bespoke Engagement Rings', body: "Solitaire, halo, three-stone, vintage — designed around each couple's story. GIA-graded naturals or IGI-certified lab-grown diamonds." },
-              { icon: Sparkles, title: 'Custom Grillz', body: 'Real gold, real diamonds. Single tooth to full sets, VS to VVS clarity, all hand-set in Toronto. No cubic zirconia — ever.' },
-              { icon: Scroll, title: 'Arabic Calligraphy Jewelry', body: 'Allah pendants, Ayat al-Kursi, Bismillah, custom Arabic name pendants and rings — crafted with authentic letter forms and balanced proportions.' },
+              { icon: Diamond, title: 'Bespoke Engagement Rings', body: "Solitaire, halo, three-stone, vintage, designed around each couple's story. GIA-graded naturals or IGI-certified lab-grown diamonds." },
+              { icon: Sparkles, title: 'Custom Grillz', body: 'Real gold, real diamonds. Single tooth to full sets, VS to VVS clarity, all hand-set in Toronto. No cubic zirconia, ever.' },
+              { icon: Scroll, title: 'Arabic Calligraphy Jewelry', body: 'Allah pendants, Ayat al-Kursi, Bismillah, custom Arabic name pendants and rings, crafted with authentic letter forms and balanced proportions.' },
               { icon: Hammer, title: 'Heirloom Resets', body: 'Carefully remove stones from family pieces and set them into new bespoke designs, preserving sentiment while modernizing the look.' },
-              { icon: Star, title: 'Custom Gold Chains', body: 'Solid gold Cuban, rope, franco, figaro, and box chains. Built to exact gram weight specifications — never hollow.' },
+              { icon: Star, title: 'Custom Gold Chains', body: 'Solid gold Cuban, rope, franco, figaro, and box chains. Built to exact gram weight specifications, never hollow.' },
               { icon: Diamond, title: 'Diamond Setting', body: 'Prong, bezel, channel, pavé, flush, and tension settings. Every stone hand-set and tightened before the piece leaves the studio.' },
             ].map(({ icon: Icon, title: specTitle, body }) => (
               <div key={specTitle} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5">
@@ -146,7 +146,7 @@ export default async function MasterJewelerPage({
             Book a Free Consultation
           </h2>
           <p className="text-stone text-sm mb-6">
-            Every custom project starts with a free consultation — virtually via Zoom, phone, or message, or in-person in Toronto by appointment. Mohammad leads every initial consultation personally.
+            Every custom project starts with a free consultation, virtually via Zoom, phone, or message, or in-person in Toronto by appointment. Mohammad leads every initial consultation personally.
           </p>
           <div className="flex flex-wrap justify-center gap-3 text-sm mb-6">
             <a href={`tel:${SITE_CONFIG.phone}`} className="inline-flex items-center gap-2 text-glacier-grey hover:text-glacier-grey-light">
