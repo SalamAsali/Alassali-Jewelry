@@ -114,7 +114,7 @@ const bespokeCategories = [
 
 // SEO trust pillars — the four reasons clients pick a custom jeweler in Toronto
 const whyAlAssali: { icon: LucideIcon; title: string; body: string }[] = [
-  { icon: MapPin, title: 'Made in Toronto', body: 'Designed, cast, set, and finished entirely in-house in our Toronto studio — no outsourcing.' },
+  { icon: MapPin, title: 'Made in Toronto', body: 'Designed, cast, set, and finished entirely in-house in our Toronto studio. Nothing gets outsourced.' },
   { icon: ShieldCheck, title: 'Lifetime Guarantee', body: 'Free polishing, rhodium re-plating, and resizing for life on every piece we craft.' },
   { icon: Diamond, title: 'GIA-Graded Diamonds', body: 'Conflict-free natural and lab-grown diamonds, graded to GIA standards.' },
   { icon: Star, title: '5.0 on Google', body: '5-star rated by clients across the Greater Toronto Area.' },
@@ -122,7 +122,7 @@ const whyAlAssali: { icon: LucideIcon; title: string; body: string }[] = [
 
 // FAQ — answers the top "custom jewelry toronto" search queries
 const homepageFaq = [
-  { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based custom jewelry studio at 624 Vaughan Rd. We work by appointment only — virtual consultations via Zoom, phone, or message, and complimentary insured delivery across the Greater Toronto Area, with optional in-person meetings in Toronto when preferred.' },
+  { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based custom jewelry studio at 624 Vaughan Rd. We work by appointment only and offer virtual consultations via Zoom, phone, or message, and complimentary insured delivery across the Greater Toronto Area, with optional in-person meetings in Toronto when preferred.' },
   { q: 'What does custom jewelry cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal weight, stones, and design complexity. Custom engagement rings typically start at $2,500. Every project is quoted up front with no hidden fees.' },
   { q: 'How long does custom jewelry take?', a: 'Most pieces take 2–6 weeks: grillz 1–2 weeks, pendants 2–4 weeks, chains and earrings 2–4 weeks, rings and bracelets 3–5 weeks, engagement rings 4–6 weeks. Rush orders are available for an additional fee.' },
   { q: 'How do I start a custom jewelry project?', a: 'Book a free virtual consultation via Zoom, phone, or message, or an in-person consultation in Toronto by appointment. We discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins.' },

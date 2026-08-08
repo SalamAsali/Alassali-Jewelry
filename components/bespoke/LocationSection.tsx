@@ -19,8 +19,51 @@ const COPY: Record<City, { intro: string; delivery: string; apptHeading: string;
   },
 }
 
-export default function LocationSection({ city = 'toronto' }: { city?: City }) {
-  const copy = COPY[city] ?? COPY.toronto
+// The approved copy docs write this intro fresh for every page — chains talk
+// about texting a reference photo, grillz about the mold appointment, and so
+// on. Only the intro varies; delivery and appointment copy stay city-level.
+// Anything not listed here falls back to the city default above.
+const INTRO_BY_TYPE: Record<string, Partial<Record<City, string>>> = {
+  'engagement-rings': {
+    toronto: 'A Toronto-based custom studio serving clients across the GTA by appointment. Most of the process happens virtually, with secure insured delivery when your piece is ready, plus in-person meetings in Toronto whenever you’d like one.',
+    oakville: 'A custom studio serving Oakville clients by appointment. Most of the process happens virtually, with secure insured delivery when your piece is ready, plus in-person meetings in Oakville whenever you’d like one.',
+  },
+  'rings': {
+    toronto: 'A Toronto-based custom studio serving clients across the GTA by appointment. Most rings are designed virtually from start to finish, with insured delivery once your piece is ready. If you’d rather have an in-person meeting in Toronto, we’d be happy to arrange that too.',
+    oakville: 'A custom studio working with Oakville clients by appointment or entirely online. Most rings are designed virtually from start to finish, with insured delivery once your piece is ready. If you’d rather meet in person, we’re happy to set that up at our Oakville studio too.',
+  },
+  'wedding-bands': {
+    toronto: 'A Toronto-based custom studio working with clients across the GTA by appointment. Most bands are designed entirely virtually, with your finished piece delivered fully insured, or you’re welcome to book an in-person visit in Toronto instead.',
+    oakville: 'A custom studio working with Oakville clients by appointment or entirely online. Most bands are designed entirely virtually, with your finished piece delivered fully insured, or you’re welcome to book a private consultation at our Oakville studio instead.',
+  },
+  'pendants': {
+    toronto: 'A Toronto-based custom studio working with clients across the GTA by appointment. Most pendants are designed and approved entirely online, with your finished piece delivered fully insured. In-person meetings in Toronto are available anytime you’d prefer one.',
+    oakville: 'A custom studio working with Oakville clients by appointment or entirely online. Most pendants are designed and approved entirely online, with your finished piece delivered fully insured. In-person meetings in Oakville are available anytime you’d prefer one.',
+  },
+  'chains': {
+    toronto: 'A Toronto-based custom studio serving clients across the GTA. Meet virtually or by appointment in Toronto, whichever you prefer, with secure insured delivery once your piece is ready. Most chain orders start the same way: a quick text with a photo of the style and length you’re picturing.',
+    oakville: 'A custom studio serving clients in Oakville. Meet virtually or by appointment in Oakville, whichever you prefer, with secure insured delivery once your piece is ready. Most chain orders start the same way: a quick text with a photo of the style and length you’re picturing.',
+  },
+  'earrings': {
+    toronto: 'A Toronto-based custom studio working with clients across the GTA by appointment. Most earring designs are finalized entirely online, with your finished piece delivered fully insured. In-person meetings in Toronto are available whenever you prefer.',
+    oakville: 'A custom studio working with Oakville clients by appointment or entirely online. Most earring designs are finalized entirely online, with your finished piece delivered fully insured. In-person meetings in Oakville are available whenever you prefer.',
+  },
+  'bracelets': {
+    toronto: 'A Toronto-based custom studio working with clients across the GTA by appointment. Most bracelets are designed and approved entirely online, with your finished piece delivered fully insured. Want to go over the design in person? We’ll set up an appointment in Toronto.',
+    oakville: 'A custom studio working with Oakville clients by appointment. Most bracelets are designed and approved entirely online, with your finished piece delivered fully insured. Want to go over the design in person? We’ll set up an appointment in Oakville.',
+  },
+  'grillz': {
+    // Mold sessions genuinely happen at the Toronto studio, which the Oakville
+    // copy states plainly rather than relocating.
+    toronto: 'A Toronto-based custom studio working with clients across the GTA. Most grillz start with a virtual consultation to plan your metal, configuration, and stone setting, followed by an in-person mold appointment in Toronto. Your finished grillz are delivered fully insured once they’re ready.',
+    oakville: 'A custom studio working with clients in Oakville. Most grillz start with a virtual consultation to plan your metal, configuration, and stone setting, followed by an in-person mold appointment in Toronto. Your finished grillz are delivered fully insured once they’re ready.',
+  },
+}
+
+export default function LocationSection({ city = 'toronto', type }: { city?: City; type?: string }) {
+  const base = COPY[city] ?? COPY.toronto
+  const intro = (type && INTRO_BY_TYPE[type]?.[city]) || base.intro
+  const copy = { ...base, intro }
   return (
     <section className="py-20 px-4 border-t border-glacier-grey/10">
       <div className="max-w-6xl mx-auto">
