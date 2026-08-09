@@ -96,15 +96,32 @@ const nextConfig = {
       // First iteration of the flat URL (briefly indexable) → final URL.
       { source: FORM_LEGACY, destination: FORM_PUBLIC, permanent: true },
       // Redirect old British spellings to the canonical American-spelling routes.
+      // The brand slug also loses a double-s: mohammad-al-assali → mohammad-al-asali.
+      // These two must stay ahead of the /master-jeweller/:path* rule below: matching
+      // is first-wins, so listing the fully-old URL here resolves it in a single hop
+      // instead of chaining /master-jeweller/…-assali → /master-jeweler/…-assali → final.
+      {
+        source: '/about/master-jeweller/mohammad-al-assali',
+        destination: '/about/master-jeweler/mohammad-al-asali',
+        statusCode: 301,
+      },
+      {
+        source: '/about/master-jeweler/mohammad-al-assali',
+        destination: '/about/master-jeweler/mohammad-al-asali',
+        statusCode: 301,
+      },
       {
         source: '/about/master-jeweller/:path*',
         destination: '/about/master-jeweler/:path*',
         permanent: true,
       },
+      // 301 rather than `permanent: true`, which Next.js emits as a 308. Both are
+      // permanent to crawlers, but this URL is indexed and gets reported on, so the
+      // status code auditors expect to see is the one worth sending.
       {
         source: '/blog/arabic-calligraphy-jewellery-toronto',
         destination: '/blog/arabic-calligraphy-jewelry-toronto',
-        permanent: true,
+        statusCode: 301,
       },
       // Removed service-area pages → homepage
       { source: '/service-areas', destination: '/', permanent: true },

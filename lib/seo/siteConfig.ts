@@ -102,7 +102,7 @@ export const SITE_CONFIG = {
 export const MASTER_JEWELER = {
   name: 'Mohammad Al-Asali',
   jobTitle: 'Master Jeweler & Founder',
-  slug: 'mohammad-al-assali',
+  slug: 'mohammad-al-asali',
   credentials: [
     'George Brown College, Jewelry Arts Program (Diploma)',
   ],
