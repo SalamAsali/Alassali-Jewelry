@@ -12,7 +12,7 @@ import { getBlogIndex, BlogPostSummary } from '@/lib/getBlog'
 const FALLBACK_HEADING = 'Jewelry Guides'
 const FALLBACK_INTRO =
   'Straight answers on pricing, craftsmanship, and how to shop for custom jewelry in Toronto, from our master jeweler.'
-const FALLBACK_SEO_TITLE = 'Custom Jewelry Guides & Toronto Jeweler Insights | Al-Asali Jewelry'
+const FALLBACK_SEO_TITLE = 'Custom Jewelry Guides & Insights | Al-Asali Jewelry'
 const FALLBACK_SEO_DESCRIPTION =
   "Expert guides from Toronto's bespoke jeweler: custom engagement ring costs, grillz pricing, lab-grown vs natural diamonds, and more."
 

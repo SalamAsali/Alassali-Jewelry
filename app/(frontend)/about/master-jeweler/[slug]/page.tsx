@@ -18,7 +18,7 @@ const FALLBACK_BIO = [
   'What began as a sole-proprietor commission practice at the end of 2020 has grown into a full Toronto bespoke studio, still operating with the same principle Mohammad started with: every piece is designed, cast, set, and finished in-house. No outsourcing, no middlemen, no shortcuts. If Al-Asali Jewelry made it, Mohammad inspected it.',
   'Mohammad has built a reputation for deep expertise in Arabic calligraphy jewelry, a specialty few Toronto jewelers can authentically execute. From Allah pendants and Ayat al-Kursi pendants to custom Arabic name rings and engraved wedding bands, his work has been carried by clients in Toronto, Mississauga, Vaughan, Markham, and beyond.',
 ].join('\n\n')
-const FALLBACK_SEO_TITLE = 'Mohammad Al-Asali | Master Jeweler & Founder | Al-Asali Jewelry Toronto'
+const FALLBACK_SEO_TITLE = 'Mohammad Al-Asali | Master Jeweler | Al-Asali Jewelry'
 const FALLBACK_SEO_DESCRIPTION =
   'Meet Mohammad Al-Asali, master jeweler and founder of Al-Asali Jewelry Studio in Toronto. George Brown College Jewelry Arts graduate, practicing since 2017.'
 
