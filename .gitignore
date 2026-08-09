@@ -28,9 +28,6 @@ yarn-error.log*
 .env*.local
 .env
 
-# DatoCMS migration artifacts (environment-specific upload-id map)
-scripts/migrate/.uploads.json
-
 # vercel
 .vercel
 

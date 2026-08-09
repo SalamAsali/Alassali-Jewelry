@@ -1,34 +1,46 @@
 # Alassali Jewelry
 
-A luxury custom jewelry website built with Next.js and DatoCMS.
+A luxury custom jewelry website for [Al-Asali Jewelry Studio](https://www.alasalicustomjewelry.ca), Toronto.
 
 ## Tech Stack
 
 - **Frontend**: Next.js 15 (App Router)
-- **CMS**: DatoCMS (Headless CMS)
+- **CMS**: [Sanity](https://www.sanity.io) — project `oh0jn4tt`, dataset `production`
 - **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
+- **Auth**: Clerk
+- **Payments**: Stripe
+- **Ops**: Notion (orders/customers), Resend (email)
 - **Deployment**: Vercel
+
+The Sanity Studio lives in a separate repo, deployed at
+[cms.alasalicustomjewelry.ca](https://cms.alasalicustomjewelry.ca).
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js 18+
-- DatoCMS account with API token
+- Access to the Vercel project `alassali-jewelry` (scope `dreams3`)
 
 ### Environment Variables
 
-Create a `.env.local` file:
+The project is **not** git-connected on Vercel, so pull env vars with the CLI
+rather than maintaining `.env.local` by hand:
 
-```env
-DATOCMS_API_TOKEN=your_api_token_here
+```bash
+npx vercel link --yes --project alassali-jewelry --scope dreams3
+npx vercel env pull .env.local --environment production --scope dreams3
 ```
+
+Key variables: `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`,
+`SANITY_API_WRITE_TOKEN`, `SANITY_WEBHOOK_SECRET`, `CLERK_SECRET_KEY`,
+`STRIPE_SECRET_KEY`, `NOTION_TOKEN`, `RESEND_API_KEY`, `GOLDAPI_TOKEN`,
+`GOOGLE_PLACES_API_KEY`.
 
 ### Installation
 
 ```bash
-npm install
+npm install --legacy-peer-deps
 npm run dev
 ```
 
@@ -38,71 +50,70 @@ npm run dev
 npm run build
 ```
 
-## DatoCMS Setup
+### Deploying
 
-### Required Models
+Vercel is not connected to GitHub, so merging to `main` does not ship
+anything. Deploy explicitly from the repo root:
 
-Create these models in your DatoCMS dashboard:
+```bash
+npx vercel --prod --yes --scope dreams3
+```
 
-1. **Gallery** (collection)
-   - `title` (Single-line string, required)
-   - `description` (Multi-line text)
-   - `image` (Single asset, required)
-   - `category` (Single-line string)
-   - `featured` (Boolean)
-   - `order` (Integer)
+## Scripts
 
-2. **Homepage** (single instance)
-   - `title` (Single-line string)
-   - `heroTitle` (Single-line string)
-   - `heroSubtitle` (Multi-line text)
-   - `heroImage` (Single asset)
-   - `featuredItems` (Links to Gallery)
-   - `testimonials` (Modular content block)
-   - `processSteps` (Modular content block)
-   - `madeInTorontoImages` (Modular content block)
+| Script | Purpose |
+| --- | --- |
+| `npm run dev` / `build` / `start` / `lint` | Standard Next.js commands |
+| `npm run portfolio:audit` | Audit portfolio items in Sanity |
+| `npm run portfolio:remove-first-image` | Strip the leading image from portfolio items |
 
-3. **Page** (collection)
-   - `title` (Single-line string, required)
-   - `slug` (Slug, required)
-   - `content` (Structured text)
-   - `metaTitle` (Single-line string)
-   - `metaDescription` (Multi-line text)
-   - `published` (Boolean)
-
-4. **Header** (single instance)
-   - `logo` (Single asset)
-   - `navItems` (Modular content block)
-
-5. **Footer** (single instance)
-   - `logo` (Single asset)
-   - `tagline` (Single-line string)
-   - `navItems` (Modular content block)
-   - `phone` (Single-line string)
-   - `email` (Single-line string)
-   - `location` (Multi-line text)
+Additional one-off utilities live in `scripts/` (chain image uploads, Tecimer
+catalog scrapers). They are run directly with `node` or `npx tsx`.
 
 ## Routes
 
-- `/` - Homepage
-- `/catalog` - Product catalog
-- `/portfolio` - Gallery portfolio
-- `/product/[id]` - Product detail
-- `/custom/[type]` - Custom jewelry inquiry forms
-- `/cart` - Shopping cart
-- `/checkout/success` - Checkout success page
-- `/checkout/cancel` - Checkout cancel page
-- `/faq` - FAQ page
-- `/admin` - Redirects to DatoCMS dashboard
+| Route | Purpose |
+| --- | --- |
+| `/` | Homepage |
+| `/custom/[type]` | Bespoke landing pages, served at the flat public URLs below |
+| `/[city]/[service]` | Geo service pages |
+| `/about/master-jeweler/[slug]` | Master jeweler profile |
+| `/portfolio`, `/faq`, `/locations` | Static content pages |
+| `/blog`, `/blog/<post>` | Blog index and four posts (each a static route folder) |
+| `/chains`, `/chains/[metal]`, `/chains/[metal]/[chainType]`, `/chain/[slug]` | Chain catalog |
+| `/account/**` | Clerk-authenticated customer account area |
+| `/cms/[[...segments]]` | Embedded Studio entry |
+
+### URL rewrites
+
+Bespoke pages are authored at `/custom/<slug>` but served publicly as
+`/custom-<slug>-toronto` (and `-oakville` for the geo variants) via rewrites in
+`next.config.mjs`. The inquiry form is the one place the public slug diverges
+from the route segment: `/custom-form` is served by `/custom/general`.
+
+Redirect matching in `next.config.mjs` is **first-wins** — specific rules must
+be listed ahead of any `:path*` catch-all, or URLs resolve in two hops.
 
 ## API Routes
 
-- `GET /api/gallery` - Get gallery items
-- `GET /api/gallery/[id]` - Get single gallery item
-- `GET /api/homepage` - Get homepage content
-- `GET /api/pages` - Get all pages
-- `POST /api/inquiries` - Submit inquiry form
+| Route | Purpose |
+| --- | --- |
+| `GET /api/gallery`, `/api/gallery/[id]` | Gallery items |
+| `GET /api/homepage`, `/api/pages` | Page content |
+| `GET /api/chains`, `/api/chains/[slug]` | Chain catalog data |
+| `GET /api/pricing/config` | Live pricing configuration |
+| `GET /api/reviews` | Google Places reviews |
+| `POST /api/inquiries`, `/api/inquiries/chain`, `/api/inquiries/upload` | Inquiry submission |
+| `POST /api/sync/dato-to-notion` | **Sanity** → Notion webhook (legacy folder name) |
+| `POST /api/sync/notion-to-dato` | Notion → **Sanity** webhook (legacy folder name) |
+| `POST /api/webhooks/clerk` | Clerk user events |
+| `POST /api/revalidate`, `/api/indexnow` | Cache revalidation, IndexNow submission |
+| `GET /api/cron/gold-price` | Daily gold price refresh (Vercel cron, 07:00 UTC) |
+
+> The two `/api/sync/*dato*` routes are named after the CMS this project used
+> before Sanity. Both are live and speak to Sanity — the folder names are kept
+> only because the webhook URLs are configured externally in Sanity and Notion.
 
 ## License
 
-Private - All rights reserved
+Private.

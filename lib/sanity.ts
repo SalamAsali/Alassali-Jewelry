@@ -473,7 +473,6 @@ export async function getFaqPage() {
 
 /**
  * Helper: get Sanity image URL from image object
- * Drop-in replacement for DatoCMS responsiveImage pattern
  */
 export function getSanityImageUrl(image: SanityImage | undefined | null, width?: number): string {
   if (!image?.asset) return ''

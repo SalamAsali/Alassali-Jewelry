@@ -196,8 +196,8 @@ const BESPOKE_SLUG_TO_CATEGORY: Record<string, string> = {
 
 // Canonical order mirrors the Bespoke nav menu so filter chips read in the
 // same sequence everywhere on the site. 'All' always leads. Anything not in
-// the canonical list (future Dato categories the editor adds) falls in after
-// the known set, preserving its current order from Dato.
+// the canonical list (future categories the editor adds) falls in after
+// the known set, preserving its current order from Sanity.
 const CANONICAL_CATEGORY_ORDER = [
   'Engagement Rings',
   'Wedding Bands',
