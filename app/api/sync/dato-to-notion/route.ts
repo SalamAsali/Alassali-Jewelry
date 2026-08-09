@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
 import {
-  upsertChainToNotion,
   findOrCreateCustomer,
   findOrderByNumber,
   updateOrderStageByNumber,
@@ -27,20 +26,6 @@ export async function POST(request: NextRequest) {
     }
 
     switch (doc._type) {
-      case 'chain':
-        await upsertChainToNotion({
-          datoItemId: doc._id,
-          name: doc.name || '',
-          chainType: doc.chainType || '',
-          widthMm: doc.widthMm || 0,
-          construction: doc.construction || '',
-          availableKarats: doc.availableKarats || [],
-          availableMetals: doc.availableMetals || [],
-          active: doc.active ?? true,
-          supplierSku: doc.supplierSku,
-        })
-        break
-
       case 'order':
         // Sync status changes from Sanity to Notion
         if (doc.orderNo && doc.status) {

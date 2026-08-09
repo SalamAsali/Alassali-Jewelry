@@ -279,65 +279,6 @@ export async function findOrderByNumber(orderNo: string): Promise<string | null>
 }
 
 // ---------------------------------------------------------------------------
-// Chains (unchanged — different DB)
-// ---------------------------------------------------------------------------
-
-export async function upsertChainToNotion(chain: {
-  datoItemId: string
-  name: string
-  chainType: string
-  widthMm: number
-  construction: string
-  availableKarats: string[]
-  availableMetals: string[]
-  active: boolean
-  supplierSku?: string
-}) {
-  const dbId = process.env.NOTION_CHAINS_DB_ID
-  if (!dbId) return null
-
-  // Chains DB may use a separate data source ID, fall back to DB ID for query
-  const dsId = process.env.NOTION_CHAINS_DATA_SOURCE_ID || dbId
-
-  let existing: any = { results: [] }
-  try {
-    existing = await queryDataSource(dsId, {
-      filter: {
-        property: 'Dato Item ID',
-        rich_text: { equals: chain.datoItemId },
-      },
-    })
-  } catch {
-    // If data source query fails, skip dedup
-  }
-
-  const properties: Record<string, any> = {
-    Name: { title: [{ text: { content: chain.name } }] },
-    'Chain Type': { select: { name: chain.chainType } },
-    'Width (mm)': { number: chain.widthMm },
-    Construction: { select: { name: chain.construction } },
-    Active: { checkbox: chain.active },
-    'Dato Item ID': { rich_text: [{ text: { content: chain.datoItemId } }] },
-  }
-
-  if (chain.supplierSku) {
-    properties['Supplier SKU'] = { rich_text: [{ text: { content: chain.supplierSku } }] }
-  }
-
-  if (existing.results.length > 0) {
-    return notion.pages.update({
-      page_id: existing.results[0].id,
-      properties,
-    })
-  }
-
-  return notion.pages.create({
-    parent: { database_id: dbId },
-    properties,
-  })
-}
-
-// ---------------------------------------------------------------------------
 // Spot price logging
 // ---------------------------------------------------------------------------
 
