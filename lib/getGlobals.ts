@@ -6,6 +6,7 @@ import {
   type FooterData as SanityFooterData,
   type SanityImage,
 } from './sanity'
+import { normalizeCmsText } from './normalizeCms'
 
 export type HeaderData = {
   logo?: { url?: string; alt?: string } | null
@@ -23,8 +24,11 @@ export type FooterData = {
 
 function mapLogo(img: SanityImage | undefined | null): { url?: string; alt?: string } | null {
   if (!img?.asset) return null
-  return { url: getSanityImageUrl(img, 300), alt: img.alt }
+  return { url: getSanityImageUrl(img, 300), alt: normalizeCmsText(img.alt) }
 }
+
+const mapNavItems = (items: Array<{ label: string; url: string }> | undefined) =>
+  items?.map((item) => ({ ...item, label: normalizeCmsText(item.label) }))
 
 export async function getHeader(): Promise<HeaderData | null> {
   try {
@@ -32,7 +36,7 @@ export async function getHeader(): Promise<HeaderData | null> {
     if (!data) return null
     return {
       logo: mapLogo(data.logo),
-      navItems: data.navItems,
+      navItems: mapNavItems(data.navItems),
     }
   } catch {
     return null
@@ -45,11 +49,11 @@ export async function getFooter(): Promise<FooterData | null> {
     if (!data) return null
     return {
       logo: mapLogo(data.logo),
-      tagline: data.tagline,
-      navItems: data.navItems,
+      tagline: normalizeCmsText(data.tagline),
+      navItems: mapNavItems(data.navItems),
       phone: data.phone,
       email: data.email,
-      location: data.location,
+      location: normalizeCmsText(data.location),
     }
   } catch {
     return null

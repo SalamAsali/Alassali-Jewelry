@@ -5,6 +5,7 @@ import {
   type FaqCategory as SanityFaqCategory,
   type FaqItem as SanityFaqItem,
 } from './sanity'
+import { normalizeCmsText } from './normalizeCms'
 
 export type FaqPageMeta = {
   heading?: string | null
@@ -32,16 +33,16 @@ export type FaqData = {
 }
 
 function mapCategory(cat: SanityFaqCategory): FaqCategory {
-  return { id: cat._id, name: cat.name, order: cat.order }
+  return { id: cat._id, name: normalizeCmsText(cat.name), order: cat.order }
 }
 
 function mapItem(item: SanityFaqItem): FaqItem {
   return {
     id: item._id,
-    question: item.question,
-    answer: item.answer,
+    question: normalizeCmsText(item.question),
+    answer: normalizeCmsText(item.answer),
     order: item.order,
-    category: item.category ? { id: item.category._id, name: item.category.name } : null,
+    category: item.category ? { id: item.category._id, name: normalizeCmsText(item.category.name) } : null,
   }
 }
 
@@ -52,8 +53,11 @@ export async function getFaq(): Promise<FaqData | null> {
       sanityGetFaqCategories(),
       sanityGetFaqItems(),
     ])
+    const meta = (page ?? null) as FaqPageMeta | null
     return {
-      page: page ?? null,
+      page: meta
+        ? { heading: normalizeCmsText(meta.heading), intro: normalizeCmsText(meta.intro) }
+        : null,
       categories: (categories ?? []).map(mapCategory),
       items: (items ?? []).map(mapItem),
     }

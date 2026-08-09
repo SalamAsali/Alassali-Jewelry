@@ -3,6 +3,7 @@ import 'server-only'
 import { sanityFetch } from '@/lib/sanity'
 import { resolveLanding, type LandingEntry } from '@/lib/bespoke/content'
 import { bespokePath, type City } from '@/lib/locations'
+import { normalizeCmsText } from '@/lib/normalizeCms'
 
 /**
  * Shape of the `bespoke` object on a Sanity `page` document. Everything is
@@ -26,7 +27,7 @@ type SanityPage = { bespoke?: SanityBespoke | null; seo?: { title?: string | nul
 
 /** Treat blank strings as "not set" so an empty CMS field falls back rather than blanking the page. */
 const text = (v?: string | null) => {
-  const t = (v ?? '').trim()
+  const t = normalizeCmsText((v ?? '').trim())
   return t.length > 0 ? t : undefined
 }
 
@@ -79,7 +80,7 @@ export async function getBespokeLanding(
 
   const crossLink = (b.crossLink ?? [])
     .map((p) => {
-      const t = p.text ?? ''
+      const t = normalizeCmsText(p.text ?? '')
       const path = text(p.path)
       return path ? { anchor: t, path } : t
     })

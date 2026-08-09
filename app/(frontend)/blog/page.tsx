@@ -8,6 +8,7 @@ import { buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { getBlogIndex, BlogPostSummary } from '@/lib/getBlog'
+import { normalizeCmsText } from '@/lib/normalizeCms'
 
 const FALLBACK_HEADING = 'Jewelry Guides'
 const FALLBACK_INTRO =
@@ -72,17 +73,10 @@ const FALLBACK_POSTS: BlogPostSummary[] = [
 
 const ALL_CATEGORIES = ['All', 'Engagement Rings', 'Grillz', 'Diamonds', 'Heritage']
 
-// Sanity CMS stores British spellings and "Al-Assali" (double-s).
-// Normalize to American spelling and correct brand name.
-const fixCms = (s: string) =>
-  s.replace(/Al-Assali/g, 'Al-Asali')
-   .replace(/Jewellery/g, 'Jewelry')
-   .replace(/Jeweller(?!s)/g, 'Jeweler')
-
 export async function generateMetadata(): Promise<Metadata> {
   const cms = await getBlogIndex()
-  const title = fixCms(cms?.page?.seoTitle?.trim() || FALLBACK_SEO_TITLE)
-  const description = fixCms(cms?.page?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION)
+  const title = normalizeCmsText(cms?.page?.seoTitle?.trim() || FALLBACK_SEO_TITLE)
+  const description = normalizeCmsText(cms?.page?.seoDescription?.trim() || FALLBACK_SEO_DESCRIPTION)
   return {
     title: { absolute: title },
     description,

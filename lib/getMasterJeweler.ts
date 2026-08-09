@@ -1,4 +1,5 @@
 import { getMasterJeweller } from './sanity'
+import { normalizeCmsText } from './normalizeCms'
 
 export type MasterJewelerData = {
   slug: string
@@ -10,12 +11,9 @@ export type MasterJewelerData = {
   seoDescription?: string | null
 }
 
-// Sanity CMS stores British spellings and "Al-Assali" (double-s).
-// Normalize to American spelling and correct brand name.
-const fix = (s: string | null | undefined) =>
-  s?.replace(/Al-Assali/g, 'Al-Asali')
-    .replace(/Jewellery/g, 'Jewelry')
-    .replace(/Jeweller/g, 'Jeweler') ?? null
+// Sanity CMS stores British spellings and "Al-Assali" (double-s);
+// normalizeCmsText corrects spelling, brand name, and stray dashes.
+const fix = (s: string | null | undefined) => normalizeCmsText(s) ?? null
 
 export async function getMasterJeweler(_slug: string): Promise<MasterJewelerData | null> {
   try {
@@ -23,7 +21,7 @@ export async function getMasterJeweler(_slug: string): Promise<MasterJewelerData
     if (!data) return null
     return {
       slug: data.slug?.current ?? _slug,
-      name: data.name,
+      name: fix(data.name),
       title: fix(data.title),
       tagline: fix(data.tagline),
       bio: fix(data.bio),
