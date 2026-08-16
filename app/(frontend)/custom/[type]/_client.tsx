@@ -29,6 +29,9 @@ import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema, buildOakvill
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { bespokePath, type City } from '@/lib/locations'
 import { type LandingEntry } from '@/lib/bespoke/content'
+import { CHAINS_ENABLED } from '@/lib/featureFlags'
+import { isCalendlyConfigured } from '@/lib/calendly'
+import CalendlyScheduler from '@/components/scheduling/CalendlyScheduler'
 
 // ---------------------------------------------------------------------------
 // Floating diamond icons (matches homepage hero)
@@ -85,7 +88,7 @@ const pieceTypeOptions: { value: string; label: string; icon: LucideIcon; subtit
   { value: 'bracelets', label: 'Bracelet', icon: Gem, subtitle: 'Tennis, bangle, cuff & more' },
   { value: 'grillz', label: 'Grillz', icon: Flame, subtitle: 'Bold precious metal statements' },
   { value: 'other', label: 'Other', icon: HelpCircle, subtitle: 'Something unique, tell us more' },
-]
+].filter((o) => CHAINS_ENABLED || o.value !== 'chains')
 
 // ---------------------------------------------------------------------------
 // Config per piece type
@@ -767,7 +770,9 @@ function PortalForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const typeParam = searchParams?.get('type') || ''
-  const isDirectType = typeParam in typeConfig
+  // ?type=chains is ignored while chains are paused — the wizard falls back
+  // to asking for a piece type instead of starting a chain inquiry.
+  const isDirectType = typeParam in typeConfig && (CHAINS_ENABLED || typeParam !== 'chains')
   const urlType = isDirectType ? typeParam : 'general'
 
   const [formData, setFormData] = useState({
@@ -794,6 +799,12 @@ function PortalForm() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [uploading, setUploading] = useState(false)
   const [direction, setDirection] = useState<1 | -1>(1)
+  // Scheduling step shown after submit: the API's order number (falling back
+  // to the inquiry id) travels to Calendly as utm_content so a booking can be
+  // matched back to this inquiry; consultationBooked flips when the embed
+  // reports calendly.event_scheduled.
+  const [inquiryRef, setInquiryRef] = useState('')
+  const [consultationBooked, setConsultationBooked] = useState(false)
 
   // Derived
   const activeType = formData.pieceType || ''
@@ -943,8 +954,14 @@ function PortalForm() {
           inspirationImageUrls: formData.inspirationImageUrls,
         }),
       })
-      if (response.ok) setSubmitted(true)
-      else alert('Error submitting inquiry. Please try again.')
+      if (response.ok) {
+        const data = await response.json().catch(() => null)
+        setInquiryRef(data?.orderNo || data?.id || '')
+        setSubmitted(true)
+      } else {
+        setIsSubmitting(false)
+        alert('Error submitting inquiry. Please try again.')
+      }
     } catch (error) {
       setIsSubmitting(false)
       console.error('Error submitting inquiry:', error)
@@ -975,24 +992,86 @@ function PortalForm() {
   // =========================================================================
 
   if (submitted) {
+    // Without a configured Calendly URL the confirmation stays a single
+    // full-viewport screen; with one, it becomes a scrollable page whose
+    // final step is booking the initial consultation.
+    if (!isCalendlyConfigured()) {
+      return (
+        <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
+          <DotPattern />
+          <DiamondPattern className="text-white" />
+          <FloatingDiamonds />
+          <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="max-w-3xl mx-auto text-center px-4 relative z-10">
+            <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2, type: 'spring' }} className="inline-block mb-8">
+              <div className="w-28 h-28 rounded-full bg-glacier-grey/20 flex items-center justify-center">
+                <CheckCircle2 className="w-16 h-16 text-glacier-grey" />
+              </div>
+            </motion.div>
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>Thank You!</h1>
+            <p className="text-lg text-stone mb-4">Your custom {pieceTypeLabel.toLowerCase() || 'jewelry'} inquiry has been received.</p>
+            <p className="text-stone mb-10 max-w-xl mx-auto text-sm">Our master craftspeople will review your request and contact you within 24-48 hours to begin bringing your vision to life.</p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button onClick={() => router.push('/')} className="bg-white/10 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-soft-black transition-all">Return Home</button>
+              <button onClick={() => router.push('/portfolio')} className="bg-glacier-grey text-white px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">View Portfolio</button>
+            </div>
+          </motion.div>
+        </div>
+      )
+    }
+
     return (
-      <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
+      <div className="min-h-[calc(100dvh-56px)] md:min-h-[calc(100dvh-72px)] lg:min-h-[calc(100dvh-80px)] bg-soft-black relative overflow-hidden" data-testid="form-confirmation">
         <DotPattern />
         <DiamondPattern className="text-white" />
         <FloatingDiamonds />
-        <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} className="max-w-3xl mx-auto text-center px-4 relative z-10">
-          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2, type: 'spring' }} className="inline-block mb-8">
-            <div className="w-28 h-28 rounded-full bg-glacier-grey/20 flex items-center justify-center">
-              <CheckCircle2 className="w-16 h-16 text-glacier-grey" />
+        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="max-w-3xl mx-auto text-center px-4 py-12 md:py-16 relative z-10">
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.2, type: 'spring' }} className="inline-block mb-6">
+            <div className="w-20 h-20 rounded-full bg-glacier-grey/20 flex items-center justify-center">
+              <CheckCircle2 className="w-12 h-12 text-glacier-grey" />
             </div>
           </motion.div>
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>Thank You!</h1>
-          <p className="text-lg text-stone mb-4">Your custom {pieceTypeLabel.toLowerCase() || 'jewelry'} inquiry has been received.</p>
-          <p className="text-stone mb-10 max-w-xl mx-auto text-sm">Our master craftspeople will review your request and contact you within 24-48 hours to begin bringing your vision to life.</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button onClick={() => router.push('/')} className="bg-white/10 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-soft-black transition-all">Return Home</button>
-            <button onClick={() => router.push('/portfolio')} className="bg-glacier-grey text-white px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">View Portfolio</button>
-          </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-heading)' }}>Thank You!</h1>
+          <p className="text-lg text-stone mb-2">Your custom {pieceTypeLabel.toLowerCase() || 'jewelry'} inquiry has been received.</p>
+          {inquiryRef && (
+            <p className="text-sm text-glacier-grey mb-2">Reference: <span className="font-semibold">{inquiryRef}</span></p>
+          )}
+
+          {consultationBooked ? (
+            <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="mt-8" data-testid="consultation-booked">
+              <div className="inline-flex items-center gap-2 mb-4 rounded-full bg-glacier-grey/15 border border-glacier-grey/40 px-4 py-1.5">
+                <CalendarCheck className="w-4 h-4 text-glacier-grey" />
+                <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">Consultation Booked</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-3" style={{ fontFamily: 'var(--font-heading)' }}>You&apos;re all set</h2>
+              <p className="text-stone mb-10 max-w-xl mx-auto text-sm">A calendar invite is on its way to your email. We look forward to talking through your {pieceTypeLabel.toLowerCase() || 'jewelry'} project.</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onClick={() => router.push('/')} className="bg-white/10 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-soft-black transition-all">Return Home</button>
+                <button onClick={() => router.push('/portfolio')} className="bg-glacier-grey text-white px-8 py-3 rounded-lg font-semibold hover:bg-glacier-grey-light transition-all">View Portfolio</button>
+              </div>
+            </motion.div>
+          ) : (
+            <div className="mt-8 text-left" data-testid="consultation-scheduler">
+              <div className="text-center mb-5">
+                <div className="inline-flex items-center gap-2 mb-3">
+                  <Sparkles className="w-4 h-4 text-glacier-grey" />
+                  <span className="text-xs uppercase tracking-widest text-glacier-grey font-medium">One Last Step</span>
+                </div>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>Book Your Free Consultation</h2>
+                <p className="text-stone text-sm max-w-xl mx-auto">Pick a time that works for you and we&apos;ll talk through your vision, budget, and timeline — virtually or in person.</p>
+              </div>
+              <CalendlyScheduler
+                name={`${formData.firstName} ${formData.lastName}`.trim()}
+                email={formData.email}
+                utmContent={inquiryRef || undefined}
+                onScheduled={() => setConsultationBooked(true)}
+              />
+              <p className="text-center text-xs text-stone mt-6 mb-4">Prefer not to book now? We&apos;ll still reach out within 24-48 hours.</p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <button onClick={() => router.push('/')} className="bg-white/5 border border-glacier-grey/30 text-white px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-white/10 transition-all">Return Home</button>
+                <button onClick={() => router.push('/portfolio')} className="bg-white/5 border border-glacier-grey/30 text-white px-6 py-2.5 rounded-lg font-medium text-sm hover:bg-white/10 transition-all">View Portfolio</button>
+              </div>
+            </div>
+          )}
         </motion.div>
       </div>
     )

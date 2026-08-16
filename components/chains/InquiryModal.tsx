@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { X, CheckCircle2, Loader2, KeyRound } from 'lucide-react'
+import { X, CheckCircle2, Loader2, KeyRound, CalendarCheck } from 'lucide-react'
 import { useUser } from '@clerk/nextjs'
+import { buildCalendlyUrl } from '@/lib/calendly'
 
 interface ChainInquiry {
   chainName: string
@@ -116,6 +117,16 @@ export default function InquiryModal({ isOpen, onClose, chain }: InquiryModalPro
   }
 
   if (!isOpen) return null
+
+  // Post-submit scheduling CTA — a plain link (not an embed) because the
+  // modal is too small for the inline calendar. '' while Calendly is not
+  // configured, which hides the button. The order number rides along as
+  // utm_content so the booking can be matched to this inquiry.
+  const calendlyBookingUrl = buildCalendlyUrl({
+    name: `${formData.firstName} ${formData.lastName}`.trim(),
+    email: formData.email,
+    utmContent: orderNo || undefined,
+  })
 
   const metalLabel = chain.metal.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
   const specLine = `${chain.karat.toUpperCase()} ${metalLabel} \u00b7 ${chain.lengthIn}" \u00b7 ${chain.weightG.toFixed(1)}g`
@@ -278,6 +289,17 @@ export default function InquiryModal({ isOpen, onClose, chain }: InquiryModalPro
                       Our team will review your request and contact you within 24-48 hours.
                       {isSignedIn && ' You can track this order in your account.'}
                     </p>
+                    {calendlyBookingUrl && (
+                      <a
+                        href={calendlyBookingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-2.5 mb-4 rounded-lg bg-glacier-grey text-white font-semibold text-sm hover:bg-glacier-grey-light transition-all"
+                      >
+                        <CalendarCheck className="w-4 h-4" />
+                        Book Your Consultation
+                      </a>
+                    )}
                     <div className="flex gap-3 justify-center">
                       <button
                         onClick={onClose}
@@ -317,6 +339,18 @@ export default function InquiryModal({ isOpen, onClose, chain }: InquiryModalPro
                     <p className="text-sm text-taupe mb-4">
                       Our team will contact you within 24-48 hours.
                     </p>
+
+                    {calendlyBookingUrl && (
+                      <a
+                        href={calendlyBookingUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-2.5 mb-4 rounded-lg bg-glacier-grey text-white font-semibold text-sm hover:bg-glacier-grey-light transition-all"
+                      >
+                        <CalendarCheck className="w-4 h-4" />
+                        Book Your Consultation
+                      </a>
+                    )}
 
                     <div className="bg-warm-white rounded-lg p-4 mb-5 text-left">
                       <div className="flex items-start gap-3">

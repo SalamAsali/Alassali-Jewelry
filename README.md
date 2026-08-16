@@ -35,7 +35,9 @@ npx vercel env pull .env.local --environment production --scope dreams3
 Key variables: `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`,
 `SANITY_API_WRITE_TOKEN`, `SANITY_WEBHOOK_SECRET`, `CLERK_SECRET_KEY`,
 `STRIPE_SECRET_KEY`, `NOTION_TOKEN`, `RESEND_API_KEY`, `GOLDAPI_TOKEN`,
-`GOOGLE_PLACES_API_KEY`.
+`GOOGLE_PLACES_API_KEY`, `NEXT_PUBLIC_CALENDLY_URL` (optional override for
+the Calendly event link used by the post-inquiry "book a consultation" step;
+the live default is baked into `lib/calendly.ts`).
 
 ### Installation
 
@@ -80,7 +82,7 @@ catalog scrapers). They are run directly with `node` or `npx tsx`.
 | `/about/master-jeweler/[slug]` | Master jeweler profile |
 | `/portfolio`, `/faq`, `/locations` | Static content pages |
 | `/blog`, `/blog/<post>` | Blog index and four posts (each a static route folder) |
-| `/chains`, `/chains/[metal]`, `/chains/[metal]/[chainType]`, `/chain/[slug]` | Chain catalog |
+| `/chains`, `/chains/[metal]`, `/chains/[metal]/[chainType]`, `/chain/[slug]` | Chain catalog — **paused** behind `CHAINS_ENABLED` (`lib/featureFlags.ts`); URLs 307 to `/` |
 | `/account/**` | Clerk-authenticated customer account area |
 | `/cms/[[...segments]]` | Embedded Studio entry |
 

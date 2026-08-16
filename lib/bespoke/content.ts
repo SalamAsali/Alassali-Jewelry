@@ -8,6 +8,7 @@
  */
 
 import type { City } from '@/lib/locations'
+import { CHAINS_ENABLED } from '@/lib/featureFlags'
 
 export const landingContent: Record<string, {
   heroH1: string
@@ -433,17 +434,50 @@ export const oakvilleContent: Record<string, Partial<LandingEntry> & { faqAnswer
   },
 }
 
+/**
+ * While chains are paused, the chains landing resolves to null (its URL also
+ * 307s away in next.config.mjs) and other landings stop cross-referencing it:
+ * related-page cards pointing at custom-chains are filtered out, and any
+ * crossLink sentence that links there is dropped whole — removing just the
+ * link would leave a broken sentence. Exported because getBespokeLanding must
+ * re-apply it after merging Sanity overrides, which can carry their own
+ * custom-chains links.
+ */
+/** Paused-safe replacement for the pendants FAQ answer that offered custom chains. */
+const PAUSED_CHAIN_FAQ_ANSWER =
+  'Chains are priced separately so you can choose the perfect pairing. Bring a chain you already own, or tell us the look you want and we\'ll recommend the right width and length for your pendant during your consultation.'
+
+export function withoutChainReferences(entry: LandingEntry): LandingEntry {
+  if (CHAINS_ENABLED) return entry
+  return {
+    ...entry,
+    relatedPages: entry.relatedPages.filter(({ path }) => !path.includes('custom-chains')),
+    crossLink: entry.crossLink?.some(
+      (part) => typeof part !== 'string' && part.path.includes('custom-chains')
+    )
+      ? undefined
+      : entry.crossLink,
+    faq: entry.faq.map((item) =>
+      item.q === 'What chain comes with a custom pendant?'
+        ? { ...item, a: PAUSED_CHAIN_FAQ_ANSWER }
+        : item
+    ),
+  }
+}
+
 /** Build the content for a page, applying Oakville overrides when relevant. */
 export function resolveLanding(type: string, city: City): LandingEntry | null {
+  if (!CHAINS_ENABLED && type === 'chains') return null
+
   const base = landingContent[type]
   if (!base) return null
-  if (city !== 'oakville') return base
+  if (city !== 'oakville') return withoutChainReferences(base)
 
   const o = oakvilleContent[type]
-  if (!o) return base
+  if (!o) return withoutChainReferences(base)
 
   const { faqAnswers, ...fields } = o
-  return {
+  return withoutChainReferences({
     ...base,
     ...fields,
     faq: base.faq.map(({ q, a }) => ({
@@ -457,5 +491,5 @@ export function resolveLanding(type: string, city: City): LandingEntry | null {
     crossLink: base.crossLink?.map((part) =>
       typeof part === 'string' ? part : { ...part, path: part.path.replace(/-toronto$/, '-oakville') }
     ),
-  }
+  })
 }

@@ -4,6 +4,7 @@ import BlogLayout from '@/components/blog/BlogLayout'
 import { buildArticleSchema } from '@/lib/seo/article'
 import { buildFaqSchema, buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
+import { CHAINS_ENABLED } from '@/lib/featureFlags'
 
 const SLUG = 'grillz-price-guide-toronto-2026'
 const TITLE = 'How Much Do Custom Grillz Cost in Toronto? (2026 Price Guide)'
@@ -58,7 +59,7 @@ export default function Page() {
         { label: 'Custom Grillz in Toronto', href: '/custom-grillz' },
         { label: 'Custom Gold Chains in Toronto', href: '/custom-chains' },
         { label: 'Meet the Master Jeweler', href: '/about/master-jeweler/mohammad-al-asali' },
-      ]}
+      ].filter((l) => CHAINS_ENABLED || l.href !== '/custom-chains')}
     >
       <p>
         Grillz pricing is one of the most confusing things to research online. Search results mix Toronto with US shops, plated knockoffs with real solid gold, and cubic zirconia with genuine diamonds. This guide cuts through all of that, explaining what actually drives the cost of custom grillz so you can have a meaningful conversation before you commit.

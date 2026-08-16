@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { CHAINS_ENABLED } from '@/lib/featureFlags'
 import { getChains } from '@/lib/sanity'
 import type { ChainType, MetalColor } from '@/lib/sanity'
 
 export const revalidate = 60
 
 export async function GET(request: NextRequest) {
+  if (!CHAINS_ENABLED) {
+    return NextResponse.json({ error: 'Chains are currently unavailable' }, { status: 404 })
+  }
+
   const { searchParams } = request.nextUrl
   const chainType = searchParams.get('chainType') as ChainType | null
   const metal = searchParams.get('metal') as MetalColor | null

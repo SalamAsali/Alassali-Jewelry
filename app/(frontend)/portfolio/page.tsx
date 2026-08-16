@@ -6,6 +6,7 @@ import JsonLd from '@/components/seo/JsonLd'
 import { buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { getPortfolio } from '@/lib/getPortfolio'
+import { CHAINS_ENABLED } from '@/lib/featureFlags'
 
 const floatingDiamonds = [
   { top: '5%', left: '8%', size: 64, opacity: 'opacity-[0.12]', anim: 'float 8s ease-in-out infinite' },
@@ -85,12 +86,17 @@ export default async function PortfolioPage() {
   const heading = cms?.page?.heading?.trim() || FALLBACK_HEADING
   const intro = cms?.page?.intro?.trim() || null
 
-  const categoryNames =
+  // Chain work is hidden while chains are paused — filtered after the CMS
+  // merge so Sanity-managed categories/items are covered too (this also
+  // neutralizes the /portfolio?category=Chains deep link, which only matches
+  // categories actually passed to the grid).
+  const categoryNames = (
     cms && cms.categories.length > 0
       ? cms.categories.map((c) => c.name)
       : FALLBACK_CATEGORIES
+  ).filter((name) => CHAINS_ENABLED || name !== 'Chains')
 
-  const items: PortfolioGridItem[] =
+  const items: PortfolioGridItem[] = (
     cms && cms.items.length > 0
       ? cms.items.map((it) => {
           const primary = it.image?.url
@@ -110,6 +116,7 @@ export default async function PortfolioPage() {
           }
         })
       : FALLBACK_ITEMS
+  ).filter((it) => CHAINS_ENABLED || it.category !== 'Chains')
 
   const categories = ['All', ...categoryNames]
 

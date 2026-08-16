@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
-import { notFound } from 'next/navigation'
+import { notFound, redirect } from 'next/navigation'
+import { CHAINS_ENABLED } from '@/lib/featureFlags'
 import { getChainBySlug, getChains, getPricingConfig, getSanityImageUrl } from '@/lib/sanity'
 import { formatChainName } from '@/lib/format-chain-name'
 import { computeWeight, priceForChain } from '@/lib/pricing'
@@ -65,6 +66,9 @@ export async function generateMetadata({ params }: ChainDetailPageProps): Promis
 }
 
 export default async function ChainDetailPage({ params }: ChainDetailPageProps) {
+  // Backstop for the temporary redirect in next.config.mjs (chains paused).
+  if (!CHAINS_ENABLED) redirect('/')
+
   const { slug } = await params
 
   const [chain, pricingConfig] = await Promise.all([
