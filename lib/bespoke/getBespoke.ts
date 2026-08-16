@@ -1,7 +1,7 @@
 import 'server-only'
 
 import { sanityFetch } from '@/lib/sanity'
-import { resolveLanding, withoutChainReferences, type LandingEntry } from '@/lib/bespoke/content'
+import { resolveLanding, type LandingEntry } from '@/lib/bespoke/content'
 import { bespokePath, type City } from '@/lib/locations'
 
 /**
@@ -90,9 +90,7 @@ export async function getBespokeLanding(
     .filter((r): r is { name: string; path: string } => Boolean(r.name && r.path))
 
   return {
-    // Re-filter after the merge: CMS-managed relatedPages/crossLink can link
-    // to custom-chains, which must stay hidden while chains are paused.
-    landing: withoutChainReferences({
+    landing: {
       ...base,
       heroH1: text(b.heroH1) ?? base.heroH1,
       heroSub: text(b.heroSub) ?? base.heroSub,
@@ -105,7 +103,7 @@ export async function getBespokeLanding(
       shapeBlurbs: Object.keys(shapeBlurbs).length > 0 ? shapeBlurbs : base.shapeBlurbs,
       crossLink: crossLink.length > 0 ? crossLink : base.crossLink,
       relatedPages: relatedPages.length > 0 ? relatedPages : base.relatedPages,
-    }),
+    },
     seo,
   }
 }

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { redirect } from 'next/navigation'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
+import { CHAIN_CATALOG_ENABLED } from '@/lib/featureFlags'
 import { getChainsLanding, getChains, getPricingConfig } from '@/lib/sanity'
 import MetalPicker from '@/components/chains/MetalPicker'
 import ChainGrid from '@/components/chains/ChainGrid'
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default async function ChainsPage() {
   // Backstop for the temporary redirect in next.config.mjs (chains paused).
-  if (!CHAINS_ENABLED) redirect('/')
+  if (!CHAIN_CATALOG_ENABLED) redirect('/')
 
   const [landing, allChains, featuredChains, pricingConfig] = await Promise.all([
     getChainsLanding(),

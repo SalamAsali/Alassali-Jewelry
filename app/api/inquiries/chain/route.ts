@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { createClient } from '@sanity/client'
 import { currentUser } from '@clerk/nextjs/server'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
+import { CHAIN_CATALOG_ENABLED } from '@/lib/featureFlags'
 import {
   findOrCreateCustomer,
   findCustomerByEmail,
@@ -108,7 +108,7 @@ function confirmationHtml(firstName: string, orderNo: string, chainName: string)
 }
 
 export async function POST(request: NextRequest) {
-  if (!CHAINS_ENABLED) {
+  if (!CHAIN_CATALOG_ENABLED) {
     return NextResponse.json({ error: 'Chain inquiries are currently unavailable' }, { status: 404 })
   }
 

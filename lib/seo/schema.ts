@@ -1,10 +1,5 @@
 import { SITE_CONFIG, MASTER_JEWELER, OAKVILLE_LOCATION } from './siteConfig'
 import type { City } from '@/lib/locations'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
-
-/** Drop chain expertise from knowsAbout while chains are paused. */
-const withoutChains = (topics: readonly string[]) =>
-  topics.filter((t) => CHAINS_ENABLED || !/chain/i.test(t))
 
 const STORE_ID = `${SITE_CONFIG.url}/#jewelrystore`
 const ORG_ID = `${SITE_CONFIG.url}/#organization`
@@ -110,7 +105,7 @@ export function buildJewelryStoreSchema(liveReviews?: {
           })),
         }
       : {}),
-    knowsAbout: withoutChains([
+    knowsAbout: [
       'Custom Engagement Rings',
       'Custom Wedding Bands',
       'Custom Gold Chains',
@@ -119,7 +114,7 @@ export function buildJewelryStoreSchema(liveReviews?: {
       'Custom Tennis Bracelets',
       'Bespoke Jewelry Design',
       'Arabic Calligraphy Jewelry',
-    ]),
+    ],
   }
 }
 
@@ -236,14 +231,10 @@ export function buildMasterJewelerSchema() {
     '@id': FOUNDER_ID,
     name: MASTER_JEWELER.name,
     jobTitle: MASTER_JEWELER.jobTitle,
-    // Bio mentions gold chains; dropped from the sitewide Person schema while
-    // chains are paused, matching the knowsAbout filter below.
-    description: CHAINS_ENABLED
-      ? MASTER_JEWELER.bio
-      : MASTER_JEWELER.bio.replace('gold chains, ', ''),
+    description: MASTER_JEWELER.bio,
     url: `${SITE_CONFIG.url}/about/master-jeweler/${MASTER_JEWELER.slug}`,
     worksFor: STORE_REF,
-    knowsAbout: withoutChains(MASTER_JEWELER.knowsAbout),
+    knowsAbout: [...MASTER_JEWELER.knowsAbout],
     alumniOf: {
       '@type': 'EducationalOrganization',
       name: 'George Brown College',

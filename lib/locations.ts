@@ -1,5 +1,3 @@
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
-
 export interface LocationData {
   slug: string
   name: string
@@ -60,7 +58,7 @@ export const SERVICES = [
   { slug: 'custom-earrings', name: 'Custom Earrings', formType: 'earrings' },
   { slug: 'custom-bracelets', name: 'Custom Bracelets', formType: 'bracelets' },
   { slug: 'custom-grillz', name: 'Custom Grillz', formType: 'grillz' },
-].filter((s) => CHAINS_ENABLED || s.formType !== 'chains')
+]
 
 export function getLocation(slug: string): LocationData | undefined {
   return LOCATIONS.find(l => l.slug === slug)

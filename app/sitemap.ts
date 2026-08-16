@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
+import { CHAIN_CATALOG_ENABLED } from '@/lib/featureFlags'
 
 const BASE = SITE_CONFIG.url
 
@@ -13,7 +13,7 @@ const bespokeSlugs = [
   'earrings',
   'bracelets',
   'grillz',
-].filter((slug) => CHAINS_ENABLED || slug !== 'chains')
+]
 
 const blogSlugs = [
   'custom-engagement-ring-cost-toronto-2026',
@@ -52,10 +52,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
-  // Gold chains collection pages. Redirecting URLs must not stay in the
-  // sitemap — Search Console flags them — so the block empties out while
-  // chains are paused.
-  const chainPages: MetadataRoute.Sitemap = !CHAINS_ENABLED
+  // Gold chains collection pages (ready-made catalog). Redirecting URLs must
+  // not stay in the sitemap — Search Console flags them — so the block
+  // empties out while the catalog is paused.
+  const chainPages: MetadataRoute.Sitemap = !CHAIN_CATALOG_ENABLED
     ? []
     : [
         { url: `${BASE}/chains`, lastModified: now, changeFrequency: 'daily', priority: 0.8 },
