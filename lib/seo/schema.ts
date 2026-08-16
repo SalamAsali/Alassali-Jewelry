@@ -1,5 +1,10 @@
 import { SITE_CONFIG, MASTER_JEWELER, OAKVILLE_LOCATION } from './siteConfig'
 import type { City } from '@/lib/locations'
+import { CHAINS_ENABLED } from '@/lib/featureFlags'
+
+/** Drop chain expertise from knowsAbout while chains are paused. */
+const withoutChains = (topics: readonly string[]) =>
+  topics.filter((t) => CHAINS_ENABLED || !/chain/i.test(t))
 
 const STORE_ID = `${SITE_CONFIG.url}/#jewelrystore`
 const ORG_ID = `${SITE_CONFIG.url}/#organization`
@@ -105,7 +110,7 @@ export function buildJewelryStoreSchema(liveReviews?: {
           })),
         }
       : {}),
-    knowsAbout: [
+    knowsAbout: withoutChains([
       'Custom Engagement Rings',
       'Custom Wedding Bands',
       'Custom Gold Chains',
@@ -114,7 +119,7 @@ export function buildJewelryStoreSchema(liveReviews?: {
       'Custom Tennis Bracelets',
       'Bespoke Jewelry Design',
       'Arabic Calligraphy Jewelry',
-    ],
+    ]),
   }
 }
 
@@ -234,7 +239,7 @@ export function buildMasterJewelerSchema() {
     description: MASTER_JEWELER.bio,
     url: `${SITE_CONFIG.url}/about/master-jeweler/${MASTER_JEWELER.slug}`,
     worksFor: STORE_REF,
-    knowsAbout: [...MASTER_JEWELER.knowsAbout],
+    knowsAbout: withoutChains(MASTER_JEWELER.knowsAbout),
     alumniOf: {
       '@type': 'EducationalOrganization',
       name: 'George Brown College',

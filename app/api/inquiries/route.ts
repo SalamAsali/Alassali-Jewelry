@@ -176,10 +176,14 @@ export async function POST(request: NextRequest) {
         .catch((err: unknown) => console.error('[inquiry] Sanity save failed:', err))
     }
 
-    // Create customer + order in both Sanity and Notion at "Initial Inquiry" stage
+    // Create customer + order in both Sanity and Notion at "Initial Inquiry" stage.
+    // The order number is surfaced in the response so the client can show a
+    // reference and pass it to the Calendly scheduling step (utm_content).
+    let createdOrderNo: string | null = null
     const crmSync = async () => {
       try {
         const orderNo = await getNextOrderNumber()
+        createdOrderNo = orderNo
 
         // Build inquiry details for notes
         const details = [
@@ -278,6 +282,7 @@ export async function POST(request: NextRequest) {
       success: true,
       message: 'Inquiry received successfully',
       id: `inq_${Date.now()}`,
+      orderNo: createdOrderNo,
     })
   } catch (error) {
     console.error('Inquiry API error:', error)

@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, User } from 'lucide-react'
+import { CHAINS_ENABLED } from '@/lib/featureFlags'
 
 const DEFAULT_LOGO = '/images/logo.png'
 
@@ -28,7 +29,7 @@ export default function Navigation(props?: NavigationProps) {
     { name: 'Earrings', path: '/custom-earrings-toronto', icon: '/images/icons/earrings.svg' },
     { name: 'Bracelets', path: '/custom-bracelets-toronto', icon: '/images/icons/bracelets.svg' },
     { name: 'Grillz', path: '/custom-grillz-toronto', icon: '/images/icons/grillz.svg' },
-  ]
+  ].filter((item) => CHAINS_ENABLED || item.path !== '/custom-chains-toronto')
 
   const chainsMenu = {
     metals: [
@@ -54,7 +55,9 @@ export default function Navigation(props?: NavigationProps) {
     { name: 'Locations', path: '/locations' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'FAQ', path: '/faq' },
-  ]
+    // With the item filtered out, the chains dropdown render blocks below can
+    // never open — they stay in place, dormant, for when chains return.
+  ].filter((item) => CHAINS_ENABLED || item.dropdownType !== 'chains')
 
   return (
     <motion.nav

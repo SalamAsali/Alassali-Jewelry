@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { MapPin, Phone, Mail, Instagram, Facebook } from 'lucide-react'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
+import { CHAINS_ENABLED } from '@/lib/featureFlags'
 
 const DEFAULT_LOGO = '/images/logo.png'
 const DEFAULT_TAGLINE = `Custom jeweler in Toronto since ${SITE_CONFIG.founded}. Every piece designed, cast, set, and finished in-house in Toronto.`
@@ -59,7 +60,9 @@ export default function Footer(props?: FooterProps) {
               <li><Link href="/custom-wedding-bands-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Wedding Bands</Link></li>
               <li><Link href="/custom-rings-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Rings</Link></li>
               <li><Link href="/custom-pendants-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Pendants</Link></li>
-              <li><Link href="/custom-chains-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Chains</Link></li>
+              {CHAINS_ENABLED && (
+                <li><Link href="/custom-chains-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Chains</Link></li>
+              )}
               <li><Link href="/custom-earrings-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Earrings</Link></li>
               <li><Link href="/custom-bracelets-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Bracelets</Link></li>
               <li><Link href="/custom-grillz-toronto" className="text-warm-gray hover:text-glacier-grey transition-colors">Grillz</Link></li>

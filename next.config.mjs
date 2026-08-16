@@ -15,6 +15,13 @@ const customSlugs = [
 // Keep in sync with GEO_CITIES in lib/locations.ts and app/sitemap.ts.
 const geoCities = ['oakville']
 
+// TEMPORARY — chains are paused. Keep in sync with lib/featureFlags.ts
+// (next.config cannot import TS). While false, every chain URL 307s to the
+// homepage; flip both flags to true to restore the pages. Deliberately
+// temporary (307, not 308/301) so search engines keep the URLs indexed for
+// the return.
+const CHAINS_ENABLED = false
+
 // The conversion form is the only page where the public slug diverges from
 // the file-system route segment. Internally the route is /custom/general
 // (and the form's pieceType state defaults to 'general'); externally the
@@ -71,6 +78,23 @@ const nextConfig = {
   // 301 the old hierarchical URLs to the new flat slugs to preserve SEO equity.
   async redirects() {
     return [
+      // TEMPORARY — chains paused (see CHAINS_ENABLED above). Listed first:
+      // matching is first-wins, so these shadow the generated custom-chains
+      // rules below and resolve every legacy chain URL in a single hop.
+      // Delete this block (or flip the flag) when chains return.
+      ...(CHAINS_ENABLED
+        ? []
+        : [
+            { source: '/chains', destination: '/', permanent: false },
+            { source: '/chains/:path*', destination: '/', permanent: false },
+            { source: '/chain/:path*', destination: '/', permanent: false },
+            { source: '/custom-chains-toronto', destination: '/', permanent: false },
+            { source: '/custom-chains-oakville', destination: '/', permanent: false },
+            { source: '/custom-chains', destination: '/', permanent: false },
+            { source: '/custom/chains', destination: '/', permanent: false },
+            { source: '/custom/chains-oakville', destination: '/', permanent: false },
+            { source: '/oakville/custom-chains', destination: '/', permanent: false },
+          ]),
       // Old hierarchical routes → new flat -toronto URLs
       ...customSlugs.map((slug) => ({
         source: `/custom/${slug}`,

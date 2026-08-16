@@ -8,6 +8,7 @@ import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 import { SITE_CONFIG, MASTER_JEWELER } from '@/lib/seo/siteConfig'
 import { buildBreadcrumbSchema } from '@/lib/seo/schema'
+import { CHAINS_ENABLED } from '@/lib/featureFlags'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { getMasterJeweler } from '@/lib/getMasterJeweler'
 
@@ -129,7 +130,7 @@ export default async function MasterJewelerPage({
               { icon: Hammer, title: 'Heirloom Resets', body: 'Carefully remove stones from family pieces and set them into new bespoke designs, preserving sentiment while modernizing the look.' },
               { icon: Star, title: 'Custom Gold Chains', body: 'Solid gold Cuban, rope, franco, figaro, and box chains. Built to exact gram weight specifications, never hollow.' },
               { icon: Diamond, title: 'Diamond Setting', body: 'Prong, bezel, channel, pavé, flush, and tension settings. Every stone hand-set and tightened before the piece leaves the studio.' },
-            ].map(({ icon: Icon, title: specTitle, body }) => (
+            ].filter((spec) => CHAINS_ENABLED || spec.title !== 'Custom Gold Chains').map(({ icon: Icon, title: specTitle, body }) => (
               <div key={specTitle} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5">
                 <Icon className="w-7 h-7 text-glacier-grey mb-3" />
                 <h3 className="text-white font-bold text-sm mb-2">{specTitle}</h3>
