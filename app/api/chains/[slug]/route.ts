@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
+import { CHAIN_CATALOG_ENABLED } from '@/lib/featureFlags'
 import { getChainBySlug } from '@/lib/sanity'
 
 export const revalidate = 60
@@ -8,7 +8,7 @@ export async function GET(
   _request: NextRequest,
   { params }: { params: Promise<{ slug: string }> }
 ) {
-  if (!CHAINS_ENABLED) {
+  if (!CHAIN_CATALOG_ENABLED) {
     return NextResponse.json({ error: 'Chains are currently unavailable' }, { status: 404 })
   }
 

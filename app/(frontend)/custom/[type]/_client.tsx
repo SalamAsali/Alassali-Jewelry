@@ -29,7 +29,6 @@ import { buildServiceSchema, buildBreadcrumbSchema, buildFaqSchema, buildOakvill
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { bespokePath, type City } from '@/lib/locations'
 import { type LandingEntry } from '@/lib/bespoke/content'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
 import { isCalendlyConfigured } from '@/lib/calendly'
 import CalendlyScheduler from '@/components/scheduling/CalendlyScheduler'
 
@@ -88,7 +87,7 @@ const pieceTypeOptions: { value: string; label: string; icon: LucideIcon; subtit
   { value: 'bracelets', label: 'Bracelet', icon: Gem, subtitle: 'Tennis, bangle, cuff & more' },
   { value: 'grillz', label: 'Grillz', icon: Flame, subtitle: 'Bold precious metal statements' },
   { value: 'other', label: 'Other', icon: HelpCircle, subtitle: 'Something unique, tell us more' },
-].filter((o) => CHAINS_ENABLED || o.value !== 'chains')
+]
 
 // ---------------------------------------------------------------------------
 // Config per piece type
@@ -770,9 +769,7 @@ function PortalForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const typeParam = searchParams?.get('type') || ''
-  // ?type=chains is ignored while chains are paused — the wizard falls back
-  // to asking for a piece type instead of starting a chain inquiry.
-  const isDirectType = typeParam in typeConfig && (CHAINS_ENABLED || typeParam !== 'chains')
+  const isDirectType = typeParam in typeConfig
   const urlType = isDirectType ? typeParam : 'general'
 
   const [formData, setFormData] = useState({

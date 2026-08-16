@@ -10,7 +10,6 @@ import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { buildBreadcrumbSchema, buildOakvilleStoreSchema } from '@/lib/seo/schema'
 import { fetchGoogleReviews } from '@/lib/reviews/googlePlaces'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
 
 type Props = { params: Promise<{ city: string }> }
 
@@ -31,15 +30,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!loc || loc.slug === 'toronto') return {}
   return {
     title: `Custom Jeweler in ${loc.name}`,
-    description: CHAINS_ENABLED
-      ? `Custom jeweler in ${loc.name} for engagement rings, wedding bands, gold chains, pendants, and grillz. Meet by appointment or virtually, handcrafted in-house in Toronto. 10K, 14K, 18K gold, GIA diamonds. Book a free consultation.`
-      : `Custom jeweler in ${loc.name} for engagement rings, wedding bands, pendants, and grillz. Meet by appointment or virtually, handcrafted in-house in Toronto. 10K, 14K, 18K gold, GIA diamonds. Book a free consultation.`,
+    description: `Custom jeweler in ${loc.name} for engagement rings, wedding bands, gold chains, pendants, and grillz. Meet by appointment or virtually, handcrafted in-house in Toronto. 10K, 14K, 18K gold, GIA diamonds. Book a free consultation.`,
     alternates: { canonical: `https://www.alasalicustomjewelry.ca/${city}` },
     openGraph: mergeOpenGraph({
       title: `Custom Jeweler in ${loc.name} | Al-Asali Jewelry`,
-      description: CHAINS_ENABLED
-        ? `Serving ${loc.name} by appointment & virtually. Custom engagement rings, gold chains, grillz & more, handcrafted in-house in Toronto.`
-        : `Serving ${loc.name} by appointment & virtually. Custom engagement rings, pendants, grillz & more, handcrafted in-house in Toronto.`,
+      description: `Serving ${loc.name} by appointment & virtually. Custom engagement rings, gold chains, grillz & more, handcrafted in-house in Toronto.`,
       url: `/${city}`,
     }),
   }
@@ -83,11 +78,7 @@ export default async function CityPage({ params }: Props) {
             In our Toronto studio, we handcraft{' '}
             <Link href={`/custom-engagement-rings-${loc.slug}`} className="underline underline-offset-4 hover:text-white transition-colors">engagement rings</Link>,{' '}
             <Link href={`/custom-wedding-bands-${loc.slug}`} className="underline underline-offset-4 hover:text-white transition-colors">wedding bands</Link>,{' '}
-            {CHAINS_ENABLED && (
-              <>
-                <Link href={`/custom-chains-${loc.slug}`} className="underline underline-offset-4 hover:text-white transition-colors">gold chains</Link>,{' '}
-              </>
-            )}
+            <Link href={`/custom-chains-${loc.slug}`} className="underline underline-offset-4 hover:text-white transition-colors">gold chains</Link>,{' '}
             <Link href={`/custom-pendants-${loc.slug}`} className="underline underline-offset-4 hover:text-white transition-colors">pendants</Link>, and{' '}
             <Link href={`/custom-grillz-${loc.slug}`} className="underline underline-offset-4 hover:text-white transition-colors">grillz</Link>{' '}
             designed with you in {loc.name}. Meet our custom jeweler in {loc.name} by appointment, or work with us fully online.

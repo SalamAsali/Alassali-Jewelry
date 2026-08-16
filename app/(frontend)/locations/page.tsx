@@ -4,12 +4,10 @@ import { MapPin, Phone, Clock, CalendarClock, Navigation, ArrowRight } from 'luc
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { buildBreadcrumbSchema } from '@/lib/seo/schema'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
 
 const TITLE = 'Our Locations | Toronto & Oakville Studios'
-const DESCRIPTION = CHAINS_ENABLED
-  ? 'Visit Al-Asali Custom Jewelry at our Toronto and Oakville studios. Custom engagement rings, gold chains, grillz & more. Book your free consultation.'
-  : 'Visit Al-Asali Custom Jewelry at our Toronto and Oakville studios. Custom engagement rings, pendants, grillz & more. Book your free consultation.'
+const DESCRIPTION =
+  'Visit Al-Asali Custom Jewelry at our Toronto and Oakville studios. Custom engagement rings, gold chains, grillz & more. Book your free consultation.'
 
 export const metadata: Metadata = {
   title: TITLE,

@@ -15,12 +15,12 @@ const customSlugs = [
 // Keep in sync with GEO_CITIES in lib/locations.ts and app/sitemap.ts.
 const geoCities = ['oakville']
 
-// TEMPORARY — chains are paused. Keep in sync with lib/featureFlags.ts
-// (next.config cannot import TS). While false, every chain URL 307s to the
-// homepage; flip both flags to true to restore the pages. Deliberately
-// temporary (307, not 308/301) so search engines keep the URLs indexed for
-// the return.
-const CHAINS_ENABLED = false
+// TEMPORARY — the ready-made chain CATALOG is paused (the bespoke
+// /custom-chains-* pages stay live). Keep in sync with lib/featureFlags.ts
+// (next.config cannot import TS). While false, the catalog URLs 307 to the
+// homepage; flip both flags to true to restore them. Deliberately temporary
+// (307, not 308/301) so search engines keep the URLs indexed for the return.
+const CHAIN_CATALOG_ENABLED = false
 
 // The conversion form is the only page where the public slug diverges from
 // the file-system route segment. Internally the route is /custom/general
@@ -78,25 +78,16 @@ const nextConfig = {
   // 301 the old hierarchical URLs to the new flat slugs to preserve SEO equity.
   async redirects() {
     return [
-      // TEMPORARY — chains paused (see CHAINS_ENABLED above). Listed first:
-      // matching is first-wins, so these shadow the generated custom-chains
-      // rules below and resolve every legacy chain URL in a single hop.
-      // Delete this block (or flip the flag) when chains return.
-      ...(CHAINS_ENABLED
+      // TEMPORARY — ready-made chain catalog paused (see CHAIN_CATALOG_ENABLED
+      // above). Only the catalog routes redirect; the bespoke /custom-chains-*
+      // pages stay live. Delete this block (or flip the flag) when the
+      // catalog returns.
+      ...(CHAIN_CATALOG_ENABLED
         ? []
         : [
             { source: '/chains', destination: '/', permanent: false },
             { source: '/chains/:path*', destination: '/', permanent: false },
             { source: '/chain/:path*', destination: '/', permanent: false },
-            { source: '/custom-chains-toronto', destination: '/', permanent: false },
-            { source: '/custom-chains-oakville', destination: '/', permanent: false },
-            { source: '/custom-chains', destination: '/', permanent: false },
-            { source: '/custom/chains', destination: '/', permanent: false },
-            { source: '/custom/chains-oakville', destination: '/', permanent: false },
-            { source: '/oakville/custom-chains', destination: '/', permanent: false },
-            // The [city]/[service] page 404s on custom-chains while the
-            // service is filtered out of SERVICES, so redirect it here too.
-            { source: '/toronto/custom-chains', destination: '/', permanent: false },
           ]),
       // Old hierarchical routes → new flat -toronto URLs
       ...customSlugs.map((slug) => ({

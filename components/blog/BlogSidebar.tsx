@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
 
 const bespokeCategories = [
   { name: 'Engagement Rings', path: '/custom-engagement-rings', icon: '/images/icons/engagement-rings.svg' },
@@ -14,7 +13,7 @@ const bespokeCategories = [
   { name: 'Earrings', path: '/custom-earrings', icon: '/images/icons/earrings.svg' },
   { name: 'Bracelets', path: '/custom-bracelets', icon: '/images/icons/bracelets.svg' },
   { name: 'Grillz', path: '/custom-grillz', icon: '/images/icons/grillz.svg' },
-].filter((c) => CHAINS_ENABLED || c.path !== '/custom-chains')
+]
 
 type Heading = { id: string; text: string }
 

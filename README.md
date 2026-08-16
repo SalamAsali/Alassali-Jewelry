@@ -82,7 +82,7 @@ catalog scrapers). They are run directly with `node` or `npx tsx`.
 | `/about/master-jeweler/[slug]` | Master jeweler profile |
 | `/portfolio`, `/faq`, `/locations` | Static content pages |
 | `/blog`, `/blog/<post>` | Blog index and four posts (each a static route folder) |
-| `/chains`, `/chains/[metal]`, `/chains/[metal]/[chainType]`, `/chain/[slug]` | Chain catalog — **paused** behind `CHAINS_ENABLED` (`lib/featureFlags.ts`); URLs 307 to `/` |
+| `/chains`, `/chains/[metal]`, `/chains/[metal]/[chainType]`, `/chain/[slug]` | Ready-made chain catalog — **paused** behind `CHAIN_CATALOG_ENABLED` (`lib/featureFlags.ts`); URLs 307 to `/`. The bespoke `/custom-chains-*` pages are unaffected and live |
 | `/account/**` | Clerk-authenticated customer account area |
 | `/cms/[[...segments]]` | Embedded Studio entry |
 

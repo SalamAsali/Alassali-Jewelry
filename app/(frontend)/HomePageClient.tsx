@@ -17,7 +17,6 @@ import { getImageUrl } from '@/lib/getImageUrl'
 import type { GoogleReview } from '@/lib/reviews/googlePlaces'
 import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { buildFaqSchema, buildBreadcrumbSchema } from '@/lib/seo/schema'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
 
 type HomePageClientProps = {
   liveReviews?: GoogleReview[]
@@ -92,27 +91,10 @@ const FALLBACK_FEATURED: GalleryItem[] = [
   },
 ]
 
-// Chain photos are the originals; non-chain stand-ins take over while chains
-// are paused. Alt text for both sets lives in MADE_IN_TORONTO_ALTS below.
-const MADE_IN_TORONTO_IMAGES = CHAINS_ENABLED
-  ? [
-      '/images/portfolio/chains-silver-cuban-link.jpg',
-      '/images/portfolio/chains-cuban-link-choker.jpg',
-    ]
-  : [
-      '/images/portfolio/pendants-khanda-medallion.jpg',
-      '/images/portfolio/grillz-gold-fang-set.jpg',
-    ]
-
-const MADE_IN_TORONTO_ALTS = CHAINS_ENABLED
-  ? [
-      { mobile: 'Silver Cuban chain crafted in Toronto', desktop: 'Silver Cuban chain - Toronto craftsmanship' },
-      { mobile: 'Custom chain design crafted in Toronto', desktop: 'Custom gold chain - Toronto artistry' },
-    ]
-  : [
-      { mobile: 'Custom gold medallion pendant crafted in Toronto', desktop: 'Custom gold pendant - Toronto craftsmanship' },
-      { mobile: 'Custom gold grillz crafted in Toronto', desktop: 'Custom gold grillz - Toronto artistry' },
-    ]
+const MADE_IN_TORONTO_IMAGES = [
+  '/images/portfolio/chains-silver-cuban-link.jpg',
+  '/images/portfolio/chains-cuban-link-choker.jpg',
+]
 
 const ACCENT_IMAGES = [
   { src: '/images/portfolio/engagement-oval-halo-ring.jpg', alt: 'Custom diamond engagement ring' },
@@ -124,9 +106,7 @@ const bespokeCategories = [
   { name: 'Wedding Bands', path: '/custom-wedding-bands-toronto', icon: '/images/icons/bridal-bands.svg', blurb: 'Matching bridal sets, eternity bands, men’s bands, or a fully engraved piece, each one designed to sit right alongside your ring.' },
   { name: 'Rings', path: '/custom-rings-toronto', icon: '/images/icons/rings.svg', blurb: 'From a signet ring to a statement piece, a stackable set, or something for everyday wear, if you can picture it in gold, platinum, or silver, we can cast it.' },
   { name: 'Pendants', path: '/custom-pendants-toronto', icon: '/images/icons/pendants.svg', blurb: 'From a name pendant to a photo piece, a religious symbol, or Arabic calligraphy, every pendant carries something personal.' },
-  ...(CHAINS_ENABLED
-    ? [{ name: 'Chains', path: '/custom-chains-toronto', icon: '/images/icons/chains.svg', blurb: 'Whether it’s a Miami Cuban, a rope chain, a franco, or figaro, everything we make is solid gold, never hollow.' }]
-    : []),
+  { name: 'Chains', path: '/custom-chains-toronto', icon: '/images/icons/chains.svg', blurb: 'Whether it’s a Miami Cuban, a rope chain, a franco, or figaro, everything we make is solid gold, never hollow.' },
   { name: 'Earrings', path: '/custom-earrings-toronto', icon: '/images/icons/earrings.svg', blurb: 'Studs for every day, hoops and drops for more movement, or chandeliers for a big night out, all made in diamond and gold.' },
   { name: 'Bracelets', path: '/custom-bracelets-toronto', icon: '/images/icons/bracelets.svg', blurb: 'Tennis bracelets, bangles, cuffs, or an engraved ID bracelet for him, built to fit exactly how you’ll wear it.' },
   { name: 'Grillz', path: '/custom-grillz-toronto', icon: '/images/icons/grillz.svg', blurb: 'From a single tooth to a full set, we work in real gold and VVS diamonds, never CZ.' },
@@ -143,18 +123,8 @@ const whyAlAssali: { icon: LucideIcon; title: string; body: string }[] = [
 // FAQ — answers the top "custom jewelry toronto" search queries
 const homepageFaq = [
   { q: 'Where is Al-Asali Jewelry based?', a: 'Al-Asali Jewelry Studio is a Toronto-based custom jewelry studio at 624 Vaughan Rd. We work by appointment only and offer virtual consultations via Zoom, phone, or message, and complimentary insured delivery across the Greater Toronto Area, with optional in-person meetings in Toronto when preferred.' },
-  {
-    q: 'What does custom jewelry cost in Toronto?',
-    a: CHAINS_ENABLED
-      ? 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal weight, stones, and design complexity. Custom engagement rings typically start at $2,500. Every project is quoted up front with no hidden fees.'
-      : 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets), scaling with metal weight, stones, and design complexity. Custom engagement rings typically start at $2,500. Every project is quoted up front with no hidden fees.',
-  },
-  {
-    q: 'How long does custom jewelry take?',
-    a: CHAINS_ENABLED
-      ? 'Most pieces take 2–6 weeks: grillz 1–2 weeks, pendants 2–4 weeks, chains and earrings 2–4 weeks, rings and bracelets 3–5 weeks, engagement rings 4–6 weeks. Rush orders are available for an additional fee.'
-      : 'Most pieces take 2–6 weeks: grillz 1–2 weeks, pendants and earrings 2–4 weeks, rings and bracelets 3–5 weeks, engagement rings 4–6 weeks. Rush orders are available for an additional fee.',
-  },
+  { q: 'What does custom jewelry cost in Toronto?', a: 'Most of our custom pieces start between $500 (single-tooth grillz) and $1,000 (custom rings, pendants, earrings, bracelets, chains), scaling with metal weight, stones, and design complexity. Custom engagement rings typically start at $2,500. Every project is quoted up front with no hidden fees.' },
+  { q: 'How long does custom jewelry take?', a: 'Most pieces take 2–6 weeks: grillz 1–2 weeks, pendants 2–4 weeks, chains and earrings 2–4 weeks, rings and bracelets 3–5 weeks, engagement rings 4–6 weeks. Rush orders are available for an additional fee.' },
   { q: 'How do I start a custom jewelry project?', a: 'Book a free virtual consultation via Zoom, phone, or message, or an in-person consultation in Toronto by appointment. We discuss your vision, budget, and timeline, then produce CAD renderings for your approval before any crafting begins.' },
   { q: 'Do you offer lab-grown diamonds?', a: 'Yes, we offer both natural and lab-grown diamonds. Lab-grown stones are chemically and visually identical to natural diamonds and offer significant savings on carat-for-carat value, both fully GIA-graded.' },
   { q: 'Can you reset family diamonds into a new design?', a: 'Absolutely. Heirloom resets are some of our most meaningful projects. We carefully remove the stones from your existing piece and set them into your new custom design while preserving every detail you want to keep.' },
@@ -266,8 +236,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
     }
   }
 
-  const displayedItems = (featuredItems.length > 0 ? featuredItems : FALLBACK_FEATURED)
-    .filter((item) => CHAINS_ENABLED || item.category !== 'chains')
+  const displayedItems = featuredItems.length > 0 ? featuredItems : FALLBACK_FEATURED
   const img1 = torontoImages[0]
   const img2 = torontoImages[1]
   const steps = processSteps.length ? processSteps : FALLBACK_PROCESS
@@ -374,12 +343,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
               <Link href="/custom-engagement-rings-toronto" className="underline underline-offset-4 hover:text-deep-charcoal transition-colors">engagement ring</Link>,{' '}
               <Link href="/custom-wedding-bands-toronto" className="underline underline-offset-4 hover:text-deep-charcoal transition-colors">wedding band</Link>,{' '}
               <Link href="/custom-pendants-toronto" className="underline underline-offset-4 hover:text-deep-charcoal transition-colors">diamond pendant</Link>,{' '}
-              {CHAINS_ENABLED && (
-                <>
-                  <Link href="/custom-chains-toronto" className="underline underline-offset-4 hover:text-deep-charcoal transition-colors">gold chain</Link>,{' '}
-                </>
-              )}
-              and{' '}
+              <Link href="/custom-chains-toronto" className="underline underline-offset-4 hover:text-deep-charcoal transition-colors">gold chain</Link>, and{' '}
               <Link href="/custom-grillz-toronto" className="underline underline-offset-4 hover:text-deep-charcoal transition-colors">grillz</Link>{' '}
               piece himself, from first sketch to final polish, backed by a lifetime craftsmanship guarantee. Choose a category to begin.
             </p>
@@ -426,8 +390,8 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             <div className="block lg:hidden text-center py-12">
               <h2 id="made-in-toronto-heading" className="text-5xl sm:text-6xl md:text-7xl font-bold mb-8 text-white" style={{ fontFamily: 'var(--font-heading)' }}>MADE IN<span className="sr-only"> </span><br />TORONTO</h2>
               <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto">
-                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt={MADE_IN_TORONTO_ALTS[0].mobile} className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
-                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt={MADE_IN_TORONTO_ALTS[1].mobile} className="w-full aspect-[3/4] object-cover object-[70%_center] rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
+                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt="Silver Cuban chain crafted in Toronto" className="w-full aspect-[3/4] object-cover rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
+                <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom chain design crafted in Toronto" className="w-full aspect-[3/4] object-cover object-[70%_center] rounded-lg shadow-2xl border-2 border-glacier-grey/50" />
               </div>
               <div className="grid grid-cols-2 gap-4 max-w-xs mx-auto mt-6">
                 {ACCENT_IMAGES.map((accent, i) => (
@@ -458,7 +422,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
               <div className="flex items-center justify-center mb-8">
                 <div className="relative inline-block">
                   <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30" style={{ fontFamily: 'var(--font-heading)' }}>M</div>
-                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt={MADE_IN_TORONTO_ALTS[0].desktop} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 xl:w-56 xl:h-72 2xl:w-64 2xl:h-80 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
+                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img1} alt="Silver Cuban chain - Toronto craftsmanship" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 xl:w-56 xl:h-72 2xl:w-64 2xl:h-80 object-cover rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
                 </div>
                 <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>ADE</div>
               </div>
@@ -469,7 +433,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
                 <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none" style={{ fontFamily: 'var(--font-heading)', background: 'linear-gradient(180deg, #FFFFFF 0%, #8B7D6B 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>TORONT</div>
                 <div className="relative inline-block">
                   <div className="text-[10rem] xl:text-[12rem] 2xl:text-[16rem] font-bold leading-none text-white/30" style={{ fontFamily: 'var(--font-heading)' }}>O</div>
-                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt={MADE_IN_TORONTO_ALTS[1].desktop} className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 xl:w-56 xl:h-72 2xl:w-64 2xl:h-80 object-cover object-[70%_center] rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
+                  <motion.img initial={{ opacity: 0, scale: 0.8 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} src={img2} alt="Custom gold chain - Toronto artistry" className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-64 xl:w-56 xl:h-72 2xl:w-64 2xl:h-80 object-cover object-[70%_center] rounded-lg shadow-2xl border-4 border-glacier-grey/50" style={{ zIndex: 10 }} />
                 </div>
               </div>
             </div>
@@ -589,7 +553,7 @@ export default function HomePageClient({ liveReviews, liveRating, liveReviewCoun
             <div className="text-xs uppercase tracking-widest text-glacier-grey font-medium mb-2">Master Jeweler &amp; Founder</div>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-deep-charcoal mb-6" style={{ fontFamily: 'var(--font-heading)' }}>Mohammad Al-Asali</h2>
             <p className="text-sm md:text-lg text-taupe leading-relaxed mb-8">
-              Mohammad is the founder and master jeweler behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, {CHAINS_ENABLED && 'gold chains, '}diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
+              Mohammad is the founder and master jeweler behind Al-Asali Jewelry Studio. A George Brown College Jewelry Arts Program graduate practicing since 2017, he has designed and handcrafted hundreds of bespoke engagement rings, gold chains, diamond pendants, and custom grillz for clients across the Greater Toronto Area. Every piece that leaves our Toronto studio has been personally inspected and finished by Mohammad.
             </p>
             <Link href="/about/master-jeweler/mohammad-al-asali" className="inline-flex items-center gap-2 text-glacier-grey font-semibold hover:gap-3 transition-all">
               Read Mohammad’s story <ArrowRight className="w-4 h-4" />

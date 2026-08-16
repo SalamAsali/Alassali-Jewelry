@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound, redirect } from 'next/navigation'
 import Link from 'next/link'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
+import { CHAIN_CATALOG_ENABLED } from '@/lib/featureFlags'
 import { getChains, getPricingConfig } from '@/lib/sanity'
 import type { MetalColor } from '@/lib/sanity'
 import ChainGrid from '@/components/chains/ChainGrid'
@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: MetalPageProps): Promise<Meta
 
 export default async function MetalPage({ params }: MetalPageProps) {
   // Backstop for the temporary redirect in next.config.mjs (chains paused).
-  if (!CHAINS_ENABLED) redirect('/')
+  if (!CHAIN_CATALOG_ENABLED) redirect('/')
 
   const { metal } = await params
 

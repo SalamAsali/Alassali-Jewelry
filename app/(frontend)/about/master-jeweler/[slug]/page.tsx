@@ -8,14 +8,13 @@ import DiamondPattern from '@/components/DiamondPattern'
 import DotPattern from '@/components/DotPattern'
 import { SITE_CONFIG, MASTER_JEWELER } from '@/lib/seo/siteConfig'
 import { buildBreadcrumbSchema } from '@/lib/seo/schema'
-import { CHAINS_ENABLED } from '@/lib/featureFlags'
 import { mergeOpenGraph } from '@/lib/mergeOpenGraph'
 import { getMasterJeweler } from '@/lib/getMasterJeweler'
 
 const FALLBACK_TITLE = 'Master Jeweler & Founder'
 const FALLBACK_TAGLINE = "Toronto's bespoke jeweler behind every piece that leaves Al-Asali Jewelry Studio."
 const FALLBACK_BIO = [
-  `Mohammad Al-Asali is the founder and master jeweler behind Al-Asali Jewelry Studio in Toronto. A graduate of the George Brown College Jewelry Arts Program and a working goldsmith since 2017, Mohammad has personally designed and handcrafted hundreds of bespoke engagement rings, wedding bands, diamond pendants, ${CHAINS_ENABLED ? 'gold chains, ' : ''}tennis bracelets, and custom grillz for clients across the Greater Toronto Area.`,
+  'Mohammad Al-Asali is the founder and master jeweler behind Al-Asali Jewelry Studio in Toronto. A graduate of the George Brown College Jewelry Arts Program and a working goldsmith since 2017, Mohammad has personally designed and handcrafted hundreds of bespoke engagement rings, wedding bands, diamond pendants, gold chains, tennis bracelets, and custom grillz for clients across the Greater Toronto Area.',
   'What began as a sole-proprietor commission practice at the end of 2020 has grown into a full Toronto bespoke studio, still operating with the same principle Mohammad started with: every piece is designed, cast, set, and finished in-house. No outsourcing, no middlemen, no shortcuts. If Al-Asali Jewelry made it, Mohammad inspected it.',
   'Mohammad has built a reputation for deep expertise in Arabic calligraphy jewelry, a specialty few Toronto jewelers can authentically execute. From Allah pendants and Ayat al-Kursi pendants to custom Arabic name rings and engraved wedding bands, his work has been carried by clients in Toronto, Mississauga, Vaughan, Markham, and beyond.',
 ].join('\n\n')
@@ -56,10 +55,7 @@ export default async function MasterJewelerPage({
   const name = cms?.name?.trim() || MASTER_JEWELER.name
   const title = cms?.title?.trim() || FALLBACK_TITLE
   const tagline = cms?.tagline?.trim() || FALLBACK_TAGLINE
-  // The CMS bio can mention gold chains too, so the filter applies after the
-  // fallback resolution — same treatment as CMS content in getBespokeLanding.
-  const rawBio = cms?.bio?.trim() || FALLBACK_BIO
-  const bio = CHAINS_ENABLED ? rawBio : rawBio.replace(/gold chains, /g, '')
+  const bio = cms?.bio?.trim() || FALLBACK_BIO
   const bioParagraphs = bio.split(/\n\n+/)
 
   const breadcrumb = buildBreadcrumbSchema([
@@ -133,7 +129,7 @@ export default async function MasterJewelerPage({
               { icon: Hammer, title: 'Heirloom Resets', body: 'Carefully remove stones from family pieces and set them into new bespoke designs, preserving sentiment while modernizing the look.' },
               { icon: Star, title: 'Custom Gold Chains', body: 'Solid gold Cuban, rope, franco, figaro, and box chains. Built to exact gram weight specifications, never hollow.' },
               { icon: Diamond, title: 'Diamond Setting', body: 'Prong, bezel, channel, pavé, flush, and tension settings. Every stone hand-set and tightened before the piece leaves the studio.' },
-            ].filter((spec) => CHAINS_ENABLED || spec.title !== 'Custom Gold Chains').map(({ icon: Icon, title: specTitle, body }) => (
+            ].map(({ icon: Icon, title: specTitle, body }) => (
               <div key={specTitle} className="bg-charcoal/50 border border-glacier-grey/20 rounded-xl p-5">
                 <Icon className="w-7 h-7 text-glacier-grey mb-3" />
                 <h3 className="text-white font-bold text-sm mb-2">{specTitle}</h3>
