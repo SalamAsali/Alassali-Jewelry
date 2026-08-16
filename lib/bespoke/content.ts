@@ -443,6 +443,10 @@ export const oakvilleContent: Record<string, Partial<LandingEntry> & { faqAnswer
  * re-apply it after merging Sanity overrides, which can carry their own
  * custom-chains links.
  */
+/** Paused-safe replacement for the pendants FAQ answer that offered custom chains. */
+const PAUSED_CHAIN_FAQ_ANSWER =
+  'Chains are priced separately so you can choose the perfect pairing. Bring a chain you already own, or tell us the look you want and we\'ll recommend the right width and length for your pendant during your consultation.'
+
 export function withoutChainReferences(entry: LandingEntry): LandingEntry {
   if (CHAINS_ENABLED) return entry
   return {
@@ -453,6 +457,11 @@ export function withoutChainReferences(entry: LandingEntry): LandingEntry {
     )
       ? undefined
       : entry.crossLink,
+    faq: entry.faq.map((item) =>
+      item.q === 'What chain comes with a custom pendant?'
+        ? { ...item, a: PAUSED_CHAIN_FAQ_ANSWER }
+        : item
+    ),
   }
 }
 

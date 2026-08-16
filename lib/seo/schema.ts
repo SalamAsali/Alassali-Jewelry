@@ -236,7 +236,11 @@ export function buildMasterJewelerSchema() {
     '@id': FOUNDER_ID,
     name: MASTER_JEWELER.name,
     jobTitle: MASTER_JEWELER.jobTitle,
-    description: MASTER_JEWELER.bio,
+    // Bio mentions gold chains; dropped from the sitewide Person schema while
+    // chains are paused, matching the knowsAbout filter below.
+    description: CHAINS_ENABLED
+      ? MASTER_JEWELER.bio
+      : MASTER_JEWELER.bio.replace('gold chains, ', ''),
     url: `${SITE_CONFIG.url}/about/master-jeweler/${MASTER_JEWELER.slug}`,
     worksFor: STORE_REF,
     knowsAbout: withoutChains(MASTER_JEWELER.knowsAbout),

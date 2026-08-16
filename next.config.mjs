@@ -94,6 +94,9 @@ const nextConfig = {
             { source: '/custom/chains', destination: '/', permanent: false },
             { source: '/custom/chains-oakville', destination: '/', permanent: false },
             { source: '/oakville/custom-chains', destination: '/', permanent: false },
+            // The [city]/[service] page 404s on custom-chains while the
+            // service is filtered out of SERVICES, so redirect it here too.
+            { source: '/toronto/custom-chains', destination: '/', permanent: false },
           ]),
       // Old hierarchical routes → new flat -toronto URLs
       ...customSlugs.map((slug) => ({

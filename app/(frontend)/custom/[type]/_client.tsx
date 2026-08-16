@@ -30,7 +30,7 @@ import { SITE_CONFIG } from '@/lib/seo/siteConfig'
 import { bespokePath, type City } from '@/lib/locations'
 import { type LandingEntry } from '@/lib/bespoke/content'
 import { CHAINS_ENABLED } from '@/lib/featureFlags'
-import { CALENDLY_URL } from '@/lib/calendly'
+import { isCalendlyConfigured } from '@/lib/calendly'
 import CalendlyScheduler from '@/components/scheduling/CalendlyScheduler'
 
 // ---------------------------------------------------------------------------
@@ -958,7 +958,10 @@ function PortalForm() {
         const data = await response.json().catch(() => null)
         setInquiryRef(data?.orderNo || data?.id || '')
         setSubmitted(true)
-      } else alert('Error submitting inquiry. Please try again.')
+      } else {
+        setIsSubmitting(false)
+        alert('Error submitting inquiry. Please try again.')
+      }
     } catch (error) {
       setIsSubmitting(false)
       console.error('Error submitting inquiry:', error)
@@ -992,7 +995,7 @@ function PortalForm() {
     // Without a configured Calendly URL the confirmation stays a single
     // full-viewport screen; with one, it becomes a scrollable page whose
     // final step is booking the initial consultation.
-    if (!CALENDLY_URL) {
+    if (!isCalendlyConfigured()) {
       return (
         <div className="h-[calc(100dvh-56px)] md:h-[calc(100dvh-72px)] lg:h-[calc(100dvh-80px)] bg-soft-black relative overflow-hidden flex items-center justify-center" data-testid="form-confirmation">
           <DotPattern />

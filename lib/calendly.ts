@@ -10,6 +10,16 @@
  */
 export const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || ''
 
+/**
+ * True when a usable (parseable) Calendly URL is configured. Gate scheduling
+ * UI on this rather than CALENDLY_URL truthiness — a set-but-malformed value
+ * (e.g. missing https://) would otherwise show a scheduling step with no
+ * calendar in it.
+ */
+export function isCalendlyConfigured(): boolean {
+  return buildCalendlyUrl() !== ''
+}
+
 export type CalendlyLinkOptions = {
   /** Invitee full name, prefilled into the booking form. */
   name?: string

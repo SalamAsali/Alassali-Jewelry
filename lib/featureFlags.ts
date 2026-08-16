@@ -13,8 +13,19 @@
  *   1. Flip CHAINS_ENABLED to true here.
  *   2. Flip the matching CHAINS_ENABLED const in next.config.mjs (it cannot
  *      import TS, so the flag is duplicated there for the redirect rules).
- *   3. Restore the chain lines in public/llms.txt (static file — see the
- *      "chains paused" note at the bottom of that file for what to re-add).
+ *   3. Restore these lines in public/llms.txt (a static file that cannot
+ *      read this flag; llms.txt is served verbatim to AI crawlers, so the
+ *      restore notes live here instead of there):
+ *        - intro: put "gold chains, " back into the handcrafts list
+ *          (after "wedding bands, ")
+ *        - Services: "- Custom gold chains — Cuban, rope, franco, figaro ($1,000+)"
+ *          (after the custom rings line)
+ *        - Key facts timelines: "pendants/earrings 2–4 weeks" back to
+ *          "pendants 2–4 weeks, chains/earrings 2–4 weeks"
+ *        - Key pages: "- Custom Chains Toronto:
+ *          https://www.alasalicustomjewelry.ca/custom-chains-toronto"
+ *          (after the custom rings line)
+ *      (Or diff llms.txt against the commit that introduced this flag.)
  *   4. Redeploy (npx vercel --prod --yes --scope dreams3).
  */
 export const CHAINS_ENABLED = false

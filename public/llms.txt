@@ -51,9 +51,3 @@
 - Locations: https://www.alasalicustomjewelry.ca/locations
 - Blog: https://www.alasalicustomjewelry.ca/blog
 
-<!-- chains paused (see lib/featureFlags.ts). To restore, re-add:
-     intro: "gold chains" to the handcrafts list;
-     Services: "- Custom gold chains — Cuban, rope, franco, figaro ($1,000+)";
-     timelines: "chains/earrings 2–4 weeks";
-     Key pages: "- Custom Chains Toronto: https://www.alasalicustomjewelry.ca/custom-chains-toronto" -->
-
