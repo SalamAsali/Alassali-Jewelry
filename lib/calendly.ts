@@ -1,14 +1,14 @@
 /**
  * Calendly scheduling integration.
  *
- * CALENDLY_URL is the booking link for the initial-consultation event type,
- * e.g. https://calendly.com/alassalijewelry/initial-consultation
- *
- * Configure it via NEXT_PUBLIC_CALENDLY_URL in Vercel (preferred) or by
- * filling in the fallback string below. While it is empty, every scheduling
- * step stays hidden and the forms behave exactly as before.
+ * CALENDLY_URL is the booking link for the initial-consultation event type.
+ * The constant below is the live event; NEXT_PUBLIC_CALENDLY_URL in Vercel
+ * overrides it without a code change. Set both to '' to hide every
+ * scheduling step and restore the plain post-submit confirmation.
  */
-export const CALENDLY_URL = process.env.NEXT_PUBLIC_CALENDLY_URL || ''
+export const CALENDLY_URL =
+  process.env.NEXT_PUBLIC_CALENDLY_URL ||
+  'https://calendly.com/contact-alasalicustomjewelry/30min'
 
 /**
  * True when a usable (parseable) Calendly URL is configured. Gate scheduling

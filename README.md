@@ -35,9 +35,9 @@ npx vercel env pull .env.local --environment production --scope dreams3
 Key variables: `NEXT_PUBLIC_SANITY_PROJECT_ID`, `NEXT_PUBLIC_SANITY_DATASET`,
 `SANITY_API_WRITE_TOKEN`, `SANITY_WEBHOOK_SECRET`, `CLERK_SECRET_KEY`,
 `STRIPE_SECRET_KEY`, `NOTION_TOKEN`, `RESEND_API_KEY`, `GOLDAPI_TOKEN`,
-`GOOGLE_PLACES_API_KEY`, `NEXT_PUBLIC_CALENDLY_URL` (the Calendly event link
-for the post-inquiry "book a consultation" step; the step stays hidden while
-unset — see `lib/calendly.ts`).
+`GOOGLE_PLACES_API_KEY`, `NEXT_PUBLIC_CALENDLY_URL` (optional override for
+the Calendly event link used by the post-inquiry "book a consultation" step;
+the live default is baked into `lib/calendly.ts`).
 
 ### Installation
 
