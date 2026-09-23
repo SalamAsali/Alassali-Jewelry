@@ -1,4 +1,5 @@
 import { Client } from '@notionhq/client'
+import { normalizeEmail } from '@/lib/email'
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN })
 
@@ -69,7 +70,7 @@ export async function findCustomerByEmail(email: string): Promise<string | null>
   if (!dsId) return null
 
   const result = await queryDataSource(dsId, {
-    filter: { property: 'Email', email: { equals: email } },
+    filter: { property: 'Email', email: { equals: normalizeEmail(email) } },
     page_size: 1,
   })
 
@@ -89,12 +90,13 @@ export async function findOrCreateCustomer(customer: {
   const dbId = process.env.NOTION_CUSTOMERS_DB_ID
   if (!dbId) return null
 
-  const existing = await findCustomerByEmail(customer.email)
+  const email = normalizeEmail(customer.email)
+  const existing = await findCustomerByEmail(email)
   if (existing) return existing
 
   const properties: Record<string, any> = {
     Customer: { title: [{ text: { content: customer.name } }] },
-    Email: { email: customer.email },
+    Email: { email },
   }
   if (customer.phone) {
     properties.Phone = { phone_number: customer.phone }

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import { createClient } from '@sanity/client'
 import { currentUser } from '@clerk/nextjs/server'
+import { normalizeEmail } from '@/lib/email'
 import {
   findOrCreateCustomer,
   getNextOrderNumber,
@@ -120,11 +121,11 @@ export async function POST(request: NextRequest) {
 
     // If the user is logged in, use their account email for CRM linking
     // so the order shows up on their dashboard regardless of form email
-    let crmEmail = body.email
+    let crmEmail = normalizeEmail(body.email)
     try {
       const user = await currentUser()
       if (user?.emailAddresses?.[0]?.emailAddress) {
-        crmEmail = user.emailAddresses[0].emailAddress
+        crmEmail = normalizeEmail(user.emailAddresses[0].emailAddress)
       }
     } catch {
       // Not logged in — use form email
@@ -153,7 +154,7 @@ export async function POST(request: NextRequest) {
         .create({
           _type: 'inquiry',
           name,
-          email: body.email,
+          email: normalizeEmail(body.email),
           phone: body.phone || '',
           jewelryCategory: body.jewelryCategory || body.type || '',
           pieceType: body.pieceType || '',

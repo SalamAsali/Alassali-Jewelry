@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { Webhook } from 'svix'
 import { findOrCreateCustomer } from '@/lib/notion'
+import { normalizeEmail } from '@/lib/email'
 import { createClient } from '@sanity/client'
 
 const sanityWriteClient = createClient({
@@ -45,8 +46,9 @@ export async function POST(request: NextRequest) {
   if (event.type === 'user.created' || event.type === 'user.updated') {
     const { id, email_addresses, first_name, last_name, phone_numbers } = event.data
 
-    const primaryEmail = email_addresses?.find((e: any) => e.id === event.data.primary_email_address_id)?.email_address
+    const rawEmail = email_addresses?.find((e: any) => e.id === event.data.primary_email_address_id)?.email_address
       || email_addresses?.[0]?.email_address
+    const primaryEmail = normalizeEmail(rawEmail)
 
     if (!primaryEmail) {
       console.log('[clerk-webhook] No email found for user:', id)
