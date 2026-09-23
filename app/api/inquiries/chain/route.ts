@@ -3,6 +3,7 @@ import { Resend } from 'resend'
 import { createClient } from '@sanity/client'
 import { currentUser } from '@clerk/nextjs/server'
 import { CHAIN_CATALOG_ENABLED } from '@/lib/featureFlags'
+import { normalizeEmail } from '@/lib/email'
 import {
   findOrCreateCustomer,
   findCustomerByEmail,
@@ -127,12 +128,12 @@ export async function POST(request: NextRequest) {
     const phone = body.phone || ''
 
     // Check if a logged-in user is making this request
-    let crmEmail = email
+    let crmEmail = normalizeEmail(email)
     let isLoggedIn = false
     try {
       const clerkUser = await currentUser()
       if (clerkUser?.emailAddresses?.[0]?.emailAddress) {
-        crmEmail = clerkUser.emailAddresses[0].emailAddress
+        crmEmail = normalizeEmail(clerkUser.emailAddresses[0].emailAddress)
         isLoggedIn = true
       }
     } catch {

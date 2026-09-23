@@ -1,7 +1,7 @@
-import { auth } from '@clerk/nextjs/server'
+import { auth, currentUser } from '@clerk/nextjs/server'
 import { redirect, notFound } from 'next/navigation'
 import Link from 'next/link'
-import { getOrderByNumber } from '@/lib/orders'
+import { getOrderForCustomerEmail } from '@/lib/orders'
 import { StatusBadge } from '@/components/account/StatusBadge'
 
 export default async function OrderDetailPage({
@@ -13,7 +13,13 @@ export default async function OrderDetailPage({
   if (!userId) redirect('/account/login')
 
   const { orderNo } = await params
-  const order = await getOrderByNumber(decodeURIComponent(orderNo))
+  const user = await currentUser()
+  const email = user?.emailAddresses?.[0]?.emailAddress
+  // Scoped to this customer: an order that exists but belongs to someone else
+  // must be indistinguishable from one that does not exist.
+  const order = email
+    ? await getOrderForCustomerEmail(decodeURIComponent(orderNo), email)
+    : null
   if (!order) notFound()
 
   const items = Array.isArray(order.items) ? order.items : []
